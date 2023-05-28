@@ -81,9 +81,9 @@ var/global/list/rad_collectors = list()
 		to_chat(user, "<span class='warning'>\The [src] is completely destroyed!</span>")
 	if(!src.locked)
 		toggle_power()
-		user.visible_message("[user.name] turns the [src] [active? "on":"off"].", \
-		"You turn the [src] [active? "on":"off"].")
-		investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [loaded_tank?"Fuel: [round(loaded_tank.air_contents.gas[/decl/material/solid/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
+		user.visible_message("[user.name] turns \the [src] [active? "on":"off"].", \
+		"You turn \the [src] [active? "on":"off"].")
+		investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [loaded_tank?"Fuel: [round(loaded_tank.air_contents.gas[/decl/material/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
 	else
 		to_chat(user, "<span class='warning'>The controls are locked!</span>")
 
