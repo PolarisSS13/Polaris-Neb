@@ -34,7 +34,7 @@
 
 /obj/machinery/holosign/on_update_icon()
 	if (!lit || inoperable())
-		icon_state = "sign_off"
+		icon_state = initial(icon_state)
 		set_light(0)
 	else
 		icon_state = on_icon
@@ -73,7 +73,7 @@
 	name = "bar holosign"
 	desc = "Small wall-mounted holographic projector. This one reads OPEN."
 	icon_state = "barclosed"
-	on_icon = "sign_on"
+	on_icon = "baropen"
 	sign_light_color = COLOR_LIGHT_CYAN
 
 ////////////////////SWITCH///////////////////////////////////////
