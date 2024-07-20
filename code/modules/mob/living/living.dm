@@ -1931,4 +1931,3 @@ default behaviour is:
 			to_chat(user, SPAN_NOTICE("\The [src] can be milked into a bucket or other container."))
 		else
 			to_chat(user, SPAN_WARNING("\The [src] cannot currently be milked."))
-
