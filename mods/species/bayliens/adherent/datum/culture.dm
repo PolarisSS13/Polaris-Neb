@@ -1,4 +1,4 @@
-/decl/cultural_info/culture/adherent
+/decl/cultural_info/citizenship/adherent
 	name = "The Vigil"
 	description = "The Vigil is a relatively loose association of machine-servitors, adherents, built by a now-extinct culture. \
 	They are devoted to the memory of their long-dead creators, destroyed by the Scream, a solar flare which wiped out the vast \
@@ -11,8 +11,8 @@
 		/decl/language/human/common
 	)
 
-/decl/cultural_info/culture/adherent/get_random_name(gender)
+/decl/cultural_info/citizenship/adherent/get_random_name(gender)
 	return "[uppertext("[pick(global.alphabet)][pick(global.alphabet)]-[pick(global.alphabet)] [rand(1000,9999)]")]"
 
-/decl/cultural_info/culture/adherent/sanitize_cultural_name(name)
+/decl/cultural_info/citizenship/adherent/sanitize_cultural_name(name)
 	return sanitize_name(name, allow_numbers = TRUE)

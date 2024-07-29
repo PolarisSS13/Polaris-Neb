@@ -75,9 +75,9 @@ var/global/list/end_titles
 		if(H.ckey && H.client)
 			if(H.client.get_preference_value(/datum/client_preference/show_ckey_credits) == PREF_SHOW)
 				showckey = 1
-		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_CULTURE))
+		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_CITIZENSHIP))
 		if(!actor_culture || !(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10))
-			actor_culture = GET_DECL(/decl/cultural_info/culture/sif)
+			actor_culture = GET_DECL(/decl/cultural_info/citizenship/scg)
 		if(!showckey)
 			if(prob(90))
 				chunk += "[actor_culture.get_random_name(H, H.gender)]\t \t \t \t[uppertext(used_name)][job]"
@@ -118,7 +118,7 @@ var/global/list/end_titles
 		if(!C.holder)
 			continue
 		if(C.holder.rights & (R_DEBUG|R_ADMIN))
-			var/list/all_cultures = decls_repository.get_decls_of_subtype(/decl/cultural_info/culture)
+			var/list/all_cultures = decls_repository.get_decls_of_subtype(/decl/cultural_info/homeculture)
 			var/decl/cultural_info/cult = all_cultures[pick(all_cultures)]
 			staff += "[uppertext(pick(staffjobs))] - [cult.get_random_name(pick(MALE, FEMALE))] a.k.a. '[C.key]'"
 		else if(C.holder.rights & R_MOD)

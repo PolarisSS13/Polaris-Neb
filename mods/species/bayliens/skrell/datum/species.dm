@@ -63,18 +63,18 @@
 	)
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/skrell,
-			/decl/cultural_info/culture/skrell/caste_malish,
-			/decl/cultural_info/culture/skrell/caste_kanin,
-			/decl/cultural_info/culture/skrell/caste_talum,
-			/decl/cultural_info/culture/skrell/caste_raskinta,
-			/decl/cultural_info/culture/skrell/caste_ue
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/skrell,
+			/decl/cultural_info/citizenship/skrell/caste_malish,
+			/decl/cultural_info/citizenship/skrell/caste_kanin,
+			/decl/cultural_info/citizenship/skrell/caste_talum,
+			/decl/cultural_info/citizenship/skrell/caste_raskinta,
+			/decl/cultural_info/citizenship/skrell/caste_ue
 		),
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/free,
-			/decl/cultural_info/location/skrellspace,
-			/decl/cultural_info/location/other
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/free,
+			/decl/cultural_info/homeculture/skrellspace,
+			/decl/cultural_info/homeculture/other
 		),
 		TAG_FACTION = list(
 			/decl/cultural_info/faction/skrell,

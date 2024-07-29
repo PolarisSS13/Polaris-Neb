@@ -56,9 +56,9 @@
 	)
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/teshari,
-			/decl/cultural_info/culture/other
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/teshari,
+			/decl/cultural_info/citizenship/stateless
 		)
 	)
 

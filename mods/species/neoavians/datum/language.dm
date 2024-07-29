@@ -19,7 +19,7 @@
 /decl/language/neoavian/get_random_name(gender)
 	return ..(gender, 2, 4, 1.5)
 
-/decl/cultural_info/culture/teshari
+/decl/cultural_info/citizenship/teshari
 	name = "Pack Teshari"
 	description = "Most Teshari follow the unique cultural traditions of their specific pack, which vary as widely as any other species' \
 	idea of nations. Pack Teshari tend to be highly social, curious, and open people, with little concept of privacy and a high tendency \

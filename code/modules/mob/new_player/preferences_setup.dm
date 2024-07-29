@@ -111,7 +111,7 @@
 		update_character_previews(mannequin)
 
 /datum/preferences/proc/get_random_name()
-	var/decl/cultural_info/culture/check_culture = cultural_info[TAG_CULTURE]
+	var/decl/cultural_info/homeculture/check_culture = cultural_info[TAG_HOMECULTURE]
 	if(ispath(check_culture, /decl/cultural_info))
 		check_culture = GET_DECL(check_culture)
 		return check_culture.get_random_name(client?.mob, gender)

@@ -54,12 +54,12 @@
 	species_hud = /datum/hud_data/adherent
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/adherent
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/adherent
 		),
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/adherent,
-			/decl/cultural_info/location/adherent/monument
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/adherent,
+			/decl/cultural_info/homeculture/adherent/monument
 		),
 		TAG_FACTION = list(
 			/decl/cultural_info/faction/adherent,

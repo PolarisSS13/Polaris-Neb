@@ -38,12 +38,12 @@
 	)
 
 	available_cultural_info = list(
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/fantasy,
-			/decl/cultural_info/location/fantasy/mountains,
-			/decl/cultural_info/location/fantasy/steppe,
-			/decl/cultural_info/location/fantasy/woods,
-			/decl/cultural_info/location/other
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/fantasy,
+			/decl/cultural_info/homeculture/fantasy/mountains,
+			/decl/cultural_info/homeculture/fantasy/steppe,
+			/decl/cultural_info/homeculture/fantasy/woods,
+			/decl/cultural_info/homeculture/other
 		),
 		TAG_FACTION =   list(
 			/decl/cultural_info/faction/fantasy,
@@ -53,12 +53,12 @@
 			/decl/cultural_info/faction/fantasy/primitivist,
 			/decl/cultural_info/faction/other
 		),
-		TAG_CULTURE =   list(
-			/decl/cultural_info/culture/fantasy,
-			/decl/cultural_info/culture/fantasy/steppe,
-			/decl/cultural_info/culture/fantasy/hnoll,
-			/decl/cultural_info/culture/fantasy/hnoll/aegis,
-			/decl/cultural_info/culture/other
+		TAG_CITIZENSHIP =   list(
+			/decl/cultural_info/citizenship/fantasy,
+			/decl/cultural_info/citizenship/fantasy/steppe,
+			/decl/cultural_info/citizenship/fantasy/hnoll,
+			/decl/cultural_info/citizenship/fantasy/hnoll/aegis,
+			/decl/cultural_info/citizenship/other
 		),
 		TAG_RELIGION =  list(
 			/decl/cultural_info/religion/other

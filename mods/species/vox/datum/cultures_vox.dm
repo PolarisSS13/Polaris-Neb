@@ -1,4 +1,4 @@
-/decl/cultural_info/culture/vox
+/decl/cultural_info/citizenship/vox
 	name = "Arkborn Vox"
 	description = "The vast majority of vox are born and die on the enormous moon-sized arkships that form the only \
 	permanent home any of the creatures have. Tending to the vast, decaying vessels is a full-time job for crews of thousands, \
@@ -8,14 +8,14 @@
 	language = /decl/language/vox
 	secondary_langs = list(/decl/language/human/common)
 
-/decl/cultural_info/culture/vox/salvager
+/decl/cultural_info/citizenship/vox/salvager
 	name = "Vox Salvager"
 	description = "The arkships, vast as they are, could not survive without the ceaseless efforts of the salvage crews \
 	that strip-mine asteroids, stations and ships for the raw materials needed to keep things together. Although it is a \
 	much less lethal pursuit than being a raider, salvagers have a dangerous job and often do not make it back to the ark \
 	in one piece."
 
-/decl/cultural_info/culture/vox/raider
+/decl/cultural_info/citizenship/vox/raider
 	name = "Vox Raider"
 	description = "Amongst the vox, the prestige of being a raider is second only to working directly for an apex. They are \
 	the cutting talon of the vox and the dashing, charismatic figures of adventure that serve as examples for fresh hatchlings \

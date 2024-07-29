@@ -40,7 +40,7 @@
 		/decl/pronouns/neuter
 	)
 	available_cultural_info = list(
-		TAG_CULTURE = list(/decl/cultural_info/culture/synthetic)
+		TAG_CITIZENSHIP = list(/decl/cultural_info/citizenship/synthetic)
 	)
 
 	exertion_effect_chance = 10

@@ -57,9 +57,9 @@
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/tajaran,
-			/decl/cultural_info/culture/other
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/tajaran,
+			/decl/cultural_info/citizenship/stateless
 		)
 	)
 

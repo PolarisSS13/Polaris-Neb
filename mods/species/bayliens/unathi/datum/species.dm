@@ -107,8 +107,8 @@
 /decl/species/unathi/Initialize()
 	. = ..()
 	LAZYINITLIST(available_cultural_info)
-	LAZYDISTINCTADD(available_cultural_info[TAG_CULTURE], /decl/cultural_info/culture/lizard)
-	LAZYSET(default_cultural_info, TAG_CULTURE, /decl/cultural_info/culture/lizard)
+	LAZYDISTINCTADD(available_cultural_info[TAG_CITIZENSHIP], /decl/cultural_info/citizenship/lizard)
+	LAZYSET(default_cultural_info, TAG_CITIZENSHIP, /decl/cultural_info/citizenship/lizard)
 
 /decl/species/unathi/equip_survival_gear(var/mob/living/human/H)
 	..()

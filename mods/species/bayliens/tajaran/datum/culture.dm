@@ -1,4 +1,4 @@
-/decl/cultural_info/culture/tajaran
+/decl/cultural_info/citizenship/tajaran
 	name = "Tajaran - Hrarar"
 	description = "Hrarar are the most numerous tajaran ethnicity on Meralar, and were the most heavily represented tajarans \
 	in the diplomatic delegations that dealt with humans through the early post-contact years. This led to a fairly entrenched \

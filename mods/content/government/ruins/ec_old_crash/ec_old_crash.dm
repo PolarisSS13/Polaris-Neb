@@ -70,7 +70,7 @@
 /obj/item/paper/ecrashlog/Initialize()
 	. = ..()
 	var/shipname = "SCG-E [pick("Magellan", "Gagarin", "Drake", "Horizon", "Aurora")]"
-	var/decl/cultural_info/S = GET_DECL(/decl/cultural_info/culture/sif)
+	var/decl/cultural_info/S = GET_DECL(/decl/cultural_info/citizenship/scg)
 	var/new_info = {"
 	I am Lieutenant Hao Ru, captain of [shipname], of the Galactic Survey Administration.<br>
 	We are dying. The Ran Mission has failed.<br>

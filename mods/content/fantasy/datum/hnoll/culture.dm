@@ -1,4 +1,4 @@
-/decl/cultural_info/culture/fantasy/hnoll
+/decl/cultural_info/citizenship/fantasy/hnoll
 	name = "Hnoll Clanner"
 	description = "You were raised as part of a Nine Mothers steppe clan. You most likely grew up under the authority of \
 	the matriarches, living on the steppe or tundra of the Grass Ocean and following the aurochs herds on their seasonal \
@@ -6,7 +6,7 @@
 	deviance from the expected norm."
 	name_language = /decl/language/hnoll
 
-/decl/cultural_info/culture/fantasy/hnoll/aegis
+/decl/cultural_info/citizenship/fantasy/hnoll/aegis
 	name = "Imperial Hnoll"
 	description = "Despite the continent-spanning empire of the Aegis having crumbled decades ago, many Splinter Kingdoms \
 	still try to keep up the facade of old power and old authority. Dynasties claiming to trace their bloodline to the old \
