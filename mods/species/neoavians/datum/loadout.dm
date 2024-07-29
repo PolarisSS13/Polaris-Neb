@@ -7,7 +7,7 @@
 	abstract_type = /decl/loadout_option/avian
 
 /decl/loadout_option/avian/uniform_selection
-	name = "Neo-Avian uniform selection"
+	name = "Teshari uniform selection"
 	path = /obj/item/clothing/dress/avian_smock
 	slot = slot_w_uniform_str
 

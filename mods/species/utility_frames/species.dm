@@ -11,8 +11,8 @@
 
 /decl/species/utility_frame
 	name =                  SPECIES_FRAME
-	name_plural =           "Utility Frames"
-	description =           "Simple AI-driven robots are used for many menial or repetitive tasks in human space."
+	name_plural =           "Drones"
+	description =           "AI-driven synthetics of varying complexity are widely used for many tasks in human space."
 	cyborg_noun = null
 	base_external_prosthetics_model = null
 	blood_types = list(/decl/blood_type/coolant)

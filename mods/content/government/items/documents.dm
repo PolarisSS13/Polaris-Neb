@@ -12,14 +12,14 @@
 
 /obj/item/documents/scg/red
 	name = "red secret documents"
-	desc = "\"Top Secret\" protocols on what to do if the ship passes into TCC sectors. The writing mostly goes over the diplomatic process, while constantly shaming the Terrans for their idiocy and needless aggression."
+	desc = "\"Top Secret\" protocols on what to do if the ship passes into SCG sectors. The writing mostly goes over the diplomatic process, while constantly shaming the Solars for their idiocy and ineffective bureaucracy."
 	description_antag = "You notice that these protocols contain small, almost intentional snubbing efforts. Whoever wrote these may have been rooting for a war to start..."
 	icon_state = "docs_red"
 
 /obj/item/documents/scg/blue
 	name = "blue secret documents"
-	desc = "\"Top Secret\" documents detailing the outworlder company Krri'gli, and their insistent requests upon specific priority sectors to investigate."
-	description_antag = "Krri'gli seem to be guiding the ship, subtly, to a specific unmapped sector of the galaxy. It's almost like they're too afraid to investigate it personally."
+	desc = "\"Top Secret\" documents detailing a distant skrellian kingdom, and their insistent requests upon specific priority sectors to investigate."
+	description_antag = "The skrell seem to be guiding the ship, subtly, to a specific unmapped sector of the galaxy. It's almost like they're too afraid to investigate it personally."
 	icon_state = "docs_blue"
 
 /obj/random/documents/scg/spawn_choices()

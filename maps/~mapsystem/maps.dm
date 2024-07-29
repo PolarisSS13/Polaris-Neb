@@ -127,11 +127,26 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	var/default_species = SPECIES_HUMAN
 
-	var/list/available_cultural_info = list(
-		TAG_HOMEWORLD = list(/decl/cultural_info/location/other),
-		TAG_FACTION =   list(/decl/cultural_info/faction/other),
-		TAG_CULTURE =   list(/decl/cultural_info/culture/other),
-		TAG_RELIGION =  list(/decl/cultural_info/religion/other)
+	var/list/available_cultural_info = list( //Maybe put these back on the per-map level once we have a map working, but they're setting-wide regardless.
+		TAG_HOMEWORLD = list(
+		/decl/cultural_info/location/sif,
+		/decl/cultural_info/location/kara,
+		/decl/cultural_info/location/earth,
+		/decl/cultural_info/location/other
+		),
+		TAG_FACTION =   list(
+			/decl/cultural_info/faction/nanotrasen,
+			/decl/cultural_info/faction/other
+		),
+		TAG_CULTURE =   list(
+		/decl/cultural_info/culture/sif,
+		/decl/cultural_info/culture/kara,
+		/decl/cultural_info/culture/earth,
+		/decl/cultural_info/culture/other
+		),
+		TAG_RELIGION =  list(
+			/decl/cultural_info/religion/other
+		)
 	)
 
 	var/list/default_cultural_info = list(

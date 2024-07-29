@@ -19,11 +19,11 @@
 		/decl/natural_attack/bite
 	)
 
-	description = "The Skrell are a highly advanced race of amphibians hailing from the system known as Qerr'Vallis. Their society is regimented into \
-	five different castes which the Qerr'Katish, or Royal Caste, rules over. Skrell are strict herbivores who are unable to eat large quantities of \
-	animal protein without feeling sick or even suffering from food poisoning. <br/><br/> \
-	Skrell value cooperation and have very communal lifestyles, and despite their diplomatic fluency and innate curiosity are very leery of outside \
-	interference in their customs and values."
+	description = "The skrell are a highly advanced species of amphibians hailing from the system known as Qerr'Vallis, which translates to 'Star of \
+	the royals' or 'Light of the Crown'. Their society is regimented into five castes which the Qerr'Katish, or High-caste, rules over. Skrell are \
+	strict herbivores who are unable to eat large quantities of animal protein without feeling sick or even suffering from food poisoning. <br/><br/> \
+	While skrell place high value on cooperation, diplomacy and scientific pursuit, they tend to be very leery of outside \
+	interference in their customs and values, and highly secretive regarding internal matters of state."
 
 	butchery_data = /decl/butchery_data/humanoid/skrell
 
