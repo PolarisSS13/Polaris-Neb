@@ -145,3 +145,12 @@
 /decl/loadout_option/uniform/nurse
 	name = "dress, nurse"
 	path = /obj/item/clothing/dress/nurse
+
+/decl/loadout_option/uniform/utility
+	name = "utility jumpsuit selection"
+	path = /obj/item/clothing/jumpsuit/utility
+	loadout_flags = GEAR_HAS_TYPE_SELECTION
+
+/decl/loadout_option/uniform/sleekoveralls
+	name = "overalls, sleek"
+	path = /obj/item/clothing/jumpsuit/sleekoveralls

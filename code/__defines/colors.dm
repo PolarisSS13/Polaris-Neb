@@ -1,3 +1,4 @@
+
 #define HEX_RED(COLOUR)   hex2num(copytext(COLOUR,2,4))
 #define HEX_GREEN(COLOUR) hex2num(copytext(COLOUR,4,6))
 #define HEX_BLUE(COLOUR)  hex2num(copytext(COLOUR,6,8))
