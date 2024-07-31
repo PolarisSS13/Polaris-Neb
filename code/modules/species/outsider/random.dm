@@ -37,7 +37,7 @@
 	available_bodytypes = list(/decl/bodytype/alium)
 
 	force_cultural_info = list(
-		TAG_CITIZENSHIP = /decl/cultural_info/citizenship/hidden/alium
+		TAG_CULTURE = /decl/cultural_info/culture/hidden/alium
 	)
 
 	exertion_effect_chance = 10

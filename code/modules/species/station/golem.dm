@@ -32,7 +32,7 @@
 	available_pronouns = list(/decl/pronouns/neuter)
 
 	force_cultural_info = list(
-		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/hidden/cultist,
+		TAG_CULTURE =   /decl/cultural_info/culture/hidden/cultist,
 		TAG_HOMECULTURE = /decl/cultural_info/homeculture/other,
 		TAG_FACTION =   /decl/cultural_info/faction/other
 	)

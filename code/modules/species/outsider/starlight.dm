@@ -4,7 +4,7 @@
 	spawn_flags = SPECIES_IS_RESTRICTED
 	available_pronouns = list(/decl/pronouns/neuter)
 	force_cultural_info = list(
-		TAG_CITIZENSHIP = /decl/cultural_info/citizenship/stateless
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/other
 	)
 
 /decl/bodytype/starlight

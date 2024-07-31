@@ -75,7 +75,7 @@ var/global/list/end_titles
 		if(H.ckey && H.client)
 			if(H.client.get_preference_value(/datum/client_preference/show_ckey_credits) == PREF_SHOW)
 				showckey = 1
-		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_CITIZENSHIP))
+		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_HOMECULTURE))
 		if(!actor_culture || !(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10))
 			actor_culture = GET_DECL(/decl/cultural_info/citizenship/scg)
 		if(!showckey)

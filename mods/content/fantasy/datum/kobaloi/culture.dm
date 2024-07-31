@@ -11,7 +11,7 @@
 	to the surface, those who were reared in the caves are often considered timid or overly risk-adverse by their new peers."
 	name_language = /decl/language/kobaloi
 
-/decl/cultural_info/citizenship/fantasy/kobaloi
+/decl/cultural_info/culture/fantasy/kobaloi
 	name          = "Deep Dweller"
 	description   = "Living in the silent darkness beneath the world encourages introspection, self-awareness and caution. Those \
 	who are raised in such places often develop a keen awareness of the delicate nature of the cavern ecosystems, the necessity \

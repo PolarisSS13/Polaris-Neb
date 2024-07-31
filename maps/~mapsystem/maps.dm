@@ -160,7 +160,6 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		TAG_FACTION =   /decl/cultural_info/faction/other,
 		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/stateless,
 		TAG_RELIGION =  /decl/cultural_info/religion/other,
-		TAG_LOREPLACE = /decl/cultural_info/loreplace/sif
 	)
 
 	var/access_modify_region = list(

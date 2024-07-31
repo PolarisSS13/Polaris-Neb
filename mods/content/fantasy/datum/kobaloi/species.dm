@@ -32,9 +32,9 @@
 			/decl/cultural_info/faction/fantasy/primitivist,
 			/decl/cultural_info/faction/other
 		),
-		TAG_CITIZENSHIP =   list(
-			/decl/cultural_info/citizenship/fantasy/kobaloi,
-			/decl/cultural_info/citizenship/other
+		TAG_CULTURE =   list(
+			/decl/cultural_info/culture/fantasy/kobaloi,
+			/decl/cultural_info/culture/other
 		),
 		TAG_RELIGION =  list(
 			/decl/cultural_info/religion/other

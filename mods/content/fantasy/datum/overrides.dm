@@ -11,10 +11,10 @@
 			/decl/cultural_info/faction/fantasy,
 			/decl/cultural_info/faction/other
 		),
-		TAG_CITIZENSHIP =   list(
-			/decl/cultural_info/citizenship/fantasy,
-			/decl/cultural_info/citizenship/fantasy/steppe,
-			/decl/cultural_info/citizenship/other
+		TAG_CULTURE =   list(
+			/decl/cultural_info/culture/fantasy,
+			/decl/cultural_info/culture/fantasy/steppe,
+			/decl/cultural_info/culture/other
 		),
 		TAG_RELIGION =  list(
 			/decl/cultural_info/religion/other
@@ -23,7 +23,7 @@
 	default_cultural_info = list(
 		TAG_HOMECULTURE = /decl/cultural_info/homeculture/fantasy,
 		TAG_FACTION   = /decl/cultural_info/faction/fantasy,
-		TAG_CITIZENSHIP   = /decl/cultural_info/citizenship/fantasy,
+		TAG_CULTURE   = /decl/cultural_info/culture/fantasy,
 		TAG_RELIGION  = /decl/cultural_info/religion/other
 	)
 

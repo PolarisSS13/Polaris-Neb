@@ -27,10 +27,10 @@
 			/decl/cultural_info/faction/fantasy/primitivist,
 			/decl/cultural_info/faction/other
 		),
-		TAG_CITIZENSHIP =   list(
-			/decl/cultural_info/citizenship/fantasy,
-			/decl/cultural_info/citizenship/fantasy/steppe,
-			/decl/cultural_info/citizenship/other
+		TAG_CULTURE =   list(
+			/decl/cultural_info/culture/fantasy,
+			/decl/cultural_info/culture/fantasy/steppe,
+			/decl/cultural_info/culture/other
 		),
 		TAG_RELIGION =  list(
 			/decl/cultural_info/religion/other

@@ -33,8 +33,7 @@
 	holder_type = /obj/item/holder
 
 	force_cultural_info = list(
-		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/hidden/monkey,
-		TAG_HOMECULTURE = /decl/cultural_info/homeculture/other,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/hidden/monkey,
 		TAG_FACTION =   /decl/cultural_info/faction/other
 	)
 

@@ -1,4 +1,5 @@
-#define TAG_CITIZENSHIP   "citizenship" //Upstream TAG_CULTURE
+#define TAG_CULTURE		"culture_old"
+#define TAG_CITIZENSHIP   "citizenship"
 #define TAG_HOMECULTURE "culture" //Upstream TAG_HOMEWORLD
 #define TAG_FACTION   "faction"
 #define TAG_RELIGION  "religion"
