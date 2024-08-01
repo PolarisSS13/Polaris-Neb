@@ -23,7 +23,7 @@
 	the royals' or 'Light of the Crown'. Their society is regimented into five castes which the Qerr'Katish, or High-caste, rules over. Skrell are \
 	strict herbivores who are unable to eat large quantities of animal protein without feeling sick or even suffering from food poisoning. <br/><br/> \
 	While skrell place high value on cooperation, diplomacy and scientific pursuit, they tend to be very leery of outside \
-	interference in their customs and values, and highly secretive regarding internal matters of state."
+	interference in their customs and values, and are highly secretive regarding internal matters of state."
 
 	butchery_data = /decl/butchery_data/humanoid/skrell
 

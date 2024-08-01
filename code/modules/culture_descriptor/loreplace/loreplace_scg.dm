@@ -1,6 +1,6 @@
 /decl/cultural_info/loreplace/sif
 	name = "Sif, Vir"
-	description = "Sif is a cold yet habitable garden world in the Vir system, originally colonized by a coalition of Scandinavian \
+	description = "Sif is a cold, yet habitable garden world in the Vir system, originally colonized by a coalition of Scandinavian \
 	governments from Earth. Though fiercely independent for a few centuries, today, Sif is united with Kara under the Vir \
 	Governmental Authority as a full SolGov member state, and acts as head of the Golden Crescent Alliance Bloc."
 	ruling_body = "Vir Governmental Authority"

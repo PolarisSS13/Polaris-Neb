@@ -12,11 +12,11 @@
 
 /decl/cultural_info/homeculture/sif
 	name = "Golden Crescent - Sivian Culture"
-	description = "Sivians were begrudgingly absorbed into SolGov after a period of staunch independence around two centuries ago, \
+	description = "Sivians were begrudgingly absorbed into SolGov after a period of staunch independence around two centuries ago. \
 	Sif's factionalized colonies subsequently unified to wage bitter - though low-intensity - undeclared warfare against corporate \
-	interests from Kara that they viewed as encroaching upon the system through much of the 24th century, though to limited success. \
-	However, longstanding Sivians still tend to hold pro-autonomy sentiments, and harbour resentment against trans-stellar corporations \
-	 - at least so far as it benefits them."
+	interests from Kara that they viewed as encroaching upon the system through much of the 24th century, though with limited success. \
+	However, long-time resident Sivian families still tend to hold pro-autonomy sentiments, and harbour resentment against trans-stellar \
+	 corporations  - at least so far as it benefits them."
 	language = /decl/language/human/common
 	secondary_langs = list(
 		/decl/language/human/common,
@@ -26,7 +26,7 @@
 
 /decl/cultural_info/homeculture/kara
 	name = "Golden Crescent - Karan Culture"
-	description = "Karans are the inhabitants of the formerly smuggler and pirate dominated ring of Kara, now run almost exclusively by \
+	description = "Karans are the inhabitants of the formerly smuggler- and pirate- dominated ring of Kara, now run almost exclusively by \
 	corporate interests, which has given the population a distinctly cosmopolitan bent. Today Kara is composed of the descendants of \
 	several distinct migration waves, including a large positronic population, a number of different aliens, and humans from all corners \
 	of Solar space. Karans are generally considered modern, forward-thinking, and technophilic, in sharp contrast with their Sivian neighbors."
