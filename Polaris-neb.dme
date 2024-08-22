@@ -2167,7 +2167,6 @@
 #include "code\modules\culture_descriptor\faction\_faction.dm"
 #include "code\modules\culture_descriptor\faction\factions_human.dm"
 #include "code\modules\culture_descriptor\location\_location.dm"
-#include "code\modules\culture_descriptor\location\_locations_events.dm"
 #include "code\modules\culture_descriptor\location\locations_hidden.dm"
 #include "code\modules\culture_descriptor\location\locations_other.dm"
 #include "code\modules\culture_descriptor\loreplace\_loreplace.dm"
