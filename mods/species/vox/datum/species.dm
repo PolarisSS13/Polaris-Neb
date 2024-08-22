@@ -98,15 +98,15 @@
 	)
 
 	available_cultural_info = list(
-		TAG_CULTURE =   list(
-			/decl/cultural_info/culture/vox,
-			/decl/cultural_info/culture/vox/salvager,
-			/decl/cultural_info/culture/vox/raider
+		TAG_CITIZENSHIP =   list(
+			/decl/cultural_info/citizenship/vox,
+			/decl/cultural_info/citizenship/vox/salvager,
+			/decl/cultural_info/citizenship/vox/raider
 		),
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/vox,
-			/decl/cultural_info/location/vox/shroud,
-			/decl/cultural_info/location/vox/ship
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/vox,
+			/decl/cultural_info/homeculture/vox/shroud,
+			/decl/cultural_info/homeculture/vox/ship
 		),
 		TAG_FACTION = list(
 			/decl/cultural_info/faction/vox,

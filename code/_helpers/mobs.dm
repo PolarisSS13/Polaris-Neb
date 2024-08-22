@@ -11,7 +11,7 @@
 	if(species)
 		var/decl/species/current_species = get_species_by_key(species)
 		if(current_species)
-			var/decl/cultural_info/current_culture = GET_DECL(current_species.default_cultural_info[TAG_CULTURE])
+			var/decl/cultural_info/current_culture = GET_DECL(current_species.default_cultural_info[TAG_HOMECULTURE])
 			if(current_culture)
 				return current_culture.get_random_name(null, gender)
 	return capitalize(pick(gender == FEMALE ? global.using_map.first_names_female : global.using_map.first_names_male)) + " " + capitalize(pick(global.using_map.last_names))

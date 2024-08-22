@@ -24,14 +24,14 @@
 		/decl/natural_attack/claws/strong/drake
 	)
 	available_cultural_info = list(
-		TAG_CULTURE   = list(/decl/cultural_info/culture/grafadreka),
-		TAG_HOMEWORLD = list(/decl/cultural_info/location/grafadreka),
+		TAG_CITIZENSHIP   = list(/decl/cultural_info/citizenship/grafadreka),
+		TAG_HOMECULTURE = list(/decl/cultural_info/homeculture/grafadreka),
 		TAG_FACTION   = list(/decl/cultural_info/faction/grafadreka),
 		TAG_RELIGION  = list(/decl/cultural_info/religion/grafadreka)
 	)
 	force_cultural_info = list(
-		TAG_CULTURE   = /decl/cultural_info/culture/grafadreka,
-		TAG_HOMEWORLD = /decl/cultural_info/location/grafadreka,
+		TAG_CITIZENSHIP   = /decl/cultural_info/citizenship/grafadreka,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/grafadreka,
 		TAG_FACTION   = /decl/cultural_info/faction/grafadreka,
 		TAG_RELIGION  = /decl/cultural_info/religion/grafadreka
 	)

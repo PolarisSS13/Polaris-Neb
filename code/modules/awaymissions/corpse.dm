@@ -94,7 +94,7 @@
 		else
 			M.randomize_eye_color()
 
-	var/decl/cultural_info/culture = M.get_cultural_value(TAG_CULTURE)
+	var/decl/cultural_info/culture = M.get_cultural_value(TAG_HOMECULTURE)
 	if(culture && CORPSE_SPAWNER_RANDOM_NAME & spawn_flags)
 		M.SetName(M, culture.get_random_name(M.gender))
 	else

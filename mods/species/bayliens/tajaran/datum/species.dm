@@ -16,7 +16,11 @@
 	name_plural = "Tajaran"
 	base_external_prosthetics_model = null
 
-	description = "A small mammalian carnivore. If you are reading this, you are probably a Tajaran."
+	description = "The Tajaran are a mammalian species roughly resembling felines, hailing from Meralar in the Rarkajar system. \
+	While they were becoming multiplanetary in their home system, the humans established first contact and engaged them in peaceful trade, \
+	and have accelerated the fledgling spacefarers into the interstellar age. Their history is full of conflict and highly fractious governments, \
+	a tradition alive and well in the modern era. They prefer colder, tundra-like climates, much like their home world, and speak a \
+	variety of languages, most notably Siik and Akhani."
 	hidden_from_codex = FALSE
 	available_bodytypes = list(/decl/bodytype/feline)
 
@@ -53,9 +57,9 @@
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/tajaran,
-			/decl/cultural_info/culture/other
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/tajaran,
+			/decl/cultural_info/citizenship/stateless
 		)
 	)
 

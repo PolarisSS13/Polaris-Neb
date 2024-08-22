@@ -38,12 +38,12 @@
 	)
 
 	available_cultural_info = list(
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/fantasy,
-			/decl/cultural_info/location/fantasy/mountains,
-			/decl/cultural_info/location/fantasy/steppe,
-			/decl/cultural_info/location/fantasy/woods,
-			/decl/cultural_info/location/other
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/fantasy,
+			/decl/cultural_info/homeculture/fantasy/mountains,
+			/decl/cultural_info/homeculture/fantasy/steppe,
+			/decl/cultural_info/homeculture/fantasy/woods,
+			/decl/cultural_info/homeculture/other
 		),
 		TAG_FACTION =   list(
 			/decl/cultural_info/faction/fantasy,

@@ -362,7 +362,7 @@ var/global/list/time_prefs_fixed = list()
 		character.change_species(species, new_bodytype)
 
 	if(be_random_name)
-		var/decl/cultural_info/culture = GET_DECL(cultural_info[TAG_CULTURE])
+		var/decl/cultural_info/culture = GET_DECL(cultural_info[TAG_HOMECULTURE])
 		if(culture)
 			real_name = culture.get_random_name(gender)
 

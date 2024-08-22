@@ -1,6 +1,6 @@
 var/global/list/symbiote_starting_points = list()
 
-/decl/cultural_info/culture/symbiotic
+/decl/cultural_info/homeculture/symbiotic
 	name = "Symbiote Host"
 	description = "Your culture has always welcomed a form of brain-slug called cortical borers into their bodies, \
 	and your upbringing taught that this was a normal and beneficial state of affairs. Taking this background will \
@@ -110,7 +110,7 @@ var/global/list/symbiote_starting_points = list()
 		var/obj/item/organ/external/head = GET_EXTERNAL_ORGAN(H, BP_HEAD)
 		if(BP_IS_PROSTHETIC(head) || BP_IS_CRYSTAL(head) || head.has_growths())
 			continue
-		var/decl/cultural_info/culture/symbiotic/culture = H.get_cultural_value(TAG_CULTURE)
+		var/decl/cultural_info/homeculture/symbiotic/culture = H.get_cultural_value(TAG_HOMECULTURE)
 		if(!istype(culture) || culture.matches_to_role != type)
 			continue
 		. += H

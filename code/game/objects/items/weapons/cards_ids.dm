@@ -245,10 +245,10 @@ var/global/const/NO_EMAG_ACT = -50
 	id_card.formal_name_suffix = initial(id_card.formal_name_suffix)
 	if(client && client.prefs)
 		for(var/culturetag in client.prefs.cultural_info)
-			var/decl/cultural_info/culture = GET_DECL(client.prefs.cultural_info[culturetag])
-			if(culture)
-				id_card.formal_name_prefix = "[culture.get_formal_name_prefix()][id_card.formal_name_prefix]"
-				id_card.formal_name_suffix = "[id_card.formal_name_suffix][culture.get_formal_name_suffix()]"
+			var/decl/cultural_info/homeculture = GET_DECL(client.prefs.cultural_info[culturetag])
+			if(homeculture)
+				id_card.formal_name_prefix = "[homeculture.get_formal_name_prefix()][id_card.formal_name_prefix]"
+				id_card.formal_name_suffix = "[id_card.formal_name_suffix][homeculture.get_formal_name_suffix()]"
 
 	id_card.registered_name = real_name
 

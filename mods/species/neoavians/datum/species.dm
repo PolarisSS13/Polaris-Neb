@@ -17,10 +17,11 @@
 
 /decl/species/neoavian
 	name = SPECIES_AVIAN
-	name_plural = "Neo-Avians"
-	description = "Avian species, largely crows, magpies and other corvids, were among the first sophonts uplifted to aid in colonizing Mars. \
-	These days they are more commonly found pursuing their own careers and goals on the fringes of human space or around their adopted homeworld \
-	of Hyperion. Neo-avian naming conventions tend to be a chosen name followed by the species of the person, followed by the location they were hatched."
+	name_plural = "Teshari"
+	description = "A race of feathered raptors who developed alongside the Skrell, inhabiting \
+	the polar tundral regions outside of Skrell territory. Extremely fragile, they developed \
+	hunting skills that emphasized taking out their prey without themselves getting hit. They \
+	are only recently becoming known on human stations after reaching space with Skrell assistance."
 	base_external_prosthetics_model = null
 
 	snow_slowdown_mod = -1
@@ -32,8 +33,6 @@
 	preview_outfit = /decl/hierarchy/outfit/job/generic/assistant/avian
 
 	available_bodytypes = list(
-		/decl/bodytype/avian,
-		/decl/bodytype/avian/additive,
 		/decl/bodytype/avian/raptor,
 		/decl/bodytype/avian/additive/raptor
 	)
@@ -57,10 +56,9 @@
 	)
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/neoavian,
-			/decl/cultural_info/culture/neoavian/saurian,
-			/decl/cultural_info/culture/other
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/teshari,
+			/decl/cultural_info/citizenship/stateless
 		)
 	)
 
@@ -73,6 +71,6 @@
 	return H.get_skin_colour()
 
 /decl/hierarchy/outfit/job/generic/assistant/avian
-	name = "Job - Avian Assistant"
+	name = "Job - Teshari Assistant"
 	uniform = /obj/item/clothing/dress/avian_smock/worker
 	shoes = /obj/item/clothing/shoes/avian/footwraps

@@ -134,7 +134,7 @@
 	var/mob/living/human/H = user
 	new /obj/item/implanter/translator(get_turf(src))
 	H.change_species(SPECIES_ALIEN)
-	var/decl/cultural_info/culture = H.get_cultural_value(TAG_CULTURE)
+	var/decl/cultural_info/culture = H.get_cultural_value(TAG_HOMECULTURE)
 	H.fully_replace_character_name(culture.get_random_name(H, H.gender))
 	H.rename_self("Humanoid Alien", 1)
 	return TRUE

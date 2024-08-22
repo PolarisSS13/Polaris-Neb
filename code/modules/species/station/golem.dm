@@ -33,7 +33,7 @@
 
 	force_cultural_info = list(
 		TAG_CULTURE =   /decl/cultural_info/culture/hidden/cultist,
-		TAG_HOMEWORLD = /decl/cultural_info/location/stateless,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/other,
 		TAG_FACTION =   /decl/cultural_info/faction/other
 	)
 

@@ -57,10 +57,10 @@
 				pref.cultural_info[token] = _cultures[1]
 
 	// We handle name sanitizing here because otherwise we would not be able to retrieve the culture data.
-	// This is a bit noodly. If pref.cultural_info[TAG_CULTURE] is null, then we haven't finished loading/sanitizing, which means we might purge
+	// This is a bit noodly. If pref.cultural_info[TAG_HOMECULTURE] is null, then we haven't finished loading/sanitizing, which means we might purge
 	// numbers or w/e from someone's name by comparing them to the map default. So we just don't bother sanitizing at this point otherwise.
-	if(pref.cultural_info[TAG_CULTURE])
-		var/decl/cultural_info/check = GET_DECL(pref.cultural_info[TAG_CULTURE])
+	if(pref.cultural_info[TAG_HOMECULTURE])
+		var/decl/cultural_info/check = GET_DECL(pref.cultural_info[TAG_HOMECULTURE])
 		if(check)
 			pref.real_name = check.sanitize_cultural_name(pref.real_name, pref.species)
 			if(!pref.real_name)

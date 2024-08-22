@@ -71,7 +71,7 @@ var/global/list/gyne_architecture = list(
 	"imperial",      "independant",   "managed",     "multilateral", "neutral",       "nonaligned",    "parastatal"
 )
 
-/decl/cultural_info/culture/ascent
+/decl/cultural_info/citizenship/ascent
 	name = "Ascent Milieu"
 	language = /decl/language/mantid/nonvocal
 	default_language = /decl/language/mantid
@@ -85,7 +85,7 @@ var/global/list/gyne_architecture = list(
 	of workers, soldiers, technicians and 'lesser' citizens supporting a throng of imperious and all-powerful \
 	queens."
 
-/decl/cultural_info/culture/ascent/get_random_name(var/mob/M, var/gender)
+/decl/cultural_info/citizenship/ascent/get_random_name(var/mob/M, var/gender)
 	var/mob/living/human/H = M
 	var/lineage = create_gyne_name()
 	if(istype(H) && H.get_gyne_lineage())
@@ -95,7 +95,7 @@ var/global/list/gyne_architecture = list(
 	else
 		return "[random_id(/decl/species/mantid, 1, 99)] [lineage]"
 
-/decl/cultural_info/location/kharmaani
+/decl/cultural_info/homeculture/kharmaani
 	name = "Ascent Core"
 	language = /decl/language/mantid/nonvocal
 	description = "The Kharmaani are not terribly imaginative when it comes to naming their worlds. Core, \

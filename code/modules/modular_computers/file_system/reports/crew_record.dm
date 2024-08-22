@@ -110,7 +110,7 @@ var/global/arrest_security_status =  "Arrest"
 	set_employment_record(employment_record)
 
 	// Misc cultural info.
-	set_residence(crewmember ? html_decode(crewmember.get_cultural_value(TAG_HOMEWORLD)) : "Unset")
+	set_residence(crewmember ? html_decode(crewmember.get_cultural_value(TAG_HOMECULTURE)) : "Unset")
 	set_faction(crewmember ?   html_decode(crewmember.get_cultural_value(TAG_FACTION)) :   "Unset")
 	set_religion(crewmember ?  html_decode(crewmember.get_cultural_value(TAG_RELIGION)) :  "Unset")
 

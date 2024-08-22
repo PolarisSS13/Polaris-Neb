@@ -1,3 +1,5 @@
+//Moved to _loreplace_events for Polaris, retained for compatibility
+
 /decl/location_event/proc/announce(var/decl/cultural_info/location)
 	return
 

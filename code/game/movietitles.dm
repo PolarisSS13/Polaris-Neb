@@ -75,9 +75,9 @@ var/global/list/end_titles
 		if(H.ckey && H.client)
 			if(H.client.get_preference_value(/datum/client_preference/show_ckey_credits) == PREF_SHOW)
 				showckey = 1
-		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_CULTURE))
+		var/decl/cultural_info/actor_culture = GET_DECL(H.get_cultural_value(TAG_HOMECULTURE))
 		if(!actor_culture || !(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10))
-			actor_culture = GET_DECL(/decl/cultural_info/culture/human)
+			actor_culture = GET_DECL(/decl/cultural_info/citizenship/scg)
 		if(!showckey)
 			if(prob(90))
 				chunk += "[actor_culture.get_random_name(H, H.gender)]\t \t \t \t[uppertext(used_name)][job]"
@@ -118,7 +118,7 @@ var/global/list/end_titles
 		if(!C.holder)
 			continue
 		if(C.holder.rights & (R_DEBUG|R_ADMIN))
-			var/list/all_cultures = decls_repository.get_decls_of_subtype(/decl/cultural_info/culture)
+			var/list/all_cultures = decls_repository.get_decls_of_subtype(/decl/cultural_info/homeculture)
 			var/decl/cultural_info/cult = all_cultures[pick(all_cultures)]
 			staff += "[uppertext(pick(staffjobs))] - [cult.get_random_name(pick(MALE, FEMALE))] a.k.a. '[C.key]'"
 		else if(C.holder.rights & R_MOD)
@@ -129,7 +129,7 @@ var/global/list/end_titles
 		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center><br>"
 
 	var/disclaimer = "<br>Sponsored by [global.using_map.company_name].<br>All rights reserved.<br>\
-					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
+					 This motion picture is protected under the copyright laws of the Solar Confederate Government<br> and other nations throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
 					 "Lordania", "Kingston", "Cinu", "Yuklid V", "Lorriman", "Tersten", "Gaia")].<br>"
 	disclaimer += pick("Use for parody prohibited. PROHIBITED.",

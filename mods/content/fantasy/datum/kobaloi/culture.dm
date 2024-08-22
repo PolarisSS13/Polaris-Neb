@@ -1,4 +1,4 @@
-/decl/cultural_info/location/fantasy/kobaloi
+/decl/cultural_info/homeculture/fantasy/kobaloi
 	name          = "Kobaloi Caverns"
 	description   = "Kobaloi often find homes in the quiet, overlooked places of the world. Many dwell within caves and \
 	tunnels, cultivating moss and fungus and fishing in the black rivers beneath the earth. Such families and clans are often \

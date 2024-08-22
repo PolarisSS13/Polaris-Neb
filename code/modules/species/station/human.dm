@@ -3,7 +3,11 @@
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
 	unarmed_attacks = list(/decl/natural_attack/stomp, /decl/natural_attack/kick, /decl/natural_attack/punch, /decl/natural_attack/bite)
-	description = "A medium-sized creature prone to great ambition. If you are reading this, you are probably a human."
+	description = "Humanity originated in the Sol system, and over the last five centuries have spread \
+	colonies across a wide swathe of space. They hold a wide range of beliefs and creeds.<br/><br/> \
+	While the Sol-based Solar Confederate Government governs over most of their far-ranging populations, \
+	powerful corporate interests, fledgling splinter states, rampant cyber and bio-augmentation, and \
+	secretive factions make life on most human worlds a tumultuous affair."
 	hidden_from_codex = FALSE
 	spawn_flags = SPECIES_CAN_JOIN
 	inherent_verbs = list(/mob/living/human/proc/tie_hair)

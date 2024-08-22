@@ -19,7 +19,7 @@
 	if(!istype(H))
 		return
 
-	var/decl/cultural_info/culture = H.get_cultural_value(TAG_HOMEWORLD)
+	var/decl/cultural_info/culture = H.get_cultural_value(TAG_HOMECULTURE)
 	var/pob = culture ? culture.name : "Unset"
 
 	var/fingerprint = H.get_full_print(ignore_blockers = TRUE) || "N/A"

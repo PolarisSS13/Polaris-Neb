@@ -127,18 +127,39 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	var/default_species = SPECIES_HUMAN
 
-	var/list/available_cultural_info = list(
-		TAG_HOMEWORLD = list(/decl/cultural_info/location/other),
-		TAG_FACTION =   list(/decl/cultural_info/faction/other),
-		TAG_CULTURE =   list(/decl/cultural_info/culture/other),
-		TAG_RELIGION =  list(/decl/cultural_info/religion/other)
+	var/list/available_cultural_info = list( //Maybe put these back on the per-map level once we have a map working, but they're setting-wide regardless.
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/sif,
+			/decl/cultural_info/homeculture/kara,
+			/decl/cultural_info/homeculture/earth,
+			/decl/cultural_info/homeculture/other
+		),
+		TAG_FACTION =   list(
+			/decl/cultural_info/faction/nanotrasen,
+			/decl/cultural_info/faction/other
+		),
+		TAG_CITIZENSHIP =   list(
+			/decl/cultural_info/citizenship/scg,
+			/decl/cultural_info/citizenship/fivearrows,
+			/decl/cultural_info/citizenship/almach,
+			/decl/cultural_info/citizenship/earthnation,
+			/decl/cultural_info/citizenship/stateless
+		),
+		TAG_RELIGION =  list(
+			/decl/cultural_info/religion/other
+		),
+		TAG_LOREPLACE = list(
+			/decl/cultural_info/loreplace/sif,
+			/decl/cultural_info/loreplace/kara,
+			/decl/cultural_info/loreplace/earth
+		)
 	)
 
 	var/list/default_cultural_info = list(
-		TAG_HOMEWORLD = /decl/cultural_info/location/other,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/other,
 		TAG_FACTION =   /decl/cultural_info/faction/other,
-		TAG_CULTURE =   /decl/cultural_info/culture/other,
-		TAG_RELIGION =  /decl/cultural_info/religion/other
+		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/stateless,
+		TAG_RELIGION =  /decl/cultural_info/religion/other,
 	)
 
 	var/access_modify_region = list(

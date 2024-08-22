@@ -76,8 +76,8 @@
 	)
 
 	force_cultural_info = list(
-		TAG_CULTURE =   /decl/cultural_info/culture/ascent,
-		TAG_HOMEWORLD = /decl/cultural_info/location/kharmaani,
+		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/ascent,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/kharmaani,
 		TAG_FACTION =   /decl/cultural_info/faction/ascent_alate,
 		TAG_RELIGION =  /decl/cultural_info/religion/kharmaani
 	)
@@ -112,8 +112,8 @@
 	swap_flags =              ALLMOBS
 
 	force_cultural_info = list(
-		TAG_CULTURE =   /decl/cultural_info/culture/ascent,
-		TAG_HOMEWORLD = /decl/cultural_info/location/kharmaani,
+		TAG_CITIZENSHIP =   /decl/cultural_info/citizenship/ascent,
+		TAG_HOMECULTURE = /decl/cultural_info/homeculture/kharmaani,
 		TAG_FACTION =   /decl/cultural_info/faction/ascent_gyne,
 		TAG_RELIGION =  /decl/cultural_info/religion/kharmaani
 	)

@@ -13,14 +13,10 @@
 	the people of the steppe are hardy, independant, and primarily occupied with survival in the resource-poor and harsh conditions \
 	of their home. Most groups are nomadic, following their flocks of aurochs or other livestock between water sources and grazing land."
 
-// Overrides for fantasy maps.
-/decl/cultural_info/location
-	distance_heading = null // hides the 'distance from Sol' section
-
 /decl/cultural_info/culture/other
 	description = "You are from one of the many small, relatively unknown cultures scattered across the land."
 
-/decl/cultural_info/location/other
+/decl/cultural_info/homeculture/other
 	name = "Other Place"
 	description = "You are from some tiny village, distant city or remote settlement not recorded in local atlases."
 
@@ -37,7 +33,7 @@
 	name = "Meredrake Culture"
 	description = "You are a meredrake. Widely assumed to be cousins to true dragons, drakes are intelligent, arguably sapient pack predators without anything in the way of technology or culture, but they can be trained to use tools, and have been known to work well alongside humans or hnoll as companions and working animals."
 
-/decl/cultural_info/location/grafadreka
+/decl/cultural_info/homeculture/grafadreka
 	name = "Wilderness"
 	description = "You are from the unsettled tundras and steppe of the Grass Ocean, or the forested downlands, where you probably eked out a life hunting deer or chasing rabbits."
 

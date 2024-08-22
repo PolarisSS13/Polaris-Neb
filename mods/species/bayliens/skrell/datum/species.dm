@@ -19,11 +19,11 @@
 		/decl/natural_attack/bite
 	)
 
-	description = "The Skrell are a highly advanced race of amphibians hailing from the system known as Qerr'Vallis. Their society is regimented into \
-	five different castes which the Qerr'Katish, or Royal Caste, rules over. Skrell are strict herbivores who are unable to eat large quantities of \
-	animal protein without feeling sick or even suffering from food poisoning. <br/><br/> \
-	Skrell value cooperation and have very communal lifestyles, and despite their diplomatic fluency and innate curiosity are very leery of outside \
-	interference in their customs and values."
+	description = "The skrell are a highly advanced species of amphibians hailing from the system known as Qerr'Vallis, which translates to 'Star of \
+	the royals' or 'Light of the Crown'. Their society is regimented into five castes which the Qerr'Katish, or High-caste, rules over. Skrell are \
+	strict herbivores who are unable to eat large quantities of animal protein without feeling sick or even suffering from food poisoning. <br/><br/> \
+	While skrell place high value on cooperation, diplomacy and scientific pursuit, they tend to be very leery of outside \
+	interference in their customs and values, and are highly secretive regarding internal matters of state."
 
 	butchery_data = /decl/butchery_data/humanoid/skrell
 
@@ -63,18 +63,18 @@
 	)
 
 	available_cultural_info = list(
-		TAG_CULTURE = list(
-			/decl/cultural_info/culture/skrell,
-			/decl/cultural_info/culture/skrell/caste_malish,
-			/decl/cultural_info/culture/skrell/caste_kanin,
-			/decl/cultural_info/culture/skrell/caste_talum,
-			/decl/cultural_info/culture/skrell/caste_raskinta,
-			/decl/cultural_info/culture/skrell/caste_ue
+		TAG_CITIZENSHIP = list(
+			/decl/cultural_info/citizenship/skrell,
+			/decl/cultural_info/citizenship/skrell/caste_malish,
+			/decl/cultural_info/citizenship/skrell/caste_kanin,
+			/decl/cultural_info/citizenship/skrell/caste_talum,
+			/decl/cultural_info/citizenship/skrell/caste_raskinta,
+			/decl/cultural_info/citizenship/skrell/caste_ue
 		),
-		TAG_HOMEWORLD = list(
-			/decl/cultural_info/location/free,
-			/decl/cultural_info/location/skrellspace,
-			/decl/cultural_info/location/other
+		TAG_HOMECULTURE = list(
+			/decl/cultural_info/homeculture/free,
+			/decl/cultural_info/homeculture/skrellspace,
+			/decl/cultural_info/homeculture/other
 		),
 		TAG_FACTION = list(
 			/decl/cultural_info/faction/skrell,

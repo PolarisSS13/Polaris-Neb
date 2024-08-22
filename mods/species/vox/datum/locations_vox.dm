@@ -1,4 +1,4 @@
-/decl/cultural_info/location/vox
+/decl/cultural_info/homeculture/vox
 	name = "Vox Arkship"
 	description = "The moon-sized arkships are home to the vast, vast majority of vox, and represent the closest thing to \
 	a stable planetary culture the far-flung nomadic species has. Arkborn vox can expect to enjoy long lives, infrequent \
@@ -6,10 +6,9 @@
 	may look upon the arkborn as lazy and passive, but they tend to return to them for rest and recuperation after each \
 	mission without too many complaints."
 	ruling_body = "the Apex"
-	distance = "multiple systems"
 	hidden_from_codex = TRUE
 
-/decl/cultural_info/location/vox/shroud
+/decl/cultural_info/homeculture/vox/shroud
 	name = "Arkship Shroud"
 	description = "The shroud of an arkship is an unstable and dangerous place to live, and those vox stationed there are \
 	often salvagers, scavengers, engineers and technicians, struggling with the endless burden of keeping the decay of the ark \
@@ -17,7 +16,7 @@
 	independant, with few cares for clan politics, family squabbles, or contest challenges. They know their task is critical to \
 	the survival of the vox as a species, and next to that, tussling with your peers seems a bit immature."
 
-/decl/cultural_info/location/vox/ship
+/decl/cultural_info/homeculture/vox/ship
 	name = "Vox Ship"
 	description = "Shipborn vox are often purpose-grown for their assigned tasks, frequently under the direct supervision of \
 	an apex or their servants. They are often seen as 'disposable' in vox culture, as they rarely survive their incarnation \
