@@ -33173,12 +33173,12 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/exam_room)
 "brY" = (
-/obj/item/cane,
-/obj/item/cane{
+/obj/item/cane/aluminium,
+/obj/item/cane/aluminium{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/cane{
+/obj/item/cane/aluminium{
 	pixel_x = -6;
 	pixel_y = 4
 	},
