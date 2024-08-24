@@ -7,7 +7,7 @@
 	throw_speed = 7
 	throw_range = 15
 	material    = /decl/material/solid/metal/steel
-	item_flags  = ITEM_FLAG_STAMP
+	can_stamp   = TRUE
 	matter      = list(
 		/decl/material/solid/organic/plastic = MATTER_AMOUNT_REINFORCEMENT,
 	)
@@ -37,7 +37,7 @@
 /obj/item/stamp/chameleon/attack_self(mob/user)
 	var/list/stamps = list()
 	// Generate them into a list
-	for(var/stamp_type in subtypesof(/obj/item/stamp))
+	for(var/stamp_type in typesof(/obj/item/stamp)-type) // Don't include our own type.
 		var/obj/item/stamp/S = stamp_type
 		if(!TYPE_IS_ABSTRACT(S))
 			stamps[capitalize(initial(S.name))] = S
