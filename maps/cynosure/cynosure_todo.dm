@@ -14,11 +14,6 @@
 
 /obj/structure/filing_cabinet/records/security
 
-/obj/structure/fence
-/obj/structure/fence/corner
-/obj/structure/fence/door
-/obj/structure/fence/door/locked
-
 /obj/structure/cliff
 /obj/structure/cliff/automatic
 /obj/structure/cliff/automatic/corner
