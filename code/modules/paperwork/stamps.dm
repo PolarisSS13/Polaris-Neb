@@ -7,7 +7,6 @@
 	throw_speed = 7
 	throw_range = 15
 	material    = /decl/material/solid/metal/steel
-	can_stamp   = TRUE
 	matter      = list(
 		/decl/material/solid/organic/plastic = MATTER_AMOUNT_REINFORCEMENT,
 	)
