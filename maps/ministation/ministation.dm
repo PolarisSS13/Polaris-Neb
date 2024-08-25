@@ -34,7 +34,6 @@ Twice...
 	#include "../../mods/species/serpentid/_serpentid.dme"
 	#include "../../mods/species/bayliens/_bayliens.dme"
 	#include "../../mods/content/mundane.dm"
-	#include "../../mods/content/bigpharma/_bigpharma.dme"
 	#include "../../mods/content/government/_government.dme"
 	#include "../../mods/content/modern_earth/_modern_earth.dme"
 	#include "../../mods/content/mouse_highlights/_mouse_highlight.dme"
