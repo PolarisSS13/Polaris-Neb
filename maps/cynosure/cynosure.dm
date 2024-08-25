@@ -73,9 +73,10 @@
 
 	//#include "items/encryptionkey_cyno.dm"
 	//#include "items/headset_cyno.dm"
+	//#include "items/clothing/cyno_accessory.dm"
+	#include "items/clothing/cyno_exploration.dm"
 	//#include "items/clothing/cyno_suit.dm"
 	//#include "items/clothing/cyno_under.dm"
-	//#include "items/clothing/cyno_accessory.dm"
 	//#include "job/outfits.dm"
 	//#include "structures/closets/misc.dm"
 	//#include "structures/closets/security.dm"
