@@ -27,7 +27,6 @@
 /obj/structure/table/bench/sifwooden
 /obj/structure/table/bench/sifwooden/padded
 
-/obj/item/clothing/head/cone
 /obj/item/wirecutters/clippers/trimmers
 
 /obj/vehicle/train/cargo/engine/quadbike
@@ -37,28 +36,20 @@
 /obj/vehicle/train/cargo/trolley/trailer
 /obj/vehicle/train/cargo/trolley/trailer/random
 
-
-/obj/structure/cable/heavyduty
-/obj/structure/flaps/mining
-
-/obj/machinery/atmospherics/tvalve/digital/mirrored
-
-/obj/machinery/door/airlock/glass/external
-
 /obj/machinery/camera/network/ground_floor
 /obj/machinery/camera/network/civilian
 /obj/machinery/camera/network/command
 /obj/machinery/camera/network/basement
 /obj/machinery/camera/network/research/toxins
-	// network = list("Research","Toxins Test Area")
+	preset_channels = list("Research","Toxins Test Area")
 /obj/machinery/camera/network/research/misc
-	// network = list("Research","Miscellaneous Research")
+	preset_channels = list("Research","Miscellaneous Research")
 /obj/machinery/camera/network/research_outpost
 
 /obj/machinery/porta_turret/industrial
 /obj/machinery/porta_turret/industrial/teleport_defense
 
-/obj/structure/marker_beacon
+/obj/structure/marker_beacon // should be changed to /obj/item/stack/flag with upright = true?
 	var/mapped_in_color
 
 /obj/machinery/atmospherics/portables_connector/fuel
@@ -74,8 +65,6 @@
 /obj/machinery/alarm/outside
 /obj/item/camera_assembly
 
-/obj/machinery/computer/security/telescreen
-
 /obj/item/radio/intercom/department
 /obj/item/radio/intercom/department/security
 /obj/item/radio/intercom/department/medbay
@@ -86,7 +75,10 @@
 /obj/effect/floor_decal/milspec/color/blue
 
 /obj/item/tank/oxygen/red
+
+/obj/item/soap/deluxe
 /obj/item/soap/nanotrasen
+/obj/item/soap/syndie
 
 /obj/machinery/mixer
 /obj/machinery/mixer/cereal
@@ -97,17 +89,16 @@
 /obj/item/book/codex/lore
 /obj/item/book/codex/lore/news
 
-/obj/turbolift_map_holder
-/obj/turbolift_map_holder/cynosure
-/obj/turbolift_map_holder/cynosure/west
-/obj/turbolift_map_holder/cynosure/center
-/obj/turbolift_map_holder/cynosure/cargo
-/obj/turbolift_map_holder/cynosure/engineering
-/obj/turbolift_map_holder/cynosure/medbay
-/obj/turbolift_map_holder/cynosure/sci
-/obj/turbolift_map_holder/cynosure/sec
+/obj/abstract/turbolift_spawner
+/obj/abstract/turbolift_spawner/cynosure
+/obj/abstract/turbolift_spawner/cynosure/west
+/obj/abstract/turbolift_spawner/cynosure/center
+/obj/abstract/turbolift_spawner/cynosure/cargo
+/obj/abstract/turbolift_spawner/cynosure/engineering
+/obj/abstract/turbolift_spawner/cynosure/medbay
+/obj/abstract/turbolift_spawner/cynosure/sci
+/obj/abstract/turbolift_spawner/cynosure/sec
 
-/mob/living/simple_mob/animal/passive/mouse/brown/Tom
 /obj/item/stack/tile/floor/steel_dirty
 
 /decl/flooring/tiling/steel_dirty
@@ -215,6 +206,7 @@
 
 /obj/item/cane/crutch
 
+/obj/item/knife/tacknife/survival
 
 /obj/structure/bed/sofa/brown/right
 /obj/structure/bed/sofa/brown/left
@@ -321,10 +313,71 @@
 /obj/item/tabloid
 
 /obj/random/multiple/ore_pile
-/obj/random/cigarettes
 /obj/random/multiple/corp_crate/no_weapons
 /obj/random/multiple/voidsuit/mining
 /obj/random/mug
+
+// mining machinery
+/obj/machinery/mineral/equipment_vendor
+
+// higher-tier medical gear
+/obj/item/roller/adv
+/obj/item/scanner/health/advanced
+/obj/item/scanner/health/improved
+
+// legcuffs
+/obj/item/handcuffs/legcuffs // you can handcuff people's shoes instead apparently? maybe delete?
+
+// folders
+/obj/item/folder/blue_captain
+/obj/item/folder/blue_hop
+/obj/item/folder/red_hos
+/obj/item/folder/white
+/obj/item/folder/white_cmo
+/obj/item/folder/white_rd
+/obj/item/folder/yellow_ce
+
+// double beds/bedsheets
+/obj/item/bedsheet/bluedouble
+/obj/item/bedsheet/browndouble
+/obj/item/bedsheet/captaindouble
+/obj/item/bedsheet/double
+/obj/item/bedsheet/iandouble
+/obj/item/bedsheet/mimedouble
+/obj/item/bedsheet/orangedouble
+/obj/item/bedsheet/purpledouble
+/obj/item/bedsheet/rddouble
+/obj/item/bedsheet/reddouble
+/obj/item/bedsheet/yellowdouble
+/obj/structure/bed/double
+/obj/structure/bed/double/padded
+
+// firearms and ammo
+/obj/item/ammo_magazine/clip
+/obj/item/ammo_magazine/clip/c762
+/obj/item/ammo_magazine/clip/c762/hunter
+/obj/item/ammo_magazine/m10mm
+/obj/item/ammo_magazine/m45
+/obj/item/ammo_magazine/m45/practice
+/obj/item/ammo_magazine/m45/rubber
+/obj/item/ammo_magazine/m45/flash
+/obj/item/ammo_magazine/m545
+/obj/item/ammo_magazine/m545saw
+/obj/item/ammo_magazine/m9mm
+/obj/item/ammo_magazine/m9mmp90
+/obj/item/ammo_magazine/m9mmt
+/obj/item/ammo_magazine/m9mmt/rubber
+/obj/item/ammo_magazine/m9mmt/practice
+/obj/item/gun/energy/phasegun/pistol
+/obj/item/gun/projectile/automatic/c20r
+/obj/item/gun/projectile/automatic/l6_saw
+/obj/item/gun/projectile/automatic/p90
+/obj/item/gun/projectile/automatic/pdw
+/obj/item/gun/projectile/automatic/sts35
+/obj/item/gun/projectile/shotgun/pump/combat
+/obj/item/gun/projectile/shotgun/pump/rifle
+/obj/item/gun/projectile/shotgun/pump/rifle/lever
+/obj/item/gunbox
 
 /* Migrations to document
 obj/machinery/atmospherics/omni/atmos_filter : obj/machinery/atmospherics/omni/filter
@@ -380,3 +433,45 @@ corgi statue for central hall
 /turf/floor/tiled/techfloor/grid/cryo
 	initial_gas = list(/decl/material/gas/nitrogen = MOLES_CELLSTANDARD)
 	temperature = 73
+
+// TODO: MOVE
+// CLOSETS:
+/decl/closet_appearance/secure_closet/expedition
+	color = COLOR_BLUE_GRAY
+	decals = list(
+		"lower_side_vent"
+	)
+	extra_decals = list(
+		"stripe_vertical_mid_full" = COLOR_PURPLE,
+		"exped" = COLOR_PURPLE
+	)
+
+//SC Exploration Secure Closets Port
+/obj/structure/closet/secure_closet/explorer
+	name = "explorer locker"
+	closet_appearance = /decl/closet_appearance/secure_closet/expedition
+	// req_access = list(access_explorer)
+
+/obj/structure/closet/secure_closet/explorer/WillContain()
+	. = list(
+		/obj/item/clothing/jumpsuit/explorer,
+		// /obj/item/clothing/suit/armor/pcarrier/explorer/light, // todo: port explorer plate carrier
+		/obj/item/clothing/suit/toggle/explorer,
+		/obj/item/clothing/mask/gas/explorer,
+		/obj/item/clothing/shoes/winterboots/explorer,
+		/obj/item/clothing/gloves/black,
+		// /obj/item/radio/headset/explorer,
+		/obj/item/flashlight,
+		/obj/item/gps/explorer,
+		/obj/item/box/flares,
+		/obj/item/geiger,
+		/obj/item/cell/device,
+		/obj/item/radio,
+		/obj/item/stack/flag = 3, // 30, since each is a full stack of 10
+		/obj/item/cataloguer)
+	if(prob(50))
+		. += /obj/item/backpack/rucksack
+	else
+		. += /obj/item/backpack/satchel/grey
+	if(prob(75))
+		. += /obj/item/knife/tacknife/survival
