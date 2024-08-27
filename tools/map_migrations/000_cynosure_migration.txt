@@ -1,8 +1,6 @@
 # POLARIS TURFS
 /turf/simulated/floor/outdoors/grass/sif/@SUBTYPES : /turf/floor/natural/sif_growth
 /turf/simulated/mineral/floor/@SUBTYPES : /turf/floor/natural/barren
-/turf/simulated/floor/outdoors/dirt/@SUBTYPES : /turf/floor/natural/dirt
-/turf/simulated/floor/outdoors/rocks/@SUBTYPES : /turf/floor/natural/rocks
 /turf/simulated/mineral : /turf/wall/natural
 /turf/simulated/sky/@SUBTYPES : /turf/open/sky/@SUBTYPES
 /turf/simulated/floor/water/pool : /turf/simulated/floor/pool
@@ -13,6 +11,18 @@
 /turf/simulated/floor/shuttle : /turf/simulated/floor/shuttle/blue{@OLD}
 /turf/simulated/floor/shuttle/airless : /turf/simulated/floor/shuttle/blue/airless{@OLD}
 /turf/unsimulated/wall/seperator : /turf/unsimulated/dark_filler
+# natural turfs don't need planetary subtypes, they use level data
+/turf/simulated/floor/outdoors/mud/@SUBTYPES : /turf/floor/natural/mud
+/turf/simulated/floor/outdoors/rocks/@SUBTYPES : /turf/floor/natural/rock
+/turf/simulated/floor/tiled/steel/sif/planetuse : /turf/simulated/floor/tiled
+/turf/simulated/floor/tiled/sif/planetuse : /turf/simulated/floor/tiled
+/turf/simulated/floor/outdoors/grass : /turf/floor/natural/grass
+/turf/simulated/floor/outdoors/dirt/sif/planetuse/presnowed : /turf/floor/natural/snow
+/turf/simulated/floor/outdoors/dirt/@SUBTYPES : /turf/floor/natural/dirt
+/turf/simulated/mineral/sif/@SUBTYPES : /turf/wall/natural
+/turf/simulated/mineral/ignore_mapgen/sif : /turf/wall/natural/ignore_mapgen
+#other turfs
+/turf/simulated/wall/r_concrete : /turf/wall/concrete/reinforced{@OLD}
 
 # Misc. cooking
 /obj/item/chems/food/condiment/small/peppershaker : /obj/item/chems/condiment/small/peppermill{@OLD}
@@ -55,23 +65,27 @@
 
 # different mech system
 /obj/effect/decal/mecha_wreckage/@SUBTYPES : @DELETE
-/obj/item/stock_parts/circuitboard/mecha_control/@SUBTYPES : @DELETE
+/obj/item/circuitboard/mecha_control/@SUBTYPES : @DELETE
 /obj/machinery/computer/mecha : @DELETE
 
 # we don't have shieldcaps anymore
 /obj/machinery/shield_capacitor : @DELETE
 
 # these need to be replaced with new circuits in tech storage
-/obj/item/stock_parts/circuitboard/crew : @DELETE
-/obj/item/stock_parts/circuitboard/card : @DELETE
-/obj/item/stock_parts/circuitboard/communications : @DELETE
-/obj/item/stock_parts/circuitboard/med_data : @DELETE
-/obj/item/stock_parts/circuitboard/secure_data : @DELETE
-/obj/item/stock_parts/circuitboard/security/@SUBTYPES : @DELETE
-/obj/item/stock_parts/circuitboard/skills : @DELETE
-/obj/item/stock_parts/circuitboard/stationalert_engineering : @DELETE
-/obj/item/stock_parts/circuitboard/scan_consolenew : @DELETE
-/obj/item/stock_parts/circuitboard/powermonitor : @DELETE
+/obj/item/circuitboard/crew : @DELETE
+/obj/item/circuitboard/card : @DELETE
+/obj/item/circuitboard/communications : @DELETE
+/obj/item/circuitboard/med_data : @DELETE
+/obj/item/circuitboard/secure_data : @DELETE
+/obj/item/circuitboard/security/@SUBTYPES : @DELETE
+/obj/item/circuitboard/skills/@SUBTYPES : @DELETE
+/obj/item/circuitboard/stationalert_engineering : @DELETE
+/obj/item/circuitboard/scan_consolenew : @DELETE
+/obj/item/circuitboard/powermonitor : @DELETE
+
+/obj/item/tool/crowbar/@SUBTYPES : /obj/item/crowbar/@SUBTYPES{@OLD}
+/obj/item/tool/screwdriver/@SUBTYPES : /obj/item/screwdriver/@SUBTYPES{@OLD}
+/obj/item/tool/wrench/@SUBTYPES : /obj/item/wrench/@SUBTYPES{@OLD}
 
 # firearm repaths
 /obj/item/gun/energy/stunrevolver : /obj/item/gun/projectile/revolver/stun
@@ -303,3 +317,16 @@
 /obj/item/toy/eight_ball/@SUBTYPES : /obj/item/toy/eightball/@SUBTYPES
 
 /obj/machinery/door/unpowered/shuttle : /obj/structure/door/shuttle
+
+#############
+# DELETIONS #
+#############
+/obj/effect/zone_divider : @DELETE
+
+############
+# VAREDITS #
+############
+/turf/simulated/floor/@SUBTYPES{nitrogen=@SET} : /turf/simulated/floor/@SUBTYPES{nitrogen=@SKIP}
+/turf/simulated/floor/@SUBTYPES{oxygen=@SET} : /turf/simulated/floor/@SUBTYPES{oxygen=@SKIP}
+/turf/simulated/floor/@SUBTYPES{outdoors=0} : /obj/abstract/exterior_marker/inside, /turf/simulated/floor/@SUBTYPES{outdoors=@SKIP}
+/turf/simulated/floor/@SUBTYPES{outdoors=1} : /obj/abstract/exterior_marker/outside, /turf/simulated/floor/@SUBTYPES{outdoors=@SKIP}
