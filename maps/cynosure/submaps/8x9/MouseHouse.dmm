@@ -4,7 +4,7 @@
 /area/template_noop)
 "b" = (
 /obj/item/remains/mouse,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "c" = (
 /turf/wall/concrete{
@@ -24,7 +24,7 @@
 /obj/structure/dogbed,
 /obj/item/remains/mouse,
 /obj/item/shreddedp,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "k" = (
 /obj/structure/window/basic{
@@ -40,7 +40,7 @@
 /area/template_noop)
 "l" = (
 /obj/random/plushielarge,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "m" = (
 /turf/template_noop,
@@ -52,7 +52,7 @@
 	},
 /obj/item/chems/glass/rag,
 /mob/living/simple_animal/passive/mouse,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "o" = (
 /obj/structure/window/basic{
@@ -70,7 +70,7 @@
 /area/template_noop)
 "t" = (
 /obj/item/trash/cookiesnack,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "u" = (
 /obj/structure/flora/pottedplant/overgrown,
@@ -81,7 +81,7 @@
 /obj/structure/disposaloutlet{
 	dir = 4
 	},
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "w" = (
 /obj/machinery/door/window/northleft,
@@ -100,7 +100,7 @@
 "B" = (
 /obj/structure/dogbed,
 /obj/random/plushie,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "F" = (
 /obj/item/food/wishsoup{
@@ -111,11 +111,11 @@
 	pixel_x = -12;
 	pixel_y = -4
 	},
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "G" = (
 /obj/item/trash/semki,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "H" = (
 /obj/structure/sign/poster{
@@ -127,7 +127,7 @@
 /area/template_noop)
 "J" = (
 /obj/item/ball,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "K" = (
 /obj/structure/bed/chair/office/dark{
@@ -137,7 +137,7 @@
 /area/template_noop)
 "L" = (
 /obj/item/trash/candy,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "M" = (
 /obj/structure/window/basic{
@@ -161,11 +161,11 @@
 	pixel_y = 32;
 	poster_decl = /decl/poster/vore_91
 	},
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "S" = (
 /obj/item/shreddedp,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "T" = (
 /obj/structure/window/basic{
@@ -182,7 +182,7 @@
 "V" = (
 /obj/structure/dogbed,
 /mob/living/simple_animal/passive/mouse,
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "W" = (
 /obj/structure/loot_pile/maint/trash,
@@ -196,7 +196,7 @@
 /turf/floor/wood,
 /area/template_noop)
 "X" = (
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/template_noop)
 "Z" = (
 /turf/floor/wood,

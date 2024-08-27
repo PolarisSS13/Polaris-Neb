@@ -8932,7 +8932,7 @@
 /obj/item/chems/condiment/small/saltshaker{
 	pixel_x = 2
 	},
-/obj/item/chems/condiment/small/peppershaker{
+/obj/item/chems/condiment/small/peppermill{
 	pixel_x = -4
 	},
 /turf/floor/tiled/eris/cafe,
@@ -12292,9 +12292,9 @@
 	pixel_x = 32;
 	dir = 8
 	},
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light{
 	dir = 4
@@ -13054,12 +13054,12 @@
 	dir = 1
 	},
 /obj/item/chems/syringe/bicaridine,
-/obj/item/firstaid/surgery/simple,
+/obj/item/firstaid/surgery,
 /obj/machinery/camera/network/ground_floor{
 	c_tag = "Ground Floor - East Hallway 1";
 	dir = 4
 	},
-/obj/item/food/xenomeat/spidermeat,
+/obj/item/food/spider,
 /turf/floor/tiled/white,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "giV" = (
@@ -13158,7 +13158,7 @@
 /obj/item/box/donkpockets,
 /obj/item/chems/glass/beaker,
 /obj/item/chems/condiment/enzyme,
-/obj/item/chems/condiment/soysauce{
+/obj/item/chems/condiment/small/soysauce{
 	pixel_x = 10;
 	pixel_y = 4
 	},
@@ -13749,18 +13749,18 @@
 /obj/machinery/newscaster{
 	pixel_y = 26
 	},
-/obj/item/stack/material/crystal/mapped/phoron/one{
+/obj/item/stack/material/crystal/mapped/phoron{
 	pixel_x = -3;
 	pixel_y = -4
 	},
-/obj/item/stack/material/crystal/mapped/phoron/one{
+/obj/item/stack/material/crystal/mapped/phoron{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/stack/material/crystal/mapped/phoron/one{
+/obj/item/stack/material/crystal/mapped/phoron{
 	pixel_x = -1
 	},
-/obj/item/stack/material/crystal/mapped/phoron/one{
+/obj/item/stack/material/crystal/mapped/phoron{
 	pixel_y = 2
 	},
 /turf/floor/tiled/white,
@@ -16442,7 +16442,7 @@
 /area/surface/station/park)
 "hQy" = (
 /obj/structure/table/woodentable,
-/obj/item/box/fancy/candle_box,
+/obj/item/box/candles/red,
 /turf/floor/carpet,
 /area/surface/station/chapel/main)
 "hQF" = (
@@ -20135,10 +20135,10 @@
 	pixel_x = -32;
 	dir = 4
 	},
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /turf/floor/tiled/white,
 /area/surface/station/medical/etc)
 "jOo" = (
@@ -22097,9 +22097,8 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 10
 	},
-/obj/machinery/computer/modular/telescreen/preset/security{
+/obj/machinery/computer/modular/telescreen/preset/generic{
 	name = "Test Chamber Monitor";
-	network = list("Miscellaneous Research");
 	pixel_y = -32
 	},
 /turf/floor/tiled/white,
@@ -24086,7 +24085,6 @@
 	},
 /obj/machinery/computer/modular/telescreen/preset/security{
 	name = "Observation Screen";
-	network = list("Interrogation");
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -25209,8 +25207,8 @@
 /obj/item/ammo_magazine/smg/practice,
 /obj/item/ammo_magazine/smg/practice,
 /obj/item/ammo_magazine/smg/practice,
-/obj/item/box/blanks/large,
-/obj/item/box/blanks/large,
+/obj/item/box/ammo/blanks/large,
+/obj/item/box/ammo/blanks/large,
 /obj/machinery/magnetic_controller{
 	autolink = 1;
 	density = 0;
@@ -28733,7 +28731,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/item/box/beanbags,
+/obj/item/box/ammo/beanbags,
 /obj/item/gun/projectile/shotgun/doublebarrel,
 /obj/item/screwdriver,
 /turf/floor/wood,
@@ -30045,7 +30043,7 @@
 /turf/floor/plating,
 /area/surface/station/park)
 "olk" = (
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/large_escape_pod1/station)
 "omw" = (
 /obj/structure/grille,
@@ -30675,9 +30673,9 @@
 /area/surface/station/maintenance/substation/security/gnd)
 "owR" = (
 /obj/structure/closet/wardrobe/chaplain_black,
-/obj/item/box/fancy/blackcandle_box,
-/obj/item/box/fancy/candle_box,
-/obj/item/box/fancy/whitecandle_box,
+/obj/item/box/candles/black,
+/obj/item/box/candles/red,
+/obj/item/box/candles/white,
 /turf/floor/lino,
 /area/surface/station/chapel/office)
 "owZ" = (
@@ -42166,7 +42164,7 @@
 "tOo" = (
 /obj/structure/shuttle/window,
 /obj/structure/grille,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/large_escape_pod1/station)
 "tOC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -43934,20 +43932,20 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/chems/ivbag/blood/AMinus{
+/obj/item/chems/ivbag/blood/aminus{
 	pixel_x = -6;
 	pixel_y = -6
 	},
-/obj/item/chems/ivbag/blood/APlus{
+/obj/item/chems/ivbag/blood/aplus{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/chems/ivbag/blood/BMinus{
+/obj/item/chems/ivbag/blood/bminus{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/chems/ivbag/blood/BPlus,
-/obj/item/chems/ivbag/blood/OPlus{
+/obj/item/chems/ivbag/blood/bplus,
+/obj/item/chems/ivbag/blood/oplus{
 	pixel_x = 2;
 	pixel_y = 2
 	},

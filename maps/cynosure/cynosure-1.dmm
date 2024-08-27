@@ -6665,7 +6665,6 @@
 	},
 /obj/machinery/computer/modular/telescreen/preset/security{
 	name = "Bomb Range Monitor";
-	network = list("Toxins Test Area");
 	pixel_x = -32;
 	pixel_y = -3
 	},

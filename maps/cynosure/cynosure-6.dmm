@@ -27,7 +27,7 @@
 	opacity = 0
 	},
 /obj/structure/table/marble,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "aaE" = (
 /obj/effect/overlay/palmtree_r,
@@ -44,7 +44,7 @@
 /obj/structure/hull_corner/long_vert{
 	dir = 6
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "abS" = (
 /obj/machinery/light/small{
@@ -53,7 +53,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "acY" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -105,7 +105,7 @@
 	pixel_y = 25;
 	
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "aeC" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -225,7 +225,7 @@
 	},
 /area/ninja_dojo/dojo)
 "akY" = (
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/large_escape_pod2/centcom)
 "ale" = (
 /obj/machinery/computer/station_alert{
@@ -303,7 +303,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "ano" = (
 /obj/structure/rack,
@@ -375,7 +375,7 @@
 "aqj" = (
 /obj/structure/rack,
 /obj/random/rigsuit,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "aqF" = (
 /obj/structure/table/steel,
@@ -395,10 +395,10 @@
 	pixel_y = -1
 	},
 /obj/structure/curtain/open/shower,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "aro" = (
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "aso" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -448,7 +448,7 @@
 	dir = 1;
 	id_tag = "trade2_vent"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "avo" = (
 /obj/structure/table/reinforced,
@@ -506,7 +506,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "ayf" = (
 /obj/structure/bed/chair,
@@ -541,7 +541,7 @@
 	pixel_y = 25;
 	
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "aAv" = (
 /obj/structure/rack,
@@ -646,7 +646,7 @@
 	name = "hacked Getmore Chocolate Corp";
 	markup = 0
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "aIm" = (
 /obj/structure/window/reinforced{
@@ -678,7 +678,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "aKs" = (
 /obj/structure/table/steel,
@@ -796,7 +796,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "aTS" = (
 /obj/machinery/button/access{
@@ -804,7 +804,7 @@
 	id_tag = "vox_west_control";
 	
 	},
-/turf/wall/skipjack,
+/turf/wall/raidershuttle,
 /area/skipjack_station/start)
 "aTW" = (
 /obj/effect/step_trigger/thrower{
@@ -833,7 +833,7 @@
 /obj/structure/closet/syndicate/suit{
 	name = "suit closet"
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "aVy" = (
 /obj/structure/bed/chair/wood{
@@ -863,11 +863,11 @@
 	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "aVZ" = (
 /obj/structure/hull_corner,
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "aWS" = (
 /obj/structure/hygiene/sink{
@@ -883,7 +883,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "aZp" = (
 /turf/unsimulated/floor{
@@ -894,7 +894,7 @@
 "aZW" = (
 /obj/structure/table,
 /obj/item/toolbox/mechanical,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bbv" = (
 /turf/unsimulated/floor{
@@ -934,7 +934,7 @@
 /turf/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "bcf" = (
-/obj/item/chems/condiment/small/peppershaker{
+/obj/item/chems/condiment/small/peppermill{
 	pixel_x = 2;
 	pixel_y = 6
 	},
@@ -982,7 +982,7 @@
 	dir = 1;
 	icon_state = "propulsion_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "bdh" = (
 /obj/effect/floor_decal/carpet{
@@ -1038,7 +1038,7 @@
 /obj/random/tech_supply,
 /obj/random/tech_supply,
 /obj/item/chems/weldpack,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bhJ" = (
 /turf/wall/shuttle/voidcraft/green,
@@ -1153,7 +1153,7 @@
 /area/tdome)
 "bnS" = (
 /obj/machinery/optable,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "boo" = (
 /obj/structure/shuttle/falsewall_no_join{
@@ -1205,14 +1205,14 @@
 /obj/item/coin/gold,
 /obj/item/coin/diamond,
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bpm" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 8
 	},
 /obj/machinery/meter,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "bpn" = (
 /obj/effect/floor_decal/corner/red/full{
@@ -1246,11 +1246,11 @@
 	dir = 1
 	},
 /obj/structure/largecrate/hoverpod,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bsU" = (
 /obj/machinery/light/small,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "bsW" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1280,7 +1280,7 @@
 	name = "Ship External Access";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "bvG" = (
 /obj/structure/rack,
@@ -1336,7 +1336,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "bzH" = (
 /obj/structure/rack,
@@ -1387,7 +1387,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "bBK" = (
 /obj/structure/closet/emcloset,
@@ -1408,13 +1408,13 @@
 /obj/machinery/atmospherics/unary/tank/air{
 	start_pressure = 740.5
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bCq" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "bCv" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -1510,13 +1510,13 @@
 /area/centcom/main_hall)
 "bIu" = (
 /obj/machinery/constructable_frame/computerframe,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "bIF" = (
 /obj/structure/hull_corner{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "bIL" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1550,7 +1550,7 @@
 /area/centcom/evac)
 "bKZ" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "bLe" = (
 /obj/structure/table/reinforced,
@@ -1595,13 +1595,13 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/merchant/home)
 "bOP" = (
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "bOR" = (
-/obj/item/toy/chess/knight_white,
+/obj/item/toy/chess/knight,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "bQm" = (
@@ -1627,7 +1627,7 @@
 /obj/item/tank/oxygen,
 /obj/item/pinpointer/shuttle/heist,
 /obj/item/pinpointer/shuttle/heist,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "bSm" = (
 /obj/machinery/door/morgue,
@@ -1671,7 +1671,7 @@
 	dir = 1;
 	icon_state = "propulsion_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "bVM" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -1694,7 +1694,7 @@
 /obj/structure/sign/poster{
 	pixel_y = -32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "bXa" = (
 /obj/structure/bed/padded,
@@ -1724,7 +1724,7 @@
 	dir = 1;
 	start_pressure = 740
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "bXx" = (
 /obj/machinery/microwave{
@@ -1732,7 +1732,7 @@
 	pixel_y = 8
 	},
 /obj/structure/table/steel,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "bXF" = (
 /turf/unsimulated/floor{
@@ -1786,7 +1786,7 @@
 	},
 /area/centcom/bar)
 "bZw" = (
-/obj/item/toy/chess/knight_white,
+/obj/item/toy/chess/knight,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "caf" = (
@@ -1828,13 +1828,13 @@
 	id_tag = "ninja_shuttle_sensor";
 	pixel_y = 28
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "ccf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "ceo" = (
 /obj/machinery/vending/dinnerware,
@@ -1853,7 +1853,7 @@
 /obj/item/kit/paint/flames_blue,
 /obj/item/kit/paint/flames_red,
 /obj/item/kit/paint/camouflage,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "cfm" = (
 /obj/structure/rack,
@@ -1974,7 +1974,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "clW" = (
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "cmj" = (
 /obj/machinery/door/airlock/centcom{
@@ -1996,7 +1996,7 @@
 /area/holodeck/source_courtroom)
 "cmS" = (
 /obj/machinery/door/airlock/glass,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "cmW" = (
 /obj/structure/rack,
@@ -2033,7 +2033,7 @@
 "cpa" = (
 /obj/item/wrench,
 /obj/item/mop,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "cqR" = (
 /obj/structure/closet/crate,
@@ -2097,7 +2097,7 @@
 /obj/structure/hull_corner/long_horiz{
 	dir = 6
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "csV" = (
 /obj/structure/rack,
@@ -2117,11 +2117,11 @@
 	
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "cug" = (
 /obj/structure/closet/cabinet,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "cum" = (
 /obj/effect/decal/cleanable/blood,
@@ -2133,7 +2133,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "cuH" = (
 /mob/living/silicon/decoy{
@@ -2181,7 +2181,7 @@
 	dir = 5
 	},
 /mob/living/exosuit/premade/powerloader,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "cwO" = (
 /obj/structure/filing_cabinet,
@@ -2240,7 +2240,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "czK" = (
 /obj/machinery/teleport/station,
@@ -2260,7 +2260,7 @@
 /obj/machinery/cryopod/robot/door/dorms{
 	time_till_despawn = 200
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/main_hall)
 "cBj" = (
 /obj/machinery/light,
@@ -2269,7 +2269,7 @@
 /obj/item/towel{
 	color = "#0000FF"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "cCD" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2315,7 +2315,7 @@
 /turf/space/transit/north,
 /area/space)
 "cFG" = (
-/obj/item/toy/chess/king_white,
+/obj/item/toy/chess/king,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "cIv" = (
@@ -2349,7 +2349,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/supply)
 "cKC" = (
 /obj/machinery/airlock_sensor{
@@ -2363,7 +2363,7 @@
 	landmark_tag = "skipjack_start";
 	name = "The Hideaway"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "cLf" = (
 /obj/machinery/door/airlock/external/white{
@@ -2373,7 +2373,7 @@
 	name = "Shuttle Hatch";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/supply)
 "cLJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -2386,7 +2386,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "cMH" = (
 /obj/structure/table/marble,
@@ -2614,7 +2614,7 @@
 /area/centcom/security)
 "dex" = (
 /obj/machinery/vending/boozeomat,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "deX" = (
 /obj/structure/table/steel_reinforced,
@@ -2678,7 +2678,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/freezer/rations,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "dhO" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -2713,7 +2713,7 @@
 "djl" = (
 /obj/machinery/computer/modular/preset,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "dju" = (
 /obj/effect/floor_decal/spline/plain{
@@ -2745,7 +2745,7 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/response_ship/start)
 "dls" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -2788,7 +2788,7 @@
 "dns" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/item/tank/nitrogen,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "dnS" = (
 /obj/machinery/door/airlock/hatch,
@@ -2825,7 +2825,7 @@
 	},
 /area/centcom/medical)
 "dpL" = (
-/obj/item/toy/chess/queen_white,
+/obj/item/toy/chess/queen,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "dqf" = (
@@ -2840,11 +2840,11 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "dqj" = (
 /obj/machinery/door/airlock/hatch,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "dqK" = (
 /obj/effect/floor_decal/corner/green{
@@ -2854,7 +2854,7 @@
 /area/holodeck/source_emptycourt)
 "dqR" = (
 /obj/machinery/computer/teleporter,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "dqX" = (
 /obj/machinery/button/access{
@@ -2862,7 +2862,7 @@
 	id_tag = "vox_east_control";
 	
 	},
-/turf/wall/skipjack,
+/turf/wall/raidershuttle,
 /area/skipjack_station/start)
 "dsW" = (
 /obj/structure/table/steel,
@@ -2956,7 +2956,7 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/airless,
+/turf/floor/shuttle/airless,
 /area/shuttle/merchant/home)
 "dzE" = (
 /obj/effect/floor_decal/milspec/color/blue,
@@ -3016,7 +3016,7 @@
 /area/wizard_station)
 "dAV" = (
 /mob/living/simple_animal/passive/tindalos,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "dCm" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -3043,7 +3043,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "dDJ" = (
 /obj/machinery/icecream_vat,
@@ -3089,7 +3089,7 @@
 "dFX" = (
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
-	products = list(/obj/item/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
+	products = list(/obj/item/box/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
 	markup = 0
 	},
 /turf/unsimulated/floor{
@@ -3105,7 +3105,7 @@
 /obj/structure/hygiene/toilet{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "dGs" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -3191,7 +3191,7 @@
 "dIV" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/largecrate/hoverpod,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "dJB" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -3227,7 +3227,7 @@
 	},
 /area/centcom/medical)
 "dKS" = (
-/obj/item/toy/chess/rook_white,
+/obj/item/toy/chess/rook,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "dLe" = (
@@ -3243,7 +3243,7 @@
 "dLk" = (
 /obj/structure/table,
 /obj/item/deck/cards,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "dNX" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -3296,10 +3296,10 @@
 	pixel_x = 32;
 	dir = 8
 	},
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "white"
@@ -3309,7 +3309,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "dQV" = (
 /obj/effect/floor_decal/sign/small_6,
@@ -3408,7 +3408,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "dYv" = (
 /obj/structure/rack,
@@ -3516,7 +3516,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "edj" = (
 /obj/structure/rack,
@@ -3561,7 +3561,7 @@
 	pixel_x = -28
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "efr" = (
 /turf/floor/tiled/milspec/raised,
@@ -3622,12 +3622,12 @@
 	},
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "enr" = (
 /obj/structure/rack,
 /obj/item/chems/spray/cleaner,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "eoa" = (
 /obj/structure/bed/chair{
@@ -3689,7 +3689,7 @@
 /area/holodeck/source_chess)
 "epQ" = (
 /obj/machinery/door/airlock/hatch,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "epV" = (
 /obj/structure/table/steel_reinforced,
@@ -3739,14 +3739,14 @@
 	},
 /area/centcom/main_hall)
 "erT" = (
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "esl" = (
 /obj/structure/hygiene/sink{
 	dir = 4;
 	pixel_x = 11
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "ess" = (
 /turf/unsimulated/floor{
@@ -3782,7 +3782,7 @@
 /obj/item/chems/glass/bottle/sedatives,
 /obj/item/chems/glass/bottle/sedatives,
 /obj/item/chems/syringe,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "eup" = (
 /obj/machinery/recharge_station,
@@ -3820,7 +3820,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "eva" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -3920,11 +3920,11 @@
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "eCy" = (
 /obj/item/robot_parts/head,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "eCS" = (
 /obj/structure/table/reinforced,
@@ -3947,7 +3947,7 @@
 	invisibility = 60;
 	name = "Blocker"
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/main_hall)
 "eDu" = (
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper,
@@ -3978,7 +3978,7 @@
 /obj/machinery/door/airlock/silver{
 	name = "Sleeping"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "eFs" = (
 /obj/effect/floor_decal/carpet{
@@ -4000,7 +4000,7 @@
 	dir = 9
 	},
 /obj/structure/largecrate/animal/cat,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "eHb" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -4053,11 +4053,11 @@
 /obj/structure/hull_corner{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "eJH" = (
 /obj/machinery/door/airlock,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "eJJ" = (
 /obj/machinery/recharge_station,
@@ -4114,7 +4114,7 @@
 /obj/machinery/computer/shuttle_control/multi/ninja{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "eOt" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
@@ -4127,7 +4127,7 @@
 	id_tag = "blastninja";
 	name = "Outer Airlock"
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "eRh" = (
 /obj/structure/table/glass,
@@ -4218,7 +4218,7 @@
 	},
 /area/centcom/security)
 "eVJ" = (
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/escape/centcom)
 "eVU" = (
 /obj/structure/bed/chair/holochair,
@@ -4238,7 +4238,7 @@
 /obj/item/cell/hyper,
 /obj/item/cell/potato,
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "eWJ" = (
 /obj/machinery/button/alternate{
@@ -4307,7 +4307,7 @@
 	},
 /area/centcom/creed)
 "eYl" = (
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "eYU" = (
 /obj/structure/table/marble,
@@ -4323,14 +4323,11 @@
 /area/centcom/bar)
 "eZr" = (
 /obj/machinery/computer/modular/telescreen/preset/security{
-	desc = "";
-	name = ";Spec. Ops. Monitor";
-	= None;
-	network = list("NETWORK_ERT");
+	name = "Spec. Ops. Monitor";
 	pixel_y = 26
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "faA" = (
 /obj/structure/rack,
@@ -4416,7 +4413,7 @@
 "feX" = (
 /obj/item/bedsheet/rd,
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "ffj" = (
 /obj/structure/rack,
@@ -4445,7 +4442,7 @@
 	pixel_x = 22;
 	dir = 8
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "ffZ" = (
 /obj/effect/decal/cleanable/cobweb2{
@@ -4531,7 +4528,7 @@
 	dir = 4
 	},
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "fkC" = (
 /turf/unsimulated/beach/sand{
@@ -4617,7 +4614,7 @@
 /obj/structure/table/woodentable_reinforced,
 /obj/machinery/computer/modular/telescreen/preset/security{
 	name = "Spec. Ops. Monitor";
-	network = list("ERT")
+	
 	},
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
@@ -4690,7 +4687,7 @@
 "fry" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "fsx" = (
 /obj/structure/window/reinforced{
@@ -4711,7 +4708,7 @@
 	},
 /area/centcom/main_hall)
 "fsP" = (
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "fte" = (
 /obj/structure/table,
@@ -4720,7 +4717,7 @@
 /obj/item/clothing/gloves/insulated,
 /obj/item/clothing/gloves/insulated,
 /obj/item/clothing/gloves/insulated,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fts" = (
 /obj/structure/aicore,
@@ -4742,8 +4739,8 @@
 /area/shuttle/arrival/pre_game)
 "fvA" = (
 /obj/structure/rack,
-/obj/item/box/shotgunammo/large,
-/obj/item/box/stunshells/large,
+/obj/item/box/ammo/shotgunammo/large,
+/obj/item/box/ammo/stunshells/large,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -4755,7 +4752,7 @@
 /obj/item/mop,
 /obj/item/chems/spray/cleaner,
 /obj/item/chems/glass/bucket,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "fwt" = (
 /obj/structure/bed/chair{
@@ -4775,11 +4772,11 @@
 "fyR" = (
 /obj/structure/tank_rack,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "fzP" = (
 /obj/machinery/teleport/station,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "fzX" = (
 /turf/unsimulated/wall,
@@ -4863,7 +4860,7 @@
 /obj/item/clothing/head/collectable/philosopher_wig,
 /obj/item/clothing/head/collectable/plaguedoctorhat,
 /obj/item/clothing/head/collectable/xenos,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fCK" = (
 /obj/machinery/door/airlock/glass/centcom{
@@ -4887,7 +4884,7 @@
 /area/shuttle/arrival/pre_game)
 "fED" = (
 /obj/machinery/ai_status_display,
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/arrival/pre_game)
 "fEH" = (
 /obj/item/robot_parts/l_leg,
@@ -4999,7 +4996,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/secure/decalock/loot,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fKI" = (
 /obj/abstract/landmark{
@@ -5089,7 +5086,7 @@
 /obj/item/clothing/medal/silver,
 /obj/item/clothing/medal/gold,
 /obj/item/clothing/medal/bronze_heart,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fRL" = (
 /obj/structure/bed/chair{
@@ -5115,7 +5112,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fTz" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -5145,7 +5142,7 @@
 "fTY" = (
 /obj/structure/table,
 /obj/machinery/chemical_dispenser/bar_alc/full,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fUA" = (
 /obj/machinery/door/airlock/hatch{
@@ -5218,13 +5215,13 @@
 /obj/machinery/constructable_frame/computerframe{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fYE" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/response_ship/start)
 "fYY" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -5271,7 +5268,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "gba" = (
 /obj/machinery/button/alternate{
@@ -5301,14 +5298,14 @@
 	name = "Subversive Intercom";
 	pixel_x = 22
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "gbz" = (
 /obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless,
+/turf/floor/shuttle/airless,
 /area/skipjack_station/start)
 "gcn" = (
 /obj/structure/table/reinforced,
@@ -5330,7 +5327,7 @@
 	dir = 6
 	},
 /mob/living/exosuit/premade/firefighter,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "gde" = (
 /obj/structure/table/bench/padded,
@@ -5371,10 +5368,10 @@
 	},
 /area/centcom/command)
 "ggb" = (
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "ggg" = (
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "ggl" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5411,7 +5408,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "ghs" = (
 /obj/structure/inflatable,
@@ -5420,7 +5417,7 @@
 	},
 /area/skipjack_station)
 "ghB" = (
-/obj/item/toy/chess/bishop_white,
+/obj/item/toy/chess/bishop,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "gjl" = (
@@ -5441,7 +5438,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "gkV" = (
 /turf/unsimulated/floor{
@@ -5462,14 +5459,14 @@
 "gme" = (
 /obj/item/bedsheet/rainbow,
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "gmf" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/stack/material/segment/mapped/mhydrogen,
 /obj/item/stack/material/gemstone/mapped/diamond,
 /obj/item/stack/material/brick/mapped/sandstone,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "gmi" = (
 /obj/machinery/microwave{
@@ -5502,7 +5499,7 @@
 /area/shuttle/escape/centcom)
 "gno" = (
 /obj/structure/hull_corner,
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/response_ship/start)
 "gnL" = (
 /obj/item/grenade/chem_grenade/cleaner,
@@ -5522,7 +5519,7 @@
 /area/tdome)
 "gow" = (
 /obj/machinery/recharge_station,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "goz" = (
 /obj/structure/bed/chair/holochair,
@@ -5571,7 +5568,7 @@
 /obj/item/stack/material/sheet/mapped/steel/fifty,
 /obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/item/card/emag,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "grn" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -5592,7 +5589,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "gtC" = (
-/obj/item/toy/chess/bishop_white,
+/obj/item/toy/chess/bishop,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "guR" = (
@@ -5601,7 +5598,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "gvl" = (
 /obj/machinery/door/window/northleft,
@@ -5687,7 +5684,7 @@
 /obj/machinery/body_scanconsole{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "gAO" = (
 /obj/machinery/door/airlock/centcom{
@@ -5761,7 +5758,7 @@
 /obj/structure/hull_corner{
 	dir = 8
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "gEw" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5782,7 +5779,7 @@
 	pixel_y = 5
 	},
 /obj/item/firstaid/combat,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "gFO" = (
 /turf/floor/holofloor/carpet,
@@ -5821,7 +5818,7 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/response_ship/start)
 "gHW" = (
 /obj/structure/bed/chair/wood/wings{
@@ -5845,7 +5842,7 @@
 /obj/item/defibrillator/loaded{
 	pixel_y = -2
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "gJt" = (
 /obj/effect/floor_decal/milspec/color/blue,
@@ -5916,7 +5913,7 @@
 "gKX" = (
 /obj/structure/shuttle/window,
 /obj/structure/grille,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "gLT" = (
 /obj/structure/bed/padded,
@@ -5932,7 +5929,7 @@
 /area/holodeck/source_chess)
 "gMy" = (
 /obj/machinery/door/airlock/hatch,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "gMS" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -5976,7 +5973,7 @@
 /area/centcom/security)
 "gPC" = (
 /obj/effect/shuttle_landmark/cynosure/large_escape_pod1/offsite,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/large_escape_pod1/centcom)
 "gQs" = (
 /obj/structure/grille,
@@ -5987,7 +5984,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "gRw" = (
 /obj/machinery/computer/pod{
@@ -6010,7 +6007,7 @@
 /obj/machinery/door/airlock/silver{
 	name = "Toilet"
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "gSq" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -6025,7 +6022,7 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/merchant/home)
 "gTz" = (
 /obj/item/camera{
@@ -6104,7 +6101,7 @@
 /obj/machinery/bodyscanner{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "gWi" = (
 /obj/structure/rack,
@@ -6173,7 +6170,7 @@
 /obj/structure/sign/poster{
 	pixel_y = -32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "hek" = (
 /turf/unsimulated/floor{
@@ -6211,7 +6208,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "hgN" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -6235,7 +6232,7 @@
 /obj/item/hemostat,
 /obj/item/scalpel,
 /obj/item/stack/medical/bandage/advanced,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "hia" = (
 /obj/structure/table/steel_reinforced,
@@ -6253,7 +6250,7 @@
 "hiU" = (
 /obj/structure/table,
 /obj/item/handcuffs/legcuffs,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "hjb" = (
 /turf/unsimulated/floor{
@@ -6333,7 +6330,7 @@
 	pixel_x = 32
 	},
 /mob/living/simple_animal/passive/dog/tamaskan/Spice,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "hmB" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -6432,7 +6429,7 @@
 /area/holodeck/source_thunderdomecourt)
 "hui" = (
 /obj/machinery/door/airlock/double/glass,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "huZ" = (
 /obj/effect/floor_decal/corner/red/full{
@@ -6484,7 +6481,7 @@
 /obj/structure/hull_corner{
 	dir = 8
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "hyg" = (
 /obj/structure/iv_drip,
@@ -6603,7 +6600,7 @@
 	name = "Ship Hatch";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "hFB" = (
 /turf/unsimulated/floor{
@@ -6657,7 +6654,7 @@
 /area/centcom/main_hall)
 "hIL" = (
 /obj/machinery/door/window/northleft,
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "hIM" = (
 /obj/machinery/door/airlock/external{
@@ -6687,7 +6684,7 @@
 /obj/machinery/body_scanconsole{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "hJF" = (
 /obj/structure/curtain/open/shower,
@@ -6727,7 +6724,7 @@
 	name = "Cargo Hold";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "hMR" = (
 /obj/structure/table/reinforced,
@@ -6760,7 +6757,7 @@
 "hNz" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "hOk" = (
 /obj/machinery/door/airlock{
@@ -6799,7 +6796,7 @@
 /area/centcom/specops)
 "hQg" = (
 /obj/structure/bed/roller,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "hQt" = (
 /obj/machinery/door/airlock/glass/medical{
@@ -6829,7 +6826,7 @@
 /obj/random/toolbox,
 /obj/random/toolbox,
 /obj/random/toolbox,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "hSg" = (
 /obj/machinery/button/flasher{
@@ -6841,7 +6838,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "hSF" = (
 /turf/unsimulated/wall{
@@ -6875,7 +6872,7 @@
 	pixel_y = 3
 	},
 /obj/item/firstaid/regular,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "hTk" = (
 /obj/effect/floor_decal/sign/small_7,
@@ -6904,7 +6901,7 @@
 	pixel_y = -32;
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "hUo" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -6919,7 +6916,7 @@
 /obj/structure/mirror{
 	pixel_y = 28
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "hUy" = (
 /obj/machinery/computer/pod{
@@ -6972,7 +6969,7 @@
 /area/centcom/specops)
 "hXl" = (
 /obj/machinery/door/airlock/external,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "hXB" = (
 /obj/structure/table,
@@ -6980,7 +6977,7 @@
 /obj/item/chems/syringe/antiviral,
 /obj/item/firstaid/clotting,
 /obj/item/stack/medical/splint,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "hXQ" = (
 /obj/structure/hygiene/sink{
@@ -7000,7 +6997,7 @@
 /obj/item/chems/spray/cleaner,
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "hYQ" = (
 /obj/structure/bed/chair,
@@ -7071,13 +7068,13 @@
 /area/holodeck/source_theatre)
 "idd" = (
 /obj/machinery/optable,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "idn" = (
 /obj/structure/rack,
 /obj/item/belt/utility/full,
 /obj/item/multitool,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "idR" = (
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
@@ -7094,7 +7091,7 @@
 	id_tag = "vox_west_vent"
 	},
 /obj/machinery/light/small,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "ieY" = (
 /obj/machinery/door/airlock/glass/security{
@@ -7135,7 +7132,7 @@
 /obj/item/toolbox/mechanical,
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iiz" = (
 /obj/abstract/landmark{
@@ -7157,12 +7154,12 @@
 	},
 /obj/item/stack/nanopaste,
 /obj/item/firstaid/surgery,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "ijP" = (
 /obj/structure/bookcase,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iki" = (
 /obj/machinery/computer/modular/preset/engineering{
@@ -7186,7 +7183,7 @@
 	name = "Shop Shutters";
 	opacity = 0
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "ikS" = (
 /obj/structure/table/reinforced,
@@ -7199,7 +7196,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "ilS" = (
 /obj/item/clothing/glasses/night/vox,
@@ -7211,7 +7208,7 @@
 "ilY" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "imr" = (
 /obj/machinery/embedded_controller/radio/docking_port_multi{
@@ -7233,7 +7230,7 @@
 /obj/structure/hull_corner/long_vert{
 	dir = 10
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "inZ" = (
 /obj/structure/table/reinforced,
@@ -7355,18 +7352,18 @@
 /obj/structure/table/reinforced,
 /obj/machinery/librarycomp,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "ivA" = (
 /obj/structure/table,
 /obj/item/lockbox,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "ivO" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "iwk" = (
 /turf/unsimulated/wall,
@@ -7416,7 +7413,7 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hos,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iyY" = (
 /obj/structure/table,
@@ -7424,7 +7421,7 @@
 	pixel_y = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "izK" = (
 /obj/item/box/evidence,
@@ -7473,12 +7470,12 @@
 /obj/item/bonegel,
 /obj/item/sutures,
 /obj/item/stack/nanopaste,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "iBk" = (
 /obj/item/stack/material/sheet/mapped/steel/fifty,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iBJ" = (
 /obj/structure/table/holotable,
@@ -7564,7 +7561,7 @@
 	name = "Thunderdome Autolathe"
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iHa" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -7573,7 +7570,7 @@
 	pixel_y = 25;
 	tag_door = "large_escape_pod_1_recovery_hatch"
 	},
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "iHh" = (
 /obj/structure/window/reinforced{
@@ -7592,14 +7589,14 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "iHp" = (
 /obj/structure/hygiene/toilet,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "iIh" = (
 /obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
@@ -7644,7 +7641,7 @@
 /obj/random/tool,
 /obj/random/tool,
 /obj/random/tool,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "iLE" = (
 /obj/structure/grille,
@@ -7663,7 +7660,7 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "iLU" = (
 /obj/machinery/door/airlock/double,
@@ -7680,7 +7677,7 @@
 	name = "Medical Bay";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "iNa" = (
 /obj/structure/table/reinforced,
@@ -7697,12 +7694,12 @@
 /obj/item/robot_parts/frame,
 /obj/item/robot_parts/r_leg,
 /obj/item/robot_parts/r_arm,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "iOk" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "iOl" = (
 /obj/effect/floor_decal/milspec/color/red,
@@ -7727,7 +7724,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "iOG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -7746,7 +7743,7 @@
 	name = "Surgery";
 	
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "iPP" = (
 /obj/structure/bed/padded,
@@ -7813,7 +7810,7 @@
 /obj/random/multiple/voidsuit,
 /obj/random/multiple/voidsuit,
 /obj/random/energy,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "iQX" = (
 /obj/structure/shuttle/falsewall_no_join{
@@ -7824,7 +7821,7 @@
 /area/shuttle/escape/centcom)
 "iRf" = (
 /obj/machinery/floodlight,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "iRL" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -7890,7 +7887,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "iTV" = (
 /obj/structure/window/reinforced/holowindow{
@@ -7930,7 +7927,7 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "iXj" = (
 /obj/structure/window/reinforced/holowindow{
@@ -7958,7 +7955,7 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "iYD" = (
 /obj/structure/rack,
@@ -7974,7 +7971,7 @@
 	name = "Captain's Quarters";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "iZE" = (
 /obj/structure/window/reinforced{
@@ -7985,7 +7982,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "iZQ" = (
 /obj/structure/table/reinforced,
@@ -8046,7 +8043,7 @@
 /area/centcom/main_hall)
 "jcp" = (
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jcx" = (
 /obj/abstract/landmark{
@@ -8060,7 +8057,7 @@
 "jcy" = (
 /obj/machinery/computer/modular/preset/cardslot/command,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jcL" = (
 /obj/structure/table/reinforced,
@@ -8078,7 +8075,7 @@
 /obj/machinery/computer/shuttle{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "jdD" = (
 /obj/machinery/door/airlock/centcom{
@@ -8131,7 +8128,7 @@
 /area/skipjack_station)
 "jhi" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/supply)
 "jhI" = (
 /obj/effect/floor_decal/corner/yellow{
@@ -8168,7 +8165,7 @@
 /area/holodeck/source_courtroom)
 "jjI" = (
 /obj/structure/table/glass,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jlI" = (
 /obj/machinery/sleeper{
@@ -8190,7 +8187,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jqg" = (
 /obj/structure/closet{
@@ -8215,7 +8212,7 @@
 /area/skipjack_station)
 "jqO" = (
 /obj/item/suit_cooling_unit,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "jrv" = (
 /obj/structure/bed/chair/office/dark{
@@ -8239,7 +8236,7 @@
 /area/skipjack_station)
 "jsD" = (
 /obj/machinery/suit_cycler/syndicate,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jsM" = (
 /obj/machinery/door/airlock/external{
@@ -8251,7 +8248,7 @@
 	id_tag = "syndicate_elite";
 	name = "Front Hull Door"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/syndicate_elite/mothership)
 "juz" = (
 /obj/item/robot_parts/chest,
@@ -8364,7 +8361,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "jzs" = (
 /obj/structure/bed/chair{
@@ -8401,7 +8398,7 @@
 /obj/machinery/vending/sovietsoda{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jDo" = (
 /obj/structure/table,
@@ -8487,7 +8484,7 @@
 	name = "Subversive Intercom";
 	pixel_x = -22
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "jGa" = (
 /obj/machinery/door/airlock/external{
@@ -8501,7 +8498,7 @@
 /area/shuttle/administration/centcom)
 "jGi" = (
 /obj/machinery/door/airlock/glass,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jGM" = (
 /obj/machinery/door/airlock{
@@ -8534,12 +8531,12 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "jHN" = (
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jHW" = (
 /obj/effect/forcefield{
@@ -8569,7 +8566,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jJx" = (
 /obj/item/chems/drinks/bottle/pwine{
@@ -8592,7 +8589,7 @@
 	},
 /area/wizard_station)
 "jJZ" = (
-/turf/floor/carpet/bcarpet,
+/turf/floor/carpet/blue,
 /area/centcom/bar)
 "jKw" = (
 /turf/unsimulated/wall,
@@ -8621,7 +8618,7 @@
 	},
 /area/centcom/medical)
 "jMC" = (
-/obj/item/toy/chess/king_black,
+/obj/item/toy/chess/king/black,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "jNQ" = (
@@ -8633,7 +8630,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "jPM" = (
-/turf/wall/skipjack,
+/turf/wall/raidershuttle,
 /area/skipjack_station/start)
 "jQJ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -8643,7 +8640,7 @@
 	pixel_y = -25;
 	tag_door = "escape_pod_1_recovery_hatch"
 	},
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "jQQ" = (
 /obj/structure/window/reinforced,
@@ -8661,7 +8658,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "jQR" = (
 /obj/machinery/door/airlock{
@@ -8732,7 +8729,7 @@
 	dir = 1
 	},
 /obj/structure/largecrate/animal/cow,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jSa" = (
 /turf/unsimulated/wall,
@@ -8751,10 +8748,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "jTD" = (
-/obj/item/toy/chess/rook_black,
+/obj/item/toy/chess/rook/black,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "jUa" = (
@@ -8762,7 +8759,7 @@
 /obj/item/grenade/empgrenade,
 /obj/item/grenade/flashbang,
 /obj/item/grenade/spawnergrenade/manhacks,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "jUW" = (
 /obj/structure/closet/secure_closet/freezer/meat,
@@ -8774,7 +8771,7 @@
 /obj/structure/hull_corner/long_vert{
 	dir = 9
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "jVR" = (
 /turf/floor/tiled/milspec/sterile,
@@ -8832,7 +8829,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "kcj" = (
 /obj/machinery/cell_charger,
@@ -8911,7 +8908,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kgy" = (
 /obj/machinery/door/airlock/glass/command{
@@ -8942,7 +8939,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "khR" = (
 /obj/structure/hygiene/toilet{
@@ -8997,7 +8994,7 @@
 	locked = 1;
 	name = "Recovery Shuttle Dock 2"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "kjb" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -9033,7 +9030,7 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kjI" = (
 /obj/structure/closet/wardrobe/mixed,
@@ -9059,7 +9056,7 @@
 	pixel_y = -26;
 	dir = 1
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "kkm" = (
 /obj/effect/floor_decal/carpet{
@@ -9082,7 +9079,7 @@
 /obj/random/multiple/voidsuit,
 /obj/random/multiple/voidsuit,
 /obj/random/energy,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kmb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -9130,13 +9127,13 @@
 	pixel_y = -1
 	},
 /obj/structure/curtain/open/shower,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "knt" = (
 /obj/machinery/computer/modular/preset/medical{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "knH" = (
 /obj/item/seeds/potatoseed,
@@ -9145,7 +9142,7 @@
 /obj/item/tool/hoe/mini,
 /obj/item/beartrap,
 /obj/structure/table/steel,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "knY" = (
 /obj/effect/floor_decal/corner/yellow{
@@ -9196,10 +9193,10 @@
 	id_tag = "merc_shuttle_pump"
 	},
 /obj/machinery/light/small,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "kqD" = (
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "kqS" = (
 /obj/machinery/airlock_sensor{
@@ -9207,7 +9204,7 @@
 	pixel_x = 25;
 	dir = 8
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "krB" = (
 /turf/unsimulated/wall{
@@ -9248,10 +9245,10 @@
 	},
 /area/shuttle/trade)
 "kuj" = (
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kut" = (
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "kuy" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -9304,7 +9301,7 @@
 	pixel_x = 30;
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kya" = (
 /obj/effect/floor_decal/sign/small_3,
@@ -9346,7 +9343,7 @@
 	name = "Cargo Hold";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kyO" = (
 /obj/effect/floor_decal/techfloor{
@@ -9363,7 +9360,7 @@
 "kyQ" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/rd,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kyR" = (
 /obj/machinery/door/blast/regular{
@@ -9394,11 +9391,11 @@
 "kzI" = (
 /obj/structure/mopbucket,
 /obj/item/mop,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "kzL" = (
 /obj/machinery/computer/modular/preset,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "kAx" = (
 /obj/machinery/door/airlock{
@@ -9512,7 +9509,7 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kEo" = (
 /obj/structure/window/reinforced{
@@ -9537,7 +9534,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/item/crowbar,
 /obj/item/suit_cooling_unit,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kFb" = (
 /obj/structure/bed/chair/office/dark,
@@ -9597,7 +9594,7 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kIq" = (
 /obj/structure/table/reinforced,
@@ -9627,7 +9624,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kJA" = (
 /obj/structure/window/reinforced{
@@ -9646,7 +9643,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "kJK" = (
 /obj/structure/morgue{
@@ -9677,7 +9674,7 @@
 /area/tdome)
 "kKO" = (
 /obj/machinery/atmospherics/unary/tank/air,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "kLb" = (
 /obj/item/box/syndie_kit/clerical,
@@ -9697,7 +9694,7 @@
 	},
 /area/wizard_station)
 "kNj" = (
-/obj/item/toy/chess/rook_white,
+/obj/item/toy/chess/rook,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "kND" = (
@@ -9733,7 +9730,7 @@
 /area/shuttle/administration/centcom)
 "kPq" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kPP" = (
 /obj/structure/table/woodentable,
@@ -9778,12 +9775,12 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kRq" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "kSs" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -9835,7 +9832,7 @@
 "kTT" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "kTU" = (
 /obj/structure/rack,
@@ -9844,13 +9841,13 @@
 	dir = 8
 	},
 /obj/random/multiple/voidsuit,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "kUk" = (
 /obj/structure/hull_corner{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "kUC" = (
 /obj/structure/bed/chair,
@@ -9885,7 +9882,7 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "kXc" = (
 /obj/machinery/computer/shuttle{
@@ -9920,7 +9917,7 @@
 /area/centcom/security)
 "kYU" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "kZc" = (
 /obj/structure/table/steel,
@@ -9929,7 +9926,7 @@
 /obj/item/assembly/signaler{
 	pixel_y = 2
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "kZo" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -9941,7 +9938,7 @@
 /area/centcom/main_hall)
 "laa" = (
 /obj/machinery/optable,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lac" = (
 /obj/machinery/fabricator/pipe/orderable,
@@ -9959,7 +9956,7 @@
 /area/centcom/main_hall)
 "laK" = (
 /obj/structure/iv_drip,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lbC" = (
 /obj/item/ore,
@@ -9983,7 +9980,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lfk" = (
 /obj/machinery/vending/deathmatch/red,
@@ -10023,7 +10020,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "lhd" = (
 /obj/machinery/newscaster{
@@ -10038,7 +10035,7 @@
 "lht" = (
 /obj/structure/table/steel,
 /obj/item/deck/cards,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "lhE" = (
 /obj/structure/grille,
@@ -10057,7 +10054,7 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "liK" = (
 /obj/structure/table/reinforced,
@@ -10094,7 +10091,7 @@
 "lkV" = (
 /obj/structure/table,
 /obj/machinery/microwave,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "llb" = (
 /obj/effect/floor_decal/milspec/color/red,
@@ -10163,7 +10160,7 @@
 	dir = 1
 	},
 /obj/structure/bookcase,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "loQ" = (
 /obj/machinery/computer/modular/preset/civilian,
@@ -10240,7 +10237,7 @@
 /obj/machinery/vending/coffee{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "luW" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -10267,7 +10264,7 @@
 /area/centcom/bar)
 "lwt" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "lwT" = (
 /obj/machinery/door/airlock/glass/centcom{
@@ -10291,7 +10288,7 @@
 /area/virtual_reality)
 "lzk" = (
 /obj/machinery/washing_machine,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "lzo" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
@@ -10313,7 +10310,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/microwave,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "lAu" = (
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
@@ -10360,11 +10357,11 @@
 	},
 /area/centcom/terminal)
 "lDu" = (
-/obj/item/toy/chess/pawn_black,
+/obj/item/toy/chess/pawn/black,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "lDN" = (
-/obj/item/toy/chess/pawn_white,
+/obj/item/toy/chess/pawn,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "lDQ" = (
@@ -10447,7 +10444,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "lIh" = (
 /obj/machinery/door/airlock/hatch/maintenance,
@@ -10459,7 +10456,7 @@
 "lIS" = (
 /obj/machinery/robotic_fabricator,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "lJk" = (
 /obj/effect/floor_decal/spline/plain,
@@ -10483,7 +10480,7 @@
 /obj/item/roller,
 /obj/item/roller,
 /obj/item/defibrillator/compact/combat/loaded,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "lKk" = (
 /obj/structure/closet/crate/nanotrasen,
@@ -10523,7 +10520,7 @@
 	name = "Bridge";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lMq" = (
 /obj/structure/table,
@@ -10542,7 +10539,7 @@
 	pixel_x = -32
 	},
 /obj/machinery/meter,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lMN" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -10595,7 +10592,7 @@
 /area/shuttle/merchant/home)
 "lNz" = (
 /obj/machinery/computer/shuttle_control/multi/heist,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "lNN" = (
 /obj/structure/table/steel,
@@ -10604,7 +10601,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "lNT" = (
 /obj/machinery/vending/cola{
@@ -10680,7 +10677,7 @@
 /obj/structure/table,
 /obj/item/clipboard,
 /obj/item/pen,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "lRH" = (
 /obj/structure/window/reinforced{
@@ -10701,7 +10698,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "lSb" = (
 /obj/structure/table/steel_reinforced,
@@ -10741,7 +10738,7 @@
 	},
 /area/centcom/medical)
 "lUr" = (
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "lXr" = (
 /obj/machinery/door/airlock/hatch,
@@ -10755,7 +10752,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mac" = (
 /obj/machinery/door/airlock/external/white{
@@ -10768,7 +10765,7 @@
 /obj/effect/floor_decal/milspec/stripe{
 	dir = 1
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/supply)
 "maT" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -10809,11 +10806,11 @@
 /area/centcom/bar)
 "mcr" = (
 /obj/structure/table,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mct" = (
 /obj/machinery/door/window/southright,
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "mcx" = (
 /obj/structure/inflatable,
@@ -10887,7 +10884,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "mfK" = (
 /obj/machinery/vending/engineering,
@@ -10918,10 +10915,10 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/item/box/shotgunshells,
-/obj/item/box/shotgunshells,
-/obj/item/box/shotgunammo,
-/obj/item/box/shotgunammo,
+/obj/item/box/ammo/shotgunshells,
+/obj/item/box/ammo/shotgunshells,
+/obj/item/box/ammo/shotgunammo,
+/obj/item/box/ammo/shotgunammo,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/techfloor.dmi';
 	icon_state = "techfloor_gray"
@@ -10963,7 +10960,7 @@
 /area/skipjack_station)
 "mjf" = (
 /obj/effect/shuttle_landmark/cynosure/large_escape_pod2/offsite,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/large_escape_pod2/centcom)
 "mjE" = (
 /obj/structure/table/reinforced,
@@ -11027,7 +11024,7 @@
 /area/ninja_dojo/dojo)
 "mmm" = (
 /obj/structure/hull_corner,
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "moq" = (
 /obj/machinery/computer/modular/preset/cardslot/command{
@@ -11045,7 +11042,7 @@
 	},
 /obj/item/box/bodybags,
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "moR" = (
 /obj/effect/step_trigger/thrower{
@@ -11073,7 +11070,7 @@
 /turf/floor/tiled/milspec,
 /area/shuttle/supply)
 "mpv" = (
-/obj/item/toy/chess/bishop_black,
+/obj/item/toy/chess/bishop/black,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "mpP" = (
@@ -11112,7 +11109,7 @@
 /obj/item/chems/spray/cleaner,
 /obj/item/chems/glass/bucket,
 /obj/item/mop,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mrg" = (
 /obj/machinery/door/airlock/centcom{
@@ -11133,7 +11130,7 @@
 	
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "msh" = (
 /obj/machinery/computer/modular/preset/cardslot/command{
@@ -11145,7 +11142,7 @@
 "mtX" = (
 /obj/item/bedsheet/clown,
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "mur" = (
 /obj/structure/table/reinforced,
@@ -11176,14 +11173,14 @@
 	name = "Shuttle Hatch";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mws" = (
 /obj/machinery/computer/scan_consolenew{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mwS" = (
 /obj/structure/table/woodentable_reinforced,
@@ -11267,7 +11264,7 @@
 /obj/structure/table,
 /obj/item/chems/glass/beaker/large,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mBj" = (
 /obj/machinery/door/airlock/centcom{
@@ -11288,7 +11285,7 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mCX" = (
 /obj/machinery/door/airlock/silver{
@@ -11312,7 +11309,7 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/obj/item/chems/condiment/small/peppershaker,
+/obj/item/chems/condiment/small/peppermill,
 /obj/item/flame/candle,
 /turf/unsimulated/floor{
 	icon_state = "wood"
@@ -11356,7 +11353,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "mEX" = (
 /turf/unsimulated/floor{
@@ -11391,19 +11388,19 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mIb" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/glasses/thermal/plain/monocle,
 /obj/item/clothing/head/collectable/pirate,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "mIs" = (
 /obj/structure/table,
 /obj/machinery/chemical_dispenser/ert,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mJH" = (
 /obj/machinery/constructable_frame/computerframe,
@@ -11440,7 +11437,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "mLQ" = (
 /obj/machinery/light/small{
@@ -11450,12 +11447,12 @@
 	dir = 1;
 	start_pressure = 740
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "mLY" = (
 /obj/machinery/dna_scannernew,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mMT" = (
 /obj/structure/table,
@@ -11528,7 +11525,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "mPt" = (
 /obj/structure/shuttle/falsewall_no_join{
@@ -11554,14 +11551,14 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mQE" = (
 /obj/machinery/chem_master{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "mRa" = (
 /obj/machinery/light,
@@ -11591,7 +11588,7 @@
 	pixel_y = -25;
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "mSv" = (
 /turf/unsimulated/floor{
@@ -11646,13 +11643,13 @@
 	},
 /area/centcom/specops)
 "mXy" = (
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "mXA" = (
 /obj/structure/hygiene/toilet{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "mXF" = (
 /obj/structure/shuttle/engine/heater{
@@ -11663,13 +11660,13 @@
 	dir = 4;
 	health = 1e+006
 	},
-/turf/wall/shuttle/plating/airless,
+/turf/floor/shuttle/airless,
 /area/shuttle/transport1/centcom)
 "mYN" = (
 /obj/machinery/computer/arcade/battle{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "mZd" = (
 /obj/structure/shuttle/engine/heater,
@@ -11698,7 +11695,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "nbo" = (
 /obj/structure/hygiene/shower{
@@ -11803,7 +11800,7 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "nex" = (
 /obj/machinery/computer/modular/preset/civilian{
@@ -11875,7 +11872,7 @@
 /obj/item/clothing/head/helmet/space/void/merc,
 /obj/item/clothing/head/helmet/space/void/merc,
 /obj/item/clothing/head/helmet/space/void/merc,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "niR" = (
 /obj/item/stool/padded{
@@ -11897,7 +11894,7 @@
 /obj/random/action_figure,
 /obj/random/action_figure,
 /obj/random/action_figure,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "njq" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -11915,7 +11912,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "njM" = (
 /obj/machinery/computer/shuttle_control/multi/centcom{
@@ -11925,7 +11922,7 @@
 /turf/floor/tiled/milspec/raised,
 /area/shuttle/transport1/centcom)
 "nks" = (
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "nkO" = (
 /obj/structure/lattice,
@@ -12003,7 +12000,7 @@
 /area/shuttle/escape/centcom)
 "nqn" = (
 /obj/structure/mopbucket,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "nqu" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -12031,7 +12028,7 @@
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "nrP" = (
 /obj/structure/table/reinforced,
@@ -12051,13 +12048,13 @@
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	id_tag = "vox_west_vent"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "nst" = (
 /obj/structure/hull_corner/long_vert{
 	dir = 10
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "nsD" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -12158,7 +12155,7 @@
 /obj/item/chems/syringe,
 /obj/item/chems/glass/bottle/sedatives,
 /obj/item/chems/glass/bottle/sedatives,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "nCe" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -12196,7 +12193,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "nEB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -12232,17 +12229,17 @@
 /turf/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "nFK" = (
-/obj/item/toy/chess/pawn_white,
+/obj/item/toy/chess/pawn,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "nIb" = (
-/obj/item/toy/chess/bishop_black,
+/obj/item/toy/chess/bishop/black,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "nJi" = (
 /obj/structure/rack,
 /obj/item/aicard,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "nKa" = (
 /obj/structure/table,
@@ -12409,7 +12406,7 @@
 	name = "Recovery Shuttle Dock 1";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "nUC" = (
 /turf/floor/holofloor/carpet,
@@ -12513,12 +12510,12 @@
 "nZO" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/inflatable_duck,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "nZP" = (
 /obj/machinery/clonepod,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "oat" = (
 /obj/structure/table/glass,
@@ -12536,7 +12533,7 @@
 	name = "Ship Internal Hatch";
 	
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "oaC" = (
 /turf/unsimulated/ai_visible,
@@ -12552,7 +12549,7 @@
 	dir = 4;
 	health = 1e+006
 	},
-/turf/wall/shuttle/plating/airless,
+/turf/floor/shuttle/airless,
 /area/shuttle/transport1/centcom)
 "obq" = (
 /obj/structure/bed/chair{
@@ -12578,19 +12575,19 @@
 /obj/structure/table,
 /obj/item/firstaid/surgery,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "ocL" = (
 /obj/machinery/vending/medical{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "odB" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "oea" = (
 /obj/machinery/chem_master,
@@ -12703,7 +12700,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "olO" = (
 /obj/structure/rack,
@@ -12723,13 +12720,13 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "omv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "omB" = (
 /obj/structure/grille,
@@ -12744,7 +12741,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "omM" = (
 /obj/structure/mirror/raider{
@@ -12758,7 +12755,7 @@
 /obj/machinery/vending/engivend{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "ooa" = (
 /obj/structure/window/reinforced{
@@ -12814,7 +12811,7 @@
 /obj/structure/hull_corner{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/response_ship/start)
 "opn" = (
 /obj/structure/table/steel_reinforced,
@@ -12844,7 +12841,7 @@
 /obj/item/clothing/dress/blacktango/alt,
 /obj/item/clothing/dress/dress_orange,
 /obj/item/clothing/dress/maid/janitor,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "opI" = (
 /obj/structure/window/reinforced,
@@ -12879,7 +12876,7 @@
 "orI" = (
 /obj/machinery/optable,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "orQ" = (
 /obj/structure/table/woodentable,
@@ -12913,14 +12910,14 @@
 /area/syndicate_station)
 "osD" = (
 /obj/machinery/constructable_frame/computerframe,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "otk" = (
 /obj/machinery/door/airlock/hatch{
 	id_tag = "vox_northeast_lock";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "oty" = (
 /obj/structure/flora/pottedplant{
@@ -12966,19 +12963,19 @@
 /area/ninja_dojo/dojo)
 "owZ" = (
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "oxc" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/administration/centcom)
 "oyi" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/supply)
 "oys" = (
 /obj/machinery/light{
@@ -13033,7 +13030,7 @@
 /obj/machinery/atmospherics/unary/tank/air{
 	start_pressure = 740.5
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "oCl" = (
 /obj/effect/floor_decal/milspec/color/blue,
@@ -13045,7 +13042,7 @@
 "oCy" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "oCJ" = (
 /obj/structure/table/reinforced,
@@ -13067,7 +13064,7 @@
 "oGt" = (
 /obj/structure/bed/chair,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "oHh" = (
 /obj/machinery/door/airlock{
@@ -13083,7 +13080,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "oJj" = (
 /obj/structure/closet/wardrobe/grey,
@@ -13127,11 +13124,11 @@
 	name = "Subversive Intercom";
 	pixel_x = -22
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "oLl" = (
 /obj/structure/table/steel,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "oLN" = (
 /obj/structure/table/holotable,
@@ -13145,13 +13142,13 @@
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "burst_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/administration/centcom)
 "oLZ" = (
 /obj/structure/hull_corner/long_vert{
 	dir = 5
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "oNc" = (
 /obj/structure/table,
@@ -13166,7 +13163,7 @@
 /obj/item/clothing/gloves/insulated,
 /obj/item/clothing/gloves/insulated,
 /obj/item/clothing/gloves/insulated,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "oNF" = (
 /obj/structure/table/marble,
@@ -13222,7 +13219,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "oOW" = (
 /turf/unsimulated/beach/sand,
@@ -13283,7 +13280,7 @@
 /area/skipjack_station)
 "oTZ" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "oUZ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -13327,7 +13324,7 @@
 /area/centcom/terminal)
 "oWP" = (
 /obj/effect/floor_decal/industrial/warning,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "oWQ" = (
 /obj/effect/floor_decal/carpet{
@@ -13356,12 +13353,12 @@
 	tag_interior_door = "trade2_shuttle_inner";
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "oWZ" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/item/chems/glass/bucket,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "oXu" = (
 /turf/floor/holofloor/wood,
@@ -13462,7 +13459,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "pcu" = (
 /turf/unsimulated/beach/water,
@@ -13481,7 +13478,7 @@
 /area/virtual_reality)
 "phj" = (
 /obj/item/robot_parts/l_leg,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "phU" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -13567,7 +13564,7 @@
 /obj/machinery/computer/shuttle_control/multi/merchant{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "plx" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -13604,7 +13601,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "pnf" = (
 /obj/machinery/light{
@@ -13612,7 +13609,7 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/item/paicard,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "pnP" = (
 /obj/effect/floor_decal/carpet{
@@ -13632,7 +13629,7 @@
 /area/centcom/living)
 "pol" = (
 /obj/structure/hull_corner,
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "poo" = (
 /obj/structure/grille,
@@ -13648,7 +13645,7 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "pqt" = (
 /obj/structure/rack,
@@ -13683,7 +13680,7 @@
 /obj/structure/hull_corner{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "pte" = (
 /obj/item/stool/padded{
@@ -13708,7 +13705,7 @@
 /area/centcom/security)
 "ptC" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "ptZ" = (
 /obj/structure/bed/chair/holochair{
@@ -13735,7 +13732,7 @@
 	name = "Ship Hatch";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "puh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -13844,7 +13841,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "pAB" = (
 /obj/machinery/recharger/wallcharger{
@@ -13853,7 +13850,7 @@
 	},
 /obj/structure/table/steel,
 /obj/item/box/frags,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "pAD" = (
 /turf/unsimulated/wall,
@@ -13934,7 +13931,7 @@
 	},
 /obj/item/stack/material/pane/mapped/glass/fifteen,
 /obj/item/stack/material/pane/mapped/glass/fifteen,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "pEe" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -13990,7 +13987,7 @@
 	pixel_y = 25;
 	
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "pFT" = (
 /obj/machinery/door/airlock/external{
@@ -14016,7 +14013,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "pHl" = (
 /turf/floor/holofloor/tiled/dark,
@@ -14048,7 +14045,7 @@
 	
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "pJO" = (
 /turf/floor/holofloor/carpet,
@@ -14058,7 +14055,7 @@
 	dir = 1
 	},
 /obj/structure/closet/emcloset,
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "pLy" = (
 /obj/item/suit_cooling_unit,
@@ -14082,7 +14079,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "pME" = (
 /obj/structure/closet/wardrobe/green,
@@ -14146,7 +14143,7 @@
 "pQq" = (
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
-	products = list(/obj/item/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
+	products = list(/obj/item/box/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
 	markup = 0
 	},
 /turf/unsimulated/floor{
@@ -14174,7 +14171,7 @@
 "pQD" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/closet/crate/internals,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "pRl" = (
 /obj/effect/floor_decal/carpet{
@@ -14212,7 +14209,7 @@
 /obj/machinery/computer/station_alert{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "pTo" = (
 /obj/structure/table/marble,
@@ -14232,7 +14229,7 @@
 	name = "Cargo Hold";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "pTZ" = (
 /obj/machinery/vending/cigarette,
@@ -14274,7 +14271,7 @@
 	name = "ERT Shuttle Bay"
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "pWl" = (
 /obj/structure/rack,
@@ -14305,7 +14302,7 @@
 /area/centcom/main_hall)
 "pXS" = (
 /obj/machinery/porta_turret/ai_defense,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "pXW" = (
 /obj/structure/table/marble,
@@ -14325,7 +14322,7 @@
 /area/shuttle/merchant/home)
 "pYL" = (
 /obj/machinery/light,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "pZu" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -14335,7 +14332,7 @@
 /area/centcom/bar)
 "pZO" = (
 /obj/machinery/body_scanconsole,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qcp" = (
 /obj/machinery/door/airlock/double/glass{
@@ -14399,7 +14396,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "qfC" = (
 /turf/floor/holofloor/wmarble,
@@ -14415,14 +14412,14 @@
 	pixel_x = 30;
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qhu" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "qhU" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -14467,13 +14464,13 @@
 /obj/item/beartrap,
 /obj/item/beartrap,
 /obj/item/beartrap,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "qjK" = (
 /obj/machinery/vending/cigarette{
 	dir = 4;
 	name = "hacked cigarette machine";
-	products = list(/obj/item/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
+	products = list(/obj/item/box/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
 	markup = 0
 	},
 /turf/unsimulated/floor{
@@ -14485,7 +14482,7 @@
 	dir = 1
 	},
 /obj/machinery/body_scanconsole,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/skipjack_station/start)
 "qjZ" = (
 /obj/structure/grille,
@@ -14497,7 +14494,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "qle" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -14515,7 +14512,7 @@
 /area/skipjack_station)
 "qmk" = (
 /obj/structure/table/steel,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "qmm" = (
 /obj/structure/grille,
@@ -14530,7 +14527,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "qmo" = (
 /turf/unsimulated/floor{
@@ -14586,10 +14583,10 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "qpd" = (
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "qqa" = (
 /obj/structure/window/reinforced,
@@ -14708,7 +14705,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "qzf" = (
 /obj/structure/table/bench/steel,
@@ -14720,7 +14717,7 @@
 	},
 /area/shuttle/trade)
 "qzu" = (
-/obj/item/toy/chess/pawn_black,
+/obj/item/toy/chess/pawn/black,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "qzA" = (
@@ -14731,7 +14728,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "qzF" = (
 /obj/structure/table/steel_reinforced,
@@ -14746,7 +14743,7 @@
 	name = "Esteban";
 	pixel_y = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qzI" = (
 /obj/structure/table/glass,
@@ -14789,7 +14786,7 @@
 /obj/item/rig/internalaffairs,
 /obj/item/clothing/head/helmet/space/void/wizard,
 /obj/item/clothing/suit/space/void/wizard,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qCQ" = (
 /obj/effect/floor_decal/milspec/color/blue,
@@ -14816,7 +14813,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "qFr" = (
 /obj/structure/closet/cabinet,
@@ -14880,14 +14877,14 @@
 	pixel_x = -2
 	},
 /obj/item/chems/ivbag,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /obj/structure/closet/medical_wall{
 	pixel_y = 32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qGl" = (
 /obj/item/ball,
@@ -14895,7 +14892,7 @@
 /area/beach)
 "qGJ" = (
 /obj/effect/shuttle_landmark/cynosure/escape_pod1/offsite,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape_pod1/centcom)
 "qHh" = (
 /obj/item/gun/launcher/pneumatic,
@@ -14986,7 +14983,7 @@
 /obj/structure/hull_corner/long_vert{
 	dir = 9
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "qLH" = (
 /obj/structure/table/woodentable_reinforced,
@@ -14997,7 +14994,7 @@
 	},
 /area/ninja_dojo/dojo)
 "qMP" = (
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "qOh" = (
 /obj/effect/floor_decal/carpet{
@@ -15040,7 +15037,7 @@
 	dir = 8;
 	icon_state = "propulsion_l"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/syndicate_station/start)
 "qPy" = (
 /obj/structure/hygiene/urinal{
@@ -15063,10 +15060,10 @@
 /obj/machinery/vending/cigarette{
 	dir = 4;
 	name = "hacked cigarette machine";
-	products = list(/obj/item/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
+	products = list(/obj/item/box/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
 	markup = 0
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "qQW" = (
 /obj/machinery/door/blast/shutters{
@@ -15085,7 +15082,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "qRq" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -15132,7 +15129,7 @@
 	pixel_x = -22;
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "qTA" = (
 /turf/unsimulated/floor{
@@ -15180,7 +15177,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "qVZ" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -15285,7 +15282,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rar" = (
 /obj/structure/table/steel_reinforced,
@@ -15297,7 +15294,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "raB" = (
 /obj/structure/window/reinforced{
@@ -15318,7 +15315,7 @@
 /area/holodeck/source_courtroom)
 "rbi" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "rbA" = (
 /obj/machinery/vending/coffee,
@@ -15340,7 +15337,7 @@
 	landmark_tag = "trade_shuttle_start";
 	name = "Trade Station"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rcm" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -15390,7 +15387,7 @@
 	hacked = 1;
 	name = "hacked autolathe"
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "rer" = (
 /obj/machinery/chem_master/condimaster,
@@ -15452,7 +15449,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/syndicate_station/start)
 "rgS" = (
 /obj/effect/floor_decal/corner/white{
@@ -15491,7 +15488,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "riQ" = (
 /obj/structure/table/steel_reinforced,
@@ -15534,7 +15531,7 @@
 /obj/item/stack/medical/splint,
 /obj/item/belt/medical/emt,
 /obj/item/belt/medical/emt,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "rlf" = (
 /obj/structure/table,
@@ -15560,21 +15557,21 @@
 	name = "Recovery Shuttle Dock 01";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "rnP" = (
 /obj/structure/rack,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "rnY" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "rof" = (
 /obj/item/radio/intercom{
@@ -15649,12 +15646,12 @@
 /turf/unsimulated/shuttle/wall/dark,
 /area/centcom/main_hall)
 "rrP" = (
-/obj/item/toy/chess/knight_black,
+/obj/item/toy/chess/knight/black,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "rsq" = (
 /obj/structure/undies_wardrobe,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rsU" = (
 /turf/unsimulated/wall,
@@ -15675,7 +15672,7 @@
 /obj/machinery/vending/tool{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rva" = (
 /obj/abstract/landmark{
@@ -15761,7 +15758,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rwX" = (
 /obj/structure/grille,
@@ -15773,7 +15770,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "rxB" = (
 /obj/effect/shuttle_landmark/cynosure/large_escape_pod1/transit,
@@ -15781,11 +15778,11 @@
 /area/shuttle/large_escape_pod1/transit)
 "rym" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "ryC" = (
 /obj/structure/iv_drip,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "ryE" = (
 /obj/structure/closet/wardrobe/pink,
@@ -15809,7 +15806,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "rzt" = (
 /obj/structure/bed/chair,
@@ -15835,7 +15832,7 @@
 	name = "ship lockdown control";
 	pixel_x = -25
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "rzF" = (
 /obj/structure/table/reinforced,
@@ -15855,13 +15852,13 @@
 	dir = 2;
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rzJ" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "rAB" = (
 /obj/effect/decal/cleanable/cobweb2,
@@ -15898,7 +15895,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "rCR" = (
 /obj/item/ball,
@@ -15921,7 +15918,7 @@
 /obj/machinery/door/airlock/silver{
 	name = "Restroom"
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "rEg" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -15960,14 +15957,14 @@
 /area/wizard_station)
 "rGF" = (
 /obj/vehicle/train/cargo/trolley,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rGJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
 /obj/machinery/meter,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "rGU" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
@@ -15978,13 +15975,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "rHT" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
 	id_tag = "vox_east_vent"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "rJp" = (
 /obj/structure/bed/chair{
@@ -16026,7 +16023,7 @@
 	dir = 8;
 	id_tag = "merc_shuttle_pump"
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "rLv" = (
 /obj/structure/hygiene/sink{
@@ -16049,7 +16046,7 @@
 /area/centcom/terminal)
 "rLI" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "rLV" = (
 /obj/structure/window/reinforced,
@@ -16107,7 +16104,7 @@
 	name = "Storefront";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rON" = (
 /obj/structure/window/reinforced{
@@ -16136,7 +16133,7 @@
 	name = "Ship External Access";
 	
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "rOS" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -16225,14 +16222,14 @@
 "rRM" = (
 /obj/item/radio/electropack,
 /obj/structure/table/steel,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "rSb" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8;
 	icon_state = "propulsion_r"
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/syndicate_station/start)
 "rSd" = (
 /obj/effect/floor_decal/techfloor{
@@ -16250,7 +16247,7 @@
 /obj/machinery/atm{
 	pixel_x = -32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rSn" = (
 /obj/structure/window/reinforced{
@@ -16260,7 +16257,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "rTu" = (
 /obj/machinery/clonepod,
@@ -16289,7 +16286,7 @@
 	},
 /obj/machinery/light,
 /obj/structure/table/glass,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rXy" = (
 /turf/unsimulated/floor{
@@ -16303,7 +16300,7 @@
 	locked = 1;
 	name = "Recovery Shuttle Dock 3"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "rYJ" = (
 /turf/unsimulated/floor{
@@ -16321,12 +16318,12 @@
 /obj/structure/morgue{
 	dir = 8
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "rZm" = (
 /obj/structure/closet/wardrobe/captain,
 /obj/item/gun/projectile/revolver/mateba,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rZv" = (
 /obj/effect/floor_decal/corner/yellow/diagonal,
@@ -16345,11 +16342,11 @@
 /obj/structure/hull_corner{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "sar" = (
 /obj/machinery/door/airlock/hatch,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "saR" = (
 /obj/structure/bed/chair/holochair{
@@ -16394,13 +16391,13 @@
 /obj/structure/emergency_dispenser{
 	pixel_y = 32
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "sdc" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "sdg" = (
 /obj/structure/bed/chair/wood{
@@ -16479,7 +16476,7 @@
 /obj/machinery/atmospherics/unary/freezer{
 	icon_state = "freezer"
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "shh" = (
 /obj/structure/bed/chair/office/dark{
@@ -16520,7 +16517,7 @@
 /obj/machinery/computer/shuttle_control/multi/mercenary{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "shY" = (
 /obj/structure/synthesized_instrument/synthesizer/piano{
@@ -16539,7 +16536,7 @@
 /obj/structure/hull_corner{
 	dir = 8
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "sko" = (
 /obj/machinery/door/blast/regular{
@@ -16565,7 +16562,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "slo" = (
 /obj/machinery/button/access{
@@ -16578,7 +16575,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "smc" = (
 /obj/machinery/suit_cycler/syndicate{
@@ -16706,7 +16703,7 @@
 /obj/machinery/constructable_frame/computerframe{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "ssK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -16757,7 +16754,7 @@
 	name = "Shuttle Hatch";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/supply)
 "sxL" = (
 /obj/structure/bed/chair/office/light,
@@ -16784,7 +16781,7 @@
 	name = "remote shutter control";
 	pixel_x = -25
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "szv" = (
 /obj/structure/table/reinforced,
@@ -16817,7 +16814,7 @@
 /area/holodeck/source_basketball)
 "sEr" = (
 /obj/machinery/portable_atmospherics/powered/pump,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "sFa" = (
 /turf/unsimulated/floor{
@@ -16848,7 +16845,7 @@
 "sFD" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/largecrate/animal/corgi,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "sGe" = (
 /obj/effect/floor_decal/sign/small_h,
@@ -16888,7 +16885,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "sHu" = (
 /turf/unsimulated/floor{
@@ -16920,7 +16917,7 @@
 	name = "Ship Hatch";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "sII" = (
 /obj/effect/floor_decal/carpet{
@@ -17006,7 +17003,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/merchant/home)
 "sKH" = (
 /turf/space/transit/north,
@@ -17062,7 +17059,7 @@
 /obj/machinery/computer/modular/preset/cardslot/command{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "sLX" = (
 /turf/unsimulated/wall,
@@ -17077,7 +17074,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "sNL" = (
 /obj/structure/table/woodentable_reinforced,
@@ -17104,7 +17101,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "sPf" = (
 /obj/structure/table/woodentable,
@@ -17166,7 +17163,7 @@
 	name = "Subversive Intercom";
 	pixel_x = -22
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "sRF" = (
 /obj/structure/table/steel_reinforced,
@@ -17215,7 +17212,7 @@
 	name = "Skipjack Blast Shielding"
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "sUe" = (
 /obj/machinery/media/jukebox,
@@ -17261,7 +17258,7 @@
 	name = "Recovery Shuttle Dock 02";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "sYO" = (
 /obj/structure/closet/secure_closet/anesthetics,
@@ -17304,7 +17301,7 @@
 /area/space)
 "sZr" = (
 /obj/machinery/teleport/station,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "tay" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -17358,7 +17355,7 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "tds" = (
 /obj/structure/window/reinforced,
@@ -17376,11 +17373,11 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "tes" = (
 /obj/structure/bed/chair/comfy/red,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "teN" = (
 /obj/structure/flora/pottedplant{
@@ -17407,13 +17404,13 @@
 	pixel_x = 28;
 	pixel_y = 8
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "tfb" = (
 /obj/machinery/suit_cycler/syndicate{
 	locked = 0
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tfr" = (
 /obj/machinery/computer/teleporter,
@@ -17437,7 +17434,7 @@
 /obj/structure/rack,
 /obj/item/belt/security,
 /obj/item/belt/security,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tgH" = (
 /obj/structure/table/steel,
@@ -17445,7 +17442,7 @@
 /obj/item/ammo_magazine/m9mm,
 /obj/item/gun/projectile/pistol,
 /obj/item/ammo_magazine/m9mm,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tgY" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -17459,7 +17456,7 @@
 /area/shuttle/arrival/pre_game)
 "thr" = (
 /obj/machinery/door/airlock/double/glass,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "thM" = (
 /obj/structure/closet/emcloset,
@@ -17474,7 +17471,7 @@
 "tim" = (
 /obj/structure/table/steel,
 /obj/item/toolbox/syndicate/powertools,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tiB" = (
 /obj/structure/bed/chair,
@@ -17486,7 +17483,7 @@
 "tiP" = (
 /obj/structure/rack,
 /obj/item/belt/security/tactical/bandolier,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tjP" = (
 /obj/effect/floor_decal/carpet{
@@ -17506,7 +17503,7 @@
 /area/centcom/main_hall)
 "tlu" = (
 /obj/structure/filing_cabinet,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "tmq" = (
 /obj/item/ball/basketball,
@@ -17530,7 +17527,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "tpm" = (
 /obj/structure/table/holo_woodentable,
@@ -17545,7 +17542,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
 "tqq" = (
 /obj/structure/table/steel,
@@ -17568,7 +17565,7 @@
 	name = "remote shutter control";
 	
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "trI" = (
 /obj/effect/floor_decal/milspec/color/white,
@@ -17625,7 +17622,7 @@
 /area/skipjack_station)
 "tuK" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "tuN" = (
 /obj/structure/table,
@@ -17678,7 +17675,7 @@
 /area/shuttle/escape/centcom)
 "tvU" = (
 /obj/machinery/computer/modular/preset/nuclear,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "twp" = (
 /obj/structure/window/reinforced{
@@ -17697,7 +17694,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "twM" = (
 /obj/structure/bed/chair/shuttle,
@@ -17722,7 +17719,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/meter,
 /obj/structure/largecrate/animal/cat,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "tzO" = (
 /obj/structure/closet{
@@ -17743,7 +17740,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "tCa" = (
 /obj/effect/floor_decal/carpet{
@@ -17770,23 +17767,23 @@
 /obj/structure/hull_corner/long_vert{
 	dir = 6
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/arrival/pre_game)
 "tDh" = (
 /obj/machinery/constructable_frame/computerframe,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tDm" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "tDn" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/closet/crate/secure/decalock/loot,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "tDF" = (
 /obj/machinery/door/airlock{
@@ -17800,7 +17797,7 @@
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/radio/off,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "tDS" = (
 /obj/structure/bed/chair/shuttle,
@@ -17813,7 +17810,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "tEZ" = (
 /obj/structure/grille,
@@ -17822,7 +17819,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "tFm" = (
 /obj/effect/overlay/palmtree_r,
@@ -17840,13 +17837,13 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "tGA" = (
 /obj/structure/hull_corner/long_vert{
 	dir = 5
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "tHT" = (
 /obj/machinery/camera/network/thunder{
@@ -17860,7 +17857,7 @@
 /area/tdome)
 "tIC" = (
 /obj/structure/shuttle/engine/propulsion,
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/skipjack_station/start)
 "tIH" = (
 /obj/structure/bed/chair/office/dark{
@@ -17960,7 +17957,7 @@
 /area/space)
 "tMB" = (
 /obj/structure/closet/crate/freezer/rations,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "tNb" = (
 /obj/effect/floor_decal/spline/plain{
@@ -17985,10 +17982,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/meter,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "tQa" = (
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/arrival/pre_game)
 "tQt" = (
 /turf/space/transit/east,
@@ -18032,7 +18029,7 @@
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_y = -32
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "tSe" = (
 /turf/wall/shuttle/hard_corner,
@@ -18077,10 +18074,10 @@
 	pixel_x = -2
 	},
 /obj/item/chems/ivbag,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/escape/centcom)
 "tTz" = (
@@ -18093,7 +18090,7 @@
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "tTN" = (
 /obj/structure/table/reinforced,
@@ -18131,7 +18128,7 @@
 "tUq" = (
 /obj/item/bedsheet/orange,
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "tUu" = (
 /obj/effect/floor_decal/carpet,
@@ -18204,13 +18201,13 @@
 	},
 /obj/item/chems/ivbag,
 /obj/item/chems/ivbag,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "tXU" = (
 /obj/structure/hull_corner{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "tXW" = (
 /obj/structure/flora/bush/brflowers,
@@ -18218,12 +18215,12 @@
 /area/holodeck/source_picnicarea)
 "tYi" = (
 /obj/structure/table/reinforced,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
@@ -18248,7 +18245,7 @@
 /obj/structure/hull_corner{
 	dir = 8
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/syndicate_elite/mothership)
 "uak" = (
 /obj/structure/table,
@@ -18273,14 +18270,14 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uaS" = (
 /obj/effect/floor_decal/sign/small_d,
 /turf/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "uaZ" = (
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "ubf" = (
 /obj/structure/bed/chair,
@@ -18410,11 +18407,11 @@
 /area/prison/solitary)
 "ukC" = (
 /obj/machinery/teleport/hub,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "ukN" = (
 /obj/structure/sign/warning/secure_area,
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/arrival/pre_game)
 "ulh" = (
 /obj/structure/table/reinforced,
@@ -18479,7 +18476,7 @@
 /area/shuttle/transport1/centcom)
 "uqM" = (
 /obj/machinery/door/airlock/voidcraft,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "uru" = (
 /obj/structure/table/reinforced,
@@ -18668,10 +18665,10 @@
 "uAk" = (
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
-	products = list(/obj/item/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
+	products = list(/obj/item/box/fancy/cigarettes=10,/obj/item/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2);
 	markup = 0
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uAD" = (
 /obj/structure/table/reinforced,
@@ -18771,7 +18768,7 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "uFi" = (
 /obj/effect/floor_decal/spline/plain{
@@ -18782,7 +18779,7 @@
 "uFD" = (
 /obj/machinery/computer/shuttle_control/multi/administration,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "uGg" = (
 /obj/structure/grille,
@@ -18797,7 +18794,7 @@
 	id_tag = "skipjackshutters";
 	name = "Skipjack Blast Shielding"
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "uGT" = (
 /obj/structure/bed/chair/shuttle{
@@ -18820,7 +18817,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uIh" = (
 /obj/effect/floor_decal/corner/red{
@@ -18835,7 +18832,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uJz" = (
 /obj/effect/floor_decal/sign/small_a,
@@ -18882,7 +18879,7 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "uKm" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -18918,7 +18915,7 @@
 	
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "uLV" = (
 /obj/machinery/turretid{
@@ -18945,7 +18942,7 @@
 	pixel_x = 32;
 	dir = 4
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "uOQ" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -18975,7 +18972,7 @@
 	pixel_y = 32;
 	
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uQC" = (
 /obj/effect/step_trigger/thrower{
@@ -19008,7 +19005,7 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
 	},
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/ninja_dojo/start)
 "uRB" = (
 /obj/machinery/computer/modular/preset/cardslot/command{
@@ -19046,7 +19043,7 @@
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uSn" = (
 /obj/structure/table,
@@ -19073,7 +19070,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uUA" = (
 /obj/item/clothing/glasses/hud/health{
@@ -19098,7 +19095,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "uVK" = (
 /obj/machinery/door/airlock/double/glass{
@@ -19132,7 +19129,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/centcom/evac)
 "uXK" = (
 /obj/effect/floor_decal/carpet{
@@ -19163,13 +19160,13 @@
 	pixel_x = -32;
 	
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "vaV" = (
 /mob/living/simple_animal/passive/cat/kitten{
 	name = "Enola"
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "vbp" = (
 /obj/effect/floor_decal/milspec/cargo_arrow{
@@ -19193,7 +19190,7 @@
 /turf/floor/holofloor/lino,
 /area/holodeck/source_meetinghall)
 "vcS" = (
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/large_escape_pod1/centcom)
 "vfj" = (
 /obj/effect/floor_decal/milspec/color/red,
@@ -19214,7 +19211,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "vhz" = (
 /obj/structure/window/reinforced{
@@ -19242,7 +19239,7 @@
 /area/skipjack_station)
 "viE" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "viV" = (
 /obj/structure/table/steel_reinforced,
@@ -19259,7 +19256,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "vjy" = (
 /obj/machinery/door/blast/regular{
@@ -19267,11 +19264,11 @@
 	id_tag = "syndieshutters_telebay";
 	name = "Outer Airlock"
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "vjD" = (
 /obj/structure/table,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/centcom/evac)
 "vjU" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -19286,7 +19283,7 @@
 	pixel_y = -32;
 	dir = 1
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "vkR" = (
 /turf/unsimulated/floor{
@@ -19306,7 +19303,7 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "vmq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -19410,7 +19407,7 @@
 	dir = 10
 	},
 /obj/structure/largecrate/animal/corgi,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "vry" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -19464,7 +19461,7 @@
 "vtI" = (
 /obj/machinery/teleport/hub,
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "vwm" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -19526,7 +19523,7 @@
 /turf/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "vyH" = (
-/obj/item/toy/chess/queen_black,
+/obj/item/toy/chess/queen/black,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "vyM" = (
@@ -19542,7 +19539,7 @@
 /obj/item/belt/utility/full,
 /obj/item/multitool,
 /obj/machinery/light/small,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "vAB" = (
 /obj/effect/decal/cleanable/cobweb2{
@@ -19588,7 +19585,7 @@
 /obj/structure/table/steel,
 /obj/item/clothing/glasses/regular,
 /obj/item/clothing/glasses/regular,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "vDV" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -19631,7 +19628,7 @@
 /area/centcom/specops)
 "vGC" = (
 /obj/machinery/light,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "vGH" = (
 /obj/machinery/teleport/station,
@@ -19667,7 +19664,7 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/item/bikehorn,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "vJH" = (
 /obj/item/firstaid/empty,
@@ -19711,7 +19708,7 @@
 /area/centcom/medical)
 "vMn" = (
 /obj/structure/table/steel_reinforced,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "vMI" = (
 /obj/machinery/shieldwallgen,
@@ -19794,9 +19791,9 @@
 /obj/machinery/vending/assist{
 	contraband = null;
 	name = "AntagCorpVend";
-	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/cartridge/signal=4,/obj/item/clothing/glasses/sunglasses=4)
+	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/clothing/glasses/sunglasses=4)
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "vPM" = (
 /obj/structure/grille,
@@ -19815,7 +19812,7 @@
 	opacity = 0
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/syndicate_station/start)
 "vQy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -19843,7 +19840,7 @@
 	dir = 1
 	},
 /obj/structure/iv_drip,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "vRB" = (
 /obj/structure/hygiene/sink{
@@ -19852,7 +19849,7 @@
 	pixel_y = 2
 	},
 /obj/machinery/light/small,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "vRJ" = (
 /obj/effect/floor_decal/carpet{
@@ -19879,7 +19876,7 @@
 /area/syndicate_mothership/elite_squad)
 "vTq" = (
 /obj/machinery/computer/station_alert,
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "vTt" = (
 /obj/structure/table/steel_reinforced,
@@ -19957,7 +19954,7 @@
 /obj/structure/hull_corner/long_horiz{
 	dir = 10
 	},
-/turf/wall/shuttle/plating/carry,
+/turf/floor/shuttle/carry,
 /area/shuttle/supply)
 "vWV" = (
 /obj/structure/window/reinforced{
@@ -20029,7 +20026,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "wbS" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
@@ -20044,7 +20041,7 @@
 	name = "Subversive Intercom";
 	pixel_x = -22
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wcg" = (
 /obj/item/stool/padded{
@@ -20095,7 +20092,7 @@
 	},
 /area/skipjack_station)
 "wdP" = (
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/supply)
 "wdS" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
@@ -20172,7 +20169,7 @@
 	name = "Blast Shutters";
 	opacity = 0
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/ninja_dojo/start)
 "wgp" = (
 /obj/structure/table,
@@ -20194,14 +20191,14 @@
 /obj/machinery/bodyscanner{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wie" = (
 /obj/effect/shuttle_landmark/cynosure/escape_pod1/transit,
 /turf/space/transit/north,
 /area/shuttle/escape_pod1/transit)
 "wiL" = (
-/obj/item/toy/chess/knight_black,
+/obj/item/toy/chess/knight/black,
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "wiN" = (
@@ -20237,7 +20234,7 @@
 /obj/item/kit/paint/durand,
 /obj/item/kit/paint/durand/phazon,
 /obj/item/kit/paint/durand/seraph,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wjG" = (
 /obj/machinery/computer/modular/preset,
@@ -20253,7 +20250,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wkC" = (
 /turf/floor/holofloor/tiled/dark,
@@ -20278,7 +20275,7 @@
 /obj/item/chems/syringe,
 /obj/item/firstaid/combat,
 /obj/item/firstaid/clotting,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wlf" = (
 /obj/structure/flora/bush/brflowers,
@@ -20320,11 +20317,11 @@
 /obj/random/firstaid,
 /obj/random/firstaid,
 /obj/random/firstaid,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wnS" = (
 /obj/item/trash/cigbutt,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "woe" = (
 /obj/machinery/oxygen_pump/mobile/stabilizer,
@@ -20338,20 +20335,20 @@
 	name = "Cargo Hold";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wpb" = (
 /obj/machinery/constructable_frame/computerframe{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "wpt" = (
 /obj/machinery/constructable_frame/computerframe{
 	dir = 1
 	},
 /obj/machinery/light,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "wpL" = (
 /turf/unsimulated/floor{
@@ -20453,7 +20450,7 @@
 /obj/machinery/atmospherics/unary/freezer{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wvQ" = (
 /obj/machinery/smartfridge,
@@ -20467,7 +20464,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wyq" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -20477,12 +20474,12 @@
 	},
 /area/wizard_station)
 "wBb" = (
-/obj/item/toy/chess/rook_black,
+/obj/item/toy/chess/rook/black,
 /turf/floor/holofloor/bmarble,
 /area/holodeck/source_chess)
 "wBN" = (
 /obj/structure/closet/wardrobe/pjs,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wCB" = (
 /obj/structure/table,
@@ -20550,7 +20547,7 @@
 /obj/item/firstaid/toxin,
 /obj/item/firstaid/adv,
 /obj/item/firstaid/clotting,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wGD" = (
 /obj/structure/flora/bush/brflowers,
@@ -20642,7 +20639,7 @@
 	},
 /obj/structure/table/steel_reinforced,
 /obj/machinery/cell_charger,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "wHH" = (
 /obj/machinery/conveyor{
@@ -20656,7 +20653,7 @@
 	name = "Shuttle Hatch";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/supply)
 "wHK" = (
 /obj/structure/table/woodentable,
@@ -20695,14 +20692,14 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "wJs" = (
 /obj/machinery/door/airlock/hatch{
 	id_tag = "vox_northwest_lock";
 	
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "wLi" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
@@ -20720,7 +20717,7 @@
 	},
 /area/wizard_station)
 "wLX" = (
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape_pod1/centcom)
 "wMD" = (
 /obj/machinery/vending/hydroseeds,
@@ -20768,7 +20765,7 @@
 	tag_interior_door = "vox_southeast_lock";
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "wNS" = (
 /obj/structure/table/woodentable_reinforced,
@@ -20782,7 +20779,7 @@
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wOt" = (
 /obj/structure/ore_box,
@@ -20835,12 +20832,12 @@
 /obj/structure/hygiene/toilet{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "wQJ" = (
 /obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "wQR" = (
 /obj/structure/closet/secure_closet/medical_wall/pills{
@@ -20906,7 +20903,7 @@
 "wUM" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/modular_computer/pda/syndicate,
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "wWb" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
@@ -20972,7 +20969,7 @@
 /area/holodeck/source_chess)
 "wZL" = (
 /obj/machinery/vending/hydroseeds,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "wZS" = (
 /obj/structure/rack,
@@ -21006,7 +21003,7 @@
 	pixel_y = 25;
 	tag_door = "large_escape_pod_2_recovery_hatch"
 	},
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "xbZ" = (
 /obj/structure/table,
@@ -21047,7 +21044,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "xcR" = (
 /obj/effect/floor_decal/borderfloor,
@@ -21069,7 +21066,7 @@
 	name = "Engineering";
 	
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xdr" = (
 /obj/structure/iv_drip,
@@ -21124,7 +21121,7 @@
 /area/centcom/specops)
 "xeL" = (
 /obj/structure/hull_corner,
-/turf/wall/shuttle/plating/airless/carry,
+/turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "xeP" = (
 /obj/machinery/computer/teleporter,
@@ -21155,7 +21152,7 @@
 /area/wizard_station)
 "xhJ" = (
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "xib" = (
 /obj/structure/shuttle/falsewall_no_join/window{
@@ -21275,7 +21272,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xnb" = (
 /obj/structure/table/glass,
@@ -21305,7 +21302,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "xov" = (
 /obj/structure/table/holotable,
@@ -21320,7 +21317,7 @@
 /area/holodeck/source_thunderdomecourt)
 "xoy" = (
 /obj/structure/closet/crate/secure/weapon,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xoE" = (
 /obj/machinery/computer/shuttle_control/emergency{
@@ -21380,11 +21377,11 @@
 "xsa" = (
 /obj/structure/table,
 /obj/effect/floor_decal/milspec/color/red,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "xsq" = (
 /obj/structure/closet/crate/freezer/rations,
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "xtc" = (
 /turf/wall/shuttle,
@@ -21479,7 +21476,7 @@
 /obj/structure/table,
 /obj/machinery/recharger,
 /obj/item/screwdriver,
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "xyu" = (
 /obj/machinery/door/airlock/double/glass,
@@ -21489,12 +21486,12 @@
 /area/shuttle/trade)
 "xyO" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/lipstick/black,
+/obj/item/cosmetics/lipstick/black,
 /obj/item/cosmetics/lipstick/green,
-/obj/item/lipstick/purple,
-/obj/item/lipstick,
+/obj/item/cosmetics/lipstick/purple,
+/obj/item/cosmetics/lipstick,
 /obj/random/lipstick,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xyV" = (
 /obj/structure/flora/bush/ywflowers,
@@ -21594,16 +21591,16 @@
 /area/holodeck/source_theatre)
 "xFu" = (
 /obj/structure/table/reinforced,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "xFQ" = (
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -21726,7 +21723,7 @@
 /obj/item/multitool,
 /obj/item/multitool,
 /obj/item/clothing/shoes/magboots,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/skipjack_station/start)
 "xMZ" = (
 /obj/structure/curtain/open/shower,
@@ -21741,7 +21738,7 @@
 "xNf" = (
 /obj/item/bedsheet/hos,
 /obj/structure/bed/padded,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "xNG" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -21767,22 +21764,22 @@
 /area/centcom/security)
 "xNP" = (
 /obj/machinery/status_display,
-/turf/wall/thull,
+/turf/wall/titanium,
 /area/shuttle/arrival/pre_game)
 "xNV" = (
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "xOh" = (
 /obj/machinery/vending/assist{
 	contraband = null;
 	dir = 1;
 	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/cartridge/signal=4,/obj/item/clothing/glasses/sunglasses=4)
+	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/clothing/glasses/sunglasses=4)
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xOi" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -21812,13 +21809,13 @@
 /turf/unsimulated/wall,
 /area/ai_multicam_room)
 "xOL" = (
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "xOX" = (
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "xPQ" = (
 /obj/machinery/door/window{
@@ -21831,7 +21828,7 @@
 	pixel_y = -30;
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft,
+/turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "xQE" = (
 /obj/machinery/photocopier,
@@ -21848,7 +21845,7 @@
 /area/holodeck/source_meetinghall)
 "xSD" = (
 /obj/machinery/door/airlock/voidcraft,
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "xTk" = (
 /obj/structure/rack,
@@ -21895,22 +21892,22 @@
 /area/centcom/bar)
 "xVk" = (
 /obj/structure/window/reinforced,
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "xVB" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/table/steel,
-/obj/item/chems/ivbag/blood/OMinus,
-/obj/item/chems/ivbag/blood/OMinus,
-/turf/wall/shuttle/floor/voidcraft/light,
+/obj/item/chems/ivbag/blood/ominus,
+/obj/item/chems/ivbag/blood/ominus,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "xVH" = (
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "xWp" = (
 /turf/unsimulated/floor{
@@ -21952,7 +21949,7 @@
 	name = "remote shutter control";
 	
 	},
-/turf/wall/skipjack,
+/turf/wall/raidershuttle,
 /area/skipjack_station/start)
 "xXD" = (
 /obj/machinery/door/blast/regular{
@@ -21990,7 +21987,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/turf/wall/shuttle/floor/voidcraft/light,
+/turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "ybs" = (
 /obj/structure/bed/chair{
@@ -22036,12 +22033,12 @@
 	},
 /area/centcom/bar)
 "ydQ" = (
-/obj/item/box/flashshells,
-/obj/item/box/flashshells,
-/obj/item/box/stunshells,
-/obj/item/box/stunshells,
-/obj/item/box/beanbags,
-/obj/item/box/beanbags,
+/obj/item/box/ammo/flashshells,
+/obj/item/box/ammo/flashshells,
+/obj/item/box/ammo/stunshells,
+/obj/item/box/ammo/stunshells,
+/obj/item/box/ammo/beanbags,
+/obj/item/box/ammo/beanbags,
 /obj/structure/window/reinforced,
 /obj/structure/rack,
 /obj/structure/window/reinforced{
@@ -22057,7 +22054,7 @@
 /obj/structure/hygiene/shower{
 	pixel_y = 3
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "yeA" = (
 /obj/machinery/smartfridge/chemistry,
@@ -22066,7 +22063,7 @@
 "yeY" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/captain,
-/turf/wall/shuttle/floor/black,
+/turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "yfe" = (
 /obj/structure/grille,
@@ -22078,7 +22075,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/full,
-/turf/wall/shuttle/plating,
+/turf/floor/shuttle,
 /area/shuttle/escape/centcom)
 "yfp" = (
 /obj/abstract/landmark{
@@ -22099,7 +22096,7 @@
 /area/tdome)
 "ygE" = (
 /obj/structure/closet/emcloset,
-/turf/wall/shuttle/floor/yellow,
+/turf/floor/shuttle/yellow,
 /area/centcom/evac)
 "yhh" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -22120,7 +22117,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/wall/shuttle/floor/darkred,
+/turf/floor/shuttle/darkred,
 /area/shuttle/merchant/home)
 "yib" = (
 /obj/structure/window/reinforced/tinted{
@@ -22133,7 +22130,7 @@
 /obj/structure/mirror{
 	pixel_x = 28
 	},
-/turf/wall/shuttle/floor/white,
+/turf/floor/shuttle/white,
 /area/centcom/evac)
 "yjB" = (
 /obj/structure/bed/padded,
@@ -22195,15 +22192,15 @@
 	},
 /obj/effect/shuttle_landmark{
 	base_area = /area/ninja_dojo/dojo;
-	base_turf = /turf/snow;
+	base_turf = /turf/unsimulated/floor/snow;
 	landmark_tag = "ninja_start";
 	name = "Dojo Outpost"
 	},
-/turf/wall/shuttle/floor/voidcraft/dark,
+/turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "ymh" = (
 /obj/item/pizzabox/meat,
-/turf/wall/shuttle/floor/red,
+/turf/floor/shuttle/red,
 /area/skipjack_station/start)
 
 (1,1,1) = {"
