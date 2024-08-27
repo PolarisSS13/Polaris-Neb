@@ -169,6 +169,11 @@
 /obj/item/retail_scanner : /obj/item/eftpos{@OLD}
 /obj/item/retail_scanner/civilian : /obj/item/eftpos/departmental/service{@OLD}
 /obj/item/retail_scanner/security : /obj/item/eftpos/departmental/security{@OLD}
+/obj/item/retail_scanner/cargo : /obj/item/eftpos/departmental/cargo{@OLD}
+/obj/item/retail_scanner/science : /obj/item/eftpos/departmental/science{@OLD}
+/obj/item/retail_scanner/medical : /obj/item/eftpos/departmental/medical{@OLD}
+/obj/item/retail_scanner/command : /obj/item/eftpos/departmental/command{@OLD}
+/obj/item/retail_scanner/engineering : /obj/item/eftpos/departmental/engineering{@OLD}
 
 # POLARIS SIGNS
 /obj/structure/sign/nosmoking_1 : /obj/structure/sign/warning/nosmoking_1{@OLD}
