@@ -4,12 +4,7 @@
 /turf/simulated/mineral : /turf/wall/natural
 /turf/simulated/sky/@SUBTYPES : /turf/open/sky/@SUBTYPES
 /turf/simulated/floor/water/pool : /turf/simulated/floor/pool
-/turf/simulated/shuttle/plating/airless : /turf/simulated/floor/airless{@OLD}
 /turf/simulated/shuttle/plating/airless/carry : @DELETE
-/turf/simulated/shuttle/plating/@SUBTYPES : /turf/simulated/floor/@SUBTYPES{@OLD}
-/turf/simulated/shuttle/floor/@SUBTYPES : /turf/simulated/floor/shuttle/@SUBTYPES{@OLD}
-/turf/simulated/floor/shuttle : /turf/simulated/floor/shuttle/blue{@OLD}
-/turf/simulated/floor/shuttle/airless : /turf/simulated/floor/shuttle/blue/airless{@OLD}
 /turf/unsimulated/wall/seperator : /turf/unsimulated/dark_filler
 # natural turfs don't need planetary subtypes, they use level data
 /turf/simulated/floor/outdoors/mud/@SUBTYPES : /turf/floor/natural/mud
