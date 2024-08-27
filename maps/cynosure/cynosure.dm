@@ -12,7 +12,7 @@
 
 	#include "../../mods/content/dungeon_loot/_dungeon_loot.dme"
 	#include "../../mods/content/mundane.dm"
-	#include "../../mods/content/bigpharma/_bigpharma.dme"
+	#include "../../mods/content/baychems/_baychems.dme"
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/government/_government.dme"
 	#include "../../mods/content/matchmaking/_matchmaking.dme"
