@@ -249,10 +249,10 @@
 # FABRICATORS
 /obj/machinery/autolathe{hacked = 1} : /obj/machinery/fabricator/hacked{@OLD; hacked = @SKIP}
 /obj/machinery/autolathe : /obj/machinery/fabricator{@OLD}
-/obj/machinery/pipedispenser : /obj/machinery/fabricator/pipe{@OLD}
-/obj/machinery/pipedispenser/orderable : /obj/machinery/fabricator/pipe{@OLD; anchored = 1}
-/obj/machinery/pipedispenser/disposal : /obj/machinery/fabricator/pipe/disposal{@OLD}
-/obj/machinery/pipedispenser/disposal/orderable : /obj/machinery/fabricator/pipe/disposal{@OLD; anchored = 1}
+/obj/machinery/pipedispenser : /obj/machinery/fabricator/pipe{@OLD; anchored = 1}
+/obj/machinery/pipedispenser/orderable : /obj/machinery/fabricator/pipe{@OLD}
+/obj/machinery/pipedispenser/disposal : /obj/machinery/fabricator/pipe/disposal{@OLD; anchored = 1}
+/obj/machinery/pipedispenser/disposal/orderable : /obj/machinery/fabricator/pipe/disposal{@OLD}
 /obj/machinery/r_n_d/circuit_imprinter : /obj/machinery/fabricator/imprinter{@OLD}
 /obj/machinery/pros_fabricator : /obj/machinery/fabricator/robotics{@OLD}
 /obj/machinery/mecha_part_fabricator : /obj/machinery/fabricator/industrial{@OLD}
