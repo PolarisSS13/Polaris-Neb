@@ -117,7 +117,7 @@
 	icon_state = "exposed10-scrubbers"
 	},
 /obj/structure/door_assembly,
-/obj/item/tape/medical,
+/obj/structure/tape_barricade/medical,
 /turf/floor/plating,
 /area/template_noop)
 "y" = (
@@ -129,7 +129,7 @@
 	},
 /obj/structure/table,
 /obj/random/medical,
-/obj/item/chems/blood/empty,
+/obj/item/chems/ivbag,
 /obj/item/chems/hypospray/autoinjector/used,
 /obj/item/chems/hypospray/autoinjector/used,
 /obj/effect/floor_decal/corner/lime/border{

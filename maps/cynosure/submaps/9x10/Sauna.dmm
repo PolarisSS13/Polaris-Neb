@@ -15,26 +15,24 @@
 /obj/item/stack/tile/wood/sif{
 	amount = 5
 	},
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 1
 	},
 /turf/floor/plating,
 /area/template_noop)
 "m" = (
-/obj/item/tape/engineering,
+/obj/structure/tape_barricade/engineering,
 /turf/floor/plating,
 /area/template_noop)
 "r" = (
-/obj/item/stack/material/panel/mapped/plastic{
-	amount = 20
-	},
+/obj/item/stack/material/panel/mapped/plastic/twenty,
 /turf/floor/plating,
 /area/template_noop)
 "s" = (
 /obj/machinery/door/airlock{
 	name = "Construction Area"
 	},
-/obj/item/tape/engineering,
+/obj/structure/tape_barricade/engineering,
 /turf/floor/tiled/steel_grid,
 /area/template_noop)
 "t" = (
@@ -68,9 +66,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "I" = (
-/obj/item/stack/material/pane/mapped/rglass{
-	amount = 10
-	},
+/obj/item/stack/material/pane/mapped/rglass/ten,
 /turf/floor/plating,
 /area/template_noop)
 "J" = (
@@ -89,7 +85,7 @@
 /area/template_noop)
 "N" = (
 /obj/structure/table/bench,
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 1
 	},
 /turf/floor/wood/sif,

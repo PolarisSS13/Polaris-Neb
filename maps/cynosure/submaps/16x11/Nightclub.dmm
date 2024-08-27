@@ -8,7 +8,7 @@
 /area/template_noop)
 "bv" = (
 /obj/structure/table/marble,
-/obj/item/chems/food/drinks/drinkingglass/shotglass{
+/obj/item/chems/drinks/drinkingglass/shotglass{
 	pixel_x = 11
 	},
 /turf/floor/lino,
@@ -117,8 +117,6 @@
 /area/template_noop)
 "pj" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/plating,
@@ -223,7 +221,6 @@
 /area/template_noop)
 "BS" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central7{
@@ -266,14 +263,14 @@
 /obj/machinery/newscaster{
 	pixel_y = 26
 	},
-/obj/item/chems/food/drinks/flask/barflask{
+/obj/item/chems/drinks/flask/barflask{
 	pixel_x = -4;
 	pixel_y = 8
 	},
 /obj/item/flame/fuelled/lighter/random{
 	pixel_x = -9
 	},
-/obj/random/cigarettes,
+/obj/random/smokes,
 /turf/floor/lino,
 /area/template_noop)
 "GM" = (
@@ -394,7 +391,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "Ru" = (
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -428,8 +425,6 @@
 /area/template_noop)
 "Ul" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/cap/hidden/supply,
@@ -458,12 +453,12 @@
 /area/template_noop)
 "Xi" = (
 /obj/structure/table/marble,
-/obj/item/chems/food/drinks/drinkingglass/shotglass,
+/obj/item/chems/drinks/drinkingglass/shotglass,
 /turf/floor/lino,
 /area/template_noop)
 "Xn" = (
 /obj/machinery/media/jukebox,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 1
 	},
 /turf/floor/tiled/dark,
@@ -497,7 +492,7 @@
 	poster_decl = /decl/poster/bay_27
 	},
 /obj/random/drinkbottle,
-/obj/item/chems/food/drinks/drinkingglass/shotglass{
+/obj/item/chems/drinks/drinkingglass/shotglass{
 	pixel_x = 11
 	},
 /turf/floor/tiled/dark,

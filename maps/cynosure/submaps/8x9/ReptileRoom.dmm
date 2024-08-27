@@ -8,7 +8,7 @@
 	},
 /area/template_noop)
 "h" = (
-/obj/effect/decal/remains/lizard,
+/obj/item/remains/lizard,
 /turf/floor/natural/ignore_mapgen,
 /area/template_noop)
 "k" = (
@@ -47,7 +47,7 @@
 /area/template_noop)
 "p" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/lizard/large,
+/mob/living/simple_animal/passive/lizard/large,
 /turf/floor/natural/ignore_mapgen,
 /area/template_noop)
 "u" = (
@@ -79,7 +79,7 @@
 /area/template_noop)
 "B" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/lizard,
+/mob/living/simple_animal/passive/lizard,
 /obj/item/trash/unajerky,
 /turf/floor/natural/ignore_mapgen,
 /area/template_noop)
@@ -99,7 +99,7 @@
 /turf/floor/natural/ignore_mapgen,
 /area/template_noop)
 "I" = (
-/obj/item/chems/food/snacks/wishsoup{
+/obj/item/food/wishsoup{
 	pixel_y = -6
 	},
 /obj/structure/hygiene/sink{
@@ -186,7 +186,7 @@
 /area/template_noop)
 "Y" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/lizard,
+/mob/living/simple_animal/passive/lizard,
 /obj/machinery/light/small{
 	dir = 1
 	},

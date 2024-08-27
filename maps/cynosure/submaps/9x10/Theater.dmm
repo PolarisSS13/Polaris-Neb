@@ -13,9 +13,7 @@
 /turf/floor/tiled/steel_grid,
 /area/template_noop)
 "h" = (
-/obj/item/camera_assembly{
-	pixel_y = -7
-	},
+/obj/item/frame/camera/kit,
 /obj/structure/sign/poster{
 	pixel_y = -32;
 	poster_decl = /decl/poster/bay_28
@@ -25,7 +23,7 @@
 "i" = (
 /obj/structure/closet/crate/nanothreads,
 /obj/item/pen/crayon/marker/mime,
-/obj/item/clothing/shoes/mime,
+/obj/item/clothing/shoes/color/white,
 /obj/item/clothing/head/soft/mime,
 /obj/item/clothing/costume/mime,
 /obj/item/clothing/mask/gas/costume/mime,
@@ -144,7 +142,7 @@
 /obj/effect/decal/cleanable/fruit_smudge{
 	color = "#D10000"
 	},
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 1
 	},
 /turf/floor/wood,

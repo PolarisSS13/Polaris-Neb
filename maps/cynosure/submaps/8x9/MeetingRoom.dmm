@@ -147,7 +147,7 @@
 /area/template_noop)
 "L" = (
 /obj/structure/table/woodentable,
-/obj/random/cigarettes,
+/obj/random/smokes,
 /obj/item/clothing/glasses/threedglasses,
 /turf/floor/carpet,
 /area/template_noop)

@@ -64,8 +64,6 @@
 /area/template_noop)
 "h" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -83,8 +81,8 @@
 "i" = (
 /obj/structure/closet/crate/freezer/centauri,
 /obj/random/meat,
-/obj/item/chems/food/drinks/milk,
-/obj/item/chems/food/drinks/soymilk,
+/obj/item/chems/drinks/milk,
+/obj/item/chems/drinks/soymilk,
 /obj/item/box/fancy/egg_box,
 /turf/floor/tiled,
 /area/template_noop)
@@ -115,8 +113,6 @@
 /area/template_noop)
 "n" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -182,7 +178,6 @@
 /area/template_noop)
 "v" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/item/frame/apc,
@@ -249,9 +244,9 @@
 /area/template_noop)
 "D" = (
 /obj/structure/closet/crate/thinktronic,
-/obj/item/pda,
-/obj/item/pda,
-/obj/item/pda,
+/obj/item/modular_computer/pda,
+/obj/item/modular_computer/pda,
+/obj/item/modular_computer/pda,
 /turf/floor/tiled/monotile,
 /area/template_noop)
 "E" = (
@@ -306,8 +301,6 @@
 /area/template_noop)
 "J" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -359,7 +352,7 @@
 	dir = 4
 	},
 /obj/item/stack/tile/floor,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -429,14 +422,14 @@
 	dir = 4
 	},
 /obj/structure/closet/crate/unathi,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
-/obj/item/chems/food/snacks/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
+/obj/item/food/unajerky,
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)
 "Y" = (
