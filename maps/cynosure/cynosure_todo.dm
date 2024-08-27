@@ -23,6 +23,8 @@
 
 /obj/structure/animal_den
 
+/obj/structure/table
+/obj/structure/table/sifwoodentable
 /obj/structure/table/bench
 /obj/structure/table/bench/sifwooden
 /obj/structure/table/bench/sifwooden/padded

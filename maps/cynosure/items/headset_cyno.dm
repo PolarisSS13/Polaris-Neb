@@ -2,8 +2,8 @@
 	name = "explorer's headset"
 	desc = "A small headset used by exploration, with access to the explorer and science channels."
 	icon_state = "exp_headset"
-	adhoc_fallback = TRUE
-	ks2type = /obj/item/encryptionkey/explorer
+	can_use_analog = TRUE
+	encryption_keys = list(/obj/item/encryptionkey/explorer)
 
 
 /obj/item/radio/headset/explorer/alt
@@ -16,8 +16,8 @@
 	name = "sar radio headset"
 	desc = "A small headset for search and rescue, with access to the explorer and medical channels."
 	icon_state = "sar_headset"
-	adhoc_fallback = TRUE
-	ks2type = /obj/item/encryptionkey/sar
+	can_use_analog = TRUE
+	encryption_keys = list(/obj/item/encryptionkey/sar)
 
 
 /obj/item/radio/headset/sar/alt

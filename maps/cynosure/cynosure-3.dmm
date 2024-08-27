@@ -1374,7 +1374,7 @@
 /area/surface/outside/station/roof)
 "aVw" = (
 /turf/floor/reinforced{
-	is_outside = OUTSIDE_YES;
+	is_outside = 1;
 	
 	},
 /area/surface/outside/plains/station/snd)
@@ -1406,7 +1406,7 @@
 	dir = 4
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "aYP" = (
@@ -2658,7 +2658,7 @@
 	dir = 8
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "bOC" = (
@@ -3520,7 +3520,7 @@
 	dir = 5
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "clw" = (
@@ -5202,7 +5202,7 @@
 	icon_state = "2-8"
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "dtn" = (
@@ -5962,7 +5962,7 @@
 /area/surface/outside/plains/station/snd)
 "dUH" = (
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "dUQ" = (
@@ -9948,7 +9948,7 @@
 	dir = 1
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "gyI" = (
@@ -15197,7 +15197,7 @@
 	dir = 10
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "juM" = (
@@ -17074,7 +17074,7 @@
 	dir = 1
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "kFY" = (
@@ -17303,7 +17303,7 @@
 	dir = 1
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "kRF" = (
@@ -20737,7 +20737,7 @@
 /turf/floor/tiled{
 	icon_state = "steel_dirty";
 	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = OUTSIDE_NO
+	is_outside = 0
 	},
 /area/surface/station/hallway/primary/secondfloor/east)
 "nst" = (
@@ -21078,7 +21078,7 @@
 	dir = 5
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "nFo" = (
@@ -21796,7 +21796,7 @@
 	dir = 4
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "old" = (
@@ -26284,7 +26284,7 @@
 "rfP" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "rgI" = (
@@ -27855,7 +27855,7 @@
 	dir = 8
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/station/hallway/secondary/secondfloor/eva_hallway)
 "sod" = (
@@ -29457,7 +29457,7 @@
 	dir = 4
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "tlW" = (
@@ -29542,7 +29542,7 @@
 	dir = 4
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "tov" = (
@@ -31407,7 +31407,7 @@
 	icon_state = "1-2"
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "uyg" = (
@@ -32213,7 +32213,7 @@
 	icon_state = "2-4"
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "uXj" = (
@@ -32480,7 +32480,7 @@
 	dir = 8
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "vhk" = (
@@ -34167,7 +34167,7 @@
 /turf/floor/tiled{
 	icon_state = "steel_dirty";
 	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = OUTSIDE_NO
+	is_outside = 0
 	},
 /area/surface/station/hallway/primary/secondfloor/east)
 "wtK" = (
@@ -34261,7 +34261,7 @@
 	icon_state = "1-2"
 	},
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "wxh" = (
@@ -36927,7 +36927,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/hull{
-	is_outside = OUTSIDE_YES
+	is_outside = 1
 	},
 /area/surface/outside/station/roof)
 "xUN" = (
