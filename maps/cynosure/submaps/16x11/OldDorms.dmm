@@ -39,7 +39,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "cD" = (
-/obj/item/camera_assembly,
+/obj/item/frame/camera/kit,
 /turf/floor/tiled,
 /area/template_noop)
 "cL" = (
@@ -175,7 +175,7 @@
 /area/template_noop)
 "lB" = (
 /obj/structure/table,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -225,10 +225,9 @@
 /turf/floor/wood,
 /area/template_noop)
 "pj" = (
-/obj/item/tape/engineering,
+/obj/structure/tape_barricade/engineering,
 /obj/structure/disposalpipe/broken,
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/cap/hidden/scrubbers,
@@ -319,7 +318,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/item/taperoll/engineering,
+/obj/item/stack/tape_roll/barricade_tape/engineering,
 /turf/floor/tiled,
 /area/template_noop)
 "zZ" = (
@@ -349,7 +348,6 @@
 /area/template_noop)
 "BS" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -512,7 +510,7 @@
 /area/template_noop)
 "QT" = (
 /obj/structure/table,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump{
@@ -554,8 +552,6 @@
 "Ul" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -565,8 +561,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/plating,

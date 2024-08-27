@@ -8295,9 +8295,7 @@
 /obj/structure/closet/crate/radiation,
 /obj/item/clothing/glasses/meson,
 /obj/item/clothing/glasses/meson,
-/obj/item/stack/material/ingot/mapped/lead{
-	amount = 30
-	},
+/obj/item/stack/material/ingot/mapped/lead/thirty,
 /turf/floor/tiled/techmaint,
 /area/surface/station/engineering/storage)
 "eav" = (
@@ -17662,12 +17660,8 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/material/pane/mapped/glass/phoronglass{
-	amount = 20
-	},
-/obj/item/stack/material/pane/mapped/glass{
-	amount = 50
-	},
+/obj/item/stack/material/pane/mapped/glass/phoronglass/twenty,
+/obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -21891,12 +21885,8 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/material/sheet/reinforced/mapped/plasteel{
-	amount = 15
-	},
-/obj/item/stack/material/sheet/mapped/steel{
-	amount = 50
-	},
+/obj/item/stack/material/sheet/reinforced/mapped/plasteel/fifteen,
+/obj/item/stack/material/sheet/mapped/steel/fifty,
 /turf/floor/tiled,
 /area/surface/station/engineering/workshop)
 "kzM" = (
@@ -22773,14 +22763,11 @@
 	dir = 9
 	},
 /obj/structure/table/steel,
-/obj/item/stack/material/pane/mapped/glass{
-	amount = 50;
+/obj/item/stack/material/pane/mapped/glass/fifty{
 	pixel_x = 2;
 	pixel_y = -2
 	},
-/obj/item/stack/material/sheet/mapped/steel{
-	amount = 50
-	},
+/obj/item/stack/material/sheet/mapped/steel/fifty,
 /obj/item/clothing/gloves/thick,
 /obj/item/clothing/gloves/thick,
 /obj/item/belt/utility/atmostech,
@@ -44210,8 +44197,8 @@
 /area/surface/station/maintenance/east/gnd)
 "uTh" = (
 /obj/structure/table/steel,
-/obj/item/retail_scanner/cargo,
-/obj/item/retail_scanner/cargo{
+/obj/item/eftpos/departmental/cargo,
+/obj/item/eftpos/departmental/cargo{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -51335,18 +51322,10 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/material/panel/mapped/plastic{
-	amount = 50
-	},
-/obj/item/stack/material/copper{
-	amount = 20
-	},
-/obj/item/stack/material/rods{
-	amount = 25
-	},
-/obj/item/stack/material/concrete{
-	amount = 50
-	},
+/obj/item/stack/material/panel/mapped/plastic/fifty,
+/obj/item/stack/material/ingot/mapped/copper/twenty,
+/obj/item/stack/material/rods/twentyfive,
+/obj/item/stack/material/brick/mapped/concrete/fifty,
 /turf/floor/tiled,
 /area/surface/station/engineering/workshop)
 "ykA" = (

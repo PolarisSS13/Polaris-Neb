@@ -21,14 +21,14 @@
 /turf/floor/plating,
 /area/template_noop)
 "m" = (
-/obj/item/tape/atmos,
+/obj/structure/tape_barricade/atmos,
 /turf/floor/plating,
 /area/template_noop)
 "s" = (
 /obj/machinery/door/airlock{
 	name = "Construction Area"
 	},
-/obj/item/tape/atmos,
+/obj/structure/tape_barricade/atmos,
 /turf/floor/tiled/steel_grid,
 /area/template_noop)
 "t" = (
@@ -56,7 +56,6 @@
 /area/template_noop)
 "G" = (
 /obj/machinery/button/windowtint{
-	id = "PressureChamber";
 	pixel_x = 22;
 	pixel_y = 24
 	},

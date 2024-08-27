@@ -32,7 +32,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "m" = (
-/obj/machinery/light_construct/small,
+/obj/machinery/light/small/fixture,
 /obj/item/chems/glass/bucket,
 /turf/floor/plating,
 /area/template_noop)
@@ -63,7 +63,7 @@
 /area/template_noop)
 "L" = (
 /obj/structure/table,
-/obj/item/chems/food/drinks/cans/waterbottle{
+/obj/item/chems/drinks/cans/waterbottle{
 	pixel_x = 6;
 	pixel_y = 12
 	},
@@ -95,7 +95,7 @@
 "Y" = (
 /obj/structure/table,
 /obj/random/snack,
-/obj/item/chems/food/drinks/dry_ramen{
+/obj/item/chems/drinks/dry_ramen{
 	pixel_x = -6;
 	pixel_y = 6
 	},

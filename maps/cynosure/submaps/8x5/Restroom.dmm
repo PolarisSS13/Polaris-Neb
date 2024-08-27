@@ -23,7 +23,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "l" = (
-/obj/item/tape/engineering,
+/obj/structure/tape_barricade/engineering,
 /turf/floor/plating,
 /area/template_noop)
 "m" = (
@@ -38,7 +38,7 @@
 /turf/floor/tiled/freezer,
 /area/template_noop)
 "A" = (
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 8
 	},
 /turf/floor/plating,
@@ -63,7 +63,7 @@
 /turf/floor/tiled/freezer,
 /area/template_noop)
 "L" = (
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 4
 	},
 /obj/structure/table,
@@ -75,7 +75,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "Q" = (
-/obj/structure/frame,
+/obj/machinery/constructable_frame/machine_frame,
 /obj/item/stock_parts/circuitboard/recharge_station,
 /turf/floor/plating,
 /area/template_noop)

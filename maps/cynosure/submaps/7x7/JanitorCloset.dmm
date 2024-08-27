@@ -30,7 +30,7 @@
 "j" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 4
 	},
 /obj/structure/mopbucket,
@@ -77,7 +77,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 6
 	},
-/obj/item/camera_assembly,
+/obj/item/frame/camera/kit,
 /obj/effect/spider/stickyweb,
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)
@@ -117,7 +117,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 8
 	},
-/obj/effect/decal/remains/mouse,
+/obj/item/remains/mouse,
 /obj/effect/spider/stickyweb,
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)
@@ -198,8 +198,6 @@
 	dir = 6
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/effect/spider/stickyweb,

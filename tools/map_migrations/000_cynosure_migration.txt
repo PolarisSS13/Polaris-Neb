@@ -323,6 +323,9 @@
 
 /obj/machinery/door/unpowered/shuttle : /obj/structure/door/shuttle
 
+/obj/item/fishing_rod/built : /obj/item/fishing_rod{@OLD}
+/obj/fiftyspawner/log/sif : /obj/item/stack/material/log/mapped/ebony/fifty
+
 #############
 # DELETIONS #
 #############

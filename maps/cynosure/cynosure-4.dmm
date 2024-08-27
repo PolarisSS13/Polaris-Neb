@@ -61,8 +61,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -82,8 +80,6 @@
 /area/tcommsat/cynosure/teleporter)
 "bk" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -96,15 +92,9 @@
 /area/tcommsat/cynosure/teleporter)
 "bn" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/engineering,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
-"br" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/relay/preset/cynosure/gnd,
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
 "bI" = (
@@ -115,8 +105,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -143,8 +131,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -174,16 +160,16 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/airlock/glass/external{
+/obj/machinery/door/airlock/external/glass{
 	icon_state = "door_locked";
 	id_tag = "tcomdock_airlock_inner";
 	locked = 1;
 	name = "Internal Access"
 	},
 /obj/machinery/button/access/interior{
-	dir = 8;
+	dir = 1;
 	id_tag = "tcomdock_airlock";
-	pixel_y = -35;
+	pixel_y = -35
 	},
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/floor/tiled/techfloor,
@@ -209,13 +195,8 @@
 /obj/structure/window/reinforced,
 /turf/space,
 /area/tcommsat/cynosure)
-"cH" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/command,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "cM" = (
-/obj/item/camera_assembly,
+/obj/item/frame/camera/kit,
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
 "cN" = (
@@ -223,7 +204,6 @@
 /area/tcommsat/cynosure/teleporter)
 "cO" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
@@ -233,13 +213,9 @@
 /area/tcommsat/cynosure)
 "cR" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/floor/airless,
@@ -249,8 +225,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -276,7 +250,6 @@
 /area/tcommsat/cynosure/entrance)
 "dr" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
@@ -296,6 +269,7 @@
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Telecoms lethal turret control";
 	pixel_y = 24;
+	
 	},
 /obj/machinery/camera/network/telecom{
 	c_tag = "Tcoms - Foyer"
@@ -304,8 +278,6 @@
 /area/tcommsat/cynosure/foyer)
 "dt" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -317,6 +289,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch/maintenance{
 	name = "Telecomms Solar Control";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/powercontrol)
@@ -328,8 +301,6 @@
 /area/tcommsat/cynosure)
 "dI" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -340,11 +311,12 @@
 	id_tag = "telecoms_inner";
 	locked = 1;
 	name = "External Access";
+	
 	},
 /obj/machinery/button/access/interior{
-	dir = 4;
+	dir = 1;
 	id_tag = "telecoms_airlock";
-	pixel_y = -24;
+	pixel_y = -24
 	},
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/floor/plating,
@@ -393,30 +365,22 @@
 /area/tcommsat/cynosure/entrance)
 "eF" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "eK" = (
-/obj/structure/frame,
+/obj/machinery/constructable_frame/machine_frame,
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
 "eT" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/floor/airless,
@@ -429,8 +393,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -447,8 +409,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust,
@@ -466,8 +426,6 @@
 /area/tcommsat/cynosure/teleporter)
 "fj" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/floor/airless,
@@ -484,8 +442,6 @@
 /area/tcommsat/cynosure)
 "fv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -535,13 +491,9 @@
 /area/tcommsat/cynosure/entrance)
 "go" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/floor/airless,
@@ -555,21 +507,15 @@
 /area/tcommsat/cynosure/storage)
 "gO" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "ha" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/camera/network/telecom{
@@ -601,29 +547,21 @@
 /area/tcommsat/cynosure/teleporter)
 "hx" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "hy" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "hA" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -636,6 +574,7 @@
 	id_tag = "telecoms_airlock";
 	pixel_x = -31;
 	pixel_y = -35;
+	
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/plating,
@@ -658,8 +597,6 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -675,8 +612,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -693,13 +628,9 @@
 /area/tcommsat/cynosure/teleporter)
 "ig" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/floor/airless,
@@ -727,11 +658,9 @@
 /area/tcommsat/cynosure/foyer)
 "jn" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/grille,
@@ -756,14 +685,6 @@
 	},
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
-"jC" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/processor/preset_four,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "jH" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -772,8 +693,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -804,8 +723,6 @@
 /area/tcommsat/cynosure/powercontrol)
 "jL" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/floor/airless,
@@ -834,8 +751,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/item/radio/intercom{
@@ -845,8 +760,6 @@
 /area/tcommsat/cynosure)
 "ke" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/camera/network/telecom{
@@ -871,8 +784,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -974,8 +885,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -990,8 +899,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1009,23 +916,11 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/item/stock_parts/subspace/sub_filter{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/stock_parts/subspace/sub_filter{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stock_parts/subspace/sub_filter,
-/obj/item/stock_parts/subspace/sub_filter{
-	pixel_x = 2;
-	pixel_y = -2
-	},
-/obj/item/stock_parts/subspace/sub_filter{
-	pixel_x = 4;
-	pixel_y = -4
-	},
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
+/obj/item/stock_parts/subspace/filter,
 /turf/floor/tiled/old_tile/gray,
 /area/tcommsat/cynosure/storage)
 "lC" = (
@@ -1040,8 +935,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/floor/tiled/dark,
@@ -1055,11 +948,6 @@
 /obj/structure/window/reinforced/full,
 /turf/floor/plating,
 /area/tcommsat/cynosure/entrance)
-"lM" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/medical,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "lQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -1084,7 +972,6 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1120,11 +1007,6 @@
 	},
 /turf/space,
 /area/tcommsat/cynosure)
-"mm" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/bus/preset_four,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "mu" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -1173,25 +1055,18 @@
 	pixel_y = 24
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/floor/plating,
 /area/tcommsat/cynosure)
 "mP" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/airlock_sensor{
@@ -1226,7 +1101,6 @@
 /area/shuttle/escape_pod1/station)
 "np" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/grille,
@@ -1248,8 +1122,6 @@
 /area/tcommsat/cynosure)
 "nw" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1263,15 +1135,11 @@
 /area/tcommsat/cynosure/teleporter)
 "ny" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/effect/floor_decal/rust/mono_rusted1,
@@ -1279,8 +1147,6 @@
 /area/tcommsat/cynosure/teleporter)
 "nR" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1288,16 +1154,17 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/lounge)
 "nS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/airlock/glass/external{
+/obj/machinery/door/airlock/external/glass{
 	icon_state = "door_locked";
 	id_tag = "escape_pod_1_berth_hatch";
 	locked = 1;
-	name = "Escape Pod 1";
+	name = "Escape Pod 1"
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/entrance)
@@ -1327,8 +1194,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -1337,11 +1202,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/tiled/dark,
 /area/tcommsat/cynosure)
-"ok" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/bus/preset_two/cynosure,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "on" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/floor/tiled/monotile,
@@ -1377,8 +1237,6 @@
 /area/tcommsat/cynosure/foyer)
 "ph" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1483,8 +1341,6 @@
 /area/tcommsat/cynosure/storage)
 "pT" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1537,10 +1393,6 @@
 	},
 /turf/space,
 /area/tcommsat/cynosure)
-"qt" = (
-/obj/machinery/telecomms/receiver/preset_right/cynosure,
-/turf/floor/bluegrid/cryo,
-/area/tcommsat/cynosure/chamber)
 "qI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -1550,14 +1402,6 @@
 	},
 /turf/floor/tiled/steel_dirty,
 /area/tcommsat/cynosure/lounge)
-"qP" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/bus/preset_one,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "qY" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -1571,19 +1415,16 @@
 	id_tag = "tcomdock_airlock";
 	pixel_x = 31;
 	pixel_y = -24;
+	
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/tiled/steel_dirty,
 /area/tcommsat/cynosure/entrance)
 "re" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1597,18 +1438,12 @@
 /area/tcommsat/cynosure/foyer)
 "rh" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/floor/airless,
@@ -1642,8 +1477,6 @@
 "ro" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/plating,
@@ -1671,8 +1504,6 @@
 /area/tcommsat/cynosure/powercontrol)
 "rL" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1686,6 +1517,7 @@
 /obj/effect/floor_decal/rust/mono_rusted1,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Starboard Bridge";
+	
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
@@ -1698,8 +1530,6 @@
 /area/tcommsat/cynosure)
 "rY" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
@@ -1722,15 +1552,8 @@
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
-"sj" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/relay/preset/cynosure/snd,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "sp" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -1765,13 +1588,7 @@
 /area/tcommsat/cynosure/computer)
 "sN" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
-	},
-/obj/machinery/computer/telecomms/server{
-	dir = 1;
-	network = "tcommsat"
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
@@ -1791,13 +1608,9 @@
 "sQ" = (
 /obj/machinery/bluespace_beacon,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1813,13 +1626,9 @@
 /area/tcommsat/cynosure/chamber)
 "ta" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1835,8 +1644,6 @@
 /area/tcommsat/cynosure/lounge)
 "tI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1850,8 +1657,6 @@
 /area/tcommsat/cynosure/foyer)
 "tX" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/catwalk_plated/dark,
@@ -1863,8 +1668,6 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1922,6 +1725,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "tcomdock_airlock";
 	pixel_y = 25;
+	
 	},
 /turf/floor/tiled/techfloor/grid,
 /area/tcommsat/cynosure/entrance)
@@ -1935,20 +1739,11 @@
 	},
 /turf/floor/bluegrid/cryo,
 /area/tcommsat/cynosure/chamber)
-"uX" = (
-/obj/machinery/telecomms/hub/preset/cynosure,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/floor/bluegrid/cryo,
-/area/tcommsat/cynosure/chamber)
 "vj" = (
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "vu" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1967,13 +1762,9 @@
 /area/tcommsat/cynosure)
 "vB" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/camera/network/telecom{
@@ -1984,7 +1775,6 @@
 /area/tcommsat/cynosure)
 "vD" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2030,7 +1820,6 @@
 	pixel_y = -12
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central7{
@@ -2045,21 +1834,12 @@
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
-"vK" = (
-/obj/machinery/pda_multicaster/prebuilt,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/floor/bluegrid/cryo,
-/area/tcommsat/cynosure/chamber)
 "vY" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2080,7 +1860,6 @@
 /area/tcommsat/cynosure)
 "wm" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2128,8 +1907,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2161,8 +1938,6 @@
 /area/tcommsat/cynosure/computer)
 "xe" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2189,7 +1964,6 @@
 /area/tcommsat/cynosure/lounge)
 "xN" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/unused,
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
@@ -2210,15 +1984,8 @@
 	},
 /turf/floor/tiled/dark,
 /area/tcommsat/cynosure/foyer)
-"yr" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/processor/preset_three,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "yx" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/camera/network/telecom{
@@ -2250,8 +2017,6 @@
 /area/tcommsat/cynosure)
 "yY" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -2268,10 +2033,12 @@
 	id_tag = "server_access_inner";
 	locked = 1;
 	name = "Telecoms Server Access";
+	
 	},
 /obj/machinery/button/access/interior{
 	id_tag = "server_access_airlock";
-	pixel_x = -24
+	pixel_x = -24;
+	dir = 4
 	},
 /obj/effect/map_helper/airlock/door/int_door,
 /turf/floor/tiled/techfloor,
@@ -2289,25 +2056,19 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/tiled,
 /area/tcommsat/cynosure/lounge)
 "zp" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/grille,
@@ -2357,7 +2118,6 @@
 "zR" = (
 /obj/structure/bed/chair/shuttle,
 /obj/machinery/vending/wallmed1{
-	layer = 3.3;
 	name = "Emergency NanoMed";
 	pixel_x = -28
 	},
@@ -2391,8 +2151,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2416,6 +2174,7 @@
 	id_tag = "server_access_outer";
 	locked = 1;
 	name = "Telecoms Server Access";
+	
 	},
 /obj/machinery/button/access/exterior{
 	dir = 8;
@@ -2431,13 +2190,9 @@
 /area/tcommsat/cynosure/computer)
 "Bs" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/floor/airless,
@@ -2479,8 +2234,6 @@
 /area/tcommsat/cynosure/computer)
 "BI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -2491,13 +2244,6 @@
 /obj/machinery/light/small,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
-"BO" = (
-/obj/machinery/telecomms/broadcaster/preset_right,
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/floor/bluegrid/cryo,
-/area/tcommsat/cynosure/chamber)
 "BP" = (
 /obj/structure/lattice,
 /obj/structure/window/reinforced{
@@ -2522,22 +2268,11 @@
 	},
 /turf/floor/tiled/steel_dirty,
 /area/tcommsat/cynosure/lounge)
-"BT" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/exonet_node{
-	anchored = 1
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "Cq" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/floor/airless,
@@ -2550,8 +2285,6 @@
 /area/tcommsat/cynosure/computer)
 "Cx" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -2564,8 +2297,6 @@
 /area/tcommsat/cynosure)
 "CF" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2579,13 +2310,9 @@
 /area/tcommsat/cynosure/foyer)
 "CM" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/floor/airless,
@@ -2607,7 +2334,6 @@
 /area/tcommsat/cynosure/entrance)
 "CU" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc/super/critical{
@@ -2624,7 +2350,6 @@
 /area/tcommsat/cynosure/chamber)
 "De" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
@@ -2655,7 +2380,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/airlock/glass/external{
+/obj/machinery/door/airlock/external/glass{
 	icon_state = "door_locked";
 	id_tag = "tcomdock_airlock_inner";
 	locked = 1;
@@ -2721,8 +2446,6 @@
 /area/tcommsat/cynosure/chamber)
 "Eq" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2768,8 +2491,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2793,8 +2514,6 @@
 	},
 /obj/effect/catwalk_plated/dark,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/window/southright,
@@ -2839,14 +2558,8 @@
 	},
 /turf/space,
 /area/tcommsat/cynosure)
-"FN" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/relay/preset/telecomms,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "FO" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/structure/grille,
@@ -2859,13 +2572,9 @@
 /area/tcommsat/cynosure/chamber)
 "FS" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2886,7 +2595,7 @@
 /area/tcommsat/cynosure/chamber)
 "Gq" = (
 /obj/structure/bed/chair/shuttle,
-/obj/structure/closet/walllocker/emerglocker{
+/obj/structure/emergency_dispenser{
 	pixel_x = 28;
 	dir = 8
 	},
@@ -2904,13 +2613,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/floor/tiled/dark,
@@ -2963,8 +2668,6 @@
 	dir = 10
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/bed/chair{
@@ -2993,11 +2696,6 @@
 	},
 /turf/floor/tiled/monotile,
 /area/tcommsat/cynosure/lounge)
-"Hi" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/relay/preset/cynosure/centcomm,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "Hj" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 9
@@ -3044,7 +2742,6 @@
 /area/tcommsat/cynosure/storage)
 "HG" = (
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/machinery/power/smes/buildable{
@@ -3060,13 +2757,10 @@
 /area/tcommsat/cynosure/powercontrol)
 "HI" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/service/cynosure,
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
 "HL" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3078,6 +2772,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/entrance)
@@ -3158,18 +2853,8 @@
 "Iz" = (
 /turf/floor/bluegrid/cryo,
 /area/tcommsat/cynosure/chamber)
-"IB" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/processor/preset_two,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "IC" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/table,
@@ -3186,8 +2871,6 @@
 /area/tcommsat/cynosure)
 "IH" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3206,8 +2889,6 @@
 /area/tcommsat/cynosure/foyer)
 "IV" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3215,6 +2896,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/teleporter)
@@ -3236,12 +2918,12 @@
 	dir = 10
 	},
 /obj/structure/closet/crate/freezer/rations,
-/obj/item/chems/food/drinks/cans/waterbottle,
-/obj/item/chems/food/drinks/cans/waterbottle,
-/obj/item/chems/food/drinks/cans/waterbottle,
-/obj/item/chems/food/drinks/cans/waterbottle,
-/obj/item/chems/food/drinks/cans/waterbottle,
-/obj/item/chems/food/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
+/obj/item/chems/drinks/cans/waterbottle,
 /obj/item/clothing/suit/space/sports,
 /obj/item/clothing/head/helmet/space/sports,
 /turf/floor/tiled,
@@ -3259,8 +2941,6 @@
 /area/tcommsat/cynosure/computer)
 "JC" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/hologram/holopad,
@@ -3304,13 +2984,12 @@
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Telecoms Foyer turret control";
 	pixel_y = 24;
+	
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
 "JX" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/alarm{
@@ -3408,8 +3087,6 @@
 /area/tcommsat/cynosure/computer)
 "Lq" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3428,8 +3105,6 @@
 /area/tcommsat/cynosure/foyer)
 "LD" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -3514,7 +3189,6 @@
 /area/tcommsat/cynosure/foyer)
 "Mz" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3542,8 +3216,6 @@
 /area/tcommsat/cynosure)
 "ME" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/floor/bluegrid/cryo,
@@ -3556,8 +3228,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3576,18 +3246,8 @@
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
-"Nb" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/security,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "Nd" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3595,6 +3255,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
+	
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
@@ -3602,22 +3263,12 @@
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/floor/tiled/monotile,
 /area/tcommsat/cynosure/computer)
-"Np" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/bus/preset_three,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "NA" = (
 /obj/effect/overmap/visitable/telecomm_sat,
 /turf/space,
 /area/space)
 "NC" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/camera/network/telecom{
@@ -3642,25 +3293,17 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch/maintenance{
 	name = "Telecomms Storage";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/storage)
-"NS" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/common,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "NW" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/external{
@@ -3668,11 +3311,12 @@
 	id_tag = "telecoms_outer";
 	locked = 1;
 	name = "External Access";
-
+	
 	},
 /obj/machinery/button/access/exterior{
 	id_tag = "telecoms_airlock";
 	pixel_x = 35;
+	dir = 8
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/floor/plating,
@@ -3704,13 +3348,9 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -3724,8 +3364,6 @@
 /area/tcommsat/cynosure)
 "Om" = (
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -3760,8 +3398,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/catwalk_plated/dark,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/plating,
@@ -3776,14 +3412,6 @@
 	},
 /turf/space,
 /area/tcommsat/cynosure)
-"OI" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/science,
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "OW" = (
 /obj/structure/sign/warning/nosmoking_2{
 	pixel_x = -32
@@ -3865,8 +3493,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/bed/chair{
@@ -3896,18 +3522,12 @@
 /area/tcommsat/cynosure/entrance)
 "PU" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/floor/airless,
@@ -3920,8 +3540,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4027,9 +3645,7 @@
 /turf/space,
 /area/tcommsat/cynosure)
 "QU" = (
-/obj/item/stack/material/sheet/mapped/steel{
-	amount = 10
-	},
+/obj/item/stack/material/sheet/mapped/steel/ten,
 /obj/effect/floor_decal/rust/mono_rusted2,
 /turf/floor/tiled/monotile,
 /area/tcommsat/cynosure/lounge)
@@ -4064,9 +3680,9 @@
 	name = "External Access"
 	},
 /obj/machinery/button/access/exterior{
-	dir = 4;
+	dir = 1;
 	id_tag = "tcomdock_airlock";
-	pixel_y = -24;
+	pixel_y = -24
 	},
 /obj/effect/map_helper/airlock/door/ext_door,
 /turf/floor/tiled/techfloor,
@@ -4101,15 +3717,6 @@
 /area/tcommsat/cynosure/teleporter)
 "Sn" = (
 /obj/structure/rack,
-/obj/item/stock_parts/circuitboard/telecomms/processor,
-/obj/item/stock_parts/circuitboard/telecomms/processor,
-/obj/item/stock_parts/circuitboard/telecomms/receiver,
-/obj/item/stock_parts/circuitboard/telecomms/server,
-/obj/item/stock_parts/circuitboard/telecomms/server,
-/obj/item/stock_parts/circuitboard/telecomms/bus,
-/obj/item/stock_parts/circuitboard/telecomms/bus,
-/obj/item/stock_parts/circuitboard/telecomms/broadcaster,
-/obj/item/stock_parts/circuitboard/telecomms/exonet_node,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4125,8 +3732,6 @@
 /area/tcommsat/cynosure/entrance)
 "Sy" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/item/stack/material/sheet/reinforced/mapped/plasteel,
@@ -4149,8 +3754,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4179,8 +3782,6 @@
 /area/tcommsat/cynosure/foyer)
 "SO" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4193,8 +3794,6 @@
 /area/tcommsat/cynosure/teleporter)
 "ST" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4207,13 +3806,12 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecoms Port Bridge";
+	
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
 "SV" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4232,13 +3830,9 @@
 /area/tcommsat/cynosure)
 "SW" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/camera/network/telecom{
@@ -4251,11 +3845,6 @@
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 5
 	},
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
-"Ta" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/ntnet_relay,
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
 "Te" = (
@@ -4271,18 +3860,11 @@
 	},
 /turf/floor/tiled/techfloor/grid,
 /area/tcommsat/cynosure/computer)
-"Tf" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/relay/preset/cynosure/bmt,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "Th" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4301,8 +3883,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4338,10 +3918,6 @@
 /turf/floor/plating,
 /area/tcommsat/cynosure)
 "TL" = (
-/obj/machinery/computer/telecomms/monitor{
-	dir = 1;
-	network = "tcommsat"
-	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/floor/tiled,
@@ -4373,8 +3949,6 @@
 	dir = 10
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/rust/mono_rusted2,
@@ -4387,7 +3961,6 @@
 "Ul" = (
 /obj/structure/bed/chair/shuttle,
 /obj/machinery/status_display{
-	layer = 4;
 	pixel_x = -32;
 	dir = 8
 	},
@@ -4435,7 +4008,6 @@
 /area/tcommsat/cynosure/storage)
 "UD" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/solar,
@@ -4445,7 +4017,6 @@
 /area/tcommsat/cynosure)
 "UI" = (
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/server/presets/supply,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -4487,8 +4058,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4542,8 +4111,6 @@
 /area/tcommsat/cynosure/lounge)
 "VB" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4555,6 +4122,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Control Room";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/computer)
@@ -4580,8 +4148,6 @@
 /area/tcommsat/cynosure)
 "VY" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/table,
@@ -4632,8 +4198,6 @@
 /area/tcommsat/cynosure/lounge)
 "Wh" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4649,14 +4213,10 @@
 /area/tcommsat/cynosure/computer)
 "Wm" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/table,
-/obj/item/stack/material/pane/mapped/glass{
-	amount = 50
-	},
+/obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/item/stack/cable_coil/random{
 	pixel_x = 3;
 	pixel_y = -2
@@ -4674,7 +4234,7 @@
 	id_tag = "escape_pod_1_hatch";
 	locked = 1;
 	name = "Escape Pod Hatch 1";
-
+	
 	},
 /turf/wall/shuttle/floor,
 /area/shuttle/escape_pod1/station)
@@ -4692,8 +4252,6 @@
 /area/tcommsat/cynosure/teleporter)
 "Xk" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4710,11 +4268,6 @@
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
-"Xn" = (
-/obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/telecomms/processor/preset_one,
-/turf/floor/tiled/dark/cryo,
-/area/tcommsat/cynosure/chamber)
 "Xv" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4730,8 +4283,6 @@
 /area/tcommsat/cynosure/entrance)
 "Xy" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/broken{
@@ -4759,8 +4310,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4808,8 +4357,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4820,8 +4367,6 @@
 /area/tcommsat/cynosure)
 "Yw" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -4833,6 +4378,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "telecoms_airlock";
 	pixel_y = 25;
+	
 	},
 /obj/machinery/airlock_sensor{
 	id_tag = "telecoms_sensor";
@@ -4866,8 +4412,6 @@
 /area/tcommsat/cynosure)
 "YZ" = (
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/light/small{
@@ -4877,8 +4421,6 @@
 /area/tcommsat/cynosure/powercontrol)
 "Zc" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -4910,8 +4452,6 @@
 /area/tcommsat/cynosure/teleporter)
 "Zj" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/unary/vent_pump/high_volume{
@@ -4932,8 +4472,6 @@
 /area/tcommsat/cynosure/entrance)
 "Zp" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4947,13 +4485,9 @@
 /area/tcommsat/cynosure/computer)
 "ZD" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -4964,18 +4498,12 @@
 /area/tcommsat/cynosure/computer)
 "ZS" = (
 /obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/floor/airless,
@@ -36207,10 +35735,10 @@ Iz
 SG
 UI
 SG
-IB
-qP
+UI
+UI
 SG
-OI
+UI
 VH
 Kz
 Vb
@@ -36464,10 +35992,10 @@ TD
 SZ
 HI
 wB
-ok
-Xn
+HI
+HI
 wB
-lM
+HI
 MB
 Kz
 iM
@@ -36721,10 +36249,10 @@ Iz
 pm
 xN
 wB
-Tf
-br
+HI
+HI
 wB
-FN
+HI
 VH
 Kz
 Xm
@@ -37235,7 +36763,7 @@ Iz
 pm
 zJ
 zG
-vK
+VH
 El
 UP
 RE
@@ -37490,11 +37018,11 @@ sN
 zp
 ke
 pm
-BO
+VH
 Iz
 dS
 Iz
-qt
+Iz
 Hk
 uM
 Kz
@@ -37749,7 +37277,7 @@ ME
 zu
 sZ
 XX
-uX
+VH
 Hj
 Bx
 Hk
@@ -38261,12 +37789,12 @@ Bc
 Yd
 CU
 pm
-BT
+HI
 wB
-Ta
-sj
+HI
+HI
 wB
-Hi
+HI
 VH
 Kz
 Qt
@@ -38518,12 +38046,12 @@ mu
 Yd
 TD
 Yg
-NS
+HI
 wB
-mm
-yr
+HI
+HI
 wB
-cH
+HI
 MB
 Kz
 iM
@@ -38777,10 +38305,10 @@ ky
 jw
 bn
 jw
-jC
-Np
+bn
+bn
 jw
-Nb
+bn
 VH
 Kz
 Qr

@@ -52,7 +52,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/structure/frame/computer{
+/obj/machinery/constructable_frame/computerframe{
 	dir = 8
 	},
 /obj/item/stock_parts/circuitboard/operating,
@@ -177,6 +177,7 @@
 	},
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
+	
 	},
 /turf/floor/tiled/steel_grid,
 /area/template_noop)

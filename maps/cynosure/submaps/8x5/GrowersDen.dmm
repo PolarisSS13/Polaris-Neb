@@ -33,7 +33,7 @@
 "m" = (
 /obj/random/crate,
 /obj/random/contraband,
-/obj/random/cigarettes,
+/obj/random/smokes,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/cash,
@@ -52,7 +52,7 @@
 "E" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/random/contraband,
-/obj/item/knife/machete/hatchet,
+/obj/item/tool/axe/hatchet,
 /obj/item/tool/hoe/mini,
 /obj/item/wirecutters/clippers/trimmers,
 /turf/floor/plating,
@@ -91,7 +91,7 @@
 /obj/random/contraband/nofail,
 /obj/random/contraband,
 /obj/random/medical,
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 4
 	},
 /obj/item/flashlight/lamp/green{

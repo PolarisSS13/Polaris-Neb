@@ -38,11 +38,11 @@
 /area/template_noop)
 "t" = (
 /obj/structure/table/reinforced,
-/obj/item/chems/food/drinks/glass2/square{
+/obj/item/chems/drinks/glass2/square{
 	pixel_x = 4;
 	pixel_y = 5
 	},
-/obj/item/chems/food/drinks/glass2/square,
+/obj/item/chems/drinks/glass2/square,
 /turf/floor/wood,
 /area/template_noop)
 "A" = (
@@ -63,14 +63,14 @@
 /area/template_noop)
 "J" = (
 /obj/structure/table/gamblingtable,
-/obj/item/chems/food/drinks/flask/barflask{
+/obj/item/chems/drinks/flask/barflask{
 	pixel_x = -4;
 	pixel_y = 8
 	},
 /obj/item/flashlight/lamp/green{
 	pixel_x = 10
 	},
-/obj/machinery/light_construct/small{
+/obj/machinery/light/small/fixture{
 	dir = 4
 	},
 /turf/floor/wood,

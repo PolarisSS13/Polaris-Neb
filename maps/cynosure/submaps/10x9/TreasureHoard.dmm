@@ -80,15 +80,13 @@
 	pixel_x = -4
 	},
 /obj/item/coin/aluminium,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 4
 	},
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)
 "n" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -126,8 +124,6 @@
 /area/template_noop)
 "s" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/random/junk,
@@ -157,7 +153,6 @@
 /area/template_noop)
 "v" = (
 /obj/structure/cable/green{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/item/frame/apc,
@@ -197,7 +192,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 6
 	},
-/obj/item/chems/blood/empty,
+/obj/item/chems/ivbag,
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)
 "B" = (
@@ -212,14 +207,14 @@
 /area/template_noop)
 "D" = (
 /obj/structure/closet/crate/allico,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
-/obj/item/chems/food/snacks/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
+/obj/item/food/candy/gummy,
 /turf/floor/tiled/monotile,
 /area/template_noop)
 "E" = (
@@ -303,8 +298,6 @@
 /area/template_noop)
 "M" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -334,7 +327,7 @@
 	},
 /obj/item/coin/uranium,
 /obj/item/stack/tile/floor,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 1
 	},
 /turf/floor/tiled/steel_dirty,
@@ -350,7 +343,7 @@
 /area/template_noop)
 "R" = (
 /obj/structure/closet/crate/centauri,
-/obj/item/chems/blood/OMinus,
+/obj/item/chems/ivbag/blood/OMinus,
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
@@ -392,7 +385,7 @@
 	dir = 8
 	},
 /obj/structure/ore_box,
-/obj/machinery/light_construct{
+/obj/machinery/light/fixture{
 	dir = 8
 	},
 /turf/floor/tiled/steel_dirty,

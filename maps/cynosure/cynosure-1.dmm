@@ -8385,11 +8385,8 @@
 	dir = 4;
 	pixel_x = 24
 	},
-/obj/item/stack/material/sheet/mapped/steel{
-	amount = 50
-	},
-/obj/item/stack/material/pane/mapped/glass{
-	amount = 50;
+/obj/item/stack/material/sheet/mapped/steel/fifty,
+/obj/item/stack/material/pane/mapped/glass/fifty{
 	pixel_x = 2;
 	pixel_y = -2
 	},
