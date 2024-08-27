@@ -338,6 +338,10 @@
 /obj/item/fishing_rod/built : /obj/item/fishing_rod{@OLD}
 /obj/fiftyspawner/log/sif : /obj/item/stack/material/log/mapped/ebony/fifty
 
+/obj/item/pill_bottle/dermaline : /obj/item/pill_bottle/burn_meds{@OLD}
+/obj/item/pill_bottle/dexalin_plus : /obj/item/pill_bottle/oxygen/plus{@OLD}
+/obj/item/pill_bottle/dylovene : /obj/item/pill_bottle/antitoxins{@OLD}
+
 #############
 # DELETIONS #
 #############

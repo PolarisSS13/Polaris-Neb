@@ -7306,37 +7306,37 @@
 	pixel_x = -6;
 	pixel_y = -6
 	},
-/obj/item/pill_bottle/dylovene{
+/obj/item/pill_bottle/antitoxins{
 	pixel_y = -6
 	},
-/obj/item/pill_bottle/dylovene{
+/obj/item/pill_bottle/antitoxins{
 	pixel_x = -6
 	},
-/obj/item/pill_bottle/dylovene{
+/obj/item/pill_bottle/antitoxins{
 	pixel_x = -6
 	},
-/obj/item/pill_bottle/dermaline{
+/obj/item/pill_bottle/burn_meds{
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/obj/item/pill_bottle/dermaline{
+/obj/item/pill_bottle/burn_meds{
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/obj/item/pill_bottle/dermaline{
+/obj/item/pill_bottle/burn_meds{
 	pixel_x = -3;
 	pixel_y = -3
 	},
 /obj/item/pill_bottle/antibiotics,
-/obj/item/pill_bottle/dexalin_plus{
+/obj/item/pill_bottle/oxygen/plus{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/pill_bottle/dexalin_plus{
+/obj/item/pill_bottle/oxygen/plus{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/pill_bottle/dexalin_plus{
+/obj/item/pill_bottle/oxygen/plus{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -9941,7 +9941,7 @@
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "lac" = (
-/obj/machinery/fabricator/pipe/orderable,
+/obj/machinery/fabricator/pipe,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
@@ -16150,7 +16150,7 @@
 	},
 /area/centcom/command)
 "rPy" = (
-/obj/machinery/fabricator/pipe/disposal/orderable,
+/obj/machinery/fabricator/pipe/disposal,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
