@@ -343,7 +343,7 @@
 /area/template_noop)
 "R" = (
 /obj/structure/closet/crate/centauri,
-/obj/item/chems/ivbag/blood/OMinus,
+/obj/item/chems/ivbag/blood/ominus,
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,

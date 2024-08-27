@@ -161,7 +161,7 @@
 /area/template_noop)
 "X" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/box/fancy/blackcandle_box{
+/obj/item/box/candles/black{
 	pixel_x = -3;
 	pixel_y = 4
 	},

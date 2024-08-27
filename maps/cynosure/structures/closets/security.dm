@@ -14,7 +14,6 @@
 		/obj/item/clothing/suit/vest/hoscoat/jensen,
 		/obj/item/clothing/suit/vest/hoscoat,
 		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/cartridge/hos,
 		/obj/item/radio/headset/heads/hos,
 		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
@@ -64,7 +63,6 @@
 		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/clothing/head/helmet/warden,
 		/obj/item/clothing/head/helmet/warden/hat,
-		/obj/item/cartridge/security,
 		/obj/item/radio/headset/sec,
 		/obj/item/radio/headset/sec/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
@@ -101,7 +99,6 @@
 	. = list(
 		/obj/item/clothing/suit/armor/pcarrier/light/nt/cynosure,
 		/obj/item/clothing/head/helmet,
-		/obj/item/cartridge/security,
 		/obj/item/radio/headset/sec,
 		/obj/item/radio/headset/sec/alt,
 		/obj/item/belt/security,

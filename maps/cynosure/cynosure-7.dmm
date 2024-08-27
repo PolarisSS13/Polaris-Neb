@@ -90,7 +90,7 @@
 /area/surface/outside/wilderness/mountains)
 "kx" = (
 /obj/structure/prop/rock/small/alt,
-/turf/floor/outdoors/mud,
+/turf/floor/natural/mud,
 /area/surface/outside/wilderness/normal)
 "lt" = (
 /turf/floor/natural/mud/water/deep,
@@ -112,7 +112,7 @@
 /area/surface/outside/path/wilderness)
 "nu" = (
 /obj/structure/prop/rock/small,
-/turf/floor/outdoors/mud,
+/turf/floor/natural/mud,
 /area/surface/outside/wilderness/normal)
 "oG" = (
 /obj/structure/railing{
@@ -308,7 +308,7 @@
 /turf/floor/wood/sif/broken,
 /area/surface/wilderness/shack)
 "Sl" = (
-/turf/floor/outdoors/mud,
+/turf/floor/natural/mud,
 /area/surface/outside/wilderness/normal)
 "Tc" = (
 /obj/structure/bookcase,

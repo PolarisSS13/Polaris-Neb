@@ -13,7 +13,7 @@
 /obj/item/toy/balloon{
 	color = "#FF00BB"
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "d" = (
 /turf/floor/plating,
@@ -31,7 +31,7 @@
 /obj/item/toy/balloon{
 	color = "#FFCC00"
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "j" = (
 /obj/machinery/power/apc{
@@ -45,18 +45,18 @@
 	pixel_y = -32;
 	poster_decl = /decl/poster/nanotrasen/nt_8
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "o" = (
 /obj/item/stack/material/cardboard,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "p" = (
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "v" = (
 /obj/machinery/light/small,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "C" = (
 /obj/structure/table,
@@ -67,7 +67,7 @@
 /obj/item/toy/balloon{
 	color = "#00BBFF"
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "E" = (
 /obj/item/pizzabox/old,
@@ -76,7 +76,7 @@
 	pixel_y = 5
 	},
 /obj/structure/table,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "F" = (
 /obj/structure/table,
@@ -84,17 +84,17 @@
 	pixel_y = -6
 	},
 /obj/item/clothing/head/cakehat,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "I" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "K" = (
 /obj/random/trash,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "L" = (
 /turf/wall/concrete/reinforced,
@@ -103,25 +103,25 @@
 /obj/structure/bed/chair/comfy/red{
 	dir = 4
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "N" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "Q" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "R" = (
 /obj/structure/bed/chair/comfy/purple{
 	dir = 1
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "S" = (
 /obj/structure/bed/chair/comfy/green{
@@ -132,14 +132,14 @@
 	pixel_y = 32;
 	poster_decl = /decl/poster/nt_5
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "V" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
 /obj/item/plate,
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "X" = (
 /obj/structure/bed/chair/comfy/teal{
@@ -148,7 +148,7 @@
 /obj/item/plate{
 	pixel_y = 5
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 "Y" = (
 /turf/wall/concrete,
@@ -158,12 +158,12 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/box/fancy/whitecandle_box,
+/obj/item/box/candles/white,
 /obj/item/box/matches{
 	pixel_x = -4;
 	pixel_y = -8
 	},
-/turf/floor/carpet/purcarpet,
+/turf/floor/carpet/purple,
 /area/template_noop)
 
 (1,1,1) = {"
