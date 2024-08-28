@@ -28,6 +28,9 @@
 /obj/item/stack/material/rods/ten
 	amount = 10
 
+/obj/item/stack/material/rods/twentyfive
+	amount = 25
+
 /obj/item/stack/material/rods/fifty
 	amount = 50
 
