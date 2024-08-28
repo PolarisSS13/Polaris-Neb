@@ -1546,7 +1546,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "bKZ" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -2524,7 +2524,7 @@
 	id_tag = "CREED";
 	name = "Ready Room"
 	},
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "cVQ" = (
 /obj/structure/rack,
@@ -2618,8 +2618,8 @@
 /area/shuttle/merchant/home)
 "deX" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser,
+/obj/item/mech_equipment/mounted_system/taser/ion,
+/obj/item/mech_equipment/mounted_system/taser,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -3864,15 +3864,6 @@
 "ewB" = (
 /turf/wall/shuttle/dark/hard_corner,
 /area/centcom/specops)
-"exo" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/mecha_parts/mecha_equipment/tool/passenger,
-/obj/item/mecha_parts/mecha_equipment/tool/passenger,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/specops)
 "eyk" = (
 /obj/machinery/cooker/grill,
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -3887,18 +3878,6 @@
 	icon_state = "dark"
 	},
 /area/wizard_station)
-"ezf" = (
-/obj/item/mecha_parts/mecha_equipment/teleporter,
-/obj/item/mecha_parts/mecha_tracking,
-/obj/item/mecha_parts/mecha_tracking,
-/obj/item/mecha_parts/mecha_tracking,
-/obj/item/mecha_parts/mecha_tracking,
-/obj/structure/table/steel_reinforced,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/specops)
 "ezG" = (
 /obj/machinery/computer/cloning{
 	dir = 1
@@ -3950,24 +3929,8 @@
 /turf/floor/shuttle/white,
 /area/centcom/main_hall)
 "eDu" = (
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper,
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun,
-/obj/structure/table/steel_reinforced,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/specops)
-"eEu" = (
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/obj/item/mech_equipment/sleeper,
+/obj/item/mech_equipment/sleeper,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "plating";
@@ -4269,7 +4232,7 @@
 /area/centcom/command)
 "eXb" = (
 /obj/structure/table,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "eXo" = (
 /obj/structure/mirror{
@@ -4735,7 +4698,7 @@
 	},
 /obj/effect/floor_decal/milspec/color/red,
 /obj/effect/floor_decal/milspec/color/white,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/arrival/pre_game)
 "fvA" = (
 /obj/structure/rack,
@@ -5052,8 +5015,8 @@
 /area/centcom/bar)
 "fPj" = (
 /obj/structure/table/reinforced,
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
+/obj/item/mech_equipment/clamp,
+/obj/item/mech_equipment/clamp,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -5543,7 +5506,7 @@
 /obj/item/towel/random,
 /obj/item/towel/random,
 /obj/item/towel/random,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "gqi" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -5852,8 +5815,8 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "gJJ" = (
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher,
-/obj/item/mecha_parts/mecha_equipment/tool/rcd,
+/obj/item/mech_equipment/mounted_system/extinguisher,
+/obj/item/mech_equipment/mounted_system/rcd,
 /obj/item/tool/drill/diamond,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
@@ -6245,7 +6208,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "hiU" = (
 /obj/structure/table,
@@ -6562,7 +6525,7 @@
 /area/centcom/security)
 "hCX" = (
 /obj/machinery/door/airlock/external,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "hDd" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -7599,8 +7562,7 @@
 /turf/floor/shuttle/white,
 /area/shuttle/merchant/home)
 "iIh" = (
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill,
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer,
+/obj/item/mech_equipment/drill/diamond,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor{
 	icon_state = "plating";
@@ -8101,7 +8063,7 @@
 /area/holodeck/source_beach)
 "jeE" = (
 /obj/machinery/recharge_station,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "jeV" = (
 /obj/structure/table/holo_woodentable,
@@ -8916,7 +8878,7 @@
 	
 	},
 /obj/effect/floor_decal/milspec/color/blue,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape/centcom)
 "kgI" = (
 /obj/structure/table/glass,
@@ -11633,7 +11595,7 @@
 /turf/floor/tiled/white,
 /area/centcom/bar)
 "mWp" = (
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "mXs" = (
 /obj/structure/closet/crate/medical,
@@ -11954,15 +11916,6 @@
 	icon_state = "carpet"
 	},
 /area/centcom/command)
-"nnn" = (
-/obj/structure/table/steel_reinforced,
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
-/turf/unsimulated/floor{
-	icon_state = "plating";
-	name = "plating"
-	},
-/area/centcom/specops)
 "nol" = (
 /obj/machinery/light/no_nightshift{
 	dir = 1
@@ -14607,7 +14560,7 @@
 /area/centcom/main_hall)
 "qqm" = (
 /obj/structure/closet/secure_closet/personal,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "qqE" = (
 /obj/structure/bed/chair/office/light{
@@ -17883,7 +17836,7 @@
 	},
 /obj/effect/floor_decal/milspec/color/blue,
 /obj/effect/floor_decal/milspec/color/blue,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape/centcom)
 "tJi" = (
 /obj/machinery/disposal/deliveryChute{
@@ -18424,8 +18377,8 @@
 /obj/item/hand_labeler,
 /obj/item/chems/spray/cleaner,
 /obj/item/chems/spray/cleaner,
-/obj/item/chems/spray/sterilizine,
-/obj/item/chems/spray/sterilizine,
+/obj/item/chems/spray/antiseptic,
+/obj/item/chems/spray/antiseptic,
 /obj/item/flashlight/pen,
 /obj/item/flashlight/pen,
 /turf/unsimulated/floor{
@@ -19991,7 +19944,7 @@
 "waw" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/medical,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "waS" = (
 /obj/machinery/computer/modular/preset/engineering,
@@ -21059,7 +21012,7 @@
 /area/centcom/terminal)
 "xdd" = (
 /obj/structure/aicore/deactivated,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape/centcom)
 "xdf" = (
 /obj/machinery/door/airlock/glass/engineering{
@@ -22138,7 +22091,7 @@
 	dir = 1
 	},
 /obj/item/bedsheet/medical,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/centcom/evac)
 "yjS" = (
 /obj/structure/table/reinforced,
@@ -30797,7 +30750,7 @@ ebT
 uAa
 cUf
 ewB
-exo
+cUf
 ebT
 ebT
 izR
@@ -31054,7 +31007,7 @@ ewB
 ewB
 ewB
 ewB
-ezf
+cUf
 ebT
 ebT
 uAa
@@ -32080,9 +32033,9 @@ puk
 ewB
 ebT
 uAa
-nnn
+cUf
 ewB
-eEu
+cUf
 fPj
 gJJ
 iIh

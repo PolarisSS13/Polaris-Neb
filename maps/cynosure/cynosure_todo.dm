@@ -594,3 +594,4 @@ corgi statue for central hall
 /obj/item/eftpos/departmental/service
 /obj/item/eftpos/departmental/security
 /obj/item/eftpos/departmental/cargo
+/obj/item/eftpos/departmental/command
