@@ -160,10 +160,8 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/airlock/external/glass{
-	icon_state = "door_locked";
+/obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "tcomdock_airlock_inner";
-	locked = 1;
 	name = "Internal Access"
 	},
 /obj/machinery/button/access/interior{
@@ -1160,10 +1158,8 @@
 /area/tcommsat/cynosure/lounge)
 "nS" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/door/airlock/external/glass{
-	icon_state = "door_locked";
+/obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "escape_pod_1_berth_hatch";
-	locked = 1;
 	name = "Escape Pod 1"
 	},
 /turf/floor/tiled/steel_grid,
@@ -2125,7 +2121,7 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape_pod1/station)
 "Ac" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2380,10 +2376,8 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/rust,
-/obj/machinery/door/airlock/external/glass{
-	icon_state = "door_locked";
+/obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "tcomdock_airlock_inner";
-	locked = 1;
 	name = "Internal Access"
 	},
 /obj/effect/map_helper/airlock/door/int_door,
@@ -2606,7 +2600,7 @@
 	tag_door = "escape_pod_1_hatch"
 	},
 /obj/effect/shuttle_landmark/cynosure/escape_pod1/station,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape_pod1/station)
 "GC" = (
 /obj/structure/window/reinforced,
@@ -3965,7 +3959,7 @@
 	dir = 8
 	},
 /obj/machinery/light,
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape_pod1/station)
 "Uq" = (
 /obj/structure/window/reinforced{
@@ -4236,7 +4230,7 @@
 	name = "Escape Pod Hatch 1";
 	
 	},
-/turf/wall/shuttle/floor,
+/turf/floor/shuttle/blue,
 /area/shuttle/escape_pod1/station)
 "Xi" = (
 /obj/effect/floor_decal/industrial/warning/corner{

@@ -36,6 +36,7 @@
 /obj/item/reagent_containers/food/condiment/small/peppershaker : /obj/item/chems/condiment/small/peppermill{@OLD}
 /obj/item/reagent_containers/food/condiment/soysauce : /obj/item/chems/condiment/small/soysauce{@OLD}
 /obj/item/reagent_containers/food/snacks/xenomeat/spidermeat : /obj/item/food/spider{@OLD}
+/obj/item/reagent_containers/food/drinks/britcup : /obj/item/chems/drinks/glass2/coffeecup/britcup{@OLD}
 
 # Misc. bureaucracy
 /obj/item/deskbell : /obj/item/bell{@OLD}
@@ -148,6 +149,7 @@
 # XENOBIO
 /obj/machinery/processor : /obj/machinery/optable{@OLD}
 /obj/item/slime_extract/grey : /obj/item/slime_extract{@OLD}
+/obj/item/reagent_containers/food/snacks/cube/monkeycube/@SUBTYPES : /obj/item/food/monkeycube/@SUBTYPES{@OLD}
 
 # LANDMARKS
 /obj/effect/landmark/@SUBTYPES : /obj/abstract/landmark/@SUBTYPES{@OLD}

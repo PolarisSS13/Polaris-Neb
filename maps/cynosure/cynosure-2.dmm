@@ -11150,7 +11150,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/hallway/gnd)
 "flI" = (
-/obj/structure/sign/chemistry,
+/obj/structure/sign/department/chemistry,
 /turf/wall,
 /area/surface/station/medical/chemistry)
 "flJ" = (
@@ -17660,7 +17660,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/stack/material/pane/mapped/glass/phoronglass/twenty,
+/obj/item/stack/material/pane/mapped/borosilicate/twenty,
 /obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -20187,7 +20187,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/item/banner/nt,
+/obj/item/banner/nanotrasen,
 /turf/floor/wood/sif,
 /area/surface/station/chapel/main)
 "jPo" = (
@@ -24461,7 +24461,6 @@
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/interrogation)
 "lMe" = (
-/obj/machinery/blackbox_recorder,
 /turf/floor/bluegrid,
 /area/surface/station/ai/server_room)
 "lMg" = (
@@ -27492,7 +27491,7 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 10
 	},
-/obj/item/banner/nt,
+/obj/item/banner/nanotrasen,
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/primary/groundfloor/south)
 "naO" = (
@@ -46932,7 +46931,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_waste)
 "wiR" = (
-/obj/structure/sign/warning/falling{
+/obj/structure/sign/warning/fall{
 	desc = "It appears to be a sign warning against falling off the cliffs, ahead. Foolproof."
 	},
 /turf/wall/sifwood,
@@ -49594,7 +49593,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/item/banner/nt,
+/obj/item/banner/nanotrasen,
 /turf/floor/wood/sif,
 /area/surface/station/chapel/main)
 "xzZ" = (
