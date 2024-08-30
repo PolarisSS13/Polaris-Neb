@@ -11190,8 +11190,8 @@
 /obj/effect/floor_decal/corner_oldtile/red{
 	dir = 5
 	},
-/obj/item/clothing/armor_attachment/legguards/riot,
-/obj/item/clothing/armor_attachment/armguards/riot,
+/obj/item/clothing/shoes/legguards/riot,
+/obj/item/clothing/gloves/armguards/riot,
 /obj/item/clothing/armor_attachment/armorplate/riot,
 /obj/item/clothing/head/helmet/riot,
 /obj/item/shield/riot,
@@ -14481,8 +14481,8 @@
 /obj/item/clothing/shoes/jackboots/tactical,
 /obj/item/clothing/gloves/tactical,
 /obj/item/clothing/suit/armor/pcarrier/tan/tactical,
-/obj/item/clothing/armor_attachment/legguards/tan,
-/obj/item/clothing/armor_attachment/armguards/tan,
+/obj/item/clothing/shoes/legguards/tan,
+/obj/item/clothing/gloves/armguards/tan,
 /obj/item/clothing/head/helmet/flexitac,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -15538,8 +15538,8 @@
 /obj/item/clothing/shoes/jackboots/tactical,
 /obj/item/clothing/gloves/tactical,
 /obj/item/clothing/suit/armor/pcarrier/tan/tactical,
-/obj/item/clothing/armor_attachment/legguards/tan,
-/obj/item/clothing/armor_attachment/armguards/tan,
+/obj/item/clothing/shoes/legguards/tan,
+/obj/item/clothing/gloves/armguards/tan,
 /obj/item/clothing/head/helmet/flexitac,
 /obj/machinery/door/window/brigdoor/southleft{
 	name = "Tactical Armor"
@@ -18918,8 +18918,8 @@
 	dir = 8
 	},
 /obj/item/clothing/armor_attachment/armorplate/laserproof,
-/obj/item/clothing/armor_attachment/legguards/laserproof,
-/obj/item/clothing/armor_attachment/armguards/laserproof,
+/obj/item/clothing/shoes/legguards/laserproof,
+/obj/item/clothing/gloves/armguards/laserproof,
 /obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/corner_oldtile/blue{
 	dir = 9
@@ -23106,7 +23106,7 @@
 	pixel_y = 10
 	},
 /obj/structure/table,
-/obj/item/chems/glass2/coffeecup/britcup{
+/obj/item/chems/drinks/glass2/coffeecup/britcup{
 	pixel_x = 10;
 	pixel_y = -2
 	},
@@ -24477,8 +24477,8 @@
 /obj/effect/floor_decal/corner_oldtile/red{
 	dir = 5
 	},
-/obj/item/clothing/armor_attachment/legguards/riot,
-/obj/item/clothing/armor_attachment/armguards/riot,
+/obj/item/clothing/shoes/legguards/riot,
+/obj/item/clothing/gloves/armguards/riot,
 /obj/item/clothing/armor_attachment/armorplate/riot,
 /obj/item/clothing/head/helmet/riot,
 /obj/item/shield/riot,
@@ -27485,8 +27485,8 @@
 	dir = 8
 	},
 /obj/item/clothing/armor_attachment/armorplate/bulletproof,
-/obj/item/clothing/armor_attachment/legguards/bulletproof,
-/obj/item/clothing/armor_attachment/armguards/bulletproof,
+/obj/item/clothing/shoes/legguards/bulletproof,
+/obj/item/clothing/gloves/armguards/bulletproof,
 /obj/item/clothing/head/helmet/ballistic,
 /obj/effect/floor_decal/corner_oldtile/green{
 	dir = 9
@@ -28476,8 +28476,8 @@
 	},
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/security/riot,
-/obj/item/clothing/head/helmet/space/void/security/riot,
+/obj/item/clothing/suit/space/void/security/alt,
+/obj/item/clothing/head/helmet/space/void/security/alt,
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Security Suits";

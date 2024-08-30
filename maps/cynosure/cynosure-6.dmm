@@ -957,7 +957,7 @@
 "bcB" = (
 /obj/structure/rack,
 /obj/item/rig/ert,
-/obj/item/clothing/webbing/black_vest,
+/obj/item/clothing/webbing/vest/black,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
@@ -1081,12 +1081,12 @@
 /obj/item/gun/projectile/revolver/stun,
 /obj/item/flash,
 /obj/item/flash,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
@@ -2528,12 +2528,12 @@
 /area/centcom/evac)
 "cVQ" = (
 /obj/structure/rack,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2891,7 +2891,7 @@
 "duO" = (
 /obj/structure/table,
 /obj/item/box/syndie_kit/chameleon,
-/obj/item/box/syndie_kit/clerical,
+/obj/item/backpack/satchel/syndie_kit/clerical,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -3412,12 +3412,12 @@
 /area/skipjack_station/start)
 "dYv" = (
 /obj/structure/rack,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4108,10 +4108,10 @@
 /area/centcom/medical)
 "eRt" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/space/vox/pressure,
-/obj/item/clothing/suit/space/vox/pressure,
-/obj/item/clothing/head/helmet/space/vox/pressure,
-/obj/item/clothing/head/helmet/space/vox/pressure,
+/obj/item/clothing/suit/space/vox,
+/obj/item/clothing/suit/space/vox,
+/obj/item/clothing/head/helmet/space/vox,
+/obj/item/clothing/head/helmet/space/vox,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -4500,12 +4500,12 @@
 /area/holodeck/source_beach)
 "fkL" = (
 /obj/structure/rack,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -4753,18 +4753,18 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_drop_pouches,
-/obj/item/clothing/webbing/black_drop_pouches,
-/obj/item/clothing/webbing/black_drop_pouches,
-/obj/item/clothing/webbing/black_drop_pouches,
-/obj/item/clothing/webbing/black_drop_pouches,
-/obj/item/clothing/webbing/black_drop_pouches,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/drop_pouches/black,
+/obj/item/clothing/webbing/drop_pouches/black,
+/obj/item/clothing/webbing/drop_pouches/black,
+/obj/item/clothing/webbing/drop_pouches/black,
+/obj/item/clothing/webbing/drop_pouches/black,
+/obj/item/clothing/webbing/drop_pouches/black,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/techfloor.dmi';
 	icon_state = "techfloor_gray"
@@ -4799,12 +4799,12 @@
 /area/centcom/specops)
 "fCC" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/clothing/head/collectable/bearpelt,
+/obj/item/clothing/head/bearpelt,
 /obj/item/clothing/head/bowler,
 /obj/item/clothing/head/caphat/cap,
 /obj/item/clothing/head/beaverhat,
 /obj/item/clothing/head/beret/corp/centcom/officer,
-/obj/item/clothing/head/beret/sec,
+/obj/item/clothing/head/beret/corp/sec,
 /obj/item/clothing/head/collectable/kitty,
 /obj/item/clothing/head/collectable/kitty,
 /obj/item/clothing/head/collectable/kitty,
@@ -4820,9 +4820,9 @@
 /obj/item/clothing/head/hairflower/blue,
 /obj/item/clothing/head/hairflower/yellow,
 /obj/item/clothing/head/hairflower/pink,
-/obj/item/clothing/head/collectable/philosopher_wig,
-/obj/item/clothing/head/collectable/plaguedoctorhat,
-/obj/item/clothing/head/collectable/xenos,
+/obj/item/clothing/head/philosopher_wig,
+/obj/item/clothing/head/plaguedoctorhat,
+/obj/item/clothing/head/xenos,
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fCK" = (
@@ -4903,18 +4903,18 @@
 /area/centcom/creed)
 "fIt" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/vest/heavy/merc{
+/obj/item/clothing/suit/armor/pcarrier/merc{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/clothing/suit/vest/heavy/merc{
+/obj/item/clothing/suit/armor/pcarrier/merc{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/suit/vest/heavy/merc,
-/obj/item/clothing/suit/vest/heavy/merc,
-/obj/item/clothing/suit/vest/heavy/merc,
-/obj/item/clothing/suit/vest/heavy/merc,
+/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/merc,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -5028,15 +5028,15 @@
 /obj/item/clothing/webbing/holster/armpit,
 /obj/item/clothing/webbing/holster/armpit,
 /obj/item/clothing/webbing/holster/hip,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/webbing,
-/obj/item/clothing/webbing/webbing,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/neck/scarf/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/neck/scarf,
 /obj/item/clothing/neck/scarf/lightblue,
 /obj/item/clothing/neck/scarf/red,
 /obj/item/clothing/neck/scarf/purple,
@@ -5045,10 +5045,10 @@
 /obj/item/clothing/armband/engine,
 /obj/item/clothing/armband/cargo,
 /obj/item/clothing/armband,
-/obj/item/clothing/medal/nobel_science,
+/obj/item/clothing/medal/nanotrasen/silver,
 /obj/item/clothing/medal/silver,
 /obj/item/clothing/medal/gold,
-/obj/item/clothing/medal/bronze_heart,
+/obj/item/clothing/medal/nanotrasen/bronze,
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fRL" = (
@@ -7653,7 +7653,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "iNR" = (
-/obj/item/robot_parts/frame,
+/obj/item/robot_parts/robot_suit,
 /obj/item/robot_parts/r_leg,
 /obj/item/robot_parts/r_arm,
 /turf/floor/shuttle,
@@ -8772,12 +8772,12 @@
 /area/ninja_dojo/start)
 "kbj" = (
 /obj/structure/rack,
-/obj/item/clothing/webbing/holster/leg,
-/obj/item/clothing/webbing/holster/leg,
-/obj/item/clothing/webbing/holster/leg,
-/obj/item/clothing/webbing/holster/leg,
-/obj/item/clothing/webbing/holster/leg,
-/obj/item/clothing/webbing/holster/leg,
+/obj/item/clothing/webbing/holster/thigh,
+/obj/item/clothing/webbing/holster/thigh,
+/obj/item/clothing/webbing/holster/thigh,
+/obj/item/clothing/webbing/holster/thigh,
+/obj/item/clothing/webbing/holster/thigh,
+/obj/item/clothing/webbing/holster/thigh,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
@@ -9639,7 +9639,7 @@
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "kLb" = (
-/obj/item/box/syndie_kit/clerical,
+/obj/item/backpack/satchel/syndie_kit/clerical,
 /obj/structure/table,
 /turf/unsimulated/floor{
 	icon_state = "cult";
@@ -9708,9 +9708,9 @@
 /area/holodeck/source_boxingcourt)
 "kPZ" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/vest/heavy/merc,
-/obj/item/clothing/suit/vest/heavy,
-/obj/item/clothing/suit/vest,
+/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/vest/heavy,
+/obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/head/helmet,
 /turf/unsimulated/floor{
@@ -9965,12 +9965,12 @@
 /area/centcom/main_hall)
 "lgz" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
-/obj/item/clothing/webbing/black_vest,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
+/obj/item/clothing/webbing/vest/black,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/tiles.dmi';
 	icon_state = "dark"
@@ -10132,7 +10132,7 @@
 	},
 /area/centcom/main_hall)
 "loZ" = (
-/obj/item/clothing/head/collectable/philosopher_wig,
+/obj/item/clothing/head/philosopher_wig,
 /turf/unsimulated/floor{
 	icon_state = "asteroid"
 	},
@@ -12772,14 +12772,14 @@
 /obj/item/clothing/costume/hosformalmale,
 /obj/item/clothing/costume/hosformalfem,
 /obj/item/clothing/shirt/harness,
-/obj/item/clothing/costume/costume/gladiator,
+/obj/item/clothing/costume/gladiator,
 /obj/item/clothing/costume/ert,
-/obj/item/clothing/costume/costume/schoolgirl,
-/obj/item/clothing/costume/costume/redcoat,
-/obj/item/clothing/costume/costume/sexymime,
-/obj/item/clothing/costume/costume/sexyclown,
-/obj/item/clothing/costume/costume/soviet,
-/obj/item/clothing/costume/space,
+/obj/item/clothing/costume/schoolgirl,
+/obj/item/clothing/costume/redcoat,
+/obj/item/clothing/costume/sexymime,
+/obj/item/clothing/costume/sexyclown,
+/obj/item/clothing/costume/soviet,
+/obj/item/clothing/jumpsuit/space,
 /obj/item/clothing/costume/swimsuit/stripper/mankini,
 /obj/item/clothing/costume/suit_jacket/female,
 /obj/item/clothing/costume/rank/psych/turtleneck,
@@ -13198,7 +13198,7 @@
 /area/shuttle/merchant/home)
 "oPQ" = (
 /obj/structure/table,
-/obj/item/clothing/costume/costume/rainbow,
+/obj/item/clothing/jumpsuit/rainbow,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/clothing/head/collectable/petehat{
 	pixel_y = 5
@@ -13821,21 +13821,21 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/clothing/webbing/brown_drop_pouches{
+/obj/item/clothing/webbing/drop_pouches/brown{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/brown_drop_pouches,
-/obj/item/clothing/webbing/brown_drop_pouches{
+/obj/item/clothing/webbing/drop_pouches/brown,
+/obj/item/clothing/webbing/drop_pouches/brown{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/clothing/webbing/brown_vest{
+/obj/item/clothing/webbing/vest/brown{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/brown_vest,
-/obj/item/clothing/webbing/brown_vest{
+/obj/item/clothing/webbing/vest/brown,
+/obj/item/clothing/webbing/vest/brown{
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -13905,24 +13905,24 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/clothing/webbing/white_vest{
+/obj/item/clothing/webbing/vest/white{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/white_vest,
-/obj/item/clothing/webbing/white_vest{
+/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest/white{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/white_drop_pouches{
+/obj/item/clothing/webbing/drop_pouches/white{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/clothing/webbing/white_drop_pouches{
+/obj/item/clothing/webbing/drop_pouches/white{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/white_drop_pouches,
+/obj/item/clothing/webbing/drop_pouches/white,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/flooring/techfloor.dmi';
 	icon_state = "techfloor_gray"
@@ -15582,7 +15582,7 @@
 	},
 /area/centcom/medical)
 "rqR" = (
-/obj/item/gun/launcher/spikethrower,
+/obj/item/gun/launcher/alien/spikethrower,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -16442,7 +16442,7 @@
 /area/centcom/creed)
 "shq" = (
 /obj/structure/rack,
-/obj/item/gun/launcher/spikethrower,
+/obj/item/gun/launcher/alien/spikethrower,
 /turf/unsimulated/floor{
 	icon_state = "asteroid"
 	},
@@ -18035,14 +18035,14 @@
 /area/shuttle/escape/centcom)
 "tTz" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/clothing/suit/costume/hgpirate,
+/obj/item/clothing/suit/hgpirate,
 /obj/item/clothing/suit/leathercoat,
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume/justice,
 /obj/item/clothing/suit/costume/justice,
-/obj/item/clothing/suit/costume,
+/obj/item/clothing/suit/pirate,
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "tTN" = (
@@ -19294,7 +19294,7 @@
 /area/ninja_dojo/dojo)
 "voj" = (
 /obj/structure/table/woodentable,
-/obj/item/clothing/shoes/boots/workboots,
+/obj/item/clothing/shoes/workboots,
 /obj/item/clothing/costume/technomancer,
 /obj/item/clothing/head/technomancer,
 /obj/item/box/syndie_kit/chameleon,
@@ -19536,8 +19536,8 @@
 /area/beach)
 "vCL" = (
 /obj/structure/table/steel,
-/obj/item/clothing/glasses/regular,
-/obj/item/clothing/glasses/regular,
+/obj/item/clothing/glasses/prescription,
+/obj/item/clothing/glasses/prescription,
 /turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "vDV" = (
@@ -19833,7 +19833,7 @@
 /area/skipjack_station/start)
 "vTt" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/clothing/head/collectable/philosopher_wig,
+/obj/item/clothing/head/philosopher_wig,
 /obj/item/radio/intercom{
 	desc = "Talk through this. Evilly";
 	dir = 8;
@@ -20033,9 +20033,9 @@
 /area/centcom/command)
 "wdr" = (
 /obj/structure/closet/crate,
-/obj/item/clothing/pants/vox/vox_utility,
-/obj/item/clothing/pants/vox/vox_utility,
-/obj/item/clothing/pants/vox/vox_utility,
+/obj/item/clothing/pants/vox,
+/obj/item/clothing/pants/vox,
+/obj/item/clothing/pants/vox,
 /obj/item/clothing/suit/robe/vox,
 /obj/item/clothing/suit/robe/vox,
 /obj/item/clothing/suit/robe/vox,
@@ -21083,7 +21083,7 @@
 	},
 /area/wizard_station)
 "xfC" = (
-/obj/item/clothing/head/collectable/xenos,
+/obj/item/clothing/head/xenos,
 /turf/unsimulated/floor{
 	icon_state = "asteroid"
 	},

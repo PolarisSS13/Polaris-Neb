@@ -19563,9 +19563,9 @@
 	dir = 6
 	},
 /obj/structure/closet/wardrobe/red,
-/obj/item/clothing/medal/badge/holo,
-/obj/item/clothing/medal/badge/holo,
-/obj/item/clothing/medal/badge/holo/cord,
+/obj/item/clothing/badge/holo,
+/obj/item/clothing/badge/holo,
+/obj/item/clothing/badge/holo/cord,
 /obj/item/clothing/suit/hazardvest/green,
 /obj/item/clothing/suit/hazardvest/green,
 /turf/floor/tiled/techmaint,
@@ -35648,7 +35648,6 @@
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/rack,
-/obj/item/box/seccarts,
 /obj/item/box/handcuffs{
 	pixel_x = 2
 	},
@@ -48085,7 +48084,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/food/cube/monkeycube/wrapped,
+/obj/item/food/monkeycube/wrapped,
 /turf/floor/tiled/neutral,
 /area/surface/station/rnd/xenobiology)
 "wOs" = (
