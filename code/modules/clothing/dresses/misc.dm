@@ -4,7 +4,7 @@
 	icon = 'icons/clothing/dresses/dress_green.dmi'
 
 /obj/item/clothing/dress/yellow
-	name = "green dress"
+	name = "yellow dress"
 	desc = "A simple yellow dress."
 	icon = 'icons/clothing/dresses/dress_yellow.dmi'
 
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/dress/purple
 	name = "purple dress"
-	desc= "A simple, tight-fitting purple dress."
+	desc = "A simple, tight-fitting purple dress."
 	icon = 'icons/clothing/dresses/dress_purple.dmi'
 
 /obj/item/clothing/dress/saloon
