@@ -10,7 +10,7 @@
 	sprite_sheets = list(
 			"Teshari" = 'maps/cynosure/icons/mob/species/teshari/cyno_uniform.dmi'
 			)
-	starting_accessories = list(/obj/item/clothing/storage/webbing/pilot1)
+	starting_accessories = list(/obj/item/clothing/webbing/vest/pilot1)
 
 /obj/item/clothing/under/rank/pilot2
 	name = "\improper NanoTrasen flight suit"
@@ -24,4 +24,4 @@
 	sprite_sheets = list(
 			"Teshari" = 'maps/cynosure/icons/mob/species/teshari/cyno_uniform.dmi'
 			)
-	starting_accessories = list(/obj/item/clothing/storage/webbing/pilot2)
+	starting_accessories = list(/obj/item/clothing/webbing/vest/pilot2)
