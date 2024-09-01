@@ -76,6 +76,7 @@
 	//#include "items/headset_cyno.dm"
 	//#include "items/clothing/cyno_accessory.dm"
 	#include "items/clothing/cyno_exploration.dm"
+	#include "items/clothing/cyno_permits.dm"
 	//#include "items/clothing/cyno_suit.dm"
 	//#include "items/clothing/cyno_under.dm"
 	#include "items/clothing/cyno_winterboots.dm"
