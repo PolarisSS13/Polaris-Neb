@@ -938,7 +938,7 @@
 /turf/floor/tiled/dark,
 /area/tcommsat/cynosure)
 "lG" = (
-/obj/structure/girder/reinforced,
+/obj/structure/girder,
 /turf/floor/plating,
 /area/tcommsat/cynosure/teleporter)
 "lK" = (
@@ -3736,7 +3736,7 @@
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "SD" = (
-/obj/structure/girder/reinforced,
+/obj/structure/girder,
 /turf/floor/airless,
 /area/tcommsat/cynosure)
 "SE" = (

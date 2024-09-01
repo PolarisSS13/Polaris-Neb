@@ -2508,7 +2508,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "bjK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -9086,7 +9090,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "esn" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -14877,7 +14885,11 @@
 /turf/floor/tiled/hydro,
 /area/surface/station/hydroponics)
 "gZn" = (
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "gZq" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -22340,7 +22352,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "kJx" = (
 /obj/machinery/door/firedoor/border_only,
@@ -24745,7 +24761,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "lSf" = (
 /obj/structure/table/woodentable_reinforced,
@@ -36063,7 +36083,11 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/pool/filled,
+/obj/abstract/landmark/mapped_fluid{
+	fluid_initial = 300;
+	name = "mapped shallow pool"
+	},
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "qRt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

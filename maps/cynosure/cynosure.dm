@@ -84,6 +84,7 @@
 	//#include "structures/closets/misc.dm"
 	//#include "structures/closets/security.dm"
 	//#include "turfs/outdoors.dm"
+	#include "overmap/cyno_overmap_stubs.dm"
 	//#include "overmap/sectors.dm"
 
 	#include "cynosure-1.dmm"

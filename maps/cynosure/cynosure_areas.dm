@@ -9,7 +9,6 @@
 #define AMBIENCE_MAINTENANCE list()
 #define AMBIENCE_AI          list()
 /area
-	var/music
 	var/forbid_events
 
 //Planetside
@@ -21,6 +20,7 @@
 /obj/effect/map_helper/airlock/door/ext_door
 
 /area/surface
+	abstract_type = /area/surface
 	name = "The Surface (Don't Use)"
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
@@ -574,20 +574,20 @@
 /area/surface/station/command/meeting_room
 	name = "\improper Command - Meeting Room"
 	icon_state = "bridge"
-	music = null
+	ambience = list()
 	sound_env = MEDIUM_SOFTFLOOR
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 
 /area/surface/station/command/operations
 	name = "\improper Command - Operations Center"
 	icon_state = "bridge"
-	music = "signal"
+	ambience = list('sound/ambience/signal.ogg')
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 
 /area/surface/station/command/teleporter
 	name = "\improper Command - Teleporter"
 	icon_state = "teleporter"
-	music = "signal"
+	ambience = list('sound/ambience/signal.ogg')
 	holomap_color = HOLOMAP_AREACOLOR_COMMAND
 
 //Engineering
@@ -886,7 +886,7 @@
 /area/surface/station/medical/
 	name = "\improper Medbay"
 	icon_state = "medbay"
-	music = 'sound/ambience/signal.ogg'
+	ambience = list('sound/ambience/signal.ogg')
 	holomap_color = HOLOMAP_AREACOLOR_MEDICAL
 	description = "The smells of a hospital waft through the air: strong sterilizing agents, various medicines, and sterile gloves. It's not a pleasant smell, but one you could grow to ignore."
 	area_blurb_category = "medical"
@@ -936,7 +936,7 @@
 /area/surface/station/medical/psych
 	name = "\improper Medbay - Psych Room"
 	icon_state = "medbay3"
-	music = 'sound/ambience/signal.ogg'
+	ambience = list('sound/ambience/signal.ogg')
 	description = "With a carpeted floor and comfy furniture, this room has a warmer feeling compared to the sterility of the rest of the medical wing."
 	area_blurb_category = "psych"
 
@@ -1580,7 +1580,7 @@
 /area/tcommsat/cynosure/computer
 	name = "\improper Telecomms Control Room"
 	icon_state = "tcomsatcomp"
-	music = "signal"
+	ambience = list('sound/ambience/signal.ogg')
 
 /area/tcommsat/cynosure/lounge
 	name = "\improper Telecomms Satellite Lounge"
@@ -1604,6 +1604,48 @@
 
 /area/shuttle/exploration/cargo
 	name = "\improper NTC Calvera Cargo and Engine Room"
+
+//Centcomm
+// CENTCOM
+/area/centcom
+	name = "\improper Centcom"
+	icon_state = "centcom"
+	requires_power = FALSE
+	dynamic_lighting = FALSE
+	req_access = list(access_cent_general)
+
+/area/centcom/bar
+	name = "\improper CentCom Bar"
+	icon_state = "centcom_crew"
+
+/area/centcom/command
+	name = "\improper CentCom Command" //Central Command Command totally isn't RAS Syndrome in action.
+	icon_state = "centcom_command"
+
+/area/centcom/evac
+	name = "\improper CentCom Emergency Shuttle"
+
+/area/centcom/living
+	name = "\improper CentCom Living Quarters"
+
+/area/centcom/main_hall
+	name = "\improper Main Hallway"
+	icon_state = "centcom_hallway1"
+
+/area/centcom/medical
+	name = "\improper CentCom Medical"
+	icon_state = "centcom_medical"
+
+/area/centcom/security
+	name = "\improper CentCom Security"
+	icon_state = "centcom_security"
+
+/area/centcom/specops
+	name = "\improper CentCom Special Operations"
+
+/area/centcom/terminal
+	name = "\improper Docking Terminal"
+	icon_state = "centcom_dock"
 
 //Centcomm Antags and Others
 
@@ -1876,6 +1918,77 @@
 	icon_state = "shuttle"
 	dynamic_lighting = 0
 
+// Holodeck
+/area/holodeck_control
+	name = "\improper Holodeck Control"
+	icon_state = "holodeck_control"
+
+/area/holodeck
+	name = "\improper Holodeck"
+	icon_state = "Holodeck"
+	dynamic_lighting = 0
+	sound_env = LARGE_ENCLOSED
+	area_flags = AREA_FLAG_IS_NOT_PERSISTENT
+
+/area/holodeck/alphadeck
+	name = "\improper Holodeck Alpha"
+
+/area/holodeck/source_plating
+	name = "\improper Holodeck - Off"
+
+/area/holodeck/source_emptycourt
+	name = "\improper Holodeck - Empty Court"
+	sound_env = ARENA
+
+/area/holodeck/source_boxingcourt
+	name = "\improper Holodeck - Boxing Court"
+	sound_env = ARENA
+
+/area/holodeck/source_basketball
+	name = "\improper Holodeck - Basketball Court"
+	sound_env = ARENA
+
+/area/holodeck/source_thunderdomecourt
+	name = "\improper Holodeck - Thunderdome Court"
+	requires_power = 0
+	sound_env = ARENA
+
+/area/holodeck/source_courtroom
+	name = "\improper Holodeck - Courtroom"
+	sound_env = AUDITORIUM
+
+/area/holodeck/source_beach
+	name = "\improper Holodeck - Beach"
+	sound_env = PLAIN
+
+/area/holodeck/source_wildlife
+	name = "\improper Holodeck - Wildlife Simulation"
+
+/area/holodeck/source_meetinghall
+	name = "\improper Holodeck - Meeting Hall"
+	sound_env = AUDITORIUM
+
+/area/holodeck/source_theatre
+	name = "\improper Holodeck - Theatre"
+	sound_env = CONCERT_HALL
+
+/area/holodeck/source_picnicarea
+	name = "\improper Holodeck - Picnic Area"
+	sound_env = PLAIN
+
+/area/holodeck/source_snowfield
+	name = "\improper Holodeck - Snow Field"
+	sound_env = FOREST
+
+/area/holodeck/source_desert
+	name = "\improper Holodeck - Desert"
+	sound_env = PLAIN
+
+/area/holodeck/source_space
+	name = "\improper Holodeck - Space"
+	has_gravity = 0
+	sound_env = SPACE
+
 //Trade Ship
 
 /area/shuttle/merchant
@@ -1900,7 +2013,6 @@
 
 /area/shuttle/escape_pod1
 	name = "\improper Escape Pod One"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod1/station
 	icon_state = "shuttle2"
@@ -1914,7 +2026,6 @@
 
 /area/shuttle/escape_pod2
 	name = "\improper Escape Pod Two"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod2/station
 	icon_state = "shuttle2"
@@ -1928,7 +2039,6 @@
 
 /area/shuttle/escape_pod3
 	name = "\improper Escape Pod Three"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod3/station
 	icon_state = "shuttle2"
@@ -1942,7 +2052,6 @@
 
 /area/shuttle/escape_pod4
 	name = "\improper Escape Pod Four"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod4/station
 	icon_state = "shuttle2"
@@ -1956,7 +2065,6 @@
 
 /area/shuttle/escape_pod5
 	name = "\improper Escape Pod Five"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod5/station
 	icon_state = "shuttle2"
@@ -1970,7 +2078,6 @@
 
 /area/shuttle/escape_pod6
 	name = "\improper Escape Pod Six"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod6/station
 	icon_state = "shuttle2"
@@ -1984,7 +2091,6 @@
 
 /area/shuttle/escape_pod7
 	name = "\improper Escape Pod Seven"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod7/station
 	icon_state = "shuttle2"
@@ -1998,7 +2104,6 @@
 
 /area/shuttle/escape_pod8
 	name = "\improper Escape Pod Eight"
-	music = "music/escape.ogg"
 
 /area/shuttle/escape_pod8/station
 	icon_state = "shuttle2"
@@ -2014,7 +2119,6 @@
 
 /area/shuttle/large_escape_pod1
 	name = "\improper Large Escape Pod One"
-	music = "music/escape.ogg"
 
 /area/shuttle/large_escape_pod1/station
 	icon_state = "shuttle2"
@@ -2028,7 +2132,6 @@
 
 /area/shuttle/large_escape_pod2
 	name = "\improper Large Escape Pod Two"
-	music = "music/escape.ogg"
 
 /area/shuttle/large_escape_pod2/station
 	icon_state = "shuttle2"

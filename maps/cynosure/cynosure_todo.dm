@@ -81,11 +81,34 @@
 /obj/item/radio/phone/medbay
 
 /obj/effect/floor_decal
+/obj/effect/floor_decal/arrivals
+/obj/effect/floor_decal/arrivals/right
+/obj/effect/floor_decal/emblem/nt1
+/obj/effect/floor_decal/emblem/nt2
+/obj/effect/floor_decal/emblem/nt3
+/obj/effect/floor_decal/milspec_sterile
+/obj/effect/floor_decal/milspec_sterile/green
+/obj/effect/floor_decal/milspec_sterile/green/half
+/obj/effect/floor_decal/milspec/cargo_arrow
+/obj/effect/floor_decal/milspec/color/black/half
+/obj/effect/floor_decal/milspec/color/orange
+/obj/effect/floor_decal/milspec/color/red
+/obj/effect/floor_decal/milspec/color/silver/half
+/obj/effect/floor_decal/milspec/color/white
+/obj/effect/floor_decal/milspec/color/white/corner
+/obj/effect/floor_decal/milspec/color/white/half
+/obj/effect/floor_decal/milspec/hatchmarks
+/obj/effect/floor_decal/milspec/stripe
+/obj/effect/floor_decal/shuttle_exit
+/obj/effect/floor_decal/shuttles
+/obj/effect/floor_decal/shuttles/right
+/obj/effect/floor_decal/sign/dock/three
+/obj/effect/floor_decal/wheelchair
 /obj/effect/floor_decal/milspec
 /obj/effect/floor_decal/milspec/box
 /obj/effect/floor_decal/milspec/color/blue
 
-/obj/item/tank/oxygen/red
+/obj/machinery/door/airlock/external/white
 
 /obj/item/soap/deluxe
 /obj/item/soap/nanotrasen
@@ -116,6 +139,11 @@
 
 /decl/flooring/tiling/steel_dirty
 /decl/flooring/tiling/asteroidfloor
+
+/turf/wall/tgmc/redstripe
+/turf/wall/tgmc/redstripe_r
+/turf/wall/tgmc/whitewall
+/turf/wall/tgmc/window/white/reinf
 
 /obj/item/flashlight/color/red
 
@@ -251,9 +279,41 @@
 /obj/structure/sign/levels/cargo/mining
 /obj/structure/sign/levels/recreation
 
-/obj/item/clothing/shoes/winterboots/mining
-/obj/item/clothing/shoes/winterboots/explorer
-/obj/item/clothing/shoes/winterboots/security
+// Clothes
+/obj/item/clothing/badge/holo/cord
+/obj/item/clothing/costume/hosformalfem
+/obj/item/clothing/costume/ert
+/obj/item/clothing/costume/suit_jacket/female
+/obj/item/clothing/costume/suit_jacket/red
+/obj/item/clothing/costume/technomancer
+/obj/item/clothing/dress/blacktango
+/obj/item/clothing/dress/blacktango/alt
+/obj/item/clothing/dress/redeveninggown
+/obj/item/clothing/dress/sailordress
+/obj/item/clothing/glasses/night/vox
+/obj/item/clothing/glasses/sunglasses/medhud
+/obj/item/clothing/gloves/white
+/obj/item/clothing/head/helmet/ert/command
+/obj/item/clothing/head/helmet/flexitac
+/obj/item/clothing/head/helmet/space/sports
+/obj/item/clothing/head/helmet/space/void/engineering/construction
+/obj/item/clothing/head/helmet/space/void/engineering/hazmat
+/obj/item/clothing/head/technomancer
+/obj/item/clothing/head/wizard/amp
+/obj/item/clothing/jumpsuit/space
+/obj/item/clothing/suit/armor/pcarrier/tan/tactical
+/obj/item/clothing/suit/caution
+/obj/item/clothing/suit/costume/justice
+/obj/item/clothing/suit/space/sports
+/obj/item/clothing/suit/space/void/engineering/construction
+/obj/item/clothing/suit/space/void/engineering/hazmat
+/obj/item/clothing/webbing/vox
+
+// These exist on Lighthouse.
+/obj/item/clothing/head/helmet/space/void/medical/emt
+/obj/item/clothing/suit/space/void/medical/emt
+/obj/item/clothing/dress/maid
+/obj/item/clothing/dress/maid/janitor
 
 /obj/machinery/atmospherics/binary/dp_vent_pump
 /obj/machinery/atmospherics/binary/dp_vent_pump/high_volume
@@ -297,20 +357,18 @@
 /obj/abstract/landmark/ai_multicam_room
 /obj/abstract/landmark/teleport_mark
 
-/obj/effect/floor_decal/milspec_sterile
-/obj/effect/floor_decal/milspec_sterile/green
-/obj/effect/floor_decal/milspec_sterile/green/half
-
 /turf/unsimulated/wall/planetary
 /turf/unsimulated/wall/planetary/sif
 
 /turf/floor/reinforced/supermatter_core
 /turf/floor/tiled/asteroid_steel
+// TODO: MILSPEC TILE STACKS, MILSPEC FLOORING DECLS
 /turf/floor/tiled/milspec
+/turf/floor/tiled/milspec/dark
+/turf/floor/tiled/milspec/raised
 /turf/floor/tiled/milspec/sterile
 /turf/floor/wood/sif
 /turf/floor/wood/sif/broken
-/turf/floor/pool/filled
 /turf/floor/tiled/hydro
 /turf/floor/tiled/old_tile
 /turf/floor/tiled/old_tile/gray
@@ -327,8 +385,6 @@
 /turf/floor/tiled/eris/steel
 /turf/floor/tiled/eris/steel/danger
 /turf/floor/asteroid // /decl/flooring/tiling/asteroidfloor
-/turf/floor/natural/ignore_mapgen
-/turf/floor/natural/ignore_mapgen/sif
 
 /obj/item/clothing/suit/space/void/expedition/alt
 /obj/item/clothing/head/helmet/space/void/expedition/alt
@@ -431,12 +487,18 @@
 /obj/item/ammo_magazine/m9mmt
 /obj/item/ammo_magazine/m9mmt/rubber
 /obj/item/ammo_magazine/m9mmt/practice
+/obj/item/gun/energy/gun/burst
+/obj/item/gun/energy/ionrifle/pistol
 /obj/item/gun/energy/phasegun/pistol
+/obj/item/gun/energy/taser/xeno
 /obj/item/gun/projectile/automatic/c20r
 /obj/item/gun/projectile/automatic/l6_saw
 /obj/item/gun/projectile/automatic/p90
 /obj/item/gun/projectile/automatic/pdw
 /obj/item/gun/projectile/automatic/sts35
+/obj/item/gun/projectile/colt/detective
+/obj/item/gun/projectile/revolver/mateba
+/obj/item/gun/projectile/sec
 /obj/item/gun/projectile/shotgun/pump/combat
 /obj/item/gun/projectile/shotgun/pump/rifle
 /obj/item/gun/projectile/shotgun/pump/rifle/lever

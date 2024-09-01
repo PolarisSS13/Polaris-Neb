@@ -3755,7 +3755,7 @@
 	},
 /area/syndicate_mothership/elite_squad)
 "esB" = (
-/obj/item/gun/launcher/crossbow,
+/obj/item/gun/launcher/bow/crossbow/powered,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -10416,7 +10416,7 @@
 	},
 /area/wizard_station)
 "lIS" = (
-/obj/machinery/robotic_fabricator,
+/obj/machinery/fabricator/robotics,
 /obj/effect/floor_decal/milspec/color/red,
 /turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
@@ -10472,7 +10472,7 @@
 	},
 /area/centcom/command)
 "lLl" = (
-/obj/item/gun/magic/firestaff,
+/obj/item/gun/energy/staff/fire,
 /turf/unsimulated/floor{
 	icon_state = "steel_dirty"
 	},
@@ -10486,9 +10486,9 @@
 /area/shuttle/merchant/home)
 "lMq" = (
 /obj/structure/table,
-/obj/item/clothing/medal/permit,
-/obj/item/clothing/medal/permit,
-/obj/item/clothing/medal/permit,
+/obj/item/clothing/permit,
+/obj/item/clothing/permit,
+/obj/item/clothing/permit,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -12780,9 +12780,10 @@
 /obj/item/clothing/costume/sexyclown,
 /obj/item/clothing/costume/soviet,
 /obj/item/clothing/jumpsuit/space,
-/obj/item/clothing/costume/swimsuit/stripper/mankini,
+/obj/item/clothing/pants/mankini,
 /obj/item/clothing/costume/suit_jacket/female,
-/obj/item/clothing/costume/rank/psych/turtleneck,
+/obj/item/clothing/shirt/sweater/turquoise,
+/obj/item/clothing/pants/slacks/navy,
 /obj/item/clothing/shirt/syndicate/combat,
 /obj/item/clothing/shirt/syndicate/combat,
 /obj/item/clothing/shirt/syndicate/tacticool,
@@ -14406,7 +14407,7 @@
 /area/holodeck/source_basketball)
 "qiU" = (
 /obj/structure/rack,
-/obj/item/gun/launcher/crossbow,
+/obj/item/gun/launcher/bow/crossbow/powered,
 /obj/item/stack/material/rods/ten,
 /obj/machinery/light/small{
 	dir = 8
@@ -20182,11 +20183,6 @@
 "wjq" = (
 /obj/structure/rack,
 /obj/effect/floor_decal/industrial/warning,
-/obj/item/kit/paint/gygax/darkgygax,
-/obj/item/kit/paint/gygax/recitence,
-/obj/item/kit/paint/durand,
-/obj/item/kit/paint/durand/phazon,
-/obj/item/kit/paint/durand/seraph,
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "wjG" = (
