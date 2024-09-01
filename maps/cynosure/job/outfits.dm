@@ -1,7 +1,3 @@
-// stubs
-/obj/item/clothing/medal/permit/gun/planetside/proc/set_name(name)
-// end stubs
-
 //Job Outfits
 /*
 SOUTHERN CROSS OUTFITS
@@ -20,13 +16,13 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	id_type  = /obj/item/card/id/civilian
 	flags    = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 	id_pda_assignment = "Explorer"
-	backpack_contents = list(/obj/item/clothing/medal/permit/gun/planetside = 1)
+	backpack_contents = list(/obj/item/clothing/permit/gun/planetside = 1)
 
 
 /decl/hierarchy/outfit/job/explorer2/post_equip(mob/living/human/H)
 	..()
-	for(var/obj/item/clothing/medal/permit/gun/planetside/permit in H.back.contents)
-		permit.set_name(H.real_name)
+	for(var/obj/item/clothing/permit/gun/planetside/permit in H.back.contents)
+		permit.set_owner(H.real_name) // no letting someone else use it!
 
 /decl/hierarchy/outfit/job/explorer2/technician
 	name = "Cynosure - Explorer Technician"
