@@ -309,12 +309,6 @@
 /obj/item/clothing/suit/space/void/engineering/hazmat
 /obj/item/clothing/webbing/vox
 
-// These exist on Lighthouse.
-/obj/item/clothing/head/helmet/space/void/medical/emt
-/obj/item/clothing/suit/space/void/medical/emt
-/obj/item/clothing/dress/maid
-/obj/item/clothing/dress/maid/janitor
-
 /obj/machinery/atmospherics/binary/dp_vent_pump
 /obj/machinery/atmospherics/binary/dp_vent_pump/high_volume
 
