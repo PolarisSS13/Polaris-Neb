@@ -233,3 +233,12 @@
 			tank.distribute_pressure += cp
 		tank.distribute_pressure = min(max(round(tank.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
 		. = TOPIC_REFRESH // Refreshing is handled in machinery/Topic
+
+/obj/machinery/oxygen_pump/anesthetic
+	name = "anesthetic pump"
+	desc = "A wall-mounted anesthetic pump with a retractable mask that someone can pull over your face to knock you out."
+	spawn_type = /obj/item/tank/anesthetic
+	icon_state = "anesthetic_tank"
+	icon_state_closed = "anesthetic_tank"
+	icon_state_open = "anesthetic_tank_open"
+	mask_type = /obj/item/clothing/mask/breath/medical
