@@ -1622,8 +1622,8 @@
 "bQE" = (
 /obj/structure/rack,
 /obj/item/energy_blade/sword/pirate,
-/obj/item/clothing/suit/space/pirate,
-/obj/item/clothing/suit/space/pirate,
+/obj/item/clothing/suit/pirate,
+/obj/item/clothing/suit/pirate,
 /obj/item/tank/oxygen,
 /obj/item/pinpointer/shuttle/heist,
 /obj/item/pinpointer/shuttle/heist,
@@ -12311,7 +12311,7 @@
 /turf/floor/tiled/white,
 /area/centcom/bar)
 "nRZ" = (
-/obj/structure/morgue/crematorium{
+/obj/structure/crematorium{
 	desc = "qdel";
 	id_tag = "vr_thunderdome";
 	name = "Object Deletorinator"
