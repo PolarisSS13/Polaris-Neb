@@ -157,7 +157,9 @@
 	var/occupied_icon_state = "body_scanner_1"
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
+	var/on_store_visible_message = "$TARGET$ hums and hisses as it moves $USER$ into storage." //! A visible message to display when the user is despawned. $USER$ will be replaced with the user's name, $TARGET$ will be replaced with the pod's name.
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
+	var/on_enter_visible_message = "$USER$ starts climbing into $TARGET$." //! A visible message to display when the user enters the pod. $USER$ will be replaced with the user's name.
 	var/allow_occupant_types = list(/mob/living/human)
 	var/disallow_occupant_types = list()
 
@@ -356,6 +358,7 @@
 		control_computer._admin_logs += "[key_name(occupant)] ([role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(occupant)] ([role_alt_title]) entered cryostorage.")
 
+	visible_message(SPAN_NOTICE(emote_replace_user_tokens(emote_replace_target_tokens(on_store_visible_message, src), occupant)))
 	do_telecomms_announcement(src, "[occupant.real_name], [role_alt_title], [on_store_message]", "[on_store_name]")
 	despawn_character(occupant)
 	set_occupant(null)
@@ -366,7 +369,10 @@
 			if(alert(target,"Would you like to enter long-term storage?",,"Yes","No") != "Yes")
 				return
 	if(!user.incapacitated() && !user.anchored && user.Adjacent(src) && user.Adjacent(target))
-		visible_message("[user] starts putting [target] into \the [src].", range = 3)
+		if(M == user)
+			visible_message(SPAN_NOTICE(emote_replace_user_tokens(emote_replace_target_tokens(on_enter_visible_message, src), usr)), range = 3)
+		else
+			visible_message("[user] starts putting [target] into \the [src].", range = 3)
 		if(!do_after(user, 20, src)|| QDELETED(target))
 			return
 		set_occupant(target)
@@ -446,7 +452,7 @@
 	if(!usr.can_enter_cryopod(usr))
 		return
 
-	visible_message("\The [usr] starts climbing into \the [src].", range = 3)
+	visible_message(emote_replace_user_tokens(emote_replace_target_tokens(on_enter_visible_message, src), usr), range = 3)
 
 	if(do_after(usr, 20, src))
 
@@ -489,7 +495,7 @@
 
 	if(occupant.client)
 		if(!silent)
-			to_chat(occupant, SPAN_NOTICE("[on_enter_occupant_message]"))
+			occupant.visible_message("\The [src] [emote_replace_target_tokens(on_enter_visible_message)]", SPAN_NOTICE(on_enter_occupant_message))
 			to_chat(occupant, SPAN_NOTICE("<b>If you ghost, log out or close your client now, your character will shortly be permanently removed from the round.</b>"))
 		occupant.client.perspective = EYE_PERSPECTIVE
 		occupant.client.eye = src

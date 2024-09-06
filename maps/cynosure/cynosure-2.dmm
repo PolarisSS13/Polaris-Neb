@@ -10315,7 +10315,7 @@
 	},
 /area/surface/outside/plains/station)
 "eSr" = (
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/general)
 "eSv" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -13396,7 +13396,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/hallway/primary/groundfloor/south)
 "grC" = (
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cockpit)
 "grK" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -13723,7 +13723,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "gAK" = (
 /obj/structure/cable{
@@ -14652,7 +14652,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/secondary/groundfloor/civilian)
 "gTs" = (
-/turf/wall/dshull,
+/turf/wall/ocp_wall,
 /area/shuttle/large_escape_pod1/station)
 "gTA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16782,7 +16782,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "ibA" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -25283,7 +25283,7 @@
 	dir = 6
 	},
 /obj/structure/shuttle/engine/heater,
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "mcl" = (
 /obj/structure/disposalpipe/trunk,
@@ -26504,7 +26504,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "mCq" = (
 /obj/structure/cable/yellow{
@@ -27642,7 +27642,7 @@
 	dir = 1
 	},
 /obj/structure/shuttle/engine/heater,
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "ndX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -27877,7 +27877,7 @@
 	id_tag = "AIupload1";
 	pixel_x = -8
 	},
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "nkw" = (
 /obj/structure/cable/green{
@@ -28676,7 +28676,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/hallway/reactor)
 "nGz" = (
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "nGB" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan,
@@ -32732,7 +32732,7 @@
 /area/surface/station/hydroponics/garden)
 "ppQ" = (
 /obj/structure/sign/plaque/ai_dev,
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "ppT" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -33231,7 +33231,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/general)
 "pAw" = (
 /obj/random/mouse,
@@ -35608,7 +35608,7 @@
 	dir = 10
 	},
 /obj/structure/shuttle/engine/heater,
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "qEX" = (
 /obj/effect/floor_decal/techfloor{
@@ -39261,7 +39261,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "swe" = (
 /obj/structure/window/reinforced/polarized{
@@ -41796,7 +41796,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/general)
 "tIm" = (
 /obj/structure/cable/green{
@@ -45311,7 +45311,7 @@
 /area/surface/station/maintenance/surgery)
 "vss" = (
 /obj/machinery/ai_status_display,
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "vsu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -45320,7 +45320,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/kitchen)
 "vsL" = (
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/cargo)
 "vsS" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -47473,7 +47473,7 @@
 /area/surface/station/maintenance/solars/northeast)
 "wzr" = (
 /obj/machinery/status_display,
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "wzz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -49194,7 +49194,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/turf/wall/rshull,
+/turf/wall/r_wall/hull,
 /area/shuttle/exploration/general)
 "xoo" = (
 /turf/wall,
@@ -51010,7 +51010,7 @@
 	id_tag = "AIupload2";
 	pixel_x = 8
 	},
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai/upload)
 "ycp" = (
 /obj/machinery/computer/account_database{
