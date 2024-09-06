@@ -352,6 +352,12 @@
 
 /obj/structure/girder/reinforced : /obj/structure/girder{@OLD}
 
+# SHUTTLE AREAS
+/area/shuttle/arrival/pre_game : /area/shuttle/arrival
+/area/shuttle/arrival/station : /area/shuttle/arrival
+/area/shuttle/escape/station : /area/shuttle/escape
+/area/shuttle/escape/transit : /area/shuttle/escape
+
 #############
 # DELETIONS #
 #############

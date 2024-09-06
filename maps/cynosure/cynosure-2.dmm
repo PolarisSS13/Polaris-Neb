@@ -28242,9 +28242,7 @@
 /area/surface/station/crew_quarters/kitchen)
 "nvX" = (
 /turf/floor/concrete,
-/area/shuttle/arrival/station{
-	dynamic_lighting = 1
-	})
+/area/shuttle/arrival)
 "nwe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -29019,9 +29017,7 @@
 "nNy" = (
 /obj/effect/shuttle_landmark/cynosure/escape/station,
 /turf/floor/concrete,
-/area/shuttle/escape/station{
-	dynamic_lighting = 1
-	})
+/area/shuttle/escape)
 "nNG" = (
 /obj/machinery/door/window/northright{
 	name = "Range Access"
@@ -32889,9 +32885,7 @@
 "psJ" = (
 /obj/effect/shuttle_landmark/cynosure/arrivals_station,
 /turf/floor/concrete,
-/area/shuttle/arrival/station{
-	dynamic_lighting = 1
-	})
+/area/shuttle/arrival)
 "psP" = (
 /turf/wall/concrete/reinforced,
 /area/surface/station/maintenance/weststairwell/gnd)
@@ -45706,9 +45700,7 @@
 /area/surface/station/maintenance/chapel)
 "vBC" = (
 /turf/floor/concrete,
-/area/shuttle/escape/station{
-	dynamic_lighting = 1
-	})
+/area/shuttle/escape)
 "vBD" = (
 /obj/structure/cable{
 	icon_state = "4-8"
