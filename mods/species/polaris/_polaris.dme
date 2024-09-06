@@ -1,0 +1,5 @@
+#ifndef MODPACK_BAYLIENS
+#define MODPACK_BAYLIENS
+#include "polaris.dm"
+#include "vatborn/datum/species.dm"
+#endif
