@@ -8766,7 +8766,7 @@
 	},
 /area/tdome)
 "jYW" = (
-/turf/wall/shuttle/voidcraft/hard_corner,
+/turf/wall/shuttle/voidcraft,
 /area/ninja_dojo/start)
 "kbj" = (
 /obj/structure/rack,
