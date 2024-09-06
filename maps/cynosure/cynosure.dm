@@ -85,6 +85,7 @@
 	//#include "structures/closets/misc.dm"
 	//#include "structures/closets/security.dm"
 	//#include "turfs/outdoors.dm"
+	#include "turfs/voidcraft.dm"
 	#include "overmap/cyno_overmap_stubs.dm"
 	//#include "overmap/sectors.dm"
 
