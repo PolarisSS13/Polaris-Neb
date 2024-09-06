@@ -305,6 +305,16 @@
 	name = "\improper Basement East Stairwell"
 	icon_state = "hallP"
 
+//SHUTTLE.
+
+/area/shuttle/arrival
+	name = "\improper Arrival Shuttle"
+	icon_state = "shuttle"
+
+/area/shuttle/escape
+	name = "\improper Emergency Shuttle"
+	icon_state = "shuttle
+
 //Substations
 
 /area/surface/station/maintenance/substation
@@ -1646,6 +1656,32 @@
 /area/centcom/terminal
 	name = "\improper Docking Terminal"
 	icon_state = "centcom_dock"
+
+// Thunderdome
+
+/area/tdome
+	name = "\improper Thunderdome"
+	icon_state = "thunder"
+	requires_power = 0
+	dynamic_lighting = 0
+	sound_env = ARENA
+	req_access = list(access_cent_thunder)
+
+/area/tdome/tdome1
+	name = "\improper Thunderdome (Team 1)"
+	icon_state = "green"
+
+/area/tdome/tdome2
+	name = "\improper Thunderdome (Team 2)"
+	icon_state = "yellow"
+
+/area/tdome/tdomeadmin
+	name = "\improper Thunderdome (Admin.)"
+	icon_state = "purple"
+
+/area/tdome/tdomeobserve
+	name = "\improper Thunderdome (Observer.)"
+	icon_state = "purple"
 
 //Centcomm Antags and Others
 
