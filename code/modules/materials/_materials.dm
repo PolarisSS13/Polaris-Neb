@@ -182,7 +182,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	/// General-use HP value for products.
 	var/integrity = 150
 	/// Is the material transparent? 0.5< makes transparent walls/doors.
-	var/opacity = TRUE
+	var/opacity = 1.0
 	/// Only used by walls currently.
 	var/explosion_resistance = 5
 	/// Objects with this var add CONDUCTS to flags on spawn.
