@@ -23176,7 +23176,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/engineering/atmos/monitoring)
 "pXi" = (
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai)
 "pXt" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -32326,7 +32326,7 @@
 /turf/floor/plating,
 /area/surface/station/rnd/research)
 "wss" = (
-/turf/wall/dshull,
+/turf/wall/ocp_wall,
 /area/shuttle/large_escape_pod2/station)
 "wsI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -34779,7 +34779,7 @@
 /area/surface/station/crew_quarters/heads/rdoffice)
 "xNW" = (
 /obj/structure/grille,
-/turf/wall/durasteel,
+/turf/wall/ocp_wall,
 /area/surface/station/ai)
 "xOs" = (
 /obj/effect/floor_decal/borderfloor/corner{

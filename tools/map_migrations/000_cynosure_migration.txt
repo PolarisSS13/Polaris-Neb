@@ -31,6 +31,15 @@
 /turf/simulated/wall/thull : /turf/wall/titanium{@OLD}
 /turf/simulated/wall/rthull : /turf/wall/r_titanium{@OLD}
 /turf/simulated/shuttle/plating/@SUBTYPES : /turf/floor/shuttle/@SUBTYPES{@OLD}
+/turf/unsimulated/shuttle/wall/dark : /turf/wall/shuttle/dark{@OLD}
+/turf/unsimulated/shuttle/wall/dark/no_join : /turf/wall/shuttle/dark{@OLD; unique_merge_identifier = "CHANGEMETOO"}
+/turf/wall/dshull : /turf/wall/ocp_wall{@OLD}
+/turf/wall/durasteel : /turf/wall/ocp_wall{@OLD}
+/turf/wall/pshull : /turf/wall/raidershuttle
+/turf/wall/rshull : /turf/wall/r_wall/hull
+/turf/wall/shuttle/dark/hard_corner : /turf/wall/shuttle/dark{@OLD}
+/turf/wall/shuttle/hard_corner : /turf/wall/shuttle{@OLD}
+/turf/wall/shuttle/no_join : /turf/wall/shuttle{@OLD; unique_merge_identifier = "CHANGEME"}
 
 # Misc. cooking
 /obj/item/reagent_containers/food/condiment/small/peppershaker : /obj/item/chems/condiment/small/peppermill{@OLD}
