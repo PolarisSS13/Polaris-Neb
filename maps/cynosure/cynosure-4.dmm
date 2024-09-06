@@ -2471,10 +2471,11 @@
 /turf/floor/tiled,
 /area/tcommsat/cynosure/entrance)
 "EL" = (
-/turf/wall/shuttle/no_join{
+/turf/wall/shuttle{
 	base_state = "orange";
 	icon = 'icons/turf/shuttle_orange.dmi';
-	icon_state = "orange"
+	icon_state = "orange";
+	unique_merge_identifier = "CHANGEME"
 	},
 /area/shuttle/escape_pod1/station)
 "EQ" = (
