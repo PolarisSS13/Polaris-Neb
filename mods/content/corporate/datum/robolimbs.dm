@@ -453,12 +453,3 @@ DEFINE_ROBOLIMB_MODEL_TRAITS(/decl/bodytype/prosthetic/xion/whiteout,           
 
 DEFINE_ROBOLIMB_MODEL_TRAITS(/decl/bodytype/prosthetic/zenghu,                 	 zenuhufem,              0, "zenghufem")
 DEFINE_ROBOLIMB_MODEL_TRAITS(/decl/bodytype/prosthetic/zenghu/masculine,         zenuhumasc,             0, "zenghumasc")
-
-
-
-
-
-
-
-
-
