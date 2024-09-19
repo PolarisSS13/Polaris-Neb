@@ -484,8 +484,8 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	return FALSE
 
 // Used for any extra behaviour when falling and to see if a species will fall at all.
-/decl/species/proc/can_fall(var/mob/living/human/H)
-	return TRUE
+/decl/species/proc/can_fall(var/mob/living/carbon/human/H)
+	return !can_overcome_gravity(H)
 
 // Used to override normal fall behaviour. Use only when the species does fall down a level.
 /decl/species/proc/handle_fall_special(var/mob/living/human/H, var/turf/landing)
