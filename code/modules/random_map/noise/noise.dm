@@ -152,6 +152,7 @@
 				total += map[TRANSLATE_COORD(x, y+1)]
 				next_map[TRANSLATE_COORD(x, y)] = round(total / 3)
 		map = next_map
+		CHECK_TICK
 
 	if(smooth_single_tiles)
 		for(var/x in 1 to limit_x - 1)
@@ -160,6 +161,7 @@
 				if(has_neighbor_with_path(x, y, get_appropriate_path(map[mapcell]), TRUE))
 					continue
 				map[mapcell] = map[pick(get_neighbors(x, y, TRUE))]
+				CHECK_TICK
 
 #define CHECK_NEIGHBOR_FOR_PATH(X, Y) \
 	TRANSLATE_AND_VERIFY_COORD(X,Y);\
