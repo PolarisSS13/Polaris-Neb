@@ -56,7 +56,7 @@
 
 	#include "cynosure_areas.dm"
 	//#include "cynosure_jobs.dm"
-	//#include "cynosure_levels.dm"
+	#include "cynosure_levels.dm"
 	//#include "cynosure_elevator.dm"
 	//#include "cynosure_events.dm"
 	//#include "cynosure_presets.dm"
@@ -70,7 +70,7 @@
 
 	//#include "datums/supplypacks/munitions.dm"
 	//#include "datums/supplypacks/science.dm"
-	//#include "datums/random_map.dm"
+	#include "datums/random_map.dm"
 	//#include "datums/spawn.dm"
 
 	//#include "items/encryptionkey_cyno.dm"

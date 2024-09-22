@@ -1808,7 +1808,7 @@
 	name = "planetside"
 	dynamic_lighting = 1
 	icon_state = "shuttlered"
-	base_turf = /turf/floor/natural/grass
+	base_turf = /turf/floor/natural/grass/sif
 
 /area/syndicate_station/transit
 	name = " transit"
@@ -1870,7 +1870,7 @@
 	name = "planet"
 	icon_state = "shuttlered"
 	dynamic_lighting = 1
-	base_turf = /turf/floor/natural/grass
+	base_turf = /turf/floor/natural/grass/sif
 
 /area/skipjack_station/orbit
 	name = "in orbit of Sif"
@@ -1927,7 +1927,7 @@
 /area/ninja_dojo/planet
 	name = "planet outposts"
 	icon_state = "shuttlered"
-	base_turf = /turf/floor/natural/grass
+	base_turf = /turf/floor/natural/grass/sif
 
 /area/ninja_dojo/transit
 	name = "transit"
