@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aF" = (
-/obj/structure/bed/sofa/black/left{
+/obj/structure/bed/sofa/left/black{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -442,7 +442,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "Xg" = (
-/obj/structure/bed/sofa/black/right{
+/obj/structure/bed/sofa/right/black{
 	dir = 4
 	},
 /obj/random/contraband,

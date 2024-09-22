@@ -177,7 +177,8 @@
 "ay" = (
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id_tag = "merch_radaway"
+	id_tag = "merch_radaway";
+
 	},
 /obj/machinery/door/window/northleft{
 	dir = 8;
@@ -205,7 +206,8 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id_tag = "merch_radaway"
+	id_tag = "merch_radaway";
+
 	},
 /turf/floor,
 /area/liberia/engineeringreactor)
@@ -643,7 +645,8 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 2;
 	id_tag = "merchantshuttle";
-	name = "Merchant Window Shutters"
+	name = "Merchant Window Shutters";
+
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/yellow,
@@ -831,7 +834,8 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	id_tag = "merchantshuttle";
-	name = "Merchant Window Shutters"
+	name = "Merchant Window Shutters";
+
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/yellow,
@@ -1264,7 +1268,8 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	id_tag = "merchantdesk";
-	name = "Merchant Desk Shutters"
+	name = "Merchant Desk Shutters";
+
 	},
 /obj/effect/paint/silver,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1576,7 +1581,8 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 4;
 	id_tag = "merchantdesk";
-	name = "Merchant Desk Shutters"
+	name = "Merchant Desk Shutters";
+
 	},
 /obj/structure/cable/blue{
 	icon_state = "4-8"
@@ -1795,11 +1801,7 @@
 /turf/floor/plating,
 /area/liberia/mule)
 "dm" = (
-/obj/machinery/fabricator{
-	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	fab_status_flags = 1;
-	name = "unlocked autolathe"
-	},
+/obj/machinery/fabricator/hacked,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "merchant_ship_dock";
 	pixel_x = -24;
@@ -6268,7 +6270,8 @@
 /area/liberia/hallway)
 "oJ" = (
 /obj/abstract/level_data_spawner/player{
-	name = "Liberia"
+	name = "Liberia";
+
 	},
 /turf/space,
 /area/space)
@@ -8085,7 +8088,8 @@
 /obj/machinery/door/blast/shutters/open{
 	dir = 2;
 	id_tag = "merchantshuttle";
-	name = "Merchant Window Shutters"
+	name = "Merchant Window Shutters";
+
 	},
 /obj/effect/paint/silver,
 /obj/effect/paint_stripe/yellow,

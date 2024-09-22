@@ -267,7 +267,7 @@
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Telecoms lethal turret control";
 	pixel_y = 24;
-	
+
 	},
 /obj/machinery/camera/network/telecom{
 	c_tag = "Tcoms - Foyer"
@@ -287,7 +287,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch/maintenance{
 	name = "Telecomms Solar Control";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/powercontrol)
@@ -309,7 +309,7 @@
 	id_tag = "telecoms_inner";
 	locked = 1;
 	name = "External Access";
-	
+
 	},
 /obj/machinery/button/access/interior{
 	dir = 1;
@@ -572,7 +572,7 @@
 	id_tag = "telecoms_airlock";
 	pixel_x = -31;
 	pixel_y = -35;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/plating,
@@ -1152,7 +1152,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/lounge)
@@ -1411,7 +1411,7 @@
 	id_tag = "tcomdock_airlock";
 	pixel_x = 31;
 	pixel_y = -24;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/tiled/steel_dirty,
@@ -1513,7 +1513,7 @@
 /obj/effect/floor_decal/rust/mono_rusted1,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Starboard Bridge";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
@@ -1721,7 +1721,7 @@
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "tcomdock_airlock";
 	pixel_y = 25;
-	
+
 	},
 /turf/floor/tiled/techfloor/grid,
 /area/tcommsat/cynosure/entrance)
@@ -2029,7 +2029,7 @@
 	id_tag = "server_access_inner";
 	locked = 1;
 	name = "Telecoms Server Access";
-	
+
 	},
 /obj/machinery/button/access/interior{
 	id_tag = "server_access_airlock";
@@ -2170,7 +2170,7 @@
 	id_tag = "server_access_outer";
 	locked = 1;
 	name = "Telecoms Server Access";
-	
+
 	},
 /obj/machinery/button/access/exterior{
 	dir = 8;
@@ -2471,10 +2471,7 @@
 /turf/floor/tiled,
 /area/tcommsat/cynosure/entrance)
 "EL" = (
-/turf/wall/shuttle{
-	base_state = "orange";
-	icon = 'icons/turf/shuttle_orange.dmi';
-	icon_state = "orange";
+/turf/wall/shuttle/orange{
 	unique_merge_identifier = "CHANGEME"
 	},
 /area/shuttle/escape_pod1/station)
@@ -2767,7 +2764,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/entrance)
@@ -2891,7 +2888,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/teleporter)
@@ -2979,7 +2976,7 @@
 	desc = "A firewall prevents AIs from interacting with this device.";
 	name = "Telecoms Foyer turret control";
 	pixel_y = 24;
-	
+
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
@@ -3250,7 +3247,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Satellite";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
@@ -3293,7 +3290,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch/maintenance{
 	name = "Telecomms Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/storage)
@@ -3306,7 +3303,7 @@
 	id_tag = "telecoms_outer";
 	locked = 1;
 	name = "External Access";
-	
+
 	},
 /obj/machinery/button/access/exterior{
 	id_tag = "telecoms_airlock";
@@ -3801,7 +3798,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecoms Port Bridge";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/foyer)
@@ -4117,7 +4114,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Control Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/tcommsat/cynosure/computer)
@@ -4229,7 +4226,7 @@
 	id_tag = "escape_pod_1_hatch";
 	locked = 1;
 	name = "Escape Pod Hatch 1";
-	
+
 	},
 /turf/floor/shuttle/blue,
 /area/shuttle/escape_pod1/station)
@@ -4373,7 +4370,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "telecoms_airlock";
 	pixel_y = 25;
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	id_tag = "telecoms_sensor";

@@ -85,6 +85,19 @@ LINEN BINS
 /obj/item/bedsheet/ian
 	icon = 'icons/obj/bedsheets/bedsheet_ian.dmi'
 
+// TODO: implement
+/obj/item/bedsheet/bluedouble
+/obj/item/bedsheet/browndouble
+/obj/item/bedsheet/captaindouble
+/obj/item/bedsheet/double
+/obj/item/bedsheet/iandouble
+/obj/item/bedsheet/mimedouble
+/obj/item/bedsheet/orangedouble
+/obj/item/bedsheet/purpledouble
+/obj/item/bedsheet/rddouble
+/obj/item/bedsheet/reddouble
+/obj/item/bedsheet/yellowdouble
+
 //////////////////////////////////////////
 // Bedsheet bin
 //////////////////////////////////////////

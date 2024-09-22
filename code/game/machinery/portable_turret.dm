@@ -74,6 +74,9 @@
 	lethal = 1
 	installation = /obj/item/gun/energy/laser
 
+// TODO implement
+/obj/machinery/porta_turret/ai_defense
+
 /obj/machinery/porta_turret/Initialize()
 	. = ..()
 	setup()
