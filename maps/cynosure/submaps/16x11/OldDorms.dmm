@@ -23,7 +23,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "bx" = (
-/obj/structure/bed/sofa/beige/right{
+/obj/structure/bed/sofa/right/beige{
 	dir = 4
 	},
 /turf/floor/wood/broken,
@@ -161,7 +161,7 @@
 /obj/structure/closet/cabinet,
 /obj/random/contraband,
 /obj/random/drinkbottle,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /turf/floor/wood,
 /area/template_noop)
 "ku" = (
@@ -499,7 +499,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "Od" = (
-/obj/structure/bed/sofa/beige/right{
+/obj/structure/bed/sofa/right/beige{
 	dir = 4
 	},
 /obj/item/frame/apc,
@@ -566,7 +566,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "Vt" = (
-/obj/structure/bed/sofa/beige/left{
+/obj/structure/bed/sofa/left/beige{
 	dir = 4
 	},
 /turf/floor/wood,

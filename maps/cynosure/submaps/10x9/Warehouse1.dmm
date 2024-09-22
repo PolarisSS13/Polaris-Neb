@@ -372,8 +372,8 @@
 "Q" = (
 /obj/structure/closet/crate/nanothreads,
 /obj/random/thermalponcho,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /obj/item/towel/random,
 /obj/item/towel/random,
 /obj/item/towel/random,

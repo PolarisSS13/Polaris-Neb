@@ -126,7 +126,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "eng_ug_airlock";
 	pixel_y = 25;
-	
+
 	},
 /obj/machinery/airlock_sensor{
 	id_tag = "eng_ug_airlock_sensor";
@@ -224,7 +224,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Anomalous Materials";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -252,7 +252,7 @@
 	id_tag = "elevator_main2_access";
 	locked = 1;
 	name = "Emergency Access NO ENTRY";
-	
+
 	},
 /obj/machinery/button/alternate/door{
 	dir = 1;
@@ -910,7 +910,7 @@
 	id_tag = "elevator_west_access";
 	locked = 1;
 	name = "Emergency Access NO ENTRY";
-	
+
 	},
 /obj/machinery/button/alternate/door{
 	dir = 8;
@@ -976,7 +976,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/bmt/construction5)
@@ -1040,7 +1040,7 @@
 	dir = 4;
 	id_tag = "min_ug_airlock";
 	pixel_y = 35;
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/mining_main)
@@ -1055,7 +1055,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/bmt/construction6)
@@ -1121,7 +1121,7 @@
 "cz" = (
 /obj/machinery/camera/network/research/toxins{
 	c_tag = "SCI - Toxins Test Chamber North";
-	
+
 	},
 /obj/machinery/light/spot{
 	dir = 1
@@ -1325,7 +1325,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Research Testing Site";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/rnd/testingsite)
@@ -1541,7 +1541,7 @@
 	id_tag = "elevator_eng_access";
 	locked = 1;
 	name = "Emergency Access NO ENTRY";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/engineering/hallway/bmt)
@@ -1797,7 +1797,7 @@
 	},
 /obj/machinery/door/window/eastright{
 	name = "Suit Storage";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/outpost/research/xenoarcheology)
@@ -2398,7 +2398,7 @@
 	id_tag = "arc1_ext_sensor";
 	pixel_x = 24;
 	pixel_y = 31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -2703,7 +2703,7 @@
 	id_tag = "arc1_airlock_int_sensor";
 	pixel_x = 24;
 	pixel_y = -31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -2728,7 +2728,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3278,7 +3278,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/morgue)
@@ -3805,7 +3805,7 @@
 	id_tag = "disvent";
 	name = "Incinerator Vent Control";
 	pixel_y = 24;
-	
+
 	},
 /turf/floor/tiled/old_tile/gray,
 /area/surface/station/maintenance/incinerator)
@@ -3856,7 +3856,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Research Maintenance Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -3885,7 +3885,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Research Maintenance Access";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4120,7 +4120,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/research{
 	name = "Expedition Prep";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/exp_prep)
@@ -4726,7 +4726,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Long Term Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/longtermstorage)
@@ -4904,7 +4904,7 @@
 /obj/effect/floor_decal/corner/white,
 /obj/machinery/door/window/eastleft{
 	name = "Suit Storage";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/outpost/research/xenoarcheology)
@@ -5624,7 +5624,7 @@
 /obj/structure/marker_beacon{
 	mapped_in_color = "Olive"
 	},
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/cave/explored/normal)
 "mI" = (
 /obj/machinery/door/firedoor/border_only,
@@ -5644,7 +5644,7 @@
 /obj/machinery/door/airlock/double/glass{
 	dir = 2;
 	name = "Research Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -5752,7 +5752,7 @@
 	id_tag = "isob";
 	name = "Isolation Shutters";
 	pixel_y = 24;
-	
+
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
@@ -5761,7 +5761,7 @@
 	id_tag = "ventisob";
 	name = "Isolation Room Vent";
 	pixel_y = 36;
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -6011,7 +6011,7 @@
 "nE" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance Access";
-	
+
 	},
 /obj/machinery/door/firedoor/border_only,
 /turf/floor/plating,
@@ -6073,7 +6073,7 @@
 "nN" = (
 /obj/machinery/door/window/westright{
 	name = "Sample Preparation";
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/outpost/research/xenoarcheology/analysis)
@@ -6286,7 +6286,7 @@
 	dir = 8;
 	id_tag = "min_ug_airlock";
 	pixel_y = 24;
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/mining_main)
@@ -6480,7 +6480,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Research Maintenance Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/rnd/hallway/bmt)
@@ -6524,7 +6524,7 @@
 	id_tag = "med_ug_airlock_ext_sensor";
 	pixel_x = -35;
 	pixel_y = -31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/floor/asteroid,
@@ -6854,7 +6854,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Xenofauna Maintenance Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/medical/west)
@@ -6928,7 +6928,7 @@
 /obj/machinery/alarm/outside{
 	dir = 8;
 	pixel_x = 22;
-	
+
 	},
 /obj/machinery/floodlight,
 /turf/floor/plating,
@@ -6999,7 +6999,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/medical{
 	name = "Morgue Access";
-	
+
 	},
 /turf/floor/tiled/steel_dirty,
 /area/surface/station/maintenance/eaststairwell)
@@ -7296,7 +7296,7 @@
 	control_area = "\improper Vault";
 	name = "Vault turret control";
 	pixel_y = -24;
-	
+
 	},
 /obj/item/radio/intercom{
 	pixel_y = 20
@@ -7833,7 +7833,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/airlock/glass/research{
 	name = "Isolation Room B";
-	
+
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
@@ -8469,7 +8469,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Sample Preparation";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/analysis)
@@ -8586,7 +8586,7 @@
 "ti" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Access";
-	
+
 	},
 /obj/machinery/door/firedoor/border_only,
 /turf/floor/tiled/steel_grid,
@@ -8627,11 +8627,11 @@
 /obj/machinery/hologram/holopad,
 /obj/machinery/door/window/eastleft{
 	name = "Server Room";
-	
+
 	},
 /obj/machinery/door/window/westleft{
 	name = "Server Room";
-	
+
 	},
 /turf/floor/tiled/old_cargo/gray,
 /area/surface/station/rnd/server)
@@ -8659,7 +8659,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/airlock/glass/research{
 	name = "Isolation Room C";
-	
+
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
@@ -8771,7 +8771,7 @@
 	id_tag = "tox_airlock_interior";
 	locked = 1;
 	name = "Mixing Room Interior Airlock";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/rnd/mixing)
@@ -8925,7 +8925,7 @@
 	id_tag = "sci_ug_airlock_int_sensor";
 	pixel_x = -31;
 	pixel_y = -35;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/plating,
@@ -9244,7 +9244,7 @@
 	id_tag = "tox_airlock_exterior";
 	locked = 1;
 	name = "Mixing Room Exterior Airlock";
-	
+
 	},
 /turf/floor/reinforced,
 /area/surface/station/rnd/mixing)
@@ -9923,7 +9923,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Xenoarchelogy Maintenance";
-	
+
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10074,7 +10074,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
 	name = "Toxins Launch Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/toxins_launch)
@@ -10122,7 +10122,7 @@
 /obj/effect/catwalk_plated/dark,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Tech Storage";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/storage/tech)
@@ -10419,7 +10419,7 @@
 /obj/machinery/camera/network/research{
 	c_tag = "SCI - Toxins Test Chamber South";
 	dir = 1;
-	
+
 	},
 /obj/machinery/light/spot,
 /turf/floor/asteroid,
@@ -10458,7 +10458,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Cargo Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/cargo/bmt)
@@ -10646,10 +10646,10 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/bmt/west)
 "xW" = (
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/cave/explored/deep)
 "xX" = (
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/cave/explored/normal)
 "xY" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -10822,7 +10822,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Toxins Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/storage)
@@ -11057,7 +11057,7 @@
 	id_tag = "isoa";
 	name = "Isolation Shutters";
 	pixel_y = 24;
-	
+
 	},
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
@@ -11066,7 +11066,7 @@
 	id_tag = "ventisoa";
 	name = "Isolation Room Vent";
 	pixel_y = 36;
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -11112,7 +11112,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Maintenance";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/floor/plating,
@@ -11419,7 +11419,7 @@
 "zw" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/bed/sofa/beige/left{
+/obj/structure/bed/sofa/left/beige{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
@@ -11486,7 +11486,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Drone Fabrication";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -11569,7 +11569,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/bmt/construction2)
@@ -11736,7 +11736,7 @@
 	},
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/structure/bed/sofa/beige/right{
+/obj/structure/bed/sofa/right/beige{
 	dir = 1
 	},
 /turf/floor/tiled/neutral,
@@ -11747,7 +11747,7 @@
 	id_tag = "elevator_SCI_access";
 	locked = 1;
 	name = "Emergency Access NO ENTRY";
-	
+
 	},
 /obj/machinery/button/alternate{
 	dir = 1;
@@ -12183,7 +12183,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Auxiliary Engineering Station";
-	
+
 	},
 /obj/effect/floor_decal/rust,
 /turf/floor/plating,
@@ -12249,7 +12249,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Anomalous Materials";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -12361,7 +12361,7 @@
 	},
 /obj/machinery/computer/central_atmos/laptop{
 	monitored_alarm_ids = list("isolation_one","isolation_two","isolation_three");
-	
+
 	},
 /turf/floor/tiled/neutral,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -12809,7 +12809,7 @@
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/northright{
 	name = "Rig Suit";
-	
+
 	},
 /obj/item/clothing/mask/breath,
 /obj/item/rig/industrial/equipped,
@@ -12886,13 +12886,13 @@
 	id_tag = "isoc";
 	name = "Isolation Shutters";
 	pixel_y = 24;
-	
+
 	},
 /obj/machinery/button/alternate{
 	id_tag = "ventisoc";
 	name = "Isolation Room Vent";
 	pixel_y = 36;
-	
+
 	},
 /turf/floor/tiled/old_cargo/gray,
 /area/surface/outpost/research/xenoarcheology/anomaly)
@@ -12921,7 +12921,7 @@
 	id_tag = "tox_ug_airlock_ext_sensor";
 	pixel_x = 31;
 	pixel_y = -34;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/floor/plating{
@@ -13127,7 +13127,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13175,7 +13175,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
-	
+
 	},
 /obj/effect/catwalk_plated/dark,
 /turf/floor/plating,
@@ -13226,7 +13226,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Medbay Substation Lower";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13476,7 +13476,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Research Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/research/bmt)
@@ -13845,7 +13845,7 @@
 /obj/effect/catwalk_plated/dark,
 /obj/machinery/door/airlock/medical{
 	name = "Morgue Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/medical/south)
@@ -13897,7 +13897,7 @@
 "Fg" = (
 /obj/machinery/conveyor_switch{
 	id_tag = "anolongstorage2";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/floor/tiled/dark,
@@ -13956,7 +13956,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Auxiliary Engineering Station";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/auxiliary_engineering)
@@ -14099,7 +14099,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/bar)
@@ -14422,7 +14422,7 @@
 	dir = 4;
 	id_tag = "arc2_airlock";
 	pixel_y = 35;
-	
+
 	},
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "arc2_airlock_outer";
@@ -14681,7 +14681,7 @@
 /area/surface/station/engineering/auxiliary_engineering)
 "Hh" = (
 /obj/structure/grille,
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/outpost/research/xenoarcheology/smes)
 "Hi" = (
 /obj/structure/disposalpipe/segment,
@@ -14704,7 +14704,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/research{
 	name = "Sample Preparation";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/analysis)
@@ -14766,7 +14766,7 @@
 /obj/machinery/camera/network/research{
 	c_tag = "SCI - Toxins Test Chamber West";
 	dir = 4;
-	
+
 	},
 /turf/floor/asteroid,
 /area/surface/station/rnd/test_area)
@@ -14774,7 +14774,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
 	name = "Long Term Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/longtermstorage)
@@ -14860,7 +14860,7 @@
 	id_tag = "med_ug_airlock_int_sensor";
 	pixel_x = -35;
 	pixel_y = 31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -14978,7 +14978,7 @@
 	dir = 8;
 	id_tag = "arc2_airlock";
 	pixel_y = 24;
-	
+
 	},
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "arc2_airlock_inner";
@@ -15148,7 +15148,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Substation";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/floor/plating,
@@ -15509,17 +15509,15 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/bmt/west)
 "Jk" = (
-/turf/floor/natural/ignore_mapgen/sif{
-	is_outside = 1
-	},
+/turf/floor/natural/grass,
 /area/surface/cave/explored/normal)
 "Jm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
 /obj/structure/closet/crate,
-/obj/item/flashlight/color/red,
-/obj/item/flashlight/color/red,
+/obj/item/flashlight/red,
+/obj/item/flashlight/red,
 /obj/item/radio{
 	icon_state = "med_walkietalkie";
 	name = "Medbay Emergency Radio Link";
@@ -15596,7 +15594,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = null;
 	name = "Server Room";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/rnd/server)
@@ -16240,7 +16238,7 @@
 "KU" = (
 /obj/machinery/conveyor_switch{
 	id_tag = "anolongstorage";
-	
+
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -16525,7 +16523,7 @@
 	id_tag = "elevator_med_access";
 	locked = 1;
 	name = "Emergency Access NO ENTRY";
-	
+
 	},
 /obj/machinery/button/alternate/door{
 	dir = 8;
@@ -16608,7 +16606,7 @@
 	},
 /obj/machinery/door/window/westleft{
 	name = "Suit Storage";
-	
+
 	},
 /obj/item/clothing/mask/breath,
 /obj/random/multiple/voidsuit/mining,
@@ -16623,7 +16621,7 @@
 	id_tag = "min_ug_airlock_ext_sensor";
 	pixel_x = 31;
 	pixel_y = 35;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -16677,7 +16675,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
 	name = "Toxins Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/storage)
@@ -16717,7 +16715,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/maintenance{
 	name = "Disposal Access";
-	
+
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -16800,7 +16798,7 @@
 /area/surface/station/medical/hallway/bmt)
 "Mi" = (
 /obj/item/caution/cone,
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/cave/explored/normal)
 "Mj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16861,7 +16859,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Construction Area";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/basement)
@@ -16911,7 +16909,7 @@
 "Mw" = (
 /obj/machinery/conveyor_switch{
 	id_tag = "anolongstorage2";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -17228,7 +17226,7 @@
 	id_tag = "arc2_airlock_int_sensor";
 	pixel_x = 31;
 	pixel_y = 35;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/tiled/white,
@@ -17747,7 +17745,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Substation";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/maintenance/substation/engineering/bmt)
@@ -17873,7 +17871,7 @@
 	},
 /obj/machinery/door/window/eastleft{
 	name = "Garbage Outlet";
-	
+
 	},
 /turf/floor/tiled{
 	icon_state = "steel_dirty";
@@ -18485,7 +18483,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
 	name = "Research Division Access";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/hallway/bmt)
@@ -18820,7 +18818,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Toxins Lab";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/mixing)
@@ -19223,7 +19221,7 @@
 	id_tag = "sci_ug_airlock_int_sensor";
 	pixel_x = -35;
 	pixel_y = 31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /obj/structure/cable/heavyduty{
@@ -19838,7 +19836,7 @@
 	},
 /obj/machinery/door/window/westright{
 	name = "Suit Storage";
-	
+
 	},
 /obj/item/clothing/mask/breath,
 /obj/random/multiple/voidsuit/mining,
@@ -19917,7 +19915,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Maintenance";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/cargo/bmt)
@@ -20023,7 +20021,7 @@
 "SX" = (
 /obj/machinery/conveyor_switch{
 	id_tag = "anolongstorage";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -20382,7 +20380,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/research{
 	name = "Expedition Prep";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/outpost/research/xenoarcheology/exp_prep)
@@ -20720,7 +20718,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -20731,7 +20729,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Area Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/construction/bmt/construction3)
@@ -20831,7 +20829,7 @@
 	id_tag = "arc2_ext_sensor";
 	pixel_x = -31;
 	pixel_y = 24;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/floor/asteroid,
@@ -21428,7 +21426,7 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Toxins Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/toxins_launch)
@@ -21545,7 +21543,7 @@
 	id_tag = "reactor_ev";
 	locked = 1;
 	name = "Reactor Vent Access NO ENTRY";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
@@ -22109,7 +22107,7 @@
 	},
 /obj/machinery/door/airlock/medical{
 	name = "Morgue";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/morgue)
@@ -22348,7 +22346,7 @@
 	id_tag = "min_ug_airlock_int_sensor";
 	pixel_x = -31;
 	pixel_y = 24;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/int_sensor,
 /turf/floor/plating,
@@ -22376,7 +22374,7 @@
 	id_tag = "sci_ug_airlock_ext_sensor";
 	pixel_x = -35;
 	pixel_y = -31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/structure/cable/heavyduty{
@@ -22546,7 +22544,7 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/airlock/glass/research{
 	name = "Isolation Room A";
-	
+
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;

@@ -28,6 +28,7 @@
 	#include "../../mods/content/psionics/_psionics.dme"
 
 	#include "../../mods/species/ascent/_ascent.dme"
+	#include "../../mods/species/drakes/_drakes.dme"
 	#include "../../mods/content/pheromones/_pheromones.dme"
 	#include "../../mods/species/serpentid/_serpentid.dme"
 	#include "../../mods/species/utility_frames/_utility_frames.dme"
@@ -84,7 +85,6 @@
 	#include "structures/cyno_flora.dm"
 	//#include "structures/closets/misc.dm"
 	//#include "structures/closets/security.dm"
-	//#include "turfs/outdoors.dm"
 	#include "turfs/voidcraft.dm"
 	#include "overmap/cyno_overmap_stubs.dm"
 	//#include "overmap/sectors.dm"

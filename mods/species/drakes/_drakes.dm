@@ -10,3 +10,6 @@
 	// fantasy modpack overrides drake name, so can't use the #define
 	var/decl/species/grafadreka/drakes = GET_DECL(/decl/species/grafadreka)
 	. = ..(mapload, drakes.name)
+
+// TODO rewrite for Nebula drakes
+/obj/item/book/manual/drake_handling
