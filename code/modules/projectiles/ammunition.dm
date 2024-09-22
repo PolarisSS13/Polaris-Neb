@@ -167,6 +167,23 @@
 	/// Whether or not our contents have been initialized or not, used in lazyloaded contents.
 	var/contents_initialized = FALSE
 
+// TODO: implement
+/obj/item/ammo_magazine/clip
+/obj/item/ammo_magazine/clip/c762
+/obj/item/ammo_magazine/clip/c762/hunter
+/obj/item/ammo_magazine/m10mm
+/obj/item/ammo_magazine/m45
+/obj/item/ammo_magazine/m45/practice
+/obj/item/ammo_magazine/m45/rubber
+/obj/item/ammo_magazine/m45/flash
+/obj/item/ammo_magazine/m545
+/obj/item/ammo_magazine/m545saw
+/obj/item/ammo_magazine/m9mm
+/obj/item/ammo_magazine/m9mmp90
+/obj/item/ammo_magazine/m9mmt
+/obj/item/ammo_magazine/m9mmt/rubber
+/obj/item/ammo_magazine/m9mmt/practice
+
 /obj/item/ammo_magazine/box
 	w_class = ITEM_SIZE_NORMAL
 

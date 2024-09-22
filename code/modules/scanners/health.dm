@@ -8,6 +8,10 @@
 	printout_color = "#deebff"
 	var/mode = 1
 
+// TODO: implement
+/obj/item/scanner/health/advanced
+/obj/item/scanner/health/improved
+
 /obj/item/scanner/health/is_valid_scan_target(atom/O)
 	return ishuman(O) || istype(O, /obj/structure/closet/body_bag)
 

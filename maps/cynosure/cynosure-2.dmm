@@ -1171,8 +1171,8 @@
 	pixel_x = -24;
 	pixel_y = 12
 	},
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /turf/floor/tiled,
@@ -2567,10 +2567,10 @@
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/suit/jacket/winter,
-/obj/item/umbrella/random{
+/obj/random/umbrella{
 	pixel_y = -4
 	},
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /turf/floor/tiled,
@@ -3756,7 +3756,7 @@
 /turf/floor/tiled/freezer,
 /area/surface/station/crew_quarters/kitchen)
 "bMK" = (
-/obj/structure/prop/rock/small/water,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "bMX" = (
@@ -10220,7 +10220,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/medical/etc)
 "eQE" = (
-/obj/structure/prop/rock/watersharp,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "eQL" = (
@@ -10929,7 +10929,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/obj/random/vendorfood,
+/obj/random/vendor/food,
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/primary/groundfloor/south)
 "fgS" = (
@@ -13061,7 +13061,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/chems/syringe/bicaridine,
+/obj/item/chems/syringe/brute_meds,
 /obj/item/firstaid/surgery,
 /obj/machinery/camera/network/ground_floor{
 	c_tag = "Ground Floor - East Hallway 1";
@@ -13898,7 +13898,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/xenobiology)
 "gDr" = (
-/obj/structure/prop/rock/small/wateralt,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "gDu" = (
@@ -13988,7 +13988,6 @@
 "gEG" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar - West";
-	cur_coils = 2;
 	input_attempt = 1;
 	input_level = 300000;
 	output_level = 200000
@@ -14478,9 +14477,9 @@
 /obj/item/gps/xenofauna,
 /obj/item/gps/xenofauna,
 /obj/item/gps/xenofauna,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /obj/machinery/alarm/outside{
 	dir = 4;
 	pixel_x = -22
@@ -16679,8 +16678,8 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 6
 	},
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /turf/floor/tiled/techmaint,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "hXB" = (
@@ -17183,7 +17182,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "imL" = (
 /obj/structure/window/reinforced,
@@ -17874,7 +17873,7 @@
 /turf/floor/natural/dirt,
 /area/surface/outside/plains/normal)
 "iGO" = (
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "iHa" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -19281,7 +19280,7 @@
 /turf/floor/carpet,
 /area/surface/station/crew_quarters/heads/hos)
 "jtv" = (
-/obj/structure/showcase/sign{
+/obj/structure/sign/warning{
 	icon_state = "wilderness2";
 	pixel_y = -6
 	},
@@ -19729,7 +19728,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "jDy" = (
 /turf/floor/tiled/old_tile/gray,
@@ -19944,7 +19943,7 @@
 	},
 /area/surface/station/garage)
 "jJj" = (
-/obj/structure/wood_fire/campfire,
+/obj/structure/fire_source/firepit,
 /turf/floor/natural/dirt,
 /area/surface/outside/path/plains)
 "jJq" = (
@@ -20511,10 +20510,10 @@
 	},
 /obj/item/hand_labeler,
 /obj/item/paicard,
-/obj/item/umbrella/random{
+/obj/random/umbrella{
 	pixel_y = -4
 	},
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
@@ -21390,7 +21389,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "klv" = (
 /obj/effect/floor_decal/corner/green/full{
@@ -24317,7 +24316,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/lobby)
 "lIt" = (
-/obj/random/vendorfood,
+/obj/random/vendor/food,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "lIJ" = (
@@ -25594,7 +25593,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/bioprinter/full,
+/obj/machinery/fabricator/bioprinter/filled,
 /turf/floor/tiled/neutral,
 /area/surface/station/medical/cloning)
 "mjM" = (
@@ -25686,7 +25685,7 @@
 /obj/structure/table/marble,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/chems/condiment/small/sugar,
-/obj/item/box/glasses/coffeemug,
+/obj/item/box/glasses/mug,
 /obj/item/box/glasses/coffeecup{
 	pixel_x = 2;
 	pixel_y = 2
@@ -26611,7 +26610,7 @@
 /turf/wall/r_wall,
 /area/surface/station/security/interrogation)
 "mFV" = (
-/turf/floor/natural/ignore_mapgen/sif,
+/turf/floor/natural/grass,
 /area/surface/outside/plains/plateau)
 "mGf" = (
 /obj/structure/cable/green{
@@ -26662,8 +26661,8 @@
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/shoes/winterboots,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /turf/floor/tiled/techfloor,
 /area/surface/station/rnd/hallway/gnd)
 "mHN" = (
@@ -27170,9 +27169,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/etc)
 "mSM" = (
-/turf/floor/natural/grass/random{
-	tree_chance = 0
-	},
+/turf/floor/natural/grass,
 /area/surface/outside/plains/station)
 "mSO" = (
 /obj/structure/table,
@@ -28002,7 +27999,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "nnh" = (
 /obj/structure/noticeboard{
@@ -29605,7 +29602,6 @@
 /area/surface/station/park)
 "oaV" = (
 /obj/structure/table/woodentable,
-/obj/machinery/librarycomp,
 /turf/floor/wood,
 /area/surface/station/library)
 "obk" = (
@@ -33920,10 +33916,10 @@
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/suit/jacket/winter,
-/obj/item/umbrella/random{
+/obj/random/umbrella{
 	pixel_y = -4
 	},
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen,
 /turf/floor/tiled,
@@ -39375,7 +39371,7 @@
 /area/surface/station/engineering/storage)
 "syj" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep/pool,
+/turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "syQ" = (
 /obj/structure/flora/bush/sparsegrass,
@@ -40338,8 +40334,8 @@
 	name = "\improper COLD ENVIRONMENT";
 	pixel_y = -32
 	},
-/obj/item/umbrella/random,
-/obj/item/umbrella/random{
+/obj/random/umbrella,
+/obj/random/umbrella{
 	pixel_y = -4
 	},
 /obj/item/clothing/suit/jacket/winter,
@@ -42602,7 +42598,6 @@
 "uaT" = (
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Solar - Northeast";
-	cur_coils = 2;
 	input_attempt = 1;
 	input_level = 300000;
 	output_level = 200000
@@ -43295,8 +43290,8 @@
 /area/surface/station/medical/surgery_storage)
 "uvA" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -43481,7 +43476,6 @@
 /obj/machinery/power/smes/buildable{
 	RCon_tag = "Reactor - Main";
 	charge = 2e+007;
-	cur_coils = 4;
 	input_attempt = 1;
 	input_level = 750000;
 	output_level = 750000
@@ -44480,7 +44474,7 @@
 /obj/item/radio/intercom{
 	pixel_y = 20
 	},
-/obj/random/vendordrink,
+/obj/random/vendor/drink,
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/primary/groundfloor/south)
 "vaT" = (
@@ -47334,7 +47328,7 @@
 /area/surface/station/hallway/primary/groundfloor/south)
 "wtI" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /turf/floor/wood/sif{
 	is_outside = 0
 	},
@@ -48043,8 +48037,8 @@
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/shoes/winterboots,
 /obj/item/clothing/suit/jacket/winter,
-/obj/item/umbrella/random,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
+/obj/random/umbrella,
 /obj/machinery/camera/network/ground_floor{
 	c_tag = "Ground Floor - Arrivals North";
 	dir = 8
@@ -49169,7 +49163,7 @@
 /turf/floor/tiled/hydro,
 /area/surface/station/hydroponics)
 "xnL" = (
-/obj/structure/showcase/sign{
+/obj/structure/sign/warning{
 	desc = "This appears to be a sign warning people that the other side is dangerous.";
 	name = "WARNING";
 	pixel_y = -6
@@ -49647,11 +49641,7 @@
 	c_tag = "CIV - Pool East";
 	dir = 8
 	},
-/obj/item/chems/hypospray/autoinjector/detox{
-	amount_per_transfer_from_this = 10;
-	filled_reagents = list("anti_toxin" = 10);
-	volume = 10
-	},
+/obj/item/chems/hypospray/autoinjector/detox,
 /turf/floor/tiled/freezer,
 /area/surface/station/crew_quarters/pool)
 "xAM" = (
@@ -49865,16 +49855,8 @@
 /obj/item/bodybag/cryobag,
 /obj/item/firstaid/regular,
 /obj/item/pill_bottle/antibiotics,
-/obj/item/chems/hypospray/autoinjector/detox{
-	amount_per_transfer_from_this = 10;
-	filled_reagents = list("anti_toxin" = 10);
-	volume = 10
-	},
-/obj/item/chems/hypospray/autoinjector/detox{
-	amount_per_transfer_from_this = 10;
-	filled_reagents = list("anti_toxin" = 10);
-	volume = 10
-	},
+/obj/item/chems/hypospray/autoinjector/detox,
+/obj/item/chems/hypospray/autoinjector/detox,
 /turf/floor/wood,
 /area/surface/station/crew_quarters/cafeteria)
 "xFI" = (

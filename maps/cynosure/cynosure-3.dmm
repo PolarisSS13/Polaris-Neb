@@ -174,14 +174,14 @@
 	name = "Entry Flash";
 	pixel_x = 24;
 	pixel_y = 8;
-	
+
 	},
 /obj/machinery/button/flasher{
 	id_tag = "permflash";
 	name = "Brig Flashes";
 	pixel_x = 24;
 	pixel_y = 1;
-	
+
 	},
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/hallway/cell_hallway)
@@ -327,7 +327,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/double/glass{
 	name = "Cargo";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/office)
@@ -599,7 +599,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "researchdoor";
 	name = "Research Director Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/heads/rdoffice)
@@ -1182,7 +1182,7 @@
 	id_tag = null;
 	locked = 1;
 	name = "AI Core";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/ai)
@@ -1292,7 +1292,7 @@
 "aVw" = (
 /turf/floor/reinforced{
 	is_outside = 1;
-	
+
 	},
 /area/surface/outside/plains/station/snd)
 "aVH" = (
@@ -1830,7 +1830,7 @@
 	name = "Atmospherics Lockdown";
 	pixel_x = 12;
 	pixel_y = 34;
-	
+
 	},
 /turf/floor/tiled,
 /area/surface/station/engineering/atmos/monitoring)
@@ -1956,7 +1956,7 @@
 /obj/structure/disposalpipe/sortjunction/flipped{
 	dir = 4;
 	name = "Research";
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/station/rnd/research)
@@ -2210,7 +2210,7 @@
 /obj/machinery/door/airlock/double/glass{
 	id_tag = null;
 	name = "Medbay";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/office)
@@ -2219,7 +2219,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/westright{
 	name = "Robotics Desk";
-	
+
 	},
 /turf/floor/tiled,
 /area/surface/station/rnd/robotics)
@@ -2538,7 +2538,7 @@
 /obj/item/rig/hazmat/equipped,
 /obj/machinery/door/window/southright{
 	name = "RD Suit";
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/station/crew_quarters/heads/rdoffice)
@@ -2638,14 +2638,14 @@
 	name = "Cell 2 Door";
 	pixel_x = -6;
 	pixel_y = 36;
-	
+
 	},
 /obj/machinery/button/flasher{
 	id_tag = "cell2flash";
 	name = "Cell 2 Flash";
 	pixel_x = 4;
 	pixel_y = 36;
-	
+
 	},
 /obj/machinery/light{
 	dir = 1
@@ -2672,7 +2672,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/engineering/locker_room)
@@ -3049,7 +3049,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Engineering";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/ai_monitored/storage/eva)
@@ -3291,7 +3291,7 @@
 /obj/item/clothing/head/helmet/space/void/skrell,
 /obj/machinery/door/window/northleft{
 	name = "EVA Suits";
-	
+
 	},
 /turf/floor/tiled/dark,
 /area/surface/station/ai_monitored/storage/eva)
@@ -3426,7 +3426,7 @@
 	},
 /obj/machinery/door/airlock/mining{
 	name = "Quartermaster";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/qm)
@@ -3663,7 +3663,7 @@
 /obj/machinery/door/window/brigdoor/northleft{
 	id_tag = "Cell 2";
 	name = "Cell 2";
-	
+
 	},
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/security/prison)
@@ -3700,7 +3700,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southleft{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/rig/eva/equipped,
 /turf/floor/tiled/dark,
@@ -3945,7 +3945,7 @@
 	id_tag = "sci_raccess_north";
 	locked = 1;
 	name = "Science Roof Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/weststairwell/snd)
@@ -4109,7 +4109,7 @@
 /obj/machinery/door/airlock/hatch/maintenance{
 	id_tag = "engine_airlock_interiord2";
 	name = "Reactor Access Interior";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/engineering/reactor_airlock/snd)
@@ -4152,7 +4152,7 @@
 	},
 /obj/machinery/door/window/northleft{
 	name = "EVA Suits";
-	
+
 	},
 /obj/structure/window/reinforced,
 /obj/item/gps,
@@ -4170,7 +4170,7 @@
 	id_tag = "large_escape_pod_2_berth_hatch";
 	locked = 1;
 	name = "Large Escape Pod 2";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/hallway/primary/secondfloor/east)
@@ -4251,7 +4251,7 @@
 	},
 /obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Engineering EVA Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/engine_eva)
@@ -4417,7 +4417,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Substation";
-	
+
 	},
 /obj/structure/disposalpipe/segment,
 /turf/floor/tiled/steel_grid,
@@ -5742,7 +5742,7 @@
 /obj/item/rig/ce/equipped,
 /obj/machinery/door/window/northright{
 	name = "Chief Engineer Suit Storage";
-	
+
 	},
 /turf/floor/tiled/techmaint,
 /area/surface/station/crew_quarters/heads/chief)
@@ -6468,7 +6468,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/glass/mining{
 	name = "Cargo stairwell";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/office)
@@ -6624,7 +6624,7 @@
 	id_tag = null;
 	locked = 1;
 	name = "AI Core";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/ai)
@@ -7252,7 +7252,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance Access";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/maintenance/substation/security/snd)
@@ -7473,14 +7473,14 @@
 	name = "Cell 1 Door";
 	pixel_x = -6;
 	pixel_y = 36;
-	
+
 	},
 /obj/machinery/button/flasher{
 	id_tag = "cell1flash";
 	name = "Cell 1 Flash";
 	pixel_x = 4;
 	pixel_y = 36;
-	
+
 	},
 /obj/item/radio/intercom{
 	pixel_y = 20
@@ -8172,7 +8172,7 @@
 	id_tag = "sec_raccess_north";
 	locked = 1;
 	name = "Security Roof Access";
-	
+
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
@@ -8272,7 +8272,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "BrigFoyerUpper";
 	name = "Security Entrance";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/hallway/stairwell)
@@ -8335,7 +8335,7 @@
 /turf/floor/plating,
 /area/surface/station/rnd/lab)
 "fOa" = (
-/obj/structure/bed/sofa/brown/right{
+/obj/structure/bed/sofa/right/brown{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -8362,7 +8362,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Research Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/research/snd)
@@ -8505,7 +8505,7 @@
 	dir = 2;
 	id_tag = "engentryaccess";
 	name = "Engineering";
-	
+
 	},
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 2
@@ -9579,7 +9579,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock{
 	name = "Visitation Area";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/prison)
@@ -9848,7 +9848,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Engineering Locker Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/locker_room)
@@ -9864,7 +9864,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/engineering,
 /obj/item/clothing/head/helmet/space/void/engineering,
@@ -10325,7 +10325,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/robotics)
@@ -10473,7 +10473,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/hatch/maintenance{
 	name = "Reactor Access";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/engineering/reactor_airlock/snd)
@@ -10537,7 +10537,7 @@
 	dir = 2;
 	id_tag = null;
 	name = "Mech Bay";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/rnd/chargebay)
@@ -10732,7 +10732,7 @@
 	},
 /obj/machinery/door/airlock/glass/medical{
 	name = "Virology";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/virology)
@@ -10775,7 +10775,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Cargo Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/cargo/snd)
@@ -11026,7 +11026,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/bed/chair/comfy/rounded/brown{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/wood,
@@ -11628,7 +11628,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Command Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/command)
@@ -11903,7 +11903,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "prisonentry";
 	name = "Brig Entry";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/prison)
@@ -12617,7 +12617,7 @@
 	},
 /obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/warden)
@@ -12893,7 +12893,7 @@
 	name = "Reactor Monitoring Room Shutters";
 	pixel_x = 5;
 	pixel_y = -4;
-	
+
 	},
 /obj/machinery/button/alternate{
 	desc = "A remote control-switch for the reactor charging port.";
@@ -12902,7 +12902,7 @@
 	name = "Reactor Core Blast Doors";
 	pixel_x = 5;
 	pixel_y = 4;
-	
+
 	},
 /obj/machinery/button/toggle/engine{
 	desc = "A remote control-switch for the reactor emitter.";
@@ -13690,7 +13690,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/command{
 	name = "Internal Affairs";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/command/internalaffairs)
@@ -13709,7 +13709,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Medical Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/medical/emt,
 /obj/item/clothing/head/helmet/space/void/medical/emt,
@@ -13824,7 +13824,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
 	name = "Research Division Access";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/research_foyer)
@@ -14180,7 +14180,7 @@
 /obj/machinery/door/airlock/medical{
 	id_tag = "mentaldoor";
 	name = "Mental Health";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/psych)
@@ -14638,7 +14638,7 @@
 	id_tag = "ai_airlock";
 	pixel_x = -35;
 	pixel_y = -31;
-	
+
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /turf/floor/tiled{
@@ -15115,7 +15115,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Security Substation Upper";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/security/snd)
@@ -15399,7 +15399,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock{
 	name = "Medbay Restroom";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/restroom)
@@ -15686,7 +15686,7 @@
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
 	name = "QM Office";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -15724,7 +15724,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southleft{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/machinery/light{
 	dir = 1
@@ -16002,7 +16002,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/northleft{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/atmos,
 /obj/item/clothing/head/helmet/space/void/atmos,
@@ -16935,7 +16935,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
 	name = "Station Manager's Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/captain)
@@ -17112,7 +17112,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Research Maintenance Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /turf/floor/plating,
@@ -17176,7 +17176,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/security/hallway/stairwell)
@@ -17345,7 +17345,7 @@
 	control_area = "\improper Command - Teleporter";
 	name = "Teleporter turret control";
 	pixel_y = -24;
-	
+
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -17752,7 +17752,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/engineering{
 	name = "Cargo Substation";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/cargo/snd)
@@ -17853,7 +17853,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Union Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/unionoffice)
@@ -18081,7 +18081,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Teleporter Access";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/command/teleporter)
@@ -18139,7 +18139,7 @@
 /turf/wall/r_wall,
 /area/surface/station/engineering/foyer/secondfloor)
 "mrb" = (
-/obj/random/vendorfood,
+/obj/random/vendor/food,
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/secondary/secondfloor/command)
 "mrz" = (
@@ -18464,7 +18464,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance Access";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/medbay/snd)
@@ -18679,7 +18679,7 @@
 /obj/machinery/door/airlock/double/glass{
 	id_tag = "PatientWard";
 	name = "Patient Ward";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/floor/tiled/steel_grid,
@@ -18897,7 +18897,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/window/northleft{
 	name = "Site Manager's Desk Door";
-	
+
 	},
 /turf/floor/wood,
 /area/surface/station/crew_quarters/captain)
@@ -18962,7 +18962,7 @@
 /turf/floor/carpet/blue3,
 /area/surface/station/medical/psych)
 "mPU" = (
-/obj/random/vendorfood{
+/obj/random/vendor/food{
 	dir = 8
 	},
 /turf/floor/tiled/dark,
@@ -19083,7 +19083,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southleft{
 	name = "Medical Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/medical,
 /obj/item/clothing/head/helmet/space/void/medical,
@@ -19266,7 +19266,7 @@
 	dir = 2;
 	id_tag = "MedbayUpper";
 	name = "Medbay";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/office)
@@ -19343,7 +19343,7 @@
 /obj/item/clothing/head/helmet/space/void/security,
 /obj/machinery/door/window/southleft{
 	name = "Security Suits";
-	
+
 	},
 /obj/structure/rack,
 /turf/floor/tiled/dark,
@@ -19704,7 +19704,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/window/eastleft{
 	name = "Research and Development Desk";
-	
+
 	},
 /obj/item/sticky_pad/random,
 /obj/item/bell,
@@ -20091,7 +20091,7 @@
 /obj/structure/disposalpipe/sortjunction/flipped{
 	dir = 1;
 	name = "CMO Office";
-	
+
 	},
 /turf/floor/tiled/white,
 /area/surface/station/medical/office)
@@ -20120,7 +20120,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/security{
 	name = "Solitary Confinement 1";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/hallway/cell_hallway)
@@ -20262,7 +20262,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "prisonexit";
 	name = "Brig Exit";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/prison)
@@ -20479,7 +20479,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/double/glass{
 	name = "Research Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/tiled/steel_grid,
@@ -21389,7 +21389,7 @@
 	id_tag = "large_escape_pod_2_hatch";
 	locked = 1;
 	name = "Large Escape Pod Hatch";
-	
+
 	},
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/large_escape_pod2/station)
@@ -21532,7 +21532,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Engineering Locker Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/locker_room)
@@ -22152,7 +22152,7 @@
 /obj/item/gun/projectile/colt/detective,
 /obj/machinery/door/window/brigdoor/westright{
 	name = "Weapons Locker";
-	
+
 	},
 /obj/machinery/light{
 	dir = 4
@@ -22198,7 +22198,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass/mining{
 	name = "Cargo stairwell";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/office)
@@ -23313,9 +23313,6 @@
 "pZB" = (
 /obj/effect/floor_decal/techfloor,
 /obj/structure/table,
-/obj/item/clamp,
-/obj/item/clamp,
-/obj/item/clamp,
 /obj/item/clothing/head/earmuffs,
 /obj/item/clothing/head/earmuffs,
 /obj/item/clothing/head/earmuffs,
@@ -23687,7 +23684,7 @@
 	},
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Reactor Monitoring Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/reactor_monitoring)
@@ -23717,8 +23714,6 @@
 	pixel_y = 4
 	},
 /obj/item/briefcase/inflatable,
-/obj/item/clamp,
-/obj/item/clamp,
 /turf/floor/tiled/monotile,
 /area/surface/station/engineering/engine_eva)
 "qmH" = (
@@ -25068,7 +25063,7 @@
 	},
 /obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/rnd/lab)
@@ -25179,7 +25174,7 @@
 /obj/item/rig/breacher,
 /obj/machinery/door/window/northleft{
 	name = "EVA Suits";
-	
+
 	},
 /turf/floor/tiled/dark,
 /area/surface/station/ai_monitored/storage/eva)
@@ -25262,7 +25257,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "Cargo Maintenance";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/quartermaster/office)
@@ -25534,7 +25529,7 @@
 /obj/machinery/door/airlock/command{
 	id_tag = "cmodoor";
 	name = "CMO's Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/heads/cmo)
@@ -25606,7 +25601,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /obj/machinery/door_timer/cell_1{
 	pixel_y = 32;
-	
+
 	},
 /turf/floor/tiled,
 /area/surface/station/security/hallway/cell_hallway)
@@ -25623,7 +25618,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/research)
 "rLU" = (
-/obj/structure/bed/sofa/brown/left{
+/obj/structure/bed/sofa/left/brown{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -25703,7 +25698,7 @@
 "rPg" = (
 /obj/structure/closet/crate/secure/nanotrasen{
 	name = "Security Crate";
-	
+
 	},
 /turf/floor/tiled/dark,
 /area/surface/station/security/armoury)
@@ -25986,7 +25981,7 @@
 	name = "AI Core Blast Door Control";
 	pixel_x = 13;
 	pixel_y = -24;
-	
+
 	},
 /obj/machinery/ai_slipper,
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -26077,7 +26072,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "prisonexit";
 	name = "Brig Exit";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/prison)
@@ -26155,7 +26150,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance{
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/weststairwell/snd)
@@ -26690,7 +26685,7 @@
 	id_tag = "large_escape_pod_2_hatch";
 	locked = 1;
 	name = "Large Escape Pod Hatch";
-	
+
 	},
 /obj/effect/floor_decal/milspec/color/blue,
 /turf/floor/tiled/milspec/sterile,
@@ -27370,7 +27365,7 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Restroom";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/captain)
@@ -27385,7 +27380,7 @@
 /obj/structure/disposalpipe/sortjunction/flipped{
 	dir = 2;
 	name = "RD Office";
-	
+
 	},
 /obj/abstract/landmark{
 	name = "lightsout"
@@ -27424,7 +27419,7 @@
 /turf/floor/plating,
 /area/surface/station/crew_quarters/heads/cmo)
 "sVu" = (
-/obj/random/vendordrink,
+/obj/random/vendor/drink,
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/secondary/secondfloor/command)
 "sVx" = (
@@ -27683,7 +27678,7 @@
 	},
 /obj/machinery/door/airlock/glass/security{
 	name = "Equipment Storage";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/equiptment_storage)
@@ -27848,7 +27843,7 @@
 	},
 /obj/machinery/door/window/southleft{
 	name = "Visitation";
-	
+
 	},
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/prison)
@@ -28006,18 +28001,9 @@
 /obj/item/cell/high,
 /obj/item/assembly/prox_sensor,
 /obj/item/assembly/prox_sensor,
-/obj/item/firstaid/regular{
-	name = "First-Aid (empty)";
-	starts_with = null
-	},
-/obj/item/firstaid/regular{
-	name = "First-Aid (empty)";
-	starts_with = null
-	},
-/obj/item/firstaid/regular{
-	name = "First-Aid (empty)";
-	starts_with = null
-	},
+/obj/item/firstaid/empty,
+/obj/item/firstaid/empty,
+/obj/item/firstaid/empty,
 /obj/item/scanner/health,
 /obj/item/scanner/health,
 /obj/item/scanner/health,
@@ -28429,14 +28415,14 @@
 	id_tag = "virology_airlock_exterior";
 	locked = 1;
 	name = "Virology Exterior Airlock";
-	
+
 	},
 /obj/machinery/button/access/exterior{
 	dir = 8;
 	id_tag = "virology_airlock_control";
 	name = "Virology Access Button";
 	pixel_y = 24;
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/virology)
@@ -28481,7 +28467,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Security Suits";
-	
+
 	},
 /turf/floor/tiled/dark,
 /area/surface/station/ai_monitored/storage/eva)
@@ -28651,7 +28637,7 @@
 /obj/item/clothing/mask/breath,
 /obj/machinery/door/window/southleft{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/engineering/hazmat,
 /obj/item/clothing/head/helmet/space/void/engineering/hazmat,
@@ -28667,7 +28653,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Station Manager's Quarters";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/captain)
@@ -28815,11 +28801,7 @@
 /obj/item/bodybag/cryobag,
 /obj/item/firstaid/regular,
 /obj/item/pill_bottle/antibiotics,
-/obj/item/chems/hypospray/autoinjector/detox{
-	amount_per_transfer_from_this = 10;
-	filled_reagents = list("anti_toxin"=10);
-	volume = 10
-	},
+/obj/item/chems/hypospray/autoinjector/detox,
 /turf/floor/tiled,
 /area/surface/station/command/operations)
 "tOU" = (
@@ -29189,7 +29171,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/northright{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/machinery/light,
 /obj/item/clothing/suit/space/void/atmos,
@@ -29357,7 +29339,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/machinery/door/window/southright{
 	name = "Virology Isolation Room";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/virology)
@@ -29553,7 +29535,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central5,
 /obj/structure/disposalpipe/sortjunction{
 	name = "Robotics";
-	
+
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -29722,7 +29704,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/warden)
@@ -29917,7 +29899,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/maintenance{
 	name = "E.V.A. Maintenance Access";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/floor/plating,
@@ -30455,7 +30437,7 @@
 	},
 /obj/machinery/door/airlock/atmos{
 	name = "Riot Control";
-	
+
 	},
 /turf/floor/plating,
 /area/surface/station/security/riot_control)
@@ -30676,7 +30658,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = "prisonentry";
 	name = "Brig Entry";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/prison)
@@ -30834,7 +30816,7 @@
 /obj/item/clothing/head/helmet/space/void/skrell/black,
 /obj/machinery/door/window/northright{
 	name = "EVA Suits";
-	
+
 	},
 /turf/floor/tiled/dark,
 /area/surface/station/ai_monitored/storage/eva)
@@ -31457,7 +31439,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock{
 	name = "Engineering Restroom";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/engi_restroom)
@@ -31539,7 +31521,7 @@
 	},
 /obj/machinery/door/airlock/glass/command{
 	name = "E.V.A.";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/ai_monitored/storage/eva)
@@ -31615,7 +31597,7 @@
 	id_tag = "reactor_raccess_south";
 	locked = 1;
 	name = "Reactor Roof Access";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/engineering/reactor_room)
@@ -31642,9 +31624,6 @@
 	},
 /obj/item/clothing/head/earmuffs,
 /obj/item/clothing/head/earmuffs,
-/obj/machinery/clamp,
-/obj/machinery/clamp,
-/obj/machinery/clamp,
 /turf/floor/tiled,
 /area/surface/station/engineering/reactor_monitoring)
 "vNB" = (
@@ -32100,7 +32079,7 @@
 /obj/machinery/door/airlock/hatch/maintenance{
 	id_tag = "engine_airlock_exteriord2";
 	name = "Reactor Access Exterior";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/engineering/reactor_airlock/snd)
@@ -32185,7 +32164,7 @@
 	name = "Atmospherics Lockdown";
 	pixel_x = 6;
 	pixel_y = -24;
-	
+
 	},
 /obj/machinery/button/alternate{
 	dir = 1;
@@ -32193,7 +32172,7 @@
 	name = "Engineering Lockdown";
 	pixel_x = -6;
 	pixel_y = -24;
-	
+
 	},
 /obj/machinery/button/alternate{
 	desc = "A remote control-switch for the exterior vent port.";
@@ -32202,7 +32181,7 @@
 	name = "Reactor Ventillatory Control";
 	pixel_x = -6;
 	pixel_y = -35;
-	
+
 	},
 /obj/machinery/button/alternate/door{
 	desc = "A remote control-switch for the reactor core airlock hatch bolts.";
@@ -32267,7 +32246,7 @@
 /obj/item/clothing/suit/armor/pcarrier/medium,
 /obj/machinery/door/window/brigdoor/westleft{
 	name = "Weapon Locker";
-	
+
 	},
 /obj/item/clothing/suit/armor/pcarrier/medium{
 	pixel_x = 2;
@@ -32570,13 +32549,13 @@
 	id_tag = "virology_airlock_interior";
 	locked = 1;
 	name = "Virology Interior Airlock";
-	
+
 	},
 /obj/machinery/button/access/interior{
 	dir = 4;
 	id_tag = "virology_airlock_control";
 	pixel_y = 24;
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/virology)
@@ -32728,7 +32707,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Tactical Equipment";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/tactical)
@@ -32908,7 +32887,7 @@
 	id_tag = "reactor_raccess_north";
 	locked = 1;
 	name = "Reactor Roof Access";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/engineering/reactor_room)
@@ -32971,7 +32950,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/engineering/construction,
 /obj/item/clothing/head/helmet/space/void/engineering/construction,
@@ -33163,7 +33142,7 @@
 /obj/machinery/door/window/brigdoor/northleft{
 	id_tag = "Cell 1";
 	name = "Cell 1";
-	
+
 	},
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/security/prison)
@@ -33686,7 +33665,7 @@
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
 	name = "Cargo Bay";
-	
+
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -33805,7 +33784,7 @@
 	},
 /obj/machinery/door/window/southleft{
 	name = "Cargo Desk";
-	
+
 	},
 /obj/item/sticky_pad/random,
 /turf/floor/tiled/dark,
@@ -34109,7 +34088,7 @@
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Armoury Section";
-	
+
 	},
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/armoury)
@@ -34563,7 +34542,7 @@
 /obj/structure/rack,
 /obj/machinery/door/window/southright{
 	name = "Engineering Suits";
-	
+
 	},
 /obj/item/clothing/suit/space/void/atmos,
 /obj/item/clothing/head/helmet/space/void/atmos,
@@ -34669,7 +34648,7 @@
 /obj/machinery/door/airlock/glass/security{
 	id_tag = null;
 	name = "Solitary Confinement 2";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/security/hallway/cell_hallway)
@@ -35198,7 +35177,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Chief Engineer";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/surface/station/crew_quarters/heads/chief)

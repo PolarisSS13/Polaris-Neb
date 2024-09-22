@@ -31,6 +31,11 @@
 /obj/item/soap/crafted/generate_icon()
 	return
 
+// TODO: implement
+/obj/item/soap/deluxe
+/obj/item/soap/nanotrasen
+/obj/item/soap/syndie
+
 /obj/item/soap/initialize_reagents(populate = TRUE)
 	create_reagents(SOAP_MAX_VOLUME)
 	. = ..()

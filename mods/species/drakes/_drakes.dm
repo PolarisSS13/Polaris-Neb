@@ -8,3 +8,5 @@
 /mob/living/human/grafadreka/Initialize(mapload, species_uid, datum/mob_snapshot/supplied_appearance)
 	species_uid = /decl/species/grafadreka::uid
 	. = ..()
+// TODO rewrite for Nebula drakes
+/obj/item/book/manual/drake_handling

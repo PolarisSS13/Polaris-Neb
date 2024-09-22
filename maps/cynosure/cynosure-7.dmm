@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aU" = (
-/obj/structure/prop/rock/watersharp,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "bA" = (
@@ -10,7 +10,7 @@
 /turf/unsimulated/wall/planetary/sif,
 /area/surface/outside/wilderness/mountains)
 "bW" = (
-/obj/structure/wood_fire/fireplace/stove,
+/obj/structure/fire_source/stove,
 /obj/item/stack/material/log/mapped/ebony/fifty,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
@@ -67,14 +67,14 @@
 /obj/item/clothing/jumpsuit/grey,
 /obj/item/clothing/mask/gas,
 /obj/item/tank/emergency/oxygen/double,
-/obj/item/umbrella/random,
+/obj/random/umbrella,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "id" = (
 /turf/wall/sifwood,
 /area/surface/outside/path/wilderness)
 "jh" = (
-/obj/structure/prop/rock/water,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "jq" = (
@@ -89,7 +89,7 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "kx" = (
-/obj/structure/prop/rock/small/alt,
+/obj/structure/boulder,
 /turf/floor/natural/mud,
 /area/surface/outside/wilderness/normal)
 "lt" = (
@@ -111,7 +111,7 @@
 /turf/floor/natural/grass,
 /area/surface/outside/path/wilderness)
 "nu" = (
-/obj/structure/prop/rock/small,
+/obj/structure/boulder,
 /turf/floor/natural/mud,
 /area/surface/outside/wilderness/normal)
 "oG" = (
@@ -140,7 +140,7 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "ta" = (
-/obj/structure/showcase/sign{
+/obj/structure/sign/warning{
 	icon_state = "wilderness2";
 	pixel_y = -6
 	},
@@ -163,12 +163,10 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "uP" = (
-/turf/floor/natural/grass/random{
-	tree_chance = 0
-	},
+/turf/floor/natural/grass,
 /area/surface/outside/wilderness/deep)
 "vQ" = (
-/obj/structure/prop/rock/small/wateralt,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "vX" = (
@@ -260,14 +258,12 @@
 /turf/floor/natural/dirt,
 /area/surface/outside/wilderness/deep)
 "Ih" = (
-/obj/structure/prop/rock/waterflat,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "JF" = (
 /obj/effect/shuttle_landmark/cynosure/wilderness,
-/turf/floor/natural/grass/random{
-	tree_chance = 0
-	},
+/turf/floor/natural/grass,
 /area/surface/outside/wilderness/deep)
 "JU" = (
 /obj/effect/wingrille_spawn,
@@ -294,7 +290,7 @@
 /turf/floor/natural/grass,
 /area/surface/outside/wilderness/mountains)
 "Qw" = (
-/obj/structure/prop/rock/small/water,
+/obj/structure/boulder,
 /turf/floor/natural/mud/water,
 /area/surface/outside/river/gautelfr)
 "RA" = (
