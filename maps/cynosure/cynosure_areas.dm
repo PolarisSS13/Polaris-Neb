@@ -313,7 +313,7 @@
 
 /area/shuttle/escape
 	name = "\improper Emergency Shuttle"
-	icon_state = "shuttle
+	icon_state = "shuttle"
 
 //Substations
 
