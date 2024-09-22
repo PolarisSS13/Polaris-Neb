@@ -172,6 +172,12 @@ var/global/last_chew = 0 //#FIXME: Its funny how only one person in the world ca
 /obj/item/handcuffs/cyborg
 	dispenser = 1
 
+/obj/item/handcuffs/fuzzy
+	name = "fluffy cuffs"
+	icon = 'icons/obj/items/fluffyhandcuffs.dmi'
+	desc = "Use this to keep... 'prisoners' in line."
+	breakouttime = 3 SECONDS
+
 /obj/item/handcuffs/cable/tape
 	name = "tape restraints"
 	desc = "DIY!"

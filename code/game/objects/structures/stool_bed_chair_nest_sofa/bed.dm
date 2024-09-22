@@ -324,6 +324,9 @@
 	R.add_fingerprint(user)
 	qdel(src)
 
+// TODO: implement
+/obj/item/roller/adv
+
 /obj/item/robot_rack/roller
 	name = "roller bed rack"
 	desc = "A rack for carrying collapsed roller beds. Can also be used for carrying ironing boards."

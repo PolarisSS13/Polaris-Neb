@@ -142,6 +142,12 @@
 /obj/structure/reagent_dispensers/watertank/populate_reagents()
 	add_to_reagents(/decl/material/liquid/water, reagents.maximum_volume)
 
+/obj/structure/reagent_dispensers/watertank/high
+	name = "high-capacity water tank"
+	desc = "A highly-pressurized water tank made to hold vast amounts of water."
+	icon = 'icons/obj/structures/water_tank_high.dmi'
+	icon_state = ICON_STATE_WORLD
+
 /obj/structure/reagent_dispensers/watertank/firefighter
 	name   = "firefighting water reserve"
 	volume = 50000
@@ -318,6 +324,9 @@
 
 /obj/structure/reagent_dispensers/acid/populate_reagents()
 	add_to_reagents(/decl/material/liquid/acid, reagents.maximum_volume)
+
+// TODO implement
+/obj/structure/reagent_dispensers/he3
 
 //Interactions
 /obj/structure/reagent_dispensers/get_alt_interactions(var/mob/user)

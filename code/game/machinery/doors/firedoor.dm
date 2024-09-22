@@ -81,6 +81,8 @@
 
 	update_area_registrations()
 
+/obj/machinery/door/firedoor/border_only
+
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
 		unregister_area(A)

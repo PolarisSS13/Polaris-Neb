@@ -29,6 +29,15 @@
 	desc       = "A cyan folder."
 	icon_state = "folder_cyan"
 
+// TODO: implement
+/obj/item/folder/blue_captain
+/obj/item/folder/blue_hop
+/obj/item/folder/red_hos
+/obj/item/folder/white
+/obj/item/folder/white_cmo
+/obj/item/folder/white_rd
+/obj/item/folder/yellow_ce
+
 /obj/item/folder/on_update_icon(var/paper_overlay = TRUE)
 	. = ..()
 	if(paper_overlay && length(contents))

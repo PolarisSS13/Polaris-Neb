@@ -86,6 +86,12 @@
 	. = ..()
 	color = pick(COLOR_YELLOW, COLOR_LIME, COLOR_CYAN, COLOR_ORANGE, COLOR_PINK)
 
+// TODO: implement
+/obj/item/sticky_pad/poster
+/obj/item/sticky_pad/poster/command
+/obj/item/sticky_pad/poster/blue
+/obj/item/sticky_pad/poster/yellow
+
 ////////////////////////////////////////////////
 // Sticky Note Sheet
 ////////////////////////////////////////////////

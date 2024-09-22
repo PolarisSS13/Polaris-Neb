@@ -434,3 +434,11 @@
 
 /obj/item/chems/condiment/large/salt/on_update_icon()
 	return
+
+// TODO implement
+/obj/item/chems/condiment/mustard
+/obj/item/chems/condiment/spacespice
+/obj/item/chems/condiment/carton
+/obj/item/chems/condiment/carton/flour
+/obj/item/chems/condiment/carton/rice
+/obj/item/chems/condiment/carton/flour/rustic

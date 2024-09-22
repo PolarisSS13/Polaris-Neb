@@ -43,7 +43,16 @@
 
 	//by default, connect to the station account
 	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
-	linked_account = station_account
+	linked_account = get_default_account()
+
+/obj/item/eftpos/proc/get_default_account()
+	return global.station_account
+
+/obj/item/eftpos/departmental
+	var/decl/department/default_department
+
+/obj/item/eftpos/departmental/get_default_account()
+	return (default_department && global.department_accounts[default_department]) || ..()
 
 /obj/item/eftpos/proc/print_reference()
 	var/obj/item/paper/R = new(src.loc, null,
@@ -235,3 +244,10 @@
 				transaction_paid = 1
 
 	//emag?
+
+// TODO: implement
+
+/obj/item/eftpos/departmental/service
+/obj/item/eftpos/departmental/security
+/obj/item/eftpos/departmental/cargo
+/obj/item/eftpos/departmental/command

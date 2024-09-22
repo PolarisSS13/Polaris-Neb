@@ -61,3 +61,6 @@
 
 /obj/item/ashtray/glass
 	material = /decl/material/solid/glass
+
+/obj/item/ashtray/bronze
+	material = /decl/material/solid/metal/bronze
