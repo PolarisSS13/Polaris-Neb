@@ -17,6 +17,7 @@
 	var/mask_type = /obj/item/clothing/mask/breath/emergency
 	var/icon_state_open = "emerg_open"
 	var/icon_state_closed = "emerg"
+	var/icon_state_active // TODO implement
 
 	power_channel = ENVIRON
 	idle_power_usage = 10
@@ -263,7 +264,7 @@
 	icon_state_closed = "medpump_n2o"
 	icon_state_open = "medpump_n2o_open"
 	icon_state_active = "medpump_n2o_active"
-	mask_type = /obj/item/clothing/mask/breath/anesthetic
+	mask_type = /obj/item/clothing/mask/breath // /obj/item/clothing/mask/breath/anesthetic // TODO implement
 
 /obj/machinery/oxygen_pump/mobile/stabilizer
 	name = "portable patient stabilizer"
@@ -273,7 +274,7 @@
 	icon_state_open = "patient_stabilizer_open"
 	icon_state_active = "patient_stabilizer_active"
 
-/obj/machinery/oxygen_pump/mobile/stabilizer/process()
+/obj/machinery/oxygen_pump/mobile/stabilizer/Process()
 	. = ..()
 	if(!breather)	// Safety.
 		return

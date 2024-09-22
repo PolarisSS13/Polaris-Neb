@@ -372,7 +372,7 @@
 			if(alert(target,"Would you like to enter long-term storage?",,"Yes","No") != "Yes")
 				return
 	if(!user.incapacitated() && !user.anchored && user.Adjacent(src) && user.Adjacent(target))
-		if(M == user)
+		if(target == user)
 			visible_message(SPAN_NOTICE(emote_replace_user_tokens(emote_replace_target_tokens(on_enter_visible_message, src), usr)), range = 3)
 		else
 			visible_message("[user] starts putting [target] into \the [src].", range = 3)
