@@ -27,3 +27,15 @@
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")
 		I.color = stripe_color
 		add_overlay(I)
+
+/turf/floor/natural/grass/sif/sif
+	name = "growth"
+	desc = "A layer of Sivian moss that has adapted to the sheer cold climate."
+	color = "#447171"
+	base_color = "#447171"
+
+/turf/floor/natural/grass/wild/sif
+	name = "thick growth"
+	desc = "A thick, rough layer of Sivian moss that has adapted to the sheer cold climate."
+	color = "#446471"
+	base_color = "#446471"
