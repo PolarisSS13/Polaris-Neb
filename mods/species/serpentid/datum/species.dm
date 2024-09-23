@@ -75,7 +75,7 @@
 	var/list/skin_overlays = list()
 
 #define SERPENTID_FLIGHT_PRESSURE_THRESHOLD 80
-/decl/species/serpentid/can_overcome_gravity(var/mob/living/carbon/human/H)
+/decl/species/serpentid/can_overcome_gravity(var/mob/living/human/H)
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 	var/pressure = mixture?.return_pressure()
 	if(pressure >= SERPENTID_FLIGHT_PRESSURE_THRESHOLD)
@@ -88,7 +88,7 @@
 		H.fire_stacks += 0.2
 	return
 
-/decl/species/serpentid/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/decl/species/serpentid/handle_fall_special(var/mob/living/human/H, var/turf/landing)
 
 	var/datum/gas_mixture/mixture = H.loc.return_air()
 	var/turf/T = GetBelow(H.loc)

@@ -81,7 +81,7 @@
 				. = TRUE
 				break
 
-/decl/species/adherent/handle_fall_special(var/mob/living/carbon/human/H, var/turf/landing)
+/decl/species/adherent/handle_fall_special(var/mob/living/human/H, var/turf/landing)
 	var/float_is_usable = FALSE
 	if(H && H.stat == CONSCIOUS)
 		for(var/obj/item/organ/internal/powered/float/float in H.get_internal_organs())
@@ -120,3 +120,4 @@
 	ui_loc = ui_iclothing
 /datum/inventory_slot/head/adherent
 	ui_loc = ui_glasses
+
