@@ -8,8 +8,6 @@
 
 	//copied from tank.dm
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
-	force = 5.0
-	throwforce = 10.0
 	throw_speed = 1
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
@@ -127,7 +125,7 @@
 				if(!user.try_unequip(W, src))
 					return
 				cell = W
-				to_chat(user, "You insert the [cell].")
+				to_chat(user, "You insert \the [cell].")
 		update_icon()
 		return
 

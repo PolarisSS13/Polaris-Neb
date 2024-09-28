@@ -44,15 +44,8 @@
 		if(is_component_functioning("camera"))
 			silicon_camera.captureimage(A, usr)
 		else
-			to_chat(src, "<span class='userdanger'>Your camera isn't functional.</span>")
+			to_chat(src, "<span class='danger'>Your camera isn't functional.</span>")
 		return
-
-	/*
-	cyborg restrained() currently does nothing
-	if(restrained())
-		RestrainedClickOn(A)
-		return
-	*/
 
 	var/obj/item/holding = get_active_held_item()
 

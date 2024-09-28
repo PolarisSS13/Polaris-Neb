@@ -95,7 +95,7 @@
 /obj/machinery/forensic/proc/print_report()
 	var/obj/item/paper/report = new(get_turf(src), null, get_report(), "[src] report #[++report_num]: [sample.name]")
 	playsound(loc, "sound/machines/dotprinter.ogg", 30, 1)
-	report.apply_custom_stamp(overlay_image('icons/obj/bureaucracy.dmi', icon_state = "paper_stamp-brig", flags = RESET_COLOR), "by \the [src]")
+	report.apply_custom_stamp('icons/obj/items/stamps/stamp_brig.dmi', "by \the [src]")
 
 /obj/machinery/forensic/proc/remove_sample(var/mob/living/remover)
 	if(!istype(remover) || remover.incapacitated() || !Adjacent(remover))
@@ -121,6 +121,6 @@
 	name = "Remove Sample"
 	expected_target_type = /obj/machinery/forensic
 
-/decl/interaction_handler/forensics_remove_sample/invoked(var/atom/target, var/mob/user)
+/decl/interaction_handler/forensics_remove_sample/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/forensic/F = target
 	F.remove_sample(usr)

@@ -2,9 +2,9 @@
 	uniform = /obj/item/clothing/jumpsuit/lightpurple
 	shoes = /obj/item/clothing/shoes/sandal
 	l_ear = /obj/item/radio/headset
-	r_pocket = /obj/item/teleportation_scroll
+	r_pocket = /obj/item/paper/scroll/teleportation
 	hands = list(
-		/obj/item/staff,
+		/obj/item/staff/crystal,
 		/obj/item/book/spell
 	)
 	back = /obj/item/backpack

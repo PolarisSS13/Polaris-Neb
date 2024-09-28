@@ -93,7 +93,7 @@
 /turf/floor/natural/path/herringbone/basalt,
 /area/shaded_hills/shrine)
 "eD" = (
-/obj/structure/textiles/loom/ebony,
+/obj/structure/working/loom/ebony,
 /turf/floor/wood/walnut,
 /area/shaded_hills/farmhouse)
 "eG" = (
@@ -336,6 +336,10 @@
 /obj/structure/door/walnut,
 /turf/floor/wood/walnut,
 /area/shaded_hills/stable)
+"lv" = (
+/obj/structure/bed/chair/bench/ebony,
+/turf/floor/wood/walnut,
+/area/shaded_hills/farmhouse)
 "lz" = (
 /obj/structure/table/woodentable_reinforced/ebony,
 /obj/item/knife/kitchen/cleaver/bronze,
@@ -375,8 +379,14 @@
 /obj/item/seeds/extracted/cabbage,
 /obj/item/seeds/extracted/cabbage,
 /obj/item/seeds/extracted/cabbage,
+/obj/item/tool/hoe/wood,
 /turf/floor/natural/dirt,
 /area/shaded_hills/outside/downlands)
+"ml" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/shears,
+/turf/floor/wood/walnut,
+/area/shaded_hills/farmhouse)
 "mG" = (
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
@@ -447,6 +457,10 @@
 "qP" = (
 /turf/floor/wood/walnut,
 /area/shaded_hills/farmhouse)
+"qW" = (
+/obj/structure/town_bell,
+/turf/floor/natural/path/basalt,
+/area/shaded_hills/outside/downlands)
 "qY" = (
 /turf/wall/brick/basalt,
 /area/shaded_hills/outside/downlands/poi)
@@ -694,7 +708,7 @@
 /turf/floor/natural/path/herringbone/basalt,
 /area/shaded_hills/inn)
 "Aq" = (
-/obj/structure/textiles/loom/ebony,
+/obj/structure/working/loom/ebony,
 /turf/floor/wood/walnut,
 /area/shaded_hills/shrine)
 "Aw" = (
@@ -710,6 +724,7 @@
 /obj/item/seeds/extracted/valerian,
 /obj/item/seeds/extracted/yarrow,
 /obj/item/seeds/extracted/yarrow,
+/obj/item/tool/hoe/wood,
 /turf/floor/natural/dirt,
 /area/shaded_hills/outside/shrine)
 "Ay" = (
@@ -731,12 +746,16 @@
 	},
 /turf/floor/wood/walnut,
 /area/shaded_hills/shrine)
+"Bp" = (
+/obj/structure/working/butter_churn/walnut,
+/turf/floor/wood/walnut,
+/area/shaded_hills/farmhouse)
 "Br" = (
 /turf/floor/natural/path/basalt,
 /area/shaded_hills/slaughterhouse)
 "Bx" = (
 /obj/structure/wall_sconce/lantern,
-/obj/structure/textiles/spinning_wheel/twisting_bench/ebony,
+/obj/structure/working/spinning_wheel/twisting_bench/ebony,
 /turf/floor/natural/path/basalt,
 /area/shaded_hills/slaughterhouse)
 "By" = (
@@ -833,6 +852,7 @@
 /obj/item/seeds/extracted/wheat,
 /obj/item/seeds/extracted/wheat,
 /obj/item/seeds/extracted/wheat,
+/obj/item/tool/shovel/wood,
 /turf/floor/natural/dirt,
 /area/shaded_hills/outside/downlands)
 "FE" = (
@@ -914,12 +934,24 @@
 /turf/wall/log/walnut/shutter,
 /area/shaded_hills/stable)
 "HF" = (
-/obj/structure/textiles/spinning_wheel/ebony,
+/obj/structure/working/spinning_wheel/ebony,
 /turf/floor/wood/walnut,
 /area/shaded_hills/farmhouse)
 "HI" = (
 /turf/floor/natural/grass,
 /area/shaded_hills/outside/downlands)
+"HK" = (
+/mob/living/simple_animal/passive/sheep,
+/turf/floor/natural/grass,
+/area/shaded_hills/outside/downlands)
+"HL" = (
+/obj/structure/table/marble,
+/obj/structure/fire_source/heater/mapped,
+/obj/item/chems/glass/handmade/jar,
+/obj/item/chems/glass/handmade/jar,
+/obj/item/chems/glass/handmade/jar,
+/turf/floor/natural/path/herringbone/basalt,
+/area/shaded_hills/shrine)
 "Ic" = (
 /turf/floor/natural/path/running_bond/basalt,
 /area/shaded_hills/outside/downlands)
@@ -1013,7 +1045,7 @@
 /turf/floor/natural/grass,
 /area/shaded_hills/outside/downlands)
 "Ke" = (
-/obj/structure/textiles/spinning_wheel/twisting_bench/ebony,
+/obj/structure/working/spinning_wheel/twisting_bench/ebony,
 /turf/floor/natural/path/herringbone/basalt,
 /area/shaded_hills/shrine)
 "Kh" = (
@@ -1039,6 +1071,11 @@
 	},
 /turf/floor/natural/path/herringbone/basalt,
 /area/shaded_hills/inn)
+"LH" = (
+/obj/structure/table/woodentable/ebony,
+/obj/item/chems/glass/bucket/wood,
+/turf/floor/wood/walnut,
+/area/shaded_hills/farmhouse)
 "LK" = (
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
@@ -1210,7 +1247,7 @@
 /turf/floor/natural/mud,
 /area/shaded_hills/outside/shrine)
 "Sy" = (
-/obj/structure/textiles/spinning_wheel/ebony,
+/obj/structure/working/spinning_wheel/ebony,
 /turf/floor/wood/walnut,
 /area/shaded_hills/shrine)
 "SF" = (
@@ -1372,6 +1409,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
 	},
+/obj/item/tool/shovel/wood,
 /turf/floor/natural/mud,
 /area/shaded_hills/outside/shrine)
 "WI" = (
@@ -10796,7 +10834,7 @@ Yg
 JU
 TR
 TR
-TR
+qW
 EV
 TR
 EV
@@ -10947,8 +10985,8 @@ Yg
 Yg
 Yg
 TR
-TR
-TR
+EV
+EV
 EV
 Ic
 EV
@@ -11098,9 +11136,9 @@ qG
 Jw
 Yg
 Yg
-TR
-TR
-TR
+Ic
+Ic
+Ic
 EV
 TR
 EV
@@ -11250,10 +11288,10 @@ qG
 dK
 Yg
 Yg
-TR
-TR
-TR
+Ic
+Ic
 EV
+Ic
 Ic
 EV
 TR
@@ -11572,7 +11610,7 @@ gp
 HI
 HI
 HI
-HI
+HK
 HI
 HI
 RC
@@ -13081,7 +13119,7 @@ Ic
 EV
 TR
 IQ
-cl
+LH
 yJ
 qP
 yN
@@ -13233,7 +13271,7 @@ Ic
 EV
 TR
 LN
-cl
+ml
 qP
 qP
 gB
@@ -13691,8 +13729,8 @@ BX
 LN
 qP
 qP
-qP
-qP
+lv
+Bp
 IQ
 FD
 Rl
@@ -19564,8 +19602,8 @@ kv
 iK
 kv
 kv
-TZ
-Vj
+Yc
+HL
 Vj
 TM
 Wh
@@ -19716,8 +19754,8 @@ kv
 iK
 kv
 kv
-QB
-uP
+TZ
+CR
 CR
 Ot
 bW
@@ -19868,8 +19906,8 @@ iK
 iK
 kv
 kv
-Kh
-CR
+QB
+uP
 CR
 CR
 CR
@@ -20020,7 +20058,7 @@ iK
 iK
 kv
 By
-QB
+Kh
 cy
 VE
 BD

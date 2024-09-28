@@ -2,7 +2,7 @@
 	name                = "oil lantern"
 	desc                = "An unwieldy oil lantern."
 	icon                = 'icons/obj/items/flame/lantern.dmi'
-	force               = 10
+	_base_attack_force  = 10
 	attack_verb         = list ("bludgeoned", "bashed", "whack")
 	w_class             = ITEM_SIZE_NORMAL
 	atom_flags          = ATOM_FLAG_OPEN_CONTAINER
@@ -14,6 +14,7 @@
 	_fuel_spend_amt     = (1 / 60) // a full lantern should last an hour
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	material            = /decl/material/solid/metal/copper
+	color               = /decl/material/solid/metal/copper::color
 	can_manually_light  = FALSE
 	sconce_can_hold     = TRUE
 
@@ -31,7 +32,7 @@
 	if(lit)
 		add_overlay(overlay_image(icon, "[icon_state]-over", lit_light_color, flags = RESET_COLOR))
 
-/obj/item/flame/fuelled/lantern/adjust_mob_overlay(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE, skip_offset = FALSE)
+/obj/item/flame/fuelled/lantern/apply_additional_mob_overlays(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
 	if(overlay && lit && (slot == slot_belt_str || (slot in global.all_hand_slots)))
 		overlay.overlays += overlay_image(overlay.icon, "[overlay.icon_state]-over", lit_light_color, flags = RESET_COLOR)
 	return ..()

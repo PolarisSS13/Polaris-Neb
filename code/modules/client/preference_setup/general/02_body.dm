@@ -1,10 +1,9 @@
 /datum/preferences
 	var/species
-	var/blood_type                           //blood type
-
+	var/blood_type
 	var/eye_colour = COLOR_BLACK
 	var/skin_colour = COLOR_BLACK
-	var/skin_tone = 0                    //Skin tone
+	var/skin_tone = -75
 	var/list/sprite_accessories = list()
 	var/list/appearance_descriptors = list()
 	var/equip_preview_mob = EQUIP_PREVIEW_ALL
@@ -23,6 +22,10 @@
 	pref.blood_type =             R.read("b_type")
 	pref.appearance_descriptors = R.read("appearance_descriptors")
 	pref.bgstate =                R.read("bgstate")
+
+	// Null skintone loaded from file -> initial skintone value.
+	if(isnull(pref.skin_tone))
+		pref.skin_tone = initial(pref.skin_tone)
 
 	// Load all of our saved accessories.
 	pref.sprite_accessories = list()
@@ -47,7 +50,6 @@
 						if(meta)
 							deserialized_metadata[meta.type] = loaded_metadata[metadata_uid]
 				pref.sprite_accessories[accessory_category.type][loaded_accessory.type] = deserialized_metadata
-
 
 	// Grandfather in pre-existing hair and markings.
 	var/decl/style_decl
@@ -146,9 +148,12 @@
 				var/acc_data = pref.sprite_accessories[acc_cat][acc]
 				for(var/metadata_type in acc_data)
 					var/decl/sprite_accessory_metadata/metadata = GET_DECL(metadata_type)
-					var/value = acc_data[metadata_type]
-					if(!metadata.validate_data(value))
-						acc_data[metadata_type] = metadata.default_value
+					if(istype(metadata))
+						var/value = acc_data[metadata_type]
+						if(!metadata.validate_data(value))
+							acc_data[metadata_type] = metadata.default_value
+					else
+						acc_data -= metadata_type
 
 	for(var/accessory_category in mob_species.available_accessory_categories)
 

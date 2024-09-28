@@ -90,7 +90,7 @@ default behaviour is:
 			for(var/mob/living/M in range(tmob, 1))
 				if(LAZYLEN(tmob.pinned) || (locate(/obj/item/grab, LAZYLEN(tmob.grabbed_by))))
 					if ( !(world.time % 5) )
-						to_chat(src, "<span class='warning'>[tmob] is restrained, you cannot push past</span>")
+						to_chat(src, SPAN_WARNING("[tmob] is restrained, you cannot push past."))
 					now_pushing = 0
 					return
 
@@ -539,14 +539,34 @@ default behaviour is:
 
 /mob/living/proc/process_resist()
 
-	//Getting out of someone's inventory.
-	if(istype(src.loc, /obj/item/holder))
-		escape_inventory(src.loc)
-		return TRUE
+	SHOULD_CALL_PARENT(TRUE)
 
 	//unbuckling yourself
 	if(buckled)
-		spawn() escape_buckle()
+		// TODO: convert vines to structures and have them override user_unbuckle_mob()
+		if(istype(buckled, /obj/effect/vine))
+			var/obj/effect/vine/V = buckled
+			spawn() V.manual_unbuckle(src)
+		else
+			spawn() escape_buckle()
+		return TRUE
+	//drop && roll
+	else if(on_fire)
+		fire_stacks = max(0, fire_stacks-1.2)
+		SET_STATUS_MAX(src, STAT_WEAK, 3)
+		spin(32,2)
+		var/decl/pronouns/pronouns = get_pronouns()
+		visible_message(
+			SPAN_DANGER("\The [src] rolls on the floor, trying to put [pronouns.him][pronouns.self] out!"),
+			SPAN_NOTICE("You stop, drop, and roll!")
+		)
+		sleep(3 SECONDS)
+		if(fire_stacks <= 0)
+			visible_message(
+				SPAN_NOTICE("\The [src] successfully extinguishes [pronouns.him][pronouns.self]!"),
+				SPAN_NOTICE("You extinguish yourself.")
+			)
+			ExtinguishMob()
 		return TRUE
 
 	//Breaking out of a structure?
@@ -555,10 +575,33 @@ default behaviour is:
 		if(C.mob_breakout(src))
 			return TRUE
 
+	//Getting out of someone's inventory.
+	if(istype(src.loc, /obj/item/holder))
+		escape_inventory(src.loc)
+		return TRUE
+
 	// Get rid of someone riding around on you.
 	if(buckled_mob)
 		unbuckle_mob()
 		return TRUE
+
+	// removing equipment
+	var/obj/item/restraint = get_restraining_equipment()
+	if(restraint)
+		spawn()
+			if(QDELETED(restraint) || restraint.loc != src)
+				return
+			var/datum/extension/resistable/restraint_data = get_extension(restraint, /datum/extension/resistable)
+			if(istype(restraint_data))
+				restraint_data.user_try_escape(src, get_equipped_slot_for_item(restraint))
+
+/mob/living/proc/get_restraining_equipment()
+	// List order determines the priority of each slot.
+	var/static/list/restraining_slots = list(slot_wear_suit_str, slot_handcuffed_str)
+	for(var/slot in restraining_slots)
+		var/obj/item/restraint = get_equipped_item(slot)
+		if(istype(restraint) && has_extension(restraint, /datum/extension/resistable))
+			return restraint
 
 /mob/living/proc/escape_inventory(obj/item/holder/H)
 	if(H != src.loc) return
@@ -897,6 +940,14 @@ default behaviour is:
 /mob/living/proc/has_chemical_effect(var/chem, var/threshold_over, var/threshold_under)
 	var/val = GET_CHEMICAL_EFFECT(src, chem)
 	. = (isnull(threshold_over) || val >= threshold_over) && (isnull(threshold_under) || val <= threshold_under)
+
+/mob/living/proc/remove_chemical_effect(var/effect, var/magnitude)
+	if(!isnull(magnitude))
+		magnitude = LAZYACCESS(chem_effects, effect) - magnitude
+	if(magnitude <= 0)
+		LAZYREMOVE(chem_effects, effect)
+	else
+		LAZYSET(chem_effects, effect, magnitude)
 
 /mob/living/proc/add_chemical_effect(var/effect, var/magnitude = 1)
 	magnitude += GET_CHEMICAL_EFFECT(src, effect)
@@ -1480,15 +1531,6 @@ default behaviour is:
 /mob/living/can_buckle_mob(var/mob/living/dropping)
 	. = ..() && stat == CONSCIOUS && !buckled && dropping.mob_size <= mob_size
 
-/mob/living/refresh_buckled_mob()
-	..()
-	if(buckled_mob)
-		if(dir == SOUTH)
-			buckled_mob.layer = layer - 0.01
-		else
-			buckled_mob.layer = layer + 0.01
-		buckled_mob.plane = plane
-
 /mob/living/OnSimulatedTurfEntered(turf/T, old_loc)
 	T.add_dirt(0.5)
 
@@ -1655,9 +1697,10 @@ default behaviour is:
 	user.set_special_ability_cooldown(5 SECONDS)
 	visible_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."))
 	var/obj/item/I = user.get_active_held_item()
-	if(!I?.force)
+	var/force = I?.get_attack_force(user)
+	if(!force)
 		return
-	var/d = rand(round(I.force / 4), I.force)
+	var/d = rand(round(force / 4), force)
 	visible_message(SPAN_DANGER("\The [user] attacks [src]'s stomach wall with \the [I]!"))
 	playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
 	var/obj/item/organ/external/organ = GET_EXTERNAL_ORGAN(src, BP_CHEST)
@@ -1824,3 +1867,68 @@ default behaviour is:
 			return screen_locs
 	var/decl/species/my_species = get_species()
 	return my_species?.character_preview_screen_locs
+
+/mob/living/can_twohand_item(obj/item/item)
+	if(!istype(item) || !item.can_be_twohanded)
+		return FALSE
+	if(incapacitated())
+		return FALSE
+	if(mob_size < item.minimum_size_to_twohand || (!isnull(item.maximum_size_to_twohand) && mob_size > item.maximum_size_to_twohand))
+		return FALSE
+	for(var/empty_hand in get_empty_hand_slots())
+		var/datum/inventory_slot/gripper/slot = get_inventory_slot_datum(empty_hand)
+		if(!istype(slot))
+			continue
+		if(slot.requires_organ_tag)
+			var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(src, slot.requires_organ_tag)
+			if(istype(hand) && hand.is_usable() && (!item.needs_attack_dexterity || hand.get_manual_dexterity() >= item.needs_attack_dexterity))
+				return TRUE
+		else if(!item.needs_attack_dexterity || slot.dexterity >= item.needs_attack_dexterity)
+			return TRUE
+	return FALSE
+
+/mob/living/buckle_mob(mob/living/M)
+	. = ..()
+	reset_layer()
+	update_icon()
+
+/mob/living/unbuckle_mob()
+	. = ..()
+	reset_layer()
+	update_icon()
+
+/mob/living/proc/flee(atom/target, upset = FALSE)
+	var/static/datum/automove_metadata/_flee_automove_metadata = new(
+		_move_delay = null,
+		_acceptable_distance = 7,
+		_avoid_target = TRUE
+	)
+	var/static/datum/automove_metadata/_annoyed_automove_metadata = new(
+		_move_delay = null,
+		_acceptable_distance = 2,
+		_avoid_target = TRUE
+	)
+	if(upset)
+		set_moving_quickly()
+	else
+		set_moving_slowly()
+	start_automove(target, metadata = upset ? _flee_automove_metadata : _annoyed_automove_metadata)
+
+/mob/living/examine(mob/user, distance, infix, suffix)
+
+	. = ..()
+
+	if(has_extension(src, /datum/extension/shearable))
+		var/datum/extension/shearable/shearable = get_extension(src, /datum/extension/shearable)
+		if(world.time >= shearable.next_fleece || shearable.has_fleece)
+			to_chat(user, SPAN_NOTICE("\The [src] can be sheared with shears, or a similar tool."))
+		else
+			to_chat(user, SPAN_WARNING("\The [src] will be ready to be sheared in [ceil((shearable.next_fleece-world.time) / 10)] second\s."))
+
+	if(has_extension(src, /datum/extension/milkable))
+		var/datum/extension/milkable/milkable = get_extension(src, /datum/extension/milkable)
+		if(milkable.udder.total_volume > 0)
+			to_chat(user, SPAN_NOTICE("\The [src] can be milked into a bucket or other container."))
+		else
+			to_chat(user, SPAN_WARNING("\The [src] cannot currently be milked."))
+

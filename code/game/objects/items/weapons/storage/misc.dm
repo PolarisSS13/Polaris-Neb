@@ -34,7 +34,6 @@
 	item_state = "cigpacket"
 	w_class = ITEM_SIZE_SMALL
 	storage = /datum/storage/cigpapers
-	throwforce = 2
 	slot_flags = SLOT_LOWER_BODY
 	material = /decl/material/solid/organic/plastic
 
@@ -55,7 +54,7 @@
 	icon_state = "filterbin"
 
 /obj/item/cigpaper/filters/WillContain()
-	return list(/obj/item/paper/cig/filter = 10)
+	return list(/obj/item/cigarette_filter = 10)
 
 /obj/item/chewables
 	name = "box of chewing wads master"
@@ -65,7 +64,6 @@
 	item_state = "cigpacket"
 	w_class = ITEM_SIZE_SMALL
 	storage = /datum/storage/chewables
-	throwforce = 2
 	slot_flags = SLOT_LOWER_BODY
 	material = /decl/material/solid/metal/tin
 

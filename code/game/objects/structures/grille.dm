@@ -61,7 +61,7 @@
 	var/on_frame = is_on_frame()
 	if(destroyed)
 		if(on_frame)
-			icon_state = "broke_onframe"
+			icon_state = "broken_onframe"
 		else
 			icon_state = "broken"
 	else
@@ -211,9 +211,9 @@
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		switch(W.atom_damage_type)
 			if(BURN)
-				take_damage(W.force)
+				take_damage(W.get_attack_force(user))
 			if(BRUTE)
-				take_damage(W.force * 0.1)
+				take_damage(W.get_attack_force(user) * 0.1)
 		return TRUE
 
 	return ..()

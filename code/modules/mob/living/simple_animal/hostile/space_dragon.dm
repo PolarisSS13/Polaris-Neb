@@ -17,6 +17,7 @@
 	)
 	ability_cooldown = 80 SECONDS
 	ai = /datum/mob_controller/aggressive/space_dragon
+	ability_handlers = list(/datum/ability_handler/predator)
 
 	var/obj/item/whip/tail/tailwhip
 	var/empowered_attack = FALSE
@@ -68,4 +69,4 @@
 	empowered_attack = FALSE
 
 /obj/item/natural_weapon/claws/space_dragon
-	force = 15
+	_base_attack_force = 15

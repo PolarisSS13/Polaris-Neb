@@ -44,9 +44,8 @@
 	if(!istype(W)) return
 
 	//Calculate damage
-	var/aforce = W.force
 	if(W.atom_damage_type == BRUTE || W.atom_damage_type == BURN)
-		current_health -= aforce
+		current_health -= W.get_attack_force(user)
 
 	//Play a fitting sound
 	playsound(src.loc, 'sound/effects/EMPulse.ogg', 75, 1)
@@ -78,19 +77,13 @@
 			if(prob(50))
 				qdel(src)
 
-/obj/machinery/shield/hitby(AM, var/datum/thrownthing/TT)
+/obj/machinery/shield/hitby(atom/movable/AM, var/datum/thrownthing/TT)
 	. = ..()
 	if(.)
 		//Let everyone know we've been hit!
 		visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."))
 		//Super realistic, resource-intensive, real-time damage calculations.
-		var/tforce = 0
-		if(ismob(AM)) // All mobs have a multiplier and a size according to mob_defines.dm
-			var/mob/I = AM
-			tforce = I.mob_size * (TT.speed/THROWFORCE_SPEED_DIVISOR)
-		else
-			var/obj/O = AM
-			tforce = O.throwforce * (TT.speed/THROWFORCE_SPEED_DIVISOR)
+		var/tforce = AM.get_thrown_attack_force() * (TT.speed/THROWFORCE_SPEED_DIVISOR)
 		current_health -= tforce
 		//This seemed to be the best sound for hitting a force field.
 		playsound(src.loc, 'sound/effects/EMPulse.ogg', 100, 1)
@@ -279,7 +272,7 @@
 			if (coil.use(1))
 				current_health = get_max_health()
 				malfunction = 0
-				to_chat(user, "<span class='notice'>You repair the [src]!</span>")
+				to_chat(user, "<span class='notice'>You repair \the [src]!</span>")
 				update_icon()
 
 	else if(IS_WRENCH(W))
@@ -288,15 +281,15 @@
 			return
 		if(anchored)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-			to_chat(user, "<span class='notice'>'You unsecure the [src] from the floor!</span>")
+			to_chat(user, "<span class='notice'>'You unsecure \the [src] from the floor!</span>")
 			if(active)
-				to_chat(user, "<span class='notice'>The [src] shuts off!</span>")
+				to_chat(user, "<span class='notice'>\The [src] shuts off!</span>")
 				src.shields_down()
 			anchored = FALSE
 		else
 			if(isspaceturf(get_turf(src))) return //No wrenching these in space!
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-			to_chat(user, "<span class='notice'>You secure the [src] to the floor!</span>")
+			to_chat(user, "<span class='notice'>You secure \the [src] to the floor!</span>")
 			anchored = TRUE
 
 

@@ -25,6 +25,7 @@
 	origin_tech = @'{"materials":1,"engineering":1,"combat":1}'
 	protects_against_weather = TRUE
 	replaced_in_loadout = FALSE
+	_base_attack_force = 8
 
 /obj/item/clothing/head/helmet/tactical
 	name = "tactical helmet"
@@ -75,9 +76,9 @@
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user)
 	up = !up
 	if(up)
-		to_chat(user, "You raise the visor on the [src].")
+		to_chat(user, "You raise the visor on \the [src].")
 	else
-		to_chat(user, "You lower the visor on the [src].")
+		to_chat(user, "You lower the visor on \the [src].")
 	update_icon()
 
 /obj/item/clothing/head/helmet/riot/on_update_icon(mob/user)

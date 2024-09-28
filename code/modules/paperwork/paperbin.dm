@@ -8,7 +8,6 @@
 	item_state          = "sheet-metal"
 	randpixel           = 0
 	layer               = BELOW_OBJ_LAYER
-	throwforce          = 1
 	w_class             = ITEM_SIZE_NORMAL
 	throw_speed         = 3
 	throw_range         = 7
@@ -162,7 +161,8 @@
 /decl/interaction_handler/paper_bin_dump_contents/is_possible(var/obj/item/paper_bin/target, mob/user, obj/item/prop)
 	return ..() && target.amount > 0
 
-/decl/interaction_handler/paper_bin_dump_contents/invoked(var/obj/item/paper_bin/bin, mob/user)
+/decl/interaction_handler/paper_bin_dump_contents/invoked(atom/target, mob/user, obj/item/prop)
+	var/obj/item/paper_bin/bin = target
 	to_chat(user, SPAN_NOTICE("You start emptying \the [bin]..."))
 	if(do_after(user, 2 SECONDS) && !QDELETED(bin))
 		bin.dump_contents()

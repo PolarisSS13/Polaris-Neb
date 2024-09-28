@@ -178,8 +178,8 @@ var/global/list/hygiene_props = list()
 				swirlie = null
 			else
 				user.visible_message(
-				SPAN_DANGER("\The [user] slams \the [GM] into the [src]!"),
-				SPAN_NOTICE("You slam \the [GM] into the [src]!"))
+				SPAN_DANGER("\The [user] slams \the [GM] into \the [src]!"),
+				SPAN_NOTICE("You slam \the [GM] into \the [src]!"))
 				GM.take_damage(8)
 				playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 		return
@@ -217,7 +217,7 @@ var/global/list/hygiene_props = list()
 			if(!GM.loc == get_turf(src))
 				to_chat(user, SPAN_WARNING("\The [GM] needs to be on \the [src]."))
 				return
-			user.visible_message(SPAN_DANGER("\The [user] slams \the [GM] into the [src]!"))
+			user.visible_message(SPAN_DANGER("\The [user] slams \the [GM] into \the [src]!"))
 			GM.take_damage(8)
 	. = ..()
 
@@ -350,6 +350,7 @@ var/global/list/hygiene_props = list()
 	icon_state = "sink"
 	desc = "A sink used for washing one's hands and face."
 	anchored = TRUE
+	directional_offset = @'{"NORTH":{"y":22},"SOUTH":{"y":28},"EAST":{"x":16},"WEST":{"x":-16}}'
 	var/busy = 0 	//Something's being washed at the moment
 
 /obj/structure/hygiene/sink/receive_mouse_drop(atom/dropping, mob/user, params)
@@ -456,11 +457,13 @@ var/global/list/hygiene_props = list()
 /obj/structure/hygiene/sink/kitchen
 	name = "kitchen sink"
 	icon_state = "sink_alt"
+	directional_offset = @'{"NORTH":{"y":22},"SOUTH":{"y":28},"EAST":{"x":-22},"WEST":{"x":22}}'
 
 /obj/structure/hygiene/sink/puddle	//splishy splashy ^_^
 	name = "puddle"
 	icon_state = "puddle"
 	clogged = -1 // how do you clog a puddle
+	directional_offset = null
 
 /obj/structure/hygiene/sink/puddle/attack_hand(var/mob/M)
 	flick("puddle-splash", src)
@@ -531,8 +534,7 @@ var/global/list/hygiene_props = list()
 /obj/item/paper/crumpled/bog
 	name       = "sheet of toilet paper"
 	desc       = "A single sheet of toilet paper. Two ply."
-	icon       = 'icons/obj/toiletpaper.dmi'
-	icon_state = "bogroll_sheet"
+	icon       = 'icons/obj/items/paperwork/toilet_paper.dmi'
 
 /obj/structure/hygiene/faucet
 	name = "faucet"

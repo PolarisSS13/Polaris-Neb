@@ -142,6 +142,12 @@
 /obj/structure/reagent_dispensers/watertank/populate_reagents()
 	add_to_reagents(/decl/material/liquid/water, reagents.maximum_volume)
 
+/obj/structure/reagent_dispensers/watertank/high
+	name = "high-capacity water tank"
+	desc = "A highly-pressurized water tank made to hold vast amounts of water."
+	icon = 'icons/obj/structures/water_tank_high.dmi'
+	icon_state = ICON_STATE_WORLD
+
 /obj/structure/reagent_dispensers/watertank/firefighter
 	name   = "firefighting water reserve"
 	volume = 50000
@@ -279,7 +285,7 @@
 		return TRUE
 
 	if(!skip_text)
-		to_chat(user, "The [src]'s cup dispenser is empty.")
+		to_chat(user, "\The [src]'s cup dispenser is empty.")
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/W, mob/user)
 	//Allow refilling with a box
@@ -336,7 +342,7 @@
 		var/obj/structure/reagent_dispensers/R = target
 		return !!R.possible_transfer_amounts
 
-/decl/interaction_handler/set_transfer/reagent_dispenser/invoked(var/atom/target, var/mob/user)
+/decl/interaction_handler/set_transfer/reagent_dispenser/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/structure/reagent_dispensers/R = target
 	R.set_amount_dispensed()
 
@@ -345,7 +351,7 @@
 	name                 = "Toggle refilling cap"
 	expected_target_type = /obj/structure/reagent_dispensers
 
-/decl/interaction_handler/toggle_open/reagent_dispenser/invoked(var/obj/structure/reagent_dispensers/target, var/mob/user)
+/decl/interaction_handler/toggle_open/reagent_dispenser/invoked(atom/target, mob/user, obj/item/prop)
 	if(target.atom_flags & ATOM_FLAG_OPEN_CONTAINER)
 		target.atom_flags &= ~ATOM_FLAG_OPEN_CONTAINER
 	else

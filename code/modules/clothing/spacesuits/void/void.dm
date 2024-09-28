@@ -45,6 +45,8 @@
 	breach_threshold = 15
 	can_breach = 1
 
+	_base_attack_force = 5
+
 	//Inbuilt devices.
 	var/obj/item/clothing/shoes/magboots/boots = null // Deployable boots, if any.
 	var/obj/item/clothing/head/helmet/helmet = null   // Deployable helmet, if any.
@@ -279,6 +281,7 @@ else if(##equipment_var) {\
 	return TRUE
 
 /obj/item/clothing/suit/space/void/adjust_mob_overlay(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
+	overlay = ..() // Apply tank last so it doesn't get offset twice.
 	if(overlay && tank && slot == slot_back_str)
 		overlay.overlays += tank.get_mob_overlay(user_mob, slot_back_str)
-	. = ..()
+	return overlay

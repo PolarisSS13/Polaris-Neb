@@ -57,7 +57,7 @@
 		if(get_percent_health() <= 50)
 			to_chat(user,"<span class='warning'>It looks pretty beat up.</span>")
 		else
-			to_chat(user, "<span class='warning'>Its got a few dents in it.</span>")
+			to_chat(user, "<span class='warning'>It's got a few dents in it.</span>")
 
 	if((isobserver(user) && ckeys_allowed_to_scan[user.ckey]) || check_rights(R_ADMIN, 0, user))
 		to_chat(user, "You can <a href='byond://?src=\ref[src];ghostscan=1'>scan</a> this circuit.");
@@ -72,7 +72,7 @@
 		visible_message(SPAN_DANGER("\The [src] starts to break apart!"))
 
 /obj/item/electronic_assembly/proc/check_interactivity(mob/user)
-	return (!user.incapacitated() && CanUseTopic(user) && user_can_wield(user))
+	return (!user.incapacitated() && CanUseTopic(user) && user_can_attack_with(user))
 
 /obj/item/electronic_assembly/GetAccess()
 	. = list()

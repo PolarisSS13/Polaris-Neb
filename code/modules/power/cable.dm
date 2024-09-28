@@ -33,6 +33,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	obj_flags = OBJ_FLAG_MOVES_UNSUPPORTED
 	level = LEVEL_BELOW_PLATING
 
+	/// The base cable stack that should be produced, not including color.
+	/// cable_type::stack_merge_type should equal cable_type, ideally
+	var/cable_type = /obj/item/stack/cable_coil
 	/// Whether this cable type can be (re)colored.
 	var/can_have_color = TRUE
 	var/d1
@@ -133,6 +136,17 @@ By design, d1 is the smallest direction and d2 is the highest
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
+/obj/structure/cable/shuttle_rotate(angle)
+	// DON'T CALL PARENT, we never change our actual dir
+	if(d1 == 0)
+		d2 = turn(d2, angle)
+	else
+		var/nd1 = min(turn(d1, angle), turn(d2, angle))
+		var/nd2 = max(turn(d1, angle), turn(d2, angle))
+		d1 = nd1
+		d2 = nd2
+	update_icon()
+
 // returns the powernet this cable belongs to
 /obj/structure/cable/proc/get_powernet()			//TODO: remove this as it is obsolete
 	return powernet
@@ -169,7 +183,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 		var/delay_holder
 
-		if(W.force < 5)
+		if(W.get_attack_force(user) < 5)
 			visible_message(SPAN_WARNING("[user] starts sawing away roughly at \the [src] with \the [W]."))
 			delay_holder = 8 SECONDS
 		else
@@ -201,7 +215,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	if (shock(user, 50))
 		return
 
-	new/obj/item/stack/cable_coil(T, (src.d1 ? 2 : 1), color)
+	new cable_type(T, (src.d1 ? 2 : 1), color)
 
 	visible_message(SPAN_WARNING("[user] cuts \the [src]."))
 
@@ -488,7 +502,6 @@ By design, d1 is the smallest direction and d2 is the highest
 	color = COLOR_MAROON
 	desc = "A coil of wiring, suitable for both delicate electronics and heavy duty power supply."
 	singular_name = "length"
-	throwforce = 0
 	w_class = ITEM_SIZE_NORMAL
 	throw_speed = 2
 	throw_range = 5
@@ -505,6 +518,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	matter_multiplier = 0.15
 	/// Whether or not this cable coil can even have a color in the first place.
 	var/can_have_color = TRUE
+	/// The type of cable structure produced when laying down this cable.
+	/// src.cable_type::cable_type should equal stack_merge_type, ideally
+	var/cable_type = /obj/structure/cable
 
 /obj/item/stack/cable_coil/single
 	amount = 1
@@ -783,7 +799,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	if(!istype(F))
 		return FALSE
 
-	var/obj/structure/cable/C = new(F)
+	var/obj/structure/cable/C = new cable_type(F)
 	C.cableColor(color)
 	C.d1 = d1
 	C.d2 = d2

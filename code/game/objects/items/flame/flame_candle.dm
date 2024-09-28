@@ -4,6 +4,7 @@
 	icon                  = 'icons/obj/items/flame/candle.dmi'
 	w_class               = ITEM_SIZE_TINY
 	material              = /decl/material/solid/organic/wax
+	material_alteration   = MAT_FLAG_ALTERATION_COLOR
 	lit_light_range       = 2
 	_fuel                 = null
 	sconce_can_hold       = TRUE
@@ -18,6 +19,12 @@
 
 /obj/item/flame/candle/red
 	paint_color = COLOR_RED
+
+/obj/item/flame/candle/white
+	paint_color = COLOR_WHITE
+
+/obj/item/flame/candle/black
+	paint_color = COLOR_GRAY15
 
 /obj/item/flame/candle/Initialize()
 

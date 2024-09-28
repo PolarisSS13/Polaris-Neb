@@ -5,7 +5,6 @@
 	w_class = ITEM_SIZE_TINY
 	default_action_type = /datum/action/item_action/organ
 	origin_tech = @'{"materials":1,"biotech":1}'
-	throwforce = 2
 	abstract_type = /obj/item/organ
 
 	// Strings.
@@ -344,6 +343,7 @@
 		PRINT_STACK_TRACE("rejuvenate() called on organ of type [type] with no owner.")
 	damage = 0
 	reset_status()
+	QDEL_NULL_LIST(ailments)
 	if(!ignore_organ_traits)
 		for(var/trait_type in owner.get_traits())
 			var/decl/trait/trait = GET_DECL(trait_type)
@@ -523,12 +523,12 @@ var/global/list/ailment_reference_cache = list()
 	if(ispath(ailment, /datum/ailment))
 		for(var/datum/ailment/ext_ailment in ailments)
 			if(ailment == ext_ailment.type)
-				LAZYREMOVE(ailments, ext_ailment)
+				qdel(ext_ailment)
 				return TRUE
 	else if(istype(ailment))
 		for(var/datum/ailment/ext_ailment in ailments)
 			if(ailment == ext_ailment)
-				LAZYREMOVE(ailments, ext_ailment)
+				qdel(ext_ailment)
 				return TRUE
 	return FALSE
 
@@ -587,7 +587,7 @@ var/global/list/ailment_reference_cache = list()
 // 2. Called through removal on surgery or dismemberement
 // 3. Called when we're changing a mob's species.
 //detach: If detach is true, we're going to set the organ to detached, and add it to the detached organs list, and remove it from processing lists.
-//        If its false, we just remove the organ from all lists
+//        If it's false, we just remove the organ from all lists
 /obj/item/organ/proc/do_uninstall(var/in_place = FALSE, var/detach = FALSE, var/ignore_children = FALSE, var/update_icon = TRUE)
 
 	max_health = max_damage

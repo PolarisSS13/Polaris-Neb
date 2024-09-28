@@ -1,6 +1,6 @@
 /decl/stack_recipe/bricks
-	abstract_type               = /decl/stack_recipe/bricks
-	craft_stack_types           = list(
+	abstract_type              = /decl/stack_recipe/bricks
+	craft_stack_types          = list(
 		/obj/item/stack/material/brick,
 		/obj/item/stack/material/slab
 	)
@@ -9,7 +9,7 @@
 		/obj/item/stack/material/log,
 		/obj/item/stack/material/lump
 	)
-	category                    = "structures"
+	category                   = "structures"
 
 /decl/stack_recipe/bricks/cup
 	result_type                = /obj/item/chems/glass/handmade/cup
@@ -21,11 +21,12 @@
 	result_type                = /obj/item/chems/glass/handmade/bowl
 
 /decl/stack_recipe/bricks/fire_source
-	abstract_type               = /decl/stack_recipe/bricks/fire_source
-	on_floor                    = TRUE
-	one_per_turf                = TRUE
-	apply_material_name         = FALSE
-	category                    = "fire sources"
+	abstract_type              = /decl/stack_recipe/bricks/fire_source
+	on_floor                   = TRUE
+	one_per_turf               = TRUE
+	apply_material_name        = FALSE
+	category                   = "fire sources"
+	difficulty                 = MAT_VALUE_NORMAL_DIY
 
 /decl/stack_recipe/bricks/fire_source/firepit
 	result_type                 = /obj/structure/fire_source/firepit
@@ -38,9 +39,13 @@
 	forbidden_craft_stack_types = list(
 		/obj/item/stack/material/log,
 	)
+	difficulty                 = MAT_VALUE_EASY_DIY
 
 /decl/stack_recipe/bricks/fire_source/kiln
-	result_type                 = /obj/structure/fire_source/kiln
+	result_type                = /obj/structure/fire_source/kiln
+
+/decl/stack_recipe/bricks/fire_source/alembic
+	result_type                = /obj/structure/fire_source/heater
 
 /decl/stack_recipe/bricks/furniture
 	abstract_type              = /decl/stack_recipe/bricks/furniture
@@ -49,15 +54,54 @@
 	difficulty                 = MAT_VALUE_HARD_DIY
 	category                   = "furniture"
 
+/decl/stack_recipe/bricks/furniture/pillar
+	name                       = "pillar, square"
+	result_type                = /obj/structure/pillar
+	category                   = "structures"
+
+/decl/stack_recipe/bricks/furniture/pillar/narrow
+	name                       = "pillar, narrow"
+	result_type                = /obj/structure/pillar/narrow
+
+/decl/stack_recipe/bricks/furniture/pillar/triad
+	name                       = "pillar, triad"
+	result_type                = /obj/structure/pillar/triad
+
+/decl/stack_recipe/bricks/furniture/pillar/round
+	name                       = "pillar, round"
+	result_type                = /obj/structure/pillar/round
+
+/decl/stack_recipe/bricks/furniture/pillar/pedestal
+	name                       = "pedestal, square"
+	result_type                = /obj/structure/pedestal
+
+/decl/stack_recipe/bricks/furniture/pillar/pedestal_narrow
+	name                       = "pedestal, narrow"
+	result_type                = /obj/structure/pedestal/narrow
+
+/decl/stack_recipe/bricks/furniture/pillar/pedestal_triad
+	name                       = "pedestal, triad"
+	result_type                = /obj/structure/pedestal/triad
+
+/decl/stack_recipe/bricks/furniture/pillar/pedestal_round
+	name                       = "pedestal, round"
+	result_type                = /obj/structure/pedestal/round
+
 /decl/stack_recipe/bricks/gravestone
-	result_type            = /obj/item/gravemarker/gravestone
-	difficulty             = MAT_VALUE_NORMAL_DIY
+	result_type                = /obj/item/gravemarker/gravestone
+	difficulty                 = MAT_VALUE_NORMAL_DIY
 
 /decl/stack_recipe/bricks/fountain
 	result_type                = /obj/structure/fountain/mundane
 	one_per_turf               = TRUE
 	on_floor                   = TRUE
 	difficulty                 = MAT_VALUE_VERY_HARD_DIY
+
+/decl/stack_recipe/bricks/fountain/well
+	result_type                = /obj/structure/reagent_dispensers/well
+
+/decl/stack_recipe/bricks/fountain/wall
+	result_type                = /obj/structure/reagent_dispensers/well/wall_fountain
 
 /decl/stack_recipe/turfs/wall/brick
 	name                       = "brick wall"

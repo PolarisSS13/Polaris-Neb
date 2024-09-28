@@ -101,6 +101,9 @@
 		if(sender_lite.ckey != ticket.owner.ckey && !ticket.take(sender_lite))
 			return
 
+	// We are sending this quite early because of a return in the popup code.
+	SSwebhooks.send(WEBHOOK_AHELP_SENT, list("name" = "Reply Sent ([ticket.id]) (Game ID: [game_id])", "body" = "**[sender_lite.key_name(FALSE, FALSE)]** to **[receiver_lite.key_name(FALSE, FALSE)]**: [msg]"))
+
 	var/recieve_message
 
 	if(holder && !C.holder)
@@ -139,6 +142,7 @@
 		receiver_message += ": <span class='message'>[msg]</span>"
 	receiver_message += "</span></span>"
 	to_chat(C, receiver_message)
+
 	window_flash(C)
 
 	//play the recieving admin the adminhelp sound (if they have them enabled)
@@ -177,7 +181,7 @@
 
 	// Handled on Bot32's end, unsure about other bots
 //	if(length(msg) > 400) // TODO: if message length is over 400, divide it up into seperate messages, the message length restriction is based on IRC limitations.  Probably easier to do this on the bots ends.
-//		to_chat(src, "<span class='warning'>Your message was not sent because it was more then 400 characters find your message below for ease of copy/pasting</span>")
+//		to_chat(src, "<span class='warning'>Your message was not sent because it was more then 400 characters, find your message below for ease of copy/pasting.</span>")
 //		to_chat(src, "<span class='notice'>[msg]</span>")
 //		return
 

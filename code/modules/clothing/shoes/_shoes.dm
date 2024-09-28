@@ -10,11 +10,12 @@
 	heat_protection = SLOT_FEET
 	slot_flags = SLOT_FEET
 	permeability_coefficient = 0.50
-	force = 2
+	_base_attack_force = 2
 	blood_overlay_type = "shoeblood"
 	material = /decl/material/solid/organic/leather
 	origin_tech = @'{"materials":1,"engineering":1}'
 	fallback_slot = slot_shoes_str
+	_base_attack_force = 5
 
 	var/can_fit_under_magboots = TRUE
 	var/can_add_cuffs = TRUE
@@ -99,7 +100,7 @@
 
 /obj/item/clothing/shoes/proc/remove_cuffs(var/mob/user)
 	if (!user.put_in_hands(attached_cuffs))
-		to_chat(usr, SPAN_WARNING("You need an empty, unbroken hand to remove the [attached_cuffs] from the [src]."))
+		to_chat(usr, SPAN_WARNING("You need an empty, unbroken hand to remove \the [attached_cuffs] from \the [src]."))
 		return
 	user.visible_message(SPAN_ITALIC("\The [user] removes \the [attached_cuffs] from \the [src]."), range = 2)
 	attached_cuffs.add_fingerprint(user)
@@ -118,7 +119,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] already holds \an [hidden_item]."))
 		return TRUE
 	if (I.w_class > hidden_item_max_w_class)
-		to_chat(user, SPAN_WARNING("\The [I] is too large to fit in the [src]."))
+		to_chat(user, SPAN_WARNING("\The [I] is too large to fit in \the [src]."))
 		return TRUE
 	if (do_after(user, 1 SECONDS))
 		if(!user.try_unequip(I, src))
@@ -145,7 +146,7 @@
 		return FALSE
 	if (do_after(user, 2 SECONDS))
 		if (!user.put_in_hands(hidden_item))
-			to_chat(usr, SPAN_WARNING("You need an empty, unbroken hand to pull the [hidden_item] from the [src]."))
+			to_chat(usr, SPAN_WARNING("You need an empty, unbroken hand to pull \the [hidden_item] from \the [src]."))
 			return TRUE
 		user.visible_message(SPAN_ITALIC("\The [user] pulls \the [hidden_item] from \the [src]."), range = 1)
 		playsound(get_turf(src), 'sound/effects/holster/tactiholsterout.ogg', 25)
@@ -178,7 +179,7 @@
 		S.blend_mode = BLEND_ADD
 		add_overlay(S)
 
-/obj/item/clothing/shoes/adjust_mob_overlay(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
+/obj/item/clothing/shoes/apply_additional_mob_overlays(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
 	if(overlay && shine > 0 && slot == slot_shoes_str)
 		var/mutable_appearance/S = mutable_appearance(overlay.icon, "shine")
 		S.alpha = 127 * shine / 100

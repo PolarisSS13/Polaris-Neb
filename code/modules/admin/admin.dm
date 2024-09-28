@@ -789,7 +789,10 @@ var/global/BSACooldown = 0
 	if (new_vis && !world.reachable)
 		message_admins("WARNING: The server will not show up on the hub because byond is detecting that a firewall is blocking incoming connections.")
 
-	send2adminirc("[key_name(src)]" + long_message)
+	var/full_message = "[key_name(src)]" + long_message
+	send2adminirc(full_message)
+	SSwebhooks.send(WEBHOOK_AHELP_SENT, list("name" = "Hub Visibility Toggled (Game ID: [game_id])", "body" = full_message))
+
 	log_and_message_admins(long_message)
 	SSstatistics.add_field_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
 
@@ -1477,9 +1480,7 @@ var/global/BSACooldown = 0
 	P.desc = "This is a paper titled '" + P.name + "'."
 
 	if(P.sender || alert("Would you like the fax stamped?",, "Yes", "No") == "Yes")
-		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi', icon_state = "paper_stamp-boss", pixel_x = rand(-2, 0), pixel_y = rand(-2, 0))
-		stampoverlay.appearance_flags |= RESET_COLOR
-		P.apply_custom_stamp(stampoverlay, "by the [P.origin] Quantum Relay")
+		P.apply_custom_stamp('icons/obj/items/stamps/stamp_boss.dmi', "by the [P.origin] Quantum Relay")
 
 	if(P.sender || alert("Would you like the fax signed?",, "Yes", "No") == "Yes")
 		var/sig = input(src.owner, "Enter the name you wish to sign the paper with.", "Signature") as text|null

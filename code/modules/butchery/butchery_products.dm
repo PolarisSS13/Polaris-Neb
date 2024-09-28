@@ -3,7 +3,7 @@
 	material_alteration = MAT_FLAG_ALTERATION_COLOR
 	icon_state          = ICON_STATE_WORLD
 	material            = /decl/material/solid/organic/meat
-	w_class             = ITEM_SIZE_LARGE
+	w_class             = ITEM_SIZE_NORMAL
 	volume              = 20
 	nutriment_type      = /decl/material/solid/organic/meat
 	nutriment_desc      = list("umami" = 10)
@@ -12,7 +12,6 @@
 	slice_num           = null
 	max_health          = 180
 	cooked_food         = FOOD_RAW
-	ingredient_flags    = INGREDIENT_FLAG_MEAT
 	var/fat_material    = /decl/material/solid/organic/meat/gut
 	var/meat_name       = "meat"
 
@@ -26,8 +25,9 @@
 			slice_path = butchery_decl.meat_type
 		if(isnull(slice_num))
 			slice_num = butchery_decl.meat_amount
-		ingredient_flags = butchery_decl.meat_flags
 	. = ..()
+	if(butchery_decl)
+		add_allergen_flags(butchery_decl.meat_flags)
 	if(istype(donor))
 		meat_name = donor.get_butchery_product_name()
 	if(meat_name)
@@ -67,7 +67,7 @@
 	if(. && istype(., /obj/item/food))
 		var/obj/item/food/food = .
 		food.cooked_food = FOOD_COOKED
-		food.ingredient_flags = ingredient_flags
+		food.add_allergen_flags(allergen_flags)
 		if(meat_name && istype(., /obj/item/food/butchery))
 			var/obj/item/food/butchery/meat = .
 			meat.set_meat_name(meat_name)
@@ -77,7 +77,7 @@
 	if(. && istype(., /obj/item/food))
 		var/obj/item/food/food = .
 		food.cooked_food = FOOD_COOKED
-		food.ingredient_flags = ingredient_flags
+		food.add_allergen_flags(allergen_flags)
 		if(meat_name)
 			if(istype(., /obj/item/food/butchery))
 				var/obj/item/food/butchery/meat = .
@@ -91,7 +91,7 @@
 	if(length(.))
 		for(var/obj/item/food/food in .)
 			food.cooked_food = cooked_food
-			food.ingredient_flags = ingredient_flags
+			food.add_allergen_flags(allergen_flags)
 		if(meat_name)
 			for(var/obj/item/food/butchery/meat in .)
 				meat.set_meat_name(meat_name)
@@ -170,7 +170,7 @@
 	icon                = 'icons/obj/items/butchery/haunch.dmi'
 	slice_num           = 2
 	slice_path          = /obj/item/food/butchery/meat
-	w_class             = ITEM_SIZE_HUGE
+	w_class             = ITEM_SIZE_LARGE
 	var/bone_material   = /decl/material/solid/organic/bone
 
 /obj/item/food/butchery/haunch/Initialize(mapload, material_key, skip_plate = FALSE, mob/living/donor)
@@ -199,7 +199,7 @@
 	name                = "side of meat"
 	desc                = "Approximately half the torso and body of an unfortunate animal, split lengthways, cleaned, and ready for cooking."
 	icon                = 'icons/obj/items/butchery/side.dmi'
-	w_class             = ITEM_SIZE_GARGANTUAN
+	w_class             = ITEM_SIZE_HUGE
 
 /obj/item/food/butchery/haunch/side/Initialize(mapload, material_key, skip_plate = FALSE, mob/living/donor)
 	. = ..()
@@ -210,6 +210,7 @@
 	meat_name = new_meat_name
 	SetName("side of [new_meat_name]")
 
+// TODO: unify with organ/internal/stomach?
 /obj/item/food/butchery/stomach
 	name                = "stomach"
 	desc                = "The stomach of a large animal. It would probably make a decent waterskin if properly treated."
@@ -217,6 +218,7 @@
 	material            = /decl/material/solid/organic/meat/gut
 	nutriment_amt       = 8
 	dried_type          = /obj/item/chems/waterskin
+	w_class             = ITEM_SIZE_SMALL
 	var/stomach_reagent = /decl/material/liquid/acid/stomach
 
 /obj/item/food/butchery/stomach/get_dried_product()

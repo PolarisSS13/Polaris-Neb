@@ -8,6 +8,9 @@
 	material = /decl/material/solid/metal/steel
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME
 
+/obj/item/tool/hoe/wood
+	material = /decl/material/solid/organic/wood
+
 /obj/item/tool/hoe/get_initial_tool_qualities()
 	var/static/list/tool_qualities = list(TOOL_HOE = TOOL_QUALITY_DEFAULT)
 	return tool_qualities
@@ -15,8 +18,6 @@
 /obj/item/tool/hoe/mini
 	name = "mini hoe"
 	icon = 'icons/obj/items/tool/hoes/minihoe.dmi'
-	material_force_multiplier = 0.25 // 5 with weight 20 (steel)
-	thrown_material_force_multiplier = 0.25
 	material_alteration = 0
 	handle_material     = /decl/material/solid/organic/plastic
 	w_class             = ITEM_SIZE_SMALL

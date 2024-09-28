@@ -10,23 +10,19 @@
 	anchored = FALSE
 	obj_flags = OBJ_FLAG_CONDUCTIBLE
 	slot_flags = SLOT_LOWER_BODY|SLOT_HOLSTER
-	force = 10.0
-	throwforce = 10.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = @'{"engineering":4,"materials":2}'
 	material = /decl/material/solid/metal/steel
+	_base_attack_force = 10
 	var/stored_matter = 0
 	var/max_stored_matter = 120
-
 	var/work_id = 0
 	var/decl/hierarchy/rcd_mode/work_mode
 	var/static/list/work_modes
-
 	var/canRwall = 0
 	var/disabled = 0
-
 	var/crafting = FALSE //Rapid Crossbow Device memes
 
 /obj/item/rcd/Initialize()
@@ -70,7 +66,7 @@
 	if(IS_SCREWDRIVER(W))
 		crafting = !crafting
 		if(!crafting)
-			to_chat(user, "<span class='notice'>You reassemble the RCD</span>")
+			to_chat(user, SPAN_NOTICE("You reassemble the RCD."))
 		else
 			to_chat(user, "<span class='notice'>The RCD can now be modified.</span>")
 		src.add_fingerprint(user)

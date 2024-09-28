@@ -51,7 +51,7 @@
 
 /obj/item/stack/medical/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 
-	if(!user.can_wield_item(src) || user.a_intent == I_HURT)
+	if(!user_can_attack_with(user) || user.a_intent == I_HURT)
 		return ..()
 
 	if(get_amount() < 1)
@@ -59,7 +59,7 @@
 		return TRUE
 
 	// If they have organs, we try to treat a specific organ being targeted.
-	if(length(target.get_organs()))
+	if(target.has_organs())
 
 		var/obj/item/organ/external/affecting = GET_EXTERNAL_ORGAN(target, user.get_target_zone())
 		if(!affecting)

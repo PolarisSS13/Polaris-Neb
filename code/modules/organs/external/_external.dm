@@ -81,6 +81,11 @@
 	var/image/hud_damage_image
 	var/fingerprint
 
+	// Extremely specific bool for washing hands to avoid drakes washing their entire head in the sink.
+	// The problem with adding shit like this is that now the question of whether or not feet/face should
+	// be washable comes up! There is no escape from the horrors of a detailed sim.
+	var/is_washable = FALSE
+
 /obj/item/organ/external/proc/set_fingerprint(value)
 	if((limb_flags & ORGAN_FLAG_FINGERPRINT) && !BP_IS_PROSTHETIC(src))
 		fingerprint = value
@@ -326,7 +331,7 @@
 	if(stage == 2 && (used_item.sharp || IS_HEMOSTAT(used_item) || IS_WIRECUTTER(used_item)))
 		var/list/radial_buttons = make_item_radial_menu_choices(get_contents_recursive())
 		if(LAZYLEN(radial_buttons))
-			var/obj/item/removing = show_radial_menu(user, src, radial_buttons, radius = 42, require_near = TRUE, use_labels = TRUE, check_locs = list(src))
+			var/obj/item/removing = show_radial_menu(user, src, radial_buttons, radius = 42, require_near = TRUE, use_labels = RADIAL_LABELS_OFFSET, check_locs = list(src))
 			if(removing)
 				if(istype(removing, /obj/item/organ))
 					var/obj/item/organ/removed_organ = removing
@@ -351,7 +356,7 @@
 		return
 
 	//Display radial menu
-	var/obj/item/organ/external/removing = show_radial_menu(user, src, radial_buttons, radius = 42, require_near = TRUE, use_labels = TRUE, check_locs = list(src))
+	var/obj/item/organ/external/removing = show_radial_menu(user, src, radial_buttons, radius = 42, require_near = TRUE, use_labels = RADIAL_LABELS_OFFSET, check_locs = list(src))
 	if(!istype(removing))
 		return TRUE
 

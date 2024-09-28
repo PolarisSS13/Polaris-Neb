@@ -10,7 +10,7 @@
 	is_spawnable_type = FALSE // Use the Spawn-Fruit verb instead.
 	drying_wetness = 45
 	dried_type = /obj/item/food/grown/dry
-	ingredient_flags = INGREDIENT_FLAG_VEGETABLE
+	allergen_flags = ALLERGEN_VEGETABLE
 	var/work_skill = SKILL_BOTANY
 	var/seeds_extracted = FALSE
 	var/datum/seed/seed
@@ -22,6 +22,19 @@
 			to_chat(user, SPAN_NOTICE("\The [src] can be planted directly, without having to extract any seeds."))
 		else if(!seeds_extracted && seed.min_seed_extracted)
 			to_chat(user, SPAN_NOTICE("With a knife, you could extract at least [seed.min_seed_extracted] seed\s."))
+
+/obj/item/food/grown/update_name()
+	if(!seed)
+		return ..()
+	var/descriptor = list()
+	if(dry)
+		descriptor += "dried"
+	if(backyard_grilling_count > 0)
+		descriptor += "roasted"
+	if(length(descriptor))
+		SetName("[english_list(descriptor)] [seed.product_name]")
+	else
+		SetName("[seed.product_name]")
 
 /obj/item/food/grown/Initialize(mapload, material_key, skip_plate = FALSE, _seed)
 
@@ -46,15 +59,7 @@
 	if(seed.scannable_result)
 		set_extension(src, /datum/extension/scannable, seed.scannable_result)
 
-	var/descriptor = list()
-	if(dry)
-		descriptor += "dried"
-	if(backyard_grilling_count > 0)
-		descriptor += "roasted"
-	if(length(descriptor))
-		SetName("[english_list(descriptor)] [seed.product_name]")
-	else
-		SetName("[seed.product_name]")
+	update_name()
 	if(seed.product_material)
 		material = seed.product_material
 
@@ -249,13 +254,7 @@ var/global/list/_wood_materials = list(
 				qdel(src)
 				return TRUE
 
-	var/static/list/rollable_types = list(
-		/obj/item/paper/cig,
-		/obj/item/paper,
-		/obj/item/teleportation_scroll
-	)
-
-	if(is_type_in_list(W, rollable_types))
+	if(istype(W, /obj/item/paper))
 
 		if(!dry)
 			to_chat(user, SPAN_WARNING("You need to dry \the [src] first!"))

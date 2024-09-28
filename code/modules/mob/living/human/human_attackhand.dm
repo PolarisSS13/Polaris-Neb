@@ -233,11 +233,9 @@
 			if(G.assailant == user && G.affecting == src && G.resolve_openhand_attack())
 				return TRUE
 	// Should this all be in Touch()?
-		var/mob/living/human/H = user
-		if(istype(H))
-			if(H != src && check_shields(0, null, H, H.get_target_zone(), H))
-				H.do_attack_animation(src)
-				return TRUE
+		if(ishuman(user) && user != src && check_shields(0, null, user, user.get_target_zone(), user))
+			user.do_attack_animation(src)
+			return TRUE
 
 	return ..()
 
@@ -408,7 +406,7 @@
 			var/image/radial_button = new
 			radial_button.name = capitalize(u_attack.name)
 			LAZYSET(choices, u_attack, radial_button)
-	var/decl/natural_attack/new_attack = show_radial_menu(src, (attack_selector || src), choices, radius = 42, use_labels = TRUE)
+	var/decl/natural_attack/new_attack = show_radial_menu(src, (attack_selector || src), choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
 	if(QDELETED(src) || !istype(new_attack) || !(new_attack.type in get_natural_attacks()))
 		return
 	default_attack = new_attack

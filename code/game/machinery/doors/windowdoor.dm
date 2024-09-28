@@ -5,7 +5,7 @@
 	icon_state = "left"
 	min_force = 4
 	hitsound = 'sound/effects/Glasshit.ogg'
-	max_health = 150 //If you change this, consiter changing ../door/window/brigdoor/ health at the bottom of this .dm file
+	max_health = 150 //If you change this, consider changing ../door/window/brigdoor/ health at the bottom of this .dm file
 	current_health = 150
 	visible = 0.0
 	use_power = POWER_USE_OFF
@@ -199,7 +199,7 @@
 
 /obj/machinery/door/window/bash(obj/item/weapon, mob/user)
 	//Emags and energy swords? You may pass.
-	if (weapon.user_can_wield(user) && istype(weapon, /obj/item/energy_blade))
+	if (weapon.user_can_attack_with(user) && istype(weapon, /obj/item/energy_blade))
 		var/obj/item/energy_blade/blade = weapon
 		if(blade.is_special_cutting_tool() && emag_act(10, user))
 			spark_at(loc, amount=5)

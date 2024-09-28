@@ -8,7 +8,6 @@
 	obj_flags = OBJ_FLAG_HOLLOW
 	abstract_type = /obj/item/chems
 
-	var/base_name
 	var/base_desc
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = @"[5,10,15,25,30]"
@@ -98,7 +97,7 @@
 	return
 
 /obj/item/chems/attackby(obj/item/used_item, mob/user)
-	if(used_item.user_can_wield(user, silent = TRUE))
+	if(used_item.user_can_attack_with(user, silent = TRUE))
 		if(IS_PEN(used_item))
 			var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 			if(length(tmp_label) > 10)
@@ -113,7 +112,7 @@
 /obj/item/chems/standard_pour_into(mob/user, atom/target, amount = 5)
 	amount = amount_per_transfer_from_this
 	// We'll be lenient: if you lack the dexterity for proper pouring you get a random amount.
-	if(!user_can_wield(user, silent = TRUE))
+	if(!user_can_attack_with(user, silent = TRUE))
 		amount = rand(1, floor(amount_per_transfer_from_this * 1.5))
 	return ..(user, target, amount)
 
@@ -127,7 +126,7 @@
 		return
 	if(hasHUD(user, HUD_SCIENCE))
 		var/prec = user.skill_fail_chance(SKILL_CHEMISTRY, 10)
-		to_chat(user, SPAN_NOTICE("The [src] contains: [reagents.get_reagents(precision = prec)]."))
+		to_chat(user, SPAN_NOTICE("\The [src] contains: [reagents.get_reagents(precision = prec)]."))
 	else if((loc == user) && user.skill_check(SKILL_CHEMISTRY, SKILL_EXPERT))
 		to_chat(user, SPAN_NOTICE("Using your chemistry knowledge, you identify the following reagents in \the [src]: [reagents.get_reagents(!user.skill_check(SKILL_CHEMISTRY, SKILL_PROF), 5)]."))
 
@@ -179,6 +178,32 @@
 			if(reagent != primary_reagent && reagent.reagent_overlay && check_state_in_icon(reagent.reagent_overlay, icon))
 				reagent_overlay.overlays += overlay_image(icon, reagent.reagent_overlay, reagent.color, RESET_COLOR | RESET_ALPHA)
 	return reagent_overlay
+
+/obj/item/chems/ProcessAtomTemperature()
+
+	. = ..()
+
+	if(QDELETED(src) || !reagents?.total_volume || !ATOM_IS_OPEN_CONTAINER(src) || !isatom(loc))
+		return
+
+	// Vaporize anything over its boiling point.
+	for(var/reagent in reagents.reagent_volumes)
+		var/decl/material/mat = GET_DECL(reagent)
+		if(!isnull(mat.boiling_point) && temperature >= mat.boiling_point)
+			// TODO: reduce atom temperature?
+			var/removing = min(5, reagents.reagent_volumes[reagent])
+			reagents.remove_reagent(reagent, removing, defer_update = TRUE, removed_phases = MAT_PHASE_LIQUID)
+			loc.take_vaporized_reagent(reagent, removing)
+
+/obj/item/chems/take_vaporized_reagent(reagent, amount)
+	if(!reagents?.maximum_volume)
+		return ..()
+	var/take_reagent = min(amount, REAGENTS_FREE_SPACE(reagents))
+	if(take_reagent > 0)
+		reagents.add_reagent(reagent, take_reagent)
+		amount -= take_reagent
+	if(amount > 0)
+		return ..(reagent, amount)
 
 //
 // Interactions

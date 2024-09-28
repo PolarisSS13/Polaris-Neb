@@ -4,7 +4,6 @@
 	icon = 'icons/obj/items/device/holowarrant.dmi'
 	icon_state = "holowarrant"
 	item_state = "holowarrant"
-	throwforce = 5
 	w_class = ITEM_SIZE_SMALL
 	throw_speed = 4
 	throw_range = 10
@@ -90,8 +89,8 @@
 			var/datum/report_field/signature/auth = active.field_from_name("Authorized by")
 			if(choice == "Yes")
 				auth.ask_value(user)
-			user.visible_message(SPAN_NOTICE("You swipe \the [I] through the [src]."),
-								 SPAN_NOTICE("[user] swipes \the [I] through the [src]."))
+			user.visible_message(SPAN_NOTICE("You swipe \the [I] through \the [src]."),
+								 SPAN_NOTICE("[user] swipes \the [I] through \the [src]."))
 			broadcast_security_hud_message("[active.get_broadcast_summary()] has been authorized by [auth.get_value()].", src)
 		else
 			to_chat(user, "<span class='notice'>A red \"Access Denied\" light blinks on \the [src]</span>")

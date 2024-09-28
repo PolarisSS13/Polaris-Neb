@@ -14,7 +14,7 @@ var/global/list/artefact_feedback = list(
 	/obj/item/magic_rock =                 "RA",
 	/obj/item/contract/apprentice =        "CP",
 	/obj/structure/closet/wizard/scrying = "SO",
-	/obj/item/teleportation_scroll =       "TS",
+	/obj/item/paper/scroll/teleportation = "TS",
 	/obj/item/gun/energy/staff =           "ST",
 	/obj/item/gun/energy/staff/animate =   "SA",
 	/obj/item/dice/d20/cursed =            "DW"
@@ -23,8 +23,6 @@ var/global/list/artefact_feedback = list(
 /obj/item/book/spell
 	name = "master spell book"
 	desc = "The legendary book of spells of the wizard."
-	icon = 'icons/obj/library.dmi'
-	icon_state = "book"
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEM_SIZE_NORMAL

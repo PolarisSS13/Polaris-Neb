@@ -81,6 +81,7 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	var/obj/item/scanner_item                         //Item to fax
 	var/list/quick_dial                              //List of name tag to network ids for other fax machines that the user added as quick dial options
 	var/list/fax_history                             //List of the last 10 devices that sent us faxes, and when
+	var/tmp/init_network_tag                         //The network tag of this fax machine, set by mappers.
 
 	var/tmp/time_cooldown_end = 0
 	var/tmp/current_page      = "main"
@@ -90,7 +91,9 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	. = ..()
 	if(. != INITIALIZE_HINT_QDEL)
 		global.allfaxes += src
-		set_extension(src, /datum/extension/network_device/fax)
+		var/datum/extension/network_device/fax/netdevice = set_extension(src, /datum/extension/network_device/fax)
+		if(init_network_tag)
+			netdevice.set_network_tag(init_network_tag)
 		if(populate_parts && printer)
 			printer.make_full()
 
@@ -382,7 +385,7 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 			to_chat(user, SPAN_WARNING("\The [card_reader] is currently set to swipe mode, which is unsupported by this machine. Please contact your system administrator."))
 		return
 	if(user)
-		to_chat(user, SPAN_NOTICE("Loading \the '[C]'..."))
+		to_chat(user, SPAN_NOTICE("You insert \the [C] into \the [src]."))
 	update_ui()
 
 /obj/machinery/faxmachine/proc/eject_card(var/mob/user)
@@ -712,3 +715,21 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	for(var/uri in global.using_map.map_admin_faxes)
 		var/list/contact_info = global.using_map.map_admin_faxes[uri]
 		add_quick_dial_contact(contact_info["name"], uri)
+
+/obj/machinery/faxmachine/get_alt_interactions(mob/user)
+	. = ..()
+	LAZYADD(., /decl/interaction_handler/fax_remove_card)
+
+/decl/interaction_handler/fax_remove_card
+	name = "Remove ID Card"
+	expected_target_type = /obj/machinery/faxmachine
+
+/decl/interaction_handler/fax_remove_card/is_possible(atom/target, mob/user, obj/item/prop)
+	. = ..()
+	if(.)
+		var/obj/machinery/faxmachine/fax = target
+		return !!(fax.card_reader?.get_inserted())
+
+/decl/interaction_handler/fax_remove_card/invoked(atom/target, mob/user, obj/item/prop)
+	var/obj/machinery/faxmachine/fax = target
+	fax.eject_card(user)

@@ -15,6 +15,7 @@
 	natural_weapon = /obj/item/natural_weapon/bite/pike
 	butchery_data = /decl/butchery_data/animal/fish/space_carp/pike
 	ai = /datum/mob_controller/aggressive/carp/pike
+	ability_handlers = list(/datum/ability_handler/predator)
 
 /datum/mob_controller/aggressive/carp/pike
 	turns_per_wander = 4
@@ -23,7 +24,7 @@
 	can_escape_buckles = TRUE
 
 /obj/item/natural_weapon/bite/pike
-	force = 25
+	_base_attack_force = 25
 
 /mob/living/simple_animal/hostile/carp/pike/carp_randomify()
 	return

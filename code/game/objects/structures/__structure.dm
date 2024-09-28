@@ -104,7 +104,7 @@
 			if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 				if(wired)
 					if(anchored)
-						to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters"))
+						to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
 					else
 						to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters, if anchored down with a wrench first."))
 				else
@@ -114,7 +114,7 @@
 						to_chat(user, SPAN_SUBTLE("Can have wiring installed with a cable coil, if anchored down with a wrench first."))
 			else
 				if(wired)
-					to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters"))
+					to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
 				else
 					to_chat(user, SPAN_SUBTLE("Can have wiring installed with a cable coil."))
 
@@ -133,7 +133,7 @@
 		else
 			damage *= STRUCTURE_BRITTLE_MATERIAL_DAMAGE_MULTIPLIER
 
-	playsound(loc, hitsound, 75, 1)
+	playsound(loc, hitsound, 60, 1)
 	var/current_max_health = get_max_health()
 	current_health = clamp(current_health - damage, 0, current_max_health)
 	show_damage_message(current_health/current_max_health)
@@ -241,7 +241,7 @@
 		for(var/obj/item/shard/S in L)
 			if(S.sharp && prob(50))
 				affecting_mob.visible_message(SPAN_DANGER("\The [S] slices into [affecting_mob]'s face!"), SPAN_DANGER("\The [S] slices into your face!"))
-				affecting_mob.standard_weapon_hit_effects(S, G.assailant, S.force*2, BP_HEAD)
+				affecting_mob.standard_weapon_hit_effects(S, G.assailant, S.get_attack_force()*2, BP_HEAD)
 		qdel(G)
 	else if(atom_flags & ATOM_FLAG_CLIMBABLE)
 		var/obj/occupied = turf_is_crowded()

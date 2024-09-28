@@ -77,6 +77,10 @@
 	ai = /datum/mob_controller/aggressive/beast/diyaab
 	base_movement_delay = 1
 
+/mob/living/simple_animal/hostile/beast/diyaab/Initialize()
+	. = ..()
+	set_extension(src, /datum/extension/shearable, /decl/material/solid/organic/cloth/wool/diyaab)
+
 /datum/mob_controller/aggressive/beast/diyaab
 	speak_chance = 1.25
 	emote_speech = list("Awrr?","Aowrl!","Worrl")
@@ -174,7 +178,6 @@
 /obj/item/natural_weapon/charbaby
 	name = "scalding hide"
 	atom_damage_type =  BURN
-	force = 5
 	attack_verb = list("singed")
 
 /mob/living/simple_animal/hostile/beast/charbaby/default_hurt_interaction(mob/user)

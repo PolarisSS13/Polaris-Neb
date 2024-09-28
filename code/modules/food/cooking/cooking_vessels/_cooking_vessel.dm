@@ -8,6 +8,7 @@
 	material_alteration           = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	storage                       = /datum/storage/hopper/industrial
 	material                      = /decl/material/solid/metal/stainlesssteel
+	color                         = /decl/material/solid/metal/stainlesssteel::color
 	amount_per_transfer_from_this = 15
 
 	var/cooking_category
@@ -34,7 +35,7 @@
 
 // Boilerplate from /obj/item/chems/glass. TODO generalize to a lower level.
 /obj/item/chems/cooking_vessel/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
-	if(force && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.a_intent == I_HURT)
+	if(get_attack_force() && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.a_intent == I_HURT)
 		return ..()
 	return FALSE
 

@@ -47,19 +47,24 @@
 
 /mob/living/simple_animal/hit_with_weapon(obj/item/O, mob/living/user, var/effective_force, var/hit_zone)
 
-	visible_message(SPAN_DANGER("\The [src] has been attacked with \the [O] by \the [user]!"))
+	var/attack_name = O?.attack_message_name()
+	if(attack_name)
+		visible_message(SPAN_DANGER("\The [src] has been [DEFAULTPICK(O.attack_verb, "attacked")] with [attack_name] by \the [user]!"))
+	else
+		visible_message(SPAN_DANGER("\The [src] has been [DEFAULTPICK(O.attack_verb, "attacked")] by \the [user]!"))
+
 	if(istype(ai))
 		ai.retaliate(user)
 
-	if(O.force <= resistance)
+	var/damage = O.get_attack_force(user)
+	if(damage <= resistance)
 		to_chat(user, SPAN_WARNING("This weapon is ineffective; it does no damage."))
 		return 0
 
-	var/damage = O.force
 	if (O.atom_damage_type == PAIN)
 		damage = 0
 	if (O.atom_damage_type == STUN)
-		damage = (O.force / 8)
+		damage = (damage / 8)
 	if(supernatural && istype(O,/obj/item/nullrod))
 		damage *= 2
 		purge = 3

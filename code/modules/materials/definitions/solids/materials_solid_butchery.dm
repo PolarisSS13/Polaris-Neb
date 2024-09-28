@@ -23,6 +23,7 @@
 	nutriment_animal = TRUE
 	reagent_overlay = "soup_chunks"
 	nutriment_factor = 10
+	allergen_flags = ALLERGEN_MEAT
 
 /decl/material/solid/organic/meat/egg
 	name = "egg yolk"
@@ -33,12 +34,14 @@
 	melting_point = 273
 	boiling_point = 373
 	reagent_overlay = "soup_dumplings"
+	allergen_flags = ALLERGEN_EGG
 
 /decl/material/solid/organic/meat/fish
 	name  = "fish meat"
 	codex_name = "fish protein"
 	uid = "solid_meat_fish"
 	color = "#ff9b9b"
+	allergen_flags = ALLERGEN_FISH
 
 /decl/material/solid/organic/meat/chicken
 	name  = "chicken meat"
@@ -78,6 +81,7 @@
 	tans_to = /decl/material/solid/organic/leather
 	compost_value = 0.8
 	nutriment_animal = TRUE
+	allergen_flags = ALLERGEN_MEAT
 
 /decl/material/solid/organic/skin/lizard
 	name = "lizardskin"
@@ -132,6 +136,10 @@
 /decl/material/solid/organic/skin/fur/heavy
 	color = COLOR_GUNMETAL
 	uid = "solid_fur_heavy"
+
+/decl/material/solid/organic/skin/sheep
+	color = COLOR_DARK_GRAY
+	uid = "solid_skin_sheep"
 
 /decl/material/solid/organic/skin/goat
 	color = COLOR_SILVER
