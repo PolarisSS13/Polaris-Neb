@@ -38,7 +38,7 @@
 	name = "caretaker's jumpsuit"
 	desc = "A holy jumpsuit. Treat it well."
 	icon = 'icons/clothing/jumpsuits/caretaker.dmi'
-	bodytype_equip_flags = BODY_FLAG_HUMANOID
+	bodytype_equip_flags = BODY_EQUIP_FLAG_HUMANOID
 
 /obj/item/clothing/jumpsuit/tactical
 	name = "tactical jumpsuit"
@@ -70,4 +70,3 @@
 	name = "sleek overalls"
 	desc = "A set of modern pleather reinforced overalls."
 	icon = 'icons/clothing/jumpsuits/jumpsuit_sleekoveralls.dmi'
-
