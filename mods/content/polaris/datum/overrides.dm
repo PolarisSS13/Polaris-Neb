@@ -54,3 +54,30 @@
 
 /decl/bodytype
 	age_descriptor = /datum/appearance_descriptor/age/polaris_human
+
+/datum/map
+	game_year = 552
+
+/decl/department/engineering
+	announce_channel = "Common"
+
+/decl/department/medical
+	announce_channel = "Common"
+
+/decl/department/security
+	announce_channel = "Common"
+
+/decl/department/science
+	announce_channel = "Common"
+
+/decl/department/service
+	announce_channel = "Common"
+
+/decl/department/command
+	announce_channel = "Common"
+
+/decl/department/supply
+	announce_channel = "Common"
+
+/decl/department/support
+	announce_channel = "Common"
