@@ -16,6 +16,7 @@
 
 /decl/bodytype/shapeshifter/get_base_icon(var/mob/living/human/H, var/get_deform)
 	if(!H) return ..(null, get_deform)
+	to_world_log("Attempting to read '["\ref[H]"]' from wrapped_species list.")
 	var/decl/species/S = get_species_by_key(wrapped_species_by_ref["\ref[H]"])
 	return S.default_bodytype.get_base_icon(H, get_deform)
 
