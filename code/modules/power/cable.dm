@@ -559,7 +559,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		else if(BP_IS_BRITTLE(affecting))
 			to_chat(user, SPAN_WARNING("\The [target]'s [affecting.name] is hard and brittle. \The [src] cannot repair it."))
 		else
-			var/use_amt = min(src.amount, CEILING(affecting.burn_dam/3), 5)
+			var/use_amt = min(src.amount, ceil(affecting.burn_dam/3), 5)
 			if(can_use(use_amt) && affecting.robo_repair(3*use_amt, BURN, "some damaged wiring", src, user))
 				use(use_amt)
 		return TRUE

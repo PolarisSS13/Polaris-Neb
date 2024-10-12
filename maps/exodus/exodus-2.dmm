@@ -18369,7 +18369,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/floor/tiled/dark,
 /area/exodus/hydroponics)
 "aMH" = (
 /obj/structure/disposalpipe/segment{
