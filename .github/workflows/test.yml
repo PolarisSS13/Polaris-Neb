@@ -14,7 +14,7 @@ env:
 
 jobs:
   DreamChecker:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Setup Cache
@@ -45,7 +45,7 @@ jobs:
           chmod +x send.sh
           ./send.sh failure $WEBHOOK_URL
   OpenDream:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Python setup
@@ -67,7 +67,7 @@ jobs:
       - name: Run OpenDream
         run: ./DMCompiler_linux-x64/DMCompiler nebula.dme --suppress-unimplemented --skip-anything-typecheck --version=${BYOND_MAJOR}.${BYOND_MINOR} | python tools/od_annotator/__main__.py "$@"
   Code:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: Setup Cache
@@ -93,7 +93,7 @@ jobs:
           chmod +x send.sh
           ./send.sh failure $WEBHOOK_URL
   Maps:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       matrix:
         map_path: [example, tradeship, exodus, ministation, shaded_hills, away_sites_testing, modpack_testing, planets_testing]

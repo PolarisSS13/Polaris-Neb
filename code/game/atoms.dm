@@ -584,7 +584,7 @@
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
-	get_mobs_and_objs_in_view_fast(T,range, mobs, objs, check_ghosts)
+	get_listeners_in_range(T,range, mobs, objs, check_ghosts)
 
 	for(var/o in objs)
 		var/obj/O = o
@@ -612,7 +612,7 @@
 	var/turf/T = get_turf(src)
 	var/list/mobs = list()
 	var/list/objs = list()
-	get_mobs_and_objs_in_view_fast(T, hearing_distance, mobs, objs, check_ghosts)
+	get_listeners_in_range(T, hearing_distance, mobs, objs, check_ghosts)
 
 	for(var/m in mobs)
 		var/mob/M = m
@@ -661,7 +661,7 @@
 	- `G`: The grab hitting this atom
 	- Return: `TRUE` to skip attackby() and afterattack() or `FALSE`
 */
-/atom/proc/grab_attack(var/obj/item/grab/G)
+/atom/proc/grab_attack(obj/item/grab/grab, mob/user)
 	return FALSE
 
 /atom/proc/climb_on()

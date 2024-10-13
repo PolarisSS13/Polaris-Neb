@@ -12,6 +12,17 @@
 	initial_gas = GAS_STANDARD_AIRMIX
 	zone_membership_candidate = TRUE
 
+/turf/open/Initialize(mapload, ...)
+	. = ..()
+	if(!mapload)
+		for(var/direction in global.alldirs)
+			var/turf/target_turf = get_step_resolving_mimic(src, direction)
+			if(istype(target_turf))
+				if(TICK_CHECK) // not CHECK_TICK -- only queue if the server is overloaded
+					target_turf.queue_icon_update()
+				else
+					target_turf.update_icon()
+
 /turf/open/flooded
 	name = "open water"
 	flooded = /decl/material/liquid/water
@@ -66,12 +77,6 @@
 	for(var/atom/movable/M in below)
 		if(M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
 			return M.attackby(C, user)
-
-	if(istype(C, /obj/item/grab))
-		var/obj/item/grab/G = C
-		if (G.affecting != G.assailant)
-			G.affecting.DoMove(get_dir(G.affecting.loc, src), user, TRUE)
-		return TRUE
 
 	return FALSE
 

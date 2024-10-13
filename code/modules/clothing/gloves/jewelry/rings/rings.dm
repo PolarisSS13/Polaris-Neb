@@ -90,6 +90,10 @@
 	. = ..()
 	set_extension(src, /datum/extension/tool, list(TOOL_STAMP = TOOL_QUALITY_DEFAULT))
 
+/obj/item/clothing/gloves/ring/seal/Initialize()
+	. = ..()
+	set_extension(src, /datum/extension/tool, list(TOOL_STAMP = TOOL_QUALITY_DEFAULT))
+
 /obj/item/clothing/gloves/ring/seal/mason
 	name = "masonic ring"
 	desc = "The Square and Compasses feature prominently on this Masonic ring."

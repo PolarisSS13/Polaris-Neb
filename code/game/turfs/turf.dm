@@ -36,7 +36,7 @@
 	var/fluid_blocked_dirs = 0
 	var/flooded // Whether or not this turf is absolutely flooded ie. a water source.
 	var/footstep_type
-	var/open_turf_type // Which open turf type to use by default above this turf in a multiz context. Overridden by area.
+	var/open_turf_type = /turf/open // Which open turf type to use by default above this turf in a multiz context. Overridden by area.
 
 	var/tmp/changing_turf
 	var/tmp/prev_type // Previous type of the turf, prior to turf translation.
@@ -84,8 +84,12 @@
 	// Temporary list of weakrefs of atoms who should be excepted from falling into us
 	var/list/skip_height_fall_for
 
+	var/paint_color
+
 /turf/Initialize(mapload, ...)
 	. = null && ..()	// This weird construct is to shut up the 'parent proc not called' warning without disabling the lint for child types. We explicitly return an init hint so this won't change behavior.
+
+	color = null
 
 	// atom/Initialize has been copied here for performance (or at least the bits of it that turfs use has been)
 	if(atom_flags & ATOM_FLAG_INITIALIZED)
@@ -219,6 +223,11 @@
 /turf/attack_robot(var/mob/user)
 	return attack_hand_with_interaction_checks(user)
 
+/turf/grab_attack(obj/item/grab/grab, mob/user)
+	if (grab.affecting != user)
+		grab.affecting.DoMove(get_dir(grab.affecting.loc, src), user, TRUE)
+	return TRUE
+
 /turf/attackby(obj/item/W, mob/user)
 
 	if(is_floor())
@@ -270,12 +279,6 @@
 
 	if(istype(W, /obj/item) && storage && storage.use_to_pickup && storage.collection_mode)
 		storage.gather_all(src, user)
-		return TRUE
-
-	if(istype(W, /obj/item/grab))
-		var/obj/item/grab/G = W
-		if (G.affecting != G.assailant)
-			G.affecting.DoMove(get_dir(G.affecting.loc, src), user, TRUE)
 		return TRUE
 
 	if(IS_COIL(W) && try_build_cable(W, user))
@@ -429,20 +432,20 @@
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, TT.speed)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/turf, bounce_off), AM, TT.init_dir), 2)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/turf, bounce_off), AM, TT), 2)
 	else if(isobj(AM))
 		var/obj/structure/ladder/L = locate() in contents
 		if(L)
 			L.hitby(AM)
 
-/turf/proc/bounce_off(var/atom/movable/AM, var/direction)
+/turf/proc/bounce_off(var/atom/movable/AM, var/datum/thrownthing/thrown)
 	if(AM.anchored)
 		return
 	if(ismob(AM))
 		var/mob/living/M = AM
 		if(LAZYLEN(M.pinned))
 			return
-	step(AM, turn(direction, 180))
+	AM.throw_at(get_step(src, turn(thrown.init_dir, 180)), 1, thrown.speed / 2)
 
 /turf/proc/can_engrave()
 	return FALSE
@@ -686,8 +689,8 @@
 		AM.forceMove(above_wall)
 		if(isliving(AM))
 			var/mob/living/L = AM
-			for(var/obj/item/grab/G in L.get_active_grabs())
-				G.affecting.forceMove(above_wall)
+			for(var/obj/item/grab/grab as anything in L.get_active_grabs())
+				grab.affecting.forceMove(above_wall)
 	else
 		to_chat(AM, SPAN_WARNING("Something blocks the path."))
 	return TRUE
@@ -782,6 +785,14 @@
 
 /turf/proc/get_soil_color()
 	return null
+
+/turf/get_color()
+	if(paint_color)
+		return paint_color
+	var/decl/material/material = get_material()
+	if(material)
+		return material.color
+	return color
 
 /turf/proc/get_fishing_result(obj/item/food/bait)
 	var/area/A = get_area(src)

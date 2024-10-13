@@ -47,6 +47,9 @@
 /decl/stack_recipe/bricks/fire_source/alembic
 	result_type                = /obj/structure/fire_source/heater
 
+/decl/stack_recipe/bricks/fire_source/alembic
+	result_type                 = /obj/structure/fire_source/heater
+
 /decl/stack_recipe/bricks/furniture
 	abstract_type              = /decl/stack_recipe/bricks/furniture
 	one_per_turf               = TRUE
@@ -115,15 +118,15 @@
 
 /decl/stack_recipe/turfs/floor/brick
 	name                       = "cobblestone path"
-	result_type                = /turf/floor/natural/path
+	result_type                = /turf/floor/path
 	craft_stack_types          = /obj/item/stack/material/brick
 
 /decl/stack_recipe/turfs/floor/brick/herringbone
 	name                       = "herringbone path"
-	result_type                = /turf/floor/natural/path/herringbone
+	result_type                = /turf/floor/path/herringbone
 	difficulty                 = MAT_VALUE_HARD_DIY
 
 /decl/stack_recipe/turfs/floor/brick/running_bond
 	name                       = "running bond path"
-	result_type                = /turf/floor/natural/path/running_bond
+	result_type                = /turf/floor/path/running_bond
 	difficulty                 = MAT_VALUE_HARD_DIY

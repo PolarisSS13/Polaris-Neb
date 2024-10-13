@@ -18371,7 +18371,6 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/mob/living/bot/farmbot/premade,
 /turf/floor/tiled/dark,
 /area/exodus/hydroponics)
 "aMH" = (
@@ -33175,12 +33174,12 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/exam_room)
 "brY" = (
-/obj/item/cane,
-/obj/item/cane{
+/obj/item/cane/aluminium,
+/obj/item/cane/aluminium{
 	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/cane{
+/obj/item/cane/aluminium{
 	pixel_x = -6;
 	pixel_y = 4
 	},

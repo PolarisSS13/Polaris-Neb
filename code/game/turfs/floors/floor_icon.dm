@@ -7,14 +7,43 @@
 	/// A cache for trench images, keyed by icon and then by color.
 	VAR_PRIVATE/static/list/_trench_image_cache = list()
 
+/turf/floor/proc/can_draw_edge_over(turf/floor/turf_to_check)
+	if(istype(turf_to_check))
+		var/my_height    = get_physical_height()
+		var/their_height = turf_to_check.get_physical_height()
+		// Uppermost turfs draw over lower turfs if there is a serious difference.
+		if(my_height != their_height)
+			return my_height > their_height
+		// Use edge layer if we're within height range.
+		return can_layer_over(turf_to_check)
+	return TRUE
+
+/turf/floor/proc/can_layer_over(turf/floor/turf_to_check)
+	if(!istype(turf_to_check))
+		return FALSE
+	var/decl/flooring/my_flooring = get_topmost_flooring()
+	if(!istype(my_flooring) || my_flooring.icon_edge_layer == FLOOR_EDGE_NONE)
+		return FALSE
+	var/decl/flooring/their_flooring = turf_to_check.get_topmost_flooring()
+	if(!istype(their_flooring))
+		return TRUE
+	if(their_flooring?.type == my_flooring.neighbour_type)
+		return FALSE
+	return my_flooring.icon_edge_layer > their_flooring.icon_edge_layer
+
 /turf/floor/proc/get_trench_icon()
-	var/check_icon = (istype(flooring) && flooring.icon) || icon
-	if(check_icon && check_state_in_icon("trench", check_icon))
-		return check_icon
+	var/decl/flooring/flooring = get_base_flooring() || get_topmost_flooring()
+	if(istype(flooring) && flooring.icon && check_state_in_icon("trench", flooring.icon))
+		return flooring.icon
 
 /turf/floor/proc/update_height_appearance()
 
-	layer = TURF_LAYER
+	var/decl/flooring/flooring = get_topmost_flooring()
+	if(istype(flooring))
+		layer = flooring.floor_layer
+	else
+		layer = initial(layer)
+
 	if(istype(flooring) && !flooring.render_trenches) // TODO: Update pool tiles/edges to behave properly with this new system.
 		return FALSE
 
@@ -43,32 +72,39 @@
 			return
 
 		if(!istype(neighbor) || (neighbor.get_physical_height() > my_height))
+
 			var/trench_icon = (istype(neighbor) && neighbor.get_trench_icon()) || get_trench_icon()
 			if(trench_icon)
-
 				// cache the trench image, keyed by icon and color
 				var/trench_color = isatom(neighbor) ? neighbor.color : color
 				var/trench_icon_key = "[ref(trench_icon)][trench_color]"
-				if(!_trench_image_cache[trench_icon_key])
-					_trench_image_cache[trench_icon_key] = I = image(icon = trench_icon, icon_state = "trench")
+				I = _trench_image_cache[trench_icon_key]
+				if(!I)
+					I = image(icon = trench_icon, icon_state = "trench")
 					I.pixel_z = world.icon_size
 					I.appearance_flags |= RESET_COLOR | RESET_ALPHA
 					I.color = trench_color
+					_trench_image_cache[trench_icon_key] = I
 				add_overlay(I)
 
-				// look up a shadow for our shadow_alpha in the cache, creating one if needed
-				I = _height_north_shadow_cache[shadow_alpha_key]
-				if(!I)
-					_height_north_shadow_cache[shadow_alpha_key] = I = image(icon = 'icons/effects/height_shadow.dmi', icon_state = "northedge")
-					I.pixel_z = world.icon_size
-					I.color = COLOR_BLACK
-					I.alpha = shadow_alpha
-					I.appearance_flags |= RESET_COLOR | RESET_ALPHA
-				add_overlay(I)
+			// look up a shadow for our shadow_alpha in the cache, creating one if needed
+			I = _height_north_shadow_cache[shadow_alpha_key]
+			if(!I)
+				I = image(icon = 'icons/effects/height_shadow.dmi', icon_state = "northedge")
+				I.pixel_z = world.icon_size
+				I.color = COLOR_BLACK
+				I.alpha = shadow_alpha
+				I.appearance_flags |= RESET_COLOR | RESET_ALPHA
+				_height_north_shadow_cache[shadow_alpha_key] = I
+			add_overlay(I)
 
 /turf/floor/on_update_icon(var/update_neighbors)
 	. = ..()
+
+	color = get_color()
+
 	cut_overlays()
+	update_height_appearance() // Also refreshes out base layer.
 	update_floor_icon(update_neighbors)
 
 	for(var/image/I in decals)
@@ -81,31 +117,42 @@
 	if(is_floor_burned())
 		add_overlay(get_turf_damage_overlay(_floor_burned))
 
-	update_height_appearance()
-
-	compile_overlays()
-
 	if(update_neighbors)
 		for(var/turf/floor/F in orange(src, 1))
 			F.queue_ao()
 			F.queue_icon_update()
 
-/turf/floor/proc/update_floor_icon(update_neighbors)
+	compile_overlays()
+
+/turf/floor/proc/update_floor_strings()
+	var/decl/flooring/flooring = get_topmost_flooring()
 	if(istype(flooring))
-		flooring.update_turf_icon(src)
+		SetName(flooring.name)
+		desc = flooring.desc
+	else
+		SetName(initial(name))
+		desc = initial(desc)
+
+/turf/floor/proc/update_floor_icon(update_neighbors)
+	var/decl/flooring/use_flooring = get_topmost_flooring()
+	if(istype(use_flooring))
+		use_flooring.update_turf_icon(src)
 
 /turf/floor/proc/is_floor_broken()
-	return !isnull(_floor_broken) && (!flooring || (flooring.flags & TURF_CAN_BREAK))
+	var/decl/flooring/flooring = get_topmost_flooring()
+	return !isnull(_floor_broken) && (!istype(flooring) || (flooring.flooring_flags & TURF_CAN_BREAK))
 
 /turf/floor/proc/is_floor_burned()
-	return !isnull(_floor_burned) && (!flooring || (flooring.flags & TURF_CAN_BURN))
+	var/decl/flooring/flooring = get_topmost_flooring()
+	return !isnull(_floor_burned) && (!istype(flooring) || (flooring.flooring_flags & TURF_CAN_BURN))
 
 /turf/floor/proc/is_floor_damaged()
 	return is_floor_broken() || is_floor_burned()
 
 /turf/floor/proc/set_floor_broken(new_broken, skip_update)
 
-	if(flooring && !(flooring.flags & TURF_CAN_BREAK))
+	var/decl/flooring/flooring = get_topmost_flooring()
+	if(istype(flooring) && !(flooring.flooring_flags & TURF_CAN_BREAK))
 		return FALSE
 
 	// Hardcoded because they're bundled into the same icon file at the moment.
@@ -127,7 +174,8 @@
 
 /turf/floor/proc/set_floor_burned(new_burned, skip_update)
 
-	if(flooring && !(flooring.flags & TURF_CAN_BURN))
+	var/decl/flooring/flooring = get_topmost_flooring()
+	if(istype(flooring) && !(flooring.flooring_flags & TURF_CAN_BURN))
 		return FALSE
 
 	// Hardcoded because they're bundled into the same icon file at the moment.
@@ -158,41 +206,40 @@
 	return global.flooring_cache[cache_key]
 
 /decl/flooring/proc/test_link(var/turf/origin, var/turf/opponent)
-	var/is_linked = FALSE
-	if(istype(origin) && istype(opponent))
-		//is_wall is true for wall turfs and for floors containing a low wall
-		if(opponent.is_wall())
-			if(wall_smooth == SMOOTH_ALL)
-				is_linked = TRUE
-		//If is_hole is true, then it's space or openspace
-		else if(opponent.is_open())
-			if(space_smooth == SMOOTH_ALL)
-				is_linked = TRUE
+	if(!istype(origin) || !istype(opponent))
+		return FALSE
 
-		//If we get here then its a normal floor
-		else if (istype(opponent, /turf/floor))
-			var/turf/floor/floor_opponent = opponent
-			//If the floor is the same as us,then we're linked,
-			if (istype(src, floor_opponent.flooring))
-				is_linked = TRUE
-			else if (floor_smooth == SMOOTH_ALL)
-				is_linked = TRUE
-			else if (floor_smooth != SMOOTH_NONE)
-				//If we get here it must be using a whitelist or blacklist
-				if (floor_smooth == SMOOTH_WHITELIST)
-					if (flooring_whitelist[floor_opponent.flooring.type])
-						//Found a match on the typecache
-						is_linked = TRUE
-				else if(floor_smooth == SMOOTH_BLACKLIST)
-					is_linked = TRUE //Default to true for the blacklist, then make it false if a match comes up
-					if (flooring_blacklist[floor_opponent.flooring.type])
-						//Found a match on the typecache
-						is_linked = FALSE
-			//Check for window frames.
-			if (!is_linked && wall_smooth == SMOOTH_ALL)
-				if(locate(/obj/structure/wall_frame) in opponent)
-					is_linked = TRUE
-	return is_linked
+	// Just a normal floor
+	if (istype(opponent, /turf/floor))
+		var/turf/floor/floor_opponent = opponent
+		var/decl/flooring/opponent_flooring = floor_opponent.get_topmost_flooring()
+		if (floor_smooth == SMOOTH_ALL)
+			return TRUE
+		//If the floor is the same as us,then we're linked,
+		else if (istype(opponent_flooring, neighbour_type))
+			return TRUE
+		//If we get here it must be using a whitelist or blacklist
+		else if (floor_smooth == SMOOTH_WHITELIST)
+			if (flooring_whitelist[opponent_flooring.type])
+				//Found a match on the typecache
+				return TRUE
+		else if(floor_smooth == SMOOTH_BLACKLIST)
+			if (flooring_blacklist[opponent_flooring.type]) {EMPTY_BLOCK_GUARD} else
+				//No match on the typecache
+				return TRUE
+		//Check for window frames.
+		if (wall_smooth == SMOOTH_ALL)
+			if(locate(/obj/structure/wall_frame) in opponent)
+				return TRUE
+	// Wall turf
+	else if(opponent.is_wall())
+		if(wall_smooth == SMOOTH_ALL)
+			return TRUE
+	//If is_open is true, then it's space or openspace
+	else if(opponent.is_open())
+		if(space_smooth == SMOOTH_ALL)
+			return TRUE
+	return FALSE
 
 /decl/flooring/proc/symmetric_test_link(var/turf/A, var/turf/B)
 	return test_link(A, B) && test_link(B,A)

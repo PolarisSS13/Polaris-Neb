@@ -154,6 +154,8 @@ var/global/list/admin_verbs_server = list(
 	/datum/admins/proc/toggle_aliens,
 	/client/proc/toggle_random_events,
 	/client/proc/nanomapgen_DumpImage,
+	/datum/admins/proc/addserverwhitelist,
+	/datum/admins/proc/removeserverwhitelist,
 	/datum/admins/proc/panicbunker,
 	/datum/admins/proc/addbunkerbypass,
 	/datum/admins/proc/revokebunkerbypass
@@ -707,8 +709,8 @@ var/global/list/admin_verbs_mod = list(
 		return
 
 	var/whitelist_check = alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel") == "No"
-	var/decl/pronouns/G = H.get_pronouns(ignore_coverings = TRUE)
-	log_and_message_admins("has allowed [H] to change [G.his] appearance, [whitelist_check ? "excluding" : "including"] races that requires whitelisting.")
+	var/decl/pronouns/pronouns = H.get_pronouns(ignore_coverings = TRUE)
+	log_and_message_admins("has allowed [H] to change [pronouns.his] appearance, [whitelist_check ? "excluding" : "including"] races that requires whitelisting.")
 	H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = whitelist_check)
 	SSstatistics.add_field_details("admin_verb","CMAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
