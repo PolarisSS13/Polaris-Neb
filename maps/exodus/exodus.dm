@@ -31,6 +31,7 @@
 	#include "../../mods/species/tajaran/_tajaran.dme"
 	#include "../../mods/species/unathi/_unathi.dme"
 	#include "../../mods/species/teshari/_teshari.dme"
+	#include "../../mods/species/prometheans/_promethean.dme"
 
 	#include "../random_ruins/exoplanet_ruins/playablecolony/playablecolony.dm"
 

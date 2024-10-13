@@ -31,6 +31,7 @@ var/global/list/wrapped_species_by_ref = list()
 
 /decl/species/shapeshifter/handle_pre_spawn(var/mob/living/human/H)
 	..()
+	to_world_log("Writing '["\ref[H]"]' to wrapped_species list.")
 	wrapped_species_by_ref["\ref[H]"] = default_form
 
 /decl/species/shapeshifter/handle_post_spawn(var/mob/living/human/H)
