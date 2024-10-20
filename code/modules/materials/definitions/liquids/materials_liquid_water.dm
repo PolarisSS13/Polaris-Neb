@@ -30,6 +30,7 @@
 		/decl/material/solid/ice = 1
 	)
 	temperature_burn_milestone_material = /decl/material/liquid/water
+	can_boil_to_gas = TRUE
 
 /decl/material/liquid/water/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	..()
@@ -78,10 +79,10 @@
 
 /decl/material/liquid/water/touch_obj(var/obj/O, var/amount, var/datum/reagents/holder)
 	..()
-	if(istype(O, /obj/item/food/monkeycube))
-		var/obj/item/food/monkeycube/cube = O
+	if(istype(O, /obj/item/food/animal_cube))
+		var/obj/item/food/animal_cube/cube = O
 		if(!cube.wrapper_type)
-			cube.Expand()
+			cube.spawn_creature()
 
 /decl/material/liquid/water/touch_mob(var/mob/living/M, var/amount, var/datum/reagents/holder)
 	..()

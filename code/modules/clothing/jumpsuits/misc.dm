@@ -52,10 +52,7 @@
 		/decl/material/solid/metal/steel = MATTER_AMOUNT_TRACE
 	)
 
-/*
- * Utility
-*/
-
+/* Utility */
 /obj/item/clothing/jumpsuit/utility
 	name = "blue utility uniform"
 	desc = "A comfortable blue utility jumpsuit."

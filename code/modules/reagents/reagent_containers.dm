@@ -7,6 +7,7 @@
 	material = /decl/material/solid/organic/plastic
 	obj_flags = OBJ_FLAG_HOLLOW
 	abstract_type = /obj/item/chems
+	watertight = TRUE
 
 	var/base_desc
 	var/amount_per_transfer_from_this = 5
@@ -177,13 +178,17 @@
 		return
 
 	// Vaporize anything over its boiling point.
+	var/update_reagents = FALSE
 	for(var/reagent in reagents.reagent_volumes)
 		var/decl/material/mat = GET_DECL(reagent)
-		if(!isnull(mat.boiling_point) && temperature >= mat.boiling_point)
+		if(mat.can_boil_to_gas && !isnull(mat.boiling_point) && temperature >= mat.boiling_point)
 			// TODO: reduce atom temperature?
-			var/removing = min(5, reagents.reagent_volumes[reagent])
+			var/removing = min(mat.boil_evaporation_per_run, reagents.reagent_volumes[reagent])
 			reagents.remove_reagent(reagent, removing, defer_update = TRUE, removed_phases = MAT_PHASE_LIQUID)
+			update_reagents = TRUE
 			loc.take_vaporized_reagent(reagent, removing)
+	if(update_reagents)
+		reagents.update_total()
 
 /obj/item/chems/take_vaporized_reagent(reagent, amount)
 	if(!reagents?.maximum_volume)
@@ -211,7 +216,7 @@
 		var/obj/item/chems/C = target
 		return !!C.possible_transfer_amounts
 
-/decl/interaction_handler/set_transfer/chems/invoked(var/atom/target, var/mob/user)
+/decl/interaction_handler/set_transfer/chems/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/chems/C = target
 	C.set_amount_per_transfer_from_this()
 
@@ -219,9 +224,9 @@
 /decl/interaction_handler/empty/chems
 	name                 = "Empty On Floor"
 	expected_target_type = /obj/item/chems
-	interaction_flags    = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION
+	interaction_flags    = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION | INTERACTION_NEVER_AUTOMATIC
 
-/decl/interaction_handler/empty/chems/invoked(obj/item/chems/target, mob/user)
+/decl/interaction_handler/empty/chems/invoked(atom/target, mob/user, obj/item/prop)
 	var/turf/T = get_turf(user)
 	if(T)
 		to_chat(user, SPAN_NOTICE("You empty \the [target] onto the floor."))

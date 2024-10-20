@@ -206,7 +206,7 @@
 		if (T.type == /turf/space)	// Equality is faster than istype.
 			reception = EXPLFX_NONE
 
-			for (var/turf/THING in RANGE_TURFS(M, 1))
+			for (var/turf/THING as anything in RANGE_TURFS(M, 1))
 				if(THING.simulated)
 					reception |= EXPLFX_SHAKE
 					break

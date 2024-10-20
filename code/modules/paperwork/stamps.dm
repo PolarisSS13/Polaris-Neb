@@ -3,7 +3,7 @@
 	desc        = "A rubber stamp for stamping important documents."
 	icon        = 'icons/obj/items/stamps/stamp_deckchief.dmi'
 	icon_state  = ICON_STATE_WORLD
-	w_class     = ITEM_SIZE_TINY
+	w_class     = ITEM_SIZE_SMALL
 	throw_speed = 7
 	throw_range = 15
 	material    = /decl/material/solid/metal/steel
@@ -36,7 +36,7 @@
 /obj/item/stamp/chameleon/attack_self(mob/user)
 	var/list/stamps = list()
 	// Generate them into a list
-	for(var/stamp_type in subtypesof(/obj/item/stamp))
+	for(var/stamp_type in typesof(/obj/item/stamp)-type) // Don't include our own type.
 		var/obj/item/stamp/S = stamp_type
 		if(!TYPE_IS_ABSTRACT(S))
 			stamps[capitalize(initial(S.name))] = S
