@@ -406,6 +406,8 @@ var/global/list/time_prefs_fixed = list()
 		for(var/trait_type in traits)
 			character.set_trait(trait_type, (traits[trait_type] || TRAIT_LEVEL_EXISTS))
 
+	character.set_eye_colour(eye_colour, skip_update = TRUE)
+
 	for(var/obj/item/organ/external/O in character.get_external_organs())
 		for(var/decl/sprite_accessory_category/sprite_category in O.get_sprite_accessory_categories())
 			if(!sprite_category.clear_in_pref_apply)

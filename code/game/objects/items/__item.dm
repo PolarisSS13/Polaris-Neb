@@ -109,7 +109,11 @@
 
 	var/base_name
 
-	var/watertight = FALSE // Can this object leak into water sources?
+	/// Can this object leak into water sources?
+	var/watertight = FALSE
+
+	/// Can this item knock someone out if used as a weapon? Overridden for natural weapons as a nerf to simplemobs.
+	var/weapon_can_knock_prone = TRUE
 
 /obj/item/get_color()
 	if(paint_color)

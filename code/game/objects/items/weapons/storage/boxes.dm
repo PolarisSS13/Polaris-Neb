@@ -70,6 +70,7 @@
 	name = "crew survival kit"
 	desc = "A box decorated in warning colors that contains a limited supply of survival tools. The panel and white stripe indicate this one contains oxygen."
 	icon_state = "survival"
+	storage = /datum/storage/box/large
 
 /obj/item/box/survival/WillContain()
 	return list(
@@ -87,6 +88,7 @@
 	name = "engineer survival kit"
 	desc = "A box decorated in warning colors that contains a limited supply of survival tools. The panel and orange stripe indicate this one as the engineering variant."
 	icon_state = "survivaleng"
+	storage = /datum/storage/box/large
 
 /obj/item/box/engineer/WillContain()
 	return list(
@@ -349,22 +351,25 @@
 	return list(/obj/item/food/donkpocket/sinpocket = 6)
 
 //cubed animals
+/obj/item/box/animal_cubes
+	abstract_type = /obj/item/box/animal_cubes
+	icon = 'icons/obj/items/storage/animal_cube_box.dmi'
+	icon_state = ICON_STATE_WORLD
+	storage = /datum/storage/box/animal_cube
 
-/obj/item/box/monkeycubes
+/obj/item/box/animal_cubes/monkeys
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
-	icon = 'icons/obj/food.dmi'
-	icon_state = "monkeycubebox"
-	storage = /datum/storage/box/monkey
 
-/obj/item/box/monkeycubes/WillContain()
-	return list(/obj/item/food/monkeycube/wrapped = 5)
+/obj/item/box/animal_cubes/monkeys/WillContain()
+	return list(/obj/item/food/animal_cube/wrapped/monkey = 5)
 
-/obj/item/box/monkeycubes/spidercubes
+/obj/item/box/animal_cubes/spiders
 	name = "spiderling cube box"
 	desc = "Drymate brand Instant spiders. WHY WOULD YOU ORDER THIS!?"
-/obj/item/box/monkeycubes/spidercubes/WillContain()
-	return list(/obj/item/food/monkeycube/wrapped/spidercube = 5)
+
+/obj/item/box/animal_cubes/spiders/WillContain()
+	return list(/obj/item/food/animal_cube/wrapped/spider = 5)
 
 /obj/item/box/ids
 	name = "box of spare IDs"
@@ -602,6 +607,8 @@
 /obj/item/box/tapes
 	name = "box of spare tapes"
 	desc = "A box full of blank tapes."
+	storage = /datum/storage/box/tapes
+
 /obj/item/box/tapes/WillContain()
 	return list(/obj/item/magnetic_tape/random = 14)
 

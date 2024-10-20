@@ -515,6 +515,9 @@ LOADOUT_SLOTS 4
 ## IRC channel to send information to. Leave blank to disable.
 #MAIN_IRC #main
 
+## Remove the # to define a different maximum for alternate language selection in chargen.
+#MAX_ALTERNATE_LANGUAGES 3
+
 ## Remove the # to define a different cap for trait points in chargen.
 #MAX_CHARACTER_TRAITS 5
 
@@ -559,6 +562,9 @@ RESPAWN_DELAY 5
 
 ## Server name: This appears at the top of the screen in-game.
 SERVER_NAME Space Station 13: Polaris
+
+## Determines how the server should handle whitelisting for ckeys. Whitelisted ckeys are found in 'config/whitelist.txt'. Set to 'none' for no whitelisting, 'jobs' to whitelist sensitive jobs, 'join' to whitelist joining the round (observing and OOC are still available, or 'connect' to whitelist access to the server. Valid values: none, jobs, join, and connect.
+#SERVER_WHITELIST none
 
 ## Determines how the server should handle whitelisting for ckeys. Whitelisted ckeys are found in 'config/whitelist.txt'. Set to 'none' for no whitelisting, 'jobs' to whitelist sensitive jobs, 'join' to whitelist joining the round (observing and OOC are still available, or 'connect' to whitelist access to the server. Valid values: none, jobs, join, and connect.
 #SERVER_WHITELIST none

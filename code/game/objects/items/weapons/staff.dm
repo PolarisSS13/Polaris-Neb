@@ -3,6 +3,7 @@
 	desc                = "A long, heavy length of material, purportedly used by wizards."
 	icon                = 'icons/obj/items/staff.dmi'
 	icon_state          = ICON_STATE_WORLD
+
 	w_class             = ITEM_SIZE_HUGE
 	attack_verb         = list("bludgeoned", "whacked", "disciplined", "thrashed")
 	material            = /decl/material/solid/organic/wood
