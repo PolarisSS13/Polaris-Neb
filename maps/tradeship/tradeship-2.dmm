@@ -640,6 +640,7 @@
 /obj/item/chems/condiment/flour,
 /obj/item/chems/condiment/flour,
 /obj/item/chems/condiment/flour,
+/obj/item/chems/condiment/yeast,
 /turf/floor/tiled,
 /area/ship/trade/crew/kitchen)
 "bm" = (
@@ -4928,7 +4929,7 @@
 	dir = 4;
 	icon_state = "bulb1"
 	},
-/obj/structure/closet/crate/freezer/rations,
+/obj/structure/closet/crate/plastic/rations,
 /turf/floor/plating,
 /area/ship/trade/shuttle/outgoing/engineering)
 "qv" = (

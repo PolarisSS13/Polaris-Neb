@@ -27,6 +27,7 @@
 	)
 	bypass_chilling_products_for_root_type = /decl/material/liquid/ethanol
 	affect_blood_on_ingest = FALSE // prevents automatic toxins/inebriation as though injected
+	affect_blood_on_inhale = FALSE
 	can_boil_to_gas = TRUE
 
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
@@ -49,6 +50,12 @@
 	..()
 	M.take_damage(removed * 2 * alcohol_toxicity, TOX)
 	M.add_chemical_effect(CE_ALCOHOL_TOXIC, alcohol_toxicity)
+
+/decl/material/liquid/ethanol/affect_inhale(mob/living/M, removed, datum/reagents/holder)
+	if(M.has_trait(/decl/trait/metabolically_inert))
+		return
+	..()
+	affect_ingest(M, removed, holder) // a bit of a hack, but it avoids code duplication
 
 /decl/material/liquid/ethanol/affect_ingest(var/mob/living/M, var/removed, var/datum/reagents/holder)
 
@@ -509,16 +516,17 @@
 
 /decl/material/liquid/ethanol/champagne
 	name = "champagne"
-	lore_text = "Smooth sparkling wine, produced in the same region of France as it has for centuries."
-	taste_description = "a superior taste of sparkling wine"
-	color = "#e8dfc1"
-	strength = 25
+	lore_text = "Smooth sparkling wine, produced in the same region of France as it has been for centuries."
+	taste_description = "bitterness and fizz"
+	color = "#a89410"
+	strength = 18
 	exoplanet_rarity_plant = MAT_RARITY_NOWHERE
 	exoplanet_rarity_gas = MAT_RARITY_NOWHERE
 	uid = "chem_ethanol_champagne"
 
 	glass_name = "champagne"
-	glass_desc = "Smooth sparkling wine, produced in the same region of France as it has for centuries."
+	glass_desc = "Sparkling white wine, produced in the same region of France as it has been for centuries."
+	glass_special = list(DRINK_FIZZ)
 
 /decl/material/liquid/ethanol/jagermeister
 	name = "Jagermeister"
