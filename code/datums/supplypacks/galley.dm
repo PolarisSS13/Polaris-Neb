@@ -4,8 +4,11 @@
 /decl/hierarchy/supply_pack/galley/food
 	name = "General - Kitchen supplies"
 	contains = list(/obj/item/chems/condiment/flour = 6,
+					/obj/item/chems/condiment/yeast = 1,
 					/obj/item/chems/drinks/milk = 4,
 					/obj/item/chems/drinks/soymilk = 2,
+					/obj/item/food/dairy/butter/stick = 2,
+					/obj/item/food/dairy/butter/stick/margarine = 2,
 					/obj/item/box/fancy/egg_box = 2,
 					/obj/item/food/tofu = 4,
 					/obj/item/food/butchery/meat = 4,
@@ -50,8 +53,11 @@
 	containername = "egg crate"
 
 /decl/hierarchy/supply_pack/galley/milk
-	name = "Perishables - Milk"
-	contains = list(/obj/item/chems/drinks/milk = 3)
+	name = "Perishables - Dairy"
+	contains = list(
+		/obj/item/chems/drinks/milk = 3,
+		/obj/item/food/dairy/butter/stick = 2
+	)
 	containertype = /obj/structure/closet/crate/freezer
 	containername = "milk crate"
 
@@ -108,7 +114,7 @@
 		/obj/item/chems/drinks/bottle/premiumvodka = 3,
 		/obj/item/chems/drinks/bottle/whiskey =      3
 	)
-	containertype = /obj/structure/closet/crate/freezer
+	containertype = /obj/structure/closet/crate/plastic
 	containername = "premium drinks crate"
 
 /decl/hierarchy/supply_pack/galley/barsupplies
@@ -143,3 +149,18 @@
 		)
 	containertype = /obj/structure/largecrate
 	containername = "soda dispenser crate"
+
+
+/decl/hierarchy/supply_pack/galley/flour
+	name = "Non-perishables - Flour"
+	contains = list(
+		/obj/item/chems/condiment/flour = 3
+	)
+	containername = "yeast crate"
+
+/decl/hierarchy/supply_pack/galley/yeast
+	name = "Non-perishables - Yeast"
+	contains = list(
+		/obj/item/chems/condiment/yeast = 3
+	)
+	containername = "yeast crate"
