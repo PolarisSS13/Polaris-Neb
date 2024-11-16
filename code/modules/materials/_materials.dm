@@ -359,6 +359,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	/// How much of this boils away per evaporation run?
 	var/boil_evaporation_per_run = 1
 
+	/// What verb is used when describing a colored piece of this material? e.g. 'dyed' or 'painted'
+	/// If an item has a null paint_verb, it automatically sets it based on material.
+	var/paint_verb = "painted"
+
 // Placeholders for light tiles and rglass.
 /decl/material/proc/reinforce(var/mob/user, var/obj/item/stack/material/used_stack, var/obj/item/stack/material/target_stack, var/use_sheets = 1)
 	if(!used_stack.can_use(use_sheets))
@@ -457,7 +461,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 				cocktail_ingredient = TRUE
 				break
 
-#define FALSEWALL_STATE "fwall_open"
 /decl/material/validate()
 	. = ..()
 
@@ -522,11 +525,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 				total += checking_list[chem]
 			if(total != 1)
 				. += "[field] adds up to [total] (should be 1)"
-	if(icon_base && !check_state_in_icon(FALSEWALL_STATE, icon_base))
-		. += "[type] - '[icon_base]' - missing false wall opening animation '[FALSEWALL_STATE]'"
 
 	if(dissolves_in == MAT_SOLVENT_IMMUNE && LAZYLEN(dissolves_into))
 		. += "material is immune to solvents, but has dissolves_into products."
+
+	if(!paint_verb)
+		. += "material does not have a paint_verb set"
+	else if(!istext(paint_verb))
+		. += "material has a non-text paint_verb value"
 
 	for(var/i = 0 to 7)
 		if(icon_base)
@@ -562,7 +568,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	if(length(color) != 7)
 		. += "invalid color (not #RRGGBB)"
-#undef FALSEWALL_STATE
 
 // Return the matter comprising this material.
 /decl/material/proc/get_matter()
