@@ -5,6 +5,15 @@
 	icon_state = "brown"
 	_flooring = /decl/flooring/carpet
 
+/turf/floor/carpet/broken
+	_floor_broken = TRUE
+
+/turf/floor/carpet/broken/Initialize()
+	. = ..()
+	var/setting_broken = _floor_broken
+	_floor_broken = null
+	set_floor_broken(setting_broken)
+
 /turf/floor/carpet/blue
 	name = "blue carpet"
 	icon_state = "blue1"
@@ -44,3 +53,11 @@
 	name = "red carpet"
 	icon_state = "red"
 	_flooring = /decl/flooring/carpet/red
+
+/turf/floor/carpet/rustic
+	name = "rustic carpet"
+	icon = 'icons/turf/flooring/simple_carpet.dmi'
+	icon_state = "carpet"
+	_flooring = /decl/flooring/carpet/rustic
+	paint_color = COLOR_CHESTNUT
+	color = COLOR_CHESTNUT

@@ -1,9 +1,35 @@
 /turf/floor/wood
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
-	icon_state = "wood"
+	icon_state = "wood0"
 	color = /decl/material/solid/organic/wood::color
 	_flooring = /decl/flooring/wood
+
+/turf/floor/wood/broken
+	icon_state = "wood_broken0"
+	_floor_broken = TRUE
+
+/turf/floor/wood/broken/Initialize()
+	. = ..()
+	var/setting_broken = _floor_broken
+	_floor_broken = null
+	set_floor_broken(setting_broken)
+
+/turf/floor/wood/broken/one
+	icon_state = "wood_broken1"
+	_floor_broken = "broken1"
+
+/turf/floor/wood/broken/two
+	icon_state = "wood_broken2"
+	_floor_broken = "broken2"
+
+/turf/floor/wood/broken/three
+	icon_state = "wood_broken3"
+	_floor_broken = "broken3"
+
+/turf/floor/wood/broken/four
+	icon_state = "wood_broken4"
+	_floor_broken = "broken4"
 
 /turf/floor/wood/mahogany
 	color = /decl/material/solid/organic/wood/mahogany::color

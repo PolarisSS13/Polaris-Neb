@@ -82,7 +82,7 @@
 /obj/abstract/landmark{
 	name = "carpspawn"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "aah" = (
 /turf/wall/prepainted,
@@ -98,7 +98,7 @@
 /area/exodus/maintenance/foresolar)
 "aaj" = (
 /obj/structure/girder/displaced,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "aak" = (
 /turf/floor/tiled/steel_grid,
@@ -108,7 +108,7 @@
 /obj/item/shard{
 	icon_state = "small"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "aam" = (
 /obj/structure/grille,
@@ -120,10 +120,10 @@
 /area/space)
 "aao" = (
 /obj/item/clothing/suit/ianshirt,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "aap" = (
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "aaq" = (
 /obj/structure/grille/broken,
@@ -138,7 +138,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aas" = (
 /obj/machinery/power/solar{
@@ -149,7 +149,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aat" = (
 /turf/wall/r_wall/prepainted,
@@ -163,7 +163,7 @@
 	name = "Fore Solar Array"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aaw" = (
 /obj/structure/cable/yellow{
@@ -176,7 +176,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aax" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -467,7 +467,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "abn" = (
 /obj/item/box/lights/mixed,
@@ -776,7 +776,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "abR" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -828,7 +828,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "abV" = (
 /obj/structure/cable{
@@ -847,7 +847,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "abX" = (
 /obj/machinery/door/airlock/external/bolted{
@@ -879,14 +879,14 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aca" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "acb" = (
 /obj/machinery/door/airlock/engineering{
@@ -933,7 +933,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "acf" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
@@ -1114,7 +1114,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "acz" = (
 /obj/structure/cable,
@@ -1406,7 +1406,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "adb" = (
 /obj/structure/cable/green{
@@ -1992,7 +1992,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/fore)
 "aes" = (
 /obj/structure/cable{
@@ -5006,7 +5006,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "akI" = (
 /obj/machinery/firealarm{
@@ -5385,7 +5385,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "alq" = (
 /obj/machinery/door/firedoor,
@@ -5667,7 +5667,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "alW" = (
 /turf/wall/prepainted,
@@ -5678,7 +5678,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "alY" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -6020,7 +6020,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "amK" = (
 /obj/structure/cable/yellow{
@@ -6033,14 +6033,14 @@
 	icon_state = "1-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "amL" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "amM" = (
 /obj/machinery/atmospherics/valve{
@@ -6445,7 +6445,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "anx" = (
 /obj/machinery/door/airlock/glass/security{
@@ -6491,21 +6491,21 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "anC" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "anD" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "anE" = (
 /obj/structure/cable/yellow{
@@ -6518,7 +6518,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "anF" = (
 /obj/structure/cable/yellow{
@@ -6528,7 +6528,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "anG" = (
 /turf/wall/r_wall/prepainted,
@@ -6544,7 +6544,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "anI" = (
 /obj/machinery/door/firedoor,
@@ -6835,7 +6835,7 @@
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "aop" = (
 /obj/machinery/power/solar{
@@ -6846,7 +6846,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "aoq" = (
 /turf/unsimulated/mask,
@@ -7198,7 +7198,7 @@
 /area/exodus/maintenance/dormitory)
 "aph" = (
 /obj/structure/grille,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/exterior)
 "api" = (
 /obj/machinery/light{
@@ -7220,7 +7220,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "apk" = (
 /obj/structure/cable/yellow{
@@ -7230,7 +7230,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "apl" = (
 /obj/structure/cable,
@@ -7275,7 +7275,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "apo" = (
 /obj/structure/cable/yellow{
@@ -7285,7 +7285,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "app" = (
 /obj/machinery/light{
@@ -7570,7 +7570,7 @@
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "apW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8753,7 +8753,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "asi" = (
 /obj/structure/bed/chair{
@@ -10899,7 +10899,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/auxport)
 "awX" = (
 /obj/structure/cable{
@@ -13738,7 +13738,7 @@
 	pixel_y = -32;
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/exterior)
 "aDf" = (
 /obj/abstract/landmark{
@@ -15244,7 +15244,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/shuttle/arrival/station)
 "aGc" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -15463,7 +15463,7 @@
 /obj/structure/sign/warning/docking_area{
 	pixel_y = 32
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/exterior)
 "aGz" = (
 /obj/structure/safe,
@@ -20120,7 +20120,7 @@
 	name = "disposal mass driver"
 	},
 /obj/machinery/shield_diffuser,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/disposal)
 "aQh" = (
 /obj/structure/grille,
@@ -21073,7 +21073,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/disposal)
 "aSs" = (
 /obj/effect/floor_decal/chapel{
@@ -23364,7 +23364,7 @@
 /area/exodus/research/mixing)
 "aXM" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mining/brace,
+/obj/structure/drill_brace,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/storage)
 "aXN" = (
@@ -24795,7 +24795,7 @@
 	name = "Toxins Launcher Bay Door"
 	},
 /obj/machinery/shield_diffuser,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/mixing)
 "baP" = (
 /obj/machinery/door/airlock/glass/command{
@@ -25150,7 +25150,7 @@
 	name = "Toxins Launcher Bay Door"
 	},
 /obj/machinery/shield_diffuser,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bbz" = (
 /obj/machinery/button/access/interior{
@@ -25505,7 +25505,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/turret_protected/ai)
 "bcm" = (
 /obj/structure/bed/chair/comfy/black{
@@ -32071,7 +32071,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "bpP" = (
 /obj/machinery/light{
@@ -33541,7 +33541,7 @@
 	pixel_x = -25;
 	pixel_y = 10
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/disposal)
 "bsT" = (
 /obj/structure/closet/emcloset,
@@ -34381,7 +34381,7 @@
 /area/exodus/research/xenobiology)
 "buA" = (
 /obj/item/radio/beacon,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "buB" = (
 /obj/structure/cable/green{
@@ -42623,7 +42623,7 @@
 /area/exodus/research/xenobiology/xenoflora)
 "bKE" = (
 /obj/effect/wallframe_spawn/reinforced,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bKF" = (
 /obj/structure/window/reinforced/full,
@@ -43180,7 +43180,7 @@
 /turf/floor/tiled/white,
 /area/exodus/research)
 "bLT" = (
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bLU" = (
 /obj/structure/bed/chair{
@@ -43275,7 +43275,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bMe" = (
 /turf/floor/tiled/airless,
@@ -43904,11 +43904,11 @@
 /obj/machinery/door/airlock/external{
 	name = "Toxins Test Chamber"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bNk" = (
 /obj/structure/closet/emcloset,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bNl" = (
 /obj/structure/disposalpipe/segment{
@@ -47342,7 +47342,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/mixing)
 "bUf" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -47979,14 +47979,14 @@
 	pixel_y = -25;
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/mixing)
 "bVA" = (
 /obj/machinery/mass_driver{
 	dir = 4;
 	id_tag = "toxinsdriver"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/mixing)
 "bVB" = (
 /obj/structure/window/reinforced{
@@ -48033,7 +48033,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/mixing)
 "bVH" = (
 /obj/structure/cable{
@@ -49178,7 +49178,7 @@
 /obj/structure/sign/warning/docking_area{
 	pixel_y = 32
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "bYa" = (
 /obj/abstract/landmark/start{
@@ -51557,7 +51557,7 @@
 /area/exodus/maintenance/research_starboard)
 "ccN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/storage)
 "ccO" = (
@@ -52417,7 +52417,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "cer" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -52432,7 +52432,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "cet" = (
 /obj/machinery/power/apc{
@@ -52443,7 +52443,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "ceu" = (
 /obj/machinery/light,
@@ -52889,7 +52889,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "cfs" = (
 /obj/structure/table,
@@ -52943,7 +52943,7 @@
 /area/ship/exodus_pod_mining)
 "cfy" = (
 /obj/item/clothing/mask/smokable/cigarette,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "cfz" = (
 /obj/machinery/atmospherics/omni/filter{
@@ -52957,7 +52957,7 @@
 /area/exodus/engineering/engine_room)
 "cfA" = (
 /obj/machinery/light/small,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "cfB" = (
 /obj/machinery/light{
@@ -55266,7 +55266,7 @@
 /area/exodus/maintenance/engi_shuttle)
 "ckw" = (
 /obj/effect/wallframe_spawn/reinforced,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "ckx" = (
 /obj/structure/window/reinforced{
@@ -56444,7 +56444,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cmR" = (
 /obj/machinery/door/airlock/engineering{
@@ -57517,7 +57517,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cpn" = (
 /obj/machinery/rad_collector,
@@ -57789,7 +57789,7 @@
 /area/exodus/engineering/engineering_monitoring)
 "cpZ" = (
 /obj/structure/disposalpipe/junction,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "cqa" = (
 /obj/structure/bed/chair/office/dark{
@@ -58044,7 +58044,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cqL" = (
 /obj/structure/table/reinforced,
@@ -58111,7 +58111,7 @@
 /obj/structure/disposalpipe/junction{
 	dir = 8
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "crb" = (
 /obj/machinery/computer/modular/preset/civilian,
@@ -58122,7 +58122,7 @@
 	dir = 4
 	},
 /obj/structure/disposaloutlet,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "crd" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
@@ -58166,7 +58166,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "crh" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -58371,7 +58371,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/maintenance/incinerator)
 "crD" = (
 /obj/machinery/alarm{
@@ -58391,7 +58391,7 @@
 /area/exodus/medical/virology)
 "crE" = (
 /obj/structure/disposalpipe/segment,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "crF" = (
 /obj/machinery/door/blast/regular{
@@ -58852,7 +58852,7 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "csX" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -59222,7 +59222,7 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cub" = (
 /obj/structure/lattice,
@@ -59755,7 +59755,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cvj" = (
 /obj/structure/cable/yellow{
@@ -59768,7 +59768,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cvk" = (
 /obj/effect/floor_decal/corner/white{
@@ -59793,7 +59793,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cvo" = (
 /obj/structure/cable/yellow{
@@ -59803,7 +59803,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cvq" = (
 /obj/structure/table,
@@ -60008,7 +60008,7 @@
 	},
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cwm" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -61151,7 +61151,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/space)
 "cCO" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
@@ -61732,7 +61732,7 @@
 /obj/machinery/power/tracker,
 /obj/structure/cable/yellow,
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/starboard)
 "cFM" = (
 /obj/structure/table,
@@ -62343,7 +62343,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cIv" = (
 /obj/machinery/power/solar{
@@ -62354,7 +62354,7 @@
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cIw" = (
 /obj/structure/cable/yellow{
@@ -62364,7 +62364,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cIx" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/black,
@@ -62458,7 +62458,7 @@
 	icon_state = "2-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cIV" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
@@ -62918,7 +62918,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cKN" = (
 /obj/machinery/power/tracker,
@@ -62926,7 +62926,7 @@
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/solarpanel,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cKO" = (
 /obj/machinery/door/airlock/external/bolted{
@@ -63272,7 +63272,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cLP" = (
 /obj/structure/cable/yellow{
@@ -63282,7 +63282,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/catwalk,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/solar/port)
 "cLQ" = (
 /obj/machinery/alarm{
@@ -63670,7 +63670,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/starboard)
 "eEn" = (
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/exodus/turret_protected/ai)
 "eEV" = (
 /obj/effect/floor_decal/corner/blue{
