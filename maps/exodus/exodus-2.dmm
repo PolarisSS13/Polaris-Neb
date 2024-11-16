@@ -20719,7 +20719,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_research)
 "aRD" = (
 /turf/floor/tiled/steel_grid,
@@ -34245,7 +34245,7 @@
 /area/space)
 "buo" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mining/drill,
+/obj/machinery/mining_drill,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/miningdock)
 "bup" = (
@@ -42646,7 +42646,7 @@
 /area/exodus/quartermaster/miningdock)
 "bKI" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mining/brace,
+/obj/structure/drill_brace,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/miningdock)
 "bKK" = (
@@ -63646,7 +63646,7 @@
 /area/exodus/security/main)
 "eqn" = (
 /obj/machinery/atmospherics/unary/engine,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_mining)
 "esY" = (
 /obj/effect/paint_stripe/blue,
@@ -64026,7 +64026,7 @@
 "hpP" = (
 /obj/effect/floor_decal/industrial/warning/full,
 /obj/machinery/shipsensors/weak,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_research)
 "hsk" = (
 /obj/machinery/power/smes/buildable{
@@ -64111,7 +64111,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/machinery/mining/brace,
+/obj/structure/drill_brace,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/miningdock)
 "hZw" = (
@@ -64631,7 +64631,7 @@
 "lHF" = (
 /obj/machinery/shipsensors/weak,
 /obj/effect/floor_decal/industrial/warning/full,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_mining)
 "lKF" = (
 /obj/machinery/hologram/holopad,
@@ -64941,7 +64941,7 @@
 /obj/machinery/atmospherics/unary/engine{
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_research)
 "oJj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
@@ -65107,7 +65107,7 @@
 	id_tag = "mining_pump_out_external"
 	},
 /obj/structure/grille,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_mining)
 "qkc" = (
 /obj/structure/handrail{
@@ -65140,7 +65140,7 @@
 	dir = 8
 	},
 /obj/structure/grille,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_research)
 "qBY" = (
 /obj/structure/cable/cyan{
@@ -65451,7 +65451,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/ship/exodus_pod_mining)
 "ssg" = (
 /turf/floor/tiled/techfloor,
