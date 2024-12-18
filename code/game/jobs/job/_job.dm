@@ -36,6 +36,8 @@
 	var/forced_spawnpoint                     // If set to a spawnpoint name, will use that spawn point for joining as this job.
 	var/hud_icon                              // icon used for Sec HUD overlay
 
+	var/assignable = TRUE // todo port from Polaris
+
 	// A list of string IDs for keys to grant on join.
 	var/list/lock_keys = list()
 

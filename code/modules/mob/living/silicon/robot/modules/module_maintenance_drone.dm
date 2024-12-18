@@ -3,7 +3,7 @@
 	hide_on_manifest = 1
 	no_slip = 1
 	camera_channels = list(
-		CAMERA_CAMERA_CHANNEL_ENGINEERING
+		CAMERA_CHANNEL_ENGINEERING
 	)
 	languages = list(
 		/decl/language/human/common = FALSE

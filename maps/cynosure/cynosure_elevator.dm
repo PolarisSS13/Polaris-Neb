@@ -1,10 +1,10 @@
-/obj/turbolift_map_holder/cynosure
+/obj/abstract/turbolift_spawner/cynosure
 	icon = 'icons/obj/turbolift_preview_5x5.dmi'
 	depth = 2
 	lift_size_x = 4
 	lift_size_y = 4
 
-/obj/turbolift_map_holder/cynosure/west
+/obj/abstract/turbolift_spawner/cynosure/west
 	name = "Cynosure turbolift map placeholder - West"
 	dir = EAST
 	depth = 3
@@ -15,7 +15,7 @@
 		/area/turbolift/west_snd
 		)
 
-/obj/turbolift_map_holder/cynosure/center
+/obj/abstract/turbolift_spawner/cynosure/center
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	name = "Cynosure turbolift map placeholder - Center"
 	dir = WEST
@@ -29,7 +29,7 @@
 		/area/turbolift/center_snd
 		)
 
-/obj/turbolift_map_holder/cynosure/cargo
+/obj/abstract/turbolift_spawner/cynosure/cargo
 	name = "Cynosure turbolift map placeholder - Cargo"
 	dir = WEST
 
@@ -38,7 +38,7 @@
 		/area/turbolift/cargo_snd
 		)
 
-/obj/turbolift_map_holder/cynosure/engineering
+/obj/abstract/turbolift_spawner/cynosure/engineering
 	name = "Cynosure turbolift map placeholder - Engineering"
 	dir = SOUTH
 	depth = 3
@@ -49,7 +49,7 @@
 		/area/turbolift/eng_snd
 		)
 
-/obj/turbolift_map_holder/cynosure/medbay
+/obj/abstract/turbolift_spawner/cynosure/medbay
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	name = "Cynosure turbolift map placeholder - Medbay"
 	dir = EAST
@@ -63,7 +63,7 @@
 		/area/turbolift/med_snd
 		)
 
-/obj/turbolift_map_holder/cynosure/sci
+/obj/abstract/turbolift_spawner/cynosure/sci
 	name = "Cynosure turbolift map placeholder - Science"
 	dir = EAST
 
@@ -72,7 +72,7 @@
 		/area/turbolift/sci_gnd
 		)
 
-/obj/turbolift_map_holder/cynosure/sec
+/obj/abstract/turbolift_spawner/cynosure/sec
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	name = "Cynosure turbolift map placeholder - Security"
 	dir = NORTH
