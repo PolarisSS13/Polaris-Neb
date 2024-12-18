@@ -20,7 +20,7 @@
 			return TRUE
 
 		to_chat(user, "You begin repairing damage to \the [holder]...")
-		if(WT.weld(round(damage/75)) && do_after(usr, damage/10))
+		if(WT.weld(round(damage/75)) && do_after(user, damage/10))
 			damage = 0
 			to_chat(user, "You repair \the [holder].")
 		return TRUE
@@ -33,11 +33,11 @@
 		for(var/obj/item/stock_parts/computer/H in parts)
 			component_names.Add(H.name)
 
-		var/choice = input(usr, "Which component do you want to uninstall?", "[assembly_name] maintenance", null) as null|anything in component_names
+		var/choice = input(user, "Which component do you want to uninstall?", "[assembly_name] maintenance", null) as null|anything in component_names
 		if(!choice)
 			return TRUE
 		var/atom/movable/HA = holder
-		if(!HA.Adjacent(usr))
+		if(!HA.Adjacent(user))
 			return TRUE
 
 		var/obj/item/stock_parts/H = find_component_by_name(choice)

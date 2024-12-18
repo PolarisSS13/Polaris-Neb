@@ -47,7 +47,7 @@
 	. = ..()
 
 /obj/item/sword/wood
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	draw_handle = FALSE
 
 /obj/item/sword/replica
@@ -72,7 +72,7 @@
 	draw_handle = FALSE
 
 /obj/item/sword/katana/wood
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	draw_handle = FALSE
 
 /obj/item/sword/katana/vibro

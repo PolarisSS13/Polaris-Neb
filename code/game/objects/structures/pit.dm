@@ -147,7 +147,7 @@
 	pixel_x                        = 15
 	pixel_y                        = 8
 	anchored                       = TRUE
-	material                       = /decl/material/solid/organic/wood
+	material                       = /decl/material/solid/organic/wood/oak
 	w_class                        = ITEM_SIZE_NORMAL
 	material_alteration            = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC | MAT_FLAG_ALTERATION_COLOR
 	var/message                    = "Unknown."
@@ -168,7 +168,7 @@
 
 /obj/structure/gravemarker/attackby(obj/item/used_item, mob/user)
 	// we can dig it up with a shovel if the destruction tool is not a shovel, or if we're not on harm intent
-	var/digging = IS_SHOVEL(used_item) && (destruction_tool != TOOL_SHOVEL || user?.a_intent != I_HURT)
+	var/digging = IS_SHOVEL(used_item) && (destruction_tool != TOOL_SHOVEL || !user?.check_intent(I_FLAG_HARM))
 	if(digging && used_item.do_tool_interaction(TOOL_SHOVEL, user, src, 2 SECONDS, "digging up", "digging up", check_skill = SKILL_HAULING))
 		unbury(user, place_in_hands = TRUE) // deletes the grave marker and spawns an item in its place
 		return TRUE
@@ -222,7 +222,7 @@
 	desc                = "You're not the first."
 	icon                = 'icons/obj/structures/gravestone.dmi'
 	icon_state          = "wood"
-	material            = /decl/material/solid/organic/wood
+	material            = /decl/material/solid/organic/wood/oak
 	w_class             = ITEM_SIZE_NORMAL
 	material_alteration = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC | MAT_FLAG_ALTERATION_COLOR
 	var/gravemarker_type = /obj/structure/gravemarker
@@ -244,13 +244,13 @@
 		to_chat(user, "You can't read the inscription from here.")
 
 /obj/item/gravemarker/attack_self(mob/user)
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		try_bury(get_turf(user), user)
 		return TRUE
 	return ..()
 
 /obj/item/gravemarker/afterattack(turf/target, mob/user, proximity)
-	if((. = ..()) || (user.a_intent == I_HURT && !(item_flags & ITEM_FLAG_NO_BLUDGEON)) || !proximity)
+	if((. = ..()) || (user.check_intent(I_FLAG_HARM) && !(item_flags & ITEM_FLAG_NO_BLUDGEON)) || !proximity)
 		return
 	if(!istype(target))
 		target = get_turf(target)

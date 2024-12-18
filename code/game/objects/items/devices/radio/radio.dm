@@ -227,11 +227,11 @@
 		return STATUS_CLOSE
 	return ..()
 
-/obj/item/radio/OnTopic(href, href_list)
+/obj/item/radio/OnTopic(mob/user, href_list)
 	if((. = ..()))
 		return
 
-	usr.set_machine(src)
+	user.set_machine(src)
 	if(href_list["analog"])
 		if(can_use_analog)
 			analog = text2num(href_list["analog"])
@@ -258,8 +258,8 @@
 		var/new_frequency = sanitize_frequency(frequency + text2num(href_list["freq"]))
 		set_frequency(new_frequency)
 		if(hidden_uplink)
-			if(hidden_uplink.check_trigger(usr, frequency, traitor_frequency))
-				close_browser(usr, "window=radio")
+			if(hidden_uplink.check_trigger(user, frequency, traitor_frequency))
+				close_browser(user, "window=radio")
 		. = TOPIC_REFRESH
 	else if (href_list["talk"])
 		toggle_broadcast()
@@ -278,14 +278,14 @@
 		. = TOPIC_REFRESH
 	else if(href_list["spec_freq"])
 		var freq = href_list["spec_freq"]
-		if(has_channel_access(usr, freq))
+		if(has_channel_access(user, freq))
 			set_frequency(text2num(freq))
 		. = TOPIC_REFRESH
 	if(href_list["nowindow"]) // here for pAIs, maybe others will want it, idk
 		return TOPIC_HANDLED
 	if(href_list["network_settings"])
 		var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
-		D.ui_interact(usr)
+		D.ui_interact(user)
 		. = TOPIC_HANDLED
 	if(. & TOPIC_REFRESH)
 		SSnano.update_uis(src)

@@ -195,7 +195,7 @@
 			update_icon()
 		return TRUE
 
-	else if(W.sharp && user.a_intent == I_HELP)
+	else if(W.sharp && user.check_intent(I_FLAG_HELP))
 		//You can alternative cut the wrapper off with a sharp item
 		unwrap(user)
 		return TRUE

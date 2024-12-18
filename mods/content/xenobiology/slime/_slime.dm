@@ -127,7 +127,7 @@
 			if(istype(AM, /obj/structure/window) || istype(AM, /obj/structure/grille))
 				if(nutrition <= get_hunger_nutrition())
 					if (is_adult || prob(5))
-						UnarmedAttack(AM)
+						UnarmedAttack(AM, Adjacent(AM))
 
 	if(ismob(AM))
 		var/mob/tmob = AM
@@ -151,7 +151,7 @@
 
 	statpanel("Status")
 	stat(null, "Health: [get_health_percent()]%")
-	stat(null, "Intent: [a_intent]")
+	stat(null, "Intent: [get_intent().name]")
 
 	if (client.statpanel == "Status")
 		stat(null, "Nutrition: [nutrition]/[get_max_nutrition()]")
@@ -206,7 +206,7 @@
 		visible_message(SPAN_NOTICE("\The [user] pokes \the [src]."))
 		return TRUE
 
-	if(user.a_intent == I_HELP)
+	if(user.check_intent(I_FLAG_HELP))
 		if(length(contents))
 			var/atom/movable/AM = pick(contents)
 			AM.dropInto(loc)
@@ -240,33 +240,34 @@
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 		return TRUE
 
-	switch(user.a_intent)
-		if(I_HELP)
-			visible_message(SPAN_NOTICE("\The [user] hugs \the [src] to make it feel better!"))
+	if(user.check_intent(I_FLAG_HELP))
+		visible_message(SPAN_NOTICE("\The [user] hugs \the [src] to make it feel better!"))
+		return TRUE
+
+	if(user.check_intent(I_FLAG_DISARM))
+		if(prob(40))
+			visible_message(SPAN_DANGER("\The [user] shoves \the [src] and it wobbles around, disoriented!"))
+			SET_STATUS_MAX(src, STAT_CONFUSE, 2)
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+		else
+			visible_message(SPAN_DANGER("\The [user] shoves \the [src]!"))
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		return TRUE
+
+	if(user.check_intent(I_FLAG_HARM))
+		var/damage = rand(1, 9)
+		var/datum/mob_controller/slime/slime_ai = ai
+		if(istype(slime_ai))
+			slime_ai.attacked += 10
+			slime_ai.adjust_friendship(user, -5)
+		if(prob(10))
+			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+			visible_message(SPAN_DANGER("\The [user] has attempted to punch \the [src]!"))
 			return TRUE
-		if(I_DISARM)
-			if(prob(40))
-				visible_message(SPAN_DANGER("\The [user] shoves \the [src] and it wobbles around, disoriented!"))
-				SET_STATUS_MAX(src, STAT_CONFUSE, 2)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			else
-				visible_message(SPAN_DANGER("\The [user] shoves \the [src]!"))
-				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			return TRUE
-		if(I_HURT)
-			var/damage = rand(1, 9)
-			var/datum/mob_controller/slime/slime_ai = ai
-			if(istype(slime_ai))
-				slime_ai.attacked += 10
-				slime_ai.adjust_friendship(user, -5)
-			if(prob(10))
-				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-				visible_message(SPAN_DANGER("\The [user] has attempted to punch \the [src]!"))
-				return TRUE
-			playsound(loc, "punch", 25, 1, -1)
-			visible_message(SPAN_DANGER("\The [user] has punched \the [src]!"))
-			take_damage(damage)
-			return TRUE
+		playsound(loc, "punch", 25, 1, -1)
+		visible_message(SPAN_DANGER("\The [user] has punched \the [src]!"))
+		take_damage(damage)
+		return TRUE
 
 	return ..()
 
@@ -374,6 +375,3 @@
 		. += "Anomalous slime core amount detected."
 	. += "Growth progress:\t[amount_grown]/10."
 	. = jointext(., "<br>")
-
-/mob/living/slime/can_change_intent()
-	return TRUE

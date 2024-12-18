@@ -9,8 +9,6 @@
 	response_disarm =  "prods"
 	response_harm =    "stamps on"
 	base_movement_delay = 2
-
-	a_intent = I_HURT
 	status_flags = CANPUSH
 	natural_weapon = /obj/item/natural_weapon/bite/weak
 	pass_flags = PASS_FLAG_TABLE

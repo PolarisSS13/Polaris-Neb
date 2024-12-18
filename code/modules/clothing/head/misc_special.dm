@@ -153,7 +153,7 @@
 
 // Duplicated from growns for now. TODO: move sliceability down to other objects like clay.
 /obj/item/clothing/head/pumpkinhead/attackby(obj/item/W, mob/user)
-	if(IS_KNIFE(W) && user.a_intent != I_HURT)
+	if(IS_KNIFE(W) && !user.check_intent(I_FLAG_HARM))
 		var/datum/seed/plant = SSplants.seeds[plant_type]
 		if(!plant)
 			return ..()

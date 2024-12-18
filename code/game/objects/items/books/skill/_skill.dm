@@ -11,7 +11,7 @@ Skill books that increase your skills while you activate and hold them
 	w_class = ITEM_SIZE_LARGE            // Skill books are THICC with knowledge. Up one level from regular books to prevent library-in-a-bag silliness.
 	unique = TRUE
 	material = /decl/material/solid/organic/plastic
-	matter = list(/decl/material/solid/organic/wood = MATTER_AMOUNT_REINFORCEMENT)
+	matter = list(/decl/material/solid/organic/wood/oak = MATTER_AMOUNT_REINFORCEMENT)
 	abstract_type = /obj/item/book/skill
 
 	var/decl/skill/skill       // e.g. SKILL_LITERACY

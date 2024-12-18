@@ -1,7 +1,7 @@
 var/global/list/chat_blockers_in_use
 var/global/list/chat_modifiers_in_use
 
-/hook/startup/proc/build_filter_lists()
+/proc/build_filter_lists()
 	global.chat_blockers_in_use = list()
 	global.chat_modifiers_in_use = list()
 	var/list/all_filters = decls_repository.get_decls_of_type(/decl/chat_filter)

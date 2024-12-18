@@ -57,7 +57,7 @@
 /mob/living/RestrainedClickOn(var/atom/A)
 	if (A != src)
 		return ..()
-	if(world.time < next_restraint_chew || !get_equipped_item(slot_handcuffed_str) || a_intent != I_HURT || get_target_zone() != BP_MOUTH)
+	if(world.time < next_restraint_chew || !get_equipped_item(slot_handcuffed_str) || !check_intent(I_FLAG_HARM) || get_target_zone() != BP_MOUTH)
 		return FALSE
 	// Cannot chew with a mask or a full body restraint.
 	if (get_equipped_item(slot_wear_mask_str) || istype(get_equipped_item(slot_wear_suit_str), /obj/item/clothing/suit/straight_jacket))
@@ -66,9 +66,9 @@
 	var/obj/item/organ/external/hand/O = GET_EXTERNAL_ORGAN(src, get_active_held_item_slot())
 	if(!istype(O))
 		return FALSE
-	var/decl/pronouns/G = get_pronouns()
+	var/decl/pronouns/pronouns = get_pronouns()
 	visible_message(
-		SPAN_DANGER("\The [src] chews on [G.his] [O.name]"),
+		SPAN_DANGER("\The [src] chews on [pronouns.his] [O.name]"),
 		SPAN_DANGER("You chew on your [O.name]!")
 	)
 	admin_attacker_log(src, "chewed on their [O.name]!")
@@ -94,10 +94,10 @@
 		return
 
 	var/attacking_with = get_natural_weapon()
-	if(a_intent == I_HELP || !attacking_with)
+	if(check_intent(I_FLAG_HELP) || !attacking_with)
 		return A.attack_animal(src)
 
-	a_intent = I_HURT
+	set_intent(I_FLAG_HARM)
 	. = A.attackby(attacking_with, src)
 	// attack effects are handled in natural_weapon's apply_hit_effect() instead of here
 	if(!.)

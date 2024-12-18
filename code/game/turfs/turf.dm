@@ -247,7 +247,7 @@
 				to_chat(user, SPAN_WARNING("\The [src] is too hard to be dug with \the [W]."))
 				return TRUE
 
-			if(user.a_intent == I_HELP && can_dig_pit(W.material?.hardness))
+			if(user.check_intent(I_FLAG_HELP) && can_dig_pit(W.material?.hardness))
 				try_dig_pit(user, W)
 			else if(can_dig_trench(W.material?.hardness))
 				try_dig_trench(user, W)
@@ -292,7 +292,7 @@
 				reagents.trans_to(W, taking)
 				return TRUE
 
-		if(user.a_intent == I_HELP)
+		if(user.check_intent(I_FLAG_HELP))
 			user.visible_message(SPAN_NOTICE("\The [user] dips \the [W] into \the [reagents.get_primary_reagent_name()]."))
 			W.fluid_act(reagents)
 			return TRUE
@@ -452,7 +452,7 @@
 
 /turf/proc/try_graffiti(var/mob/vandal, var/obj/item/tool)
 
-	if(!tool.sharp || !can_engrave() || vandal.a_intent != I_HELP)
+	if(!tool.sharp || !can_engrave() || !vandal.check_intent(I_FLAG_HELP))
 		return FALSE
 
 	if(jobban_isbanned(vandal, "Graffiti"))

@@ -75,7 +75,19 @@
 	result_type = /obj/item/chems/glass/mortar
 
 /decl/stack_recipe/ring
-	result_type       = /obj/item/clothing/gloves/ring/material
+	result_type       = /obj/item/clothing/gloves/ring
+
+/decl/stack_recipe/ring_thin
+	name              = "ring, thin"
+	result_type       = /obj/item/clothing/gloves/ring/thin
+
+/decl/stack_recipe/ring_thick
+	name              = "ring, thick"
+	result_type       = /obj/item/clothing/gloves/ring/thick
+
+/decl/stack_recipe/ring_split
+	name              = "ring, split"
+	result_type       = /obj/item/clothing/gloves/ring/split
 
 /decl/stack_recipe/hardness/clipboard
 	result_type       = /obj/item/clipboard

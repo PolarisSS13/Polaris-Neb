@@ -62,7 +62,7 @@ var/global/list/string_slot_flags = list(
 		. = new /mob/living/human/dummy/mannequin()
 		mannequins_[ckey] = .
 
-/hook/global_init/proc/makeDatumRefLists()
+/proc/makeDatumRefLists()
 	// Keybindings
 	for(var/KB in subtypesof(/datum/keybinding))
 		var/datum/keybinding/keybinding = KB

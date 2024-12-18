@@ -39,7 +39,7 @@
 
 /obj/item/knife/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 
-	if(user.a_intent != I_HELP && user.get_target_zone() == BP_EYES)
+	if(!user.check_intent(I_FLAG_HELP) && user.get_target_zone() == BP_EYES)
 		if(user.has_genetic_condition(GENE_COND_CLUMSY) && prob(50))
 			target = user
 		return eyestab(target, user)
@@ -52,7 +52,7 @@
 	name = "dueling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	icon = 'icons/obj/items/weapon/knives/savage.dmi'
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_NAME
 	w_class = ITEM_SIZE_NORMAL
 

@@ -10,7 +10,6 @@ var/global/list/_ui_all_keys = list(
 	UI_ICON_NUTRITION,
 	UI_ICON_HYDRATION,
 	UI_ICON_FIRE_INTENT,
-	UI_ICON_INTENT,
 	UI_ICON_UP_HINT,
 	UI_ICON_STATUS,
 	UI_ICON_STATUS_FIRE,
@@ -72,14 +71,6 @@ var/global/list/_ui_expected_states
 			"hydration2",
 			"hydration3",
 			"hydration4"
-		),
-		UI_ICON_INTENT = list(
-			"intent_all",
-			"intent_help",
-			"intent_disarm",
-			"intent_grab",
-			"intent_harm",
-			"intent_none"
 		),
 		UI_ICON_INTERACTION = list(
 			"act_resist",

@@ -3,7 +3,6 @@ Targeted spells (with the exception of dumbfire) select from all the mobs in the
 Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are explained in setup.dm
 */
 
-
 /spell/targeted //can mean aoe for mobs (limited/unlimited number) or one target mob
 	var/max_targets = 1 //leave 0 for unlimited targets in range, more for limited number of casts (can all target one guy, depends on target_ignore_prev) in range
 	var/target_ignore_prev = 1 //only important if max_targets > 1, affects if the spell can be cast multiple times at one person from one cast
@@ -62,10 +61,6 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 			for(var/mob/living/M in starting_targets)
 				if(!(spell_flags & INCLUDEUSER) && M == user)
 					continue
-				if((spell_flags & NOFACTION) && user.faction == M.faction)
-					continue
-				if((spell_flags & NONONFACTION) && user.faction != M.faction)
-					continue
 				if(compatible_mobs && compatible_mobs.len)
 					if(!is_type_in_list(M, compatible_mobs)) continue
 				if(compatible_mobs && compatible_mobs.len && !is_type_in_list(M, compatible_mobs))
@@ -73,12 +68,7 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 				possible_targets += M
 
 			if(possible_targets.len)
-				if(spell_flags & SELECTABLE) //if we are allowed to choose. see setup.dm for details
-					var/mob/temp_target = input(user, "Choose the target for the spell.", "Targeting") as null|mob in possible_targets
-					if(temp_target)
-						targets += temp_target
-				else
-					targets += pick(possible_targets)
+				targets += pick(possible_targets)
 			//Adds a safety check post-input to make sure those targets are actually in range.
 
 
@@ -98,28 +88,15 @@ Targeted spells have two useful flags: INCLUDEUSER and SELECTABLE. These are exp
 				continue
 			possible_targets += target
 
-		if(spell_flags & SELECTABLE)
-			for(var/i = 1; i<=max_targets, i++)
-				if(!possible_targets.len)
-					break
-				var/mob/M = input(user, "Choose the target for the spell.", "Targeting") as null|mob in possible_targets
-				if(!M)
-					break
-				if(range != -2)
-					if(!(M in view_or_range(range, holder, selection_type)))
-						continue
-				targets += M
-				possible_targets -= M
-		else
-			for(var/i=1,i<=max_targets,i++)
-				if(!possible_targets.len)
-					break
-				if(target_ignore_prev)
-					var/target = pick(possible_targets)
-					possible_targets -= target
-					targets += target
-				else
-					targets += pick(possible_targets)
+		for(var/i=1,i<=max_targets,i++)
+			if(!possible_targets.len)
+				break
+			if(target_ignore_prev)
+				var/target = pick(possible_targets)
+				possible_targets -= target
+				targets += target
+			else
+				targets += pick(possible_targets)
 
 	if(!(spell_flags & INCLUDEUSER) && (user in targets))
 		targets -= user

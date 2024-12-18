@@ -104,10 +104,13 @@
 	queue_icon_update()
 
 /obj/item/proc/update_name()
+	var/list/new_name = list(base_name || initial(name))
 	if(material_alteration & MAT_FLAG_ALTERATION_NAME)
-		SetName("[material.adjective_name] [base_name || initial(name)]")
-	else
-		SetName(base_name || initial(name))
+		new_name.Insert(1, material.adjective_name)
+	if(name_prefix)
+		new_name.Insert(1, name_prefix)
+	if(length(new_name))
+		SetName(jointext(new_name, " "))
 
 /obj/item/get_matter_amount_modifier()
 	. = ..()

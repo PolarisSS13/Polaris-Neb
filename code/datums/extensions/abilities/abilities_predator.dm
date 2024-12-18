@@ -6,7 +6,7 @@
 
 /datum/ability_handler/predator/do_melee_invocation(mob/user, atom/target)
 	// Nibbles
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		if(isliving(target))
 			return handle_dismemberment(user, target)
 		if(istype(target, /obj/item/organ))

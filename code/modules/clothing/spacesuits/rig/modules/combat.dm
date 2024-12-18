@@ -320,7 +320,7 @@
 	if(!check() || !gun)
 		return 0
 
-	if(holder.wearer.a_intent == I_HURT || !target.Adjacent(holder.wearer))
+	if(holder.wearer.check_intent(I_FLAG_HARM) || !target.Adjacent(holder.wearer))
 		gun.Fire(target,holder.wearer)
 		return 1
 	else

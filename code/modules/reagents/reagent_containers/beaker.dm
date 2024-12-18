@@ -65,6 +65,7 @@
 	take_damage(rand(4,8))
 
 /obj/item/chems/glass/beaker/large
+	name_prefix = "large"
 	name = "beaker" // see update_name override below
 	desc = "A large beaker."
 	icon = 'icons/obj/items/chem/beakers/large.dmi'
@@ -73,10 +74,6 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = @"[5,10,15,25,30,60,120]"
 	w_class = ITEM_SIZE_LARGE
-
-/obj/item/chems/glass/beaker/large/update_name()
-	. = ..()
-	SetName("large [name]") // large glass beaker, not glass large beaker
 
 /obj/item/chems/glass/beaker/bowl
 	name = "mixing bowl"

@@ -32,7 +32,7 @@
 			to_chat(user, "<span class='notice'>[rockets.len] / [max_rockets] rockets.</span>")
 			return TRUE
 		else
-			to_chat(usr, "<span class='warning'>\The [src] cannot hold more rockets.</span>")
+			to_chat(user, "<span class='warning'>\The [src] cannot hold more rockets.</span>")
 			return TRUE
 	return ..()
 

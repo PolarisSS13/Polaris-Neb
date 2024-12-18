@@ -110,7 +110,7 @@
 		if(emagged)
 			emag_play()
 		else if(!current_track)
-			to_chat(usr, "No track selected.")
+			to_chat(user, "No track selected.")
 		else
 			StartPlaying()
 		return TOPIC_REFRESH

@@ -914,8 +914,8 @@
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 	power_draw_per_use = 20
 
-/obj/item/integrated_circuit/input/obj_scanner/attackby_react(var/atom/A,var/mob/user,intent)
-	if(intent!=I_HELP)
+/obj/item/integrated_circuit/input/obj_scanner/attackby_react(var/atom/A,var/mob/user, decl/intent/intent)
+	if(istype(intent) && !(intent.intent_flags & I_FLAG_HELP))
 		return FALSE
 	if(!check_then_do_work())
 		return FALSE
@@ -1139,7 +1139,7 @@
 		"on read" = IC_PINTYPE_PULSE_OUT
 	)
 
-/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/user, intent)
+/obj/item/integrated_circuit/input/data_card_reader/attackby_react(obj/item/I, mob/user, decl/intent/intent)
 	var/obj/item/card/data/card = I
 	var/write_mode = get_pin_data(IC_INPUT, 3)
 	if(istype(card))

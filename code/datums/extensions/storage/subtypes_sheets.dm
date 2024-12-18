@@ -44,10 +44,10 @@
 			inserted = 1
 			break
 	if(!inserted || !S.amount)
-		usr.drop_from_inventory(S, holder)
+		user.drop_from_inventory(S, holder)
 		if(!S.amount)
 			qdel(S)
-	prepare_ui(usr)
+	prepare_ui(user)
 	if(isatom(holder))
 		var/atom/atom_holder = holder
 		atom_holder.update_icon()
@@ -64,8 +64,8 @@
 		if(!S.amount)
 			qdel(S) // todo: there's probably something missing here
 	prepare_ui()
-	if(usr.active_storage)
-		usr.active_storage.show_to(usr)
+	if(user.active_storage)
+		user.active_storage.show_to(user)
 	if(isatom(holder))
 		var/atom/atom_holder = holder
 		atom_holder.update_icon()

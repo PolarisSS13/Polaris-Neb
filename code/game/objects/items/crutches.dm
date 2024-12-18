@@ -53,7 +53,7 @@
 	padding_color = COLOR_GRAY20
 
 /obj/item/crutch/wooden
-	material = /decl/material/solid/organic/wood // oak
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/crutch/wooden/padded
 	padding_material = /decl/material/solid/organic/leather

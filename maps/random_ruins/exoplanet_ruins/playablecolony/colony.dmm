@@ -455,7 +455,7 @@
 /area/map_template/colony/command)
 "bl" = (
 /obj/structure/curtain/black,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/map_template/colony/command)
 "bm" = (
 /obj/machinery/door/firedoor,
@@ -1466,7 +1466,7 @@
 /area/map_template/colony)
 "ds" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "dt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -1559,7 +1559,7 @@
 /obj/item/clothing/head/cowboy_hat,
 /obj/item/clothing/head/cowboy_hat,
 /obj/item/clothing/suit/det_trench,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "dE" = (
 /obj/machinery/door/firedoor,
@@ -1635,7 +1635,7 @@
 /area/map_template/colony/surgery)
 "dM" = (
 /obj/structure/curtain/black,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/map_template/colony/dorms)
 "dN" = (
 /obj/structure/table/steel_reinforced,
@@ -1809,7 +1809,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "ee" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1947,7 +1947,7 @@
 	dir = 8;
 	icon_state = "bulb1"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "er" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -2228,7 +2228,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "eR" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -2256,7 +2256,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "eU" = (
 /obj/machinery/atmospherics/pipe/manifold/visible{
@@ -2377,7 +2377,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/map_template/colony/engineering)
 "fe" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/wood/reinforced,
 /obj/structure/flora/pottedplant/smallcactus{
 	pixel_y = 12
 	},
@@ -2387,7 +2387,7 @@
 /obj/item/chems/condiment/small/peppermill,
 /obj/item/chems/condiment/small/saltshaker,
 /obj/item/chems/condiment/small/sugar,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "ff" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -2422,7 +2422,7 @@
 	dir = 8;
 	icon_state = "bulb1"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "fk" = (
 /obj/machinery/alarm{
@@ -2437,7 +2437,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fl" = (
 /obj/machinery/meter,
@@ -2474,7 +2474,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fo" = (
 /obj/structure/bed/chair/comfy/brown{
@@ -2486,7 +2486,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fp" = (
 /obj/structure/cable{
@@ -2557,7 +2557,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2701,10 +2701,10 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fI" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/wood/reinforced,
 /obj/item/box/fancy/donut,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -2712,7 +2712,7 @@
 /obj/item/chems/condiment/small/peppermill,
 /obj/item/chems/condiment/small/saltshaker,
 /obj/item/chems/condiment/small/sugar,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2734,7 +2734,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fL" = (
 /obj/machinery/door/firedoor,
@@ -2973,7 +2973,7 @@
 	dir = 8
 	},
 /obj/item/chems/drinks/pitcher,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "gc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3273,7 +3273,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "gB" = (
 /obj/effect/floor_decal/techfloor{
@@ -3349,7 +3349,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "gJ" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -3487,7 +3487,7 @@
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "gZ" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
@@ -3679,7 +3679,7 @@
 "hs" = (
 /obj/item/stool/bar/padded,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "ht" = (
 /obj/effect/floor_decal/techfloor,
@@ -3730,7 +3730,7 @@
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "hy" = (
 /obj/machinery/alarm{
@@ -3740,7 +3740,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "hz" = (
 /obj/machinery/vending/cola{
@@ -3750,7 +3750,7 @@
 	},
 /obj/machinery/light,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "hA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3802,7 +3802,7 @@
 	name = "hacked Getmore Chocolate Corp"
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "hE" = (
 /obj/machinery/vending/fitness{
@@ -3838,7 +3838,7 @@
 /area/map_template/colony/messhall)
 "hI" = (
 /obj/item/stool/bar/padded,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "hJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3855,7 +3855,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/stool/bar/padded,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "hL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3937,7 +3937,7 @@
 /obj/structure/casino/roulette_chart{
 	density = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "hT" = (
 /obj/machinery/power/apc{
@@ -3948,14 +3948,14 @@
 /obj/structure/cable,
 /obj/item/stool/bar/padded,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "hU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "hV" = (
 /obj/machinery/door/firedoor,
@@ -4085,7 +4085,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/glass/civilian,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/map_template/colony/commons)
 "ih" = (
 /obj/machinery/door/firedoor,
@@ -4137,7 +4137,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "in" = (
 /obj/effect/floor_decal/techfloor{
@@ -4472,14 +4472,14 @@
 "iO" = (
 /obj/structure/table/gamblingtable,
 /obj/item/ashtray/glass,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "iP" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/item/stool/bar/padded,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "iQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4502,7 +4502,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "iS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4605,14 +4605,14 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jc" = (
 /obj/structure/sign/warning/smoking{
 	pixel_y = -28
 	},
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jd" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -4633,7 +4633,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jf" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -4699,7 +4699,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jk" = (
 /obj/structure/hygiene/toilet{
@@ -4725,7 +4725,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jm" = (
 /obj/effect/floor_decal/techfloor,
@@ -4797,7 +4797,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -4809,7 +4809,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "ju" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4817,7 +4817,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4825,7 +4825,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4927,7 +4927,7 @@
 	dir = 1;
 	pixel_y = -30
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jF" = (
 /obj/machinery/door/airlock/civilian,
@@ -4937,7 +4937,7 @@
 /obj/structure/table/gamblingtable,
 /obj/machinery/light,
 /obj/effect/floor_decal/spline/fancy/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "jH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5200,7 +5200,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/commons)
 "kb" = (
 /obj/effect/floor_decal/techfloor{
@@ -5556,7 +5556,7 @@
 /obj/item/clothing/webbing/drop_pouches/brown,
 /obj/item/clothing/webbing/drop_pouches/white,
 /obj/item/clothing/webbing/drop_pouches/white,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "kI" = (
 /obj/machinery/door/airlock/hatch,
@@ -6711,7 +6711,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/colony)
 "mS" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/wood/reinforced,
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
@@ -7894,7 +7894,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "GU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8003,7 +8003,7 @@
 /area/map_template/colony/hydroponics)
 "Nh" = (
 /obj/structure/curtain/black,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/map_template/colony/dorms)
 "Og" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,

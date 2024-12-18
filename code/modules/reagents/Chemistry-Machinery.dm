@@ -254,7 +254,7 @@
 		spawn()
 			has_sprites += user.client
 			for(var/i = 1 to MAX_PILL_SPRITE)
-				send_rsc(usr, icon('icons/obj/items/chem/pill.dmi', "pill" + num2text(i)), "pill[i].png")
+				send_rsc(user, icon('icons/obj/items/chem/pill.dmi', "pill" + num2text(i)), "pill[i].png")
 	var/dat = list()
 	dat += "<TITLE>[name]</TITLE>"
 	dat += "[name] Menu:"

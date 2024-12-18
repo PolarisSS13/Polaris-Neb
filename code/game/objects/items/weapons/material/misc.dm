@@ -67,7 +67,7 @@
 	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("attacked", "bashed")
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/cross/silver
 	material = /decl/material/solid/metal/silver

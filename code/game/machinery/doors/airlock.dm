@@ -783,7 +783,7 @@ About the new airlock wires panel:
 					close(1)
 			return TRUE
 
-	if(istype(C, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.a_intent == I_HURT))
+	if(istype(C, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.check_intent(I_FLAG_HARM)))
 		var/obj/item/bladed/axe/fire/F = C
 		if(F.is_held_twohanded(user))
 			if(locked)
@@ -820,7 +820,7 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/bash(obj/item/weapon, mob/user)
 	//if door is unbroken, hit with fire axe using harm intent
-	if (istype(weapon, /obj/item/bladed/axe/fire) && !(stat & BROKEN) && user.a_intent == I_HURT && weapon.user_can_attack_with(user))
+	if (istype(weapon, /obj/item/bladed/axe/fire) && !(stat & BROKEN) && user.check_intent(I_FLAG_HARM) && weapon.user_can_attack_with(user))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		var/obj/item/bladed/axe/fire/F = weapon
 		if (F.is_held_twohanded())

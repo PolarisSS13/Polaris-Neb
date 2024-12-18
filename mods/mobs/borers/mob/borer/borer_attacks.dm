@@ -4,7 +4,7 @@
 	if(.)
 		return
 
-	if(!isliving(A) || a_intent != I_GRAB)
+	if(!isliving(A) || !check_intent(I_FLAG_GRAB))
 		return FALSE
 
 	if(host || !can_use_borer_ability(requires_host_value = FALSE, check_last_special = FALSE))

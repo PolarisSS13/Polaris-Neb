@@ -74,7 +74,7 @@
 		add_overlay(I)
 
 /obj/structure/working/loom/try_unload_material(mob/user)
-	if(user.a_intent == I_GRAB)
+	if(user.check_intent(I_FLAG_GRAB))
 		if(loaded_thread)
 			to_chat(user, SPAN_NOTICE("You remove \the [loaded_thread] from \the [src]."))
 			loaded_thread.dropInto(loc)

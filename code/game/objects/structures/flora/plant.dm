@@ -70,7 +70,7 @@
 /obj/structure/flora/plant/on_update_icon()
 	. = ..()
 	icon_state = "blank"
-	color = null
+	reset_color()
 	set_overlays(plant.get_appearance(dead = dead, growth_stage = growth_stage, can_harvest = !!harvestable))
 
 /obj/structure/flora/plant/attackby(obj/item/O, mob/user)
@@ -81,7 +81,7 @@
 		return TRUE
 
 	// Hydrotray boilerplate for taking samples.
-	if(O.edge && O.w_class < ITEM_SIZE_NORMAL && user.a_intent != I_HURT)
+	if(O.edge && O.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(sampled)
 			to_chat(user, SPAN_WARNING("There's no bits that can be used for a sampling left."))
 			return TRUE

@@ -143,10 +143,11 @@ var/global/datum/mil_branches/mil_branches = new()
 				. += spawn_rank
 
 
+// todo: should this be on /datum/map? this will need heavy reworking if we promote submaps from second to first class map status anyway
 /**
  *  Populate the global branches list from global.using_map
  */
-/hook/startup/proc/populate_branches()
+/proc/populate_branches()
 	if(!(global.using_map.flags & MAP_HAS_BRANCH) && !(global.using_map.flags & MAP_HAS_RANK))
 		mil_branches.branches  = null
 		mil_branches.spawn_branches_ = null

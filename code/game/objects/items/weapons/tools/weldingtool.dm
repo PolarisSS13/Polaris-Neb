@@ -345,7 +345,7 @@
 
 /obj/item/weldingtool/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	var/obj/item/organ/external/affecting = istype(target) && GET_EXTERNAL_ORGAN(target, user?.get_target_zone())
-	if(affecting && user.a_intent == I_HELP)
+	if(affecting && user.check_intent(I_FLAG_HELP))
 		if(!affecting.is_robotic())
 			to_chat(user, SPAN_WARNING("\The [target]'s [affecting.name] is not robotic. \The [src] cannot repair it."))
 		else if(BP_IS_BRITTLE(affecting))
@@ -423,7 +423,7 @@
 		return TRUE
 	if(handle_eaten_by_mob(user, O) != EATEN_INVALID)
 		return TRUE
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		if(standard_splash_mob(user, O))
 			return TRUE
 		if(reagents && reagents.total_volume)

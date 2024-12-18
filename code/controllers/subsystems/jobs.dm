@@ -45,9 +45,9 @@ SUBSYSTEM_DEF(jobs)
 	// Create abstract submap archetype jobs for use in prefs, etc.
 	archetype_job_datums.Cut()
 
-	var/list/submap_archetypes = decls_repository.get_decls_of_subtype(/decl/submap_archetype)
-	for(var/atype in submap_archetypes)
-		var/decl/submap_archetype/arch = submap_archetypes[atype]
+	var/list/submap_archetypes = list()
+	for(var/decl/submap_archetype/arch as anything in global.using_map.get_available_submap_archetypes())
+		submap_archetypes += arch
 		for(var/jobtype in arch.crew_jobs)
 			var/datum/job/job = get_by_path(jobtype)
 			if(!job && ispath(jobtype, /datum/job/submap))
@@ -57,7 +57,8 @@ SUBSYSTEM_DEF(jobs)
 				job = get_by_path(jobtype)
 			if(job)
 				archetype_job_datums |= job
-	submap_archetypes = sortTim(submap_archetypes, /proc/cmp_submap_archetype_asc, TRUE)
+	if(length(submap_archetypes))
+		submap_archetypes = sortTim(submap_archetypes, /proc/cmp_submap_archetype_asc)
 
 	// Load job configuration (is this even used anymore?)
 	if(job_config_file && get_config_value(/decl/config/toggle/load_jobs_from_txt))
@@ -90,16 +91,15 @@ SUBSYSTEM_DEF(jobs)
 		primary_job_datums = sortTim(primary_job_datums, /proc/cmp_job_desc)
 		job_lists_by_map_name = list("[global.using_map.full_name]" = list("jobs" = primary_job_datums, "default_to_hidden" = FALSE))
 
-	for(var/atype in submap_archetypes)
+	for(var/decl/submap_archetype/arch as anything in submap_archetypes)
 		var/list/submap_job_datums
-		var/decl/submap_archetype/arch = submap_archetypes[atype]
 		for(var/jobtype in arch.crew_jobs)
 			var/datum/job/job = get_by_path(jobtype)
 			if(job)
 				LAZYADD(submap_job_datums, job)
 		if(LAZYLEN(submap_job_datums))
 			submap_job_datums = sortTim(submap_job_datums, /proc/cmp_job_desc)
-			job_lists_by_map_name[arch.descriptor] = list("jobs" = submap_job_datums, "default_to_hidden" = arch.default_to_hidden)
+			job_lists_by_map_name[arch.name] = list("jobs" = submap_job_datums, "default_to_hidden" = arch.default_to_hidden)
 
 	// Update global map blacklists and whitelists.
 	for(var/mappath in global.all_maps)

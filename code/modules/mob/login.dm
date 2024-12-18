@@ -59,6 +59,7 @@
 
 /mob/Login()
 
+	client.clear_mouse_pointers() // in case we are transferring mobs.
 	global.player_list |= src
 	update_Login_details()
 	world.update_status()

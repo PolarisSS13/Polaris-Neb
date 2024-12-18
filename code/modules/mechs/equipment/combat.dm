@@ -255,14 +255,14 @@
 	if (!isliving(A))
 		return ..()
 
-	if (user.a_intent == I_HURT)
+	if (user.check_intent(I_FLAG_HARM))
 		user.visible_message(SPAN_DANGER("\The [user] swings \the [src] at \the [A]!"))
 		playsound(user, 'sound/mecha/mechmove03.ogg', 35, 1)
 		return ..()
 
 /obj/item/tool/machete/mech/attack_self(mob/living/user)
 	. = ..()
-	if (user.a_intent != I_HURT)
+	if (!user.check_intent(I_FLAG_HARM))
 		return
 	var/obj/item/mech_equipment/mounted_system/melee/machete/MC = loc
 	if (istype(MC))
@@ -308,7 +308,7 @@
 
 /obj/item/mech_equipment/ballistic_shield/afterattack(atom/target, mob/living/user, inrange, params)
 	. = ..()
-	if (. && user.a_intent == I_HURT && (last_push + 1.6 SECONDS < world.time))
+	if (. && user.check_intent(I_FLAG_HARM) && (last_push + 1.6 SECONDS < world.time))
 		owner.visible_message(SPAN_WARNING("\The [owner] retracts \the [src], preparing to push with it!"), blind_message = SPAN_WARNING("You hear the whine of hydraulics and feel a rush of air!"))
 		owner.setClickCooldown(0.7 SECONDS)
 		last_push = world.time

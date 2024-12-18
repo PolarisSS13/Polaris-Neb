@@ -94,7 +94,7 @@
 
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
-		if(user.a_intent == I_HELP) //don't shoot if we're on help intent
+		if(user.check_intent(I_FLAG_HELP)) //don't shoot if we're on help intent
 			to_chat(user, SPAN_WARNING("You refrain from firing \the [src] as your intent is set to help."))
 			return
 

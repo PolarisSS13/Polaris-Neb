@@ -22,7 +22,7 @@
 	desc = "An alien facemask with chunky gas filters and a breathing valve."
 	filter_water = TRUE
 	icon = 'mods/species/ascent/icons/clothing/mask.dmi'
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/clothing/mask_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/clothing/mask_gyne.dmi'
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
 	filtered_gases = list(
 		/decl/material/solid/phoron,
@@ -39,9 +39,7 @@
 	desc = "A set of powerful gripping claws."
 	icon = 'mods/species/ascent/icons/magboots/boots.dmi'
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
-	sprite_sheets = list(
-		BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/magboots/boots_gyne.dmi'
-	)
+	_gyne_onmob_icon = 'mods/species/ascent/icons/magboots/boots_gyne.dmi'
 
 /obj/item/clothing/jumpsuit/ascent
 	name = "mantid undersuit"
@@ -49,9 +47,7 @@
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
 	icon = 'mods/species/ascent/icons/clothing/under.dmi'
 	color = COLOR_DARK_GUNMETAL
-	sprite_sheets = list(
-		BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/clothing/under_gyne.dmi'
-	)
+	_gyne_onmob_icon = 'mods/species/ascent/icons/clothing/under_gyne.dmi'
 
 /obj/item/clothing/suit/ascent
 	name = "mantid gear harness"
@@ -59,7 +55,7 @@
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
 	icon_state = ICON_STATE_WORLD
 	icon = 'mods/species/ascent/icons/clothing/under_harness.dmi'
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/clothing/under_harness_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/clothing/under_harness_gyne.dmi'
 	body_parts_covered = 0
 	slot_flags = SLOT_OVER_BODY | SLOT_LOWER_BODY
 	storage = /datum/storage/pockets/suit

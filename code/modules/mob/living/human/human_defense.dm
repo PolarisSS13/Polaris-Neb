@@ -154,7 +154,7 @@ meteor_act
 
 	var/blocked = get_blocked_ratio(hit_zone, I.atom_damage_type, I.damage_flags(), I.armor_penetration, I.get_attack_force(user))
 	// Handle striking to cripple.
-	if(user.a_intent == I_DISARM)
+	if(user.check_intent(I_FLAG_DISARM))
 		effective_force *= 0.66 //reduced effective force...
 		if(!..(I, user, effective_force, hit_zone))
 			return 0

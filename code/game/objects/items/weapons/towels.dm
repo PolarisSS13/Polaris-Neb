@@ -44,7 +44,7 @@
 			STOP_PROCESSING(SSobj, src)
 
 /obj/item/towel/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	var/reagent_space = reagents.maximum_volume - reagents.total_volume
@@ -62,10 +62,10 @@
 	return TRUE
 
 /obj/item/towel/attack_self(mob/user)
-	if(user.a_intent == I_GRAB)
+	if(user.check_intent(I_FLAG_GRAB))
 		lay_out()
 		return TRUE
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return use_on_mob(user, user)
 	return ..()
 

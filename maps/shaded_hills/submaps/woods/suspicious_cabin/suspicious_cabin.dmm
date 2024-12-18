@@ -28,7 +28,7 @@
 /turf/floor/wood/walnut,
 /area/template_noop)
 "q" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/glass/handmade/cup/wood,
 /turf/floor/wood/walnut,
 /area/template_noop)
@@ -42,7 +42,7 @@
 /turf/floor/path/basalt,
 /area/template_noop)
 "t" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/bladed/knife,
 /turf/floor/path/basalt,
 /area/template_noop)
@@ -69,7 +69,7 @@
 /turf/floor/wood/walnut,
 /area/template_noop)
 "E" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/glass/handmade/teapot,
 /turf/floor/wood/walnut,
 /area/template_noop)
@@ -78,7 +78,7 @@
 /turf/floor/path/basalt,
 /area/template_noop)
 "J" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/food/grown/potato,
 /obj/item/chems/cooking_vessel/pot/iron,
 /turf/floor/path/basalt,
@@ -104,11 +104,11 @@
 /turf/floor/path/basalt,
 /area/template_noop)
 "R" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /turf/floor/wood/walnut,
 /area/template_noop)
 "S" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/glass/handmade/bowl/wood,
 /obj/item/chems/glass/handmade/bowl/wood,
 /obj/item/chems/glass/handmade/cup/wood,

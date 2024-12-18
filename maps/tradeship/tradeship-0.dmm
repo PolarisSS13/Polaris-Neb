@@ -33,12 +33,12 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "ae" = (
 /obj/effect/decal/cleanable/generic,
 /obj/item/stool/wood,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "af" = (
 /obj/structure/disposalpipe/up,
@@ -1012,7 +1012,7 @@
 /turf/floor,
 /area/ship/trade/aft_port_underside_maint)
 "en" = (
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "eu" = (
 /obj/structure/window/basic,
@@ -1074,8 +1074,8 @@
 /area/ship/trade/disused)
 "hc" = (
 /obj/item/radio,
-/obj/structure/table/woodentable/walnut,
-/turf/floor/wood/walnut,
+/obj/structure/table/laminate/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "hf" = (
 /obj/structure/lattice,
@@ -1083,7 +1083,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "hg" = (
 /obj/machinery/door/airlock/hatch/autoname/general,
@@ -1122,7 +1122,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "jk" = (
 /obj/item/mollusc/barnacle{
@@ -1773,7 +1773,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "II" = (
 /obj/structure/stairs/long/west,
@@ -1861,7 +1861,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/rainbow,
 /obj/structure/curtain/open/bed,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "LH" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2017,9 +2017,9 @@
 /turf/floor,
 /area/ship/trade/aft_starboard_underside_maint)
 "Qh" = (
-/obj/structure/table/woodentable/mahogany,
+/obj/structure/table/laminate/mahogany,
 /obj/item/cell/crap/empty,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "Qv" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2121,7 +2121,7 @@
 /area/ship/trade/loading_bay)
 "VT" = (
 /obj/machinery/hologram/holopad/longrange,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ship/trade/disused)
 "Xe" = (
 /turf/wall,

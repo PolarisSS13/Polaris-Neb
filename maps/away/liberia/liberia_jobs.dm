@@ -1,6 +1,6 @@
 // Submap datum and archetype.
 /decl/submap_archetype/liberia
-	descriptor = "merchant ship"
+	name      = "merchant ship"
 	crew_jobs = list(
 		/datum/job/submap/merchant
 	)

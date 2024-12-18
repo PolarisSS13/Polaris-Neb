@@ -503,7 +503,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 // Called when using the shredding behavior.
 /decl/species/proc/can_shred(var/mob/living/human/H, var/ignore_intent, var/ignore_antag)
 
-	if((!ignore_intent && H.a_intent != I_HURT) || H.pulling_punches)
+	if((!ignore_intent && !H.check_intent(I_FLAG_HARM)) || H.pulling_punches)
 		return 0
 
 	if(!ignore_antag && H.mind && !player_is_antag(H.mind))
@@ -628,7 +628,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	var/skill_mod = 10 * attacker.get_skill_difference(SKILL_COMBAT, target)
 	var/state_mod = attacker.melee_accuracy_mods() - target.melee_accuracy_mods()
 	var/push_mod = min(max(1 + attacker.get_skill_difference(SKILL_COMBAT, target), 1), 3)
-	if(target.a_intent == I_HELP)
+	if(target.check_intent(I_FLAG_HELP))
 		state_mod -= 30
 	//Handle unintended consequences
 	for(var/obj/item/I in holding)

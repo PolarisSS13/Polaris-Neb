@@ -132,18 +132,18 @@
 /obj/abstract/landmark/costume/holiday_priest/make_costumes()
 	new /obj/item/clothing/suit/holidaypriest(loc)
 
-/obj/abstract/landmark/costume/marisawizard/fake/make_costumes()
-	new /obj/item/clothing/head/wizard/marisa/fake(loc)
-	new/obj/item/clothing/suit/wizrobe/marisa/fake(loc)
+/obj/abstract/landmark/costume/marisawizard/make_costumes()
+	new /obj/item/clothing/head/wizard/marisa(loc)
+	new/obj/item/clothing/suit/wizrobe/marisa(loc)
 
 /obj/abstract/landmark/costume/cutewitch/make_costumes()
 	new /obj/item/clothing/dress/sun(loc)
 	new /obj/item/clothing/head/witchwig(loc)
 	new /obj/item/staff/broom(loc)
 
-/obj/abstract/landmark/costume/fakewizard/make_costumes()
-	new /obj/item/clothing/suit/wizrobe/fake(loc)
-	new /obj/item/clothing/head/wizard/fake(loc)
+/obj/abstract/landmark/costume/wizard/make_costumes()
+	new /obj/item/clothing/suit/wizrobe(loc)
+	new /obj/item/clothing/head/wizard/beard(loc)
 	new /obj/item/staff/(loc)
 
 /obj/abstract/landmark/costume/sexyclown/make_costumes()

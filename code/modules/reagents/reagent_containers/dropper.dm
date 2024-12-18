@@ -30,7 +30,7 @@
 
 		var/trans = 0
 		if(ismob(target))
-			if(user.a_intent == I_HELP)
+			if(user.check_intent(I_FLAG_HELP))
 				return
 
 			var/time = 20 //2/3rds the time of a syringe

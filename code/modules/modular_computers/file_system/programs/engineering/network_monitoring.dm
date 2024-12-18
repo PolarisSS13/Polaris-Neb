@@ -119,7 +119,7 @@
 			return TOPIC_HANDLED
 		var/new_roles = global.all_mainframe_roles - M.roles
 		if(!length(new_roles))
-			to_chat(usr, SPAN_WARNING("This server already has all possible roles enabled."))
+			to_chat(user, SPAN_WARNING("This server already has all possible roles enabled."))
 			return TOPIC_HANDLED
 		var/role = input(user,"What role to enable on this server?") as null|anything in new_roles
 		if(role && CanUseTopic(user, state))
@@ -132,7 +132,7 @@
 		if(!istype(M))
 			return TOPIC_HANDLED
 		if(!length(M.roles))
-			to_chat(usr, SPAN_WARNING("This server has no enabled roles to remove."))
+			to_chat(user, SPAN_WARNING("This server has no enabled roles to remove."))
 			return TOPIC_HANDLED
 		var/role = input(user,"What role to disable on this server?") as null|anything in M.roles
 		if(role && CanUseTopic(user, state))

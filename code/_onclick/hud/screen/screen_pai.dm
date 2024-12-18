@@ -68,7 +68,7 @@
 /obj/screen/pai/subsystems/handle_click(mob/user, params)
 	var/mob/living/silicon/pai/pai = user
 	if(istype(pai))
-		var/ss_name = input(usr, "Activates the given subsystem", "Subsystems", "") in pai.silicon_subsystems_by_name
+		var/ss_name = input(user, "Activates the given subsystem", "Subsystems", "") in pai.silicon_subsystems_by_name
 		if (!ss_name)
 			return
 		var/stat_silicon_subsystem/SSS = pai.silicon_subsystems_by_name[ss_name]

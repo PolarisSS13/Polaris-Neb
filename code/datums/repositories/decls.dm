@@ -149,6 +149,8 @@ var/global/repository/decls/decls_repository = new
 	var/uid
 	var/decl_flags = null // DECL_FLAG_ALLOW_ABSTRACT_INIT, DECL_FLAG_MANDATORY_UID
 	var/initialized = FALSE
+	/// General purpose sort value.
+	var/sort_order
 
 /decl/proc/Initialize()
 	SHOULD_CALL_PARENT(TRUE)

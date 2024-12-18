@@ -18,7 +18,7 @@
 	name = "card reader"
 	spawn_flags = 0
 
-/obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/user, intent)
+/obj/item/integrated_circuit/input/card_reader/attackby_react(obj/item/I, mob/user, decl/intent/intent)
 	var/obj/item/card/id/card = I.GetIdCard()
 	var/list/access = I.GetAccess()
 	var/json_access = json_encode(access)
@@ -65,7 +65,7 @@
 	// check if the signature is valid
 	if(!check_data_signature(signature, result))
 		return FALSE
-	
+
 	if(length(result) > 1)
 		result = cached_json_decode(result)
 	else

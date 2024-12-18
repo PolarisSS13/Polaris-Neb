@@ -13,7 +13,7 @@
 /turf/wall/titanium,
 /area/space)
 "ae" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/advdevice,
 /obj/item/flashlight/lamp,
 /turf/floor/carpet/red,
@@ -32,7 +32,7 @@
 /turf/floor/carpet/red,
 /area/unishi/library)
 "ai" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/flashlight/lamp,
 /turf/floor/carpet/red,
 /area/unishi/library)
@@ -960,18 +960,18 @@
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
 /obj/item/pen/fancy,
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/pen/fancy,
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cP" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/folder/yellow,
 /obj/item/pen/green,
 /turf/floor/tiled,
@@ -1023,7 +1023,7 @@
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -1033,7 +1033,7 @@
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -1042,7 +1042,7 @@
 /turf/floor/tiled,
 /area/unishi/meeting)
 "cZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -1982,7 +1982,7 @@
 /turf/floor/tiled/dark,
 /area/unishi/common)
 "fy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/snack,
 /obj/item/flashlight/lamp,
 /turf/floor/tiled/dark,
@@ -2008,7 +2008,7 @@
 /turf/floor/tiled/dark,
 /area/unishi/common)
 "fC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
 /obj/item/flashlight/lamp,
 /turf/floor/tiled/dark,

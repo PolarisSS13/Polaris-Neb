@@ -2525,27 +2525,27 @@
 "gp" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/rainbow,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gq" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gr" = (
 /obj/machinery/computer/modular{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gs" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gt" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gu" = (
 /obj/machinery/light{
@@ -2553,20 +2553,20 @@
 	icon_state = "tube1"
 	},
 /obj/machinery/media/jukebox,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gv" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	level = 2
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gx" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -2664,17 +2664,17 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gM" = (
 /mob/living/simple_animal/hostile/carp/shark,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gN" = (
 /obj/structure/closet/cabinet,
 /obj/item/clothing/shoes/jackboots,
 /obj/item/clothing/suit/armor/vest,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gO" = (
 /obj/structure/bed/chair/comfy/teal,
@@ -2682,23 +2682,23 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gP" = (
 /obj/structure/filing_cabinet/chestdrawer,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gQ" = (
 /obj/structure/table/gamblingtable,
 /obj/item/deck/cards,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gR" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gS" = (
 /obj/structure/cable/green{
@@ -2742,37 +2742,37 @@
 /turf/floor/tiled,
 /area/errant_pisces/dorms)
 "gZ" = (
-/obj/structure/table/woodentable,
-/turf/floor/wood,
+/obj/structure/table/laminate,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "ha" = (
 /obj/structure/closet,
 /obj/random/smokes,
 /obj/random/projectile,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
 /obj/item/flashlight/lamp,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hc" = (
 /obj/structure/closet,
 /obj/random/snack,
 /obj/random/tool,
 /obj/random/suit,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hd" = (
 /obj/structure/table/gamblingtable,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "he" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/ashtray,
 /obj/random/smokes,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hf" = (
 /obj/structure/cable/green{
@@ -2784,7 +2784,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hg" = (
 /obj/machinery/door/airlock,
@@ -2884,12 +2884,12 @@
 /area/errant_pisces/infirmary)
 "hr" = (
 /obj/machinery/door/airlock,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hs" = (
 /obj/abstract/landmark/corpse/bridgeofficer,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "ht" = (
 /obj/structure/bed/chair/comfy/brown,
@@ -2897,7 +2897,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hu" = (
 /obj/machinery/vending/coffee,
@@ -2916,14 +2916,14 @@
 /area/errant_pisces/dorms)
 "hx" = (
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hy" = (
 /obj/machinery/light{
 	dir = 1;
 	icon_state = "tube1"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hz" = (
 /obj/machinery/alarm{
@@ -2934,20 +2934,20 @@
 /obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hA" = (
 /obj/machinery/power/apc{
 	name = "south bump";
 	pixel_y = -24
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/smokes,
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/rooms)
 "hB" = (
 /obj/machinery/vending/games,
@@ -5670,14 +5670,14 @@
 /area/errant_pisces/bridge)
 "oV" = (
 /obj/machinery/door/airlock,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "oW" = (
 /obj/machinery/alarm{
 	alarm_id = "xenobio1_alarm";
 	pixel_y = 24
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "oX" = (
 /obj/machinery/light{
@@ -5689,13 +5689,13 @@
 /obj/random/ammo,
 /obj/random/cash,
 /obj/random/cash,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "oY" = (
 /obj/machinery/computer/modular{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "oZ" = (
 /obj/machinery/vending/medical{
@@ -5775,17 +5775,17 @@
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "pl" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pm" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pn" = (
-/obj/structure/table/woodentable,
-/turf/floor/wood,
+/obj/structure/table/laminate,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "po" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -5867,12 +5867,12 @@
 /area/errant_pisces/bridge)
 "pB" = (
 /obj/structure/bookcase/manuals/engineering,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/toy,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pD" = (
 /obj/machinery/light/small{
@@ -5933,7 +5933,7 @@
 /area/errant_pisces/bridge)
 "pN" = (
 /obj/structure/curtain/open/bed,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pO" = (
 /obj/structure/hygiene/shower{
@@ -6093,7 +6093,7 @@
 "qi" = (
 /obj/item/bedsheet/captain,
 /obj/structure/bed/padded,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/errant_pisces/bridge)
 "qj" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{

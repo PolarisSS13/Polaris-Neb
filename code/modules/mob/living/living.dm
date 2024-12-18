@@ -36,7 +36,7 @@
 	if(!..())
 		return 0
 
-	usr.visible_message("<b>[src]</b> points to <a href='byond://?src=\ref[A];look_at_me=1'>[A]</a>")
+	visible_message("<b>[src]</b> points to <a href='byond://?src=\ref[A];look_at_me=1'>[A]</a>")
 	return 1
 
 /*one proc, four uses
@@ -62,7 +62,7 @@ default behaviour is:
 		if(mob_bump_flag & context_flags)
 			return 1
 		else
-			return ((a_intent == I_HELP && swapped.a_intent == I_HELP) && swapped.can_move_mob(src, swapping, 1))
+			return ((check_intent(I_FLAG_HELP) && swapped.check_intent(I_FLAG_HELP)) && swapped.can_move_mob(src, swapping, 1))
 
 /mob/living/canface()
 	if(stat)
@@ -107,7 +107,7 @@ default behaviour is:
 			if(src.restrained())
 				now_pushing = 0
 				return
-			if(tmob.a_intent != I_HELP)
+			if(!tmob.check_intent(I_FLAG_HELP))
 				for(var/obj/item/shield/riot/shield in tmob.get_held_items())
 					if(prob(99))
 						now_pushing = 0
@@ -176,7 +176,7 @@ default behaviour is:
 	if(tmob.buckled || buckled || tmob.anchored)
 		return 0
 	//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
-	if(!(tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())))
+	if(!(tmob.mob_always_swap || (tmob.check_intent(I_FLAG_HELP) || tmob.restrained()) && (check_intent(I_FLAG_HELP) || src.restrained())))
 		return 0
 	if(!tmob.MayMove(src) || incapacitated())
 		return 0
@@ -657,7 +657,7 @@ default behaviour is:
 	if(length(selectable_postures) == 1)
 		selected_posture = selectable_postures[1]
 	else
-		selected_posture = input(usr, "Which posture do you wish to adopt?", "Change Posture", current_posture) as null|anything in selectable_postures
+		selected_posture = input(src, "Which posture do you wish to adopt?", "Change Posture", current_posture) as null|anything in selectable_postures
 		if(!selected_posture || length(get_available_postures()) <= 1 || incapacitated(INCAPACITATION_KNOCKOUT) || !canClick())
 			return
 		if(current_posture == selected_posture || !(selected_posture in get_selectable_postures()))
@@ -920,7 +920,7 @@ default behaviour is:
 	nutrition = clamp(amt, 0, get_max_nutrition())
 
 /mob/living/proc/get_nutrition()
-	return nutrition
+	return isSynthetic() ? get_max_nutrition() : nutrition
 
 /mob/living/proc/adjust_nutrition(var/amt)
 	set_nutrition(get_nutrition() + amt)
@@ -929,7 +929,7 @@ default behaviour is:
 	return 500
 
 /mob/living/proc/get_hydration(var/amt)
-	return hydration
+	return isSynthetic() ? get_max_hydration() : hydration
 
 /mob/living/proc/set_hydration(var/amt)
 	hydration = clamp(amt, 0, get_max_hydration())
@@ -1063,7 +1063,7 @@ default behaviour is:
 				if(user.mob_size >= exosuit.body.min_pilot_size && user.mob_size <= exosuit.body.max_pilot_size)
 					exosuit.enter(src)
 				else
-					to_chat(usr, SPAN_WARNING("You cannot pilot a exosuit of this size."))
+					to_chat(user, SPAN_WARNING("You cannot pilot a exosuit of this size."))
 				return TRUE
 	. = ..()
 
@@ -1359,11 +1359,6 @@ default behaviour is:
 			return FALSE
 	return TRUE
 
-//gets name from ID or PDA itself, ID inside PDA doesn't matter
-//Useful when player is being seen by other mobs
-/mob/living/proc/get_id_name(if_no_id = "Unknown")
-	return GetIdCard(exceptions = list(/obj/item/holder))?.registered_name || if_no_id
-
 /mob/living/get_default_temperature_threshold(threshold)
 	if(isSynthetic())
 		switch(threshold)
@@ -1486,7 +1481,7 @@ default behaviour is:
 
 /mob/living/proc/can_direct_mount(var/mob/user)
 	if((user.faction == faction || !faction) && can_buckle && istype(user) && !user.incapacitated() && user == buckled_mob)
-		if(client && a_intent != I_HELP)
+		if(client && !check_intent(I_FLAG_HELP))
 			return FALSE // do not Ratatouille your colleagues
 		// TODO: Piloting skillcheck for hands-free moving? Stupid but amusing
 		for(var/obj/item/grab/reins in user.get_held_items())
@@ -1933,3 +1928,6 @@ default behaviour is:
 			to_chat(user, SPAN_NOTICE("\The [src] can be milked into a bucket or other container."))
 		else
 			to_chat(user, SPAN_WARNING("\The [src] cannot currently be milked."))
+
+/mob/living/proc/get_age()
+	. = LAZYACCESS(appearance_descriptors, "age") || 30

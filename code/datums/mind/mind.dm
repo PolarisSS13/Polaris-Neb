@@ -78,7 +78,6 @@
 
 /datum/mind/proc/handle_mob_deletion(mob/living/deleted_mob)
 	if (current == deleted_mob)
-		current.spellremove()
 		current = null
 
 	if (original == deleted_mob)

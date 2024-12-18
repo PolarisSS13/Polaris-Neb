@@ -17,7 +17,7 @@
 	return !victim.isSynthetic() && (victim.stat == DEAD || victim.get_object_size() < body.get_object_size())
 
 /datum/mob_controller/passive/hunter/proc/try_attack_prey(mob/living/prey)
-	body.a_intent = I_HURT
+	body.set_intent(I_FLAG_HARM)
 	body.ClickOn(prey)
 
 /datum/mob_controller/passive/hunter/proc/consume_prey(mob/living/prey)

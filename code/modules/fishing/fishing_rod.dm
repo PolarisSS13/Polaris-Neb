@@ -5,7 +5,7 @@
 /obj/item/fishing_rod
 	name = "fishing rod"
 	desc = "A simple fishing rod with eyelets for stringing a line."
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	matter = null
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	icon = 'icons/obj/fishing_rod.dmi'
@@ -161,7 +161,7 @@
 	. = ..()
 
 /obj/item/fishing_rod/use_on_mob(mob/living/target, mob/living/user)
-	return user.a_intent != I_HURT ? FALSE : ..()
+	return !user.check_intent(I_FLAG_HARM) ? FALSE : ..()
 
 /obj/item/fishing_rod/proc/can_fish_in(mob/user, atom/target)
 	if(!isturf(target))
@@ -177,7 +177,7 @@
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	if(fishing_target)

@@ -5,7 +5,6 @@
 #include "mobs_vox.dm"
 #include "organs_vox.dm"
 #include "datum\accessories.dm"
-#include "datum\antagonism.dm"
 #include "datum\cultures_vox.dm"
 #include "datum\descriptors_vox.dm"
 #include "datum\factions_vox.dm"

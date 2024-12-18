@@ -35,7 +35,7 @@
 	name = "truss"
 	icon_state = "improvised"
 	secures_occupant = FALSE
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	parts_type = /obj/item/stack/material/plank
 
 /obj/structure/meat_hook/attack_hand(var/mob/user)

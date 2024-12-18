@@ -137,7 +137,7 @@
 	if(QDELETED(src) || get_worth() <= 1 || user.incapacitated() || loc != user)
 		return TRUE
 
-	var/amount = input(usr, "How many [cur.name] do you want to take? (0 to [get_worth() - 1])", "Take Money", 20) as num
+	var/amount = input(user, "How many [cur.name] do you want to take? (0 to [get_worth() - 1])", "Take Money", 20) as num
 	amount = round(clamp(amount, 0, floor(get_worth() - 1)))
 
 	if(!amount || QDELETED(src) || get_worth() <= 1 || user.incapacitated() || loc != user)

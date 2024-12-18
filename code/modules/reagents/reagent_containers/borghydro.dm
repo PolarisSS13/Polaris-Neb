@@ -100,14 +100,14 @@
 
 	return
 
-/obj/item/chems/borghypo/OnTopic(var/href, var/list/href_list)
+/obj/item/chems/borghypo/OnTopic(mob/user, href_list, datum/topic_state/state)
 	if(href_list["reagent_index"])
 		var/index = text2num(href_list["reagent_index"])
 		if(index > 0 && index <= reagent_ids.len)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = index
 			var/decl/material/R = reagent_ids[mode]
-			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[initial(R.name)]'.</span>")
+			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(R.name)]'.</span>")
 		return TOPIC_REFRESH
 
 /obj/item/chems/borghypo/examine(mob/user, distance)

@@ -3,11 +3,11 @@
 #include "../../../mods/content/xenobiology/_xenobiology.dme"
 
 /obj/abstract/submap_landmark/joinable_submap/unishi
-	name = "SRV Verne"
+	name      = "SRV Verne"
 	archetype = /decl/submap_archetype/derelict/unishi
 
 /decl/submap_archetype/derelict/unishi
-	descriptor = "derelict research vessel"
+	name      = "derelict research vessel"
 	crew_jobs = list(
 		/datum/job/submap/unishi_crew,
 		/datum/job/submap/unishi_researcher

@@ -72,10 +72,6 @@ var/global/next_duration_update = 0
 var/global/last_round_duration = 0
 var/global/round_start_time = 0
 
-/hook/roundstart/proc/start_timer()
-	round_start_time = world.time
-	return 1
-
 /proc/ticks2readable(tick_time)
 	var/hours = round(tick_time / (1 HOUR))
 	var/minutes = round((tick_time % (1 HOUR)) / (1 MINUTE))
@@ -108,10 +104,6 @@ var/global/round_start_time = 0
 	last_round_duration = "[hours]:[mins]"
 	next_duration_update = world.time + 1 MINUTES
 	return last_round_duration
-
-/hook/startup/proc/set_roundstart_hour()
-	roundstart_hour = rand(0, 23)
-	return TRUE
 
 var/global/midnight_rollovers = 0
 var/global/rollovercheck_last_timeofday = 0

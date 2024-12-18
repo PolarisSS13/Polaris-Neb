@@ -1,4 +1,5 @@
 /obj/item/bladed/polearm/spear/improvised
+	name_prefix    = "improvised"
 	material       = /decl/material/solid/glass
 	hilt_material  = /decl/material/solid/metal/steel
 	guard_material = /decl/material/solid/metal/copper
@@ -10,10 +11,6 @@
 	if(!force_binding_color)
 		force_binding_color = pick(global.cable_colors)
 	. = ..(ml, material_key, _hilt_mat, _guard_mat)
-
-/obj/item/bladed/polearm/spear/improvised/update_name()
-	. = ..()
-	SetName("improvised [name]")
 
 /obj/item/bladed/polearm/spear/improvised/get_guard_color()
 	return force_binding_color || ..()
@@ -34,7 +31,7 @@
 
 /obj/item/bladed/polearm/spear/improvised/steel
 	material            = /decl/material/solid/metal/steel
-	hilt_material       = /decl/material/solid/organic/wood
+	hilt_material       = /decl/material/solid/organic/wood/oak
 	force_binding_color = COLOR_GREEN
 
 /obj/item/bladed/polearm/spear/improvised/supermatter

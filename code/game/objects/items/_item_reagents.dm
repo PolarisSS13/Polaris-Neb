@@ -18,7 +18,7 @@
 	if(!istype(target))
 		return FALSE
 
-	if(user.a_intent == I_HELP)
+	if(user.check_intent(I_FLAG_HELP))
 		to_chat(user, SPAN_NOTICE("You can't splash people on help intent."))
 		return TRUE
 

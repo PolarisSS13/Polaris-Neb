@@ -272,7 +272,7 @@ var/global/list/flooring_cache = list()
 
 /decl/flooring/proc/handle_item_interaction(turf/floor/floor, mob/user, obj/item/item)
 
-	if(!istype(user) || !istype(item) || !istype(floor) || user.a_intent == I_HURT)
+	if(!istype(user) || !istype(item) || !istype(floor) || user.check_intent(I_FLAG_HARM))
 		return FALSE
 
 	if(!(IS_SCREWDRIVER(item) && (flooring_flags & TURF_REMOVE_SCREWDRIVER)) && floor.try_graffiti(user, item))
@@ -347,3 +347,6 @@ var/global/list/flooring_cache = list()
 
 /decl/flooring/proc/handle_environment_proc(turf/floor/target)
 	return PROCESS_KILL
+
+/decl/flooring/proc/handle_turf_digging(turf/floor/target)
+	return TRUE

@@ -694,37 +694,37 @@
 /turf/floor/plating,
 /area/lar_maria/atmos)
 "bV" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "bW" = (
 /obj/machinery/door/firedoor,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "bX" = (
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -25
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "bY" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "bZ" = (
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "ca" = (
 /obj/abstract/landmark/corpse/lar_maria/virologist,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cb" = (
 /obj/structure/closet/emcloset,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cc" = (
 /obj/machinery/light{
@@ -798,12 +798,12 @@
 /area/lar_maria/dorms)
 "cp" = (
 /obj/machinery/door/airlock,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cq" = (
 /obj/machinery/door/airlock,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cr" = (
 /obj/structure/bookcase,
@@ -854,35 +854,35 @@
 /turf/floor/plating,
 /area/lar_maria/atmos)
 "cD" = (
-/obj/structure/table/woodentable,
-/turf/floor/wood,
+/obj/structure/table/laminate,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/smokes,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/toy,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/glowsticks,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/smokes,
 /obj/random/drinkbottle,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cI" = (
 /obj/machinery/computer/modular{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cJ" = (
 /obj/structure/window/basic{
@@ -1009,32 +1009,32 @@
 /obj/structure/bed/chair/comfy/purple{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "cZ" = (
 /obj/abstract/landmark/corpse/lar_maria/test_subject,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "da" = (
 /obj/structure/bookcase/manuals/medical,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "db" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dc" = (
 /mob/living/simple_animal/hostile/lar_maria/guard/ranged,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "de" = (
 /obj/structure/bed/chair/comfy/brown{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "df" = (
 /obj/structure/closet,
@@ -1042,11 +1042,11 @@
 /obj/random/smokes,
 /obj/random/snack,
 /obj/random/snack,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dg" = (
 /obj/structure/bookcase/manuals/engineering,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dh" = (
 /obj/structure/window/basic,
@@ -1118,31 +1118,31 @@
 /area/lar_maria/atmos)
 "ds" = (
 /mob/living/simple_animal/hostile/lar_maria/virologist,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dt" = (
 /obj/structure/bed/padded,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "du" = (
 /obj/machinery/light,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dv" = (
 /obj/structure/closet,
 /obj/random/masks,
 /obj/random/accessory,
 /obj/random/smokes,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dw" = (
 /obj/random/closet,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dx" = (
 /obj/structure/bed/padded,
 /obj/random/plushie,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dy" = (
 /obj/structure/window/basic,
@@ -1212,7 +1212,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dJ" = (
 /obj/structure/window/basic{
@@ -1316,18 +1316,18 @@
 "dX" = (
 /obj/structure/bed/padded,
 /obj/random/plushie/large,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dY" = (
 /obj/structure/closet,
 /obj/random/loot,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "dZ" = (
 /obj/structure/closet,
 /obj/random/shoes,
 /obj/random/snack,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "ea" = (
 /obj/structure/table,
@@ -1387,40 +1387,40 @@
 /area/lar_maria/library)
 "ei" = (
 /obj/structure/bed/chair/comfy/beige,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "ej" = (
 /obj/machinery/botany,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "ek" = (
 /obj/structure/bed/chair/comfy/brown,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "el" = (
 /obj/abstract/landmark/corpse/lar_maria/virologist_female,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "em" = (
 /obj/machinery/suit_cycler,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "en" = (
 /obj/structure/closet,
 /obj/random/loot,
 /obj/random/accessory,
 /obj/item/clothing/head/soft/zhp_cap,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "eo" = (
 /obj/structure/bed/chair/comfy/green,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "ep" = (
 /obj/structure/closet,
 /obj/random/accessory,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "eq" = (
 /turf/wall/r_wall,
@@ -1482,7 +1482,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "eC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
 /obj/item/pen/blue,
 /turf/floor/tiled,
@@ -1498,20 +1498,20 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "eF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/handcuffs,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "eG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/smokes,
 /obj/random/snack,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "eH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/beakers,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "eI" = (
 /obj/structure/hygiene/toilet,
@@ -1588,7 +1588,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "eU" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /turf/floor/tiled,
 /area/lar_maria/office)
 "eV" = (
@@ -1642,7 +1642,7 @@
 "fh" = (
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fi" = (
 /obj/machinery/alarm{
@@ -1650,7 +1650,7 @@
 	pixel_y = -25
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fj" = (
 /obj/machinery/light/small{
@@ -1812,31 +1812,31 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "fF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/cane/aluminium,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/clothing/head/soft/zhp_cap,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/drinkbottle,
 /obj/random/contraband,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/toolbox,
 /obj/item/scalpel,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/snack,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fK" = (
 /obj/machinery/door/airlock,
@@ -1905,25 +1905,25 @@
 /obj/machinery/vending/engivend{
 	req_access = list()
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fV" = (
 /mob/living/simple_animal/hostile/lar_maria/guard,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fW" = (
 /obj/structure/bookcase,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fX" = (
 /mob/living/simple_animal/hostile/lar_maria/virologist/female,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fY" = (
 /obj/structure/closet,
 /obj/random/handgun,
 /obj/random/powercell,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "fZ" = (
 /obj/structure/hygiene/shower{
@@ -2012,7 +2012,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "gn" = (
 /obj/machinery/power/apc{
@@ -2024,12 +2024,12 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "go" = (
 /obj/structure/bed/padded,
 /obj/abstract/landmark/corpse/lar_maria/virologist,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/dorms)
 "gp" = (
 /obj/random/trash,
@@ -2067,7 +2067,7 @@
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/mess_hall)
 "gw" = (
 /obj/machinery/door/airlock,
@@ -2076,7 +2076,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/lar_maria/mess_hall)
 "gx" = (
 /turf/wall/r_wall,

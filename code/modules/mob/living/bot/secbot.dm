@@ -182,7 +182,7 @@
 			begin_arrest(target, threat)
 		++awaiting_surrender
 	else
-		UnarmedAttack(target)
+		UnarmedAttack(target, TRUE)
 
 /mob/living/bot/secbot/proc/cuff_target(var/mob/living/target)
 	if(istype(target) && !target.get_equipped_item(slot_handcuffed_str))
@@ -209,9 +209,9 @@
 		return TRUE
 
 	if(isanimal(M))
-		a_intent = I_HURT
+		set_intent(I_FLAG_HARM)
 	else
-		a_intent = I_GRAB
+		set_intent(I_FLAG_GRAB)
 
 	stun_baton.use_on_mob(M, src) //robots and turrets aim for center of mass
 	flick(attack_state, src)

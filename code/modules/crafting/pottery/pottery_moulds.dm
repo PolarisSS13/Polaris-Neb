@@ -59,7 +59,7 @@
 
 /obj/item/chems/mould/attackby(obj/item/W, mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	// This is kind of gross but getting /chems/attackby()

@@ -84,7 +84,6 @@
 	icon = 'icons/clothing/feet/sandals.dmi'
 	bodytype_equip_flags = null
 	body_parts_covered = 0
-	wizard_garb = 1
 	can_add_hidden_item = FALSE
 	can_add_cuffs = FALSE
 

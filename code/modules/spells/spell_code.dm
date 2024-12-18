@@ -26,7 +26,7 @@ var/global/list/spells = typesof(/spell) //needed for the badmin verb for now
 	var/holder_var_type = "bruteloss" //only used if charge_type equals to "holder_var"
 	var/holder_var_amount = 20 //same. The amount adjusted with the mob's var when the spell is used
 
-	var/spell_flags = NEEDSCLOTHES
+	var/spell_flags = 0
 	var/invocation = "HURP DURP"   //what is uttered when the wizard casts the spell
 	var/invocation_type = SpI_NONE //can be none, whisper, shout, and emote
 	var/range = 7                  //the range of the spell; outer radius for aoe spells
@@ -241,21 +241,14 @@ var/global/list/spells = typesof(/spell) //needed for the badmin verb for now
 				to_chat(SA, "<span class='warning'>The null sceptre's power interferes with your own!</span>")
 				return 0
 
-		if(!(spell_flags & GHOSTCAST))
-			if(!(spell_flags & NO_SOMATIC))
-				var/mob/living/L = user
-				if(L.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_FORCELYING|INCAPACITATION_KNOCKOUT))
-					to_chat(user, "<span class='warning'>You can't cast spells while incapacitated!</span>")
-					return 0
+		var/mob/living/L = user
+		if(L.incapacitated(INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_FORCELYING|INCAPACITATION_KNOCKOUT))
+			to_chat(user, "<span class='warning'>You can't cast spells while incapacitated!</span>")
+			return 0
 
-			if(ishuman(user) && !(invocation_type in list(SpI_EMOTE, SpI_NONE)) && user.get_item_blocking_speech())
-				to_chat(user, "Mmmf mrrfff!")
-				return 0
-
-		var/spell/noclothes/spell = locate() in user.mind.learned_spells
-		if((spell_flags & NEEDSCLOTHES) && !(spell && istype(spell)))//clothes check
-			if(!user.wearing_wiz_garb())
-				return 0
+		if(ishuman(user) && !(invocation_type in list(SpI_EMOTE, SpI_NONE)) && user.get_item_blocking_speech())
+			to_chat(user, "Mmmf mrrfff!")
+			return 0
 
 	return 1
 
@@ -381,10 +374,7 @@ var/global/list/spells = typesof(/spell) //needed for the badmin verb for now
 	if(!user || isnull(user))
 		return 0
 
-	var/incap_flags = INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_FORCELYING
-	if(!(spell_flags & (GHOSTCAST)))
-		incap_flags |= INCAPACITATION_KNOCKOUT
-
+	var/incap_flags = INCAPACITATION_STUNNED|INCAPACITATION_RESTRAINED|INCAPACITATION_BUCKLED_FULLY|INCAPACITATION_FORCELYING|INCAPACITATION_KNOCKOUT
 	return do_after(user,delay, incapacitation_flags = incap_flags)
 
 /proc/view_or_range(distance = world.view , center = usr , type)

@@ -39,11 +39,10 @@
 			attack_self()
 			return
 		if(SOUTHWEST)
-			if(isliving(usr))
-				var/mob/living/M = usr
-				M.toggle_throw_mode()
+			if(isliving(mob))
+				mob.toggle_throw_mode()
 			else
-				to_chat(usr, "<span class='warning'>This mob type cannot throw items.</span>")
+				to_chat(src, "<span class='warning'>This mob type cannot throw items.</span>")
 			return
 		if(NORTHWEST)
 			mob.hotkey_drop()

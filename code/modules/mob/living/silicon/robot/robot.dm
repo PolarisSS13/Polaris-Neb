@@ -468,7 +468,7 @@
 		if(try_stock_parts_install(W, user))
 			return TRUE
 
-	if(IS_WELDER(W) && user.a_intent != I_HURT)
+	if(IS_WELDER(W) && !user.check_intent(I_FLAG_HARM))
 		if (src == user)
 			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
 			return TRUE
@@ -496,7 +496,7 @@
 			user.visible_message(SPAN_NOTICE("\The [user] has fixed some of the burnt wires on \the [src]!"))
 		return TRUE
 
-	else if(IS_CROWBAR(W) && user.a_intent != I_HURT)	// crowbar means open or close the cover - we all know what a crowbar is by now
+	else if(IS_CROWBAR(W) && !user.check_intent(I_FLAG_HARM))	// crowbar means open or close the cover - we all know what a crowbar is by now
 		if(opened)
 			if(cell)
 				user.visible_message(
@@ -633,7 +633,7 @@
 			else
 				to_chat(user, "Upgrade error!")
 		return TRUE
-	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && W.get_attack_force(user) && user.a_intent != I_HELP)
+	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && W.get_attack_force(user) && !user.check_intent(I_FLAG_HELP))
 		spark_at(src, 5, holder=src)
 	return ..()
 
@@ -657,7 +657,7 @@
 	. = ..()
 
 /mob/living/silicon/robot/default_interaction(mob/user)
-	if(user.a_intent != I_GRAB && opened && !wiresexposed && (!issilicon(user)))
+	if(!user.check_intent(I_FLAG_GRAB) && opened && !wiresexposed && (!issilicon(user)))
 		var/datum/robot_component/cell_component = components["power cell"]
 		if(cell)
 			cell.update_icon()

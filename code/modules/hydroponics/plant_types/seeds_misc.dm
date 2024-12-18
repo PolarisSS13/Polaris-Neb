@@ -584,7 +584,7 @@
 	name = "towercap"
 	product_name = "dwarf towercap"
 	display_name = "dwarf towercap thicket"
-	chems = list(/decl/material/solid/organic/wood = list(10,1))
+	chems = list(/decl/material/solid/organic/wood/fungal = list(10,1))
 	mutants = null
 	product_type = /obj/item/stack/material/log/towercap
 

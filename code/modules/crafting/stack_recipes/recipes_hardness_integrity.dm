@@ -2,6 +2,9 @@
 	abstract_type      = /decl/stack_recipe/hardness/integrity
 	required_integrity = 50
 
+/decl/stack_recipe/hardness/integrity/sign
+	result_type        = /obj/item/banner/sign
+
 /decl/stack_recipe/hardness/integrity/furniture
 	abstract_type      = /decl/stack_recipe/hardness/integrity/furniture
 	one_per_turf       = TRUE
@@ -18,6 +21,12 @@
 
 /decl/stack_recipe/hardness/integrity/furniture/banner_frame
 	result_type        = /obj/structure/banner_frame
+
+/decl/stack_recipe/hardness/integrity/furniture/sign_hook
+	result_type        = /obj/structure/banner_frame/sign
+
+/decl/stack_recipe/hardness/integrity/furniture/sign_hook/wall
+	result_type        = /obj/structure/banner_frame/sign/wall
 
 /decl/stack_recipe/hardness/integrity/furniture/coatrack
 	result_type        = /obj/structure/coatrack
@@ -42,6 +51,10 @@
 
 /decl/stack_recipe/hardness/integrity/furniture/bench/pew/single
 	result_type        = /obj/structure/bed/chair/bench/pew/single
+
+/decl/stack_recipe/hardness/integrity/furniture/bench/lounge
+	result_type        = /obj/structure/bed/chair/bench/lounge
+	difficulty         = MAT_VALUE_VERY_HARD_DIY
 
 /decl/stack_recipe/hardness/integrity/furniture/closet
 	result_type        = /obj/structure/closet

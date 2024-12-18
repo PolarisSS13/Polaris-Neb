@@ -44,7 +44,7 @@
 	desc = "It's a wooden bucket. How rustic."
 	icon = 'icons/obj/items/wooden_bucket.dmi'
 	volume = 200
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_COLOR //  name is already modified
 	/// The material used for the chain, belts, and rivets holding the wood together, typically iron or steel.
 	/// Mostly used for visual and matter reasons. Initially a typepath, set to a decl on init.

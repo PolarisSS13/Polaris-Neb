@@ -277,7 +277,7 @@ var/global/list/possible_say_verbs = list(
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/card = W.GetIdCard()
-	if(card && user.a_intent == I_HELP)
+	if(card && user.check_intent(I_FLAG_HELP))
 		var/list/new_access = card.GetAccess()
 		idcard.access = new_access
 		visible_message("<span class='notice'>[user] slides [W] across [src].</span>")

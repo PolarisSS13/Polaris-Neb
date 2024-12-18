@@ -85,7 +85,7 @@
 
 /obj/item/chems/spray/attack_self(var/mob/user)
 	if(has_safety())
-		toggle_safety()
+		toggle_safety(user)
 		return TRUE
 	else
 		//If no safety, we just toggle the nozzle
@@ -98,9 +98,9 @@
 /obj/item/chems/spray/proc/has_safety()
 	return FALSE
 
-/obj/item/chems/spray/proc/toggle_safety()
+/obj/item/chems/spray/proc/toggle_safety(mob/user)
 	safety = !safety
-	to_chat(usr, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
+	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
 /obj/item/chems/spray/examine(mob/user, distance)
 	. = ..()

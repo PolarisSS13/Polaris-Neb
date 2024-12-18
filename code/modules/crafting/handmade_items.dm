@@ -12,7 +12,7 @@
 /obj/item/chems/glass/handmade/teapot
 	name = "teapot"
 	desc = "A handmade, slightly lumpy teapot."
-	icon = 'icons/obj/pottery/teapot.dmi'
+	icon = 'icons/obj/items/handmade/teapot.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 120
 	obj_flags = OBJ_FLAG_HOLLOW | OBJ_FLAG_INSULATED_HANDLE
@@ -20,14 +20,14 @@
 /obj/item/chems/glass/handmade/cup
 	name = "cup"
 	desc = "A handmade, slightly lumpy cup."
-	icon = 'icons/obj/pottery/cup.dmi'
+	icon = 'icons/obj/items/handmade/cup.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 30
 
 /obj/item/chems/glass/handmade/mug
 	name = "mug"
 	desc = "A handmade, slightly lumpy mug."
-	icon = 'icons/obj/pottery/mug.dmi'
+	icon = 'icons/obj/items/handmade/mug.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 60
 	obj_flags = OBJ_FLAG_HOLLOW | OBJ_FLAG_INSULATED_HANDLE
@@ -35,48 +35,47 @@
 /obj/item/chems/glass/handmade/vase
 	name = "vase"
 	desc = "A handmade, slightly lumpy vase."
-	icon = 'icons/obj/pottery/vase.dmi'
+	icon = 'icons/obj/items/handmade/vase.dmi'
 	amount_per_transfer_from_this = 20
 	volume = 240
 
 /obj/item/chems/glass/handmade/jar
 	name = "jar"
 	desc = "A handmade, slightly lumpy jar."
-	icon = 'icons/obj/pottery/jar.dmi'
+	icon = 'icons/obj/items/handmade/jar.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 60
 
 /obj/item/chems/glass/handmade/bottle
 	name = "bottle"
 	desc = "A handmade, slightly lumpy bottle."
-	icon = 'icons/obj/pottery/bottle.dmi'
+	icon = 'icons/obj/items/handmade/bottle.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 120
 
 /obj/item/chems/glass/handmade/bottle/tall
 	name = "tall bottle"
-	icon = 'icons/obj/pottery/bottle_tall.dmi'
+	icon = 'icons/obj/items/handmade/bottle_tall.dmi'
 
 /obj/item/chems/glass/handmade/bottle/wide
 	name = "wide bottle"
-	icon = 'icons/obj/pottery/bottle_wide.dmi'
+	icon = 'icons/obj/items/handmade/bottle_wide.dmi'
 
 /obj/item/chems/glass/handmade/bowl
 	name = "bowl"
 	desc = "A handmade, slightly lumpy bowl."
-	icon = 'icons/obj/pottery/bowl.dmi'
+	icon = 'icons/obj/items/handmade/bowl.dmi'
 	amount_per_transfer_from_this = 10
 	volume = 60
 
 /obj/item/chems/glass/handmade/cup/wood
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/chems/glass/handmade/mug/wood
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/chems/glass/handmade/bowl/wood
-	material = /decl/material/solid/organic/wood
-
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/chems/glass/handmade/bottle/beer/populate_reagents()
 	. = ..()

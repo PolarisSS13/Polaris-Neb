@@ -146,3 +146,65 @@
 		return
 	for(var/i = 1 to create_soap)
 		new /obj/item/soap/crafted(T)
+
+// Making chipboard out of wood scraps/recycled wood.
+/decl/chemical_reaction/synthesis/chipboard
+	name = "Oak Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/oak = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic  = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	result_amount = 1
+	mix_message = "The wood particulate binds with the plastic to form laminated chipboard."
+	minimum_temperature = 100 CELSIUS
+	var/chipboard_type = /decl/material/solid/organic/wood/chipboard
+
+/decl/chemical_reaction/synthesis/chipboard/on_reaction(datum/reagents/holder, created_volume, reaction_flags, list/reaction_data)
+	..()
+	var/turf/T = get_turf(holder.get_reaction_loc(chemical_reaction_flags))
+	if(!istype(T))
+		return
+	var/create_sheets = floor(created_volume)
+	if(create_sheets <= 0)
+		return
+	new /obj/item/stack/material/sheet(T, create_sheets, chipboard_type)
+
+/decl/chemical_reaction/synthesis/chipboard/maple
+	name = "Maple Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/maple = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic    = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	chipboard_type = /decl/material/solid/organic/wood/chipboard/maple
+
+/decl/chemical_reaction/synthesis/chipboard/mahogany
+	name = "Mahogany Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/mahogany = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic       = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	chipboard_type = /decl/material/solid/organic/wood/chipboard/mahogany
+
+/decl/chemical_reaction/synthesis/chipboard/ebony
+	name = "Ebony Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/ebony = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic    = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	chipboard_type = /decl/material/solid/organic/wood/chipboard/ebony
+
+/decl/chemical_reaction/synthesis/chipboard/walnut
+	name = "Walnut Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/walnut = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic     = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	chipboard_type = /decl/material/solid/organic/wood/chipboard/walnut
+
+/decl/chemical_reaction/synthesis/chipboard/yew
+	name = "Yew Chipboard"
+	required_reagents = list(
+		/decl/material/solid/organic/wood/yew = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2),
+		/decl/material/solid/organic/plastic    = (REAGENT_UNITS_PER_MATERIAL_SHEET / 2)
+	)
+	chipboard_type = /decl/material/solid/organic/wood/chipboard/yew

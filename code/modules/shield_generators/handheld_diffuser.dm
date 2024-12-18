@@ -41,14 +41,14 @@
 				if(istype(S) && !S.diffused_for && !S.disabled_for && cell.checked_use(10 KILOWATTS * CELLRATE))
 					S.diffuse(20)
 
-/obj/item/shield_diffuser/attack_self()
+/obj/item/shield_diffuser/attack_self(mob/user)
 	enabled = !enabled
 	update_icon()
 	if(enabled)
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj, src)
-	to_chat(usr, "You turn \the [src] [enabled ? "on" : "off"].")
+	to_chat(user, "You turn \the [src] [enabled ? "on" : "off"].")
 
 /obj/item/shield_diffuser/examine(mob/user)
 	. = ..()

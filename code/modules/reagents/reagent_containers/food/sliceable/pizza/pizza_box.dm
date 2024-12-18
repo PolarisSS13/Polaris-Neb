@@ -49,7 +49,7 @@
 	return FALSE
 
 /obj/item/pizzabox/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(proximity_flag && user?.a_intent == I_HURT && user != target)
+	if(proximity_flag && user?.check_intent(I_FLAG_HARM) && user != target)
 		jostle_pizza()
 		explode_stack()
 
@@ -189,7 +189,7 @@
 
 /obj/item/pizzabox/attack_hand(mob/user)
 
-	if(open && pizza && user.a_intent != I_GRAB)
+	if(open && pizza && !user.check_intent(I_FLAG_GRAB))
 		if(user.check_dexterity(DEXTERITY_HOLD_ITEM))
 			user.put_in_hands(pizza)
 			to_chat(user, SPAN_NOTICE("You take \the [pizza] out of \the [src]."))

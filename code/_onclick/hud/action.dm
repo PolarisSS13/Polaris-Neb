@@ -78,7 +78,7 @@
 				Deactivate()
 		if(AB_GENERIC)
 			if(target && procname)
-				call(target,procname)(usr)
+				call(target,procname)(owner)
 	return
 
 /datum/action/proc/Activate()

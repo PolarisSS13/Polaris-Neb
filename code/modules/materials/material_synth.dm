@@ -37,7 +37,7 @@
 /obj/item/stack/material/cyborg/wood
 	name = "cyborg wood synthesiser"
 	icon_state = "sheet-wood"
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/stack/material/cyborg/glass
 	name = "cyborg glass synthesiser"

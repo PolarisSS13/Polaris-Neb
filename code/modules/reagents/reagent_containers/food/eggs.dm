@@ -39,10 +39,10 @@
 		var/clr = W.get_tool_property(TOOL_PEN, TOOL_PROP_COLOR_NAME)
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
-			to_chat(usr, SPAN_WARNING("The egg refuses to take on this color!"))
+			to_chat(user, SPAN_WARNING("The egg refuses to take on this color!"))
 			return TRUE
 
-		to_chat(usr, SPAN_NOTICE("You color \the [src] [clr]"))
+		to_chat(user, SPAN_NOTICE("You color \the [src] [clr]"))
 		icon_state = "egg-[clr]"
 		return TRUE
 	return ..()

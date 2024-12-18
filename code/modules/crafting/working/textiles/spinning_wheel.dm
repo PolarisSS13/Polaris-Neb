@@ -121,7 +121,7 @@
 	return TRUE
 
 /obj/structure/working/spinning_wheel/try_unload_material(mob/user)
-	if(user.a_intent == I_GRAB)
+	if(user.check_intent(I_FLAG_GRAB))
 		if(!length(loaded))
 			to_chat(user, SPAN_WARNING("\The [src] has no fibers to remove."))
 		else

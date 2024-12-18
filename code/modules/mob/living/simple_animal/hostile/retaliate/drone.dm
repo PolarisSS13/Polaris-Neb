@@ -5,7 +5,6 @@
 	desc = "An automated combat drone armed with state of the art weaponry and shielding."
 	icon = 'icons/mob/simple_animal/drone_combat.dmi'
 	burst_projectile = 0
-	a_intent = I_HURT
 	max_health = 300
 	move_intents = list(
 		/decl/move_intent/walk/animal_slow,
@@ -55,8 +54,15 @@
 /mob/living/simple_animal/hostile/malf_drone/has_ranged_attack()
 	return TRUE
 
-/datum/mob_controller/aggressive/malf_drone/list_targets(var/dist = 7)
-	. = ..(hostile_drone ? hostile_range : dist)
+/datum/mob_controller/aggressive/malf_drone/get_raw_target_list()
+	if(hostile_drone)
+		target_scan_distance = hostile_range
+	else
+		target_scan_distance = initial(target_scan_distance)
+	. = ..()
+
+/datum/mob_controller/aggressive/malf_drone/get_valid_targets()
+	. = ..()
 	for(var/mob/M in .)
 		if(istype(M, body.type))
 			. -= M

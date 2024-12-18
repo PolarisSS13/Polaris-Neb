@@ -3,7 +3,6 @@
 	name = "alate support exosuit"
 	desc = "A powerful support exosuit with integrated power supply, weapon and atmosphere. It's closer to a mech than a rig."
 	icon = 'mods/species/ascent/icons/rig/rig.dmi'
-
 	suit_type = "support exosuit"
 	armor = list(
 		ARMOR_MELEE = ARMOR_MELEE_MAJOR,
@@ -28,7 +27,7 @@
 	gloves =     /obj/item/clothing/gloves/rig/mantid
 
 	update_visible_name = TRUE
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/rig/rig_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/rig/rig_gyne.dmi'
 	initial_modules = list(
 		/obj/item/rig_module/vision/thermal,
 		/obj/item/rig_module/ai_container,
@@ -241,7 +240,7 @@
 	desc = "More like a torpedo casing than a helmet."
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
 	icon = 'mods/species/ascent/icons/rig/rig_helmet.dmi'
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/rig/rig_helmet_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/rig/rig_helmet_gyne.dmi'
 
 /obj/item/clothing/suit/space/rig/mantid
 	desc = "It's closer to a mech than a suit."
@@ -255,16 +254,16 @@
 		/obj/item/stack/medical/resin,
 		/obj/item/chems/drinks/cans/waterbottle/ascent
 	)
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/rig/rig_chest_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/rig/rig_chest_gyne.dmi'
 
 /obj/item/clothing/shoes/magboots/rig/mantid
 	icon = 'mods/species/ascent/icons/rig/rig_boots.dmi'
 	desc = "It's like a highly advanced forklift."
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/rig/rig_boots_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/rig/rig_boots_gyne.dmi'
 
 /obj/item/clothing/gloves/rig/mantid
 	icon = 'mods/species/ascent/icons/rig/rig_gloves.dmi'
 	desc = "They look like a cross between a can opener and a Swiss army knife the size of a shoebox."
 	bodytype_equip_flags = BODY_EQUIP_FLAG_GYNE | BODY_EQUIP_FLAG_ALATE
-	sprite_sheets = list(BODYTYPE_MANTID_LARGE = 'mods/species/ascent/icons/rig/rig_gloves_gyne.dmi')
+	_gyne_onmob_icon = 'mods/species/ascent/icons/rig/rig_gloves_gyne.dmi'

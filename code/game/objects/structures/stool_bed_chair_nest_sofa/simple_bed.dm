@@ -3,7 +3,7 @@
 	icon = 'icons/obj/structures/simple_bed.dmi'
 	icon_state = "bed_padded_preview" // For map editor preview purposes
 	parts_type = /obj/item/stack/material/plank
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	reinf_material = /decl/material/solid/organic/plantmatter/grass/dry
 	color = /decl/material/solid/organic/plantmatter/grass/dry::color
 	anchored = TRUE
@@ -49,7 +49,7 @@
 /obj/structure/bed/simple/crafted
 	reinf_material = null
 	icon_state = "bed"
-	color = /decl/material/solid/organic/wood::color
+	color = /decl/material/solid/organic/wood/oak::color
 
 /obj/item/bedsheet/furs
 	name = "sleeping furs"

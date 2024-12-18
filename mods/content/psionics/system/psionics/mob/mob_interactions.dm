@@ -25,18 +25,18 @@
 	return TRUE
 
 /datum/ability_handler/psionics/do_grabbed_invocation(mob/user, atom/target)
-	INVOKE_PSI_POWERS(user, get_grab_powers(SSpsi.faculties_by_intent[user.a_intent]), target)
+	INVOKE_PSI_POWERS(user, get_grab_powers(SSpsi.get_faculty_by_intent(user.get_intent())), target)
 
 /datum/ability_handler/psionics/can_do_melee_invocation(mob/user, atom/target)
 	return TRUE
 
 /datum/ability_handler/psionics/do_melee_invocation(mob/user, atom/target)
-	INVOKE_PSI_POWERS(user, get_melee_powers(SSpsi.faculties_by_intent[user.a_intent]), target)
+	INVOKE_PSI_POWERS(user, get_melee_powers(SSpsi.get_faculty_by_intent(user.get_intent())), target)
 
 /datum/ability_handler/psionics/can_do_ranged_invocation(mob/user, atom/target)
 	return TRUE
 
 /datum/ability_handler/psionics/do_ranged_invocation(mob/user, atom/target)
-	INVOKE_PSI_POWERS(user, get_ranged_powers(SSpsi.faculties_by_intent[user.a_intent]), target)
+	INVOKE_PSI_POWERS(user, get_ranged_powers(SSpsi.get_faculty_by_intent(user.get_intent())), target)
 
 #undef INVOKE_PSI_POWERS

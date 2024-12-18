@@ -193,7 +193,7 @@
 	if(distance > 1)
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(user))
 		return
 
 	to_chat(user, "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition.")

@@ -46,7 +46,7 @@
 	return bash(I, user)
 
 /obj/machinery/shield/bash(obj/item/W, mob/user)
-	if(isliving(user) && user.a_intent == I_HELP)
+	if(isliving(user) && user.check_intent(I_FLAG_HELP))
 		return FALSE
 	if(!W.user_can_attack_with(user))
 		return FALSE

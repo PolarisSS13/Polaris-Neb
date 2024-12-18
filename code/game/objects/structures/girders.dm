@@ -145,7 +145,7 @@
 		to_chat(user, SPAN_WARNING("You will need a support made of sturdier material to hold up [S.material.solid_name] cladding."))
 		return FALSE
 
-	add_hiddenprint(usr)
+	add_hiddenprint(user)
 	if(S.material.integrity < 50)
 		to_chat(user, SPAN_WARNING("This material is too soft for use in wall construction."))
 		return 0
@@ -165,7 +165,7 @@
 	var/turf/wall/T = get_turf(src)
 	T.set_turf_materials(S.material, reinf_material, null, material)
 	T.can_open = prepped_for_fakewall
-	T.add_hiddenprint(usr)
+	T.add_hiddenprint(user)
 	material = null
 	reinf_material = null
 	qdel(src)

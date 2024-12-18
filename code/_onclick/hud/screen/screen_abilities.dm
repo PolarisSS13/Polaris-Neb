@@ -195,7 +195,6 @@
 	if(object)
 		object.Click()
 
-// Wizard
 /obj/screen/ability/spell
 	var/spell/spell
 	var/spell_base
@@ -223,10 +222,7 @@
 	A.SetName(spell.name)
 
 	if(!spell.override_base) //if it's not set, we do basic checks
-		if(spell.spell_flags & CONSTRUCT_CHECK)
-			A.spell_base = "const" //construct spells
-		else
-			A.spell_base = "wiz" //wizard spells
+		A.spell_base = "const" //construct spells
 	else
 		A.spell_base = spell.override_base
 	A.update_charge(1)

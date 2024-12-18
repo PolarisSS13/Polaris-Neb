@@ -1,14 +1,16 @@
-/obj/screen/intent/diona_nymph
-	icon_state = "intent_harm"
+/* Commented out due to issues with interactions and combined intent flags.
+/obj/screen/intent/binary/diona
+	icon = 'mods/mobs/dionaea/icons/ui_intents.dmi'
 	screen_loc = DIONA_SCREEN_LOC_INTENT
 
-/obj/screen/intent/diona_nymph/on_update_icon()
-	if(intent == I_HURT || intent == I_GRAB)
-		intent = I_GRAB
-		icon_state = "intent_harm"
-	else
-		intent = I_DISARM
-		icon_state = "intent_help"
+/decl/intent/harm/binary/diona
+	icon = 'mods/mobs/dionaea/icons/ui_intent_overlay.dmi'
+	uid = "intent_harm_binary_diona"
+
+/decl/intent/help/binary/diona
+	icon = 'mods/mobs/dionaea/icons/ui_intent_overlay.dmi'
+	uid = "intent_help_binary_diona"
+*/
 
 /decl/ui_style/diona
 	name = "Diona"
@@ -17,7 +19,6 @@
 	override_icons = list(
 		UI_ICON_HEALTH      = 'mods/mobs/dionaea/icons/ui_health.dmi',
 		UI_ICON_HANDS       = 'mods/mobs/dionaea/icons/ui_hands.dmi',
-		UI_ICON_INTENT      = 'mods/mobs/dionaea/icons/ui_intents.dmi',
 		UI_ICON_INTERACTION = 'mods/mobs/dionaea/icons/ui_interactions.dmi',
 		UI_ICON_INVENTORY   = 'mods/mobs/dionaea/icons/ui_inventory.dmi'
 	)
@@ -36,8 +37,8 @@
 	var/ui_color = get_ui_color()
 	var/ui_alpha = get_ui_alpha()
 
-	action_intent = new /obj/screen/intent/diona_nymph(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_INTENT)
-	mymob.healths = new /obj/screen/diona_health(      null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HEALTH)
+	action_intent = new /obj/screen/intent(       null, mymob) // Swap to /obj/screen/intent/binary/diona when interaction code supports it.
+	mymob.healths = new /obj/screen/diona_health( null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HEALTH)
 	src.other = list()
 	src.adding = list(mymob.healths, action_intent)
 	..()

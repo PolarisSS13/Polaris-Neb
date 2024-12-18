@@ -243,14 +243,14 @@
 		handle_suicide(user)
 		return TRUE
 
-	if(user.a_intent != I_HURT && user.aiming && user.aiming.active) //if aim mode, don't pistol whip
+	if(!user.check_intent(I_FLAG_HARM) && user.aiming && user.aiming.active) //if aim mode, don't pistol whip
 		if (user.aiming.aiming_at != target)
 			PreFire(target, user)
 		else
 			Fire(target, user, pointblank=1)
 		return TRUE
 
-	if(user.a_intent == I_HURT) //point blank shooting
+	if(user.check_intent(I_FLAG_HARM)) //point blank shooting
 		Fire(target, user, pointblank = TRUE)
 		return TRUE
 
@@ -287,7 +287,7 @@
 			return
 
 		if(safety())
-			if(user.a_intent == I_HURT && !user.skill_fail_prob(SKILL_WEAPONS, 100, SKILL_EXPERT, 0.5)) //reflex un-safeying
+			if(user.check_intent(I_FLAG_HARM) && !user.skill_fail_prob(SKILL_WEAPONS, 100, SKILL_EXPERT, 0.5)) //reflex un-safeying
 				toggle_safety(user)
 			else
 				handle_click_empty(user)

@@ -188,3 +188,70 @@
 /datum/fabricator_recipe/fishing_line_high_quality
 	path = /obj/item/fishing_line/high_quality
 
+/datum/fabricator_recipe/chipboard
+	path = /obj/item/stack/material/sheet/mapped/chipboard_oak
+	category = "Textiles"
+	fabricator_types = list(
+		FABRICATOR_CLASS_GENERAL,
+		FABRICATOR_CLASS_TEXTILE
+	)
+
+/datum/fabricator_recipe/chipboard/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/oak = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic  = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard
+	path = /obj/item/stack/material/sheet/mapped/chipboard_oak
+
+/datum/fabricator_recipe/chipboard/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/oak = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic  = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard/maple
+	path = /obj/item/stack/material/sheet/mapped/chipboard_maple
+
+/datum/fabricator_recipe/chipboard/maple/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/maple = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic    = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard/mahogany
+	path = /obj/item/stack/material/sheet/mapped/chipboard_mahogany
+
+/datum/fabricator_recipe/chipboard/mahogany/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/mahogany = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic       = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard/ebony
+	path = /obj/item/stack/material/sheet/mapped/chipboard_ebony
+
+/datum/fabricator_recipe/chipboard/ebony/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/ebony = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic    = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard/walnut
+	path = /obj/item/stack/material/sheet/mapped/chipboard_walnut
+
+/datum/fabricator_recipe/chipboard/walnut/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/walnut = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic    = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)
+
+/datum/fabricator_recipe/chipboard/yew
+	path = /obj/item/stack/material/sheet/mapped/chipboard_yew
+
+/datum/fabricator_recipe/chipboard/yew/get_resources()
+	resources = list(
+		/decl/material/solid/organic/wood/yew = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
+		/decl/material/solid/organic/plastic    = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
+	)

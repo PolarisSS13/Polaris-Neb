@@ -103,7 +103,7 @@ Quick adjacency (to turf):
 		return TRUE
 	if(istype(loc, /obj/item) || istype(loc, /obj/structure))
 		if(recurse > 0)
-			return loc.Adjacent(neighbor,recurse - 1)
+			return loc.Adjacent(neighbor, recurse - 1)
 		return FALSE
 	return ..()
 
@@ -112,7 +112,7 @@ Quick adjacency (to turf):
 		return TRUE
 	if(istype(loc, /obj/item) || istype(loc, /obj/structure))
 		if(recurse > 0)
-			return loc.Adjacent(neighbor,recurse - 1)
+			return loc.Adjacent(neighbor, recurse - 1)
 		return FALSE
 	return ..()
 

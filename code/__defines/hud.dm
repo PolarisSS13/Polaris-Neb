@@ -11,7 +11,6 @@
 #define UI_ICON_NUTRITION   "icon_nutrition"
 #define UI_ICON_HYDRATION   "icon_hydration"
 #define UI_ICON_FIRE_INTENT "icon_fire_intent"
-#define UI_ICON_INTENT      "icon_intent"
 #define UI_ICON_UP_HINT     "icon_uphint"
 #define UI_ICON_STATUS      "icon_status"
 #define UI_ICON_STATUS_FIRE "icon_status_fire"

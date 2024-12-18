@@ -48,7 +48,7 @@
 	. = ..()
 
 /obj/structure/mirror/attack_hand(mob/user)
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 	if(shattered)
 		to_chat(user, SPAN_WARNING("You enter the key combination for the style you want on the panel, but the nanomachines inside \the [src] refuse to come out."))

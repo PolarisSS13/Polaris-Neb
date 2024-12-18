@@ -12,7 +12,7 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 	density                   = TRUE
 	atom_flags                = ATOM_FLAG_CLIMBABLE
 	matter                    = null
-	material                  = /decl/material/solid/organic/wood
+	material                  = /decl/material/solid/organic/wood/oak
 	material_alteration       = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	wrenchable                = FALSE
 	possible_transfer_amounts = @"[10,25,50,100]"
@@ -90,7 +90,7 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 
 /obj/structure/reagent_dispensers/compost_bin/attackby(obj/item/W, mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	if(W.storage)

@@ -445,3 +445,17 @@
 	name = "security messenger bag"
 	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
 	icon = 'icons/obj/items/storage/backpack/messenger_sec.dmi'
+
+// Crafted backpacks.
+/obj/item/backpack/crafted
+	name = "haversack"
+	desc = "A rather rough handmade haversack."
+	icon = 'icons/obj/items/storage/backpack/backpack_haversack.dmi'
+	material = /decl/material/solid/organic/leather
+	material_alteration = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC | MAT_FLAG_ALTERATION_COLOR
+
+/obj/item/backpack/crafted/backpack
+	name = "backpack"
+	name_prefix = "handmade"
+	desc = "A rather rough handmade backpack."
+	icon = 'icons/obj/items/storage/backpack/backpack_crafted.dmi'

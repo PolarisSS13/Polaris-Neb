@@ -67,13 +67,13 @@
 				if(!isnull(t) && CanUseTopic(user))
 					candidate.comments = sanitize(t)
 			if("chassis")
-				t = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in global.possible_chassis
+				t = input(user,"What would you like to use for your mobile chassis icon?") as null|anything in global.possible_chassis
 				if(!isnull(t) && CanUseTopic(user))
 					candidate.chassis = t
 				update_pai_preview(user)
 				. = TOPIC_HARD_REFRESH
 			if("say")
-				t = input(usr,"What theme would you like to use for your speech verbs?") as null|anything in global.possible_say_verbs
+				t = input(user,"What theme would you like to use for your speech verbs?") as null|anything in global.possible_say_verbs
 				if(!isnull(t) && CanUseTopic(user))
 					candidate.say_verb = t
 			if("cyclebg")

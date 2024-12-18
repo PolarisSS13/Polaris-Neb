@@ -109,3 +109,13 @@
 	if(istype(M) && (src in M.component_parts))
 		return
 	..()
+
+/// Alt-click interactions provided to our parent machine.
+/obj/item/stock_parts/proc/get_machine_alt_interactions(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_BE_PURE(TRUE)
+	RETURN_TYPE(/list)
+	. = list()
+
+/// A stub for showing messages based on part status when a machine is examined.
+/obj/item/stock_parts/proc/on_machine_examined(mob/user)

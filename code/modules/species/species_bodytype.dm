@@ -116,7 +116,7 @@ var/global/list/bodytypes_by_category = list()
 	var/base_eye_color =  COLOR_BLACK
 
 	/// Used to initialize organ material
-	var/material =        /decl/material/solid/organic/meat
+	var/organ_material = /decl/material/solid/organic/meat
 	/// Used to initialize organ matter
 	var/list/matter =     null
 	/// The reagent organs are filled with, which currently affects what mobs that eat the organ will receive.
@@ -717,7 +717,7 @@ var/global/list/bodytypes_by_category = list()
 	for(var/obj/item/organ/internal/innard in limb.internal_organs)
 		var/obj/item/organ/internal/organ_prototype = replacing_organs[innard.organ_tag]
 		if(organ_prototype && istype(innard, organ_prototype))
-			innard.set_bodytype(type, override_material || material)
+			innard.set_bodytype(type, override_material || organ_material)
 			replacing_organs -= innard.organ_tag
 		else
 			limb.owner.remove_organ(innard, FALSE, FALSE, TRUE, TRUE, FALSE)
@@ -748,27 +748,23 @@ var/global/list/bodytypes_by_category = list()
 		else
 			CRASH("get_species_temperature_threshold() called with invalid threshold value.")
 
-/decl/bodytype/proc/get_environment_discomfort(var/mob/living/human/H, var/msg_type)
+/decl/bodytype/proc/get_environment_discomfort(var/mob/living/human/victim, var/msg_type)
 
 	if(!prob(5))
 		return
 
-	var/covered = 0 // Basic coverage can help.
-	var/held_items = H.get_held_items()
-	for(var/obj/item/clothing/clothes in H)
-		if(clothes in held_items)
-			continue
-		if((clothes.body_parts_covered & SLOT_UPPER_BODY) && (clothes.body_parts_covered & SLOT_LOWER_BODY))
-			covered = 1
-			break
+	// If we have any items that cover both the upper and lower body, we're covered.
+	// This is to have parity with the original implementation, but to be honest
+	// it might be better to just use the non-exact checks.
+	var/covered = victim.get_covering_equipped_item_exact(SLOT_UPPER_BODY|SLOT_LOWER_BODY)
 
 	switch(msg_type)
 		if("cold")
 			if(!covered && length(cold_discomfort_strings))
-				to_chat(H, SPAN_DANGER(pick(cold_discomfort_strings)))
+				to_chat(victim, SPAN_DANGER(pick(cold_discomfort_strings)))
 		if("heat")
 			if(covered && length(heat_discomfort_strings))
-				to_chat(H, SPAN_DANGER(pick(heat_discomfort_strings)))
+				to_chat(victim, SPAN_DANGER(pick(heat_discomfort_strings)))
 
 /decl/bodytype/proc/get_user_species_for_validation()
 	for(var/species_name in get_all_species())

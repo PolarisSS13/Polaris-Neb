@@ -43,6 +43,14 @@
 	name = "Sack"
 	path = /obj/item/bag/sack
 
+/decl/backpack_outfit/haversack
+	name = "Haversack"
+	path = /obj/item/backpack/crafted
+
+/decl/backpack_outfit/backpack/crafted
+	name = "Handmade Backpack"
+	path = /obj/item/backpack/crafted/backpack
+
 /* Code */
 /decl/backpack_outfit
 	var/flags

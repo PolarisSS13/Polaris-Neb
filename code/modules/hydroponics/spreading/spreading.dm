@@ -200,7 +200,7 @@
 /obj/effect/vine/attackby(var/obj/item/W, var/mob/user)
 	START_PROCESSING(SSvines, src)
 
-	if(W.edge && W.w_class < ITEM_SIZE_NORMAL && user.a_intent != I_HURT)
+	if(W.edge && W.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(!is_mature())
 			to_chat(user, SPAN_WARNING("\The [src] is not mature enough to yield a sample yet."))
 			return TRUE

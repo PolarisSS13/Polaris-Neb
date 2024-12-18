@@ -3,11 +3,11 @@
 #include "bearcat_access.dm"
 
 /obj/abstract/submap_landmark/joinable_submap/bearcat
-	name = "FTV Bearcat"
+	name      = "FTV Bearcat"
 	archetype = /decl/submap_archetype/derelict/bearcat
 
 /decl/submap_archetype/derelict/bearcat
-	descriptor = "derelict cargo vessel"
+	name      = "derelict cargo vessel"
 	crew_jobs = list(
 		/datum/job/submap/bearcat_captain,
 		/datum/job/submap/bearcat_crewman
@@ -125,9 +125,9 @@
 	shoes = /obj/item/clothing/shoes/color/black
 	r_pocket = /obj/item/radio
 
-/decl/outfit/deadcap/post_equip(mob/living/human/H)
+/decl/outfit/deadcap/post_equip(mob/living/wearer)
 	..()
-	var/obj/item/clothing/uniform = H.get_equipped_item(slot_w_uniform_str)
+	var/obj/item/clothing/uniform = wearer.get_equipped_item(slot_w_uniform_str)
 	if(uniform)
 		var/obj/item/clothing/shirt/hawaii/random/eyegore = new()
 		if(uniform.can_attach_accessory(eyegore))
@@ -135,4 +135,4 @@
 		else
 			qdel(eyegore)
 	var/obj/item/cell/super/C = new()
-	H.put_in_hands(C)
+	wearer.put_in_hands(C)

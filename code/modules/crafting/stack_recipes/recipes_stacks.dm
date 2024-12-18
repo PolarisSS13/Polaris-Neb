@@ -7,25 +7,48 @@
 
 /decl/stack_recipe/tile/wood
 	result_type         = /obj/item/stack/tile/wood
-	required_material   = /decl/material/solid/organic/wood
+	required_material   = /decl/material/solid/organic/wood/oak
 
 /decl/stack_recipe/tile/wood/mahogany
-	result_type         = /obj/item/stack/tile/mahogany
+	result_type         = /obj/item/stack/tile/wood/mahogany
 	required_material   = /decl/material/solid/organic/wood/mahogany
 
 /decl/stack_recipe/tile/wood/maple
-	result_type         = /obj/item/stack/tile/maple
+	result_type         = /obj/item/stack/tile/wood/maple
 	required_material   = /decl/material/solid/organic/wood/maple
 
 /decl/stack_recipe/tile/wood/ebony
 	difficulty          = MAT_VALUE_VERY_HARD_DIY
-	result_type         = /obj/item/stack/tile/ebony
+	result_type         = /obj/item/stack/tile/wood/ebony
 	required_material   = /decl/material/solid/organic/wood/ebony
 
 /decl/stack_recipe/tile/wood/walnut
-	result_type         = /obj/item/stack/tile/walnut
+	result_type         = /obj/item/stack/tile/wood/walnut
 	required_material   = /decl/material/solid/organic/wood/walnut
 
+/decl/stack_recipe/tile/wood/oak_laminate
+	result_type         = /obj/item/stack/tile/wood/laminate/oak
+	required_material   = /decl/material/solid/organic/wood/chipboard
+
+/decl/stack_recipe/tile/wood/mahogany_laminate
+	result_type         = /obj/item/stack/tile/wood/laminate/mahogany
+	required_material   = /decl/material/solid/organic/wood/chipboard/mahogany
+
+/decl/stack_recipe/tile/wood/maple_laminate
+	result_type         = /obj/item/stack/tile/wood/laminate/maple
+	required_material   = /decl/material/solid/organic/wood/chipboard/maple
+
+/decl/stack_recipe/tile/wood/ebony_laminate
+	result_type         = /obj/item/stack/tile/wood/laminate/ebony
+	required_material   = /decl/material/solid/organic/wood/chipboard/ebony
+
+/decl/stack_recipe/tile/wood/walnut_laminate
+	result_type         = /obj/item/stack/tile/wood/walnut
+	required_material   = /decl/material/solid/organic/wood/chipboard/walnut
+
+/decl/stack_recipe/tile/wood/yew_laminate
+	result_type         = /obj/item/stack/tile/wood/laminate/yew
+	required_material   = /decl/material/solid/organic/wood/chipboard/yew
 
 /decl/stack_recipe/tile/steel
 	abstract_type     = /decl/stack_recipe/tile/steel

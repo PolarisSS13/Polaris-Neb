@@ -44,7 +44,7 @@
 
 	else if(IS_PEN(W))
 		updateUsrDialog()
-		var/n_name = sanitize_safe(input(usr, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
+		var/n_name = sanitize_safe(input(user, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
 		if(!CanPhysicallyInteractWith(user, src))
 			to_chat(user, SPAN_WARNING("You must stay close to \the [src]."))
 			return TRUE

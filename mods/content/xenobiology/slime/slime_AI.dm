@@ -37,13 +37,13 @@
 /datum/mob_controller/slime/proc/update_mood()
 	if(!slime || !body)
 		return
-	body.a_intent_change(I_HELP)
+	body.set_intent(I_FLAG_HELP)
 	var/new_mood
 	if(HAS_STATUS(body, STAT_CONFUSE))
 		new_mood = "pout"
 	else if(rabid || attacked)
 		new_mood = "angry"
-		body.a_intent_change(I_HURT)
+		body.set_intent(I_FLAG_HARM)
 	else if(current_target)
 		new_mood = "mischevous"
 
@@ -146,22 +146,22 @@
 			if(prob(1))
 				for(var/mob/living/slime/frenemy in range(1, body))
 					if(frenemy != body && body.Adjacent(frenemy))
-						body.a_intent_change((frenemy.slime_type == slime.slime_type) ? I_HELP : I_HURT)
-						body.UnarmedAttack(frenemy)
+						body.set_intent((frenemy.slime_type == slime.slime_type) ? I_FLAG_HELP : I_FLAG_HARM)
+						body.UnarmedAttack(frenemy, TRUE)
 						added_delay = 10
 		else if(slime.Adjacent(current_target))
 			var/do_attack = FALSE
 			if(issilicon(current_target))
-				body.a_intent_change(I_HURT)
+				body.set_intent(I_FLAG_HARM)
 				do_attack = TRUE
 			else if(current_target.client && !current_target.current_posture.prone && prob(60 + slime.powerlevel * 4))
-				body.a_intent_change(I_DISARM)
+				body.set_intent(I_FLAG_DISARM)
 				do_attack = TRUE
 			else if(slime.check_valid_feed_target(current_target) == FEED_RESULT_VALID)
-				body.a_intent_change(I_GRAB)
+				body.set_intent(I_FLAG_GRAB)
 				do_attack = TRUE
 			if(do_attack)
-				body.UnarmedAttack(current_target)
+				body.UnarmedAttack(current_target, TRUE)
 				added_delay = 10
 			else
 				current_target = null

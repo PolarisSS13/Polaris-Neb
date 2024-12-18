@@ -51,6 +51,7 @@
 	brute_armor            = 15
 	explosion_resistance   = 15
 	integrity              = 500 //granite is very strong
+	gemstone_types         = list(/decl/material/solid/gemstone/topaz = 1)
 	dissolves_into         = list(
 		/decl/material/solid/silicon = 0.75,
 		/decl/material/solid/bauxite = 0.15,
@@ -88,6 +89,7 @@
 	brute_armor = 3
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	construction_difficulty = MAT_VALUE_HARD_DIY
+	gemstone_types = list(/decl/material/solid/gemstone/ruby = 1)
 
 /decl/material/solid/stone/basalt
 	name = "basalt"

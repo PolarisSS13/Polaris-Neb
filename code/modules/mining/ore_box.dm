@@ -7,7 +7,7 @@
 	icon                   = 'icons/obj/mining.dmi'
 	icon_state             = "orebox0"
 	density                = TRUE
-	material               = /decl/material/solid/organic/wood
+	material               = /decl/material/solid/organic/wood/oak
 	atom_flags             = ATOM_FLAG_CLIMBABLE
 	tool_interaction_flags = (TOOL_INTERACTION_ANCHOR | TOOL_INTERACTION_DECONSTRUCT)
 	///Maximum amount of ores of all types that can be stored in the box.
@@ -31,7 +31,7 @@
 		return insert_ore(W, user)
 	if(W.storage)
 		var/added_ore = FALSE
-		W.storage.hide_from(usr)
+		W.storage.hide_from(user)
 		for(var/obj/item/stack/material/ore/O in W.storage.get_contents())
 			if(total_ores >= maximum_ores)
 				break

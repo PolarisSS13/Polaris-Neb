@@ -39,7 +39,7 @@
 
 /obj/item/staff/broom/resolve_attackby(atom/A, mob/user, click_params)
 
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 
 		// Sweep up dirt.
 		if(isturf(A))

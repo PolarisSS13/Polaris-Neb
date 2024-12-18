@@ -151,13 +151,13 @@
 	else if (href_list["eject"])
 		var/index = text2num(href_list["eject"])
 		if(beakers[index])
-			remove_beaker(beakers[index], usr)
+			remove_beaker(beakers[index], user)
 		. = TOPIC_REFRESH
 	else if (href_list["eject_cart"])
-		unload_ammo(usr)
+		unload_ammo(user)
 		. = TOPIC_REFRESH
 
-	Interact(usr)
+	Interact(user)
 
 /obj/item/gun/projectile/dartgun/medical
 	starting_chems = list(/decl/material/liquid/burn_meds,/decl/material/liquid/brute_meds,/decl/material/liquid/antitoxins)

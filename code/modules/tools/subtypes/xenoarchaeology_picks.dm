@@ -44,7 +44,7 @@
 	desc              = "A wood-handled brush with thick metallic wires for clearing away dust and loose scree."
 	sharp             = 0
 	material          = /decl/material/solid/metal/steel
-	handle_material   = /decl/material/solid/organic/wood
+	handle_material   = /decl/material/solid/organic/wood/oak
 	excavation_amount = 1
 	excavation_sound  = "sweeping"
 	excavation_verb   = "brushing"

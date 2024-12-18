@@ -117,7 +117,7 @@
 /turf/floor/rock/basalt,
 /area/shaded_hills/outside)
 "pU" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/rock/hematite,
 /obj/item/rock/flint,
 /obj/item/flame/torch,
@@ -129,7 +129,7 @@
 /turf/wall/natural/basalt/shaded_hills,
 /area/shaded_hills/caves/river)
 "se" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/basket,
 /turf/floor/woven,
 /area/shaded_hills/caves/unexplored/south)

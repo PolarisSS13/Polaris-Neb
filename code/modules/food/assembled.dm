@@ -18,11 +18,11 @@
 			return TRUE
 
 	// Eating with forks
-	if(user.a_intent == I_HELP && do_utensil_interaction(W, user))
+	if(user.check_intent(I_FLAG_HELP) && do_utensil_interaction(W, user))
 		return TRUE
 
 	// Hiding items inside larger food items.
-	if(user.a_intent != I_HURT && is_sliceable() && W.w_class < w_class && !is_robot_module(W) && !istype(W, /obj/item/chems/condiment))
+	if(!user.check_intent(I_FLAG_HARM) && is_sliceable() && W.w_class < w_class && !is_robot_module(W) && !istype(W, /obj/item/chems/condiment))
 		if(user.try_unequip(W, src))
 			to_chat(user, SPAN_NOTICE("You slip \the [W] inside \the [src]."))
 			add_fingerprint(user)

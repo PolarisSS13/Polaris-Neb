@@ -14,7 +14,7 @@
 	icon_state = ICON_STATE_WORLD
 	slot_flags = SLOT_LOWER_BODY
 	item_flags = ITEM_FLAG_IS_WEAPON
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	_base_attack_force = 10
 
 /obj/item/classic_baton/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)

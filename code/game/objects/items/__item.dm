@@ -6,6 +6,9 @@
 	abstract_type = /obj/item
 	temperature_sensitive = TRUE
 
+	/// Set to prefix name with this string ('woven' for 'woven basket' etc)
+	var/name_prefix
+
 	/// Set to false to skip state checking and never draw an icon on the mob (except when held)
 	var/draw_on_mob_when_equipped = TRUE
 
@@ -123,20 +126,21 @@
 	return initial(color)
 
 /obj/item/set_color(new_color)
-
 	if(new_color == COLOR_WHITE)
 		new_color = null
-
 	if(paint_color != new_color)
 		paint_color = new_color
 		. = TRUE
+		refresh_color()
 
+/obj/item/refresh_color()
 	if(paint_color)
 		color = paint_color
 	else if(material && (material_alteration & MAT_FLAG_ALTERATION_COLOR))
 		color = material.color
 	else
-		color = new_color
+		color = null
+
 
 /obj/item/proc/can_contaminate()
 	return !(obj_flags & ITEM_FLAG_NO_CONTAMINATION)
@@ -169,6 +173,19 @@
 		set_material(material_key)
 	paint_verb ||= "painted" // fallback for the case of no material
 
+	// This is a bit gross, but it makes writing rings and necklaces much easier.
+	// If the decorations list is already populated at this point, we assume it's
+	// prebaked decorations.
+	// Only things handled appropriately at the moment are gems and material inlays.
+	if(length(decorations))
+		for(var/decoration_type in decorations)
+			decorations -= decoration_type
+			if(ispath(decoration_type, /obj/item/gemstone))
+				decorations[GET_DECL(/decl/item_decoration/setting)] = list("object" = new decoration_type(src))
+			else if(ispath(decoration_type, /decl/material))
+				decorations[GET_DECL(/decl/item_decoration/inset)]   = list("material" = GET_DECL(decoration_type))
+			else
+				PRINT_STACK_TRACE("Item [type] tried to initialize with an unsupported initial decoration type ('[decoration_type]')")
 	. = ..()
 
 	setup_sprite_sheets()
@@ -195,6 +212,9 @@
 			update_icon()
 
 /obj/item/Destroy()
+
+	// May contain object references.
+	LAZYCLEARLIST(decorations)
 
 	if(LAZYLEN(_item_effects))
 		_item_effects = null
@@ -299,11 +319,7 @@
 		var/list/available_recipes = list()
 		for(var/decl/crafting_stage/initial_stage in SSfabrication.find_crafting_recipes(type))
 			if(initial_stage.can_begin_with(src) && ispath(initial_stage.completion_trigger_type))
-				var/atom/movable/prop = initial_stage.completion_trigger_type
-				if(initial_stage.stack_consume_amount > 1)
-					available_recipes[initial_stage] = "[initial_stage.stack_consume_amount] [initial(prop.name)]\s"
-				else
-					available_recipes[initial_stage] = "\a [initial(prop.name)]"
+				available_recipes[initial_stage] = initial_stage.generate_completion_string()
 
 		if(length(available_recipes))
 
@@ -454,7 +470,7 @@
 	return . || TRUE
 
 /obj/item/attack_self(mob/user)
-	if(user.a_intent == I_HURT && istype(material))
+	if(user.check_intent(I_FLAG_HARM) && istype(material))
 		var/list/results = squash_item(skip_qdel = TRUE)
 		if(results && user.try_unequip(src, user.loc))
 			user.visible_message(SPAN_DANGER("\The [user] squashes \the [src] into a lump."))
@@ -579,11 +595,6 @@
 			return cell_loaded.try_load(user, used_item)
 
 	return ..()
-
-/obj/item/attack_ghost(mob/user)
-	var/mob/observer/ghost/pronouns = user
-	if(pronouns.client?.holder || pronouns.antagHUD)
-		storage?.show_to(user)
 
 /obj/item/proc/talk_into(mob/living/M, message, message_mode, var/verb = "says", var/decl/language/speaking = null)
 	return
@@ -965,6 +976,11 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	if(citem.item_state)
 		set_icon_state(citem.item_state)
 
+/obj/item/clothing/inherit_custom_item_data(var/datum/custom_item/citem)
+	. = ..()
+	base_clothing_icon  = icon
+	base_clothing_state = icon_state
+
 /obj/item/proc/is_special_cutting_tool(var/high_power)
 	return FALSE
 
@@ -1218,7 +1234,10 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	var/image/reagent_overlay = overlay_image(icon, reagents_state, reagents.get_color(), RESET_COLOR | RESET_ALPHA)
 	for(var/reagent_type in reagents.reagent_volumes)
 		var/decl/material/reagent = GET_DECL(reagent_type)
+		if(!reagent.reagent_overlay)
+			continue
 		var/modified_reagent_overlay = state_prefix ? "[state_prefix]_[reagent.reagent_overlay]" : reagent.reagent_overlay
-		if(modified_reagent_overlay && check_state_in_icon(modified_reagent_overlay, icon))
-			reagent_overlay.overlays += overlay_image(icon, modified_reagent_overlay, reagent.get_reagent_color(), RESET_COLOR | RESET_ALPHA)
+		if(!check_state_in_icon(modified_reagent_overlay, icon))
+			continue
+		reagent_overlay.overlays += overlay_image(icon, modified_reagent_overlay, reagent.get_reagent_overlay_color(reagents), RESET_COLOR | RESET_ALPHA)
 	return reagent_overlay

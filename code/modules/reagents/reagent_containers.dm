@@ -43,10 +43,10 @@
 
 /obj/item/chems/proc/cannot_interact(mob/user)
 	if(!CanPhysicallyInteract(user))
-		to_chat(usr, SPAN_WARNING("You're in no condition to do that!"))
+		to_chat(user, SPAN_WARNING("You're in no condition to do that!"))
 		return TRUE
 	if(ismob(loc) && loc != user)
-		to_chat(usr, SPAN_WARNING("You can't set transfer amounts while \the [src] is being held by someone else."))
+		to_chat(user, SPAN_WARNING("You can't set transfer amounts while \the [src] is being held by someone else."))
 		return TRUE
 	return FALSE
 

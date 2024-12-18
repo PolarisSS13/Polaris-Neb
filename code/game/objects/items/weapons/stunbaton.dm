@@ -112,7 +112,7 @@
 		var/mob/living/human/H = target
 		affecting = GET_EXTERNAL_ORGAN(H, hit_zone)
 	var/abuser =  user ? "" : "by [user]"
-	if(user && user.a_intent == I_HURT)
+	if(user && user.check_intent(I_FLAG_HARM))
 		. = ..()
 		if(.)
 			return

@@ -55,7 +55,7 @@
 
 	// Mark anything we're potentially trying to equip.
 	var/obj/item/mouse_over_atom = mouse_over_atom_ref?.resolve()
-	if(istype(mouse_over_atom) && !QDELETED(mouse_over_atom) && !usr.get_equipped_item(slot_id))
+	if(istype(mouse_over_atom) && !QDELETED(mouse_over_atom) && !owner.get_equipped_item(slot_id))
 		var/mutable_appearance/MA = new /mutable_appearance(mouse_over_atom)
 		MA.layer   = HUD_ABOVE_ITEM_LAYER
 		MA.plane   = HUD_PLANE

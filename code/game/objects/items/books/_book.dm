@@ -126,7 +126,7 @@
 						author = newauthor
 		return TRUE
 
-	if((IS_KNIFE(W) || IS_WIRECUTTER(W)) && user.a_intent == I_HURT && try_carve(user, W))
+	if((IS_KNIFE(W) || IS_WIRECUTTER(W)) && user.check_intent(I_FLAG_HARM) && try_carve(user, W))
 		return TRUE
 
 	return ..()

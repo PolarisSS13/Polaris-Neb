@@ -58,14 +58,14 @@
 "af" = (
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
 /obj/random/action_figure,
 /obj/random_multi/single_item/captains_spare_id,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/captain)
 "ag" = (
 /obj/item/bedsheet/captain,
@@ -76,7 +76,7 @@
 	dir = 8;
 	pixel_x = 21
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/captain)
 "ah" = (
 /obj/item/radio/intercom{
@@ -404,7 +404,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "aR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2499,7 +2499,7 @@
 /obj/structure/cable{
 	icon_state = "6-8"
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "ge" = (
 /obj/machinery/light_switch{
@@ -2516,7 +2516,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "gg" = (
 /obj/effect/paint/brown,
@@ -2642,7 +2642,7 @@
 	dir = 4;
 	pixel_x = -21
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "gw" = (
 /obj/effect/decal/cleanable/generic,
@@ -2657,14 +2657,14 @@
 	level = 2
 	},
 /obj/item/synthesized_instrument/trumpet,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "gx" = (
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "gz" = (
 /obj/structure/lattice,
@@ -2716,7 +2716,7 @@
 	pixel_x = 32;
 	dir = 4
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "gL" = (
 /obj/structure/disposalpipe/segment,
@@ -5078,7 +5078,7 @@
 /area/ship/trade/shuttle/outgoing/general)
 "rR" = (
 /obj/item/flashlight,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "rT" = (
 /obj/machinery/computer/modular/preset/engineering,
@@ -5425,7 +5425,7 @@
 /obj/item/boombox,
 /obj/item/stack/tape_roll/barricade_tape/bureaucracy,
 /obj/machinery/keycard_auth,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/captain)
 "vS" = (
 /turf/floor/tiled/freezer,
@@ -5903,7 +5903,7 @@
 	pixel_y = -2;
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "Cb" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -6060,7 +6060,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/icecream_vat,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "Dq" = (
 /obj/effect/paint/brown,
@@ -6185,7 +6185,7 @@
 /obj/item/briefcase/crimekit,
 /obj/item/taperecorder,
 /obj/item/camera,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "Ec" = (
 /obj/structure/closet/crate,
@@ -6475,7 +6475,7 @@
 /area/ship/trade/crew/hallway/port)
 "Hs" = (
 /obj/machinery/light,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "HA" = (
 /obj/structure/cable{
@@ -6638,7 +6638,7 @@
 /obj/abstract/landmark/start{
 	name = "First Mate"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "Jn" = (
 /obj/effect/floor_decal/corner/beige{
@@ -7077,7 +7077,7 @@
 	dir = 4
 	},
 /obj/structure/bookcase/skill_books/random,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "NM" = (
 /obj/effect/floor_decal/corner/beige{
@@ -7125,7 +7125,7 @@
 /obj/item/clothing/shoes/color/brown,
 /obj/random/plushie,
 /mob/living/simple_animal/corgi/Ian,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "Oc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -7135,7 +7135,7 @@
 /obj/machinery/network/relay{
 	initial_network_id = "tradenet"
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "Og" = (
 /obj/structure/cable{
@@ -7363,7 +7363,7 @@
 /turf/floor/tiled/techmaint,
 /area/ship/trade/maintenance/hallway)
 "Rb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -7388,7 +7388,7 @@
 	dir = 8;
 	pixel_x = -21
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ship/trade/unused)
 "Rg" = (
 /obj/structure/railing/mapped{
@@ -7742,7 +7742,7 @@
 /area/ship/trade/garden)
 "Vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/fmate)
 "Vl" = (
 /obj/structure/handrail{
@@ -7847,7 +7847,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/trade/command/captain)
 "WE" = (
 /obj/machinery/door/firedoor,

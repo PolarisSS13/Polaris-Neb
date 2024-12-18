@@ -198,7 +198,7 @@
 
 		if(do_after(user, 40,src))
 			if(QDELETED(src)) return TRUE
-			to_chat(user, "<span class='notice'>You cut the airlock wires.!</span>")
+			to_chat(user, "<span class='notice'>You cut the airlock wires!</span>")
 			new/obj/item/stack/cable_coil(src.loc, 1)
 			src.state = 0
 			update_icon()

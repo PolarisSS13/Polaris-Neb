@@ -51,7 +51,7 @@
 	take_damage(TT.speed * w_class)
 
 /obj/item/paper_plane/attack_self(mob/user)
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return crumple(user)
 	return unfold(user)
 

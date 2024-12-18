@@ -203,7 +203,7 @@
 		seed.thrown_at(src,hit_atom)
 
 var/global/list/_wood_materials = list(
-	/decl/material/solid/organic/wood,
+	/decl/material/solid/organic/wood/oak,
 	/decl/material/solid/organic/wood/mahogany,
 	/decl/material/solid/organic/wood/maple,
 	/decl/material/solid/organic/wood/ebony,
@@ -222,7 +222,7 @@ var/global/list/_wood_materials = list(
 
 /obj/item/food/grown/attackby(var/obj/item/W, var/mob/user)
 
-	if(!seed || user.a_intent == I_HURT)
+	if(!seed || user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	if(seed.get_trait(TRAIT_PRODUCES_POWER) && IS_COIL(W))
@@ -308,7 +308,7 @@ var/global/list/_wood_materials = list(
 /obj/item/food/grown/attack_self(mob/user)
 
 	if(seed)
-		if(user.a_intent == I_HURT)
+		if(user.check_intent(I_FLAG_HARM))
 			user.visible_message(SPAN_DANGER("\The [user] squashes \the [src]!"))
 			seed.thrown_at(src,user)
 			sleep(-1)
