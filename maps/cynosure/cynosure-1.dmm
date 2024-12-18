@@ -7304,13 +7304,13 @@
 /obj/structure/closet/crate/engineering{
 	dir = 8
 	},
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
-/obj/item/stack/tile/floor/steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
+/obj/item/stack/tile/floor_steel_dirty,
 /obj/item/stack/cable_coil{
 	pixel_x = 2;
 	pixel_y = 2
@@ -11911,10 +11911,10 @@
 /area/surface/station/rnd/hallway/bmt)
 "AI" = (
 /obj/structure/table/steel,
-/obj/item/cane/crutch{
+/obj/item/crutch{
 	pixel_y = -4
 	},
-/obj/item/cane/crutch,
+/obj/item/crutch,
 /obj/item/box/gloves{
 	pixel_x = 3;
 	pixel_y = 3

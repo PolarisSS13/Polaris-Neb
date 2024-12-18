@@ -53,11 +53,11 @@
 	#include "../away/yacht/yacht.dm"
 
 	#include "cynosure_areas.dm"
-	//#include "cynosure_jobs.dm"
+	#include "cynosure_jobs.dm"
 	#include "cynosure_levels.dm"
-	//#include "cynosure_elevator.dm"
+	#include "cynosure_elevator.dm"
 	//#include "cynosure_events.dm"
-	//#include "cynosure_presets.dm"
+	#include "cynosure_presets.dm"
 	//#include "cynosure_shuttles.dm"
 	#include "cynosure_todo.dm"
 

@@ -37,6 +37,8 @@
 	var/hud_icon                             // icon used for secHUD overlay
 	var/hud_icon_state                        // icon state used for secHUD overlay
 
+	var/assignable = TRUE // todo port from Polaris
+
 	// A list of string IDs for keys to grant on join.
 	var/list/lock_keys = list()
 

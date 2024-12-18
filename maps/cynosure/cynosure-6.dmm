@@ -337,7 +337,7 @@
 /area/skipjack_station/start)
 "aqF" = (
 /obj/structure/table/steel,
-/obj/item/modular_computer/pda/syndicate,
+/obj/item/modular_computer/pda/mercenary,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -1408,7 +1408,7 @@
 /area/shuttle/arrival)
 "bQE" = (
 /obj/structure/rack,
-/obj/item/energy_blade/sword/pirate,
+/obj/item/energy_blade/cutlass,
 /obj/item/clothing/suit/pirate,
 /obj/item/clothing/suit/pirate,
 /obj/item/tank/oxygen,
@@ -2087,7 +2087,7 @@
 	dir = 4
 	},
 /obj/item/chems/glass/bowl/mapped/beet,
-/obj/item/food/flowerchildsalad{
+/obj/item/food/aesirsalad{
 	pixel_y = 9
 	},
 /turf/unsimulated/floor/steel,
@@ -5477,7 +5477,7 @@
 /area/centcom/evac)
 "hiU" = (
 /obj/structure/table,
-/obj/item/handcuffs/legcuffs,
+/obj/item/handcuffs,
 /turf/floor/shuttle/black,
 /area/skipjack_station/start)
 "hjb" = (
@@ -11847,7 +11847,7 @@
 /area/centcom/terminal)
 "pbz" = (
 /obj/structure/table,
-/obj/item/modular_computer/pda/syndicate,
+/obj/item/modular_computer/pda/mercenary,
 /turf/unsimulated/floor{
 	icon_state = "lino"
 	},
@@ -18543,7 +18543,7 @@
 /area/centcom/specops)
 "wUM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/modular_computer/pda/syndicate,
+/obj/item/modular_computer/pda/mercenary,
 /turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "wWb" = (

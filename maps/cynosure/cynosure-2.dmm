@@ -2709,10 +2709,10 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/item/cane/crutch{
+/obj/item/crutch{
 	pixel_y = -4
 	},
-/obj/item/cane/crutch,
+/obj/item/crutch,
 /turf/floor/tiled/white,
 /area/surface/station/medical/storage/primary_storage)
 "bnR" = (
@@ -35236,7 +35236,7 @@
 /area/surface/station/security/lobby)
 "qBI" = (
 /obj/structure/table/sifwoodentable,
-/obj/item/knife/tacknife/survival,
+/obj/item/bladed/knife/tactical,
 /turf/floor/wood/sif/broken{
 	is_outside = 0
 	},

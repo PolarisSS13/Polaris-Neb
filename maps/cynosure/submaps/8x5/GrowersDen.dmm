@@ -54,7 +54,7 @@
 /obj/random/contraband,
 /obj/item/tool/axe/hatchet,
 /obj/item/tool/hoe/mini,
-/obj/item/wirecutters/clippers/trimmers,
+/obj/item/wirecutters/clippers,
 /turf/floor/plating,
 /area/template_noop)
 "G" = (

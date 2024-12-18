@@ -5303,10 +5303,6 @@
 "dGB" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/table/glass,
-/obj/item/scanner/antibody{
-	pixel_y = 4
-	},
-/obj/item/scanner/antibody,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},
@@ -13817,7 +13813,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 4
 	},
-/obj/item/stock_parts/circuitboard/airalarm,
+/obj/item/stock_parts/circuitboard/air_alarm,
 /turf/floor/tiled/techmaint,
 /area/surface/station/construction/office)
 "jfz" = (
@@ -31116,7 +31112,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/engine_eva)
 "vEQ" = (
-/obj/item/modular_computer/telescreen/preset/generic,
+/obj/machinery/computer/modular/telescreen/preset/generic,
 /turf/wall/r_wall,
 /area/surface/station/rnd/workshop)
 "vFa" = (

@@ -1,20 +1,27 @@
-// Stubs to reimplement
+// Stuff to port
+/obj/item/tabloid
 
 /obj/item/box/fancy/markers
 
-/obj/item/gps/xenofauna
-/obj/item/gps/security
-/obj/item/gps/security/hos
+/obj/item/book/codex
+/obj/item/book/codex/corp_regs
+/obj/item/book/codex/lore
+/obj/item/book/codex/lore/news
+/obj/item/book/codex/lore/robutt
+/obj/item/book/codex/lore/vir
 
-/obj/item/tabloid
-/obj/item/cane/crutch
-/obj/item/knife/tacknife/survival
-/obj/item/scanner/antibody
+/obj/vehicle/train/cargo/engine/quadbike
+/obj/vehicle/train/cargo/engine/quadbike/random
+/obj/vehicle/train/cargo/engine/quadbike/snowmobile/random
 
-/obj/item/handcuffs/legcuffs // you can handcuff people's shoes instead apparently? maybe delete?
+/obj/vehicle/train/cargo/trolley/trailer
+/obj/vehicle/train/cargo/trolley/trailer/random
 
+/obj/machinery/light/no_nightshift
+/obj/machinery/light/small/flicker
+/obj/machinery/light/small/no_nightshift
 
-
+// Stubs to reimplement
 /obj/item/gun/energy/gun/burst
 /obj/item/gun/energy/ionrifle/pistol
 /obj/item/gun/energy/phasegun/pistol
@@ -32,42 +39,22 @@
 /obj/item/gun/projectile/shotgun/pump/rifle/lever
 /obj/item/gunbox
 
-/obj/item/book/codex
-/obj/item/book/codex/corp_regs
-/obj/item/book/codex/lore
-/obj/item/book/codex/lore/news
-/obj/item/book/codex/lore/robutt
-/obj/item/book/codex/lore/vir
-
-/obj/item/stack/tile/floor/steel_dirty
 /obj/item/box/poker_chips
 /obj/item/chems/glass/bottle/toxin
-/obj/item/wirecutters/clippers/trimmers
 /obj/item/radio/intercom/interrogation
 /obj/item/baton/slime/loaded
 /obj/item/chems/glass/beaker/cryoxadone
-/obj/item/modular_computer/telescreen/preset/generic
-/obj/item/stock_parts/circuitboard/airalarm
 /obj/item/rig/breacher
 /obj/item/defibrillator/jumper_kit/loaded
 /obj/item/twohanded/riding_crop
-/obj/item/modular_computer/pda/syndicate
+
 /obj/item/chems/glass/bottle/biomass
-/obj/item/energy_blade/sword/pirate
 /obj/item/xenos_claw
-/obj/item/food/flowerchildsalad
-/obj/item/camera_assembly
 /obj/item/paper/dockingcodes
 	var/codes_from_z
 
 /obj/machinery/vending/phoronresearch
 /obj/machinery/smartfridge/produce/persistent_lossy
-/obj/vehicle/train/cargo/engine/quadbike
-/obj/vehicle/train/cargo/engine/quadbike/random
-/obj/vehicle/train/cargo/engine/quadbike/snowmobile/random
-/obj/vehicle/train/cargo/trolley
-/obj/vehicle/train/cargo/trolley/trailer
-/obj/vehicle/train/cargo/trolley/trailer/random
 
 /obj/random/multiple/ore_pile
 /obj/random/multiple/corp_crate/no_weapons
@@ -75,30 +62,8 @@
 /obj/random/mug
 /obj/random/rigsuit
 
-/obj/machinery/camera/network/ground_floor
-/obj/machinery/camera/network/civilian
-/obj/machinery/camera/network/command
-/obj/machinery/camera/network/basement
-/obj/machinery/camera/network/research/toxins
-	preset_channels = list("Research","Toxins Test Area")
-/obj/machinery/camera/network/research/misc
-	preset_channels = list("Research","Miscellaneous Research")
-/obj/machinery/camera/network/research_outpost
-/obj/machinery/camera/network/engine
-/obj/machinery/camera/network/cargo
-/obj/machinery/camera/network/thunder
-/obj/machinery/camera/network/telecom
-/obj/machinery/camera/network/second_floor
-/obj/machinery/camera/network/prison
-/obj/machinery/camera/network/interrogation
-
 /obj/machinery/porta_turret/industrial
 /obj/machinery/porta_turret/industrial/teleport_defense
-
-
-/obj/machinery/light/no_nightshift
-/obj/machinery/light/small/flicker
-/obj/machinery/light/small/no_nightshift
 
 /obj/machinery/alarm/outside
 
@@ -135,19 +100,6 @@
 /obj/machinery/mixer/cereal
 /obj/machinery/mixer/candy
 
-
-/obj/abstract/turbolift_spawner
-/obj/abstract/turbolift_spawner/cynosure
-/obj/abstract/turbolift_spawner/cynosure/west
-/obj/abstract/turbolift_spawner/cynosure/center
-/obj/abstract/turbolift_spawner/cynosure/cargo
-/obj/abstract/turbolift_spawner/cynosure/engineering
-/obj/abstract/turbolift_spawner/cynosure/medbay
-/obj/abstract/turbolift_spawner/cynosure/sci
-/obj/abstract/turbolift_spawner/cynosure/sec
-
-/decl/flooring/tiling/steel_dirty
-/decl/flooring/tiling/asteroidfloor
 
 
 /obj/machinery/navbeacon/patrol
@@ -448,7 +400,7 @@ corgi statue for central hall
 	else
 		. += /obj/item/backpack/satchel/grey
 	if(prob(75))
-		. += /obj/item/knife/tacknife/survival
+		. += /obj/item/bladed/knife/tactical
 
 // Medical closets
 /obj/structure/closet/secure_closet/anesthetics
