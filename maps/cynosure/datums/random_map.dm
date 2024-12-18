@@ -17,15 +17,15 @@
 /datum/random_map/noise/sif/get_appropriate_path(var/value)
 	switch(value)
 		if(0)
-			return /turf/floor/natural/mud
+			return /turf/floor/mud
 		if(1 to 2)
-			return /turf/floor/natural/dirt
+			return /turf/floor/dirt
 		if(3 to 5)
-			return /turf/floor/natural/grass/sif
+			return /turf/floor/grass/sif
 		if(6 to 8)
-			return /turf/floor/natural/grass/wild/sif
+			return /turf/floor/grass/wild/sif
 		if(9)
-			return /turf/floor/natural/snow
+			return /turf/floor/snow
 
 /datum/random_map/noise/sif/get_additional_spawns(var/value, var/turf/T)
 	if(prob(45) || T.density)
@@ -68,11 +68,11 @@
 /datum/random_map/noise/sif/forest/get_appropriate_path(var/value)
 	switch(value)
 		if(0 to 3)
-			return /turf/floor/natural/grass/sif
+			return /turf/floor/grass/sif
 		if(4 to 6)
-			return /turf/floor/natural/grass/wild/sif
+			return /turf/floor/grass/wild/sif
 		if(7 to 9)
-			return /turf/floor/natural/snow
+			return /turf/floor/snow
 
 /datum/random_map/noise/sif/forest/get_additional_spawns(var/value, var/turf/T)
 	if(prob(25) || T.density)
@@ -106,9 +106,9 @@
 /datum/random_map/noise/sif/underground/get_appropriate_path(var/value)
 	switch(value)
 		if(0 to 2)
-			return /turf/floor/natural/mud
+			return /turf/floor/mud
 		if(3 to 4)
-			return /turf/floor/natural/dirt
+			return /turf/floor/dirt
 
 /datum/random_map/noise/sif/underground/get_additional_spawns(var/value, var/turf/T)
 	if(value <= 1 && prob(30)) // Mud is very fun-gy.

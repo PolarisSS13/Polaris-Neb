@@ -205,7 +205,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
-/turf/floor/airless{
+/turf/floor/plating/airless{
 	icon_state = "solarpanel"
 	},
 /area/tcommsat/cynosure)
@@ -216,7 +216,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "cV" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -251,7 +251,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
-/turf/floor/airless{
+/turf/floor/plating/airless{
 	icon_state = "solarpanel"
 	},
 /area/tcommsat/cynosure)
@@ -368,7 +368,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "eK" = (
 /obj/machinery/constructable_frame/machine_frame,
@@ -378,7 +378,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "fg" = (
 /obj/structure/window/reinforced{
@@ -423,7 +423,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "ft" = (
 /obj/structure/window/reinforced{
@@ -491,7 +491,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "gH" = (
 /obj/effect/floor_decal/rust/part_rusted2,
@@ -504,7 +504,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "ha" = (
 /obj/structure/cable/yellow{
@@ -517,7 +517,7 @@
 	c_tag = "Tcoms - Solar Fore";
 	dir = 1
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "hu" = (
 /obj/structure/window/reinforced{
@@ -544,13 +544,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "hy" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "hA" = (
 /obj/structure/cable/yellow{
@@ -626,7 +626,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "ir" = (
 /turf/wall/shuttle,
@@ -718,7 +718,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "jP" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -1068,7 +1068,7 @@
 	pixel_y = 31
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure/powercontrol)
 "mV" = (
 /obj/effect/floor_decal/techfloor/corner{
@@ -1255,7 +1255,7 @@
 "pq" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/tracker,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "px" = (
 /obj/structure/window/reinforced{
@@ -1433,7 +1433,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "rj" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -1458,7 +1458,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "ro" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -1509,7 +1509,7 @@
 "rR" = (
 /obj/structure/cable/yellow,
 /obj/machinery/power/solar,
-/turf/floor/airless{
+/turf/floor/plating/airless{
 	icon_state = "solarpanel"
 	},
 /area/tcommsat/cynosure)
@@ -1724,7 +1724,7 @@
 /turf/floor/bluegrid/cryo,
 /area/tcommsat/cynosure/chamber)
 "vj" = (
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "vu" = (
 /obj/structure/cable{
@@ -1755,7 +1755,7 @@
 	c_tag = "Tcoms - Solar Starboard";
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "vD" = (
 /obj/structure/cable{
@@ -1975,7 +1975,7 @@
 /obj/machinery/camera/network/telecom{
 	c_tag = "Tcoms - Solar Aft"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "yF" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -2177,7 +2177,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "Bt" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -2257,7 +2257,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "Cs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2297,7 +2297,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "CQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2844,7 +2844,7 @@
 /area/tcommsat/cynosure/powercontrol)
 "IE" = (
 /obj/item/stack/cable_coil/yellow,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "IH" = (
 /obj/structure/cable{
@@ -2893,7 +2893,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 10
 	},
-/obj/structure/closet/crate/freezer/rations,
+/obj/structure/closet/crate/plastic/rations,
 /obj/item/chems/drinks/cans/waterbottle,
 /obj/item/chems/drinks/cans/waterbottle,
 /obj/item/chems/drinks/cans/waterbottle,
@@ -3502,7 +3502,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "Qe" = (
 /obj/structure/window/reinforced{
@@ -3711,11 +3711,11 @@
 	pixel_x = -4;
 	pixel_y = -2
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "SD" = (
 /obj/structure/girder,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "SE" = (
 /turf/space,
@@ -3810,7 +3810,7 @@
 	c_tag = "Tcoms - Solar Port";
 	dir = 8
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "SZ" = (
 /obj/effect/floor_decal/techfloor/corner{
@@ -3982,7 +3982,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/solar,
-/turf/floor/airless{
+/turf/floor/plating/airless{
 	icon_state = "solarpanel"
 	},
 /area/tcommsat/cynosure)
@@ -4160,7 +4160,7 @@
 /obj/structure/disposaloutlet{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "Wg" = (
 /obj/effect/floor_decal/rust,
@@ -4257,7 +4257,7 @@
 /obj/structure/disposalpipe/broken{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "XC" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -4376,7 +4376,7 @@
 "YO" = (
 /obj/machinery/porta_turret/stationary,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 "YZ" = (
 /obj/structure/cable/yellow{
@@ -4385,7 +4385,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure/powercontrol)
 "Zc" = (
 /obj/structure/cable{
@@ -4474,7 +4474,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/floor/airless,
+/turf/floor/plating/airless,
 /area/tcommsat/cynosure)
 
 (1,1,1) = {"

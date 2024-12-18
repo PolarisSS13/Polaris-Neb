@@ -210,7 +210,7 @@
 	z = Z_LEVEL_STATION_ONE
 	name = "Underground"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_UNDERGROUND
-	base_turf = /turf/floor/natural/rock
+	base_turf = /turf/floor/rock
 	holomap_offset_x = SOUTHERN_CROSS_HOLOMAP_MARGIN_X - 40
 	holomap_offset_y = SOUTHERN_CROSS_HOLOMAP_MARGIN_Y + SOUTHERN_CROSS_MAP_SIZE*0
 	event_regions = list(EVENT_REGION_PLANETSURFACE, EVENT_REGION_PLAYER_MAIN_AREA)
@@ -256,7 +256,7 @@
 	z = Z_LEVEL_SURFACE_WILD
 	name = "Wilderness"
 	flags = MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_CONSOLES
-	base_turf = /turf/floor/natural/rock
+	base_turf = /turf/floor/rock
 	event_regions = list(EVENT_REGION_PLANETSURFACE)
 
 */

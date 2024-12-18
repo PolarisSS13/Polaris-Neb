@@ -14,7 +14,7 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "ct" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/normal)
 "cv" = (
 /obj/structure/cliff/automatic{
@@ -45,7 +45,7 @@
 /area/surface/wilderness/shack)
 "fQ" = (
 /obj/structure/meat_hook,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "gl" = (
 /obj/structure/cliff/automatic{
@@ -85,10 +85,10 @@
 /area/surface/outside/wilderness/mountains)
 "kx" = (
 /obj/abstract/level_data_spawner/cynosure_wilderness,
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/wilderness/mountains)
 "lt" = (
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/wilderness/mountains)
 "mA" = (
 /obj/structure/cliff/automatic{
@@ -103,17 +103,17 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "ne" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/path/wilderness)
 "nu" = (
 /obj/structure/boulder,
-/turf/floor/natural/mud,
+/turf/floor/mud,
 /area/surface/outside/wilderness/normal)
 "oG" = (
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "oR" = (
 /turf/unsimulated/mask,
@@ -127,7 +127,7 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "qT" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/river/gautelfr)
 "sn" = (
 /obj/structure/table/sifwoodentable,
@@ -142,23 +142,23 @@
 /turf/wall/concrete,
 /area/surface/outside/wilderness/normal)
 "ti" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "tC" = (
 /obj/structure/door/sifwood,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "tM" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "ub" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/path/wilderness)
 "uk" = (
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "uP" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/deep)
 "vX" = (
 /obj/structure/cliff/automatic{
@@ -167,17 +167,17 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "zn" = (
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "zq" = (
 /obj/structure/drying_rack/sifwood,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "zS" = (
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "zY" = (
 /obj/structure/bed/chair/sifwood/wings{
@@ -189,7 +189,7 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/normal)
 "Ay" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/wilderness/mountains)
 "AG" = (
 /obj/structure/bed,
@@ -209,23 +209,23 @@
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/mountains)
 "CR" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/mountains)
 "Ec" = (
 /obj/structure/table/sifwoodentable,
 /obj/item/knife,
 /obj/item/stack/cable_coil/white,
 /obj/item/fishing_rod,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "Eo" = (
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/mountains)
 "Fg" = (
 /turf/unsimulated/mask,
@@ -243,18 +243,18 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "GK" = (
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/wilderness/mountains)
 "Hb" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/deep)
 "Ih" = (
 /obj/structure/boulder,
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "JF" = (
 /obj/effect/shuttle_landmark/cynosure/wilderness,
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/deep)
 "JU" = (
 /obj/effect/wingrille_spawn,
@@ -278,15 +278,15 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "NP" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/wilderness/mountains)
 "Qw" = (
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/deep)
 "RA" = (
 /obj/structure/closet/cabinet,
-/obj/item/chems/condiment/carton/flour/rustic,
-/obj/item/chems/condiment/carton/rice,
+/obj/item/chems/condiment/flour,
+/obj/item/chems/condiment/large/rice,
 /obj/item/chems/condiment/spacespice,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
@@ -294,7 +294,7 @@
 /turf/floor/wood/sif/broken,
 /area/surface/wilderness/shack)
 "Sl" = (
-/turf/floor/natural/mud,
+/turf/floor/mud,
 /area/surface/outside/wilderness/normal)
 "Tc" = (
 /obj/structure/bookcase,
@@ -304,7 +304,7 @@
 /obj/structure/pit{
 	name = "latrine pit"
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "TH" = (
 /turf/wall/sifwood,
@@ -313,7 +313,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "UA" = (
 /obj/structure/cliff/automatic/corner{
@@ -340,7 +340,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 
 (1,1,1) = {"

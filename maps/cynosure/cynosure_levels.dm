@@ -6,7 +6,7 @@
 	use_global_exterior_ambience = FALSE
 	ambient_light_level = 0.7
 	ambient_light_color = "#8497ec"
-	base_turf = /turf/floor/natural/dirt
+	base_turf = /turf/floor/dirt
 	exterior_atmosphere = list(
 		/decl/material/gas/oxygen =   MOLES_O2STANDARD,
 		/decl/material/gas/nitrogen = MOLES_N2STANDARD
