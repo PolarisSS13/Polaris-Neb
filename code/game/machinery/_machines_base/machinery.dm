@@ -433,6 +433,8 @@ Class Procs:
 			var/obj/item/fake_thing = type
 			parts += "[num2text(missing[type])] [initial(fake_thing.name)]"
 		to_chat(user, "\The [src] is missing [english_list(parts)], rendering it inoperable.")
+	for(var/obj/item/stock_parts/part in component_parts)
+		part.on_machine_examined(user)
 
 // This is really pretty crap and should be overridden for specific machines.
 /obj/machinery/fluid_act(var/datum/reagents/fluids)

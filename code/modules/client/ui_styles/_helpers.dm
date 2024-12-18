@@ -13,7 +13,6 @@
 		UI_ICON_HEALTH      = 'icons/mob/screen/styles/health.dmi',
 		UI_ICON_CRIT_MARKER = 'icons/mob/screen/styles/crit_markers.dmi',
 		UI_ICON_HYDRATION   = 'icons/mob/screen/styles/hydration.dmi',
-		UI_ICON_INTENT      = 'icons/mob/screen/styles/intents.dmi',
 		UI_ICON_INTERACTION = 'icons/mob/screen/styles/midnight/interaction.dmi',
 		UI_ICON_INTERNALS   = 'icons/mob/screen/styles/internals.dmi',
 		UI_ICON_INVENTORY   = 'icons/mob/screen/styles/midnight/inventory.dmi',

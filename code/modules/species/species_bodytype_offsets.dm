@@ -32,7 +32,8 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		// Check the cache for previously made icons.
 		var/modifier = mob?.get_overlay_state_modifier()
 		var/image_key = modifier ? "[modifier]-[mob_icon]-[mob_state]-[color]-[slot]" : "generic-[mob_icon]-[mob_state]-[color]-[slot]"
-		if(!equip_overlays[image_key])
+		var/image/copying = equip_overlays[image_key]
+		if(!copying)
 
 			var/icon/final_I = new(icon_template)
 			var/list/shifts = use_equip_adjust[slot]
@@ -44,9 +45,15 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 				var/icon/equip = new(mob_icon, icon_state = mob_state, dir = use_dir)
 				var/icon/canvas = new(icon_template)
 				canvas.Blend(equip, ICON_OVERLAY, facing_list[1]+1, facing_list[2]+1)
-				final_I.Insert(canvas, dir = use_dir)
-			equip_overlays[image_key] = overlay_image(final_I, color = color, flags = RESET_COLOR)
+				final_I.Insert(canvas, icon_state = mob_state, dir = use_dir)
+			copying = overlay_image(final_I, mob_state, color, RESET_COLOR)
+			equip_overlays[image_key] = copying
+
 		var/image/I = new() // We return a copy of the cached image, in case downstream procs mutate it.
-		I.appearance = equip_overlays[image_key]
+		I.appearance = copying
+		// For some reason icon_state is coming back null...
+		I.icon       = copying.icon
+		I.icon_state = copying.icon_state
 		return I
+
 	return overlay_image(mob_icon, mob_state, color, RESET_COLOR)

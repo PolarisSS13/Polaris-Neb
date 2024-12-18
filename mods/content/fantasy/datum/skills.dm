@@ -73,7 +73,7 @@
 /decl/skill/crafting/artifice
 	name = "Artifice"
 	uid =  "skill_crafting_artifice"
-	desc = "Your ability to create, install, and comprehend complex devices and mechanisms, as well as your ability to create finely-detailed objects."
+	desc = "Your ability to create, install, and comprehend complex devices and mechanisms, as well as your ability to create finely-detailed objects like cut gems or jewellery."
 	levels = list(
 		"Unskilled"   = "You know that gears turn together when intermeshed and that axles are used to connect spinning things, but you've never done more work on a machine than hitting it if it's broken. You struggle with the precision needed to work on finely-detailed objects.",
 		"Basic"       = "You know some basic mechanical principles, like the construction of a basic pulley, or how to put a wheel on an axle. You could fix a broken or stuck well winch, but you'd struggle to deal with a malfunctioning windmill or granary. You have a steadier hand than most, able to place small gems on jewelry and connect small mechanisms.",
@@ -306,3 +306,6 @@
 		"Experienced" = "You work as an pharmacist, or else you are a doctor with training in chemistry. If you are a pharmacist, you can make most medications. At this stage, you're working mostly by-the-book. <br>- You can examine held containers for some reagents.",
 		"Master"      = "You specialized in chemistry or pharmaceuticals; you are either a medical researcher or professional chemist. You can create custom mixes and make even the trickiest of medications easily. You understand how your pharmaceuticals interact with the bodies of your patients. You are probably the originator of at least one new chemical innovation.<br>- You can examine held containers for all reagents."
 	)
+
+/obj/item/gemstone
+	work_skill = SKILL_ARTIFICE

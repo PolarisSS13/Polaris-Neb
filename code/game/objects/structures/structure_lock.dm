@@ -44,7 +44,7 @@
 		return FALSE
 	if(!lock.isLocked())
 		return TRUE
-	if(user?.a_intent == I_HELP && (istype(held, /obj/item/key) || istype(held, /obj/item/keyring)))
+	if(user?.check_intent(I_FLAG_HELP) && (istype(held, /obj/item/key) || istype(held, /obj/item/keyring)))
 		try_key_unlock(held, user)
 	if(!lock.isLocked())
 		return TRUE

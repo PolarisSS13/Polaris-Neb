@@ -1,7 +1,7 @@
 /decl/psionic_faculty/coercion
 	id = PSI_COERCION
 	name = "Coercion"
-	associated_intent = I_DISARM
+	associated_intent_flag = I_FLAG_DISARM
 	armour_types = list(PSIONIC)
 
 /decl/psionic_power/coercion

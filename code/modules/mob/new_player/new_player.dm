@@ -323,7 +323,7 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 		ordered_submaps = sortTim(SSmapping.submaps.Copy(), /proc/cmp_submap_asc)
 	for(var/datum/submap/submap as anything in ordered_submaps)
 		if(submap?.available())
-			dat += "<tr><td colspan = 3><b>[submap.name] ([submap.archetype.descriptor]):</b></td></tr>"
+			dat += "<tr><td colspan = 3><b>[submap.name] ([submap.archetype.name]):</b></td></tr>"
 			job_summaries = list()
 			for(var/otherthing in submap.jobs)
 				var/datum/job/job = submap.jobs[otherthing]
@@ -481,10 +481,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 /mob/new_player/get_admin_job_string()
 	return "New player"
-
-/hook/roundstart/proc/update_lobby_browsers()
-	global.using_map.refresh_lobby_browsers()
-	return TRUE
 
 /mob/new_player/change_mob_type(var/new_type, var/turf/location, var/new_name, var/delete_old_mob = FALSE, var/subspecies)
 	to_chat(usr, SPAN_WARNING("You cannot convert players who have not entered the game yet!"))

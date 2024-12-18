@@ -66,7 +66,6 @@
 		UI_ICON_ATTACK      = 'icons/mob/screen/styles/minimalist/attack_selector.dmi',
 		UI_ICON_FIRE_INTENT = 'icons/mob/screen/styles/minimalist/fire_intent.dmi',
 		UI_ICON_HANDS       = 'icons/mob/screen/styles/minimalist/hands.dmi',
-		UI_ICON_INTENT      = 'icons/mob/screen/styles/minimalist/intents.dmi',
 		UI_ICON_INTERACTION = 'icons/mob/screen/styles/minimalist/interaction.dmi',
 		UI_ICON_INVENTORY   = 'icons/mob/screen/styles/minimalist/inventory.dmi',
 		UI_ICON_MOVEMENT    = 'icons/mob/screen/styles/minimalist/movement.dmi',

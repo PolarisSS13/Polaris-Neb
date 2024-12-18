@@ -4,7 +4,7 @@ var/global/list/all_maps = list()
 var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
 var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
-/hook/startup/proc/initialise_map_list()
+/proc/initialise_map_list()
 	for(var/type in subtypesof(/datum/map))
 		var/datum/map/M
 		if(type == global.using_map.type)
@@ -533,3 +533,6 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 /datum/map/proc/finalize_map_generation()
 	return
+
+/datum/map/proc/get_available_submap_archetypes()
+	return decls_repository.get_decls_of_subtype_unassociated(/decl/submap_archetype)

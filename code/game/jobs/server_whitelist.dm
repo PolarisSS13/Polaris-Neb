@@ -31,7 +31,7 @@ var/global/list/server_whitelist
 	to_file(write_file, jointext(global.server_whitelist, "\n"))
 
 var/global/list/alien_whitelist = list()
-/hook/startup/proc/loadAlienWhitelist()
+/proc/try_load_alien_whitelist()
 	if(get_config_value(/decl/config/toggle/use_alien_whitelist))
 		if(get_config_value(/decl/config/toggle/use_alien_whitelist_sql))
 			if(!load_alienwhitelistSQL())

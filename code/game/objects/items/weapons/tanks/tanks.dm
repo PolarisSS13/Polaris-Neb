@@ -147,12 +147,12 @@ var/global/list/global/tank_gauge_cache = list()
 
 				var/obj/item/assembly_holder/assy = proxyassembly.assembly
 				if(assy.a_left && assy.a_right)
-					assy.dropInto(usr.loc)
+					assy.dropInto(user.loc)
 					assy.master = null
 					proxyassembly.assembly = null
 				else
 					if(!proxyassembly.assembly.a_left)
-						assy.a_right.dropInto(usr.loc)
+						assy.a_right.dropInto(user.loc)
 						assy.a_right.holder = null
 						assy.a_right = null
 						proxyassembly.assembly = null
@@ -299,7 +299,7 @@ var/global/list/global/tank_gauge_cache = list()
 		return TOPIC_REFRESH
 
 	if (href_list["stat"])
-		toggle_valve(usr)
+		toggle_valve(user)
 		return TOPIC_REFRESH
 
 /obj/item/tank/proc/toggle_valve(var/mob/user)

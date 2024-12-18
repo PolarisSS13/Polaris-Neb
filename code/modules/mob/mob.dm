@@ -561,10 +561,10 @@
 		update_flavor_text(href_list["flavor_change"])
 		return TOPIC_HANDLED
 
-// If usr != src, or if usr == src but the Topic call was not resolved, this is called next.
 /mob/proc/get_comments_record()
 	return
 
+// If usr != src, or if usr == src but the Topic call was not resolved, this is called next.
 /mob/OnTopic(mob/user, href_list, datum/topic_state/state)
 
 	if(href_list["refresh"])
@@ -626,9 +626,6 @@
 		return TRUE
 	. = ..()
 
-/mob/proc/is_active()
-	return (0 >= usr.stat)
-
 /mob/proc/can_touch(var/atom/touching)
 	if(!touching.Adjacent(src) || incapacitated())
 		return FALSE
@@ -638,16 +635,6 @@
 	if (buckled)
 		to_chat(src, SPAN_WARNING("You are buckled down."))
 	return TRUE
-
-/mob/proc/see(message)
-	if(!is_active())
-		return 0
-	to_chat(src, message)
-	return 1
-
-/mob/proc/show_viewers(message)
-	for(var/mob/M in viewers())
-		M.see(message)
 
 /mob/Stat()
 	..()
@@ -806,12 +793,10 @@
 		to_chat(usr, "You are restrained and cannot do that!")
 		return
 
-	var/mob/S = src
-	var/mob/U = usr
 	var/list/valid_objects = list()
 	var/self = null
 
-	if(S == U)
+	if(src == usr)
 		self = 1 // Removing object from yourself.
 
 	valid_objects = get_visible_implants(0)
@@ -819,16 +804,16 @@
 		if(self)
 			to_chat(src, "You have nothing stuck in your body that is large enough to remove.")
 		else
-			to_chat(U, "[src] has nothing stuck in their wounds that is large enough to remove.")
+			to_chat(usr, "[src] has nothing stuck in their wounds that is large enough to remove.")
 		return
 	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
 	if(self)
 		to_chat(src, "<span class='warning'>You attempt to get a good grip on [selection] in your body.</span>")
 	else
-		to_chat(U, "<span class='warning'>You attempt to get a good grip on [selection] in [S]'s body.</span>")
-	if(!do_mob(U, S, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
+		to_chat(usr, "<span class='warning'>You attempt to get a good grip on [selection] in [src]'s body.</span>")
+	if(!do_mob(usr, src, 30, incapacitation_flags = INCAPACITATION_DEFAULT & (~INCAPACITATION_FORCELYING))) //let people pinned to stuff yank it out, otherwise they're stuck... forever!!!
 		return
-	if(!selection || !S || !U)
+	if(QDELETED(selection) || QDELETED(src) || QDELETED(usr))
 		return
 
 	if(self)
@@ -837,10 +822,10 @@
 		visible_message("<span class='warning'><b>[usr] rips [selection] out of [src]'s body.</b></span>","<span class='warning'><b>[usr] rips [selection] out of your body.</b></span>")
 	remove_implant(selection)
 	selection.forceMove(get_turf(src))
-	if(U.get_empty_hand_slot())
-		U.put_in_hands(selection)
-	if(ishuman(U))
-		var/mob/living/human/human_user = U
+	if(usr.get_empty_hand_slot())
+		usr.put_in_hands(selection)
+	if(ishuman(usr))
+		var/mob/living/human/human_user = usr
 		human_user.bloody_hands(src)
 	return 1
 
@@ -1135,11 +1120,10 @@
 /mob/proc/update_mouse_pointer()
 	if(!client)
 		return
-
-	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
-
-	if(examine_cursor_icon && client.keys_held["Shift"])
-		client.mouse_pointer_icon = examine_cursor_icon
+	if(client.keys_held["Shift"])
+		client.add_mouse_pointer(/decl/mouse_pointer/examine)
+	else
+		client.remove_mouse_pointer(/decl/mouse_pointer/examine)
 
 /mob/keybind_face_direction(direction)
 	facedir(direction)
@@ -1395,6 +1379,11 @@
 // Stub proc; implemented on /mob/living
 /mob/proc/handle_footsteps()
 	return
+
+//gets name from ID or PDA itself, ID inside PDA doesn't matter
+//Useful when player is being seen by other mobs
+/mob/proc/get_id_name(if_no_id = "Unknown")
+	return GetIdCard(exceptions = list(/obj/item/holder))?.registered_name || if_no_id
 
 /mob/proc/can_twohand_item(obj/item/item)
 	return FALSE

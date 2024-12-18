@@ -26,7 +26,7 @@
 
 /mob/living/simple_animal/borer/RangedAttack(atom/A, var/params)
 	. = ..()
-	if(!. && a_intent == I_DISARM && isliving(A) && !neutered && can_do_special_ranged_attack(FALSE))
+	if(!. && check_intent(I_FLAG_DISARM) && isliving(A) && !neutered && can_do_special_ranged_attack(FALSE))
 		var/mob/living/M = A
 		if(locate(/mob/living/simple_animal/borer) in M.contents)
 			to_chat(src, SPAN_WARNING("You cannot dominate a host who already has a passenger!"))

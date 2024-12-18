@@ -133,7 +133,7 @@
 
 	// User is not necessarily the exosuit, or the same person, so update intent.
 	if(user != src)
-		a_intent = user.a_intent
+		set_intent(user.get_intent())
 		if(user.zone_sel)
 			zone_sel.set_selected_zone(user.get_target_zone())
 		else
@@ -314,7 +314,7 @@
 			if(!silent)
 				to_chat(user, SPAN_WARNING("The [body.hatch_descriptor] is locked."))
 			return
-		hud_open.toggled()
+		hud_open.toggled(user)
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You open the hatch and climb out of \the [src]."))
 	else
@@ -328,7 +328,7 @@
 		user.client.screen -= hud_elements
 		user.client.eye = user
 	if(user in pilots)
-		a_intent = I_HURT
+		set_intent(I_FLAG_HARM)
 		LAZYREMOVE(pilots, user)
 		UNSETEMPTY(pilots)
 		update_pilots()
@@ -337,7 +337,7 @@
 /mob/living/exosuit/attackby(var/obj/item/thing, var/mob/user)
 
 	// Install equipment.
-	if(user.a_intent != I_HURT && istype(thing, /obj/item/mech_equipment))
+	if(!user.check_intent(I_FLAG_HARM) && istype(thing, /obj/item/mech_equipment))
 		if(hardpoints_locked)
 			to_chat(user, SPAN_WARNING("Hardpoint system access is disabled."))
 			return TRUE
@@ -380,7 +380,7 @@
 		return TRUE
 
 	// Various tool and construction interactions.
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 
 		// Removing systems from hardpoints.
 		if(IS_MULTITOOL(thing))
@@ -402,8 +402,7 @@
 				to_chat(user, SPAN_WARNING("The securing bolts are not visible while maintenance protocols are disabled."))
 				return TRUE
 			visible_message(SPAN_WARNING("\The [user] begins unwrenching the securing bolts holding \the [src] together."))
-			var/delay = 60 * user.skill_delay_mult(SKILL_DEVICES)
-			if(do_after(user, delay) && maintenance_protocols)
+			if(user.do_skilled(6 SECONDS, SKILL_DEVICES, src) && maintenance_protocols)
 				visible_message(SPAN_NOTICE("\The [user] loosens and removes the securing bolts, dismantling \the [src]."))
 				dismantle()
 			return TRUE
@@ -460,7 +459,7 @@
 				return TRUE
 			if(!body) //Error
 				return TRUE
-			var/delay = min(50 * user.skill_delay_mult(SKILL_DEVICES), 50 * user.skill_delay_mult(SKILL_EVA))
+			var/delay = min(5 SECONDS * user.skill_delay_mult(SKILL_DEVICES), 5 SECONDS * user.skill_delay_mult(SKILL_EVA))
 			visible_message(SPAN_NOTICE("\The [user] starts forcing the \the [src]'s emergency [body.hatch_descriptor] release using \the [thing]."))
 			if(do_after(user, delay, src))
 				visible_message(SPAN_NOTICE("\The [user] forces \the [src]'s [body.hatch_descriptor] open using the \the [thing]."))
@@ -507,7 +506,7 @@
 			to_chat(user, SPAN_WARNING("The [body.hatch_descriptor] is locked."))
 			return TRUE
 		if(hud_open)
-			hud_open.toggled()
+			hud_open.toggled(user)
 			return TRUE
 
 /mob/living/exosuit/default_hurt_interaction(var/mob/user)

@@ -12,7 +12,7 @@
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/kitchen/rollingpin/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	if (user.has_genetic_condition(GENE_COND_CLUMSY) && prob(50) && user.try_unequip(src))

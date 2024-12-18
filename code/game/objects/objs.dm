@@ -17,7 +17,6 @@
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
-	var/atom_damage_type = BRUTE
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
 	var/holographic = 0 //if the obj is a holographic object spawned by the holodeck
@@ -400,3 +399,7 @@
 	if(obj_flags & OBJ_FLAG_INSULATED_HANDLE)
 		return
 	return ..()
+
+// Stub, used by /item and /structure
+/obj/proc/refresh_color()
+	return

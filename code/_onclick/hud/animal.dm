@@ -11,6 +11,6 @@
 	move_intent = new(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_MOVEMENT)
 	move_intent.icon_state = mymob.move_intent.hud_icon_state
 	adding += move_intent
-	action_intent = new(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_INTENT)
+	action_intent = new(null, mymob, ui_style, ui_color, ui_alpha)
 	adding += action_intent
 	..()

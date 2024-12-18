@@ -45,8 +45,8 @@
 
 /turf/floor/straw
 	name = "loose straw"
-	icon = 'icons/turf/flooring/wildgrass.dmi'
-	icon_state = "wildgrass"
+	icon = 'icons/turf/flooring/straw.dmi'
+	icon_state = "straw"
 	color = COLOR_WHEAT
 	_flooring = /decl/flooring/straw
 

@@ -430,7 +430,7 @@
 /obj/item/deck/cards{
 	pixel_y = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bn" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -441,7 +441,7 @@
 "bo" = (
 /obj/structure/table/gamblingtable,
 /obj/random/coin,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bp" = (
 /obj/random/obstruction,
@@ -464,7 +464,7 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bt" = (
 /obj/structure/bed/chair/wood/wings{

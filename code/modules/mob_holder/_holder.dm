@@ -115,9 +115,9 @@
 		if(length(cards))
 			LAZYDISTINCTADD(., cards)
 
-/obj/item/holder/attack_self()
+/obj/item/holder/attack_self(mob/user)
 	for(var/mob/M in contents)
-		M.show_stripping_window(usr)
+		M.show_stripping_window(user)
 
 /obj/item/holder/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 

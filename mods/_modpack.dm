@@ -56,6 +56,10 @@
 	if(length(credits_nouns))
 		SSlore.credits_nouns |= credits_nouns
 
+/// This runs on-roundstart after roundstart characters have been created.
+/decl/modpack/proc/on_roundstart()
+	return
+
 /decl/modpack/proc/get_membership_perks()
 	return
 
@@ -70,11 +74,11 @@
 		. = "<hr><br><center><b><font size = 3>Modpacks List</font></b></center><br><hr><br>"
 		for(var/modpack in SSmodpacks.loaded_modpacks)
 			var/decl/modpack/M = SSmodpacks.loaded_modpacks[modpack]
-			
+
 			if(M.name)
 				. += "<div class = 'statusDisplay'>"
 				. += "<center><b>[M.name]</b></center>"
-				
+
 				if(M.desc || M.author)
 					. += "<br>"
 					if(M.desc)

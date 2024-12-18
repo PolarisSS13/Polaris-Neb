@@ -105,7 +105,7 @@
 	return FALSE
 
 /decl/grab/normal/resolve_openhand_attack(var/obj/item/grab/grab)
-	if(grab.assailant.a_intent != I_HELP)
+	if(!grab.assailant.check_intent(I_FLAG_HELP))
 		if(grab.target_zone == BP_HEAD)
 			if(grab.assailant.get_target_zone() == BP_EYES)
 				if(attack_eye(grab))
@@ -225,7 +225,7 @@
 	var/mob/living/affecting = grab.get_affecting_mob()
 	if(!affecting)
 		return
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return 0 // Not trying to hurt them.
 
 	if(!W.edge || !W.get_attack_force(user) || W.atom_damage_type != BRUTE)
@@ -271,7 +271,7 @@
 		return
 	if(!user.skill_check(SKILL_COMBAT, SKILL_ADEPT))
 		return
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return 0 // Not trying to hurt them.
 	if(!W.edge || !W.get_attack_force(user) || W.atom_damage_type != BRUTE)
 		return 0 //unsuitable weapon

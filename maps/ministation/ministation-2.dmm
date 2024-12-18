@@ -177,7 +177,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "aU" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -204,7 +204,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "aX" = (
 /obj/structure/cable{
@@ -345,11 +345,11 @@
 /obj/abstract/landmark/start{
 	name = "Captain"
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "bt" = (
 /obj/item/flashlight/lamp/green,
-/obj/structure/table/woodentable/mahogany,
+/obj/structure/table/laminate/mahogany,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -359,7 +359,7 @@
 /obj/item/stack/material/bow_ammo/rod,
 /obj/item/cell/crap,
 /obj/item/mollusc/clam,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "bu" = (
 /obj/machinery/shipsensors{
@@ -493,15 +493,15 @@
 	initial_access = null;
 	req_access = list("ACCESS_CAMERAS")
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "bI" = (
-/obj/structure/table/woodentable/mahogany,
+/obj/structure/table/laminate/mahogany,
 /obj/item/modular_computer/tablet/lease/preset/command,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/bridge)
 "bK" = (
 /obj/machinery/alarm{
@@ -899,7 +899,7 @@
 /turf/floor/tiled,
 /area/ministation/bridge)
 "dn" = (
-/obj/structure/table/woodentable_reinforced/walnut,
+/obj/structure/table/laminate/reinforced/walnut,
 /obj/item/paper_bin,
 /obj/item/pen/retractable,
 /turf/floor/carpet/red,
@@ -1455,7 +1455,7 @@
 	dir = 4;
 	pixel_x = 1
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "fW" = (
 /obj/machinery/light,
@@ -1655,7 +1655,7 @@
 	dir = 8
 	},
 /obj/structure/bookcase/skill_books/random,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "hd" = (
 /obj/machinery/light{
@@ -2330,7 +2330,7 @@
 /turf/floor/plating,
 /area/ministation/maint/l3se)
 "kk" = (
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "kn" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -2590,7 +2590,7 @@
 /obj/item/clothing/suit/jacket/charcoal,
 /obj/item/clothing/shoes/sandal,
 /obj/item/multitool,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "ll" = (
 /obj/structure/cable{
@@ -2732,7 +2732,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "mf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2946,7 +2946,7 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "mY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -3222,7 +3222,7 @@
 	dir = 1;
 	level = 2
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "oR" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3294,12 +3294,12 @@
 /turf/floor,
 /area/ministation/science)
 "ps" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/laminate/ebony,
 /obj/item/paper_bundle,
 /obj/effect/floor_decal/stoneborder{
 	dir = 6
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "pz" = (
 /obj/machinery/power/apc{
@@ -3344,7 +3344,7 @@
 /turf/floor/plating,
 /area/ministation/maint/l3nw)
 "qj" = (
-/obj/structure/target_stake,
+/obj/structure/target_stake/steel,
 /obj/item/toy/figure/clown,
 /turf/floor/reinforced/airless,
 /area/space)
@@ -3560,7 +3560,7 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "sB" = (
 /obj/structure/cable{
@@ -3631,7 +3631,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
 /obj/random/plushie,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "sW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3847,7 +3847,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "uN" = (
 /obj/machinery/door/airlock/glass/science,
@@ -4087,7 +4087,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "wH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4128,14 +4128,14 @@
 /turf/floor/lino,
 /area/ministation/hall/s3)
 "wY" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/laminate/ebony,
 /obj/item/pen/fancy,
 /obj/item/box/fancy/crayons,
 /obj/effect/floor_decal/stoneborder{
 	dir = 6
 	},
 /obj/item/box/candles,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "xc" = (
 /obj/structure/lattice,
@@ -4163,7 +4163,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "xH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4221,14 +4221,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "yc" = (
 /obj/machinery/camera/autoname{
 	dir = 8;
 	req_access = list("ACCESS_CAMERAS")
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "yd" = (
 /obj/machinery/door/firedoor,
@@ -4251,7 +4251,7 @@
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "ym" = (
 /turf/floor/tiled,
@@ -4480,7 +4480,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "Al" = (
 /obj/machinery/button/blast_door{
@@ -4535,7 +4535,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "AH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4559,7 +4559,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "AS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4813,7 +4813,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "BZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5274,12 +5274,12 @@
 /turf/floor/plating,
 /area/ministation/maint/l3central)
 "DD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/stack/material/panel/mapped/plastic/ten,
 /obj/item/stack/material/plank/mapped/wood/ten,
 /obj/item/stack/material/plank/mapped/wood/ten,
 /obj/item/stack/material/panel/mapped/plastic/ten,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "DF" = (
 /obj/machinery/camera/autoname{
@@ -5294,7 +5294,7 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "DQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/pill_bottle/dice,
 /turf/floor/carpet/green,
 /area/ministation/library)
@@ -5334,7 +5334,7 @@
 /turf/floor/plating,
 /area/ministation/maint/l3nw)
 "Ef" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /turf/floor/carpet/green,
 /area/ministation/library)
 "Eg" = (
@@ -5521,7 +5521,7 @@
 /obj/machinery/computer/modular/preset/civilian{
 	dir = 1
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "FH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5547,10 +5547,10 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "FV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/mollusc/clam,
 /obj/machinery/light/small,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Gh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5665,12 +5665,12 @@
 /turf/floor/tiled,
 /area/ministation/hall/s3)
 "Hl" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/laminate/ebony,
 /obj/item/paper_bin,
 /obj/effect/floor_decal/stoneborder{
 	dir = 6
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "Ho" = (
 /obj/structure/cable{
@@ -5699,7 +5699,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "HN" = (
 /obj/structure/cable{
@@ -5799,7 +5799,7 @@
 /turf/floor/carpet/green,
 /area/ministation/tradehouse_rep)
 "Ir" = (
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Ix" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -5829,7 +5829,7 @@
 /obj/machinery/alarm{
 	pixel_y = 23
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "IC" = (
 /turf/floor/carpet/green,
@@ -5899,7 +5899,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Jo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5940,7 +5940,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "JF" = (
 /obj/structure/disposalpipe/segment{
@@ -6063,7 +6063,7 @@
 /turf/floor/carpet/green,
 /area/ministation/library)
 "Le" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/chems/drinks/cans/waterbottle,
 /turf/floor/carpet/green,
 /area/ministation/library)
@@ -6097,7 +6097,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "LC" = (
 /obj/structure/disposalpipe/segment,
@@ -6127,7 +6127,7 @@
 /turf/floor/tiled,
 /area/ministation/hall/n3)
 "LM" = (
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "LN" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -6178,7 +6178,7 @@
 /obj/structure/bed/chair/armchair/black{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "LW" = (
 /obj/structure/cable{
@@ -6263,7 +6263,7 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/obj/structure/table/woodentable_reinforced/walnut,
+/obj/structure/table/laminate/reinforced/walnut,
 /obj/item/folder,
 /turf/floor/carpet/red,
 /area/ministation/court)
@@ -6326,7 +6326,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "MU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6400,7 +6400,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 32
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Ne" = (
 /obj/structure/table,
@@ -6426,7 +6426,7 @@
 /area/ministation/maint/l3se)
 "Nk" = (
 /obj/machinery/photocopier,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Nm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
@@ -6459,7 +6459,7 @@
 	pixel_y = -32;
 	dir = 1
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "ND" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6468,7 +6468,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "NF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6558,7 +6558,7 @@
 /obj/structure/bed/chair/wood/walnut{
 	dir = 4
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Ok" = (
 /obj/structure/shuttle/engine/heater{
@@ -6596,9 +6596,9 @@
 /turf/floor/tiled,
 /area/ministation/hall/s3)
 "Ov" = (
-/obj/structure/table/woodentable/walnut,
+/obj/structure/table/laminate/walnut,
 /obj/machinery/light,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Oy" = (
 /obj/machinery/atmospherics/binary/pump/on{
@@ -6668,7 +6668,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "ON" = (
 /obj/structure/cable{
@@ -6730,10 +6730,10 @@
 /turf/floor/tiled,
 /area/ministation/hall/s3)
 "Pk" = (
-/obj/structure/table/woodentable/walnut,
+/obj/structure/table/laminate/walnut,
 /obj/item/folder/blue,
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Pn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -6762,12 +6762,12 @@
 /turf/floor/tiled,
 /area/ministation/hall/n3)
 "Px" = (
-/obj/structure/table/woodentable/walnut,
+/obj/structure/table/laminate/walnut,
 /obj/item/folder/red,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Pz" = (
 /obj/machinery/door/firedoor,
@@ -6802,13 +6802,13 @@
 /obj/abstract/landmark/start{
 	name = "Librarian"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "PE" = (
 /obj/structure/bed/chair/armchair/black{
 	dir = 8
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "PL" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
@@ -6842,7 +6842,7 @@
 /turf/floor/tiled,
 /area/ministation/hall/n3)
 "PT" = (
-/obj/structure/table/woodentable_reinforced/walnut,
+/obj/structure/table/laminate/reinforced/walnut,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -6905,7 +6905,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Qk" = (
 /obj/machinery/power/apc{
@@ -6973,11 +6973,11 @@
 /turf/floor/tiled,
 /area/ministation/shuttle/outgoing)
 "QD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/book/printable_red,
 /obj/item/pen,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "QF" = (
 /turf/wall,
@@ -7005,7 +7005,7 @@
 	pixel_y = 30
 	},
 /obj/effect/floor_decal/industrial/hatch/red,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "QT" = (
 /obj/machinery/computer/design_console{
@@ -7022,8 +7022,8 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/structure/table/woodentable,
-/turf/floor/wood/mahogany,
+/obj/structure/table/laminate,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Re" = (
 /obj/machinery/power/apc{
@@ -7060,7 +7060,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Rl" = (
 /obj/structure/cable{
@@ -7159,7 +7159,7 @@
 /area/ministation/shuttle/outgoing)
 "RG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "RI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -7203,7 +7203,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "RS" = (
 /obj/machinery/power/smes/buildable/max_cap_in_out{
@@ -7270,11 +7270,11 @@
 /turf/floor/tiled,
 /area/ministation/tradehouse_rep)
 "Sf" = (
-/obj/structure/table/woodentable/walnut,
+/obj/structure/table/laminate/walnut,
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Sh" = (
 /obj/structure/window/reinforced{
@@ -7346,7 +7346,7 @@
 /area/ministation/science)
 "SP" = (
 /obj/item/stool/padded,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "SS" = (
 /obj/machinery/computer/ship/engines{
@@ -7374,8 +7374,8 @@
 /turf/floor/plating,
 /area/ministation/maint/l3ne)
 "Tk" = (
-/obj/structure/table/woodentable,
-/turf/floor/wood/mahogany,
+/obj/structure/table/laminate,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Tm" = (
 /obj/effect/floor_decal/carpet/green{
@@ -7384,7 +7384,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "Tn" = (
 /obj/machinery/shipsensors{
@@ -7423,7 +7423,7 @@
 /obj/structure/railing/mapped{
 	dir = 8
 	},
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/laminate/ebony,
 /obj/item/pen,
 /obj/item/pen/blue,
 /obj/item/pen/retractable,
@@ -7431,7 +7431,7 @@
 /obj/item/pen/retractable/blue,
 /obj/item/pen/multi,
 /obj/effect/floor_decal/stoneborder/corner,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "Tx" = (
 /obj/machinery/light_switch{
@@ -7483,7 +7483,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "TG" = (
 /obj/machinery/atmospherics/binary/pump/high_power{
@@ -7501,7 +7501,7 @@
 /turf/floor/tiled,
 /area/ministation/bridge)
 "TI" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/cash,
 /obj/item/chems/drinks/cans/waterbottle,
 /turf/floor/carpet/green,
@@ -7599,7 +7599,7 @@
 /obj/structure/reagent_dispensers/water_cooler{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "Uo" = (
 /obj/item/radio/intercom{
@@ -7617,7 +7617,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Uq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -7627,11 +7627,11 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Uw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "UB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7644,7 +7644,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "UE" = (
 /obj/structure/closet/crate/uranium,
@@ -7657,7 +7657,7 @@
 	dir = 4
 	},
 /obj/structure/bookcase/skill_books/random,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "UH" = (
 /obj/machinery/alarm{
@@ -7734,7 +7734,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/knife/kitchen,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -7743,15 +7743,15 @@
 /obj/item/mollusc/clam,
 /obj/item/mollusc/clam,
 /obj/item/mollusc/clam,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Vl" = (
 /obj/structure/bookcase/manuals,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Vq" = (
 /obj/structure/bookcase/skill_books/random,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Vt" = (
 /obj/structure/cable{
@@ -7787,7 +7787,7 @@
 /turf/floor/carpet/red,
 /area/ministation/court)
 "Vw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/deck/cards,
 /turf/floor/carpet/green,
 /area/ministation/library)
@@ -7864,9 +7864,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/fabricator/book,
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "VX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -7971,7 +7971,7 @@
 	dir = 1;
 	level = 2
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Wx" = (
 /obj/machinery/door/airlock/hatch/maintenance,
@@ -8032,7 +8032,7 @@
 /obj/effect/floor_decal/stoneborder{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "WT" = (
 /obj/structure/bed/padded,
@@ -8076,7 +8076,7 @@
 	dir = 4
 	},
 /obj/machinery/light,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Xi" = (
 /obj/machinery/newscaster{
@@ -8132,7 +8132,7 @@
 /obj/effect/floor_decal/stoneborder/corner{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "XJ" = (
 /obj/structure/closet,
@@ -8296,7 +8296,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "YJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8377,7 +8377,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "YX" = (
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
@@ -8484,7 +8484,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 25
 	},
-/turf/floor/wood/yew,
+/turf/floor/laminate/yew,
 /area/ministation/court)
 "Zu" = (
 /obj/structure/cable{
@@ -8499,7 +8499,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "Zv" = (
 /turf/wall,
@@ -8515,7 +8515,7 @@
 /area/ministation/bridge)
 "ZH" = (
 /obj/effect/floor_decal/carpet/green,
-/turf/floor/wood/walnut,
+/turf/floor/laminate/walnut,
 /area/ministation/library)
 "ZJ" = (
 /obj/machinery/door/firedoor,
@@ -8580,10 +8580,10 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/floor/wood/mahogany,
+/turf/floor/laminate/mahogany,
 /area/ministation/library)
 "ZZ" = (
-/obj/structure/table/woodentable_reinforced/walnut,
+/obj/structure/table/laminate/reinforced/walnut,
 /obj/item/bell,
 /turf/floor/carpet/red,
 /area/ministation/court)

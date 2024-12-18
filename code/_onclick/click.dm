@@ -108,7 +108,7 @@
 	if(holding == A) // Handle attack_self
 		holding.attack_self(src)
 		trigger_aiming(TARGET_CAN_CLICK)
-		usr.update_inhand_overlays(FALSE)
+		update_inhand_overlays(FALSE)
 		return 1
 
 	//Atoms on your person
@@ -118,7 +118,7 @@
 		if(holding)
 
 			// AI driven mobs have a melee telegraph that needs to be handled here.
-			if(a_intent == I_HURT && istype(A) && (!do_attack_windup_checking(A) || holding != get_active_held_item()))
+			if(check_intent(I_FLAG_HARM) && istype(A) && (!do_attack_windup_checking(A) || holding != get_active_held_item()))
 				return TRUE
 
 			var/resolved = holding.resolve_attackby(A, src, params)
@@ -144,7 +144,7 @@
 			if(holding)
 
 				// AI driven mobs have a melee telegraph that needs to be handled here.
-				if(a_intent == I_HURT && istype(A) && (!do_attack_windup_checking(A) || holding != get_active_held_item()))
+				if(check_intent(I_FLAG_HARM) && istype(A) && (!do_attack_windup_checking(A) || holding != get_active_held_item()))
 					return TRUE
 
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
@@ -225,7 +225,7 @@
 	// corgis attacking a tree, for example, will do the windup animation despite
 	// having no interaction or message shown at the end of it.
 	// AI driven mobs have a melee telegraph that needs to be handled here.
-	if(a_intent == I_HURT && istype(A) && !do_attack_windup_checking(A))
+	if(check_intent(I_FLAG_HARM) && istype(A) && !do_attack_windup_checking(A))
 		return TRUE
 
 	return FALSE

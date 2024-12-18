@@ -352,3 +352,12 @@ Standard helpers for users interacting with machinery parts.
 			var/present = number_of_components(required_type, only_functional)
 			if(present < needed)
 				LAZYSET(., required_type, needed - present)
+
+/obj/machinery/get_alt_interactions(mob/user)
+	. = ..()
+	for(var/obj/item/stock_parts/component in component_parts)
+		if(!components_are_accessible(component.type))
+			continue
+		var/list/machine_alt_interactions = component.get_machine_alt_interactions(user)
+		if(LAZYLEN(machine_alt_interactions))
+			LAZYADD(., machine_alt_interactions)

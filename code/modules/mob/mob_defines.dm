@@ -70,9 +70,6 @@
 	*/
 	var/obj/screen/zone_selector/zone_sel = null
 
-	/// Cursor icon used when holding shift over things.
-	var/examine_cursor_icon = 'icons/effects/mouse_pointers/examine_pointer.dmi'
-
 	var/damageoverlaytemp = 0
 	var/obj/machinery/machine = null
 
@@ -97,8 +94,6 @@
 	var/bodytemperature = 310.055	//98.7 F
 
 	var/shakecamera = 0
-	var/a_intent = I_HELP//Living
-
 	var/decl/move_intent/move_intent = /decl/move_intent/walk
 	var/list/move_intents = list(/decl/move_intent/walk)
 

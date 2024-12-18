@@ -48,7 +48,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // Return TRUE if further actions (afterattack, etc) should be prevented, FALSE if they can proceed.
 /atom/movable/proc/bash(obj/item/weapon, mob/user)
-	if(isliving(user) && user.a_intent == I_HELP)
+	if(isliving(user) && !user.check_intent(I_FLAG_HARM))
 		return FALSE
 	if(!weapon.user_can_attack_with(user))
 		return FALSE
@@ -61,7 +61,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(!ismob(user))
 		return TRUE
 
-	if(!QDELETED(used_item) && user.a_intent == I_HELP)
+	if(!QDELETED(used_item) && user.check_intent(I_FLAG_HELP))
 		var/obj/item/organ/external/E = GET_EXTERNAL_ORGAN(src, user.get_target_zone())
 		if(length(E?.ailments))
 			for(var/datum/ailment/ailment in E.ailments)
@@ -69,7 +69,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 					ailment.was_treated_by_item(used_item, user, src)
 					return TRUE
 
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		if(can_operate(src, user) != OPERATE_DENY && used_item.do_surgery(src,user)) //Surgery
 			return TRUE
 		if(try_butcher_in_place(user, used_item))
@@ -119,14 +119,14 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	if(squash_item())
 		return TRUE
 
-	if(user?.a_intent != I_HURT && is_edible(target) && handle_eaten_by_mob(user, target) != EATEN_INVALID)
+	if(!user?.check_intent(I_FLAG_HARM) && is_edible(target) && handle_eaten_by_mob(user, target) != EATEN_INVALID)
 		return TRUE
 
 	if(item_flags & ITEM_FLAG_NO_BLUDGEON)
 		return FALSE
 
 	// If on help, possibly don't attack.
-	if(user.a_intent == I_HELP)
+	if(user.check_intent(I_FLAG_HELP))
 		switch(user.get_preference_value(/datum/client_preference/help_intent_attack_blocking))
 			if(PREF_ALWAYS)
 				if(user == target)

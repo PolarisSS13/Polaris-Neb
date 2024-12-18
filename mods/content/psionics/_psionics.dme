@@ -17,6 +17,7 @@
 #include "items\_items.dm"
 #include "items\brain.dm"
 #include "items\cerebro_enhancers.dm"
+#include "items\clothing.dm"
 #include "items\coffee_cup.dm"
 #include "items\foundation_implanter.dm"
 #include "items\foundation_labcoat.dm"

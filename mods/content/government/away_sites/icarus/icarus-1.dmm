@@ -26,11 +26,11 @@
 /turf/floor/plating,
 /area/icarus/vessel)
 "aj" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "ak" = (
 /obj/item/stack/material/ore/slag,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "al" = (
 /obj/structure/flora/bush/palebush,
@@ -38,20 +38,20 @@
 /area/icarus/open)
 "am" = (
 /obj/structure/bed/chair/comfy/black,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "an" = (
 /obj/structure/bed/chair/comfy/captain,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "ao" = (
 /obj/structure/bed/chair/comfy/black,
 /obj/item/secure_storage/briefcase,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "ap" = (
 /obj/random/trash,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aq" = (
 /turf/wall/r_wall,
@@ -65,21 +65,21 @@
 /area/icarus/vessel)
 "at" = (
 /obj/structure/closet/gmcloset,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "au" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/flame/fuelled/lighter/zippo/random,
 /obj/random/smokes,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "av" = (
-/obj/structure/table/woodentable,
-/turf/floor/wood,
+/obj/structure/table/laminate,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aw" = (
 /obj/machinery/papershredder,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "ax" = (
 /obj/item/stack/material/ore/slag,
@@ -87,55 +87,55 @@
 /area/icarus/open)
 "ay" = (
 /obj/item/shreddedp,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "az" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/smokes,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aA" = (
 /obj/machinery/photocopier,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aB" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/lunchbox/mars,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/photo_album,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /obj/random/snack,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aG" = (
 /obj/machinery/light,
 /obj/structure/filing_cabinet/tall,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aH" = (
 /obj/structure/filing_cabinet/tall,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aI" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4;
 	level = 2
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -144,25 +144,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/fancy/cigar,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aM" = (
 /obj/machinery/door/airlock,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/icarus/vessel)
 "aN" = (
 /obj/structure/ladder,
@@ -1931,7 +1931,7 @@
 /turf/floor/plating,
 /area/icarus/vessel)
 "go" = (
-/obj/structure/target_stake,
+/obj/structure/target_stake/steel,
 /turf/floor/plating,
 /area/icarus/vessel)
 "gp" = (

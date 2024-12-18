@@ -221,7 +221,7 @@
 		return TOPIC_REFRESH
 
 	if(href_list["set_input_tag"])
-		var/t = sanitize_safe(input(usr, "Enter the input ID tag.", src.name, src.input_tag), MAX_NAME_LEN)
+		var/t = sanitize_safe(input(user, "Enter the input ID tag.", src.name, src.input_tag), MAX_NAME_LEN)
 		t = sanitize_safe(t, MAX_NAME_LEN)
 		if (t)
 			src.input_tag = t
@@ -229,7 +229,7 @@
 		return TOPIC_REFRESH
 
 	if(href_list["set_output_tag"])
-		var/t = sanitize_safe(input(usr, "Enter the output ID tag.", src.name, src.output_tag), MAX_NAME_LEN)
+		var/t = sanitize_safe(input(user, "Enter the output ID tag.", src.name, src.output_tag), MAX_NAME_LEN)
 		t = sanitize_safe(t, MAX_NAME_LEN)
 		if (t)
 			src.output_tag = t
@@ -237,7 +237,7 @@
 		return TOPIC_REFRESH
 
 	if(href_list["set_sensor_tag"])
-		var/t = sanitize_safe(input(usr, "Enter the sensor ID tag.", src.name, src.sensor_tag))
+		var/t = sanitize_safe(input(user, "Enter the sensor ID tag.", src.name, src.sensor_tag))
 		t = sanitize_safe(t, MAX_NAME_LEN)
 		if(t)
 			src.sensor_tag = t
@@ -245,7 +245,7 @@
 		return TOPIC_REFRESH
 
 	if(href_list["set_sensor_name"])
-		var/t = sanitize_safe(input(usr, "Enter the sensor name.", src.name, src.sensor_name))
+		var/t = sanitize_safe(input(user, "Enter the sensor name.", src.name, src.sensor_name))
 		t = sanitize_safe(t, MAX_NAME_LEN)
 		if(t)
 			src.sensor_name = t

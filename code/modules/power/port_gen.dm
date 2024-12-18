@@ -76,9 +76,9 @@
 	if(distance > 1)
 		return
 	if(active)
-		to_chat(usr, "<span class='notice'>The generator is on.</span>")
+		to_chat(user, "<span class='notice'>The generator is on.</span>")
 	else
-		to_chat(usr, "<span class='notice'>The generator is off.</span>")
+		to_chat(user, "<span class='notice'>The generator is off.</span>")
 /obj/machinery/port_gen/emp_act(severity)
 	if(!active)
 		return

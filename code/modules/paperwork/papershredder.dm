@@ -115,7 +115,7 @@
 /obj/machinery/papershredder/attackby(var/obj/item/used_item, var/mob/user)
 	//Silently skip tools, and things we don't have the dexterity to use
 	if(!has_extension(used_item, /datum/extension/tool) && used_item.user_can_attack_with(user, silent = TRUE))
-		var/trying_to_smack = !(used_item.item_flags & ITEM_FLAG_NO_BLUDGEON) && user && user.a_intent == I_HURT
+		var/trying_to_smack = !(used_item.item_flags & ITEM_FLAG_NO_BLUDGEON) && user && user.check_intent(I_FLAG_HARM)
 		if(used_item.storage)
 			empty_bin(user, used_item)
 			return TRUE
@@ -245,7 +245,7 @@
 	user.visible_message( \
 		SPAN_DANGER("\The [user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap."), \
 		SPAN_DANGER("You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap."))
-	fire_act()
+	fire_act(return_air(), P.get_heat(), 500)
 
 /obj/item/shreddedp/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	SHOULD_CALL_PARENT(FALSE)

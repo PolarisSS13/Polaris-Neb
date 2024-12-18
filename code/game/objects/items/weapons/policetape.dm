@@ -316,12 +316,12 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 
 /obj/structure/tape_barricade/attack_hand(mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		user.visible_message(SPAN_DANGER("\The [user] tears \the [src]!"))
 		physically_destroyed()
 		return TRUE
 
-	if (user.a_intent != I_HELP || !allowed(user) || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
+	if (!user.check_intent(I_FLAG_HELP) || !allowed(user) || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
 		return ..()
 
 	if(TAPE_BARRICADE_IS_CORNER_NEIGHBORS(neighbors) || (TAPE_BARRICADE_GET_NB_NEIGHBORS(neighbors) > 2))
@@ -349,7 +349,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 /obj/structure/tape_barricade/CanPass(atom/movable/mover, turf/target, height, air_group)
 	if(!is_lifted && ismob(mover))
 		var/mob/M = mover
-		if (!allowed(M) && M.a_intent == I_HELP)
+		if (!allowed(M) && M.check_intent(I_FLAG_HELP))
 			return FALSE
 	return ..()
 
@@ -362,7 +362,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 	shake_animation(2)
 	if (!allowed(M))	//only select few learn art of not crumpling the tape
 		to_chat(M, SPAN_NOTICE("You are not supposed to go past \the [src]..."))
-		if(M.a_intent != I_HELP)
+		if(!M.check_intent(I_FLAG_HELP))
 			crumple()
 
 /obj/structure/tape_barricade/proc/crumple()

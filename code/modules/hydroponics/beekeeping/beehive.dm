@@ -233,14 +233,14 @@
 	icon = 'icons/obj/beekeeping.dmi'
 	icon_state = "honeyframe"
 	w_class = ITEM_SIZE_SMALL
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	var/honey = 0
 
 /obj/item/honey_frame/filled
 	name = "filled beehive frame"
 	desc = "A frame for the beehive that the bees have filled with honeycombs."
 	honey = 20
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/honey_frame/filled/Initialize()
 	. = ..()
@@ -251,7 +251,7 @@
 	desc = "Contains everything you need to build a beehive."
 	icon = 'icons/obj/apiary_bees_etc.dmi'
 	icon_state = "apiary"
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/beehive_assembly/attack_self(var/mob/user)
 	to_chat(user, "<span class='notice'>You start assembling \the [src]...</span>")

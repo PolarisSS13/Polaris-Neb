@@ -31,7 +31,7 @@
 /turf/floor/wood/walnut,
 /area/shaded_hills/outside/point_of_interest/old_cabin)
 "x" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/flame/torch,
 /obj/item/flame/torch,
 /obj/item/rock/flint,
@@ -41,7 +41,7 @@
 /area/shaded_hills/outside/point_of_interest/old_cabin)
 "z" = (
 /obj/effect/spider/spiderling/mundane,
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/structure/wall_sconce/torch{
 	dir = 1;
 	pixel_y = 24
@@ -56,7 +56,7 @@
 /area/shaded_hills/outside/point_of_interest/old_cabin)
 "D" = (
 /obj/effect/spider/spiderling/mundane,
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/food/grown/carrot,
 /obj/abstract/exterior_marker/inside,
 /turf/floor/wood/walnut,
@@ -66,7 +66,7 @@
 /turf/wall/log/walnut/shutter,
 /area/shaded_hills/outside/point_of_interest/old_cabin)
 "H" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/bladed/knife,
 /obj/item/food/grown/potato,
 /obj/item/food/grown/potato,

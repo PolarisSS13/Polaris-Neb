@@ -48,7 +48,7 @@
 			cell.dropInto(loc)
 			cell = null
 			return TRUE
-		if(user.a_intent != I_HURT)
+		if(!user.check_intent(I_FLAG_HARM))
 			to_chat(user, SPAN_WARNING("There is no cell in \the [src] to remove with \the [I]!"))
 			return TRUE
 	return ..()

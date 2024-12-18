@@ -10,7 +10,6 @@
 	default_pixel_x = -8
 	default_pixel_y = 0
 	status_flags = PASSEMOTES
-	a_intent =     I_HURT
 	mob_size =     MOB_SIZE_LARGE
 	atom_flags = ATOM_FLAG_SHIELD_CONTENTS | ATOM_FLAG_BLOCK_DIAGONAL_FACING
 	butchery_data = null

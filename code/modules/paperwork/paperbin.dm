@@ -32,7 +32,7 @@
 	if(!CanPhysicallyInteract(user))
 		return FALSE
 
-	if(user.a_intent == I_HURT || !user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))
+	if(user.check_intent(I_FLAG_HARM) || !user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))
 		return ..()
 
 	if(LAZYLEN(papers) < 1 && amount < 1)
@@ -129,7 +129,7 @@
 	//Dump all stored papers too
 	for(var/i=1 to amount)
 		var/obj/item/paper/P = new /obj/item/paper(forced_loc)
-		P.merge_with_existing(forced_loc, usr)
+		P.merge_with_existing(forced_loc, user)
 	LAZYCLEARLIST(papers)
 
 /obj/item/paper_bin/proc/add_paper(var/obj/item/paper/P)

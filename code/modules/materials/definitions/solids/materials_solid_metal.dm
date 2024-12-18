@@ -78,6 +78,7 @@
 
 /decl/material/solid/metal/gold
 	name = "gold"
+	adjective_name = "golden"
 	codex_name = "elemental gold"
 	uid = "solid_gold"
 	lore_text = "A heavy, soft, ductile metal. Once considered valuable enough to back entire currencies, now predominantly used in corrosion-resistant electronics."

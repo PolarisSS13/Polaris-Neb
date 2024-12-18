@@ -26,7 +26,7 @@
 	return ..()
 
 /obj/structure/flora/attackby(obj/item/O, mob/user)
-	if(user.a_intent != I_HURT && can_cut_down(O, user))
+	if(!user.check_intent(I_FLAG_HARM) && can_cut_down(O, user))
 		play_cut_sound(user)
 		cut_down(O, user)
 		return TRUE

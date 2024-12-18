@@ -1555,7 +1555,7 @@
 /turf/unsimulated/floor/vault,
 /area/map_template/rescue_base/base)
 "ev" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/machinery/button/blast_door{
@@ -1567,7 +1567,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "ew" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/item/radio/phone{
@@ -1577,7 +1577,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "ex" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/machinery/button/blast_door{
@@ -1747,7 +1747,7 @@
 /turf/unsimulated/floor/dark,
 /area/map_template/rescue_base/base)
 "eH" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/item/ashtray,
@@ -1761,7 +1761,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "eJ" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /turf/unsimulated/floor/cult,

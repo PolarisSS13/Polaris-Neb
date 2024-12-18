@@ -32,13 +32,16 @@
 		new_color = null
 	if(paint_color != new_color)
 		paint_color = new_color
+		. = TRUE
+		refresh_color()
+
+/obj/structure/refresh_color()
 	if(paint_color)
 		color = paint_color
 	else if(material && (material_alteration & MAT_FLAG_ALTERATION_COLOR))
 		color = material.color
 	else
-		color = new_color
-	return FALSE
+		color = null
 
 /obj/structure/create_matter()
 	..()
@@ -223,7 +226,7 @@
 		return TRUE
 
 	var/mob/living/victim = grab.get_affecting_mob()
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 
 		if(!istype(victim))
 			to_chat(user, SPAN_WARNING("You need to be grabbing a living creature to do that!"))
@@ -319,3 +322,10 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
 	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
 	W.pixel_z = 0
+
+/obj/structure/hitby(var/atom/movable/AM, var/datum/thrownthing/TT)
+	. = ..()
+	if(. && (structure_flags & STRUCTURE_FLAG_THROWN_DAMAGE))
+		visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."))
+		playsound(src.loc, hitsound, 100, 1)
+		take_damage(AM.get_thrown_attack_force() * (TT.speed/THROWFORCE_SPEED_DIVISOR), AM.atom_damage_type)

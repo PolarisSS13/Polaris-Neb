@@ -243,9 +243,9 @@
 	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
 	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
 
-/obj/item/inflatable_dispenser/attack_self()
+/obj/item/inflatable_dispenser/attack_self(mob/user)
 	mode = !mode
-	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
+	to_chat(user, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
 /obj/item/inflatable_dispenser/afterattack(var/atom/A, var/mob/user)
 	..(A, user)
@@ -301,7 +301,7 @@
 	if(istype(A, /obj/item/inflatable))
 		if(istype(A, /obj/item/inflatable/door))
 			if(stored_doors >= max_doors)
-				to_chat(usr, "\The [src] is full!")
+				to_chat(user, "\The [src] is full!")
 				return
 			stored_doors++
 			qdel(A)

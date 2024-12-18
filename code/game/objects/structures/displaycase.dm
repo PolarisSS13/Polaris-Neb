@@ -133,7 +133,7 @@
 		update_icon()
 		return TRUE
 
-	else if(!destroyed && user.a_intent == I_HURT)
+	else if(!destroyed && user.check_intent(I_FLAG_HARM))
 		visible_message(SPAN_WARNING("[user] kicks \the [src]."), SPAN_WARNING("You kick \the [src]."))
 		take_damage(2)
 		return TRUE

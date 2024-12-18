@@ -302,7 +302,7 @@
 	icon_state = "wooden_chair_preview"
 	base_icon = "wooden_chair"
 	color = WOOD_COLOR_GENERIC
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/structure/bed/chair/wood/can_apply_padding()
 	return FALSE

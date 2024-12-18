@@ -71,7 +71,7 @@
 	return TRUE
 
 /obj/structure/sign/poster/attack_hand(mob/user)
-	if(user.a_intent != I_HURT || ruined)
+	if(!user.check_intent(I_FLAG_HARM) || ruined)
 		return ..()
 	if(!CanPhysicallyInteract(user) || !user.check_dexterity(DEXTERITY_HOLD_ITEM))
 		return TRUE

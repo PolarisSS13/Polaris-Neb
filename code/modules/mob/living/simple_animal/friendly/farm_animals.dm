@@ -59,7 +59,7 @@
 	var/atom/food = find_edible_atom(view(1, body.loc))
 	if(istype(food))
 		body.stop_automove()
-		body.a_intent = I_HELP
+		body.set_intent(I_FLAG_HELP)
 		body.ClickOn(food)
 	else if(!LAZYLEN(body.grabbed_by))
 		food = find_edible_atom(oview(5, body.loc))
@@ -103,7 +103,7 @@
 	see_in_dark = 6
 	max_health = 50
 	butchery_data = /decl/butchery_data/animal/ruminant/cow
-
+	// When cows can accept food items: /obj/item/food/hay
 	var/static/list/responses = list(
 		"looks at you imploringly",
 		"looks at you pleadingly",

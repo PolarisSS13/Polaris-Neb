@@ -237,13 +237,13 @@ var/global/list/supermatter_delam_accent_sounds = list(
 	else
 		aw_EPR = FALSE
 
-/obj/machinery/power/supermatter/proc/status_adminwarn_check(var/min_status, var/current_state, var/message, var/send_to_irc = FALSE)
+/obj/machinery/power/supermatter/proc/status_adminwarn_check(var/min_status, var/current_state, var/message, var/send_webhook = FALSE)
 	var/status = get_status()
 	if(status >= min_status)
 		if(!current_state)
 			log_and_message_admins(message)
-			if(send_to_irc)
-				send2adminirc(message)
+			if(send_webhook)
+				SSwebhooks.send(WEBHOOK_AHELP_SENT, list("name" = "Supermatter Warning", "body" = message))
 		return TRUE
 	else
 		return FALSE

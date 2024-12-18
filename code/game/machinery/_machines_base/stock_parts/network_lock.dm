@@ -183,7 +183,7 @@
 
 	if(href_list["add_pattern"])
 		if(length(groups) >= MAX_PATTERNS)
-			to_chat(usr, SPAN_WARNING("You cannot add more than [MAX_PATTERNS] patterns to \the [src]!"))
+			to_chat(user, SPAN_WARNING("You cannot add more than [MAX_PATTERNS] patterns to \the [src]!"))
 			return TOPIC_HANDLED
 		LAZYADD(groups, list(list()))
 		return TOPIC_REFRESH

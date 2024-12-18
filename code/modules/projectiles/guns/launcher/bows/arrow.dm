@@ -8,7 +8,7 @@
 	sharp = 1
 	edge = 0
 	lock_picking_level = 3
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	matter_multiplier = 0.2
 	is_spawnable_type = TRUE

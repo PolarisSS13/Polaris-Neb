@@ -36,7 +36,7 @@
 /area/shaded_hills/outside/point_of_interest/chemistry_shack)
 "k" = (
 /obj/abstract/exterior_marker/inside,
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/cooking_vessel/pot/iron,
 /obj/item/chems/glass/handmade/teapot,
 /obj/abstract/landmark/organize/vertical,
@@ -56,7 +56,7 @@
 /area/template_noop)
 "p" = (
 /obj/abstract/exterior_marker/inside,
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/glass/mortar,
 /obj/item/rock/basalt,
 /turf/floor/wood/walnut,
@@ -107,7 +107,7 @@
 /area/shaded_hills/outside/point_of_interest/chemistry_shack)
 "L" = (
 /obj/abstract/exterior_marker/inside,
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/bladed/knife,
 /obj/item/food/grown/potato,
 /obj/item/food/grown/potato,

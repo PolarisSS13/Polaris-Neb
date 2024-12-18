@@ -258,6 +258,8 @@
 	// lower than the temperature expected from a kiln so that clay can be used to make bricks to make a high-temperature kiln.
 	bakes_into_at_temperature = 950 CELSIUS
 	can_backfill_turf_type = /turf/floor/clay
+	gemstone_chance = 0.01
+	gemstone_types  = list(/decl/material/solid/gemstone/sapphire = 1)
 
 /decl/material/solid/soil
 	name = "soil"

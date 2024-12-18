@@ -11,7 +11,6 @@
 	response_disarm =  "flails at"
 	response_harm =    "punches"
 	icon = 'icons/mob/simple_animal/shade.dmi'
-	a_intent = I_HURT
 	status_flags = CANPUSH
 	universal_speak = FALSE
 	universal_understand = TRUE

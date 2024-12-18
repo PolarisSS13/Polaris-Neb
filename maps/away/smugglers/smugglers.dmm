@@ -611,7 +611,7 @@
 /turf/floor/tiled,
 /area/smugglers/office)
 "bD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper,
 /obj/item/pen,
 /obj/item/flashlight/lamp,
@@ -665,7 +665,7 @@
 /turf/floor/tiled,
 /area/smugglers/office)
 "bK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/coin{
 	pixel_x = -5;
 	pixel_y = -3

@@ -30,6 +30,7 @@
 
 // Twohanded wrench.
 /obj/item/wrench/pipe
+	name_prefix                = "enormous"
 	name                       = "pipe wrench"
 	desc                       = "You are no longer asking nicely."
 	icon                       = 'icons/obj/items/tool/pipewrench.dmi'
@@ -46,10 +47,6 @@
 
 /obj/item/wrench/pipe/get_handle_color()
 	return null
-
-/obj/item/wrench/pipe/update_name()
-	. = ..()
-	SetName("enormous [name]")
 
 /obj/item/wrench/pipe/Initialize()
 	. = ..()

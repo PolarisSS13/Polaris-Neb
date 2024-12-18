@@ -82,7 +82,7 @@
 	if(!target.reagents)
 		return
 
-	if((user.a_intent == I_HURT) && ismob(target))
+	if((user.check_intent(I_FLAG_HARM)) && ismob(target))
 		if(can_stab)
 			syringestab(target, user)
 		else

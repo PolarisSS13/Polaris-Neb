@@ -445,7 +445,7 @@ var/global/list/all_apcs = list()
 	return ..()
 
 /obj/machinery/power/apc/bash(obj/item/used_item, mob/user)
-	if (!(user.a_intent == I_HURT) || (used_item.item_flags & ITEM_FLAG_NO_BLUDGEON))
+	if (!(user.check_intent(I_FLAG_HARM)) || (used_item.item_flags & ITEM_FLAG_NO_BLUDGEON))
 		return FALSE
 
 	if(!used_item.user_can_attack_with(user))

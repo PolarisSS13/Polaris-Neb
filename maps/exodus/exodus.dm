@@ -1,7 +1,6 @@
 #if !defined(USING_MAP_DATUM)
 
 	#include "../../mods/gamemodes/cult/_cult.dme"
-	#include "../../mods/gamemodes/deity/_deity.dme"
 	#include "../../mods/gamemodes/heist/_heist.dme"
 	#include "../../mods/gamemodes/meteor/_meteor.dme"
 	#include "../../mods/gamemodes/ninja/_ninja.dme"
@@ -47,7 +46,6 @@
 	#include "../away/mining/mining.dm"
 	#include "../away/mobius_rift/mobius_rift.dm"
 	#include "../away/smugglers/smugglers.dm"
-	#include "../away/slavers/slavers_base.dm"
 	#include "../away/unishi/unishi.dm"
 	#include "../away/yacht/yacht.dm"
 

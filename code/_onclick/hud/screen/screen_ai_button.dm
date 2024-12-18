@@ -8,9 +8,9 @@
 	var/image/template_undelay
 
 /obj/screen/ai_button/handle_click(mob/user, params)
-	if(!isAI(usr))
+	if(!isAI(user))
 		return TRUE
-	var/mob/living/silicon/ai/A = usr
+	var/mob/living/silicon/ai/A = user
 	if(!(ai_verb in A.verbs))
 		return TRUE
 

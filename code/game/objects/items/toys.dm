@@ -526,13 +526,13 @@
 
 /obj/item/marshalling_wand/attack_self(mob/user)
 	playsound(src.loc, 'sound/effects/rustle1.ogg', 100, 1)
-	if (user.a_intent == I_HELP)
+	if (user.check_intent(I_FLAG_HELP))
 		user.visible_message("<span class='notice'>[user] beckons with \the [src], signalling forward motion.</span>",
 							"<span class='notice'>You beckon with \the [src], signalling forward motion.</span>")
-	else if (user.a_intent == I_DISARM)
+	else if (user.check_intent(I_FLAG_DISARM))
 		user.visible_message("<span class='notice'>[user] holds \the [src] above their head, signalling a stop.</span>",
 							"<span class='notice'>You hold \the [src] above your head, signalling a stop.</span>")
-	else if (user.a_intent == I_GRAB)
+	else if (user.check_intent(I_FLAG_GRAB))
 		var/wand_dir
 		if(user.get_equipped_item(BP_L_HAND) == src)
 			wand_dir = "left"
@@ -542,7 +542,7 @@
 			wand_dir = pick("left", "right")
 		user.visible_message("<span class='notice'>[user] waves \the [src] to the [wand_dir], signalling a turn.</span>",
 							"<span class='notice'>You wave \the [src] to the [wand_dir], signalling a turn.</span>")
-	else if (user.a_intent == I_HURT)
+	else if (user.check_intent(I_FLAG_HARM))
 		user.visible_message("<span class='warning'>[user] frantically waves \the [src] above their head!</span>",
 							"<span class='warning'>You frantically wave \the [src] above your head!</span>")
 
@@ -562,13 +562,13 @@
 /obj/item/toy/ringbell/attack_hand(mob/user)
 	if(!user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
 		return ..()
-	if (user.a_intent == I_HELP)
+	if (user.check_intent(I_FLAG_HELP))
 		user.visible_message("<span class='notice'>[user] rings \the [src], signalling the beginning of the contest.</span>")
 		playsound(user.loc, 'sound/items/oneding.ogg', 60)
-	else if (user.a_intent == I_DISARM)
+	else if (user.check_intent(I_FLAG_DISARM))
 		user.visible_message("<span class='notice'>[user] rings \the [src] three times, signalling the end of the contest!</span>")
 		playsound(user.loc, 'sound/items/threedings.ogg', 60)
-	else if (user.a_intent == I_HURT)
+	else if (user.check_intent(I_FLAG_HARM))
 		user.visible_message("<span class='warning'>[user] rings \the [src] repeatedly, signalling a disqualification!</span>")
 		playsound(user.loc, 'sound/items/manydings.ogg', 60)
 	return TRUE

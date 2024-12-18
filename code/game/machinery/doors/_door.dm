@@ -325,7 +325,7 @@
 		return 1
 
 /obj/machinery/door/bash(obj/item/weapon, mob/user)
-	if(isliving(user) && user.a_intent != I_HURT)
+	if(isliving(user) && !user.check_intent(I_FLAG_HARM))
 		return FALSE
 	if(!weapon.user_can_attack_with(user))
 		return FALSE

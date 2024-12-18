@@ -130,7 +130,7 @@
 /turf/unsimulated/mask,
 /area/shaded_hills/outside/swamp)
 "Hi" = (
-/obj/structure/table/woodentable/ebony,
+/obj/structure/table/wood/ebony,
 /obj/item/chems/glass/handmade/teapot,
 /obj/item/chems/glass/handmade/cup/wood,
 /obj/item/chems/glass/handmade/cup/wood,

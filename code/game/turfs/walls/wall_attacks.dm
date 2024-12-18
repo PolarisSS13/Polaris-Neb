@@ -298,7 +298,7 @@
 
 	// Attack the wall with items
 	var/force = W.get_attack_force(user)
-	if(istype(W,/obj/item/rcd) || istype(W, /obj/item/chems) || !force || user.a_intent == I_HELP)
+	if(istype(W,/obj/item/rcd) || istype(W, /obj/item/chems) || !force || user.check_intent(I_FLAG_HELP))
 		return ..()
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

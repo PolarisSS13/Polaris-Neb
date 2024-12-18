@@ -154,7 +154,7 @@
 		qdel(t)
 
 	var/mob/living/simple_animal/corgi/new_corgi = new /mob/living/simple_animal/corgi (loc)
-	new_corgi.a_intent = I_HURT
+	new_corgi.set_intent(get_intent())
 	new_corgi.key = key
 
 	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
@@ -186,7 +186,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
+	new_mob.set_intent(get_intent())
 
 
 	to_chat(new_mob, "You suddenly feel more... animalistic.")
@@ -206,7 +206,7 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = I_HURT
+	new_mob.set_intent(get_intent())
 	to_chat(new_mob, "You feel more... animalistic.")
 
 	qdel(src)

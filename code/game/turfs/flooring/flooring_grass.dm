@@ -21,6 +21,10 @@
 		return TRUE
 	return ..()
 
+/decl/flooring/grass/handle_turf_digging(turf/floor/target)
+	target.set_flooring(null)
+	return FALSE
+
 /decl/flooring/grass/wild
 	name               = "wild grass"
 	icon               = 'icons/turf/flooring/wildgrass.dmi'

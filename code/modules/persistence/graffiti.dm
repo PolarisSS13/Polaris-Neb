@@ -43,7 +43,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] clears away some graffiti."))
 		qdel(src)
 		return TRUE
-	else if(thing.sharp && user.a_intent != I_HELP) //Check intent so you don't go insane trying to unscrew a light fixture over a graffiti
+	else if(thing.sharp && !user.check_intent(I_FLAG_HELP)) //Check intent so you don't go insane trying to unscrew a light fixture over a graffiti
 		if(jobban_isbanned(user, "Graffiti"))
 			to_chat(user, SPAN_WARNING("You are banned from leaving persistent information across rounds."))
 			return TRUE

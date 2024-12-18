@@ -259,7 +259,7 @@
 		if(connecting_limb.organ_tag == parent_organ)
 
 			if(length(connecting_limb.children))
-				to_chat(usr, SPAN_WARNING("You cannot connect additional limbs to \the [connecting_limb]."))
+				to_chat(user, SPAN_WARNING("You cannot connect additional limbs to \the [connecting_limb]."))
 				return TRUE
 
 			var/mob/holder = loc
@@ -282,7 +282,7 @@
 		else if(connecting_limb.parent_organ == organ_tag)
 
 			if(LAZYLEN(children))
-				to_chat(usr, SPAN_WARNING("You cannot connect additional limbs to \the [src]."))
+				to_chat(user, SPAN_WARNING("You cannot connect additional limbs to \the [src]."))
 				return TRUE
 
 			if(!user.try_unequip(connecting_limb, src))

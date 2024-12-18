@@ -228,7 +228,7 @@
 /obj/machinery/computer/cryopod{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aH" = (
 /turf/floor/bluegrid/airless,
@@ -289,7 +289,7 @@
 /obj/item/backpack/dufflebag/syndie,
 /obj/item/box/ammo/shotgunshells,
 /obj/item/handcuffs,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aL" = (
 /obj/item/bedsheet/captain,
@@ -297,12 +297,12 @@
 /obj/item/gun/projectile/pistol/holdout,
 /obj/structure/bed/padded,
 /obj/abstract/submap_landmark/spawnpoint/captain,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aM" = (
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
@@ -313,7 +313,7 @@
 	pixel_x = 24;
 	req_access = newlist()
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aN" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -393,7 +393,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -402,11 +402,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aV" = (
 /obj/structure/bed/chair/comfy/brown,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aW" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -466,7 +466,7 @@
 	},
 /obj/structure/window/reinforced/full,
 /obj/structure/table/marble,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "bb" = (
 /obj/structure/cable{
@@ -476,10 +476,10 @@
 	dir = 1;
 	level = 2
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "bc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -490,7 +490,7 @@
 /obj/item/chems/drinks/glass2/coffeecup/one,
 /obj/item/tank/oxygen,
 /obj/item/clothing/mask/breath/emergency,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "bd" = (
 /obj/effect/wallframe_spawn/reinforced,

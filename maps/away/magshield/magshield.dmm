@@ -2268,7 +2268,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "gH" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 10
 	},
 /obj/item/box/checkers,
@@ -2278,20 +2278,20 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "gI" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 10
 	},
 /obj/item/belt/champion,
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "gJ" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 10
 	},
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "gK" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 10
 	},
 /obj/item/bible/booze,
@@ -2385,7 +2385,7 @@
 /turf/floor/tiled,
 /area/magshield/west)
 "gY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/action_figure,
 /turf/floor/tiled,
 /area/magshield/west)
@@ -2483,7 +2483,7 @@
 /turf/floor/tiled,
 /area/magshield/west)
 "hn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/sword/replica,
 /turf/floor/tiled,
 /area/magshield/west)
@@ -2523,7 +2523,7 @@
 /turf/floor/plating/airless,
 /area/space)
 "hw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/plushie/large,
 /turf/floor/tiled,
 /area/magshield/west)
@@ -2565,7 +2565,7 @@
 /turf/floor/tiled,
 /area/magshield/west)
 "hC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/toy/shipmodel,
 /turf/floor/tiled,
 /area/magshield/west)
@@ -2614,7 +2614,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "hK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/book/manual/supermatter_engine,
 /turf/floor/carpet/blue,
 /area/magshield/west)
@@ -2665,7 +2665,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "hT" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/book/manual/evaguide,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2727,7 +2727,7 @@
 /turf/floor/tiled,
 /area/magshield/west)
 "hZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/accessory,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
@@ -2735,7 +2735,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "ia" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/flame/fuelled/lighter/zippo/random,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -2743,7 +2743,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "ib" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/ashtray,
 /obj/random/smokes,
 /obj/machinery/light,

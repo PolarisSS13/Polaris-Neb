@@ -20,7 +20,7 @@ How they spawn stuff is decided by behaviour vars, which are explained below
 	var/summon_exclusive = 0 //spawn one of everything, instead of random things
 
 	var/list/newVars = list() //vars of the summoned objects will be replaced with those where they meet
-	//should have format of list("emagged" = 1,"name" = "Wizard's Justicebot"), for example
+	//should have format of list("emagged" = 1,"name" = "Justicebot"), for example
 
 	cast_sound = 'sound/magic/castsummon.ogg'
 
@@ -38,9 +38,6 @@ How they spawn stuff is decided by behaviour vars, which are explained below
 		else
 			summoned_object_type = pick(summon_type)
 		var/turf/spawn_place = pick(targets)
-		if(spell_flags & IGNOREPREV)
-			targets -= spawn_place
-
 		var/atom/summoned_object
 		if(ispath(summoned_object_type,/turf))
 			spawn_place.ChangeTurf(summoned_object_type)

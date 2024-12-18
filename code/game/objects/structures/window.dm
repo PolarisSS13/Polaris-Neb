@@ -145,7 +145,7 @@
 /obj/structure/window/attack_hand(mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (user.a_intent && user.a_intent == I_HURT)
+	if (user.check_intent(I_FLAG_HARM))
 
 		if (ishuman(user))
 			var/mob/living/human/H = user
@@ -279,7 +279,7 @@
 	return ..() // handle generic interactions, bashing, etc
 
 /obj/structure/window/bash(obj/item/weapon, mob/user)
-	if(isliving(user) && user.a_intent == I_HELP)
+	if(isliving(user) && user.check_intent(I_FLAG_HELP))
 		return FALSE
 	if(!weapon.user_can_attack_with(user))
 		return FALSE
@@ -311,7 +311,7 @@
 			thing.set_color(paint_color)
 
 /obj/structure/window/grab_attack(obj/item/grab/grab, mob/user)
-	if (user.a_intent != I_HURT)
+	if (!user.check_intent(I_FLAG_HARM))
 		return TRUE
 	if (!grab.force_danger())
 		to_chat(user, SPAN_DANGER("You need a better grip to do that!"))

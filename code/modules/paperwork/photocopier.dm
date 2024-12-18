@@ -46,7 +46,7 @@
 
 /obj/machinery/photocopier/Initialize(mapload, d=0, populate_parts = TRUE)
 	. = ..()
-	if(.!= INITIALIZE_HINT_QDEL && populate_parts && printer)
+	if(. != INITIALIZE_HINT_QDEL && populate_parts && printer)
 		//Mapped photocopiers shall spawn with ink and paper
 		printer.make_full()
 

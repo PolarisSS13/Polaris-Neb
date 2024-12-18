@@ -4,8 +4,8 @@
 	icon_state          = ICON_STATE_WORLD
 	anchored            = TRUE
 	density             = TRUE
-	color               = /decl/material/solid/organic/wood::color
-	material            = /decl/material/solid/organic/wood
+	color               = /decl/material/solid/organic/wood/oak::color
+	material            = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	atom_flags          = ATOM_FLAG_CLIMBABLE
 	obj_flags           = OBJ_FLAG_ANCHORABLE
@@ -51,7 +51,7 @@
 
 /obj/structure/working/attackby(obj/item/W, mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	if(working)
@@ -74,7 +74,7 @@
 
 /obj/structure/working/attack_hand(mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	if(working)

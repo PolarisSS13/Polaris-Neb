@@ -192,7 +192,7 @@
 		healthcheck()
 
 /obj/effect/energy_net/attack_hand(var/mob/user)
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return ..()
 	var/decl/species/my_species = user.get_species()
 	if(my_species)

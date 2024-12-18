@@ -1,22 +1,19 @@
 /mob/living/attack_hand(mob/user)
 	// Allow grabbing a mob that you are buckled to, so that you can generate a control grab (for riding).
-	if(buckled == user && user.a_intent == I_GRAB)
+	if(buckled == user && user.check_intent(I_FLAG_GRAB))
 		return try_make_grab(user)
 	return ..() || (user && default_interaction(user))
 
 /mob/living/proc/default_interaction(var/mob/user)
-
 	SHOULD_CALL_PARENT(TRUE)
-
-	switch(user.a_intent)
-		if(I_HURT)
-			. = default_hurt_interaction(user)
-		if(I_HELP)
-			. = default_help_interaction(user)
-		if(I_DISARM)
-			. = default_disarm_interaction(user)
-		if(I_GRAB)
-			. = default_grab_interaction(user)
+	if(user.check_intent(I_FLAG_HARM))
+		. = default_hurt_interaction(user)
+	else if(user.check_intent(I_FLAG_HELP))
+		. = default_help_interaction(user)
+	else if(user.check_intent(I_FLAG_DISARM))
+		. = default_disarm_interaction(user)
+	else if(user.check_intent(I_FLAG_GRAB))
+		. = default_grab_interaction(user)
 
 /mob/living/proc/default_hurt_interaction(var/mob/user)
 	SHOULD_CALL_PARENT(TRUE)

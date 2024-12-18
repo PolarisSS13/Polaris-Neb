@@ -14,6 +14,7 @@
 		/decl/material/solid/fiberglass   = MATTER_AMOUNT_TRACE,
 	)
 	max_health = ITEM_HEALTH_NO_DAMAGE
+	eject_handler = /decl/interaction_handler/remove_held_item/card
 	var/should_swipe = FALSE            //Whether the card should only be swiped instead of being inserted
 	var/obj/item/card/inserted_card     //Card currently in the slot
 
@@ -67,3 +68,9 @@
 
 /obj/item/stock_parts/item_holder/card_reader/proc/get_emag_card()
 	return istype(inserted_card, /obj/item/card/emag) ? inserted_card : null
+
+/decl/interaction_handler/remove_held_item/card
+	name = "Eject Card"
+	icon = 'icons/screen/radial.dmi'
+	icon_state = "radial_eject_id"
+	expected_component_type = /obj/item/stock_parts/item_holder/card_reader

@@ -20,7 +20,7 @@
 		to_chat(H, SPAN_WARNING("You [synth ? "need more energy" : "are too tired"] to use the punching bag. Go [synth ? "recharge" : "eat something"]."))
 		return TRUE
 
-	if(H.a_intent == I_HURT)
+	if(H.check_intent(I_FLAG_HARM))
 		H.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		flick("[icon_state]_hit", src)
 		playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)

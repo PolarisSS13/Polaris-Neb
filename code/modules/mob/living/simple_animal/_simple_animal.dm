@@ -423,7 +423,7 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 	return /decl/material/liquid/nutriment
 
 /mob/living/simple_animal/proc/reflect_unarmed_damage(var/mob/living/human/attacker, var/damage_type, var/description)
-	if(attacker.a_intent == I_HURT)
+	if(attacker.check_intent(I_FLAG_HARM))
 		attacker.apply_damage(rand(return_damage_min, return_damage_max), damage_type, attacker.get_active_held_item_slot(), used_weapon = description)
 		if(rand(25))
 			to_chat(attacker, SPAN_WARNING("Your attack has no obvious effect on \the [src]'s [description]!"))

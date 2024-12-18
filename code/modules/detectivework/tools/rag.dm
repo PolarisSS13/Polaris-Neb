@@ -50,13 +50,13 @@
 	return ..()
 
 /obj/item/chems/glass/rag/update_name()
-	. = ..()
 	if(on_fire)
-		SetName("burning [name]")
+		name_prefix = "burning"
 	else if(reagents && reagents.total_volume)
-		SetName("damp [name]")
+		name_prefix = "damp"
 	else
-		SetName("dry [name]")
+		name_prefix = "dry"
+	. = ..()
 
 /obj/item/chems/glass/rag/on_update_icon()
 	. = ..()

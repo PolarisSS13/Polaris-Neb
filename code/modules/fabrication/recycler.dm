@@ -118,7 +118,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] is currently processing, please wait for it to finish."))
 		return TRUE
 
-	if(W.storage && user.a_intent != I_HURT)
+	if(W.storage && !user.check_intent(I_FLAG_HARM))
 
 		var/emptied = FALSE
 		for(var/obj/item/O in W.get_stored_inventory())
@@ -163,23 +163,6 @@
 	if(use_power == POWER_USE_OFF || !operable())
 		to_chat(user, SPAN_WARNING("\The [src]'s interface is unresponsive."))
 		return TRUE
-	return ..()
-
-/obj/item/scrap_material/attackby(obj/item/W, mob/user)
-
-	if(W.type == type && user.try_unequip(W))
-
-		LAZYINITLIST(matter)
-		for(var/mat in W.matter)
-			matter[mat] += W.matter[mat]
-		UNSETEMPTY(matter)
-		W.matter = null
-
-		to_chat(user, SPAN_NOTICE("You combine \the [src] and \the [W]."))
-		qdel(W)
-
-		return TRUE
-
 	return ..()
 
 /obj/machinery/recycler/proc/dump_trace_material(atom/forced_loc = loc)

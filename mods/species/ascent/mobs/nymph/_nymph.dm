@@ -51,3 +51,15 @@
 
 /mob/living/simple_animal/alien/kharmaan/get_dexterity(var/silent)
 	return (DEXTERITY_EQUIP_ITEM)
+
+/*
+/mob/living/simple_animal/alien/kharmaan/get_default_intent()
+	return GET_DECL(/decl/intent/help/binary/ascent)
+
+/mob/living/simple_animal/alien/kharmaan/get_available_intents()
+	var/static/list/available_intents = list(
+		GET_DECL(/decl/intent/harm/binary/ascent),
+		GET_DECL(/decl/intent/help/binary/ascent)
+	)
+	return available_intents
+*/
