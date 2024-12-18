@@ -188,7 +188,7 @@
 
 /area/surface/station/arrivals
 	forbid_events = TRUE
-	base_turf = /turf/floor/natural/dirt
+	base_turf = /turf/floor/dirt
 
 /area/surface/station/arrivals/cynosure
 	name = "Arrivals and Departures"
@@ -1716,7 +1716,7 @@
 /area/shuttle/response_ship/planet
 	name = "planetside outpost"
 	icon_state = "shuttlered"
-	base_turf = /turf/floor/natural/dirt
+	base_turf = /turf/floor/dirt
 
 /area/shuttle/response_ship/mining
 	name = "mining site"
@@ -1808,7 +1808,7 @@
 	name = "planetside"
 	dynamic_lighting = 1
 	icon_state = "shuttlered"
-	base_turf = /turf/floor/natural/grass/sif
+	base_turf = /turf/floor/grass/sif
 
 /area/syndicate_station/transit
 	name = " transit"
@@ -1870,7 +1870,7 @@
 	name = "planet"
 	icon_state = "shuttlered"
 	dynamic_lighting = 1
-	base_turf = /turf/floor/natural/grass/sif
+	base_turf = /turf/floor/grass/sif
 
 /area/skipjack_station/orbit
 	name = "in orbit of Sif"
@@ -1927,7 +1927,7 @@
 /area/ninja_dojo/planet
 	name = "planet outposts"
 	icon_state = "shuttlered"
-	base_turf = /turf/floor/natural/grass/sif
+	base_turf = /turf/floor/grass/sif
 
 /area/ninja_dojo/transit
 	name = "transit"
@@ -2052,7 +2052,7 @@
 
 /area/shuttle/escape_pod1/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod1/centcom
 	icon_state = "shuttle"
@@ -2065,7 +2065,7 @@
 
 /area/shuttle/escape_pod2/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod2/centcom
 	icon_state = "shuttle"
@@ -2078,7 +2078,7 @@
 
 /area/shuttle/escape_pod3/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod3/centcom
 	icon_state = "shuttle"
@@ -2091,7 +2091,7 @@
 
 /area/shuttle/escape_pod4/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod4/centcom
 	icon_state = "shuttle"
@@ -2104,7 +2104,7 @@
 
 /area/shuttle/escape_pod5/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod5/centcom
 	icon_state = "shuttle"
@@ -2117,7 +2117,7 @@
 
 /area/shuttle/escape_pod6/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/escape_pod6/centcom
 	icon_state = "shuttle"
@@ -2158,7 +2158,7 @@
 
 /area/shuttle/large_escape_pod1/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/large_escape_pod1/centcom
 	icon_state = "shuttle"
@@ -2171,7 +2171,7 @@
 
 /area/shuttle/large_escape_pod2/station
 	icon_state = "shuttle2"
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /area/shuttle/large_escape_pod2/centcom
 	icon_state = "shuttle"

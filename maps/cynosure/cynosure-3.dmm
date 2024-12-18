@@ -298,7 +298,7 @@
 /turf/floor/wood,
 /area/unionoffice)
 "akZ" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/modular_computer/laptop/preset/records,
 /obj/structure/sign/calendar{
 	pixel_y = 32
@@ -1683,7 +1683,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/hallway/eva_hallway)
 "boW" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/ashtray/glass,
 /obj/item/flashlight/lamp/green,
 /obj/item/sticky_pad/random{
@@ -3546,7 +3546,7 @@
 /turf/floor/tiled/old_tile/gray,
 /area/surface/station/rnd/lab)
 "cwa" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
@@ -3657,7 +3657,7 @@
 /turf/floor/tiled/techfloor,
 /area/surface/station/ai)
 "cyU" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /turf/floor/wood,
 /area/surface/station/command/meeting_room)
 "czC" = (
@@ -4493,7 +4493,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/item/food/cheesiehonkers,
+/obj/item/food/junk/cheesiehonkers,
 /obj/item/chems/drinks/cans/space_mountain_wind,
 /obj/machinery/alarm{
 	dir = 1;
@@ -4983,7 +4983,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/lab)
 "dvv" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/network/requests_console{
 	announcementConsole = 1;
 	department = "Station Manager's Desk";
@@ -5004,7 +5004,7 @@
 /turf/floor/plating,
 /area/surface/station/ai_monitored/storage/eva)
 "dvW" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/computer/modular/preset/civilian{
 	dir = 1
 	},
@@ -6227,7 +6227,7 @@
 /turf/floor/plating,
 /area/surface/station/ai_monitored/storage/eva)
 "esH" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/radio/intercom{
 	dir = 4;
 	pixel_x = -22
@@ -6978,7 +6978,7 @@
 /turf/floor/plating,
 /area/surface/station/medical/patient_wing)
 "eSC" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/computer/modular/preset/civilian{
 	dir = 8
 	},
@@ -7520,7 +7520,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/box/matches,
 /obj/item/clothing/mask/smokable/cigarette/cigar/havana,
 /obj/item/chems/drinks/flask,
@@ -9119,7 +9119,7 @@
 /turf/floor/plating,
 /area/surface/station/park/skybridge)
 "gpA" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -9643,7 +9643,7 @@
 /turf/floor/tiled/techfloor,
 /area/surface/station/security/prison)
 "gGr" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -11749,7 +11749,7 @@
 /turf/floor/tiled/old_tile/gray,
 /area/surface/station/rnd/lab)
 "hXM" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
@@ -12060,7 +12060,7 @@
 /turf/floor/tiled/eris,
 /area/surface/station/crew_quarters/captain)
 "ige" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/structure/flora/pottedplant/largebush{
 	pixel_y = 8
 	},
@@ -13227,7 +13227,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/engineering/hallway/sndaccess)
 "iQy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -13377,7 +13377,7 @@
 /turf/open,
 /area/surface/station/engineering/foyer/secondfloor)
 "iTA" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -14044,7 +14044,7 @@
 /turf/wall,
 /area/surface/station/hallway/primary/secondfloor/east)
 "jmm" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/faxmachine,
 /obj/machinery/keycard_auth{
 	pixel_y = -24
@@ -14941,7 +14941,7 @@
 /turf/floor/wood,
 /area/surface/station/crew_quarters/captain)
 "jKS" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/clipboard,
 /obj/item/pen/blue,
 /obj/item/pen/red{
@@ -16053,7 +16053,7 @@
 /area/surface/station/security/prison)
 "kzF" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/computer/modular/telescreen/preset/entertainment{
 	icon_state = "frame";
@@ -16257,7 +16257,7 @@
 /turf/floor/tiled/old_tile/gray,
 /area/surface/station/construction/office)
 "kNE" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/fancy/donut,
 /turf/floor/wood,
 /area/surface/station/command/meeting_room)
@@ -16734,7 +16734,7 @@
 /turf/floor/plating,
 /area/surface/station/hallway/primary/secondfloor/west)
 "lkG" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/recharger,
 /obj/item/secure_storage/safe{
 	pixel_x = -23
@@ -17085,7 +17085,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/secondfloor/civilian)
 "lyL" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/photo_album{
 	pixel_x = -3;
 	pixel_y = -3
@@ -18658,7 +18658,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/command/teleporter)
 "mJs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/cups,
 /turf/floor/wood,
 /area/surface/station/command/meeting_room)
@@ -18798,7 +18798,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/medical/patient_wing)
 "mMW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/book/codex/corp_regs,
 /obj/item/magnetic_tape/random,
 /obj/item/taperecorder,
@@ -19599,11 +19599,7 @@
 	pixel_y = -24
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/hallway/primary/secondfloor/east)
 "nst" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -21266,7 +21262,7 @@
 /obj/item/paicard,
 /obj/item/magnetic_tape/random,
 /obj/item/taperecorder,
-/obj/item/chems/drinks/jar,
+/obj/item/glass_jar,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -21631,7 +21627,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/secondfloor/east)
 "oVf" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/folder/blue{
 	pixel_x = 2;
 	pixel_y = 2
@@ -22101,7 +22097,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/patient_wing)
 "pmw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/fancy/donut,
 /obj/random/mug,
 /turf/floor/carpet,
@@ -22485,7 +22481,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_airlock/snd)
 "pEv" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/computer/modular/preset/civilian{
 	dir = 8
 	},
@@ -22659,7 +22655,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/engineering/atmos)
 "pIC" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -25107,7 +25103,7 @@
 /turf/wall/r_wall,
 /area/surface/station/maintenance/substation/command)
 "rvI" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen/multi,
 /obj/item/toy/desk/fan{
@@ -25124,7 +25120,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/hallway/primary/secondfloor/west)
 "rwU" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/whip/chainofcommand{
 	pixel_y = 9
 	},
@@ -25363,7 +25359,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/robotics)
 "rII" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -26292,7 +26288,7 @@
 	},
 /area/surface/station/hallway/secondary/secondfloor/eva_hallway)
 "sod" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/faxmachine,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -26415,7 +26411,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/atmos)
 "suc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -26832,7 +26828,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/exam_room)
 "sGK" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/flashlight/lamp/green,
 /turf/floor/wood,
 /area/surface/station/command/meeting_room)
@@ -26866,7 +26862,7 @@
 /turf/wall,
 /area/surface/station/rnd/research)
 "sHz" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/computer/modular/preset/civilian,
 /turf/floor/wood,
 /area/surface/station/command/internalaffairs)
@@ -27505,7 +27501,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/hallway/primary/secondfloor/east)
 "tcI" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/faxmachine,
 /obj/machinery/alarm{
 	dir = 1;
@@ -28153,7 +28149,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/robotics)
 "tvG" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -28486,7 +28482,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/engineering/atmos)
 "tFr" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/paper_bin,
 /obj/item/folder,
 /obj/item/folder/blue{
@@ -28633,7 +28629,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/hallway/snd)
 "tNg" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/flashlight/lamp/green,
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -29494,7 +29490,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/rnd/workshop)
 "usw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -29551,7 +29547,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/engineering/snd)
 "uvz" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/paper_bin,
 /obj/item/clipboard,
 /obj/item/folder/blue{
@@ -29699,7 +29695,7 @@
 /turf/floor/plating,
 /area/surface/station/command/meeting_room)
 "uyV" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/computer/modular/preset/civilian{
 	dir = 4
 	},
@@ -30537,7 +30533,7 @@
 /area/surface/station/security/armoury)
 "vdo" = (
 /obj/structure/table/glass,
-/obj/item/box/monkeycubes,
+/obj/item/box/animal_cubes/monkeys,
 /obj/item/chems/spray/extinguisher,
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
@@ -32206,11 +32202,7 @@
 	pixel_y = 24;
 	tag_door = "large_escape_pod_2_berth_hatch"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/hallway/primary/secondfloor/east)
 "wtK" = (
 /obj/machinery/door/firedoor/border_only,
@@ -35269,7 +35261,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/secondfloor/westskybridge)
 "yjm" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},

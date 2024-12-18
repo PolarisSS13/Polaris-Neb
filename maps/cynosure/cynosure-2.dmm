@@ -20,7 +20,7 @@
 /turf/floor/tiled/monotile,
 /area/surface/station/hallway/primary/groundfloor/north)
 "aab" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/deck/cag{
 	pixel_x = -3;
 	pixel_y = 3
@@ -32,7 +32,7 @@
 /turf/floor/carpet,
 /area/surface/station/library)
 "aac" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/dice,
 /turf/floor/carpet,
 /area/surface/station/library)
@@ -56,7 +56,7 @@
 /turf/floor/carpet,
 /area/surface/station/library)
 "aae" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/poker_chips,
 /obj/item/dice/d20,
 /obj/item/deck/cards,
@@ -97,7 +97,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 30
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/photo_album{
 	pixel_x = -3;
 	pixel_y = -3
@@ -110,7 +110,7 @@
 /turf/floor/lino,
 /area/surface/station/security/detectives_office)
 "acu" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/plains/plateau)
 "acv" = (
 /obj/structure/cable{
@@ -293,10 +293,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/station/solar/northeastsolar)
 "ajl" = (
 /obj/machinery/alarm{
@@ -372,7 +369,7 @@
 	dir = 4;
 	pixel_x = -12
 	},
-/turf/floor/natural/dirt{
+/turf/floor/dirt{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -387,10 +384,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "amF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -410,7 +404,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "amW" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -466,10 +460,7 @@
 	pixel_y = 31
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "apd" = (
 /obj/machinery/door/firedoor/border_only,
@@ -512,7 +503,7 @@
 /turf/floor/lino,
 /area/surface/station/security/detectives_office)
 "aqn" = (
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "aqK" = (
 /obj/structure/cable/yellow{
@@ -822,10 +813,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "axV" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -838,7 +826,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "ayh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1033,7 +1021,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "aEj" = (
 /obj/structure/ladder,
@@ -1506,7 +1494,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/atmos)
 "aNW" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "aOd" = (
 /obj/structure/cable/green{
@@ -1620,10 +1608,7 @@
 /area/surface/station/maintenance/kitchen)
 "aQe" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "aQf" = (
 /obj/structure/sign/level/ground/large{
@@ -1967,7 +1952,7 @@
 	c_tag = "Ground Floor - East Hallway 1";
 	dir = 4
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "aXC" = (
 /obj/structure/disposalpipe/segment{
@@ -2125,7 +2110,7 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "baX" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -2461,7 +2446,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "bhP" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2652,7 +2637,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "bmf" = (
 /obj/structure/sign/directions/security/seceqp{
@@ -2676,7 +2661,7 @@
 /turf/open,
 /area/surface/outside/plains/station)
 "bmW" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/plains/station)
 "bno" = (
 /turf/wall,
@@ -2912,10 +2897,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "bsn" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
@@ -2927,10 +2909,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "bsq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3123,7 +3102,7 @@
 	c_tag = "Ground Floor - Garage";
 	dir = 8
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "bwR" = (
 /obj/structure/stairs/long/north,
@@ -3757,7 +3736,7 @@
 /area/surface/station/crew_quarters/kitchen)
 "bMK" = (
 /obj/structure/boulder,
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "bMX" = (
 /obj/machinery/firealarm{
@@ -3951,7 +3930,7 @@
 /turf/floor/tiled,
 /area/surface/station/crew_quarters/heads/hop)
 "bRW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -4263,10 +4242,7 @@
 /area/surface/station/medical/etc)
 "cac" = (
 /obj/machinery/light/no_nightshift,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outpost/research/xenoarcheology/surface)
 "cai" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -4332,7 +4308,7 @@
 /area/surface/station/crew_quarters/gym)
 "cbu" = (
 /obj/structure/cliff/automatic,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/plateau)
 "cco" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4412,10 +4388,7 @@
 "cei" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/industrial/danger,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "cen" = (
 /obj/structure/table,
@@ -4482,10 +4455,7 @@
 /area/surface/station/medical/hallway/gnd)
 "cgV" = (
 /obj/machinery/light/no_nightshift,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/arrivals/cynosure)
 "chf" = (
 /obj/machinery/door/firedoor/glass,
@@ -4673,10 +4643,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "cmZ" = (
 /obj/structure/window/reinforced{
@@ -4928,7 +4895,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "cvr" = (
 /obj/effect/floor_decal/corner/pink{
@@ -4993,10 +4960,7 @@
 /turf/floor/tiled/monofloor,
 /area/surface/station/security/range)
 "cxc" = (
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "cxl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -5136,7 +5100,7 @@
 /obj/structure/cliff/automatic{
 	dir = 5
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/plateau)
 "cDl" = (
 /obj/structure/cable/green{
@@ -5215,10 +5179,7 @@
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/industrial/danger/corner,
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "cFz" = (
 /obj/machinery/door/firedoor/border_only,
@@ -5404,10 +5365,7 @@
 	id_tag = "pad4";
 	pixel_x = -22
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outpost/research/xenoarcheology/surface)
 "cJA" = (
 /obj/structure/cable{
@@ -5458,7 +5416,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/east/gnd)
 "cKh" = (
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "cKI" = (
 /obj/machinery/navbeacon/patrol{
@@ -5737,7 +5695,7 @@
 /area/surface/station/engineering/engineering_monitoring)
 "cPd" = (
 /obj/structure/drying_rack,
-/turf/floor/natural/dirt{
+/turf/floor/dirt{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -5814,7 +5772,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/storage/emergency/sec)
 "cQN" = (
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/plains/plateau)
 "cRm" = (
 /obj/machinery/light{
@@ -5906,7 +5864,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "cUh" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -6189,10 +6147,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "cXQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6406,11 +6361,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "dbY" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7112,10 +7063,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "dtt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7185,10 +7133,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/arrivals/cynosure)
 "dvT" = (
 /obj/machinery/door/firedoor/border_only,
@@ -7621,10 +7566,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/north)
 "dGb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7804,11 +7746,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "dKO" = (
 /obj/structure/cable/yellow{
@@ -7835,10 +7773,7 @@
 "dLD" = (
 /obj/machinery/light/no_nightshift,
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/arrivals/cynosure)
 "dML" = (
 /obj/effect/floor_decal/corner_techfloor_gray{
@@ -8050,7 +7985,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/atmos)
 "dQn" = (
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/ocean)
 "dQR" = (
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -8215,7 +8150,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/research/gnd)
 "dXk" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/ocean)
 "dXF" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible/yellow,
@@ -8310,7 +8245,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/north/gnd)
 "eaB" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/path/plains)
 "ebk" = (
 /obj/effect/catwalk_plated/dark,
@@ -8423,7 +8358,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/storage/primarytool)
 "edA" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/button/alternate/door{
 	dir = 8;
 	id_tag = "detdoor";
@@ -8609,7 +8544,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
 "ehV" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/flashlight/lamp/green,
 /obj/structure/window/reinforced/polarized{
 	dir = 8;
@@ -8684,7 +8619,7 @@
 	},
 /area/surface/outpost/checkpoint)
 "ekq" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/taperecorder,
 /turf/floor/carpet,
 /area/surface/station/security/detectives_office)
@@ -8784,7 +8719,7 @@
 	pixel_y = -30;
 	dir = 1
 	},
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/flashlight/lamp/green,
 /obj/structure/window/reinforced/polarized{
 	dir = 4;
@@ -8943,7 +8878,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "epw" = (
 /obj/structure/cryofeed{
@@ -9621,7 +9556,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "eCO" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -9728,7 +9663,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "eFw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -9775,7 +9710,7 @@
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "eGS" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/pen/blue{
@@ -9801,10 +9736,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "eHI" = (
 /obj/structure/table/reinforced,
@@ -9880,10 +9812,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "eJC" = (
 /obj/structure/cable/yellow{
@@ -9938,7 +9867,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/kitchen)
 "eKb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/utensil/fork{
 	pixel_x = -2
 	},
@@ -10031,10 +9960,7 @@
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "eNq" = (
 /obj/structure/table/reinforced,
@@ -10190,7 +10116,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "eQq" = (
 /obj/effect/floor_decal/borderfloor,
@@ -10218,7 +10144,7 @@
 /area/surface/station/medical/etc)
 "eQE" = (
 /obj/abstract/level_data_spawner/cynosure_station,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/ocean)
 "eQL" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
@@ -10306,10 +10232,7 @@
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "eSr" = (
 /turf/wall/r_wall/hull,
@@ -10376,7 +10299,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/rnd/xenobiology)
 "eSN" = (
-/turf/floor/natural/snow{
+/turf/floor/snow{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -10788,10 +10711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "fcm" = (
 /obj/effect/catwalk_plated/dark,
@@ -10907,7 +10827,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "fgw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/recharger,
 /turf/floor/wood,
 /area/surface/station/library)
@@ -10959,10 +10879,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outpost/research/xenoarcheology/surface)
 "fin" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11053,10 +10970,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "fja" = (
 /obj/structure/cable/green{
@@ -11168,10 +11082,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "flZ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -11352,10 +11263,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "fpB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11391,10 +11299,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "fqU" = (
 /obj/structure/cable/yellow{
@@ -11990,7 +11895,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/north/gnd)
 "fFD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/book/codex/lore/vir,
 /turf/floor/wood,
@@ -12062,7 +11967,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/reception)
 "fIk" = (
-/turf/floor/natural/dirt{
+/turf/floor/dirt{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -12327,7 +12232,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/rnd/xenobiology)
 "fOl" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -12524,7 +12429,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/atmos)
 "fTj" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/flora/pottedplant/thinbush,
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 29
@@ -13316,7 +13221,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "gpN" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -13652,7 +13557,7 @@
 /obj/structure/cliff/automatic/corner{
 	dir = 9
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/plateau)
 "gyg" = (
 /obj/effect/catwalk_plated/dark,
@@ -14001,7 +13906,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/primary/groundfloor/south)
 "gFi" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/taperecorder,
 /obj/item/book/codex/lore/news,
 /obj/item/magnetic_tape/random,
@@ -14234,7 +14139,7 @@
 /obj/abstract/landmark{
 	name = "JoinLateCheckpoint"
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/path/plains)
 "gJA" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -14244,7 +14149,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "gJI" = (
 /obj/machinery/door/firedoor/border_only,
@@ -14399,7 +14304,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "gNR" = (
 /obj/structure/cable/green{
@@ -14418,7 +14323,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paicard,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
@@ -14588,7 +14493,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/crew_quarters/caferestroom)
 "gSf" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -14674,7 +14579,7 @@
 /obj/structure/sign/bigname/seg_7{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "gUf" = (
 /obj/machinery/conveyor{
@@ -15223,7 +15128,6 @@
 /turf/floor/tiled/techmaint,
 /area/shuttle/exploration/cargo)
 "hkX" = (
-/obj/machinery/magnetic_module,
 /obj/effect/floor_decal/steeldecal/steel_decals_central6,
 /turf/floor/tiled/monotile,
 /area/surface/station/security/range)
@@ -15509,7 +15413,7 @@
 /obj/structure/cliff/automatic{
 	dir = 9
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/plateau)
 "htd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15617,10 +15521,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/arrivals/cynosure)
 "hwa" = (
 /obj/structure/disposalpipe/segment{
@@ -16448,7 +16349,7 @@
 /turf/floor/tiled,
 /area/surface/station/park)
 "hQy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/candles/red,
 /turf/floor/carpet,
 /area/surface/station/chapel/main)
@@ -16505,7 +16406,7 @@
 /obj/structure/sign/bigname/seg_4{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "hSO" = (
 /obj/structure/cable{
@@ -16877,15 +16778,11 @@
 	icon_state = "1-2"
 	},
 /obj/effect/overlay/snow/floor,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "idr" = (
 /obj/structure/fence,
-/turf/floor/natural/snow{
+/turf/floor/snow{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -16947,10 +16844,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "iex" = (
 /obj/machinery/door/firedoor/border_only,
@@ -17072,7 +16966,7 @@
 /turf/unsimulated/wall/planetary/sif,
 /area/surface/outpost/checkpoint)
 "ikq" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/chemical_dispenser/bar_coffee/full{
 	dir = 4
 	},
@@ -17127,10 +17021,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/industrial/danger,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "ils" = (
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -17418,7 +17309,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "isY" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
@@ -17559,10 +17450,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "iwy" = (
 /obj/structure/table/reinforced,
@@ -17600,10 +17488,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/arrivals/cynosure)
 "ixa" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -17684,10 +17569,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "iBd" = (
 /obj/structure/table/bench/wooden,
@@ -17787,10 +17669,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "iFl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -17820,10 +17699,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "iFX" = (
 /obj/structure/table/glass,
@@ -17866,7 +17742,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "iGM" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/normal)
 "iGO" = (
 /turf/floor/pool,
@@ -17888,7 +17764,7 @@
 /obj/structure/sign/bigname/seg_3{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "iHY" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -17904,7 +17780,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
 "iIs" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/utensil/fork{
 	pixel_x = -2
 	},
@@ -17934,7 +17810,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/rnd/xenobiology)
 "iJn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/faxmachine,
 /obj/machinery/light,
 /turf/floor/wood,
@@ -18217,7 +18093,7 @@
 /area/surface/station/maintenance/east/gnd)
 "iPz" = (
 /obj/structure/fence,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/station)
 "iPA" = (
 /obj/effect/floor_decal/techfloor{
@@ -18391,7 +18267,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paicard,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
@@ -18415,7 +18291,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "iVb" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -18550,7 +18426,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "iXd" = (
 /obj/structure/fence/corner{
@@ -18772,10 +18648,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/station/solar/westsolar)
 "jfk" = (
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -18817,7 +18690,7 @@
 /turf/open,
 /area/surface/station/rnd/hallway/stairwell)
 "jgc" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -19017,10 +18890,7 @@
 	id_tag = "pad3";
 	pixel_x = 22
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outpost/research/xenoarcheology/surface)
 "jlB" = (
 /obj/effect/floor_decal/borderfloor{
@@ -19035,10 +18905,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "jlF" = (
 /obj/machinery/mech_recharger,
@@ -19097,7 +18964,7 @@
 /area/surface/station/rnd/xenobiology/xenoflora_isolation)
 "jmX" = (
 /obj/structure/table,
-/turf/floor/natural/dirt{
+/turf/floor/dirt{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -19120,7 +18987,7 @@
 	dir = 9
 	},
 /obj/structure/catwalk,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "jnC" = (
 /obj/structure/stairs/long,
@@ -19203,10 +19070,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/station/arrivals/cynosure)
 "jrG" = (
 /obj/effect/floor_decal/techfloor{
@@ -19371,10 +19235,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "jvp" = (
 /obj/effect/floor_decal/techfloor{
@@ -19818,10 +19679,7 @@
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/maintenance/east/gnd)
 "jFP" = (
 /obj/structure/cable/green{
@@ -19844,7 +19702,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/security/gnd)
 "jGo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/taperecorder,
 /obj/item/magnetic_tape/random{
 	pixel_y = -2
@@ -19933,14 +19791,11 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/garage)
 "jJj" = (
 /obj/structure/fire_source/firepit,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/path/plains)
 "jJq" = (
 /obj/machinery/computer/operating{
@@ -20091,10 +19946,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "jNy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20388,10 +20240,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "jRD" = (
 /obj/structure/closet/wardrobe/chemistry_white,
@@ -20568,14 +20417,11 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "jUL" = (
 /obj/machinery/cryopod/robot/door/checkpoint,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outpost/checkpoint)
 "jUQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20659,10 +20505,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "jWB" = (
 /obj/effect/floor_decal/borderfloor,
@@ -20990,7 +20833,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/briefing_room)
 "kda" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/reagentgrinder,
 /obj/item/stack/package_wrap,
 /obj/item/chems/drinks/shaker,
@@ -21119,10 +20962,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/solar,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/station/solar/westsolar)
 "kgK" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -21161,10 +21001,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/north)
 "kgZ" = (
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "khd" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -21322,10 +21159,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "kko" = (
 /obj/structure/cable/green{
@@ -21379,7 +21213,7 @@
 	dir = 10
 	},
 /obj/structure/railing,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "klk" = (
 /obj/effect/floor_decal/spline/plain{
@@ -21417,7 +21251,7 @@
 /obj/structure/disposalpipe/broken{
 	dir = 8
 	},
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/plains/station)
 "klO" = (
 /obj/structure/flora/bush/sparsegrass,
@@ -21443,10 +21277,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outpost/research/xenoarcheology/surface)
 "knh" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -21978,7 +21809,7 @@
 /obj/structure/sign/bigname{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "kBn" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -21987,7 +21818,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "kBv" = (
 /turf/floor/reinforced/n20,
@@ -22150,7 +21981,7 @@
 	dir = 8
 	},
 /obj/structure/catwalk,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "kFw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -22267,10 +22098,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "kHo" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22338,10 +22166,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/garage)
 "kIW" = (
 /obj/effect/floor_decal/spline/plain{
@@ -22394,7 +22219,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/medical/etc)
 "kKR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/deck/cards,
 /turf/floor/wood,
 /area/surface/station/crew_quarters/cafeteria)
@@ -22547,7 +22372,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/processing)
 "kOV" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/item/clothing/glasses/sunglasses,
@@ -23315,7 +23140,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "lkn" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -23386,7 +23211,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "lmq" = (
 /obj/structure/bookcase,
@@ -23462,7 +23287,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "lnS" = (
 /obj/effect/floor_decal/borderfloor,
@@ -23548,7 +23373,7 @@
 /turf/floor/plating,
 /area/surface/station/hallway/primary/groundfloor/north)
 "lrn" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
 /obj/item/folder/yellow,
 /obj/item/pen,
@@ -23624,7 +23449,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "lsP" = (
 /turf/floor/reinforced,
@@ -23975,10 +23800,7 @@
 /area/surface/station/hydroponics)
 "lzL" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "lAd" = (
 /obj/machinery/newscaster{
@@ -24216,7 +24038,7 @@
 	dir = 6
 	},
 /obj/structure/railing,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "lGu" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -24572,10 +24394,7 @@
 /area/surface/station/security/hallway/gnd)
 "lOW" = (
 /obj/structure/ladder,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "lPl" = (
 /obj/structure/hygiene/sink{
@@ -24763,7 +24582,7 @@
 /turf/floor/pool,
 /area/surface/station/crew_quarters/pool)
 "lSf" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -24854,10 +24673,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "lVq" = (
 /obj/machinery/smartfridge/secure/medbay,
@@ -25223,12 +25039,6 @@
 /obj/item/ammo_magazine/smg/practice,
 /obj/item/box/ammo/blanks/large,
 /obj/item/box/ammo/blanks/large,
-/obj/machinery/magnetic_controller{
-	autolink = 1;
-	density = 0;
-	dir = 4;
-	pixel_x = 30
-	},
 /turf/floor/tiled,
 /area/surface/station/security/range)
 "maD" = (
@@ -26215,7 +26025,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "mxB" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -26606,7 +26416,7 @@
 /turf/wall/r_wall,
 /area/surface/station/security/interrogation)
 "mFV" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/plateau)
 "mGf" = (
 /obj/structure/cable/green{
@@ -26683,7 +26493,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "mHU" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -26803,7 +26613,7 @@
 /turf/wall,
 /area/surface/station/security/detectives_office/lab)
 "mMn" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/normal)
 "mMH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -26915,7 +26725,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "mPy" = (
 /obj/machinery/suit_cycler/generic/prepared,
@@ -27165,7 +26975,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/etc)
 "mSM" = (
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/station)
 "mSO" = (
 /obj/structure/table,
@@ -27209,10 +27019,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "mUb" = (
 /turf/floor/lino,
@@ -27308,7 +27115,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "mVq" = (
 /obj/effect/floor_decal/spline/plain,
@@ -27443,11 +27250,11 @@
 /area/surface/station/security/detectives_office/lab)
 "mYE" = (
 /obj/structure/closet/crate,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
-/obj/item/target,
+/obj/item/training_dummy,
+/obj/item/training_dummy,
+/obj/item/training_dummy,
+/obj/item/training_dummy,
+/obj/item/training_dummy,
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/range)
 "mZa" = (
@@ -27477,7 +27284,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "mZp" = (
 /obj/machinery/atmospherics/valve/digital/open,
@@ -27593,7 +27400,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "ncO" = (
 /obj/structure/cable/green{
@@ -28164,10 +27971,10 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "nsO" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/stack/tape_roll,
 /obj/item/stack/package_wrap{
 	pixel_x = -2;
@@ -28734,7 +28541,7 @@
 /turf/floor/wood/sif,
 /area/surface/station/chapel/main)
 "nIv" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -28926,7 +28733,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/mug,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
@@ -29597,7 +29404,7 @@
 /turf/floor/tiled,
 /area/surface/station/park)
 "oaV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /turf/floor/wood,
 /area/surface/station/library)
 "obk" = (
@@ -29973,10 +29780,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "oki" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -30032,7 +29836,7 @@
 /area/surface/station/park)
 "olb" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "olc" = (
 /obj/machinery/door/firedoor/border_only,
@@ -30070,10 +29874,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/maintenance/east/gnd)
 "ons" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
@@ -30127,10 +29928,7 @@
 /area/surface/station/crew_quarters/locker)
 "onY" = (
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "ooa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -30533,10 +30331,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "ouz" = (
 /obj/structure/sign/warning/high_voltage,
@@ -30635,10 +30430,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/north)
 "owp" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30936,10 +30728,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/maintenance/east/gnd)
 "oCZ" = (
 /obj/structure/reagent_dispensers/watertank/high,
@@ -31618,7 +31407,7 @@
 /obj/structure/cliff/automatic{
 	dir = 6
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/plateau)
 "oTU" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -31863,7 +31652,7 @@
 /obj/structure/sign/bigname/seg_6{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "oYh" = (
 /obj/structure/bed/chair/shuttle{
@@ -32648,7 +32437,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/hallway)
 "poX" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outpost/checkpoint)
 "ppb" = (
 /obj/structure/table/glass,
@@ -32778,10 +32567,7 @@
 	dir = 4
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "pqY" = (
 /obj/structure/cable{
@@ -32903,10 +32689,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "pts" = (
 /obj/effect/floor_decal/borderfloor{
@@ -32921,7 +32704,7 @@
 /obj/structure/cliff/automatic{
 	dir = 9
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/plateau)
 "ptB" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -33048,11 +32831,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "pxm" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -33111,11 +32890,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "pyz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -33706,7 +33481,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/atmos)
 "pNa" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/station)
 "pNC" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -33721,7 +33496,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "pOh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -34006,7 +33781,7 @@
 /area/surface/station/arrivals/cynosure)
 "pXz" = (
 /obj/structure/fence,
-/turf/floor/natural/dirt{
+/turf/floor/dirt{
 	is_outside = 0
 	},
 /area/surface/outside/plains/station)
@@ -34731,10 +34506,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/maintenance/east/gnd)
 "qnU" = (
 /obj/structure/cable{
@@ -34818,7 +34590,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/research/gnd)
 "qpk" = (
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/plateau)
 "qpm" = (
 /obj/item/wheelchair_kit,
@@ -35265,10 +35037,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "qxG" = (
 /obj/effect/catwalk_plated/dark,
@@ -35335,7 +35104,7 @@
 /turf/wall/concrete/reinforced,
 /area/surface/station/maintenance/solars/west)
 "qyR" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paicard,
 /obj/item/deck/cag{
 	pixel_x = -3;
@@ -35809,10 +35578,7 @@
 	pixel_y = -31
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/arrivals/cynosure)
 "qIj" = (
 /obj/structure/railing{
@@ -35937,10 +35703,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "qLe" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -35988,7 +35751,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "qOg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -36020,7 +35783,7 @@
 /obj/structure/cliff/automatic{
 	dir = 4
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/plateau)
 "qPc" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -36033,7 +35796,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "qPk" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -36112,7 +35875,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "qSB" = (
 /obj/machinery/disposal,
@@ -36925,10 +36688,7 @@
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "rlb" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -37349,7 +37109,7 @@
 /area/surface/station/hallway/secondary/groundfloor/civilian)
 "rwW" = (
 /obj/structure/cliff/automatic,
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/plateau)
 "rxt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -37738,10 +37498,7 @@
 "rGw" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/industrial/danger/corner,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "rGF" = (
 /obj/effect/floor_decal/borderfloor/corner,
@@ -38196,7 +37953,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/foyer)
 "rRy" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/plateau)
 "rRA" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -38256,7 +38013,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/magnetic_controller,
 /obj/item/box/flashbangs,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -38459,10 +38215,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/garage)
 "rYh" = (
 /turf/wall/r_wall,
@@ -38492,18 +38245,14 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty;
-	is_outside = 0
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "rZm" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
 /obj/structure/catwalk,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "rZq" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -38567,7 +38316,7 @@
 /obj/structure/sign/bigname/seg_5{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "sby" = (
 /obj/abstract/landmark/start{
@@ -38576,7 +38325,7 @@
 /obj/abstract/landmark/start{
 	name = "Trained Drake"
 	},
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outpost/checkpoint)
 "scm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -38599,7 +38348,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/hallway/reactor)
 "sdh" = (
-/obj/structure/closet/crate/freezer/rations,
+/obj/structure/closet/crate/plastic/rations,
 /obj/random/contraband,
 /obj/random/contraband,
 /turf/floor/plating,
@@ -38701,7 +38450,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/foyer)
 "sfZ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/utensil/fork{
 	pixel_x = -2
@@ -39049,10 +38798,7 @@
 	pixel_y = 24
 	},
 /obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "sqN" = (
 /obj/effect/floor_decal/techfloor{
@@ -39232,10 +38978,7 @@
 	},
 /obj/machinery/power/solar,
 /obj/effect/floor_decal/rust,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/station/solar/westsolar)
 "svE" = (
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -39275,7 +39018,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "swk" = (
 /obj/structure/cable/green{
@@ -39857,10 +39600,7 @@
 	dir = 1;
 	pixel_y = 26
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "sJl" = (
 /obj/structure/disposalpipe/segment,
@@ -39911,7 +39651,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "sLu" = (
 /obj/structure/fence/post{
@@ -40106,10 +39846,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/machinery/light/small,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/north)
 "sQa" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -40349,7 +40086,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "sWl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -40844,10 +40581,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "tlJ" = (
 /obj/structure/cable{
@@ -40989,10 +40723,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small/no_nightshift,
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/arrivals/cynosure)
 "tof" = (
 /obj/structure/cable/green{
@@ -41297,7 +41028,7 @@
 /obj/structure/cliff/automatic/corner{
 	dir = 6
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/plateau)
 "twn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -41370,7 +41101,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
@@ -41562,7 +41293,7 @@
 /turf/unsimulated/mask,
 /area/surface/outpost/research/xenoarcheology/surface)
 "tBX" = (
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/machinery/button/alternate/door{
 	dir = 4;
 	id_tag = "detdoor";
@@ -41585,7 +41316,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/medical/reception)
 "tCj" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/briefcase{
 	pixel_y = 6
 	},
@@ -41813,10 +41544,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "tIM" = (
 /obj/effect/floor_decal/corner/black/full,
@@ -42384,7 +42112,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "tWD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
@@ -42413,7 +42141,7 @@
 /turf/floor/carpet,
 /area/surface/station/crew_quarters/heads/hos)
 "tWQ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/flashlight/lamp/green,
 /obj/item/sticky_pad/random,
 /turf/floor/wood,
@@ -42460,7 +42188,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
@@ -42487,7 +42215,7 @@
 /area/surface/station/library)
 "tYR" = (
 /obj/effect/shuttle_landmark/cynosure/pads/perimeter,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/outside/plains/station)
 "tZJ" = (
 /turf/floor/wood,
@@ -42649,7 +42377,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "ubZ" = (
 /obj/effect/floor_decal/corner/white/diagonal,
@@ -43235,10 +42963,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/garage)
 "utE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -43361,10 +43086,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/arrivals/cynosure)
 "uwn" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -43381,7 +43103,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "uws" = (
 /obj/effect/floor_decal/borderfloor,
@@ -43482,7 +43204,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_smes)
 "uAg" = (
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "uAp" = (
 /obj/machinery/computer/modular/preset/engineering,
@@ -43611,7 +43333,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "uCG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -43756,7 +43478,7 @@
 	},
 /obj/structure/catwalk,
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "uIV" = (
 /obj/structure/table/marble,
@@ -44707,7 +44429,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "vfB" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -44754,7 +44476,7 @@
 /turf/floor/tiled/freezer,
 /area/surface/station/crew_quarters/pool)
 "vfV" = (
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "vgi" = (
 /obj/structure/cable/green{
@@ -44910,7 +44632,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/floor_decal/spline/plain,
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "viM" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
@@ -45372,7 +45094,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/groundfloor/civilian)
 "vue" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "vuv" = (
@@ -45391,7 +45113,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "vuy" = (
 /obj/structure/table/reinforced,
@@ -45486,10 +45208,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/north)
 "vwm" = (
 /obj/structure/table/bench/steel,
@@ -45734,7 +45453,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "vBO" = (
 /obj/effect/floor_decal/corner/purple/border{
@@ -45818,10 +45537,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "vDZ" = (
 /obj/machinery/power/smes/buildable{
@@ -45864,7 +45580,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "vFq" = (
 /obj/structure/disposalpipe/segment{
@@ -45927,10 +45643,7 @@
 /obj/machinery/light/small/no_nightshift{
 	dir = 8
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "vGx" = (
 /turf/wall,
@@ -46053,7 +45766,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "vJD" = (
 /turf/wall,
@@ -46331,7 +46044,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/floor/natural/mud/water,
+/turf/floor/mud/water,
 /area/surface/outside/river/gautelfr)
 "vRD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
@@ -46661,7 +46374,7 @@
 /turf/floor/wood/sif,
 /area/surface/station/chapel/main)
 "waA" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/structure/flora/pottedplant{
 	pixel_y = 8
 	},
@@ -46749,10 +46462,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/solar,
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/station/solar/northeastsolar)
 "wdw" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -46814,7 +46524,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "wff" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -46861,7 +46571,7 @@
 /area/surface/station/medical/surgery2)
 "wfF" = (
 /obj/structure/fence,
-/turf/floor/natural/dirt,
+/turf/floor/dirt,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "wga" = (
 /obj/structure/sign/directions/stairs_up{
@@ -46921,10 +46631,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "wiA" = (
 /obj/machinery/atmospherics/unary/heat_exchanger{
@@ -47242,7 +46949,7 @@
 /obj/structure/sign/bigname/seg_2{
 	pixel_y = 32
 	},
-/turf/floor/natural/snow,
+/turf/floor/snow,
 /area/surface/outside/plains/station)
 "wqH" = (
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -47992,10 +47699,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/outside/plains/station)
 "wMG" = (
 /obj/effect/floor_decal/spline/plain{
@@ -48077,20 +47781,20 @@
 /area/surface/station/crew_quarters/heads/hop)
 "wOf" = (
 /obj/structure/table/reinforced,
-/obj/item/box/monkeycubes{
+/obj/item/box/animal_cubes/monkeys{
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/item/box/monkeycubes{
+/obj/item/box/animal_cubes/monkeys{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/box/monkeycubes,
-/obj/item/box/monkeycubes{
+/obj/item/box/animal_cubes/monkeys,
+/obj/item/box/animal_cubes/monkeys{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/food/monkeycube/wrapped,
+/obj/item/food/animal_cube/wrapped/monkey,
 /turf/floor/tiled/neutral,
 /area/surface/station/rnd/xenobiology)
 "wOs" = (
@@ -48173,7 +47877,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "wPL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -48221,10 +47925,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/tiled{
-	icon_state = "asteroidfloor";
-	initial_flooring = /decl/flooring/tiling/asteroidfloor
-	},
+/turf/floor/asteroid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "wQu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -48333,7 +48034,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "wRI" = (
@@ -48803,7 +48504,7 @@
 /obj/structure/cliff/automatic{
 	dir = 8
 	},
-/turf/floor/natural/grass/sif,
+/turf/floor/grass/sif,
 /area/surface/outside/plains/plateau)
 "xbF" = (
 /obj/structure/fence{
@@ -48993,7 +48694,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "xhD" = (
 /obj/structure/cable/green{
@@ -49087,7 +48788,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "xks" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -49100,7 +48801,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "xlW" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -49204,7 +48905,7 @@
 /turf/unsimulated/mask,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "xpy" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/camera_film{
 	pixel_x = 2;
 	pixel_y = 2
@@ -49837,10 +49538,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "xFu" = (
 /obj/structure/closet/medical_wall{
@@ -50421,10 +50119,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/floor/tiled{
-	icon_state = "steel_dirty";
-	initial_flooring = /decl/flooring/tiling/steel_dirty
-	},
+/turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "xSt" = (
 /obj/effect/floor_decal/techfloor{
@@ -51145,7 +50840,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 10
 	},
-/turf/floor/natural/mud/water/deep,
+/turf/floor/mud/water/deep,
 /area/surface/outside/station/reactorpond)
 "yfz" = (
 /obj/effect/floor_decal/corner/white/diagonal,

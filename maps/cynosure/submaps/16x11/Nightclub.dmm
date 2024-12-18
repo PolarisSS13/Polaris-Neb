@@ -109,7 +109,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/maintenance,
@@ -177,7 +177,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/radio/intercom/entertainment{
 	dir = 1
 	},
@@ -375,7 +375,7 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/obj/structure/table/woodentable_reinforced,
+/obj/structure/table/laminate/reinforced,
 /obj/item/wallet/random,
 /obj/random/cash,
 /obj/item/megaphone,

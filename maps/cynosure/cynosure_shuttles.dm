@@ -307,7 +307,7 @@
 	landmark_tag = "escape_pod_"+ #NUMBER +"_station"; \
 	docking_controller = "escape_pod_"+ #NUMBER +"_berth"; \
 	base_area = /area/space; \
-	base_turf = /turf/floor/airless; \
+	base_turf = /turf/floor/plating/airless; \
 } \
 /obj/effect/shuttle_landmark/cynosure/escape_pod##NUMBER/offsite { \
 	name = "Recovery"; \
@@ -368,7 +368,7 @@ ESCAPE_POD(1)
 	landmark_tag = "large_escape_pod2_station"
 	docking_controller = "large_escape_pod_2_berth"
 	base_area = /area/surface/station/hallway/primary/secondfloor/east
-	base_turf = /turf/floor/airless
+	base_turf = /turf/floor/plating/airless
 
 /obj/effect/shuttle_landmark/cynosure/large_escape_pod2/offsite
 	name = "Recovery"
@@ -400,7 +400,7 @@ ESCAPE_POD(1)
 	landmark_tag = "nav_perimeter_cynosure"
 	docking_controller = "pad4"
 	base_area = /area/surface/outside/plains/station
-	base_turf = /turf/floor/natural/dirt
+	base_turf = /turf/floor/dirt
 
 //Wilderness
 
@@ -408,7 +408,7 @@ ESCAPE_POD(1)
 	name = "Wilderness"
 	landmark_tag = "nav_wilderness"
 	base_area = /area/surface/outside/wilderness/deep
-	base_turf = /turf/floor/natural/dirt
+	base_turf = /turf/floor/dirt
 
 //Tcomms Sat Docks
 

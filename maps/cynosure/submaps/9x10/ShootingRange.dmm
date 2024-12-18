@@ -75,11 +75,6 @@
 /turf/floor/tiled/steel_grid,
 /area/template_noop)
 "t" = (
-/obj/machinery/magnetic_controller{
-	autolink = 1;
-	density = 0;
-	pixel_y = -30
-	},
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	dir = 4;
@@ -108,14 +103,13 @@
 /turf/floor/tiled/techmaint,
 /area/template_noop)
 "w" = (
-/obj/machinery/magnetic_module,
 /obj/effect/catwalk_plated,
 /turf/floor/plating,
 /area/template_noop)
 "x" = (
 /obj/random/crate,
-/obj/item/target/syndicate,
-/obj/item/target/syndicate,
+/obj/item/training_dummy/syndicate,
+/obj/item/training_dummy/syndicate,
 /obj/item/box/practiceshells/large,
 /obj/item/ammo_magazine/m45/practice,
 /obj/item/ammo_magazine/m45/practice,

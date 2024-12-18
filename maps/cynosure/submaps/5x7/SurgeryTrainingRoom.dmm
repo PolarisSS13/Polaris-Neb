@@ -12,7 +12,7 @@
 /obj/structure/table,
 /obj/random/medical,
 /obj/random/maintenance/medical,
-/obj/item/box/monkeycubes{
+/obj/item/box/animal_cubes/monkeys{
 	pixel_y = -3
 	},
 /turf/floor/tiled/white,
@@ -177,7 +177,7 @@
 	},
 /obj/machinery/door/airlock/medical{
 	name = "Operating Theatre";
-	
+
 	},
 /turf/floor/tiled/steel_grid,
 /area/template_noop)
