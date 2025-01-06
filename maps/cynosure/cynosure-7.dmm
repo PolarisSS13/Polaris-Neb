@@ -3,7 +3,7 @@
 /turf/unsimulated/dark_filler,
 /area/space)
 "bA" = (
-/turf/floor/wood/sif/broken,
+/turf/floor/wood/broken/sif,
 /area/surface/outside/path/wilderness)
 "bE" = (
 /turf/unsimulated/wall/planetary/sif,
@@ -31,14 +31,14 @@
 /turf/floor/wood/sif,
 /area/surface/outside/wilderness/normal)
 "eZ" = (
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/wilderness/shack)
 "fy" = (
 /obj/structure/cliff/automatic,
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/mountains)
 "fP" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/firstaid/regular,
 /obj/item/stack/medical/splint,
 /turf/floor/wood/sif,
@@ -70,7 +70,7 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "id" = (
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/outside/path/wilderness)
 "jq" = (
 /turf/unsimulated/wall/planetary/sif{
@@ -123,14 +123,14 @@
 /area/surface/outside/wilderness/mountains)
 "qr" = (
 /obj/item/box/matches,
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "qT" = (
 /turf/floor/grass/sif,
 /area/surface/outside/river/gautelfr)
 "sn" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/flashlight/lamp,
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
@@ -180,7 +180,7 @@
 /turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "zY" = (
-/obj/structure/bed/chair/sifwood/wings{
+/obj/structure/bed/chair/wood/wings/sifwood{
 	dir = 4
 	},
 /turf/floor/wood/sif,
@@ -215,7 +215,7 @@
 /turf/floor/dirt,
 /area/surface/outside/wilderness/mountains)
 "Ec" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/knife,
 /obj/item/stack/cable_coil/white,
 /obj/item/fishing_rod,
@@ -291,7 +291,7 @@
 /turf/floor/wood/sif,
 /area/surface/wilderness/shack)
 "Sc" = (
-/turf/floor/wood/sif/broken,
+/turf/floor/wood/broken/sif,
 /area/surface/wilderness/shack)
 "Sl" = (
 /turf/floor/mud,
@@ -307,7 +307,7 @@
 /turf/floor/dirt,
 /area/surface/outside/wilderness/normal)
 "TH" = (
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/outside/wilderness/normal)
 "TP" = (
 /obj/structure/railing{

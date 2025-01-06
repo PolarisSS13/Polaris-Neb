@@ -156,13 +156,6 @@
 	icon_state = "tile_freezer"
 	material = /decl/material/solid/organic/plastic
 
-/obj/item/stack/tile/floor_steel_dirty
-	name = "dirty steel tile"
-	singular_name = "dirty steel tile"
-	icon_state = "tile"
-	material = /decl/material/solid/metal/steel
-	obj_flags = OBJ_FLAG_CONDUCTIBLE
-
 /obj/item/stack/tile/floor_freezer/fifty
 	amount = 50
 

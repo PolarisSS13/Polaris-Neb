@@ -169,7 +169,7 @@
 	id_tag = "tcomdock_airlock";
 	pixel_y = -35
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/entrance)
 "cB" = (
@@ -313,7 +313,7 @@
 	id_tag = "telecoms_airlock";
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "dN" = (
@@ -569,7 +569,7 @@
 	pixel_x = -31;
 	pixel_y = -35
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "hB" = (
@@ -817,7 +817,7 @@
 	pixel_x = -35;
 	pixel_y = 31
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled/techfloor/grid/cryo,
 /area/tcommsat/cynosure/computer)
 "kA" = (
@@ -1022,8 +1022,8 @@
 	dir = 8;
 	id_tag = "server_access_pump"
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/tcommsat/cynosure/computer)
 "mA" = (
@@ -1067,7 +1067,7 @@
 	pixel_x = 24;
 	pixel_y = 31
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/plating/airless,
 /area/tcommsat/cynosure/powercontrol)
 "mV" = (
@@ -1165,7 +1165,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "nV" = (
@@ -1204,7 +1204,7 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/entrance)
 "oP" = (
@@ -1404,7 +1404,7 @@
 	pixel_x = 31;
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled/steel_dirty,
 /area/tcommsat/cynosure/entrance)
 "re" = (
@@ -1451,7 +1451,7 @@
 /obj/effect/floor_decal/rust/part_rusted3{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/tiled,
 /area/tcommsat/cynosure/computer)
 "rn" = (
@@ -1706,7 +1706,7 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	id_tag = "tcomdock_airlock";
 	pixel_y = 25
@@ -2023,7 +2023,7 @@
 	pixel_x = -24;
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/computer)
 "zi" = (
@@ -2167,7 +2167,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/computer)
 "Bs" = (
@@ -2366,7 +2366,7 @@
 	id_tag = "tcomdock_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/entrance)
 "DF" = (
@@ -3020,7 +3020,7 @@
 	dir = 8;
 	id_tag = "tcomdock_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/tcommsat/cynosure/entrance)
 "Lb" = (
@@ -3290,7 +3290,7 @@
 	pixel_x = 35;
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "Og" = (
@@ -3656,7 +3656,7 @@
 	id_tag = "tcomdock_airlock";
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/techfloor,
 /area/tcommsat/cynosure/entrance)
 "Sf" = (
@@ -4147,7 +4147,7 @@
 	dir = 8;
 	id_tag = "tcomdock_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/machinery/camera/network/telecom{
 	c_tag = "Tcoms - Airlock"
 	},
@@ -4356,7 +4356,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "YG" = (
@@ -4429,7 +4429,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/plating,
 /area/tcommsat/cynosure/powercontrol)
 "Zm" = (

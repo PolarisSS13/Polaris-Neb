@@ -245,8 +245,8 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/large/secure/heph,
-/obj/item/cell/device/weapon/empty,
-/obj/item/cell/device/weapon/empty,
+/obj/item/cell/gun/empty,
+/obj/item/cell/gun/empty,
 /obj/item/cell/gun,
 /turf/floor/tiled/steel_dirty,
 /area/template_noop)

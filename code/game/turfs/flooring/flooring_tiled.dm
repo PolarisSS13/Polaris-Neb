@@ -106,8 +106,3 @@
 	icon_base          = "ridged"
 	color              = COLOR_GUNMETAL
 	build_type         = /obj/item/stack/tile/ridge
-
-/decl/flooring/tiling/steel_dirty
-	build_type = /obj/item/stack/tile/floor_steel_dirty
-
-/decl/flooring/tiling/asteroidfloor

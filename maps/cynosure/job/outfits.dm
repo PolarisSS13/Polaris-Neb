@@ -9,7 +9,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	name     = "Cynosure - Explorer"
 	shoes    = /obj/item/clothing/shoes/winterboots/explorer
 	uniform  = /obj/item/clothing/under/explorer
-	l_ear    = /obj/item/radio/headset/explorer
+	l_ear    = /obj/item/radio/headset/headset_exp
 	id_slot  = slot_wear_id_str
 	pda_slot = slot_l_store_str
 	pda_type = /obj/item/pda/cargo // Brown looks more rugged
@@ -38,12 +38,12 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 
 /decl/outfit/job/pilot
 	name = "Cynosure - Pilot"
-	shoes = /obj/item/clothing/shoes/black
+	shoes = /obj/item/clothing/shoes/color/black
 	uniform = /obj/item/clothing/under/rank/pilot1
 	suit = /obj/item/clothing/suit/toggle/bomber/pilot
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/fakesunglasses/aviator
-	l_ear = /obj/item/radio/headset/explorer/alt
+	l_ear = /obj/item/radio/headset/headset_exp/bowman
 	id_slot = slot_wear_id
 	pda_slot = slot_belt
 	pda_type = /obj/item/pda/cargo // Brown looks more rugged
@@ -56,7 +56,7 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	uniform = /obj/item/clothing/under/utility/blue
 	suit = /obj/item/clothing/suit/jacket/winter/medical/sar
 	shoes = /obj/item/clothing/shoes/winterboots/explorer
-	l_ear = /obj/item/radio/headset/sar
+	l_ear = /obj/item/radio/headset/headset_sar
 	l_hand = /obj/item/firstaid/regular
 	belt = /obj/item/belt/medical/emt
 	pda_slot = slot_l_store
@@ -84,13 +84,13 @@ Keep outfits simple. Spawn with basic uniforms and minimal gear. Gear instead go
 	. = ..()
 	var/obj/item/clothing/shoes/shoes = H?.get_equipped_item(slot_shoes_str)
 	if(istype(shoes) && !shoes.holding && shoes.can_hold_knife)
-		shoes.holding = new /obj/item/material/knife/tacknife/survival(H)
+		shoes.holding = new /obj/item/bladed/knife/survival(H)
 		shoes.update_icon()
 
 /decl/outfit/job/survivalist/crash_survivor
 	name = "Cynosure - Crash Survivor"
 	uniform = /obj/item/clothing/jumpsuit/lightblue
-	shoes = /obj/item/clothing/shoes/black
+	shoes = /obj/item/clothing/shoes/color/black
 	head = /obj/item/clothing/head/helmet/space/emergency
 	suit = /obj/item/clothing/suit/space/emergency
 	suit_store = /obj/item/tank/oxygen
