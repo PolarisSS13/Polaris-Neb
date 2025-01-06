@@ -70,7 +70,6 @@
 	O.aiRestorePowerRoutine = 0
 	if(mind)
 		mind.transfer_to(O)
-		O.mind.original = O
 	else
 		O.key = key
 
@@ -128,7 +127,6 @@
 	mind.active = TRUE
 	mind.transfer_to(O)
 	if(O.mind && O.mind.assigned_role == ASSIGNMENT_ROBOT)
-		O.mind.original = O
 		var/mmi_type = SSrobots.get_brain_type_by_title(O.mind.role_alt_title ? O.mind.role_alt_title : O.mind.assigned_role)
 		if(mmi_type)
 			O.central_processor = new mmi_type(O)

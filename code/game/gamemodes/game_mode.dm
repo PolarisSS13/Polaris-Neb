@@ -550,7 +550,7 @@ var/global/list/additional_antag_types = list()
 
 			continue //Happy connected client
 		for(var/mob/observer/ghost/D in SSmobs.mob_list)
-			if(D.mind && (D.mind.original == L || D.mind.current == L))
+			if(D.mind && D.mind.current == L)
 				if(L.stat == DEAD)
 					msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
 					continue //Dead mob, ghost abandoned

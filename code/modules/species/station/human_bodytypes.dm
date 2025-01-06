@@ -8,7 +8,7 @@
 	bandages_icon         = 'icons/mob/bandage.dmi'
 	limb_icon_intensity   = 0.7
 	associated_gender     = FEMALE
-	onmob_state_modifiers = list(slot_w_uniform_str = "f")
+	onmob_state_modifiers = list((slot_w_uniform_str) = "f")
 	appearance_flags      = HAS_SKIN_TONE_NORMAL | HAS_UNDERWEAR | HAS_EYE_COLOR
 	nail_noun             = "nails"
 	uid                   = "bodytype_human_fem"

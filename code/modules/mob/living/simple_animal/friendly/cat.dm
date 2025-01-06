@@ -70,12 +70,12 @@
 	uid = "bodytype_animal_cat"
 
 /decl/bodytype/quadruped/animal/cat/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list( 1,  -9),
 			"[SOUTH]" = list( 1, -12),
-			"[EAST]" =  list( 7, -10),
-			"[WEST]" =  list(-7, -10)
+			"[EAST]"  = list( 7, -10),
+			"[WEST]"  = list(-7, -10)
 		)
 	)
 	. = ..()
@@ -210,12 +210,12 @@
 	uid = "bodytype_animal_kitten"
 
 /decl/bodytype/quadruped/animal/kitten/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list( 1, -14),
 			"[SOUTH]" = list( 1, -14),
-			"[EAST]" =  list( 5, -14),
-			"[WEST]" =  list(-5, -14)
+			"[EAST]"  = list( 5, -14),
+			"[WEST]"  = list(-5, -14)
 		)
 	)
 	. = ..()

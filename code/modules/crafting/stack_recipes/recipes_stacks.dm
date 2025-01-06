@@ -26,6 +26,26 @@
 	result_type         = /obj/item/stack/tile/wood/walnut
 	required_material   = /decl/material/solid/organic/wood/walnut
 
+/decl/stack_recipe/tile/wood/mahogany/rough
+	crafting_extra_cost_factor = 2 // wasteful but easy
+	difficulty                 = MAT_VALUE_EASY_DIY
+	result_type                = /obj/item/stack/tile/wood/rough/mahogany
+
+/decl/stack_recipe/tile/wood/maple/rough
+	crafting_extra_cost_factor = 2
+	difficulty                 = MAT_VALUE_EASY_DIY
+	result_type                = /obj/item/stack/tile/wood/rough/maple
+
+/decl/stack_recipe/tile/wood/ebony/rough
+	crafting_extra_cost_factor = 2
+	difficulty                 = MAT_VALUE_HARD_DIY
+	result_type                = /obj/item/stack/tile/wood/rough/ebony
+
+/decl/stack_recipe/tile/wood/walnut/rough
+	crafting_extra_cost_factor = 2
+	difficulty                 = MAT_VALUE_EASY_DIY
+	result_type                = /obj/item/stack/tile/wood/rough/walnut
+
 /decl/stack_recipe/tile/wood/oak_laminate
 	result_type         = /obj/item/stack/tile/wood/laminate/oak
 	required_material   = /decl/material/solid/organic/wood/chipboard

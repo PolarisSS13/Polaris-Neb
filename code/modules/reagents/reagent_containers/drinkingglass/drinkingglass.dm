@@ -39,23 +39,6 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 	if(obj_flags & OBJ_FLAG_HOLLOW)
 		. /= HOLLOW_OBJECT_MATTER_MULTIPLIER
 
-/obj/item/chems/drinks/glass2/examine(mob/M)
-	. = ..()
-
-	for(var/I in extras)
-		if(istype(I, /obj/item/glass_extra))
-			to_chat(M, "There is \a [I] in \the [src].")
-		else if(istype(I, /obj/item/food/processed_grown/slice))
-			to_chat(M, "There is \a [I] on the rim.")
-		else
-			to_chat(M, "There is \a [I] somewhere on the glass. Somehow.")
-
-	if(has_ice())
-		to_chat(M, "There is some ice floating in the drink.")
-
-	if(has_fizz())
-		to_chat(M, "It is fizzing slightly.")
-
 /obj/item/chems/drinks/glass2/proc/has_ice()
 	if(LAZYLEN(reagents.reagent_volumes))
 		var/decl/material/R = reagents.get_primary_reagent_decl()
@@ -113,7 +96,7 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 
 /obj/item/chems/drinks/glass2/examine(mob/user, distance)
 	. = ..()
-	if(!istype(user) || distance > 1)
+	if(!istype(user))
 		return
 	var/list/extra_text
 	for(var/extra in extras)
@@ -122,8 +105,14 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 			LAZYADD(extra_text, GE.glass_desc)
 		else if(istype(extra, /obj/item/food/processed_grown/slice))
 			LAZYADD(extra_text, "There is \a [extra] on the rim.")
+		else
+			to_chat(user, "There is \a [extra] somewhere on the glass. Somehow.")
 	if(length(extra_text))
 		to_chat(user, SPAN_NOTICE(jointext(extra_text," ")))
+	if(has_ice())
+		to_chat(user, "There is some ice floating in the drink.")
+	if(has_fizz())
+		to_chat(user, "It is fizzing slightly.")
 
 
 /obj/item/chems/drinks/glass2/proc/get_filling_overlay(amount, overlay)

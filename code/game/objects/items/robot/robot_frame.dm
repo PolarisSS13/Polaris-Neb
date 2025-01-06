@@ -111,6 +111,7 @@
 		O.custom_name = created_name
 		O.updatename("Default")
 
+		clear_antag_roles(brainmob.mind, implanted = TRUE) // some antag roles persist
 		brainmob.mind.transfer_to(O)
 		if(O.mind && O.mind.assigned_role)
 			O.job = O.mind.assigned_role

@@ -105,7 +105,7 @@
 
 /obj/item/proc/update_name()
 	var/list/new_name = list(base_name || initial(name))
-	if(material_alteration & MAT_FLAG_ALTERATION_NAME)
+	if(istype(material) && (material_alteration & MAT_FLAG_ALTERATION_NAME))
 		new_name.Insert(1, material.adjective_name)
 	if(name_prefix)
 		new_name.Insert(1, name_prefix)

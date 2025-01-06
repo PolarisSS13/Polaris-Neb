@@ -53,6 +53,8 @@
 	. = ..()
 	// 1-(1-x)^2, so that glass shards with 0.3 opacity end up somewhat visible at 0.51 opacity
 	alpha = 255 * (material ? (1 - (1 - material.opacity)**2) : 1)
+	if(has_handle)
+		add_overlay(overlay_image(icon, "handle", has_handle, RESET_COLOR))
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
 	if(IS_WELDER(W) && material.shard_can_repair)
@@ -79,11 +81,6 @@
 		to_chat(user, SPAN_WARNING("You need 3 or more units of cable to give \the [src] a handle."))
 		return TRUE
 	return ..()
-
-/obj/item/shard/on_update_icon()
-	. = ..()
-	if(has_handle)
-		add_overlay(overlay_image(icon, "handle", has_handle, RESET_COLOR))
 
 /obj/item/shard/Crossed(atom/movable/AM)
 	..()

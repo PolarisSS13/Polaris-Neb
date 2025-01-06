@@ -51009,7 +51009,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/stack/material/panel/mapped/plastic/fifty,
 /obj/item/stack/material/ingot/mapped/copper/twenty,
-/obj/item/stack/material/rods/twentyfive,
+/obj/item/stack/material/rods/mapped/steel/twentyfive,
 /obj/item/stack/material/brick/mapped/concrete/fifty,
 /turf/floor/tiled,
 /area/surface/station/engineering/workshop)

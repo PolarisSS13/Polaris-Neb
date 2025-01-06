@@ -32,6 +32,7 @@
 		var/decl/hierarchy/h = GET_DECL(/decl/hierarchy/rcd_mode)
 		work_modes = h.children
 	work_mode = work_modes[1]
+	update_icon() //Initializes the ammo counter
 
 /obj/item/rcd/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	return FALSE
@@ -44,10 +45,6 @@
 	if(src.type == /obj/item/rcd && loc == user)
 		to_chat(user, "The current mode is '[work_mode]'.")
 		to_chat(user, "It currently holds [stored_matter]/[max_stored_matter] matter-units.")
-
-/obj/item/rcd/Initialize()
-	. = ..()
-	update_icon()	//Initializes the ammo counter
 
 /obj/item/rcd/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))

@@ -68,9 +68,9 @@ var/global/list/icon_state_cache = list()
 	if(!use_single_icon)
 		var/mob_state = "[item_state || icon_state][state_modifier]"
 		var/mob_icon = global.default_onmob_icons[slot]
-		var/decl/bodytype/root_bodytype = user_mob?.get_bodytype()
+		var/decl/bodytype/root_bodytype = user_mob?.get_equipment_bodytype(slot, bodypart)
 		if(istype(root_bodytype))
-			var/use_slot = (bodypart in root_bodytype.equip_adjust) ? bodypart : slot
+			var/use_slot = (bodypart in root_bodytype.get_equip_adjustments(user_mob)) ? bodypart : slot
 			return root_bodytype.get_offset_overlay_image(user_mob, mob_icon, mob_state, color, use_slot)
 		return overlay_image(mob_icon, mob_state, color, RESET_COLOR)
 
@@ -153,7 +153,7 @@ var/global/list/icon_state_cache = list()
 				overlay.icon_state = wielded_state
 		apply_additional_mob_overlays(user_mob, bodytype, overlay, slot, bodypart, use_fallback_if_icon_missing)
 
-		var/decl/bodytype/root_bodytype = user_mob?.get_bodytype()
+		var/decl/bodytype/root_bodytype = user_mob?.get_equipment_bodytype(slot, bodypart)
 		if(root_bodytype && root_bodytype.bodytype_category != bodytype)
 			var/list/overlays_to_offset = overlay.overlays
 			overlay = root_bodytype.get_offset_overlay_image(user_mob, overlay.icon, overlay.icon_state, color, (bodypart || slot))

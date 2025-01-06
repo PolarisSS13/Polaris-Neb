@@ -19,7 +19,7 @@
 	tool_interaction_flags = TOOL_INTERACTION_DECONSTRUCT
 	material_alteration = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	parts_amount = 2
-	parts_type = /obj/item/stack/material/strut
+	parts_type = /obj/item/stack/material/rods
 	structure_flags = STRUCTURE_FLAG_SURFACE
 	can_support_butchery = TRUE
 
@@ -293,14 +293,9 @@
 	if(additional_reinf_material)
 		desc = "[desc] It has been reinforced with [additional_reinf_material.solid_name]."
 
-/obj/structure/table/update_material_colour()
-	if(is_flipped)
-		return ..()
-	alpha = 255
-	reset_color()
-
 /obj/structure/table/proc/handle_normal_icon()
 	color = null // Don't double-apply our color, clear the map preview.
+	alpha = 255
 	icon_state = "blank"
 	var/image/I
 	// Base frame shape.
@@ -640,6 +635,9 @@
 			do_put()
 		return TRUE
 	return FALSE
+
+/obj/structure/table/handle_default_hammer_attackby(var/mob/user, var/obj/item/hammer)
+	return !reinf_material && ..()
 
 /obj/structure/table/handle_default_wrench_attackby(var/mob/user, var/obj/item/wrench)
 	return !reinf_material && ..()

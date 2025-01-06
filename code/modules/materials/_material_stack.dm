@@ -219,3 +219,13 @@
 		. += " [singular_name]"
 		return indefinite_article ? "[indefinite_article] [.]" : ADD_ARTICLE(.)
 	return "[amount] [.] [plural_name]"
+
+/obj/item/stack/material/proc/matter_units_to_sheets(used)
+	if(!material || get_reinforced_material())
+		return 0
+	return ceil(used / matter_per_piece[material.type])
+
+// Horrible solution to heat damage for atoms causing logs and
+// fuel to vanish. Replace this when the atom fire system exists.
+/obj/item/stack/material/should_take_heat_damage(datum/gas_mixture/air, exposed_temperature)
+	return istype(loc, /obj/structure/fire_source) ? FALSE : ..()

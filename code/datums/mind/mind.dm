@@ -33,7 +33,6 @@
 	var/key
 	var/name				//replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = 0
 
 	var/gen_relations_info
@@ -71,17 +70,11 @@
 	if(current?.mind == src)
 		current.mind = null
 	current = null
-	if(original?.mind == src)
-		original.mind = null
-	original = null
 	. = ..()
 
 /datum/mind/proc/handle_mob_deletion(mob/living/deleted_mob)
 	if (current == deleted_mob)
 		current = null
-
-	if (original == deleted_mob)
-		original = null
 
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
@@ -151,8 +144,8 @@
 
 	if(href_list["add_goal"])
 
-		var/mob/caller = locate(href_list["add_goal_caller"])
-		if(caller && caller == current) can_modify = TRUE
+		var/mob/calling_proc = locate(href_list["add_goal_caller"])
+		if(calling_proc && calling_proc == current) can_modify = TRUE
 
 		if(can_modify)
 			if(is_admin)
@@ -170,8 +163,8 @@
 	if(href_list["abandon_goal"])
 		var/datum/goal/goal = get_goal_from_href(href_list["abandon_goal"])
 
-		var/mob/caller = locate(href_list["abandon_goal_caller"])
-		if(caller && caller == current) can_modify = TRUE
+		var/mob/calling_proc = locate(href_list["abandon_goal_caller"])
+		if(calling_proc && calling_proc == current) can_modify = TRUE
 
 		if(goal && can_modify)
 			if(usr == current)
@@ -185,8 +178,8 @@
 	if(href_list["reroll_goal"])
 		var/datum/goal/goal = get_goal_from_href(href_list["reroll_goal"])
 
-		var/mob/caller = locate(href_list["reroll_goal_caller"])
-		if(caller && caller == current) can_modify = TRUE
+		var/mob/calling_proc = locate(href_list["reroll_goal_caller"])
+		if(calling_proc && calling_proc == current) can_modify = TRUE
 
 		if(goal && (goal in goals) && can_modify)
 			qdel(goal)
@@ -505,7 +498,6 @@
 		mind.key = key
 	else
 		mind = new /datum/mind(key)
-		mind.original = src
 		SSticker.minds += mind
 	if(!mind.name)	mind.name = real_name
 	mind.current = src

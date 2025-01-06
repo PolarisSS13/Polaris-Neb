@@ -188,8 +188,8 @@
 /mob/living/simple_animal/hostile/beast/charbaby/apply_attack_effects(mob/living/target)
 	. = ..()
 	if(prob(10))
-		target.adjust_fire_stacks(1)
-		target.IgniteMob()
+		target.adjust_fire_intensity(1)
+		target.ignite_fire()
 
 /mob/living/simple_animal/hostile/beast/shantak/lava
 	desc = "A vaguely canine looking beast. It looks as though its fur is made of stone wool."

@@ -18,6 +18,23 @@
 	can_toggle_open           = FALSE
 	var/auto_refill
 
+/obj/structure/reagent_dispensers/well/get_alt_interactions(mob/user)
+	. = ..()
+	if(reagents?.total_volume >= FLUID_PUDDLE)
+		LAZYADD(., /decl/interaction_handler/dip_item)
+		LAZYADD(., /decl/interaction_handler/fill_from)
+	if(user?.get_active_held_item())
+		LAZYADD(., /decl/interaction_handler/empty_into)
+
+// Overrides due to wonky reagent_dispeners opencontainer flag handling.
+/obj/structure/reagent_dispensers/well/can_be_poured_from(mob/user, atom/target)
+	return (reagents?.maximum_volume > 0)
+/obj/structure/reagent_dispensers/well/can_be_poured_into(mob/user, atom/target)
+	return (reagents?.maximum_volume > 0)
+// Override to skip open container check.
+/obj/structure/reagent_dispensers/well/can_drink_from(mob/user)
+	return reagents?.total_volume && user.check_has_mouth()
+
 /obj/structure/reagent_dispensers/well/populate_reagents()
 	. = ..()
 	if(auto_refill)
@@ -32,6 +49,10 @@
 	. = ..()
 	if(reagents?.total_volume)
 		add_overlay(overlay_image(icon, "[icon_state]-fluid", reagents.get_color(), (RESET_COLOR | RESET_ALPHA)))
+	if(istype(reinf_material)) // reinf_material -> roof and posts, at this point in time
+		var/image/roof_image = overlay_image(icon, "[icon_state]-roof", reinf_material.color, RESET_COLOR | RESET_ALPHA | KEEP_APART)
+		roof_image.pixel_y = 16 // we have to use 32x32 sprites but want this to be, effectively, 48x32
+		add_overlay(roof_image)
 
 /obj/structure/reagent_dispensers/well/on_reagent_change()
 	if(!(. = ..()))
@@ -63,6 +84,9 @@
 
 /obj/structure/reagent_dispensers/well/mapped
 	auto_refill = /decl/material/liquid/water
+
+/obj/structure/reagent_dispensers/well/mapped/covered
+	reinf_material = /decl/material/solid/organic/wood/walnut
 
 /obj/structure/reagent_dispensers/well/wall_fountain
 	name            = "wall fountain"

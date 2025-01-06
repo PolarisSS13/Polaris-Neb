@@ -63861,7 +63861,7 @@
 /obj/machinery/conveyor_switch{
 	id_tag = "cargo_mining_conveyor"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/miningdock)
@@ -64791,7 +64791,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/starboard)
 "nIv" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -66179,7 +66179,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/ship/exodus_pod_research)
 "xpO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/fabricator/industrial,
 /obj/item/stack/material/ingot/mapped/osmium/ten,
 /obj/effect/floor_decal/industrial/outline/yellow,

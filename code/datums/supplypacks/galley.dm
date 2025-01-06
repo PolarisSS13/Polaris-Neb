@@ -72,6 +72,12 @@
 	containername = "pizza crate"
 	supply_method = /decl/supply_method/randomized
 
+/decl/hierarchy/supply_pack/galley/nuggets
+	name = "Emergency - Nugget crate"
+	contains = list(/obj/item/box/nuggets = 2)
+	containertype = /obj/structure/closet/crate/freezer
+	containername = "nugget crate"
+
 /decl/hierarchy/supply_pack/galley/rations
 	num_contained = 6
 	name = "Emergency - MREs"

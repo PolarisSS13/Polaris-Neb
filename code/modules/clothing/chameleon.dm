@@ -22,17 +22,6 @@
 		flags_inv            = copy.flags_inv
 		set_gender(copy.gender)
 
-/obj/item/clothing/OnDisguise(obj/item/copy, mob/user)
-	. = ..()
-	if(. && istype(copy, /obj/item/clothing))
-		var/obj/item/clothing/clothing_copy = copy
-		bodytype_equip_flags     = clothing_copy.bodytype_equip_flags
-		accessory_slot           = clothing_copy.accessory_slot
-		accessory_removable      = clothing_copy.accessory_removable
-		accessory_visibility     = clothing_copy.accessory_visibility
-		accessory_slowdown       = clothing_copy.accessory_slowdown
-		accessory_hide_on_states = clothing_copy.accessory_hide_on_states?.Copy()
-
 /proc/generate_chameleon_choices(var/basetype)
 	. = list()
 

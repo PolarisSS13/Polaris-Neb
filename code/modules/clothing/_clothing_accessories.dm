@@ -216,7 +216,8 @@
 		accessory_visibility      = clothes.accessory_visibility
 		accessory_slowdown        = clothes.accessory_slowdown
 		mimicking_state_modifiers = TRUE
-		clothing_state_modifiers = clothes.clothing_state_modifiers?.Copy()
+		clothing_state_modifiers  = clothes.clothing_state_modifiers?.Copy()
+		bodytype_equip_flags      = clothes.bodytype_equip_flags
 	else
 		accessory_hide_on_states  = get_initial_accessory_hide_on_states()
 		accessory_slot            = initial(accessory_slot)
@@ -225,5 +226,6 @@
 		accessory_slowdown        = initial(accessory_slowdown)
 		mimicking_state_modifiers = FALSE
 		clothing_state_modifiers  = null
+		bodytype_equip_flags      = initial(bodytype_equip_flags)
 
 	update_clothing_state_toggles()

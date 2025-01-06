@@ -6,6 +6,8 @@
 	/// A string with authors of this modpack.
 	var/author
 	var/secrets_directory
+	/// The folder to load additional NanoUI templates from. Must be relative to the DME's location (root game folder).
+	var/nanoui_directory
 	var/list/dreams //! A list of strings to be added to the random dream proc.
 
 	var/list/credits_other           //! A list of strings that are used by the end of round credits roll.
@@ -32,6 +34,15 @@
 		if(!fexists(secrets_directory))
 			return "Modpack secrets_directory does not exist."
 		SSsecrets.load_directories |= secrets_directory
+	if(nanoui_directory)
+		nanoui_directory = trim(lowertext(nanoui_directory))
+		if(!length(nanoui_directory))
+			return "Modpack nanoui_directory is zero length after trim."
+		if(copytext(nanoui_directory, -1) != "/")
+			nanoui_directory = "[nanoui_directory]/"
+		if(!fexists(nanoui_directory))
+			return "Modpack nanoui_directory does not exist."
+		SSmodpacks.modpack_nanoui_directories |= nanoui_directory
 
 /decl/modpack/proc/initialize()
 	return

@@ -10,6 +10,7 @@
 	)
 	requires_slot_flags = SLOT_FEET
 	quick_equip_priority = 3
+	fluid_height = 3
 
 /datum/inventory_slot/shoes/update_mob_equipment_overlay(var/mob/living/user, var/obj/item/prop, var/redraw_mob = TRUE)
 	var/obj/item/suit =    user.get_equipped_item(slot_wear_suit_str)

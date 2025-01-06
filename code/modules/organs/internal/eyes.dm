@@ -36,19 +36,25 @@
 	verbs |= /obj/item/organ/internal/eyes/proc/change_eye_color_verb
 	verbs |= /obj/item/organ/internal/eyes/proc/toggle_eye_glow
 
+/obj/item/organ/external/eyes/set_organ_appearance_bodytype(decl/bodytype/new_bodytype, update_sprite_accessories = TRUE, skip_owner_update = FALSE)
+	. = ..()
+	if(. && owner && !skip_owner_update)
+		owner.update_eyes()
+
 /obj/item/organ/internal/eyes/proc/get_onhead_icon()
+	var/decl/bodytype/icon_bodytype = get_organ_appearance_bodytype()
 	var/modifier = owner?.get_overlay_state_modifier()
 	var/eye_state = modifier ? "eyes[modifier]" : "eyes"
 	last_cached_eye_colour = eye_colour
-	last_eye_cache_key = "[type]-[bodytype.eye_icon]-[last_cached_eye_colour]-[bodytype.eye_offset]-[eye_state]"
-	if(!bodytype.eye_icon)
+	last_eye_cache_key = "[type]-[icon_bodytype.eye_icon]-[last_cached_eye_colour]-[icon_bodytype.eye_offset]-[eye_state]"
+	if(!icon_bodytype.eye_icon)
 		return
 	if(!global.eye_icon_cache[last_eye_cache_key])
-		var/icon/eyes_icon = icon(icon = bodytype.eye_icon, icon_state = eye_state)
-		if(bodytype.eye_offset)
-			eyes_icon.Shift(NORTH, bodytype.eye_offset)
-		if(bodytype.apply_eye_colour)
-			eyes_icon.Blend(last_cached_eye_colour, bodytype.eye_blend)
+		var/icon/eyes_icon = icon(icon = icon_bodytype.eye_icon, icon_state = eye_state)
+		if(icon_bodytype.eye_offset)
+			eyes_icon.Shift(NORTH, icon_bodytype.eye_offset)
+		if(icon_bodytype.apply_eye_colour)
+			eyes_icon.Blend(last_cached_eye_colour, icon_bodytype.eye_blend)
 		global.eye_icon_cache[last_eye_cache_key] = eyes_icon
 	return global.eye_icon_cache[last_eye_cache_key]
 

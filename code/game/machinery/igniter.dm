@@ -40,7 +40,7 @@
 /obj/machinery/igniter/interface_interact(mob/user)
 	if(!CanInteract(user, DefaultTopicState()))
 		return FALSE
-	ignite()
+	toggle_igniter()
 	visible_message(SPAN_NOTICE("\The [user] toggles \the [src]."))
 	return TRUE
 
@@ -51,7 +51,7 @@
 			location.hotspot_expose(1000,500,1)
 	return 1
 
-/obj/machinery/igniter/proc/ignite()
+/obj/machinery/igniter/proc/toggle_igniter()
 	use_power_oneoff(2000)
 	on = !on
 	if(on)
@@ -73,7 +73,7 @@
 /decl/public_access/public_method/igniter_toggle
 	name = "igniter toggle"
 	desc = "Toggle the igniter on or off."
-	call_proc = TYPE_PROC_REF(/obj/machinery/igniter, ignite)
+	call_proc = TYPE_PROC_REF(/obj/machinery/igniter, toggle_igniter)
 
 /decl/stock_part_preset/radio/receiver/igniter
 	frequency = BUTTON_FREQ
@@ -133,18 +133,14 @@
 		return ..()
 
 /obj/machinery/sparker/attack_ai()
-	if (anchored)
-		return ignite()
-	else
-		return
+	return anchored ? create_sparks() : null
 
-/obj/machinery/sparker/proc/ignite()
+/obj/machinery/sparker/proc/create_sparks()
 	if (stat & NOPOWER)
 		return
 
 	if (disable || (last_spark && world.time < last_spark + 50))
 		return
-
 
 	flick("[base_state]-spark", src)
 	spark_at(src, amount=2, cardinal_only = TRUE)
@@ -159,13 +155,13 @@
 	if(stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
-	ignite()
+	create_sparks()
 	..(severity)
 
 /decl/public_access/public_method/sparker_spark
 	name = "spark"
 	desc = "Creates sparks to ignite nearby gases."
-	call_proc = TYPE_PROC_REF(/obj/machinery/sparker, ignite)
+	call_proc = TYPE_PROC_REF(/obj/machinery/sparker, create_sparks)
 
 /decl/stock_part_preset/radio/receiver/sparker
 	frequency = BUTTON_FREQ

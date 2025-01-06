@@ -195,11 +195,6 @@
 	. = ..()
 	SSnano.update_uis(src)
 
-/obj/machinery/vending/receive_mouse_drop(atom/dropping, mob/user, params)
-	. = ..()
-	if(!. && dropping.loc == user && attempt_to_stock(dropping, user))
-		return TRUE
-
 /obj/machinery/vending/proc/attempt_to_stock(var/obj/item/I, var/mob/user)
 	for(var/datum/stored_items/vending_products/R in product_records)
 		if(I.type == R.item_path)

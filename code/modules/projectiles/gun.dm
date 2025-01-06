@@ -259,7 +259,8 @@
 /obj/item/gun/dropped(var/mob/living/user)
 	check_accidents(user)
 	update_icon()
-	return ..()
+	. = ..()
+	clear_autofire()
 
 /obj/item/gun/proc/Fire(atom/target, atom/movable/firer, clickparams, pointblank = FALSE, reflex = FALSE, set_click_cooldown = TRUE, target_zone = BP_CHEST)
 	if(!firer || !target)
@@ -707,10 +708,6 @@
 		target.visible_message("<span class='danger'>\The [src] goes off during the struggle!</span>")
 		afterattack(shoot_to,target)
 		return 1
-
-/obj/item/gun/dropped(mob/living/user)
-	. = ..()
-	clear_autofire()
 
 /obj/item/gun/proc/can_autofire()
 	return (autofire_enabled && world.time >= next_fire_time)

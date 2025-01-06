@@ -56,16 +56,64 @@
 	heat_level_2 = 440 //Default 400
 	heat_level_3 = 800 //Default 1000
 
+	natural_armour_values = list(
+		ARMOR_MELEE  = ARMOR_MELEE_KNIVES,
+		ARMOR_BULLET = ARMOR_BALLISTIC_MINOR,
+		ARMOR_BOMB   = ARMOR_BOMB_PADDED,
+		ARMOR_BIO    = ARMOR_BIO_SHIELDED,
+		ARMOR_RAD    = 0.5*ARMOR_RAD_MINOR
+	)
+
 /decl/bodytype/serpentid/Initialize()
-	equip_adjust = list(
-		BP_L_HAND_UPPER =  list("[NORTH]" = list( 0, 8),  "[EAST]" = list(0, 8),  "[SOUTH]" = list(-0, 8),  "[WEST]" = list( 0, 8)),
-		BP_R_HAND_UPPER =  list("[NORTH]" = list( 0, 8),  "[EAST]" = list(0, 8),  "[SOUTH]" = list( 0, 8),  "[WEST]" = list( 0, 8)),
-		BP_L_HAND =        list("[NORTH]" = list( 4, 0),  "[EAST]" = list(0, 0),  "[SOUTH]" = list(-4, 0),  "[WEST]" = list( 0, 0)),
-		BP_R_HAND =        list("[NORTH]" = list(-4, 0),  "[EAST]" = list(0, 0),  "[SOUTH]" = list( 4, 0),  "[WEST]" = list( 0, 0)),
-		slot_head_str =    list("[NORTH]" = list( 0, 7),  "[EAST]" = list(0, 8),  "[SOUTH]" = list( 0, 8),  "[WEST]" = list( 0, 8)),
-		slot_back_str =    list("[NORTH]" = list( 0, 7),  "[EAST]" = list(0, 8),  "[SOUTH]" = list( 0, 8),  "[WEST]" = list( 0, 8)),
-		slot_belt_str =    list("[NORTH]" = list( 0, 0),  "[EAST]" = list(8, 0),  "[SOUTH]" = list( 0, 0),  "[WEST]" = list(-8, 0)),
-		slot_glasses_str = list("[NORTH]" = list( 0, 10), "[EAST]" = list(0, 11), "[SOUTH]" = list( 0, 11), "[WEST]" = list( 0, 11))
+	_equip_adjust = list(
+		(BP_L_HAND_UPPER) = list(
+			"[NORTH]" = list( 0, 8),
+			"[EAST]"  = list( 0, 8),
+			"[SOUTH]" = list(-0, 8),
+			"[WEST]"  = list( 0, 8)
+		),
+		(BP_R_HAND_UPPER) = list(
+			"[NORTH]" = list( 0, 8),
+			"[EAST]"  = list( 0, 8),
+			"[SOUTH]" = list( 0, 8),
+			"[WEST]"  = list( 0, 8)
+		),
+		(BP_L_HAND) = list(
+			"[NORTH]" = list( 4, 0),
+			"[EAST]"  = list( 0, 0),
+			"[SOUTH]" = list(-4, 0),
+			"[WEST]"  = list( 0, 0)
+		),
+		(BP_R_HAND) = list(
+			"[NORTH]" = list(-4, 0),
+			"[EAST]"  = list( 0, 0),
+			"[SOUTH]" = list( 4, 0),
+			"[WEST]"  = list( 0, 0)
+		),
+		(slot_head_str) = list(
+			"[NORTH]" = list( 0, 7),
+			"[EAST]"  = list( 0, 8),
+			"[SOUTH]" = list( 0, 8),
+			"[WEST]"  = list( 0, 8)
+		),
+		(slot_back_str) = list(
+			"[NORTH]" = list( 0, 7),
+			"[EAST]"  = list( 0, 8),
+			"[SOUTH]" = list( 0, 8),
+			"[WEST]"  = list( 0, 8)
+		),
+		(slot_belt_str) = list(
+			"[NORTH]" = list( 0, 0),
+			"[EAST]"  = list( 8, 0),
+			"[SOUTH]" = list( 0, 0),
+			"[WEST]"  = list(-8, 0)
+		),
+		(slot_glasses_str) = list(
+			"[NORTH]" = list( 0, 10),
+			"[EAST]"  = list( 0, 11),
+			"[SOUTH]" = list( 0, 11),
+			"[WEST]"  = list( 0, 11)
+		)
 	)
 	. = ..()
 

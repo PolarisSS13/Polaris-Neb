@@ -95,12 +95,12 @@
 	uid = "bodytype_diona"
 
 /decl/bodytype/diona/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list(0, -8),
 			"[SOUTH]" = list(0, -8),
-			"[EAST]" =  list(0, -8),
-			"[WEST]" =  list(0, -8)
+			"[EAST]"  = list(0, -8),
+			"[WEST]"  = list(0, -8)
 		)
 	)
 	. = ..()

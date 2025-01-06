@@ -118,6 +118,8 @@
 	if(!QDELETED(src) && fluids?.total_volume)
 		fluids.touch_turf(src)
 		for(var/atom/movable/AM as anything in get_contained_external_atoms())
+			if(!AM.submerged())
+				continue
 			AM.fluid_act(fluids)
 
 /turf/proc/remove_fluids(var/amount, var/defer_update)

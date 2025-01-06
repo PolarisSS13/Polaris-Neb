@@ -78,7 +78,7 @@ var/global/list/flooring_cache = list()
 	var/render_trenches = TRUE
 	var/floor_layer = TURF_LAYER
 	var/holographic = FALSE
-	var/dirt_color = "#7c5e42"
+	var/dirt_color = /decl/material/solid/soil::color
 
 	var/list/burned_states
 	var/list/broken_states

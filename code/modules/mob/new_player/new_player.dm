@@ -2,6 +2,7 @@
 	universal_speak = TRUE
 	mob_sort_value = 10
 	invisibility = INVISIBILITY_ABSTRACT
+	is_spawnable_type = FALSE
 	simulated = FALSE
 	density = FALSE
 	stat = DEAD
@@ -392,7 +393,6 @@ INITIALIZE_IMMEDIATE(/mob/new_player)
 
 	if(mind)
 		mind.active = 0 //we wish to transfer the key manually
-		mind.original = new_character
 		var/memory = client.prefs.records[PREF_MEM_RECORD]
 		if(memory)
 			mind.StoreMemory(memory)

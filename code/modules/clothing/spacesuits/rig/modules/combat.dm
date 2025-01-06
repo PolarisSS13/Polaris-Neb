@@ -215,10 +215,6 @@
 
 	var/obj/item/gun/gun
 
-/obj/item/rig_module/mounted/Destroy()
-	QDEL_NULL(gun)
-	. = ..()
-
 /obj/item/rig_module/mounted/Initialize()
 	. = ..()
 	if(ispath(gun))

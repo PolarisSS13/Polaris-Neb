@@ -56,7 +56,7 @@
 		loc.update_icon()
 
 /obj/item/flame/Destroy()
-	extinguish(null, TRUE)
+	snuff_out(null, TRUE)
 	return ..()
 
 /obj/item/flame/proc/get_available_scents()
@@ -115,7 +115,7 @@
 
 	return ..()
 
-/obj/item/flame/proc/extinguish(var/mob/user, var/no_message)
+/obj/item/flame/proc/snuff_out(mob/user, no_message = FALSE)
 	if(!lit)
 		return FALSE
 	lit = FALSE
@@ -125,6 +125,9 @@
 	update_attack_force()
 
 	update_icon()
+	if(ismob(loc)) // not very robust for things like accessories...
+		update_held_icon()
+		update_clothing_icon()
 	if(istype(loc, /obj/structure/wall_sconce))
 		loc.update_icon()
 
@@ -147,7 +150,7 @@
 		return TRUE
 
 	if(lit && can_manually_extinguish)
-		extinguish(user)
+		snuff_out(user)
 		return TRUE
 
 	return ..()
@@ -167,15 +170,8 @@
 	if(waterproof)
 		return
 
-	var/check_depth = FLUID_PUDDLE
-	if(ismob(loc))
-		var/mob/holder = loc
-		if(!holder.current_posture?.prone)
-			check_depth = FLUID_OVER_MOB_HEAD
-		else
-			check_depth = FLUID_SHALLOW
-	if(fluids.total_volume >= check_depth)
-		extinguish(no_message = TRUE)
+	if(fluids.total_volume >= FLUID_PUDDLE)
+		snuff_out(no_message = TRUE)
 
 /obj/item/flame/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	. = ..()
@@ -206,31 +202,21 @@
 			other.light(user)
 
 /obj/item/flame/attackby(obj/item/used_item, mob/user)
-
 	if(!user.check_intent(I_FLAG_HARM) && !can_manually_light && (used_item.isflamesource() || used_item.get_heat() > T100C))
 		light(user)
 		return TRUE
-
 	return ..()
 
 /obj/item/flame/Process()
-
 	if((!waterproof && submerged()) || !expend_fuel(_fuel_spend_amt))
-		extinguish()
+		snuff_out()
 		return PROCESS_KILL
-
 	update_icon()
-	if(istype(loc, /obj/structure/wall_sconce))
-		loc.update_icon()
-
-	// TODO: generalized ignition proc
-	if(isliving(loc))
-		var/mob/living/M = loc
-		M.IgniteMob()
-
-	var/turf/location = get_turf(src)
-	if(location)
-		location.hotspot_expose(get_heat(), w_class)
+	if(loc)
+		loc.ignite_fire()
+		var/turf/my_turf = get_turf(src)
+		if(my_turf)
+			my_turf.hotspot_expose(get_heat(), w_class)
 
 /obj/item/flame/dropped(var/mob/user)
 	//If dropped, put ourselves out
@@ -239,7 +225,7 @@
 		var/turf/location = loc
 		if(istype(location))
 			location.hotspot_expose(700, 5)
-		extinguish()
+		snuff_out()
 	return ..()
 
 /obj/item/flame/spark_act(obj/effect/sparks/sparks)

@@ -10,7 +10,7 @@
 	limb_icon_intensity     = 0.7
 	health_hud_intensity    = 2
 	associated_gender       = FEMALE
-	onmob_state_modifiers   = list(slot_w_uniform_str = "f")
+	onmob_state_modifiers   = list((slot_w_uniform_str) = "f")
 	movement_slowdown       = 0.5
 	base_color              = "#066000"
 	appearance_flags        = HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR

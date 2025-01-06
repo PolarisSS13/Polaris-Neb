@@ -49,6 +49,23 @@ var/global/list/hygiene_props = list()
 			if(clogged <= 0)
 				unclog()
 		return TRUE
+	//toilet paper interaction for clogging toilets and other facilities
+	if (istype(thing, /obj/item/stack/tape_roll/barricade_tape/toilet))
+		if (clogged == -1)
+			to_chat(user, SPAN_WARNING("Try as you might, you can not clog \the [src] with \the [thing]."))
+			return TRUE
+		if (clogged)
+			to_chat(user, SPAN_WARNING("\The [src] is already clogged."))
+			return TRUE
+		if (!do_after(user, 3 SECONDS, src))
+			to_chat(user, SPAN_WARNING("You must stay still to clog \the [src]."))
+			return TRUE
+		if (clogged || QDELETED(thing) || !user.try_unequip(thing))
+			return TRUE
+		to_chat(user, SPAN_NOTICE("You unceremoniously jam \the [src] with \the [thing]. What a rebel."))
+		clog(1)
+		qdel(thing)
+		return TRUE
 	. = ..()
 
 /obj/structure/hygiene/examine(mob/user)
@@ -473,27 +490,6 @@ var/global/list/hygiene_props = list()
 	icon_state = "puddle-splash"
 	. = ..()
 	icon_state = "puddle"
-
-//toilet paper interaction for clogging toilets and other facilities
-
-/obj/structure/hygiene/attackby(obj/item/I, mob/user)
-	if (!istype(I, /obj/item/stack/tape_roll/barricade_tape/toilet))
-		return ..()
-	if (clogged == -1)
-		to_chat(user, SPAN_WARNING("Try as you might, you can not clog \the [src] with \the [I]."))
-		return TRUE
-	if (clogged)
-		to_chat(user, SPAN_WARNING("\The [src] is already clogged."))
-		return TRUE
-	if (!do_after(user, 3 SECONDS, src))
-		to_chat(user, SPAN_WARNING("You must stay still to clog \the [src]."))
-		return TRUE
-	if (clogged || QDELETED(I) || !user.try_unequip(I))
-		return TRUE
-	to_chat(user, SPAN_NOTICE("You unceremoniously jam \the [src] with \the [I]. What a rebel."))
-	clog(1)
-	qdel(I)
-	return TRUE
 
 ////////////////////////////////////////////////////
 // Toilet Paper Roll

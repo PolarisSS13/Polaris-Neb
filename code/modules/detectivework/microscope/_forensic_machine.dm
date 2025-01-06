@@ -42,8 +42,8 @@
 	return res + ..()
 
 /obj/machinery/forensic/attackby(obj/item/W, mob/user)
-	if(component_attackby(W, user))
-		return TRUE
+	if((. = component_attackby(W, user)))
+		return
 
 	if(user?.check_intent(I_FLAG_HARM))
 		return ..() // bash, bash!

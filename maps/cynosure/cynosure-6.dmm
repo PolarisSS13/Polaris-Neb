@@ -12765,7 +12765,7 @@
 "qiU" = (
 /obj/structure/rack,
 /obj/item/gun/launcher/bow/crossbow/powered,
-/obj/item/stack/material/rods/ten,
+/obj/item/stack/material/rods/mapped/steel/ten,
 /obj/machinery/light/small{
 	dir = 8
 	},

@@ -192,7 +192,7 @@
 		var/turf/location = get_turf(user)
 		if(isliving(O))
 			var/mob/living/L = O
-			L.IgniteMob()
+			L.ignite_fire()
 		else if(isatom(O))
 			O.handle_external_heating(WELDING_TOOL_HOTSPOT_TEMP_ACTIVE, src, user)
 		if (isturf(location))
@@ -243,7 +243,7 @@
 		var/mob/living/L = loc
 		if(!(src in L.get_held_items()))
 			fuel_usage = max(fuel_usage, 2)
-			L.IgniteMob()
+			L.ignite_fire()
 	else if(isturf(loc))
 		var/turf/location = get_turf(src)
 		location.hotspot_expose(WELDING_TOOL_HOTSPOT_TEMP_IDLE, 5) //a bit colder when idling
@@ -432,7 +432,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/chems/welder_tank/standard_dispenser_refill(mob/user, obj/structure/reagent_dispensers/target)
+/obj/item/chems/welder_tank/standard_dispenser_refill(mob/user, obj/structure/reagent_dispensers/target, skip_container_check = FALSE)
 	if(!can_refuel)
 		to_chat(user, SPAN_DANGER("\The [src] does not have a refuelling port."))
 		return FALSE

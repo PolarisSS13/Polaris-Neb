@@ -53,6 +53,16 @@
 	area_blurb_category = /area/shaded_hills/caves
 	sound_env = CAVE
 	area_flags = AREA_FLAG_IS_BACKGROUND
+	fishing_results = list(
+		/mob/living/simple_animal/aquatic/fish/large/cave    = 13,
+		/mob/living/simple_animal/aquatic/fish/large/lantern = 7,
+		/obj/item/mollusc                              = 5,
+		/obj/item/mollusc/barnacle/fished              = 5,
+		/obj/item/mollusc/clam/fished/pearl            = 3,
+		/obj/item/trash/mollusc_shell/clam             = 1,
+		/obj/item/trash/mollusc_shell/barnacle         = 1,
+		/obj/item/trash/mollusc_shell                  = 1
+	)
 
 /area/shaded_hills/caves/deep
 	name = "\improper Deep Caverns"

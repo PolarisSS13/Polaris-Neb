@@ -96,6 +96,7 @@
 	update_held_icon()
 
 /* Assembly by a roboticist */
+// TODO: Make this slapcrafting or remove tvcamera/tvassembly entirely
 /obj/item/robot_parts/head/attackby(var/obj/item/assembly/S, mob/user)
 	if (!istype(S, /obj/item/assembly/infra))
 		return ..()

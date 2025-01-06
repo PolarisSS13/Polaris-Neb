@@ -60,17 +60,62 @@
 	var/icon/vox_marking_icon = 'mods/species/vox/icons/body/soldier/markings.dmi'
 
 /decl/bodytype/vox/Initialize()
-	if(!length(equip_adjust))
-		equip_adjust = list(
-			BP_L_HAND           = list("[NORTH]" = list(0, -2), "[EAST]" = list(0, -2), "[SOUTH]" = list( 0, -2),  "[WEST]" = list( 0, -2)),
-			BP_R_HAND           = list("[NORTH]" = list(0, -2), "[EAST]" = list(0, -2), "[SOUTH]" = list( 0, -2),  "[WEST]" = list( 0, -2)),
-			slot_head_str       = list("[NORTH]" = list(0, -2), "[EAST]" = list(3, -2), "[SOUTH]" = list( 0, -2),  "[WEST]" = list(-3, -2)),
-			slot_wear_mask_str  = list("[NORTH]" = list(0,  0), "[EAST]" = list(4,  0), "[SOUTH]" = list( 0,  0),  "[WEST]" = list(-4,  0)),
-			slot_wear_suit_str  = list("[NORTH]" = list(0, -1), "[EAST]" = list(0, -1), "[SOUTH]" = list( 0, -1),  "[WEST]" = list( 0, -1)),
-			slot_w_uniform_str  = list("[NORTH]" = list(0, -1), "[EAST]" = list(0, -1), "[SOUTH]" = list( 0, -1),  "[WEST]" = list( 0, -1)),
-			slot_underpants_str = list("[NORTH]" = list(0, -1), "[EAST]" = list(0, -1), "[SOUTH]" = list( 0, -1),  "[WEST]" = list( 0, -1)),
-			slot_undershirt_str = list("[NORTH]" = list(0, -1), "[EAST]" = list(0, -1), "[SOUTH]" = list( 0, -1),  "[WEST]" = list( 0, -1)),
-			slot_back_str       = list("[NORTH]" = list(0,  0), "[EAST]" = list(3,  0), "[SOUTH]" = list( 0,  0),  "[WEST]" = list(-3,  0))
+	if(!length(_equip_adjust))
+		_equip_adjust = list(
+			(BP_L_HAND) = list(
+				"[NORTH]" = list(0, -2),
+				"[EAST]"  = list(0, -2),
+				"[SOUTH]" = list( 0, -2),
+				"[WEST]"  = list( 0, -2)
+			),
+			(BP_R_HAND) = list(
+				"[NORTH]" = list(0, -2),
+				"[EAST]"  = list(0, -2),
+				"[SOUTH]" = list( 0, -2),
+				"[WEST]"  = list( 0, -2)
+			),
+			(slot_head_str) = list(
+				"[NORTH]" = list(0, -2),
+				"[EAST]"  = list(3, -2),
+				"[SOUTH]" = list( 0, -2),
+				"[WEST]"  = list(-3, -2)
+			),
+			(slot_wear_mask_str) = list(
+				"[NORTH]" = list(0,  0),
+				"[EAST]"  = list(4,  0),
+				"[SOUTH]" = list( 0,  0),
+				"[WEST]"  = list(-4,  0)
+			),
+			(slot_wear_suit_str) = list(
+				"[NORTH]" = list(0, -1),
+				"[EAST]"  = list(0, -1),
+				"[SOUTH]" = list( 0, -1),
+				"[WEST]"  = list( 0, -1)
+			),
+			(slot_w_uniform_str) = list(
+				"[NORTH]" = list(0, -1),
+				"[EAST]"  = list(0, -1),
+				"[SOUTH]" = list( 0, -1),
+				"[WEST]"  = list( 0, -1)
+			),
+			(slot_underpants_str) = list(
+				"[NORTH]" = list(0, -1),
+				"[EAST]"  = list(0, -1),
+				"[SOUTH]" = list( 0, -1),
+				"[WEST]"  = list( 0, -1)
+			),
+			(slot_undershirt_str) = list(
+				"[NORTH]" = list(0, -1),
+				"[EAST]"  = list(0, -1),
+				"[SOUTH]" = list( 0, -1),
+				"[WEST]"  = list( 0, -1)
+			),
+			(slot_back_str) = list(
+				"[NORTH]" = list(0,  0),
+				"[EAST]"  = list(3,  0),
+				"[SOUTH]" = list( 0,  0),
+				"[WEST]"  = list(-3,  0)
+			)
 		)
 	return ..()
 

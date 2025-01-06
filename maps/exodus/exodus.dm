@@ -26,6 +26,10 @@
 	// Must come after borers for compatibility.
 	#include "../../mods/content/psionics/_psionics.dme"
 
+
+	// Must come after psionics for counsellor compatibility.
+	#include "../../mods/content/standard_jobs/_standard_jobs.dme"
+
 	#include "../../mods/species/skrell/_skrell.dme"
 	#include "../../mods/species/tajaran/_tajaran.dme"
 	#include "../../mods/species/unathi/_unathi.dme"

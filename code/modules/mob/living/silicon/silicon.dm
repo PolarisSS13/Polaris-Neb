@@ -68,9 +68,6 @@
 	QDEL_NULL_LIST(stock_parts)
 	return ..()
 
-/mob/living/silicon/get_dexterity(silent)
-	return dexterity
-
 /mob/living/silicon/fully_replace_character_name(new_name)
 	..()
 	create_or_update_account(new_name)

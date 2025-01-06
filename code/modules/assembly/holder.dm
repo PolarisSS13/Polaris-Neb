@@ -36,20 +36,11 @@
 		special_assembly = null
 	return ..()
 
-/obj/item/assembly_holder/proc/attach(var/obj/item/left, var/obj/item/right, var/mob/user)
-	return
-
-/obj/item/assembly_holder/proc/process_activation(var/atom/activator)
-	return
-
-/obj/item/assembly_holder/proc/detached()
-	return
-
-/obj/item/assembly_holder/attach(var/obj/item/assembly/left, var/obj/item/assembly/right, var/mob/user)
-	if((!left)||(!right))
+/obj/item/assembly_holder/proc/attach(var/obj/item/left_item, var/obj/item/right_item, var/mob/user)
+	if(!istype(left_item) || !istype(right_item))
 		return 0
-	if((!istype(left))||(!istype(right)))
-		return 0
+	var/obj/item/assembly/left = left_item
+	var/obj/item/assembly/right = right_item
 	if((left.secured)||(right.secured))
 		return 0
 	if(user)
@@ -67,6 +58,24 @@
 
 	return 1
 
+/obj/item/assembly_holder/proc/process_activation(var/atom/activator, var/normal = 1, var/special = 1)
+	if(!activator)	return 0
+	if(!secured)
+		visible_message("[html_icon(src)] *beep* *beep*", "*beep* *beep*")
+	if((normal) && (a_right) && (a_left))
+		if(a_right != activator)
+			a_right.pulsed(0)
+		if(a_left != activator)
+			a_left.pulsed(0)
+	if(master)
+		master.receive_signal()
+//	if(special && special_assembly)
+//		if(!special_assembly == activator)
+//			special_assembly.dothings()
+	return 1
+
+/obj/item/assembly_holder/proc/detached()
+	return
 
 /obj/item/assembly_holder/HasProximity(atom/movable/AM)
 	. = ..()
@@ -153,23 +162,6 @@
 		spawn(0)
 			qdel(src)
 	return
-
-
-/obj/item/assembly_holder/process_activation(var/atom/activator, var/normal = 1, var/special = 1)
-	if(!activator)	return 0
-	if(!secured)
-		visible_message("[html_icon(src)] *beep* *beep*", "*beep* *beep*")
-	if((normal) && (a_right) && (a_left))
-		if(a_right != activator)
-			a_right.pulsed(0)
-		if(a_left != activator)
-			a_left.pulsed(0)
-	if(master)
-		master.receive_signal()
-//	if(special && special_assembly)
-//		if(!special_assembly == activator)
-//			special_assembly.dothings()
-	return 1
 
 /obj/item/assembly_holder/hear_talk(mob/living/M, msg, verb, decl/language/speaking)
 	if(a_right)

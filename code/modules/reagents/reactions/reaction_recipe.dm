@@ -37,7 +37,7 @@
 /decl/chemical_reaction/recipe/garlicsauce
 	name = "Garlic Sauce"
 	result = /decl/material/liquid/nutriment/garlicsauce
-	required_reagents = list(/decl/material/liquid/drink/juice/garlic = 1, /decl/material/liquid/nutriment/cornoil = 1)
+	required_reagents = list(/decl/material/liquid/drink/juice/garlic = 1, /decl/material/liquid/oil/plant/corn = 1)
 	result_amount = 2
 	mix_message = "The solution thickens into a creamy white oil."
 
@@ -79,7 +79,7 @@
 /decl/chemical_reaction/recipe/vinegar2
 	name = "Clear Vinegar"
 	result = /decl/material/liquid/nutriment/vinegar
-	required_reagents = list(/decl/material/liquid/ethanol = 10)
+	required_reagents = list(/decl/material/liquid/alcohol/ethanol = 10)
 	catalysts = list(/decl/material/liquid/enzyme = 5)
 	result_amount = 10
 	mix_message = "The solution roils as it rapidly ferments into a sharp-smelling liquid."

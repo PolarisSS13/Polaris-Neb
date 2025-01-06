@@ -30,6 +30,8 @@
 	var/image/contents_overlay = get_reagents_overlay(use_single_icon ? icon_state : null)
 	if(contents_overlay)
 		add_overlay(contents_overlay)
+	if(detail_state)
+		add_overlay(overlay_image(icon, "[initial(icon_state)][detail_state]", detail_color || COLOR_WHITE, RESET_COLOR))
 
 /obj/item/chems/apply_additional_mob_overlays(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing)
 	var/image/reagents_overlay = get_reagents_overlay(overlay.icon_state)
@@ -49,11 +51,6 @@
 		to_chat(user, SPAN_WARNING("You can't set transfer amounts while \the [src] is being held by someone else."))
 		return TRUE
 	return FALSE
-
-/obj/item/chems/on_update_icon()
-	. = ..()
-	if(detail_state)
-		add_overlay(overlay_image(icon, "[initial(icon_state)][detail_state]", detail_color || COLOR_WHITE, RESET_COLOR))
 
 /obj/item/chems/update_name()
 	. = ..() // handles material, etc
@@ -100,6 +97,21 @@
 	return
 
 /obj/item/chems/attackby(obj/item/used_item, mob/user)
+
+	// Skimming off cream, repurposed from crucibles.
+	// TODO: potentially make this an alt interaction and unify with slag skimming.
+	if(istype(used_item, /obj/item/chems) && ATOM_IS_OPEN_CONTAINER(used_item) && used_item.reagents?.maximum_volume && reagents?.total_volume && length(reagents.reagent_volumes) > 1)
+		var/list/skimmable_reagents = reagents.get_skimmable_reagents()
+		if(length(skimmable_reagents))
+			var/removing = min(amount_per_transfer_from_this, REAGENTS_FREE_SPACE(used_item.reagents))
+			if(removing <= 0)
+				to_chat(user, SPAN_WARNING("\The [used_item] is full."))
+			else
+				var/old_amt = used_item.reagents.total_volume
+				reagents.trans_to_holder(used_item.reagents, removing, skip_reagents = (reagents.reagent_volumes - skimmable_reagents))
+				to_chat(user, SPAN_NOTICE("You skim [used_item.reagents.total_volume-old_amt] unit\s of [used_item.reagents.get_primary_reagent_name()] from the top of \the [reagents.get_primary_reagent_name()]."))
+			return TRUE
+
 	if(used_item.user_can_attack_with(user, silent = TRUE))
 		if(IS_PEN(used_item))
 			var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)

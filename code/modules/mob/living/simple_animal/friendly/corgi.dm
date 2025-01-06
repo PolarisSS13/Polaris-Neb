@@ -42,12 +42,12 @@
 	uid = "bodytype_animal_corgi"
 
 /decl/bodytype/quadruped/animal/corgi/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list( 1, -8),
 			"[SOUTH]" = list( 1, -8),
-			"[EAST]" =  list( 7, -8),
-			"[WEST]" =  list(-7, -8)
+			"[EAST]"  = list( 7, -8),
+			"[WEST]"  = list(-7, -8)
 		)
 	)
 	. = ..()
@@ -151,12 +151,12 @@
 	uid = "bodytype_animal_puppy"
 
 /decl/bodytype/quadruped/animal/puppy/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list( 0, -12),
 			"[SOUTH]" = list( 0, -12),
-			"[EAST]" =  list( 5, -14),
-			"[WEST]" =  list(-5, -14)
+			"[EAST]"  = list( 5, -14),
+			"[WEST]"  = list(-5, -14)
 		)
 	)
 	. = ..()

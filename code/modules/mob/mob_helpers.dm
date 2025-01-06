@@ -294,8 +294,6 @@ var/global/list/global/organ_rel_size = list(
 		var/datum/mind/M = O
 		if(M.current && M.current.client)
 			C = M.current.client
-		else if(M.original && M.original.client)
-			C = M.original.client
 
 	if(C)
 		if(C.get_preference_value(/datum/client_preference/anon_say) == PREF_YES)

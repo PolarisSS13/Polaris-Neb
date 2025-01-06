@@ -58,6 +58,10 @@
 	QDEL_NULL(light_source)
 	return ..()
 
+/obj/structure/wall_sconce/ignite_fire()
+	. = ..()
+	update_icon()
+
 /obj/structure/wall_sconce/physically_destroyed()
 	if(light_source)
 		light_source.dropInto(loc)

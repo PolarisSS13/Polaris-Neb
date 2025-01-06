@@ -132,8 +132,15 @@
 	return ..()
 
 /obj/item/holder/proc/sync(var/mob/living/M)
+
 	SetName(M.name)
 	desc = M.desc
+
+	if(QDELETED(src) || QDELETED(M) || !istype(M))
+		set_light(0)
+	else
+		set_light(M.light_range, M.light_power, M.light_color)
+
 	var/mob/living/human/H = loc
 	if(istype(H))
 		last_holder = H
