@@ -18,6 +18,7 @@
 	#include "../../mods/content/mouse_highlights/_mouse_highlight.dme"
 	#include "../../mods/content/scaling_descriptors.dm"
 	#include "../../mods/content/xenobiology/_xenobiology.dme"
+	#include "../../mods/content/tabloids/_tabloids.dme"
 
 	#include "../../mods/mobs/dionaea/_dionaea.dme"
 	#include "../../mods/mobs/borers/_borers.dme"

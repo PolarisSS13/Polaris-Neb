@@ -8,7 +8,11 @@
 	var/secrets_directory
 	/// The folder to load additional NanoUI templates from. Must be relative to the DME's location (root game folder).
 	var/nanoui_directory
-	var/list/dreams //! A list of strings to be added to the random dream proc.
+
+	var/list/dreams                  //! A list of strings to be added to the random dream proc.
+
+	var/list/tabloid_headlines       //! A list of headline and article data used by the tabloids modpack.
+	var/list/tabloid_publishers      //! A list of name strings used by the tabloids modpack.
 
 	var/list/credits_other           //! A list of strings that are used by the end of round credits roll.
 	var/list/credits_adventure_names //! A list of strings that are used by the end of round credits roll.

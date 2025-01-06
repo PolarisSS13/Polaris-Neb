@@ -1,0 +1,9 @@
+#ifndef CONTENT_PACK_TABLOIDS
+#define CONTENT_PACK_TABLOIDS
+// BEGIN_INCLUDE
+#include "_tabloids.dm"
+#include "tabloid.dm"
+#include "tabloid_helpers.dm"
+#include "tabloid_strings.dm"
+// END_INCLUDE
+#endif
