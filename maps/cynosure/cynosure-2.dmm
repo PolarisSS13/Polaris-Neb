@@ -384,7 +384,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "amF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -459,8 +459,8 @@
 	pixel_x = 24;
 	pixel_y = 31
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/asteroid,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/south)
 "apd" = (
 /obj/machinery/door/firedoor/border_only,
@@ -935,7 +935,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/ward)
 "aCw" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/machinery/atm{
 	pixel_y = -32
 	},
@@ -1070,8 +1070,8 @@
 	pixel_x = -25;
 	pixel_y = -11
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "aFo" = (
@@ -1187,7 +1187,7 @@
 	pixel_x = 31;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "aHe" = (
@@ -1608,7 +1608,7 @@
 /area/surface/station/maintenance/kitchen)
 "aQe" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "aQf" = (
 /obj/structure/sign/level/ground/large{
@@ -2909,7 +2909,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/south)
 "bsq" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3479,7 +3479,7 @@
 /turf/floor/plating,
 /area/surface/station/security/interrogation)
 "bGA" = (
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/outpost/checkpoint)
 "bGL" = (
 /obj/machinery/vending/dinnerware{
@@ -3594,7 +3594,7 @@
 	pixel_x = -35;
 	pixel_y = -31
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/outpost/research/xenoarcheology/surface)
 "bJT" = (
@@ -3744,7 +3744,7 @@
 	pixel_x = -24
 	},
 /obj/structure/table/steel_reinforced,
-/obj/item/clothing/glasses/sunglasses/sechud/aviator{
+/obj/item/clothing/glasses/sunglasses/sechud/toggle{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -3960,7 +3960,7 @@
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/rust,
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	dir = 8;
 	id_tag = "msouth_airlock";
@@ -4563,8 +4563,8 @@
 	pixel_y = 25
 	},
 /obj/structure/handrail,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -5441,7 +5441,7 @@
 	pixel_x = 31;
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -5744,7 +5744,7 @@
 	id_tag = "QMLoad"
 	},
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "cQG" = (
@@ -5799,7 +5799,7 @@
 	dir = 4;
 	id_tag = "marrivals_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -5978,8 +5978,8 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "cVf" = (
@@ -6054,7 +6054,7 @@
 /area/surface/station/maintenance/north/gnd)
 "cVQ" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/effect/floor_decal/rust,
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "eng_ew2_airlock_outer";
@@ -6147,7 +6147,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "cXQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6195,7 +6195,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/engineering/reactor_airlock)
 "cYk" = (
-/turf/floor/wood/sif/broken,
+/turf/floor/wood/broken/sif,
 /area/surface/outside/path/plains)
 "cYD" = (
 /obj/machinery/door/firedoor/glass,
@@ -6410,7 +6410,7 @@
 	dir = 8;
 	id_tag = "msouth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/machinery/camera/network/ground_floor{
 	c_tag = "Ground Floor - Main Airlock South";
 	dir = 8
@@ -7063,7 +7063,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "dtt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7402,7 +7402,7 @@
 	dir = 4;
 	id_tag = "arc3_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "dDa" = (
@@ -7512,8 +7512,8 @@
 /obj/structure/rack,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
-/obj/item/clothing/suit/space/void/expedition/alt,
-/obj/item/clothing/head/helmet/space/void/expedition/alt,
+/obj/item/clothing/suit/space/void/expedition,
+/obj/item/clothing/head/helmet/space/void/expedition,
 /turf/floor/tiled/techmaint,
 /area/surface/station/rnd/exploration)
 "dEV" = (
@@ -7566,7 +7566,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/north)
 "dGb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8209,7 +8209,7 @@
 	dir = 4;
 	id_tag = "escape_dock_south_starboard_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "dZT" = (
@@ -9269,7 +9269,7 @@
 	id_tag = "west_solar_inner";
 	name = "Solar Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	dir = 4;
 	id_tag = "west_solar_airlock";
@@ -9736,7 +9736,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "eHI" = (
 /obj/structure/table/reinforced,
@@ -9805,7 +9805,7 @@
 	pixel_x = -1;
 	pixel_y = 40
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -9920,7 +9920,7 @@
 /turf/floor/plating,
 /area/surface/station/security/briefing_room)
 "eLb" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /turf/floor/tiled/techmaint,
 /area/surface/station/rnd/xenobiology/xenofauna)
 "eLc" = (
@@ -10260,7 +10260,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/engineering_monitoring)
 "eSI" = (
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/outside/path/plains)
 "eSK" = (
 /obj/structure/table/reinforced,
@@ -10711,7 +10711,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "fcm" = (
 /obj/effect/catwalk_plated/dark,
@@ -10963,7 +10963,7 @@
 	pixel_x = -1;
 	pixel_y = 40
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -11263,7 +11263,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "fpB" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -11299,7 +11299,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "fqU" = (
 /obj/structure/cable/yellow{
@@ -11481,7 +11481,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/button/access/exterior{
 	dir = 8;
 	id_tag = "mnorth_airlock";
@@ -12027,8 +12027,8 @@
 	pixel_x = -25;
 	pixel_y = -11
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "fJq" = (
@@ -12095,7 +12095,7 @@
 	id_tag = "arrivals_dock_south_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "fKS" = (
@@ -12546,7 +12546,7 @@
 	dir = 8;
 	id_tag = "eng_ew2_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/machinery/light/small,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/maintenance/east/gnd)
@@ -12764,7 +12764,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/lockerroom)
 "gdi" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/firstaid/regular,
 /turf/floor/wood/sif{
 	is_outside = 0
@@ -14587,7 +14587,7 @@
 	id_tag = "QMLoad2"
 	},
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "gUH" = (
@@ -14816,7 +14816,7 @@
 	dir = 8;
 	id_tag = "msouth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "had" = (
@@ -15550,7 +15550,7 @@
 	id_tag = "mnorth_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	id_tag = "mnorth_airlock";
 	pixel_x = 35;
@@ -16047,7 +16047,7 @@
 	pixel_x = -31;
 	pixel_y = -35
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "hIn" = (
@@ -16227,7 +16227,7 @@
 	dir = 8;
 	id_tag = "mnorth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
@@ -16844,7 +16844,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "iex" = (
 /obj/machinery/door/firedoor/border_only,
@@ -16882,7 +16882,7 @@
 	pixel_x = 31;
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/west)
 "igt" = (
@@ -17488,7 +17488,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/arrivals/cynosure)
 "ixa" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -17569,7 +17569,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "iBd" = (
 /obj/structure/table/bench/wooden,
@@ -17669,7 +17669,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "iFl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
@@ -17905,7 +17905,7 @@
 	id_tag = "marrivals_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "iLa" = (
@@ -17973,7 +17973,7 @@
 	id_tag = "northeast_solar_airlock";
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "northeast_solar_outer";
 	name = "Solar External Access"
@@ -18126,7 +18126,7 @@
 	id_tag = "eng_ew2_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	dir = 1;
 	id_tag = "eng_ew2_airlock";
@@ -18173,7 +18173,7 @@
 	dir = 9
 	},
 /obj/structure/handrail,
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/obj/abstract/airlock_helper/atmos/pump_out_internal,
 /turf/floor/tiled/techfloor/grid,
 /area/shuttle/exploration/cargo)
 "iRX" = (
@@ -18470,7 +18470,7 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "jaY" = (
@@ -18530,7 +18530,7 @@
 /turf/floor/tiled/freezer,
 /area/surface/station/crew_quarters/kitchen)
 "jbz" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/effect/floor_decal/corner/purple/border,
 /turf/floor/tiled/techmaint,
 /area/surface/station/rnd/xenobiology/xenofauna)
@@ -19257,7 +19257,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_waste)
 "jvV" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /turf/floor/wood/sif{
 	is_outside = 0
 	},
@@ -19329,8 +19329,8 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "jxq" = (
@@ -19490,7 +19490,7 @@
 	dir = 8;
 	id_tag = "arc3_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "jBO" = (
@@ -19677,9 +19677,9 @@
 	pixel_x = -31;
 	pixel_y = -35
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /obj/effect/floor_decal/rust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/maintenance/east/gnd)
 "jFP" = (
 /obj/structure/cable/green{
@@ -19791,7 +19791,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/garage)
 "jJj" = (
 /obj/structure/fire_source/firepit,
@@ -19905,7 +19905,7 @@
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
-/turf/floor/wood/sif/broken{
+/turf/floor/wood/broken/sif{
 	is_outside = 0
 	},
 /area/surface/outpost/checkpoint)
@@ -19946,7 +19946,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/south)
 "jNy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -20410,7 +20410,7 @@
 	pixel_x = 1;
 	pixel_y = 38
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -20505,7 +20505,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "jWB" = (
 /obj/effect/floor_decal/borderfloor,
@@ -20912,7 +20912,7 @@
 	pixel_x = 31;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "keP" = (
@@ -21001,7 +21001,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/north)
 "kgZ" = (
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "khd" = (
 /obj/machinery/atmospherics/portables_connector{
@@ -21159,7 +21159,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "kko" = (
 /obj/structure/cable/green{
@@ -21780,7 +21780,7 @@
 	id_tag = null;
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/shuttle/exploration/cargo)
 "kAY" = (
@@ -22098,7 +22098,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "kHo" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -22120,7 +22120,7 @@
 	pixel_x = -31;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /obj/effect/catwalk_plated/dark,
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
@@ -22156,7 +22156,7 @@
 	id_tag = "expshuttle_docker_pump_out_external"
 	},
 /obj/structure/grille,
-/obj/effect/map_helper/airlock/atmos/pump_out_external,
+/obj/abstract/airlock_helper/atmos/pump_out_external,
 /turf/floor/plating,
 /area/shuttle/exploration/cargo)
 "kIH" = (
@@ -22166,7 +22166,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/garage)
 "kIW" = (
 /obj/effect/floor_decal/spline/plain{
@@ -22754,7 +22754,7 @@
 	pixel_y = 6
 	},
 /obj/item/briefcase,
-/obj/item/clothing/costume/suit_jacket/red,
+/obj/item/clothing/suit/jacket/burgundy,
 /turf/floor/wood,
 /area/surface/station/library)
 "kYA" = (
@@ -22894,7 +22894,7 @@
 	dir = 8;
 	id_tag = "eng_ew2_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/structure/sign/warning/cold{
 	pixel_y = 32
 	},
@@ -23470,7 +23470,7 @@
 	id_tag = "northeast_solar_airlock";
 	pixel_y = -35
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "ltg" = (
@@ -23765,7 +23765,7 @@
 	id_tag = "arrivals_dock_north_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "lzA" = (
@@ -23777,7 +23777,7 @@
 	id_tag = "escape_dock_south_starboard_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "lzD" = (
@@ -23800,7 +23800,7 @@
 /area/surface/station/hydroponics)
 "lzL" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "lAd" = (
 /obj/machinery/newscaster{
@@ -24673,7 +24673,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "lVq" = (
 /obj/machinery/smartfridge/secure/medbay,
@@ -24717,8 +24717,8 @@
 	pixel_x = -25;
 	pixel_y = -11
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
@@ -25344,7 +25344,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/structure/sign/warning/cold{
 	pixel_y = 32
 	},
@@ -25453,7 +25453,7 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/structure/sign/warning/cold{
 	pixel_y = 32
 	},
@@ -25765,7 +25765,7 @@
 	id_tag = "mnorth_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/surface/station/hallway/primary/groundfloor/north)
 "mrh" = (
@@ -26135,7 +26135,7 @@
 	dir = 8;
 	id_tag = "mnorth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 6
 	},
@@ -26184,7 +26184,7 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "mAO" = (
@@ -26288,7 +26288,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/atmos/pump_out_internal,
+/obj/abstract/airlock_helper/atmos/pump_out_internal,
 /obj/effect/shuttle_landmark/cynosure/pads/pad4,
 /obj/effect/overmap/visitable/ship/landable/explorer_shuttle,
 /turf/floor/tiled/techfloor/grid,
@@ -26434,7 +26434,7 @@
 	id_tag = "QMLoad"
 	},
 /obj/machinery/door/airlock/external/glass,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "mGK" = (
@@ -26475,7 +26475,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/button/access/exterior{
 	dir = 1;
 	id_tag = "west_solar_airlock";
@@ -27624,7 +27624,7 @@
 /area/surface/station/park)
 "niT" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/button/access/exterior{
 	dir = 4;
 	id_tag = "marrivals_airlock";
@@ -29874,7 +29874,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/maintenance/east/gnd)
 "ons" = (
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
@@ -30416,7 +30416,7 @@
 	id_tag = "escape_dock_north_starboard_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "owl" = (
@@ -30430,7 +30430,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/north)
 "owp" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30728,7 +30728,7 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/maintenance/east/gnd)
 "oCZ" = (
 /obj/structure/reagent_dispensers/watertank/high,
@@ -31044,7 +31044,7 @@
 	pixel_x = -31;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
@@ -31162,7 +31162,7 @@
 	dir = 4;
 	id_tag = "msouth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -31376,7 +31376,7 @@
 	pixel_x = -31;
 	pixel_y = 23
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "oTs" = (
@@ -31770,7 +31770,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/shuttle/exploration/cargo)
 "pay" = (
@@ -31887,7 +31887,7 @@
 	dir = 8;
 	id_tag = "arc3_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "pdg" = (
@@ -32199,7 +32199,7 @@
 	dir = 4;
 	id_tag = "escape_dock_north_starboard_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "pkO" = (
@@ -32265,7 +32265,7 @@
 	pixel_x = 31;
 	pixel_y = -24
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/northeast)
 "plP" = (
@@ -32566,7 +32566,7 @@
 /obj/effect/floor_decal/rust/color_rusted{
 	dir = 4
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/tiled/steel_dirty,
 /area/surface/outside/plains/station)
 "pqY" = (
@@ -32944,7 +32944,7 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /obj/effect/floor_decal/rust,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/maintenance/east/gnd)
@@ -33525,7 +33525,7 @@
 "pPn" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/airlock/external,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/storage)
 "pPr" = (
@@ -33771,7 +33771,7 @@
 	id_tag = "marrivals_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	id_tag = "marrivals_airlock";
 	pixel_x = -24;
@@ -33855,7 +33855,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/hallway/gnd)
 "pZt" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/computer/guestpass{
@@ -33939,7 +33939,7 @@
 "qaO" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/rust,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "msouth_airlock_outer";
 	name = "External Access"
@@ -34019,7 +34019,7 @@
 	id_tag = "arc3_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /obj/machinery/button/access/interior{
 	dir = 4;
 	id_tag = "arc3_airlock";
@@ -34506,7 +34506,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/rust,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/maintenance/east/gnd)
 "qnU" = (
 /obj/structure/cable{
@@ -34533,7 +34533,7 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "qoy" = (
@@ -34547,7 +34547,7 @@
 	pixel_x = 24;
 	pixel_y = -31
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /obj/effect/floor_decal/shuttles/right,
 /obj/effect/floor_decal/arrows{
 	dir = 1
@@ -34575,7 +34575,7 @@
 	pixel_x = 24;
 	pixel_y = 31
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/north)
 "qpj" = (
@@ -35165,7 +35165,7 @@
 	dir = 8;
 	id_tag = "arrivals_dock_north_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "qzQ" = (
@@ -35235,9 +35235,9 @@
 	},
 /area/surface/station/security/lobby)
 "qBI" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/bladed/knife/tactical,
-/turf/floor/wood/sif/broken{
+/turf/floor/wood/broken/sif{
 	is_outside = 0
 	},
 /area/surface/outpost/checkpoint)
@@ -35284,7 +35284,7 @@
 	pixel_x = -31;
 	pixel_y = 23
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "qDq" = (
@@ -35577,8 +35577,8 @@
 	pixel_x = -35;
 	pixel_y = -31
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/asteroid,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
+/turf/floor/barren,
 /area/surface/station/arrivals/cynosure)
 "qIj" = (
 /obj/structure/railing{
@@ -36055,7 +36055,7 @@
 	dir = 8;
 	id_tag = "arrivals_dock_south_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "qVP" = (
@@ -36427,7 +36427,7 @@
 	dir = 8;
 	id_tag = "marrivals_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "rdw" = (
@@ -36657,7 +36657,7 @@
 	id_tag = "QMLoad2"
 	},
 /obj/machinery/door/airlock/external/glass,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "rjR" = (
@@ -37006,7 +37006,7 @@
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "ruC" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/item/radio/intercom{
 	pixel_y = -30;
 	dir = 1
@@ -37219,7 +37219,7 @@
 	id_tag = "arrivals_dock_north_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "rza" = (
@@ -37733,7 +37733,7 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "rMJ" = (
@@ -38215,7 +38215,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/garage)
 "rYh" = (
 /turf/wall/r_wall,
@@ -38420,7 +38420,7 @@
 "seI" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/door/airlock/external/glass,
-/obj/effect/map_helper/airlock/door/simple,
+/obj/abstract/airlock_helper/door/simple,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/quartermaster/storage)
 "sfl" = (
@@ -38706,8 +38706,8 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "soo" = (
@@ -38797,8 +38797,8 @@
 	pixel_x = -31;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
-/turf/floor/asteroid,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
+/turf/floor/barren,
 /area/surface/outpost/research/xenoarcheology/surface)
 "sqN" = (
 /obj/effect/floor_decal/techfloor{
@@ -39394,7 +39394,7 @@
 /area/surface/station/hallway/secondary/groundfloor/civilian)
 "sFa" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "marrivals_airlock_outer";
 	name = "External Access"
@@ -39600,7 +39600,7 @@
 	dir = 1;
 	pixel_y = 26
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "sJl" = (
 /obj/structure/disposalpipe/segment,
@@ -39772,7 +39772,7 @@
 	id_tag = "escape_dock_south_starboard_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "sOm" = (
@@ -39846,7 +39846,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/machinery/light/small,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/north)
 "sQa" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -40020,7 +40020,7 @@
 	id_tag = "escape_dock_north_starboard_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "sUL" = (
@@ -40561,14 +40561,14 @@
 	locked = 1;
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/airlock_sensor/shuttle{
 	dir = 8;
 	id_tag = "expshuttle_exterior_sensor";
 	pixel_x = -1;
 	pixel_y = 24
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /turf/floor/tiled/techfloor,
 /area/shuttle/exploration/cargo)
 "tlH" = (
@@ -40723,7 +40723,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small/no_nightshift,
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/arrivals/cynosure)
 "tof" = (
 /obj/structure/cable/green{
@@ -40995,7 +40995,7 @@
 /area/surface/station/hallway/secondary/groundfloor/civilian)
 "tvN" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/door/airlock/external/glass/bolted{
 	id_tag = "mnorth_airlock_outer";
 	name = "External Access"
@@ -41198,8 +41198,8 @@
 /obj/effect/floor_decal/industrial/warning/cee{
 	dir = 8
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/west)
 "tzv" = (
@@ -41544,7 +41544,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outpost/research/xenoarcheology/surface)
 "tIM" = (
 /obj/effect/floor_decal/corner/black/full,
@@ -41599,8 +41599,8 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "tJj" = (
@@ -42152,7 +42152,7 @@
 	id_tag = "arc3_airlock_outer";
 	name = "External Access"
 	},
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/button/access/exterior{
 	dir = 4;
 	id_tag = "arc3_airlock";
@@ -42180,8 +42180,8 @@
 	pixel_x = -11;
 	pixel_y = 25
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "tYp" = (
@@ -42963,7 +42963,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/garage)
 "utE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -43010,7 +43010,7 @@
 /turf/wall,
 /area/surface/station/medical/surgery_storage)
 "uvA" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/random/umbrella,
 /obj/random/umbrella,
 /obj/machinery/light{
@@ -43086,7 +43086,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/arrivals/cynosure)
 "uwn" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -45203,12 +45203,12 @@
 	pixel_x = 24;
 	pixel_y = -31
 	},
-/obj/effect/map_helper/airlock/sensor/ext_sensor,
+/obj/abstract/airlock_helper/sensor/ext_sensor,
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/north)
 "vwm" = (
 /obj/structure/table/bench/steel,
@@ -45643,7 +45643,7 @@
 /obj/machinery/light/small/no_nightshift{
 	dir = 8
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outpost/research/xenoarcheology/surface)
 "vGx" = (
 /turf/wall,
@@ -46347,7 +46347,7 @@
 	id_tag = "arrivals_dock_south_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure/nopower)
 "wae" = (
@@ -46646,7 +46646,7 @@
 /obj/structure/sign/warning/fall{
 	desc = "It appears to be a sign warning against falling off the cliffs, ahead. Foolproof."
 	},
-/turf/wall/sifwood,
+/turf/wall/log/sifwood,
 /area/surface/outside/plains/plateau)
 "wjb" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -47030,7 +47030,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "wtI" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/random/umbrella,
 /turf/floor/wood/sif{
 	is_outside = 0
@@ -47479,7 +47479,7 @@
 	pixel_x = -35;
 	pixel_y = 31
 	},
-/obj/effect/map_helper/airlock/sensor/int_sensor,
+/obj/abstract/airlock_helper/sensor/int_sensor,
 /obj/effect/floor_decal/arrow,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
@@ -47699,7 +47699,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/outside/plains/station)
 "wMG" = (
 /obj/effect/floor_decal/spline/plain{
@@ -47925,7 +47925,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
-/turf/floor/asteroid,
+/turf/floor/barren,
 /area/surface/station/hallway/primary/groundfloor/south)
 "wQu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
@@ -48497,7 +48497,7 @@
 	id_tag = "msouth_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/steel_grid,
 /area/surface/station/hallway/primary/groundfloor/south)
 "xbw" = (
@@ -48745,7 +48745,7 @@
 "xji" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/rust,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/machinery/button/access/exterior{
 	id_tag = "msouth_airlock";
 	pixel_x = 35;
@@ -48844,7 +48844,7 @@
 	dir = 4;
 	id_tag = "mnorth_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
@@ -49081,7 +49081,7 @@
 	id_tag = "eng_ew2_airlock_inner";
 	name = "Internal Access"
 	},
-/obj/effect/map_helper/airlock/door/int_door,
+/obj/abstract/airlock_helper/door/int_door,
 /turf/floor/tiled/techfloor,
 /area/surface/station/maintenance/east/gnd)
 "xtM" = (
@@ -49228,7 +49228,7 @@
 	pixel_x = -11;
 	pixel_y = -25
 	},
-/obj/effect/map_helper/airlock/sensor/chamber_sensor,
+/obj/abstract/airlock_helper/sensor/chamber_sensor,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/outpost/research/xenoarcheology/surface)
 "xyV" = (
@@ -50882,7 +50882,7 @@
 	dir = 8;
 	id_tag = "marrivals_airlock_pump"
 	},
-/obj/effect/map_helper/airlock/atmos/chamber_pump,
+/obj/abstract/airlock_helper/atmos/chamber_pump,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/arrivals/cynosure)
 "ygJ" = (
@@ -50946,7 +50946,7 @@
 /area/surface/station/engineering/hallway)
 "yjU" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/map_helper/airlock/door/ext_door,
+/obj/abstract/airlock_helper/door/ext_door,
 /obj/effect/floor_decal/rust,
 /obj/machinery/button/access/exterior{
 	dir = 1;

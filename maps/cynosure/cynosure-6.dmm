@@ -332,7 +332,7 @@
 /area/centcom/security)
 "aqj" = (
 /obj/structure/rack,
-/obj/random/rigsuit,
+/obj/random/hardsuit,
 /turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "aqF" = (
@@ -2034,7 +2034,6 @@
 /area/centcom/terminal)
 "cJg" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/xenos_claw,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -2198,12 +2197,12 @@
 /area/centcom/evac)
 "cVQ" = (
 /obj/structure/rack,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
 /turf/unsimulated/floor/dark,
 /area/syndicate_station)
 "cXa" = (
@@ -4410,8 +4409,8 @@
 /obj/item/clothing/webbing/holster/armpit,
 /obj/item/clothing/webbing/holster/armpit,
 /obj/item/clothing/webbing/holster/hip,
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white,
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest,
 /obj/item/clothing/webbing/vest,
 /obj/item/clothing/webbing/vest,
 /obj/item/clothing/webbing/vest/black,
@@ -4957,7 +4956,7 @@
 	dir = 4
 	},
 /obj/item/food/spesslaw,
-/obj/item/food/crab_legs{
+/obj/item/food/spider{
 	pixel_y = 11
 	},
 /turf/unsimulated/floor/steel,
@@ -6872,7 +6871,7 @@
 /obj/item/tank/oxygen,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
-/obj/random/rigsuit,
+/obj/random/hardsuit,
 /obj/random/multiple/voidsuit,
 /obj/random/multiple/voidsuit,
 /obj/random/energy,
@@ -8212,7 +8211,6 @@
 /turf/floor/tiled/white,
 /area/centcom/bar)
 "kyA" = (
-/obj/item/xenos_claw,
 /obj/item/organ/internal/brain,
 /turf/unsimulated/floor{
 	icon_state = "plating";
@@ -11303,19 +11301,19 @@
 "opn" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/dress/cheongsam,
-/obj/item/clothing/costume/hosformalmale,
-/obj/item/clothing/costume/hosformalfem,
+/obj/item/clothing/costume/hosformal,
+/obj/item/clothing/costume/hosformal,
 /obj/item/clothing/shirt/harness,
 /obj/item/clothing/costume/gladiator,
-/obj/item/clothing/costume/ert,
+/obj/item/clothing/pants/casual/camo,
+/obj/item/clothing/shirt/syndicate/combat,
 /obj/item/clothing/costume/schoolgirl,
 /obj/item/clothing/costume/redcoat,
 /obj/item/clothing/costume/sexymime,
 /obj/item/clothing/costume/sexyclown,
 /obj/item/clothing/costume/soviet,
-/obj/item/clothing/jumpsuit/space,
 /obj/item/clothing/pants/mankini,
-/obj/item/clothing/costume/suit_jacket/female,
+/obj/item/clothing/suit/jacket/black,
 /obj/item/clothing/shirt/sweater/turquoise,
 /obj/item/clothing/pants/slacks/navy,
 /obj/item/clothing/shirt/syndicate/combat,
@@ -12318,12 +12316,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/clothing/webbing/vest/white{
+/obj/item/clothing/webbing/vest{
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/clothing/webbing/vest/white,
-/obj/item/clothing/webbing/vest/white{
+/obj/item/clothing/webbing/vest,
+/obj/item/clothing/webbing/vest{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -12924,7 +12922,6 @@
 /turf/space/transit/north,
 /area/shuttle/escape)
 "qsn" = (
-/obj/structure/signpost,
 /turf/unsimulated/floor/sand,
 /area/beach)
 "qtQ" = (
@@ -13087,7 +13084,7 @@
 /obj/structure/closet/cabinet,
 /obj/item/clothing/jumpsuit/psysuit,
 /obj/item/clothing/suit/paramount,
-/obj/item/clothing/head/wizard/amp,
+/obj/item/clothing/head/helmet/space/psi_amp/lesser,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -13263,13 +13260,13 @@
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/belt/security/tactical/bandolier,
-/obj/item/belt/security/tactical/bandolier,
-/obj/item/belt/security/tactical/bandolier,
-/obj/item/belt/security/tactical,
-/obj/item/belt/security/tactical,
-/obj/item/belt/security/tactical,
-/obj/item/belt/security/tactical,
+/obj/item/clothing/webbing/bandolier/tactical,
+/obj/item/clothing/webbing/bandolier/tactical,
+/obj/item/clothing/webbing/bandolier/tactical,
+/obj/item/belt/holster/security/tactical,
+/obj/item/belt/holster/security/tactical,
+/obj/item/belt/holster/security/tactical,
+/obj/item/belt/holster/security/tactical,
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "qOL" = (
@@ -13488,7 +13485,7 @@
 /obj/item/clothing/gloves/purple,
 /obj/item/clothing/gloves/rainbow,
 /obj/item/clothing/gloves/thick/swat,
-/obj/item/clothing/gloves/white,
+/obj/item/clothing/gloves,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -14289,7 +14286,7 @@
 /obj/item/handcuffs,
 /obj/item/flash,
 /obj/item/baton/loaded,
-/obj/item/belt/security/tactical,
+/obj/item/belt/holster/security/tactical,
 /obj/item/gun/projectile/revolver/stun,
 /obj/item/clothing/glasses/sunglasses/sechud/goggles,
 /obj/item/knife/combat,
@@ -14342,7 +14339,6 @@
 /turf/floor/holofloor/tiled/dark,
 /area/holodeck/source_theatre)
 "rRM" = (
-/obj/item/radio/electropack,
 /obj/structure/table/steel,
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
@@ -15480,7 +15476,7 @@
 /area/centcom/command)
 "tiP" = (
 /obj/structure/rack,
-/obj/item/belt/security/tactical/bandolier,
+/obj/item/clothing/webbing/bandolier/tactical,
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tjP" = (

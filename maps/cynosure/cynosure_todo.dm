@@ -1,3 +1,44 @@
+
+/* Migrations to document
+/obj/effect/map_helper/airlock : /obj/abstract/airlock_helper
+obj/machinery/atmospherics/omni/atmos_filter : obj/machinery/atmospherics/omni/filter
+obj/machinery/door/airlock/glass_ : obj/machinery/door/airlock/glass/
+obj/machinery/button/remote/airlock : obj/machinery/button/alternate/door
+obj/machinery/access_button/airlock_interior : obj/machinery/button/access/interior
+obj/machinery/access_button/airlock_exterior : obj/machinery/button/access/exterior
+obj/machinery/access_button : obj/machinery/button/access
+obj/structure/ladder/up : obj/structure/ladder
+obj/structure/ladder/updown : obj/structure/ladder
+obj/item/circuitboard : obj/item/stock_parts/circuitboard
+obj/random/mob/mouse : obj/random/mouse
+obj/machinery/airlock_sensor/airlock_interior : obj/machinery/airlock_sensor
+obj/machinery/airlock_sensor/airlock_exterior : obj/machinery/airlock_sensor
+obj/machinery/shower : obj/structure/hygiene/shower
+obj/structure/toilet : obj/structure/hygiene/toilet
+obj/item/tool/wrench : obj/item/wrench
+obj/item/tool/wirecutters : obj/item/wirecutters
+obj/item/tool/screwdriver : obj/item/screwdriver
+obj/item/clothing/suit/space/anomaly : obj/item/clothing/suit/bio_suit/anomaly
+obj/item/clothing/head/helmet/space/anomaly : obj/item/clothing/head/bio_hood/anomaly
+obj/item/chainofcommand : obj/item/whip/chainofcommand
+obj/item/moneybag/vault : obj/item/bag/cash/filled
+obj/item/moneybag : obj/item/bag/cash
+obj/item/stack/material/phoron : obj/item/stack/material/crystal/mapped/phoron/twentyfive
+obj/item/defib_kit : obj/item/defibrillator
+obj/item/stack/rods : obj/item/stack/material/rods
+obj/item/clothing/gloves/sterile/latex : obj/item/clothing/gloves/latex
+obj/item/modular_computer/console : obj/machinery/computer/modular
+obj/machinery/station_map : obj/machinery/holomap
+
+// Other stuff to follow up on
+check what `specialfunctions = 4` on door buttons is supposed to do
+remap R&D servers with Neb types
+remap mining machines with Neb types
+reimplement equipment vendors for explo/mining
+map circuitboards back into secure storage
+corgi statue for central hall
+*/
+
 // Stuff to port
 /obj/item/tabloid
 
@@ -9,6 +50,8 @@
 /obj/item/book/codex/lore/news
 /obj/item/book/codex/lore/robutt
 /obj/item/book/codex/lore/vir
+
+/obj/vehicle/boat/sifwood
 
 /obj/vehicle/train/cargo/engine/quadbike
 /obj/vehicle/train/cargo/engine/quadbike/random
@@ -37,10 +80,13 @@
 /obj/item/gun/projectile/shotgun/pump/combat
 /obj/item/gun/projectile/shotgun/pump/rifle
 /obj/item/gun/projectile/shotgun/pump/rifle/lever
+/obj/item/gun/energy/phasegun
+/obj/item/gun/energy/phasegun/tranq_rifle
+/obj/item/gun/energy/phasegun/tranq_pistol
+
 /obj/item/gunbox
 
 /obj/item/box/poker_chips
-/obj/item/chems/glass/bottle/toxin
 /obj/item/radio/intercom/interrogation
 /obj/item/baton/slime/loaded
 /obj/item/chems/glass/beaker/cryoxadone
@@ -49,7 +95,6 @@
 /obj/item/twohanded/riding_crop
 
 /obj/item/chems/glass/bottle/biomass
-/obj/item/xenos_claw
 /obj/item/paper/dockingcodes
 	var/codes_from_z
 
@@ -59,8 +104,6 @@
 /obj/random/multiple/ore_pile
 /obj/random/multiple/corp_crate/no_weapons
 /obj/random/multiple/voidsuit/mining
-/obj/random/mug
-/obj/random/rigsuit
 
 /obj/machinery/porta_turret/industrial
 /obj/machinery/porta_turret/industrial/teleport_defense
@@ -144,49 +187,37 @@
 /decl/poster/vore_96
 
 // Clothes
-/obj/item/clothing/webbing/vest/white
-/obj/item/clothing/glasses/sunglasses/sechud/aviator
-/obj/item/clothing/suit/space/void/expedition/alt
-/obj/item/clothing/head/helmet/space/void/expedition/alt
+
+
 /obj/item/clothing/badge/holo/cord
-/obj/item/clothing/costume/hosformalfem
-/obj/item/clothing/costume/ert
-/obj/item/clothing/costume/suit_jacket/female
-/obj/item/clothing/costume/suit_jacket/red
-/obj/item/clothing/costume/technomancer
+
 /obj/item/clothing/dress/blacktango
 /obj/item/clothing/dress/blacktango/alt
 /obj/item/clothing/dress/redeveninggown
 /obj/item/clothing/dress/sailordress
-/obj/item/clothing/glasses/night/vox
-/obj/item/clothing/glasses/sunglasses/medhud
-/obj/item/clothing/gloves/white
+/obj/item/clothing/glasses/hud/health
+
 /obj/item/clothing/head/helmet/ert/command
 /obj/item/clothing/head/helmet/flexitac
-/obj/item/clothing/head/helmet/space/sports
-/obj/item/clothing/head/helmet/space/void/engineering/construction
-/obj/item/clothing/head/helmet/space/void/engineering/hazmat
-/obj/item/clothing/head/technomancer
-/obj/item/clothing/head/wizard/amp
-/obj/item/clothing/jumpsuit/space
-/obj/item/clothing/suit/armor/pcarrier/tan/tactical
+
 /obj/item/clothing/suit/caution
+
 /obj/item/clothing/suit/costume/justice
+
+/obj/item/clothing/head/helmet/space/sports
 /obj/item/clothing/suit/space/sports
-/obj/item/clothing/suit/space/void/engineering/construction
-/obj/item/clothing/suit/space/void/engineering/hazmat
-/obj/item/clothing/webbing/vox
-/obj/item/clothing/shoes/legguards/tan
-/obj/item/clothing/gloves/armguards/tan
+
 /obj/item/clothing/armor_attachment/armorplate/laserproof
 /obj/item/clothing/armor_attachment/armorplate/riot
 /obj/item/clothing/armor_attachment/armorplate/bulletproof
+
+/obj/item/clothing/webbing/vox
+/obj/item/clothing/glasses/night/vox
+
 /obj/item/clothing/suit/jacket/winter/parka
 /obj/item/clothing/suit/jacket/winter/parka/nanotrasen
-
-
-
-
+/obj/item/clothing/suit/jacket/winter/parka/purple
+/obj/item/clothing/suit/jacket/winter/medical/sar
 
 
 /obj/abstract/landmark/crashed_pod
@@ -214,6 +245,7 @@
 /turf/unsimulated/wall/sealed_blast_door
 /turf/unsimulated/wall/uranium_door
 /turf/unsimulated/wall/sealed_door_maint
+/turf/unsimulated/wall/planetary/sif/alt
 
 /turf/unsimulated/floor/steel_grid
 /turf/unsimulated/floor/dark
@@ -230,50 +262,15 @@
 /turf/floor/holofloor/bmarble
 /turf/floor/holofloor/wmarble
 /turf/floor/shuttle/carry
-/turf/floor/wood/sif
-/turf/floor/wood/sif/broken
 /turf/floor/hull
 /turf/floor/shuttle/voidcraft/dark
 /turf/floor/shuttle/voidcraft/light
 /turf/floor/shuttle/airless/carry
 /turf/floor/reinforced/supermatter_core
 
-/turf/floor/tiled/yellow
-/turf/floor/tiled/milspec
-/turf/floor/tiled/milspec/dark
-/turf/floor/tiled/milspec/raised
-/turf/floor/tiled/milspec/sterile
-/turf/floor/tiled/hydro
-/turf/floor/tiled/old_tile
-/turf/floor/tiled/old_tile/gray
-/turf/floor/tiled/old_tile/white
-/turf/floor/tiled/old_tile/yellow
-/turf/floor/tiled/old_tile/blue
-/turf/floor/tiled/old_cargo
-/turf/floor/tiled/old_cargo/gray
-/turf/floor/tiled/old_cargo/white
-/turf/floor/tiled/old_cargo/blue
-/turf/floor/tiled/steel_dirty
-/turf/floor/tiled/neutral
-/turf/floor/tiled/asteroid_steel
-/turf/floor/tiled/eris
-/turf/floor/tiled/eris/cafe
-/turf/floor/tiled/eris/steel
-/turf/floor/tiled/eris/steel/danger
-/turf/floor/tiled/kafel_full/gray
-
-/turf/floor/asteroid // /decl/flooring/tiling/asteroidfloor
-
 /obj/item/chems/condiment/mustard
 /obj/item/chems/condiment/spacespice
 
-/turf/wall/sifwood
-/turf/wall/natural/airless
-/turf/wall/natural/solidrock
-/turf/wall/natural/sif
-/turf/wall/natural/ignore_mapgen
-/turf/wall/natural/ignore_mapgen/sif
-/turf/wall/concrete/reinforced
 /turf/wall/shuttle/dark/no_join
 /turf/wall/shuttle/orange
 /turf/wall/tgmc/redstripe
@@ -284,157 +281,13 @@
 /obj/machinery/power/apc
 	var/nightshift_setting = 2
 
-/obj/machinery/computer/security
-	var/list/network
-/obj/machinery/computer/security/engineering
-
-/obj/effect/map_helper
-/obj/effect/map_helper/airlock
-/obj/effect/map_helper/airlock/atmos
-/obj/effect/map_helper/airlock/atmos/chamber_pump
-/obj/effect/map_helper/airlock/atmos/pump_out_internal
-/obj/effect/map_helper/airlock/door
-/obj/effect/map_helper/airlock/door/simple
-/obj/effect/map_helper/airlock/door/ext_door
-/obj/effect/map_helper/airlock/door/int_door
-/obj/effect/map_helper/airlock/sensor
-/obj/effect/map_helper/airlock/sensor/chamber_sensor
-/obj/effect/map_helper/airlock/sensor/int_sensor
-/obj/effect/map_helper/airlock/sensor/ext_sensor
-
 // mining machinery
 /obj/machinery/mineral/equipment_vendor
-
-/* Migrations to document
-obj/machinery/atmospherics/omni/atmos_filter : obj/machinery/atmospherics/omni/filter
-obj/machinery/door/airlock/glass_ : obj/machinery/door/airlock/glass/
-obj/machinery/button/remote/airlock : obj/machinery/button/alternate/door
-obj/machinery/access_button/airlock_interior : obj/machinery/button/access/interior
-obj/machinery/access_button/airlock_exterior : obj/machinery/button/access/exterior
-obj/machinery/access_button : obj/machinery/button/access
-obj/structure/ladder/up : obj/structure/ladder
-obj/structure/ladder/updown : obj/structure/ladder
-obj/item/circuitboard : obj/item/stock_parts/circuitboard
-obj/random/mob/mouse : obj/random/mouse
-obj/machinery/airlock_sensor/airlock_interior : obj/machinery/airlock_sensor
-obj/machinery/airlock_sensor/airlock_exterior : obj/machinery/airlock_sensor
-obj/machinery/shower : obj/structure/hygiene/shower
-obj/structure/toilet : obj/structure/hygiene/toilet
-obj/item/tool/wrench : obj/item/wrench
-obj/item/tool/wirecutters : obj/item/wirecutters
-obj/item/tool/screwdriver : obj/item/screwdriver
-obj/item/clothing/suit/space/anomaly : obj/item/clothing/suit/bio_suit/anomaly
-obj/item/clothing/head/helmet/space/anomaly : obj/item/clothing/head/bio_hood/anomaly
-obj/item/chainofcommand : obj/item/whip/chainofcommand
-obj/item/moneybag/vault : obj/item/bag/cash/filled
-obj/item/moneybag : obj/item/bag/cash
-obj/item/stack/material/phoron : obj/item/stack/material/crystal/mapped/phoron/twentyfive
-obj/item/defib_kit : obj/item/defibrillator
-obj/item/stack/rods : obj/item/stack/material/rods
-obj/item/clothing/gloves/sterile/latex : obj/item/clothing/gloves/latex
-obj/item/modular_computer/console : obj/machinery/computer/modular
-obj/machinery/station_map : obj/machinery/holomap
-
-// Other stuff to follow up on
-check what `specialfunctions = 4` on door buttons is supposed to do
-remap R&D servers with Neb types
-remap mining machines with Neb types
-reimplement equipment vendors for explo/mining
-map circuitboards back into secure storage
-corgi statue for central hall
-*/
-
-/turf/floor/bluegrid/cryo
-	initial_gas = list(/decl/material/gas/nitrogen = MOLES_CELLSTANDARD)
-	temperature = 73
-
-/turf/floor/tiled/techfloor/cryo
-	initial_gas = list(/decl/material/gas/nitrogen = MOLES_CELLSTANDARD)
-	temperature = 73
-
-/turf/floor/tiled/dark/cryo
-	initial_gas = list(/decl/material/gas/nitrogen = MOLES_CELLSTANDARD)
-	temperature = 73
-
-/turf/floor/tiled/techfloor/grid/cryo
-	initial_gas = list(/decl/material/gas/nitrogen = MOLES_CELLSTANDARD)
-	temperature = 73
-
-// TODO: MOVE
-// CLOSETS:
-/decl/closet_appearance/secure_closet/expedition
-	color = COLOR_BLUE_GRAY
-	decals = list(
-		"lower_side_vent"
-	)
-	extra_decals = list(
-		"stripe_vertical_mid_full" = COLOR_PURPLE,
-		"exped" = COLOR_PURPLE
-	)
-
-//SC Exploration Secure Closets Port
-/obj/structure/closet/secure_closet/explorer
-	name = "explorer locker"
-	closet_appearance = /decl/closet_appearance/secure_closet/expedition
-	// req_access = list(access_explorer)
-
-/obj/structure/closet/secure_closet/explorer/WillContain()
-	. = list(
-		/obj/item/clothing/jumpsuit/explorer,
-		// /obj/item/clothing/suit/armor/pcarrier/explorer/light, // todo: port explorer plate carrier
-		/obj/item/clothing/suit/toggle/explorer,
-		/obj/item/clothing/mask/gas/explorer,
-		/obj/item/clothing/shoes/winterboots/explorer,
-		/obj/item/clothing/gloves/black,
-		// /obj/item/radio/headset/explorer,
-		/obj/item/flashlight,
-		/obj/item/gps/explorer,
-		/obj/item/box/flares,
-		/obj/item/geiger,
-		/obj/item/cell/device,
-		/obj/item/radio,
-		/obj/item/stack/flag = 3, // 30, since each is a full stack of 10
-		/obj/item/cataloguer)
-	if(prob(50))
-		. += /obj/item/backpack/rucksack
-	else
-		. += /obj/item/backpack/satchel/grey
-	if(prob(75))
-		. += /obj/item/bladed/knife/tactical
-
-// Medical closets
-/obj/structure/closet/secure_closet/anesthetics
-	name = "anesthetics closet"
-	desc = "Used to knock people out."
-	closet_appearance = /decl/closet_appearance/secure_closet/medical/alt
-	req_access = list(access_surgery)
-
-/obj/structure/closet/secure_closet/anesthetics/WillContain()
-	return list(
-		/obj/item/tank/anesthetic = 3,
-		/obj/item/clothing/mask/breath/medical = 3
-	)
-
-/obj/structure/closet/secure_closet/medical_wall/anesthetics
-	name = "anesthetics wall closet"
-	desc = "Used to knock people out."
-	req_access = list(access_surgery)
-
-/obj/structure/closet/secure_closet/medical_wall/anesthetics/WillContain()
-	return list(
-		/obj/item/tank/anesthetic = 3,
-		/obj/item/clothing/mask/breath/medical = 3
-	)
-
-/obj/structure/closet/secure_closet/medical_wall/anesthetics/robotics
-	name = "robotics anesthetics wall closet"
-	desc = "Used to knock people out... but in the Robotics lab."
-	req_access = list(access_robotics)
 
 /obj/machinery/camera/xray/command
 /obj/effect/overlay/snow/floor
 
-/obj/effect/map_helper/airlock/atmos/pump_out_external
+/obj/abstract/airlock_helper/atmos/pump_out_external
 /obj/machinery/portable_atmospherics/powered/reagent_distillery
 /obj/machinery/vending/giftvendor
 /obj/machinery/neonsign/cafe
@@ -490,12 +343,10 @@ corgi statue for central hall
 /obj/machinery/door/airlock/glass/engineeringatmos
 /obj/machinery/door/airlock/voidcraft/vertical
 
-/obj/structure/flaps/xenofauna
 /obj/structure/curtain/open/shower/medical
 /obj/structure/bed/chair/wood/pine
 /obj/structure/hull_corner/long_vert
 
-/obj/structure/door/sifwood
 /obj/structure/rack/shelf
 /obj/structure/rack/shelf/steel
 /obj/structure/sign/pods
@@ -610,14 +461,12 @@ corgi statue for central hall
 /obj/structure/closet/crate/nanotrasen
 /obj/structure/closet/crate/science
 /obj/structure/closet/crate/large/nanotrasen
-/obj/structure/closet/secure_closet/explorer
 /obj/structure/closet/secure_closet/guncabinet/phase
 /obj/structure/closet/secure_closet/security/cynosure
 /obj/structure/closet/secure_closet/hos/cynosure
 /obj/structure/closet/secure_closet/warden/cynosure
 /obj/structure/closet/secure_closet/detective/cynosure
 /obj/structure/closet/secure_closet/guncabinet/tranq
-/obj/structure/closet/secure_closet/xenofauna
 /obj/structure/closet/walllocker/emerglocker
 /obj/structure/bed/double
 /obj/structure/bed/double/padded
@@ -635,10 +484,6 @@ corgi statue for central hall
 
 /obj/structure/animal_den
 
-/obj/structure/table/sifwoodentable
-/obj/structure/table/bench/sifwooden
-/obj/structure/table/bench/sifwooden/padded
-
 /obj/structure/marker_beacon // should be changed to /obj/item/stack/flag with upright = true?
 	var/mapped_in_color
 
@@ -647,7 +492,6 @@ corgi statue for central hall
 
 /obj/machinery/computer/card/centcom
 /obj/structure/closet/crate/secure/decalock/loot
-/obj/item/food/crab_legs
 /obj/machinery/computer/shuttle_control/multi/mercenary_elite
 /obj/machinery/vending/deathmatch/red
 
@@ -656,7 +500,6 @@ corgi statue for central hall
 /obj/mecha/working/hoverpod
 /obj/mecha/combat/marauder/mauler
 
-/obj/item/antag_spawner/technomancer_apprentice
 /obj/abstract/landmark/teleport_mark
 	var/landmark_id
 
@@ -668,13 +511,10 @@ corgi statue for central hall
 
 /obj/machinery/computer/modular/preset/nuclear
 
-/turf/unsimulated/wall/planetary/sif/alt
-/obj/item/belt/security/tactical/bandolier
+
 /obj/structure/closet/wardrobe/ert
 /obj/item/rig/internalaffairs
-/obj/structure/signpost
 
-/obj/item/radio/electropack
 
 /obj/machinery/atmospherics/pipe/vent
 /obj/machinery/atmospherics/binary/pump/fuel
@@ -683,16 +523,33 @@ corgi statue for central hall
 /obj/machinery/atmospherics/portables_connector/fuel
 /obj/machinery/atmospherics/trinary/mixer
 
-/obj/structure/drying_rack/sifwood
-
-/obj/structure/bed/chair/sifwood/wings
-
 /obj/item/pinpointer/shuttle/merc
 /obj/item/pinpointer/shuttle/heist
-
-/obj/vehicle/boat/sifwood
 
 /obj/structure/cliff
 /obj/structure/cliff/automatic
 /obj/structure/cliff/automatic/corner
 /obj/structure/cliff/automatic/ramp
+
+// Outfit stuff
+/decl/closet_appearance/secure_closet/medical/paramedic
+
+/obj/item/clothing/suit/toggle/fr_jacket
+/obj/item/clothing/suit/toggle/labcoat/emt
+
+/obj/item/clothing/head/pilot
+/obj/item/clothing/under/rank/pilot1
+/obj/item/clothing/suit/toggle/bomber/pilot
+/obj/item/clothing/gloves/fingerless
+
+// PORT XENOFAUNA
+/obj/structure/flaps/xenofauna
+/obj/item/clothing/under/xenofauna
+/obj/item/clothing/suit/hooded/explorer/xenofauna
+/obj/structure/closet/secure_closet/xenofauna
+/obj/item/specimen_tagger
+
+// PORT TECHNOMANCER
+/obj/item/clothing/costume/technomancer
+/obj/item/clothing/head/technomancer
+/obj/item/antag_spawner/technomancer_apprentice

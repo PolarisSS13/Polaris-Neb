@@ -18,7 +18,7 @@
 /turf/floor/carpet/tealcarpet,
 /area/template_noop)
 "i" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/random/mre,
 /obj/random/drinkbottle,
 /turf/floor/carpet/tealcarpet,
@@ -44,14 +44,14 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain,
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/box/cups,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,
 /turf/floor/carpet/tealcarpet,
 /area/template_noop)
 "u" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/folder,
 /obj/item/pen{
 	pixel_x = 4;
@@ -76,7 +76,7 @@
 /turf/floor/carpet/tealcarpet,
 /area/template_noop)
 "E" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/random/snack,
 /obj/random/drinksoft,
 /obj/structure/sign/poster/custom{
@@ -105,7 +105,7 @@
 /turf/floor/carpet/tealcarpet,
 /area/template_noop)
 "K" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/random/plushie,
 /obj/random/maintenance/medical,
 /obj/random/maintenance/medical,

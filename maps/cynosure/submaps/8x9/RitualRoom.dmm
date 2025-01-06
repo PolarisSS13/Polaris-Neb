@@ -9,7 +9,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "f" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/godfig{
 	desc = "A holy figure of some kind of energy formation.";
 	icon_state = "singularity"
@@ -63,7 +63,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "x" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/flame/candle/black,
 /obj/effect/floor_decal/chapel{
 	dir = 4
@@ -79,14 +79,14 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "A" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/effect/floor_decal/chapel{
 	dir = 8
 	},
 /turf/floor/tiled/dark,
 /area/template_noop)
 "C" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/effect/floor_decal/chapel,
 /turf/floor/tiled/dark,
 /area/template_noop)
@@ -107,7 +107,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "H" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/flame/candle/black,
 /obj/effect/floor_decal/chapel{
 	dir = 1
@@ -115,7 +115,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "L" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /turf/floor/tiled/dark,
 /area/template_noop)
 "M" = (
@@ -160,7 +160,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "X" = (
-/obj/structure/table/sifwoodentable,
+/obj/structure/table/sifwood,
 /obj/item/box/candles/black{
 	pixel_x = -3;
 	pixel_y = 4
@@ -176,7 +176,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "Y" = (
-/obj/structure/table/bench/sifwooden/padded,
+/obj/structure/table/bench/sifwood/padded,
 /obj/random/maintenance/clean,
 /turf/floor/tiled/dark,
 /area/template_noop)

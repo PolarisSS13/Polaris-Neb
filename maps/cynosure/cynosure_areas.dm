@@ -14,10 +14,10 @@
 //Planetside
 /obj/structure/closet/crate/engineering
 
-/obj/effect/map_helper/airlock/atmos/chamber_pump
-/obj/effect/map_helper/airlock/sensor/chamber_sensor
-/obj/effect/map_helper/airlock/door/int_door
-/obj/effect/map_helper/airlock/door/ext_door
+/obj/abstract/airlock_helper/atmos/chamber_pump
+/obj/abstract/airlock_helper/sensor/chamber_sensor
+/obj/abstract/airlock_helper/door/int_door
+/obj/abstract/airlock_helper/door/ext_door
 
 /area/surface
 	abstract_type = /area/surface

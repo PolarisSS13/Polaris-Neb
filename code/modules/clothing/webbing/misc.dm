@@ -17,3 +17,5 @@
 	fallback_slot       = slot_w_uniform_str
 	material            = /decl/material/solid/organic/leather
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
+
+/obj/item/clothing/webbing/bandolier/tactical //todo

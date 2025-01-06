@@ -11,3 +11,5 @@
 
 // TODO
 /obj/item/bladed/knife/tactical
+
+/obj/item/bladed/knife/survival

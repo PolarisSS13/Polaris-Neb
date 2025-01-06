@@ -36,6 +36,7 @@
 
 	#include "../random_ruins/exoplanet_ruins/playablecolony/playablecolony.dm"
 
+	#include "../../mods/content/polaris/_polaris.dme"
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"
 
@@ -71,8 +72,6 @@
 	#include "datums/random_map.dm"
 	//#include "datums/spawn.dm"
 
-	//#include "items/encryptionkey_cyno.dm"
-	//#include "items/headset_cyno.dm"
 	//#include "items/clothing/cyno_accessory.dm"
 	#include "items/clothing/cyno_exploration.dm"
 	#include "items/clothing/cyno_permits.dm"
@@ -80,9 +79,8 @@
 	//#include "items/clothing/cyno_under.dm"
 	#include "items/clothing/cyno_winterboots.dm"
 	//#include "job/outfits.dm"
-	#include "structures/cyno_flora.dm"
-	//#include "structures/closets/misc.dm"
-	//#include "structures/closets/security.dm"
+	#include "structures/closets/misc.dm"
+	#include "structures/closets/security.dm"
 	#include "turfs/voidcraft.dm"
 	#include "overmap/cyno_overmap_stubs.dm"
 	//#include "overmap/sectors.dm"
