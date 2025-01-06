@@ -2122,6 +2122,10 @@
 	},
 /turf/floor/tiled/techmaint,
 /area/tcommsat/cynosure/teleporter)
+"AH" = (
+/obj/abstract/level_data_spawner/admin_level,
+/turf/space,
+/area/space)
 "AK" = (
 /obj/effect/floor_decal/rust/mono_rusted1,
 /turf/floor/tiled/monotile,
@@ -4988,7 +4992,7 @@ SE
 SE
 SE
 SE
-SE
+AH
 SE
 "}
 (3,1,1) = {"

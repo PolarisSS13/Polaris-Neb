@@ -563,7 +563,7 @@
 	abstract_type = /obj/machinery/cryopod/robot/door
 	name = "Airlock of Wonders"
 	desc = "An airlock that isn't an airlock, and shouldn't exist.  Yell at a coder/mapper."
-	icon = 'maps/cynosure/icons/obj/machines/tramdoors.dmi'
+	icon = 'mods/content/polaris/icons/machines/pod_doors.dmi'
 	icon_state = "door_closed"
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"

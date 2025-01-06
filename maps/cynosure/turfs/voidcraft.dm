@@ -1,7 +1,7 @@
 // Voidcraft Shuttle Walls
 /turf/wall/shuttle/voidcraft
 	name = "voidcraft wall"
-	icon = 'maps/cynosure/icons/turf/shuttle_void.dmi'
+	icon = 'mods/content/polaris/icons/turfs/shuttle_void.dmi'
 	icon_state = "void"
 
 /turf/wall/shuttle/voidcraft/red
@@ -27,13 +27,3 @@
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")
 		I.color = stripe_color
 		add_overlay(I)
-
-/turf/floor/grass/sif
-	name = "growth"
-	desc = "A layer of Sivian moss that has adapted to the sheer cold climate."
-	color = "#447171"
-
-/turf/floor/grass/wild/sif
-	name = "thick growth"
-	desc = "A thick, rough layer of Sivian moss that has adapted to the sheer cold climate."
-	color = "#446471"

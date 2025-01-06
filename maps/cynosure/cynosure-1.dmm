@@ -2450,6 +2450,10 @@
 	},
 /turf/floor/plating,
 /area/surface/station/maintenance/research/east)
+"fQ" = (
+/obj/abstract/ramp_sculptor/north,
+/turf/unsimulated/mineral,
+/area/surface/cave/explored/deep)
 "fR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -4446,7 +4450,7 @@
 /area/surface/station/hallway/primary/bmt/west)
 "ki" = (
 /obj/abstract/level_data_spawner/cynosure_caves,
-/turf/wall/natural/sif,
+/turf/wall/natural/cynosure,
 /area/surface/cave/unexplored/deep)
 "kj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -5607,7 +5611,7 @@
 /obj/structure/marker_beacon{
 	mapped_in_color = "Olive"
 	},
-/turf/floor/grass/sif,
+/turf/floor/barren,
 /area/surface/cave/explored/normal)
 "mI" = (
 /obj/machinery/door/firedoor/border_only,
@@ -10599,7 +10603,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/bmt/west)
 "xW" = (
-/turf/floor/grass/sif,
+/turf/floor/barren,
 /area/surface/cave/explored/deep)
 "xY" = (
 /obj/machinery/atmospherics/binary/pump{
@@ -14611,7 +14615,7 @@
 /area/surface/station/engineering/auxiliary_engineering)
 "Hh" = (
 /obj/structure/grille,
-/turf/floor/grass/sif,
+/turf/floor/barren,
 /area/surface/outpost/research/xenoarcheology/smes)
 "Hi" = (
 /obj/structure/disposalpipe/segment,
@@ -14796,7 +14800,7 @@
 /turf/floor/plating,
 /area/surface/station/medical/hallway/bmt)
 "HE" = (
-/turf/wall/natural/sif,
+/turf/wall/natural/cynosure,
 /area/surface/cave/unexplored/normal)
 "HG" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -15433,7 +15437,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/bmt/west)
 "Jk" = (
-/turf/floor/grass/sif,
+/turf/floor/barren,
 /area/surface/cave/explored/normal)
 "Jm" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -16715,7 +16719,7 @@
 /area/surface/station/medical/hallway/bmt)
 "Mi" = (
 /obj/item/caution/cone,
-/turf/floor/grass/sif,
+/turf/floor/barren,
 /area/surface/cave/explored/normal)
 "Mj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17468,7 +17472,7 @@
 /turf/floor/tiled/old_tile/white,
 /area/surface/station/rnd/mixing)
 "NR" = (
-/turf/wall/natural/solidrock,
+/turf/unsimulated/mineral,
 /area/surface/cave/explored/deep)
 "NS" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -19445,7 +19449,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/bmt/west)
 "RQ" = (
-/turf/wall/natural/sif,
+/turf/wall/natural/cynosure,
 /area/surface/cave/unexplored/deep)
 "RR" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -20020,7 +20024,7 @@
 /area/surface/station/maintenance/incineratormaint)
 "Tj" = (
 /obj/abstract/landmark/submap_position/random_subtype/cynosure_sixteen_by_eleven_maint,
-/turf/wall/natural/sif,
+/turf/wall/natural/cynosure,
 /area/surface/cave/unexplored/normal)
 "To" = (
 /turf/floor/tiled/steel_dirty,
@@ -86701,7 +86705,7 @@ xW
 xW
 xW
 xW
-xW
+fQ
 NR
 RQ
 RQ
@@ -86972,7 +86976,7 @@ xW
 xW
 xW
 xW
-xW
+fQ
 NR
 RQ
 RQ
@@ -87243,7 +87247,7 @@ RQ
 xW
 xW
 xW
-xW
+fQ
 NR
 RQ
 RQ

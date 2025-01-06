@@ -1,8 +1,8 @@
 /obj/abstract/map_data/cynosure
 	height = 3
 
-/datum/level_data/player_level/cynosure
-	abstract_type = /datum/level_data/player_level/cynosure
+/datum/level_data/main_level/cynosure
+	abstract_type = /datum/level_data/main_level/cynosure
 	use_global_exterior_ambience = FALSE
 	ambient_light_level = 0.7
 	ambient_light_color = "#8497ec"
@@ -23,46 +23,39 @@
 	time_in_cycle = rand(cycle_duration)
 	..()
 
-/datum/level_data/player_level/cynosure/generate_level()
-	world.log << "generating Sif level [name]"
-	. = ..()
-	world.log << "done!"
-
-/datum/level_data/player_level/cynosure/caves
+/datum/level_data/main_level/cynosure/caves
 	name = "Cynosure - Underground"
 	level_id = "southern_cross_underground"
 	level_generators = list(
 		/datum/random_map/automata/cave_system,
-		/datum/random_map/noise/sif/underground
+		/datum/random_map/noise/sif/underground,
+		/datum/random_map/noise/ore
 	)
 
-/datum/level_data/player_level/cynosure/caves/generate_level()
-	. = ..()
-	//new /datum/random_map/noise/ore(1, 1, level_z, 64, 64) // Create the mining ore distribution map.
-
-/datum/level_data/player_level/cynosure/station
+/datum/level_data/main_level/cynosure/station
 	name = "Cynosure - Station Ground Level"
 	level_id = "southern_cross_station"
 	connected_levels = list("southern_cross_wilderness" = NORTH)
+	level_generators = list(/datum/random_map/noise/sif)
 
-/datum/level_data/player_level/cynosure/upper
+/datum/level_data/main_level/cynosure/upper
 	name = "Cynosure - Station Upper Level"
 	level_id = "southern_cross_upper"
 
-/datum/level_data/player_level/cynosure/wilderness
+/datum/level_data/main_level/cynosure/wilderness
 	name = "Cynosure - Wilderness"
 	level_id = "southern_cross_wilderness"
 	connected_levels = list("southern_cross_station" = SOUTH)
 	level_generators = list(/datum/random_map/noise/sif/forest)
 
 /obj/abstract/level_data_spawner/cynosure_caves
-	level_data_type = /datum/level_data/player_level/cynosure/caves
+	level_data_type = /datum/level_data/main_level/cynosure/caves
 
 /obj/abstract/level_data_spawner/cynosure_station
-	level_data_type = /datum/level_data/player_level/cynosure/station
+	level_data_type = /datum/level_data/main_level/cynosure/station
 
 /obj/abstract/level_data_spawner/cynosure_upper
-	level_data_type = /datum/level_data/player_level/cynosure/upper
+	level_data_type = /datum/level_data/main_level/cynosure/upper
 
 /obj/abstract/level_data_spawner/cynosure_wilderness
-	level_data_type = /datum/level_data/player_level/cynosure/wilderness
+	level_data_type = /datum/level_data/main_level/cynosure/wilderness

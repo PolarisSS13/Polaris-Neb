@@ -8,6 +8,17 @@
 	build_type         = /obj/item/stack/tile/wood/rough/sivian
 	force_material     = /decl/material/solid/organic/wood/sivian
 
+/decl/flooring/grass/sif
+	name = "growth"
+	desc = "A layer of Sivian moss that has adapted to the sheer cold climate."
+	color = "#447171"
+	force_material = /decl/material/solid/organic/plantmatter/grass/sif
+
+/decl/flooring/grass/wild/sif
+	name = "thick growth"
+	desc = "A thick, rough layer of Sivian moss that has adapted to the sheer cold climate."
+	color = "#446471"
+
 /decl/flooring/tiling/steel_dirty
 	build_type = /obj/item/stack/tile/floor_steel_dirty
 
@@ -30,6 +41,17 @@ WOOD_TILE_SUBTYPE("rough sifwood", rough/sivian, sivian)
 /turf/floor/tiled/steel_dirty
 	_flooring = /decl/flooring/tiling/steel_dirty
 
+/turf/floor/grass/sif
+	name = "growth"
+	color = "#447171"
+	_flooring = /decl/flooring/grass/sif
+
+/turf/floor/grass/wild/sif
+	name = "thick growth"
+	color = "#446471"
+	_flooring = /decl/flooring/grass/wild/sif
+
+// TODO:
 /turf/floor/tiled/yellow
 /turf/floor/tiled/milspec
 /turf/floor/tiled/milspec/dark
@@ -52,4 +74,3 @@ WOOD_TILE_SUBTYPE("rough sifwood", rough/sivian, sivian)
 /turf/floor/tiled/eris/cafe
 /turf/floor/tiled/eris/steel
 /turf/floor/tiled/eris/steel/danger
-

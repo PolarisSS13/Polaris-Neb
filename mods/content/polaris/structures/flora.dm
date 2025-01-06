@@ -1,6 +1,6 @@
 // Bushes.
 /obj/structure/flora/sif
-	icon = 'maps/cynosure/icons/obj/flora/flora_sif.dmi'
+	icon = 'mods/content/polaris/icons/structures/flora/flora_sif.dmi'
 
 /obj/structure/flora/sif/eyes
 	name = "eyebulbs"
@@ -42,7 +42,7 @@
 /obj/structure/flora/tree/sif
 	name = "glowing tree"
 	desc = "It's a tree, except this one seems quite alien. It glows a deep blue."
-	icon = 'maps/cynosure/icons/obj/flora/tree_sif.dmi'
+	icon = 'mods/content/polaris/icons/structures/flora/tree_sif.dmi'
 	icon_state = "pine_1"
 	stump_type = /obj/structure/flora/stump/tree/sif
 	light_offset_x = 1 // "equivalent to a pixel offset of 1, which due to how the logic works will mean no lighting offset"
@@ -52,7 +52,7 @@
 	set_light(3-rand(0,3), 1, "#33ccff")
 
 /obj/structure/flora/stump/tree/sif
-	icon = 'maps/cynosure/icons/obj/flora/tree_sif.dmi'
+	icon = 'mods/content/polaris/icons/structures/flora/tree_sif.dmi'
 	icon_state = "tree_sif_stump"
 
 /obj/structure/flora/tree/sif/init_appearance()
@@ -67,7 +67,7 @@
 /obj/structure/flora/mushroom
 	name = "mushroom"
 	desc = "Hey, this one seems like a fun guy."
-	icon = 'maps/cynosure/icons/obj/flora/mushrooms.dmi'
+	icon = 'mods/content/polaris/icons/structures/flora/mushrooms.dmi'
 	icon_state = "mush1"
 
 /obj/structure/flora/mushroom/init_appearance()
