@@ -1,7 +1,7 @@
 #ifdef GAMEMODE_PACK_HEIST
 /decl/special_role/raider/Initialize()
 	. = ..()
-	LAZYSET(outfits_per_species, SPECIES_VOX, /decl/outfit/vox_raider)
+	LAZYSET(outfits_per_species, SPECIES_VOX, /decl/outfit/vox/raider)
 
 // The following mirror is ~special~.
 /obj/structure/mirror/raider
@@ -23,7 +23,7 @@
 	if(choice != "Yes")
 		return TRUE
 
-	var/decl/outfit/outfit = GET_DECL(/decl/outfit/vox_raider)
+	var/decl/outfit/outfit = GET_DECL(/decl/outfit/vox/raider)
 	var/mob/living/human/vox/vox = new(get_turf(src), SPECIES_VOX)
 	outfit.equip_outfit(vox)
 	if(user.mind)

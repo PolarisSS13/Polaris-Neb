@@ -188,3 +188,6 @@
 			return pick(S.base_materials)
 	//Otherwise, just use level strata
 	return ..()
+
+// TODO
+/turf/wall/natural/ignore_mapgen

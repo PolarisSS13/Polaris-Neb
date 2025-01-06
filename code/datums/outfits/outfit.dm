@@ -1,6 +1,6 @@
 /decl/outfit
 	abstract_type = /decl/outfit
-	var/name       = "Naked And Afraid"
+	var/name       = null
 	var/uniform    = null
 	var/suit       = null
 	var/back       = null
@@ -226,12 +226,7 @@
 
 	var/decl/species/wearer_species = wearer.get_species()
 	if(wearer_species && !(OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR & equip_adjustments))
-		var/decl/survival_box_option/chosen_survival_box = wearer?.client?.prefs.survival_box_choice
-		if(chosen_survival_box?.box_type)
-			if(outfit_flags & OUTFIT_EXTENDED_SURVIVAL)
-				wearer_species.equip_survival_gear(wearer, /obj/item/box/engineer)
-			else
-				wearer_species.equip_survival_gear(wearer, chosen_survival_box.box_type)
+		wearer_species.equip_survival_gear(wearer, (outfit_flags & OUTFIT_EXTENDED_SURVIVAL))
 
 	if(wearer.client?.prefs?.give_passport)
 		global.using_map.create_passport(wearer)
@@ -270,3 +265,7 @@
 
 /decl/outfit/dd_SortValue()
 	return name
+
+// Stub for the sake of being able to make people spawn nude.
+/decl/outfit/naked
+	name = "Naked And Afraid"

@@ -2,7 +2,7 @@
 /obj/item/clothing/permit
 	name = "permit"
 	desc = "A permit for something."
-	icon = 'maps/cynosure/icons/obj/clothing/permits.dmi'
+	icon = 'mods/content/polaris/icons/clothing/accessories/permits.dmi'
 	w_class = ITEM_SIZE_TINY
 	accessory_slot = ACCESSORY_SLOT_MEDAL
 	/// If set, the accents on the ID are set to this color using an overlay.

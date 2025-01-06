@@ -119,7 +119,7 @@
 /turf/unsimulated/mask,
 /area/surface/outside/wilderness/deep)
 "pM" = (
-/turf/wall/natural/sif,
+/turf/wall/natural/cynosure,
 /area/surface/outside/wilderness/mountains)
 "qr" = (
 /obj/item/box/matches,

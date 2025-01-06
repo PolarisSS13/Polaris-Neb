@@ -37,6 +37,7 @@ remap mining machines with Neb types
 reimplement equipment vendors for explo/mining
 map circuitboards back into secure storage
 corgi statue for central hall
+event2 system and event overrides from Polaris Cyno
 */
 
 // Stuff to port
@@ -83,6 +84,7 @@ corgi statue for central hall
 /obj/item/gun/energy/phasegun
 /obj/item/gun/energy/phasegun/tranq_rifle
 /obj/item/gun/energy/phasegun/tranq_pistol
+/obj/item/gun/energy/phasegun/rifle
 
 /obj/item/gunbox
 
@@ -190,13 +192,14 @@ corgi statue for central hall
 
 
 /obj/item/clothing/badge/holo/cord
-
+/obj/item/clothing/suit/jacket/bomber/alt
+/obj/item/clothing/suit/jacket/bomber/retro
 /obj/item/clothing/dress/blacktango
 /obj/item/clothing/dress/blacktango/alt
 /obj/item/clothing/dress/redeveninggown
 /obj/item/clothing/dress/sailordress
 /obj/item/clothing/glasses/hud/health
-
+/obj/item/clothing/head/pilot/alt
 /obj/item/clothing/head/helmet/ert/command
 /obj/item/clothing/head/helmet/flexitac
 
@@ -538,8 +541,7 @@ corgi statue for central hall
 /obj/item/clothing/suit/toggle/labcoat/emt
 
 /obj/item/clothing/head/pilot
-/obj/item/clothing/under/rank/pilot1
-/obj/item/clothing/suit/toggle/bomber/pilot
+/obj/item/clothing/suit/jacket/bomber/pilot
 /obj/item/clothing/gloves/fingerless
 
 // PORT XENOFAUNA
@@ -553,3 +555,13 @@ corgi statue for central hall
 /obj/item/clothing/costume/technomancer
 /obj/item/clothing/head/technomancer
 /obj/item/antag_spawner/technomancer_apprentice
+
+/obj/item/clothing/mask/gas/sechailer/swat/warden
+/obj/item/shield/riot/tele
+/obj/item/box/holobadge/hos
+/obj/item/clothing/badge/holo/hos
+/obj/item/clothing/suit/jacket/winter/security/hos
+/obj/item/clothing/mask/gas/sechailer/swat/hos
+/obj/item/clothing/badge/holo/warden
+/obj/item/clothing/badge/holo/detective
+/obj/item/clothing/glasses/fakesunglasses/aviator

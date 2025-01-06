@@ -2,6 +2,10 @@
 "a" = (
 /turf/space,
 /area/space)
+"i" = (
+/obj/abstract/level_data_spawner/admin_level,
+/turf/space,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -514,7 +518,7 @@ a
 a
 a
 a
-a
+i
 a
 "}
 (3,1,1) = {"

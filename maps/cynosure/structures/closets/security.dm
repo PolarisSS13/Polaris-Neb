@@ -6,18 +6,17 @@
 
 /obj/structure/closet/secure_closet/hos/cynosure/WillContain()
 	. = list(
-		/obj/item/clothing/head/helmet/HoS,
-		/obj/item/clothing/head/helmet/HoS/cap,
-		/obj/item/clothing/suit/armor/pcarrier/light/nt/cynosure,
-		/obj/item/clothing/under/rank/head_of_security/jensen,
-		/obj/item/clothing/under/rank/head_of_security/corp,
+		/obj/item/clothing/head/HoS,
+		/obj/item/clothing/head/HoS,
+		/obj/item/clothing/suit/armor/pcarrier/light/cynosure,
+		/obj/item/clothing/jumpsuit/head_of_security/jensen,
+		/obj/item/clothing/jumpsuit/head_of_security/corp,
 		/obj/item/clothing/suit/armor/hos/jensen,
 		/obj/item/clothing/suit/armor/hos,
-		/obj/item/clothing/head/helmet/dermal,
 		/obj/item/radio/headset/heads/hos,
-		/obj/item/radio/headset/heads/hos/alt,
+		/obj/item/radio/headset/heads/hos,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		//obj/item/stack/tape_roll/barricade_tape/police,
+		/obj/item/stack/tape_roll/barricade_tape/police,
 		/obj/item/shield/riot/tele,
 		/obj/item/box/holobadge/hos,
 		/obj/item/clothing/badge/holo/hos,
@@ -37,7 +36,7 @@
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/mask/gas/sechailer/swat/hos,
-		/obj/item/clothing/black_vest
+		/obj/item/clothing/webbing/vest/black
 	)
 	if(prob(50))
 		. += /obj/item/backpack/security
@@ -55,14 +54,13 @@
 
 /obj/structure/closet/secure_closet/warden/cynosure/WillContain()
 	. = list(
-		/obj/item/clothing/suit/armor/pcarrier/light/nt/cynosure,
-		/obj/item/clothing/under/rank/warden,
-		/obj/item/clothing/under/rank/warden/corp,
-		/obj/item/clothing/suit/vest/wardencoat,
-		/obj/item/clothing/suit/vest/wardencoat/alt,
-		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/clothing/head/helmet/warden,
-		/obj/item/clothing/head/helmet/warden/hat,
+		/obj/item/clothing/suit/armor/pcarrier/light/cynosure,
+		/obj/item/clothing/jumpsuit/warden,
+		/obj/item/clothing/jumpsuit/warden,
+		/obj/item/clothing/suit/armor/warden,
+		/obj/item/clothing/suit/armor/warden,
+		/obj/item/clothing/head/warden,
+		/obj/item/clothing/head/warden,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/bowman,
 		/obj/item/clothing/glasses/sunglasses/sechud,
@@ -97,7 +95,7 @@
 
 /obj/structure/closet/secure_closet/security/cynosure/WillContain()
 	. = list(
-		/obj/item/clothing/suit/armor/pcarrier/light/nt/cynosure,
+		/obj/item/clothing/suit/armor/pcarrier/light/cynosure,
 		/obj/item/clothing/head/helmet,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/bowman,
@@ -107,12 +105,12 @@
 		/obj/item/grenade/flashbang,
 		/obj/item/baton/loaded,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		//obj/item/stack/tape_roll/barricade_tape/police,
+		/obj/item/stack/tape_roll/barricade_tape/police,
 		/obj/item/hailer,
 		/obj/item/flashlight/flare,
-		/obj/item/clothing/black_vest,
+		/obj/item/clothing/webbing/vest/black,
 		/obj/item/clothing/head/soft/sec/corp,
-		/obj/item/clothing/under/rank/security/corp,
+		/obj/item/clothing/jumpsuit/security/corp,
 		/obj/item/ammo_magazine/m45/rubber,
 		/obj/item/gun/energy/taser,
 		/obj/item/cell/gun,
@@ -157,17 +155,16 @@
 		/obj/item/clothing/badge/holo/detective,
 		/obj/item/clothing/gloves/black,
 		/obj/item/gunbox,
-		/obj/item/belt/detective,
+		/obj/item/belt/holster/forensic,
 		/obj/item/box/evidence,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/bowman,
-		/obj/item/clothing/suit/vest/detective,
-		//obj/item/stack/tape_roll/barricade_tape/police,
+		/obj/item/clothing/suit/jacket/vest/gray,
+		/obj/item/stack/tape_roll/barricade_tape/police,
 		/obj/item/clothing/webbing/holster/armpit,
 		/obj/item/flashlight/maglight,
 		/obj/item/chems/drinks/flask/detflask,
 		/obj/item/briefcase/crimekit,
 		/obj/item/taperecorder,
-		/obj/item/bag/detective,
 		/obj/item/magnetic_tape/random = 3
 	)

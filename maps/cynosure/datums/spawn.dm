@@ -1,5 +1,13 @@
-/datum/spawnpoint/wilderness
-	restrict_job = list("Survivalist", "Trained Drake") // Nobody except survivalists.
+/decl/spawnpoint/wilderness
+	restrict_job = list(
+		/datum/job/survivalist,
+		/datum/job/trained_animal
+	)
 
-/datum/spawnpoint/checkpoint
-	permit_offsite_job = list("Survivalist", "Trained Drake") // Survivalists can spawn here but not on the other 'civilized' spawns.
+/decl/spawnpoint/checkpoint
+	/*
+	permit_offsite_job  = list(
+		/datum/job/survivalist,
+		/datum/job/trained_animal
+	)
+	*/

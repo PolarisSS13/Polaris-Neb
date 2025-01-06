@@ -1,11 +1,3 @@
-/decl/outfit/vox/survivor
-/decl/outfit/job/explorer
-/decl/outfit/job/survivalist
-/decl/outfit/siffet
-/decl/outfit/job/pilot
-/decl/outfit/job/medical/sar
-/decl/outfit/job/survivalist/crash_survivor
-
 /decl/alt_title/emt
 
 /decl/department/science
@@ -248,15 +240,15 @@
 /datum/job/trained_animal
 	title = "Trained Drake"
 	department_types = list(/decl/department/planetside)
-	selection_color = "#6085a8"
-	total_positions = 2
-	spawn_positions = 1
-	supervisors = "your conscience"
-	economic_power = 1
-	access = list()
-	minimal_access = list()
-	outfit_type = /decl/outfit/siffet
-	description = "A number of the bolder folks in Sif's anomalous region have partially domesticated some of the local wildlife as working animals."
-	assignable = FALSE
-	account_allowed = FALSE
-	announced = FALSE
+	selection_color  = "#6085a8"
+	total_positions  = 2
+	spawn_positions  = 1
+	supervisors      = "your conscience"
+	economic_power   = 1
+	access           = list()
+	minimal_access   = list()
+	outfit_type      = /decl/outfit/naked // Have to have an outfit to pass job validation.
+	description      = "A number of the bolder folks in Sif's anomalous region have partially domesticated some of the local wildlife as working animals."
+	assignable       = FALSE
+	account_allowed  = FALSE
+	announced        = FALSE

@@ -23,6 +23,7 @@
 	abstract_type = /area/surface
 	name = "The Surface (Don't Use)"
 	area_flags = AREA_FLAG_RAD_SHIELDED
+	interior_ambient_light_modifier = -0.3
 
 /area/surface/center
 	name = "Center"
@@ -130,6 +131,7 @@
 	always_unpowered = TRUE
 	description = "Cold, still air sits in these dark and dusty cavern tunnels."
 	area_blurb_category = "caves"
+	interior_ambient_light_modifier = null
 
 // The bottom half that connects to the outpost and is safer.
 /area/surface/cave/explored/normal

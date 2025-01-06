@@ -1,5 +1,5 @@
 // Uniform slot
-/datum/gear/uniform/pilot
-	display_name = "uniform, pilot (Pilot)"
-	path = /obj/item/clothing/under/rank/pilot2
+/decl/loadout_option/uniform/pilot
+	name = "uniform, pilot (Pilot)"
+	path = /obj/item/clothing/jumpsuit/pilot/nanotrasen/dark_blue
 	allowed_roles = list("Explorer")

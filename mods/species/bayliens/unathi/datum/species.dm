@@ -108,6 +108,6 @@
 	LAZYDISTINCTADD(available_background_info[/decl/background_category/heritage], /decl/background_detail/heritage/lizard)
 	LAZYSET(default_background_info, /decl/background_category/heritage, /decl/background_detail/heritage/lizard)
 
-/decl/species/unathi/equip_survival_gear(var/mob/living/human/H)
+/decl/species/unathi/equip_survival_gear(mob/living/wearer, extended)
 	..()
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), slot_shoes_str)
+	wearer.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(wearer), slot_shoes_str)
