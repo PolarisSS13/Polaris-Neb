@@ -350,3 +350,9 @@ var/global/list/flooring_cache = list()
 
 /decl/flooring/proc/handle_turf_digging(turf/floor/target)
 	return TRUE
+
+/decl/flooring/proc/turf_crossed(atom/movable/crosser)
+	return
+
+/decl/flooring/proc/can_show_footsteps(turf/target)
+	return TRUE

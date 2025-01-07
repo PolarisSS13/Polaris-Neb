@@ -119,7 +119,7 @@
 "ap" = (
 /obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/decal/cleanable/dirt/visible,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/effect/decal/cleanable/filth,
 /obj/structure/curtain/open/shower/engineering,
 /obj/structure/hygiene/toilet{

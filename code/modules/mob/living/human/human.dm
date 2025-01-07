@@ -1071,40 +1071,6 @@
 	var/datum/appearance_descriptor/age = LAZYACCESS(bodytype.appearance_descriptors, "age")
 	LAZYSET(appearance_descriptors, "age", (age ? age.sanitize_value(val) : 30))
 
-/mob/living/human/HandleBloodTrail(turf/T, old_loc)
-	// Tracking blood
-	var/obj/item/source
-	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
-	if(istype(shoes))
-		shoes.handle_movement(src, MOVING_QUICKLY(src))
-		if(shoes.coating && shoes.coating.total_volume > 1)
-			source = shoes
-	else
-		for(var/foot_tag in list(BP_L_FOOT, BP_R_FOOT))
-			var/obj/item/organ/external/stomper = GET_EXTERNAL_ORGAN(src, foot_tag)
-			if(stomper && stomper.coating && stomper.coating.total_volume > 1)
-				source = stomper
-	if(!source)
-		species.handle_trail(src, T, old_loc)
-		return
-
-	var/list/bloodDNA
-	var/bloodcolor
-	var/list/blood_data = REAGENT_DATA(source.coating, /decl/material/liquid/blood)
-	if(blood_data)
-		bloodDNA = list(blood_data[DATA_BLOOD_DNA] = blood_data[DATA_BLOOD_TYPE])
-	else
-		bloodDNA = list()
-	bloodcolor = source.coating.get_color()
-	source.remove_coating(1)
-	update_equipment_overlay(slot_shoes_str)
-
-	if(species.get_move_trail(src))
-		T.AddTracks(species.get_move_trail(src),bloodDNA, dir, 0, bloodcolor) // Coming
-		if(isturf(old_loc))
-			var/turf/old_turf = old_loc
-			old_turf.AddTracks(species.get_move_trail(src), bloodDNA, 0, dir, bloodcolor) // Going
-
 /mob/living/human/remove_implant(obj/item/implant, surgical_removal = FALSE, obj/item/organ/external/affected)
 	if((. = ..()) && !surgical_removal)
 		shock_stage += 20

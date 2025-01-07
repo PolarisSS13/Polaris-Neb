@@ -12,7 +12,8 @@
 	/// Set to false to skip state checking and never draw an icon on the mob (except when held)
 	var/draw_on_mob_when_equipped = TRUE
 
-	var/image/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
+	/// this saves our blood splatter/coating overlay, which will be processed not to go over the edges of the sprite.
+	var/image/coating_overlay
 	var/randpixel = 6
 	var/material_health_multiplier = 0.2
 	var/hitsound
@@ -245,7 +246,7 @@
 /obj/item/PopulateClone(obj/item/clone)
 	clone = ..()
 	clone.contaminated = contaminated
-	clone.blood_overlay = image(blood_overlay)
+	clone.coating_overlay = image(coating_overlay)
 	clone.current_health = current_health
 
 	//#TODO: once item damage in, check health!
@@ -790,7 +791,7 @@
 	if(was_bloodied && !fluorescent)
 		fluorescent = FLUORESCENT_GLOWS
 		blood_color = COLOR_LUMINOL
-		blood_overlay.color = COLOR_LUMINOL
+		coating_overlay.color = COLOR_LUMINOL
 		update_icon()
 
 /obj/item/add_blood(mob/living/M, amount = 2, list/blood_data)
@@ -814,21 +815,21 @@
 		LAZYSET(blood_DNA, unique_enzymes, blood_type)
 	return TRUE
 
-var/global/list/_blood_overlay_cache = list()
-var/global/icon/_item_blood_mask = icon('icons/effects/blood.dmi', "itemblood")
-/obj/item/proc/generate_blood_overlay(force = FALSE)
-	if(blood_overlay && !force)
+var/global/list/_coating_overlay_cache = list()
+var/global/icon/_item_coating_mask = icon('icons/effects/blood.dmi', "itemblood")
+/obj/item/proc/generate_coating_overlay(force = FALSE)
+	if(coating_overlay && !force)
 		return
 	var/cache_key = "[icon]-[icon_state]"
-	if(global._blood_overlay_cache[cache_key])
-		blood_overlay = global._blood_overlay_cache[cache_key]
+	if(global._coating_overlay_cache[cache_key])
+		coating_overlay = global._coating_overlay_cache[cache_key]
 		return
 	var/icon/I = new /icon(icon, icon_state)
 	I.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1)         // Sets the icon RGB channel to pure white.
-	I.Blend(global._item_blood_mask, ICON_MULTIPLY) // Masks the blood overlay against the generated mask.
-	blood_overlay = image(I)
-	blood_overlay.appearance_flags |= NO_CLIENT_COLOR|RESET_COLOR
-	global._blood_overlay_cache[cache_key] = blood_overlay
+	I.Blend(global._item_coating_mask, ICON_MULTIPLY) // Masks the coating overlay against the generated mask.
+	coating_overlay = image(I)
+	coating_overlay.appearance_flags |= NO_CLIENT_COLOR|RESET_COLOR
+	global._coating_overlay_cache[cache_key] = coating_overlay
 
 /obj/item/proc/showoff(mob/user)
 	for(var/mob/M in view(user))
@@ -1018,13 +1019,15 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/add_coating(reagent_type, amount, data)
 	if(!coating)
-		coating = new/datum/reagents(10, src)
-	coating.add_reagent(reagent_type, amount, data)
-
-	if(!blood_overlay)
-		generate_blood_overlay()
-	blood_overlay.color = coating.get_color()
-
+		coating = new /datum/reagents(10, src)
+	if(ispath(reagent_type))
+		coating.add_reagent(reagent_type, amount, data)
+	else if(istype(reagent_type, /datum/reagents))
+		var/datum/reagents/source = reagent_type
+		source.trans_to_holder(coating, amount)
+	if(!coating_overlay)
+		generate_coating_overlay()
+	coating_overlay.color = coating.get_color()
 	update_icon()
 
 /obj/item/proc/remove_coating(amount)
@@ -1037,7 +1040,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 /obj/item/clean(clean_forensics=TRUE)
 	. = ..()
 	QDEL_NULL(coating)
-	blood_overlay = null
+	coating_overlay = null
 	if(clean_forensics)
 		var/datum/extension/forensic_evidence/forensics = get_extension(src, /datum/extension/forensic_evidence)
 		if(forensics)

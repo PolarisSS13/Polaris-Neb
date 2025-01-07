@@ -4708,7 +4708,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /turf/floor/tiled/white/monotile,
 /area/map_template/colony/bathroom)
 "jl" = (

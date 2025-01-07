@@ -3161,7 +3161,7 @@
 	dir = 1;
 	pixel_y = -21
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/structure/hygiene/toilet{
 	dir = 1
 	},

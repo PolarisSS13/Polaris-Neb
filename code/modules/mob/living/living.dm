@@ -1552,7 +1552,7 @@ default behaviour is:
 /mob/living/OnSimulatedTurfEntered(turf/T, old_loc)
 	T.add_dirt(0.5)
 
-	HandleBloodTrail(T, old_loc)
+	handle_walking_tracks(T, old_loc)
 
 	if(current_posture.prone)
 		return
@@ -1583,8 +1583,46 @@ default behaviour is:
 			step(src, dir)
 			sleep(1)
 
-/mob/living/proc/HandleBloodTrail(turf/T, old_loc)
-	return
+/mob/living/proc/handle_walking_tracks(turf/T, old_loc)
+
+	if(!T.can_show_footsteps())
+		return
+
+	// Tracking blood or other contaminants
+	var/obj/item/source
+	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
+	if(istype(shoes))
+		shoes.handle_movement(src, MOVING_QUICKLY(src))
+		if(shoes.coating && shoes.coating.total_volume > 1)
+			source = shoes
+	else
+		for(var/obj/item/organ/external/stomper in get_organs_by_categories(global.child_stance_limbs))
+			if(stomper.coating?.total_volume > 1)
+				source = stomper
+				break
+
+	var/decl/species/my_species = get_species()
+	if(!source)
+		my_species?.handle_trail(src, T, old_loc)
+		return
+
+	var/list/bloodDNA
+	var/bloodcolor
+	var/list/blood_data = REAGENT_DATA(source.coating, /decl/material/liquid/blood)
+	if(blood_data)
+		bloodDNA = list(blood_data[DATA_BLOOD_DNA] = blood_data[DATA_BLOOD_TYPE])
+	else
+		bloodDNA = list()
+	bloodcolor = source.coating.get_color()
+	source.remove_coating(1)
+	update_equipment_overlay(slot_shoes_str)
+
+	var/use_move_trail = my_species?.get_move_trail(src)
+	if(use_move_trail)
+		T.AddTracks(use_move_trail, bloodDNA, dir, 0, bloodcolor) // Coming
+		if(isturf(old_loc))
+			var/turf/old_turf = old_loc
+			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, bloodcolor) // Going
 
 /mob/living/proc/handle_general_grooming(user, obj/item/grooming/tool)
 	if(tool.grooming_flags & (GROOMABLE_BRUSH|GROOMABLE_COMB))
@@ -1944,3 +1982,13 @@ default behaviour is:
 
 /mob/living/proc/get_age()
 	. = LAZYACCESS(appearance_descriptors, "age") || 30
+
+/mob/living/proc/add_walking_contaminant(material_type, amount, data)
+	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
+	if(istype(shoes))
+		if(!buckled)
+			shoes.add_coating(material_type, amount, data)
+	else
+		for(var/obj/item/organ/external/limb in get_organs_by_categories(global.child_stance_limbs))
+			limb.add_coating(material_type, amount, data)
+	update_equipment_overlay(slot_shoes_str)

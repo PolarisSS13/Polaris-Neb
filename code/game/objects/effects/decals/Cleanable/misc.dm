@@ -90,9 +90,20 @@
 	if(prob(75))
 		set_rotation(pick(90, 180, 270))
 
+/obj/effect/decal/cleanable/vomit/mapped/Initialize(ml, _age)
+	. = ..()
+	add_to_reagents(/decl/material/liquid/acid/stomach, rand(3,5))
+	add_to_reagents(/decl/material/liquid/nutriment, rand(5,8))
+
 /obj/effect/decal/cleanable/vomit/on_update_icon()
 	. = ..()
-	color = reagents.get_color()
+	color = reagents?.get_color()
+
+/obj/effect/decal/cleanable/vomit/Crossed(atom/movable/AM)
+	. = ..()
+	if(!QDELETED(src) && reagents?.total_volume >= 1 && isliving(AM))
+		var/mob/living/walker = AM
+		walker.add_walking_contaminant(reagents, rand(2, 3))
 
 /obj/effect/decal/cleanable/tomato_smudge
 	name               = "tomato smudge"

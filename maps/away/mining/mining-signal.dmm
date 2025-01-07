@@ -1561,7 +1561,7 @@
 /area/outpost/abandoned)
 "fs" = (
 /obj/effect/decal/cleanable/dirt/visible,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "ft" = (
@@ -2428,7 +2428,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/decal/cleanable/dirt/visible,

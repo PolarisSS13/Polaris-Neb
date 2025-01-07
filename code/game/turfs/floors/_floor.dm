@@ -297,3 +297,11 @@
 /turf/floor/get_plant_growth_rate()
 	var/decl/flooring/flooring = get_topmost_flooring()
 	return flooring ? flooring.growth_value : ..()
+
+/turf/floor/Crossed(atom/movable/AM)
+	var/decl/flooring/flooring = get_topmost_flooring()
+	flooring?.turf_crossed(AM)
+	return ..()
+
+/turf/floor/can_show_footsteps()
+	return ..() && get_topmost_flooring()?.can_show_footsteps(src)

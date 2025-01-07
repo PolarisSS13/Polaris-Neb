@@ -822,6 +822,9 @@
 			if(IS_HOE(held) && can_dig_farm(held.material?.hardness))
 				LAZYDISTINCTADD(., /decl/interaction_handler/dig/farm)
 
+/turf/proc/can_show_footsteps()
+	return simulated
+
 /decl/interaction_handler/show_turf_contents
 	name = "Show Turf Contents"
 	expected_user_type = /mob

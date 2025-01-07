@@ -19,6 +19,15 @@
 		return
 	return ..()
 
+/decl/flooring/mud/turf_crossed(atom/movable/crosser)
+	if(!isliving(crosser))
+		return
+	var/mob/living/walker = crosser
+	walker.add_walking_contaminant(/decl/material/solid/soil, rand(2,3))
+
+/decl/flooring/mud/can_show_footsteps(turf/target)
+	return FALSE // So we don't end up covered in a million footsteps that we provided.
+
 /decl/flooring/dry_mud
 	name            = "dry mud"
 	desc            = "This was once mud, but forgot to keep hydrated."

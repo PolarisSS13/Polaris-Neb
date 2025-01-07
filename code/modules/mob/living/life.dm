@@ -585,8 +585,7 @@
 	if(!root_bodytype)
 		return
 
-	var/static/list/all_stance_limbs = list(ORGAN_CATEGORY_STANCE, ORGAN_CATEGORY_STANCE_ROOT)
-	var/expected_limbs_for_bodytype = root_bodytype.get_expected_organ_count_for_categories(all_stance_limbs)
+	var/expected_limbs_for_bodytype = root_bodytype.get_expected_organ_count_for_categories(global.all_stance_limbs)
 	if(expected_limbs_for_bodytype <= 0)
 		return // we don't care about stance for whatever reason.
 
@@ -598,7 +597,7 @@
 
 	var/found_limbs = 0
 	var/had_limb_pain = FALSE
-	for(var/obj/item/organ/external/limb in get_organs_by_categories(all_stance_limbs))
+	for(var/obj/item/organ/external/limb in get_organs_by_categories(global.all_stance_limbs))
 		found_limbs++
 		var/add_stance_damage = 0
 		if(limb.is_malfunctioning())

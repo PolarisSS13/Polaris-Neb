@@ -184,7 +184,7 @@
 /turf/floor/tiled/white,
 /area/template_noop)
 "aM" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/item/chems/glass/paint/random,
 /obj/structure/closet/medical_wall/filled{
 	pixel_y = 32
