@@ -91,26 +91,12 @@
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	if(!isliving(AM) || amount < 1)
 		return
-
-	var/mob/living/M = AM
-	var/obj/item/organ/external/l_foot = GET_EXTERNAL_ORGAN(M, BP_L_FOOT)
-	var/obj/item/organ/external/r_foot = GET_EXTERNAL_ORGAN(M, BP_R_FOOT)
-	var/hasfeet = l_foot && r_foot
-
-	var/transferred_data = blood_data ? blood_data[pick(blood_data)] : null
-	var/obj/item/clothing/shoes/shoes = M.get_equipped_item(slot_shoes_str)
-	if(istype(shoes) && !M.buckled)//Adding blood to shoes
-		shoes.add_coating(chemical, amount, transferred_data)
-	else if (hasfeet)//Or feet
-		if(l_foot)
-			l_foot.add_coating(chemical, amount, transferred_data)
-		if(r_foot)
-			r_foot.add_coating(chemical, amount, transferred_data)
-	else if (M.buckled && istype(M.buckled, /obj/structure/bed/chair/wheelchair))
-		var/obj/structure/bed/chair/wheelchair/W = M.buckled
-		W.bloodiness = 4
-
-	M.update_equipment_overlay(slot_shoes_str)
+	var/mob/living/walker = AM
+	if(istype(walker.buckled, /obj/structure/bed/chair/wheelchair))
+		var/obj/structure/bed/chair/wheelchair/wheelchair = walker.buckled
+		wheelchair.bloodiness = 4
+	else
+		walker.add_walking_contaminant(chemical, amount, (blood_data ? blood_data[pick(blood_data)] : null))
 	amount--
 
 /obj/effect/decal/cleanable/blood/proc/dry()

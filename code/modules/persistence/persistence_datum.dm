@@ -12,10 +12,6 @@
 	var/ignore_area_flags = FALSE  // Set to TRUE to skip area flag checks such as nonpersistent areas.
 	var/ignore_invalid_loc = FALSE // Set to TRUE to skip checking for a non-null station turf for the entry.
 
-/decl/persistence_handler/Initialize()
-	SetFilename()
-	. = ..()
-
 /decl/persistence_handler/proc/SetFilename()
 	if(name)
 		filename = "data/persistent/[ckey(global.using_map.name)]-[ckey(name)].json"
@@ -63,9 +59,8 @@
 		else
 			return
 
-	. = GetValidTurf(locate(tokens["x"], tokens["y"], tokens["z"]), tokens)
-	if(.)
-		CreateEntryInstance(., tokens)
+	if(GetValidTurf(locate(tokens["x"], tokens["y"], tokens["z"]), tokens))
+		return CreateEntryInstance(., tokens)
 
 /decl/persistence_handler/proc/IsValidEntry(var/atom/entry)
 	if(!istype(entry))
@@ -92,9 +87,11 @@
 	.["age"] = GetEntryAge(entry)
 
 /decl/persistence_handler/proc/FinalizeTokens(var/list/tokens)
-	. = tokens
+	. = tokens || list()
 
 /decl/persistence_handler/Initialize()
+
+	SetFilename()
 
 	. = ..()
 

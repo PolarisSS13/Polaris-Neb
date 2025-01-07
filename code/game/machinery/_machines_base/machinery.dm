@@ -234,6 +234,8 @@ Class Procs:
 /obj/machinery/CouldUseTopic(var/mob/user)
 	..()
 	user.set_machine(src)
+	if(clicksound && isliving(user))
+		playsound(src, clicksound, clickvol)
 
 /obj/machinery/CouldNotUseTopic(var/mob/user)
 	user.unset_machine()
@@ -390,11 +392,6 @@ Class Procs:
 
 /datum/proc/remove_visual(mob/M)
 	return
-
-/obj/machinery/CouldUseTopic(var/mob/user)
-	..()
-	if(clicksound && isliving(user))
-		playsound(src, clicksound, clickvol)
 
 /obj/machinery/proc/display_parts(mob/user)
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")

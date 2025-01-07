@@ -49,13 +49,6 @@
 	brute_mod = 0.9
 	burn_mod =  1.35
 
-	natural_armour_values = list(
-		ARMOR_MELEE = ARMOR_MELEE_KNIVES,
-		ARMOR_BULLET = ARMOR_BALLISTIC_MINOR,
-		ARMOR_BOMB = ARMOR_BOMB_PADDED,
-		ARMOR_BIO = ARMOR_BIO_SHIELDED,
-		ARMOR_RAD = 0.5*ARMOR_RAD_MINOR
-		)
 	gluttonous = GLUT_SMALLER
 	strength = STR_HIGH
 	breath_pressure = 25
@@ -84,8 +77,8 @@
 #undef SERPENTID_FLIGHT_PRESSURE_THRESHOLD
 
 /decl/species/serpentid/handle_environment_special(var/mob/living/human/H)
-	if(!H.on_fire && H.fire_stacks < 2)
-		H.fire_stacks += 0.2
+	if(!H.is_on_fire() && H.get_fire_intensity() < 2)
+		H.adjust_fire_intensity(0.2)
 	return
 
 /decl/species/serpentid/handle_fall_special(var/mob/living/human/H, var/turf/landing)

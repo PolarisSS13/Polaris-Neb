@@ -637,6 +637,7 @@
 		LAZYDISTINCTADD(., air_graphic)
 	if(length(weather?.vis_contents_additions))
 		LAZYADD(., weather.vis_contents_additions)
+		. += pick(weather.particle_sources) // we know . is never null here
 	if(flooded)
 		var/flood_object = get_flood_overlay(flooded)
 		if(flood_object)
@@ -805,8 +806,12 @@
 	. = ..()
 	LAZYADD(., /decl/interaction_handler/show_turf_contents)
 	if(user)
-		var/obj/item/held = user.get_active_held_item()
+		var/obj/item/held = user.get_active_held_item() || user.get_usable_hand_slot_organ()
 		if(istype(held))
+			if(reagents?.total_volume >= FLUID_PUDDLE)
+				LAZYADD(., /decl/interaction_handler/dip_item)
+				LAZYADD(., /decl/interaction_handler/fill_from)
+			LAZYADD(., /decl/interaction_handler/empty_into)
 			if(IS_SHOVEL(held))
 				if(can_dig_pit(held.material?.hardness))
 					LAZYDISTINCTADD(., /decl/interaction_handler/dig/pit)
@@ -816,6 +821,9 @@
 				LAZYDISTINCTADD(., /decl/interaction_handler/dig/trench)
 			if(IS_HOE(held) && can_dig_farm(held.material?.hardness))
 				LAZYDISTINCTADD(., /decl/interaction_handler/dig/farm)
+
+/turf/proc/can_show_footsteps()
+	return simulated
 
 /decl/interaction_handler/show_turf_contents
 	name = "Show Turf Contents"
@@ -835,6 +843,7 @@
 	name = "Dig Trench"
 
 /decl/interaction_handler/dig/trench/invoked(atom/target, mob/user, obj/item/prop)
+	prop ||= user.get_usable_hand_slot_organ() // Allows drakes to dig.
 	var/turf/T = get_turf(target)
 	if(IS_SHOVEL(prop))
 		if(T.can_dig_trench(prop?.material?.hardness))
@@ -848,6 +857,7 @@
 	name = "Dig Pit"
 
 /decl/interaction_handler/dig/pit/invoked(atom/target, mob/user, obj/item/prop)
+	prop ||= user.get_usable_hand_slot_organ() // Allows drakes to dig.
 	var/turf/T = get_turf(target)
 	if(T.can_dig_pit(prop?.material?.hardness))
 		T.try_dig_pit(user, prop)
@@ -856,6 +866,7 @@
 	name = "Dig Farm Plot"
 
 /decl/interaction_handler/dig/farm/invoked(atom/target, mob/user, obj/item/prop)
+	prop ||= user.get_usable_hand_slot_organ() // Allows drakes to dig.
 	var/turf/T = get_turf(target)
 	if(T.can_dig_farm(prop?.material?.hardness))
 		T.try_dig_farm(user, prop)

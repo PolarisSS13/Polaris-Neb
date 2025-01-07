@@ -17,7 +17,7 @@
 	if(material_alteration & MAT_FLAG_ALTERATION_DESC)
 		update_material_desc()
 	if(material_alteration & MAT_FLAG_ALTERATION_COLOR)
-		update_material_colour()
+		update_material_color()
 	if((alpha / 255) < 0.5)
 		set_opacity(FALSE)
 	else
@@ -49,7 +49,7 @@
 	else
 		desc = base_desc
 
-/obj/structure/proc/update_material_colour()
+/obj/structure/proc/update_material_color()
 	color = get_color()
 	if(istype(material))
 		alpha = clamp((50 + material.opacity * 255), 0, 255)
@@ -65,19 +65,25 @@
 	if(parts_type && !ispath(parts_type, /obj/item/stack))
 		for(var/i = 1 to max(parts_amount, 1))
 			LAZYADD(., create_dismantled_part(T))
-	else
-		for(var/mat in matter)
-			var/decl/material/M = GET_DECL(mat)
-			var/placing
-			if(isnull(parts_amount))
-				placing = (matter[mat] / SHEET_MATERIAL_AMOUNT) * 0.75
-				if(parts_type)
-					placing *= atom_info_repository.get_matter_multiplier_for(parts_type, mat, placing)
-				placing = floor(placing)
-			else
-				placing = parts_amount
-			if(placing > 0)
+		return
+
+	for(var/mat in matter)
+
+		var/decl/material/M = GET_DECL(mat)
+		var/placing
+		if(isnull(parts_amount))
+			placing = (matter[mat] / SHEET_MATERIAL_AMOUNT) * 0.75
+			if(material == M && parts_type)
+				placing *= atom_info_repository.get_matter_multiplier_for(parts_type, mat, placing)
+			placing = floor(placing)
+		else
+			placing = parts_amount
+
+		if(placing > 0)
+			if(material == M)
 				LAZYADD(., M.place_dismantled_product(T, FALSE, placing, parts_type))
+			else
+				LAZYADD(., M.place_dismantled_product(T, FALSE, placing))
 
 /obj/structure/proc/clear_materials()
 	matter = null

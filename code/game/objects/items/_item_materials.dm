@@ -5,8 +5,8 @@
 	if((material_alteration & MAT_FLAG_ALTERATION_COLOR) && material)
 		alpha = 100 + material.opacity * 255
 	color = get_color() // avoiding set_color() here as that will set it on paint_color
-	if(blood_overlay)
-		add_overlay(blood_overlay)
+	if(coating_overlay)
+		add_overlay(coating_overlay)
 	if(global.contamination_overlay && contaminated)
 		add_overlay(global.contamination_overlay)
 
@@ -105,7 +105,7 @@
 
 /obj/item/proc/update_name()
 	var/list/new_name = list(base_name || initial(name))
-	if(material_alteration & MAT_FLAG_ALTERATION_NAME)
+	if(istype(material) && (material_alteration & MAT_FLAG_ALTERATION_NAME))
 		new_name.Insert(1, material.adjective_name)
 	if(name_prefix)
 		new_name.Insert(1, name_prefix)

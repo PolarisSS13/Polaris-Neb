@@ -117,7 +117,7 @@
 	uid = "bodytype_drone_construction"
 
 /decl/bodytype/drone/construction/Initialize()
-	equip_adjust = list(
+	_equip_adjust = list(
 		slot_head_str = list(
 			"[NORTH]" = list(1, -12),
 			"[SOUTH]" = list(1, -12),
@@ -355,13 +355,13 @@
 	uid = "bodytype_drone"
 
 /decl/bodytype/drone/Initialize()
-	if(!length(equip_adjust))
-		equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_equip_adjust))
+		_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list(0, -13),
 				"[SOUTH]" = list(0, -13),
-				"[EAST]" =  list(0, -13),
-				"[WEST]" =  list(0, -13)
+				"[EAST]"  = list(0, -13),
+				"[WEST]"  = list(0, -13)
 			)
 		)
 	. = ..()

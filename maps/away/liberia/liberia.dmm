@@ -1095,7 +1095,7 @@
 	pixel_x = -6;
 	pixel_y = 28
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/atmospherics/unary/vent_pump/high_volume/external_air{
 	id_tag = "merchant_ship_vent"
 	},
@@ -2340,8 +2340,8 @@
 /obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/item/stack/material/pane/mapped/glass/fifty,
 /obj/item/stack/material/sheet/reinforced/mapped/fiberglass/fifty,
-/obj/item/stack/material/rods/fifty,
-/obj/item/stack/material/rods/fifty,
+/obj/item/stack/material/rods/mapped/steel/fifty,
+/obj/item/stack/material/rods/mapped/steel/fifty,
 /obj/item/stack/material/sheet/reinforced/mapped/plasteel/forty,
 /obj/item/stack/material/sheet/mapped/steel/fifty,
 /obj/item/stack/material/sheet/mapped/steel/fifty,
@@ -5774,7 +5774,7 @@
 	pixel_x = -28;
 	pixel_y = -10
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/catwalk,
 /obj/structure/cable/blue{
 	icon_state = "1-4"
@@ -7523,8 +7523,8 @@
 /obj/structure/closet/crate,
 /obj/item/stack/material/sheet/mapped/steel/fifty,
 /obj/item/stack/material/sheet/mapped/steel/fifty,
-/obj/item/stack/material/rods/fifty,
-/obj/item/stack/material/rods/fifty,
+/obj/item/stack/material/rods/mapped/steel/fifty,
+/obj/item/stack/material/rods/mapped/steel/fifty,
 /obj/item/stack/material/panel/mapped/plastic/fifty,
 /obj/item/stack/material/sheet/reinforced/mapped/titanium/fifty,
 /obj/item/stack/material/sheet/reinforced/mapped/ocp/fifty,

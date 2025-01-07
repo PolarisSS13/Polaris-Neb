@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(modpacks)
 	// Compiled modpack information.
 	var/list/default_submap_whitelisted_species = list()
 	var/list/default_submap_blacklisted_species = list(SPECIES_ALIEN, SPECIES_GOLEM)
+	var/list/modpack_nanoui_directories = list()
 
 /datum/controller/subsystem/modpacks/Initialize()
 	var/list/all_modpacks = decls_repository.get_decls_of_subtype(/decl/modpack)

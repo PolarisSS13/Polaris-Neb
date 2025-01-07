@@ -31,7 +31,6 @@
 		/obj/item/matter_decompiler,
 		/obj/item/stack/material/cyborg/steel,
 		/obj/item/stack/material/rods/cyborg,
-		/obj/item/stack/material/strut/cyborg,
 		/obj/item/stack/tile/floor/cyborg,
 		/obj/item/stack/tile/roof/cyborg,
 		/obj/item/stack/material/cyborg/glass,
@@ -84,7 +83,6 @@
 	for(var/thing in list(
 		 /obj/item/stack/material/cyborg/steel,
 		 /obj/item/stack/material/rods/cyborg,
-		 /obj/item/stack/material/strut/cyborg,
 		 /obj/item/stack/tile/floor/cyborg,
 		 /obj/item/stack/tile/roof/cyborg,
 		 /obj/item/stack/material/cyborg/glass/reinforced
@@ -117,6 +115,8 @@
 	..()
 	var/obj/item/chems/spray/cleaner/drone/SC = locate() in equipment
 	SC.add_to_reagents(/decl/material/liquid/cleaner, 8 * amount)
+	var/obj/item/lightreplacer/LR = locate() in equipment
+	LR.Charge(R, amount)
 
 /obj/item/robot_module/drone/construction
 	name = "construction drone module"
@@ -128,8 +128,3 @@
 /obj/item/robot_module/drone/construction/Initialize()
 	equipment += /obj/item/rcd/borg
 	. = ..()
-
-/obj/item/robot_module/drone/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
-	var/obj/item/lightreplacer/LR = locate() in equipment
-	LR.Charge(R, amount)
-	..()

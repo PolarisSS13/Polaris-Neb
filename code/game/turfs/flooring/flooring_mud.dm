@@ -3,6 +3,7 @@
 	desc            = "A stretch of thick, waterlogged mud."
 	icon            = 'icons/turf/flooring/mud.dmi'
 	icon_base       = "mud"
+	color           = null // autoset from material
 	icon_edge_layer = FLOOR_EDGE_MUD
 	footstep_type   = /decl/footsteps/mud
 	turf_flags      = TURF_FLAG_BACKGROUND | TURF_IS_HOLOMAP_PATH | TURF_FLAG_ABSORB_LIQUID
@@ -17,6 +18,15 @@
 			target.set_base_flooring(/decl/flooring/dry_mud)
 		return
 	return ..()
+
+/decl/flooring/mud/turf_crossed(atom/movable/crosser)
+	if(!isliving(crosser))
+		return
+	var/mob/living/walker = crosser
+	walker.add_walking_contaminant(/decl/material/solid/soil, rand(2,3))
+
+/decl/flooring/mud/can_show_footsteps(turf/target)
+	return FALSE // So we don't end up covered in a million footsteps that we provided.
 
 /decl/flooring/dry_mud
 	name            = "dry mud"
@@ -45,7 +55,7 @@
 	icon            = 'icons/turf/flooring/dirt.dmi'
 	icon_base       = "dirt"
 	icon_edge_layer = FLOOR_EDGE_DIRT
-	color           = "#41311b"
+	color           = null // autoset from material
 	footstep_type   = /decl/footsteps/asteroid
 	turf_flags      = TURF_FLAG_BACKGROUND | TURF_IS_HOLOMAP_PATH | TURF_FLAG_ABSORB_LIQUID
 	force_material  = /decl/material/solid/soil

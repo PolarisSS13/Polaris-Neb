@@ -23,12 +23,6 @@
 /obj/item/organ/external/chest/proc/get_current_skin()
 	return
 
-/obj/item/organ/external/get_scan_results()
-	. = ..()
-	var/obj/item/organ/internal/lungs/L = locate() in src
-	if( L && L.is_bruised())
-		. += "Lung ruptured"
-
 /obj/item/organ/external/chest/die()
 	//Special handling for synthetics
 	if(BP_IS_PROSTHETIC(src) || BP_IS_CRYSTAL(src))

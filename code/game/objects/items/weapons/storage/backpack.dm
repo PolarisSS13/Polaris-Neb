@@ -17,17 +17,14 @@
 /obj/item/backpack/can_contaminate()
 	return FALSE
 
-/obj/item/backpack/equipped()
-	if(!has_extension(src, /datum/extension/appearance))
-		set_extension(src, /datum/extension/appearance/cardborg)
-	..()
-
 /obj/item/backpack/attackby(obj/item/W, mob/user)
 	if (storage?.use_sound)
 		playsound(src.loc, storage.use_sound, 50, 1, -5)
 	return ..()
 
 /obj/item/backpack/equipped(var/mob/user, var/slot)
+	if(!has_extension(src, /datum/extension/appearance))
+		set_extension(src, /datum/extension/appearance/cardborg)
 	if (slot == slot_back_str && storage?.use_sound)
 		playsound(loc, storage.use_sound, 50, 1, -5)
 	return ..(user, slot)

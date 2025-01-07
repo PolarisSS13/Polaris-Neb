@@ -51,7 +51,7 @@
 /obj/item/clothing/mask/chewable/Process()
 	chew(1)
 	if(chewtime < 1)
-		extinguish()
+		extinguish_fire()
 
 /obj/item/clothing/mask/chewable/tobacco
 	name = "wad"
@@ -72,7 +72,7 @@
 	desc = "A disgusting spitwad."
 	icon = 'icons/clothing/mask/chewables/chew_spit.dmi'
 
-/obj/item/clothing/mask/chewable/proc/extinguish(var/mob/user, var/no_message)
+/obj/item/clothing/mask/chewable/extinguish_fire(mob/user, no_message = FALSE)
 	STOP_PROCESSING(SSobj, src)
 	if(type_butt)
 		var/obj/item/trash/cigbutt/butt = new type_butt(get_turf(src))

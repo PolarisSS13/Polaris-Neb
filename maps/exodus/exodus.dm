@@ -26,6 +26,10 @@
 	// Must come after borers for compatibility.
 	#include "../../mods/content/psionics/_psionics.dme"
 
+
+	// Must come after psionics for counsellor compatibility.
+	#include "../../mods/content/standard_jobs/_standard_jobs.dme"
+
 	#include "../../mods/species/skrell/_skrell.dme"
 	#include "../../mods/species/tajaran/_tajaran.dme"
 	#include "../../mods/species/unathi/_unathi.dme"
@@ -49,30 +53,13 @@
 	#include "../away/unishi/unishi.dm"
 	#include "../away/yacht/yacht.dm"
 
-	#include "jobs/_goals.dm"
-	#include "jobs/captain.dm"
-	#include "jobs/civilian.dm"
-	#include "jobs/engineering.dm"
-	#include "jobs/medical.dm"
-	#include "jobs/science.dm"
-	#include "jobs/security.dm"
-	#include "jobs/synthetics.dm"
-
-	#include "outfits/_pda.dm"
-	#include "outfits/cargo.dm"
-	#include "outfits/civilian.dm"
-	#include "outfits/command.dm"
-	#include "outfits/engineering.dm"
-	#include "outfits/medical.dm"
-	#include "outfits/science.dm"
-	#include "outfits/security.dm"
+	#include "exodus_goals.dm"
 
 	#include "exodus_announcements.dm"
 	#include "exodus_antagonism.dm"
 	#include "exodus_cameras.dm"
 	#include "exodus_areas.dm"
 	#include "exodus_elevator.dm"
-	#include "exodus_departments.dm"
 	#include "exodus_jobs.dm"
 	#include "exodus_loadout.dm"
 	#include "exodus_overmap.dm"

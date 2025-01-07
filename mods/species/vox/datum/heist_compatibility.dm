@@ -16,7 +16,7 @@
 
 	var/decl/species/my_species = user?.get_species()
 	var/decl/special_role/raider/raiders = GET_DECL(/decl/special_role/raider)
-	if(!istype(user) || !user.mind || !user.mind.assigned_special_role != raiders || !my_species || my_species.name == SPECIES_VOX || !is_alien_whitelisted(user, SPECIES_VOX))
+	if(!istype(user) || !user.mind || !raiders.is_antagonist(user.mind) || !my_species || my_species.name == SPECIES_VOX || !is_alien_whitelisted(user, SPECIES_VOX))
 		return ..()
 
 	var/choice = input("Do you wish to become a vox of the Shoal? This is not reversible.") as null|anything in list("No","Yes")

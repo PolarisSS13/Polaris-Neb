@@ -250,7 +250,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 /obj/structure/tape_barricade/proc/update_neighbors(var/location = loc)
 	for (var/look_dir in global.cardinal)
 		var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade, get_step(location, look_dir))
-		if(B && !QDELETED(B))
+		if(!QDELETED(B))
 			B.update_icon()
 
 	if(!QDELETED(src))
@@ -261,10 +261,11 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 	neighbors = 0
 	for (var/look_dir in global.cardinal)
 		var/turf/target_turf = get_step(src, look_dir)
-		var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade, target_turf)
-		//We connect to walls and other tape_barricades
-		if((B && !QDELETED(B)) || (!B && target_turf?.is_wall()))
-			neighbors |= look_dir
+		if(target_turf)
+			var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade) in target_turf
+			//We connect to walls and other tape_barricades
+			if((B && !QDELETED(B)) || (!B && target_turf.is_wall()))
+				neighbors |= look_dir
 
 /**Allow sutypes to override with their own forced icon state name.*/
 /obj/structure/tape_barricade/proc/icon_name_override()

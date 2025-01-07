@@ -5,6 +5,7 @@
 	slot_id = slot_s_store_str
 	requires_organ_tag = BP_CHEST
 	mob_overlay_layer = HO_SUIT_STORE_LAYER
+	fluid_height = (FLUID_SHALLOW + FLUID_OVER_MOB_HEAD) / 2 // halfway between waist and top of head, so roughly chest level
 
 /datum/inventory_slot/suit_storage/can_equip_to_slot(var/mob/user, var/obj/item/prop, var/disable_warning, var/ignore_equipped)
 	. = ..()

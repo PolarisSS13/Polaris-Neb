@@ -55,21 +55,21 @@
 	)
 
 /decl/bodytype/hnoll/Initialize()
-	if(!equip_adjust)
-		equip_adjust = list(
-			slot_glasses_str = list(
+	if(!_equip_adjust)
+		_equip_adjust = list(
+			(slot_glasses_str) = list(
 				"[NORTH]" = list( 0, 2),
 				"[EAST]"  = list( 0, 2),
 				"[SOUTH]" = list( 0, 2),
 				"[WEST]"  = list( 0, 2)
 			),
-			slot_wear_mask_str = list(
+			(slot_wear_mask_str) = list(
 				"[NORTH]" = list( 0, 2),
 				"[EAST]"  = list( 2, 2),
 				"[SOUTH]" = list( 0, 2),
 				"[WEST]"  = list(-2, 2)
 			),
-			slot_head_str = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list( 0, 2),
 				"[EAST]"  = list( 0, 2),
 				"[SOUTH]" = list( 0, 2),

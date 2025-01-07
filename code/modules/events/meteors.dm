@@ -243,6 +243,8 @@ var/global/list/meteors_major = list(
 	. = ..()
 	z_original = z
 	global.meteor_list += src
+	if(!ismissile)
+		SpinAnimation()
 
 /obj/effect/meteor/Move()
 	. = ..() //process movement...
@@ -258,11 +260,6 @@ var/global/list/meteors_major = list(
 	walk(src, 0)
 	global.meteor_list -= src
 	. = ..()
-
-/obj/effect/meteor/Initialize()
-	. = ..()
-	if(!ismissile)
-		SpinAnimation()
 
 /obj/effect/meteor/Bump(atom/A)
 	..()

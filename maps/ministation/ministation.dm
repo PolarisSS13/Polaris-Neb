@@ -25,6 +25,7 @@ Twice...
 
 	#include "../random_ruins/exoplanet_ruins/playablecolony/playablecolony.dm"
 
+	#include "../../mods/content/standard_jobs/_standard_jobs.dme"
 	#include "../../mods/content/xenobiology/_xenobiology.dme"
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/matchmaking/_matchmaking.dme"
@@ -84,7 +85,6 @@ Twice...
 	#include "jobs/security.dm"
 	#include "jobs/science.dm"
 	#include "jobs/tradehouse.dm"
-	#include "jobs/synthetics.dm"
 
 	#include "outfits/_outfits.dm"
 	#include "outfits/command.dm"

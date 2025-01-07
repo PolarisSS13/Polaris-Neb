@@ -15,11 +15,6 @@
 	dummy = null
 	. = ..()
 
-/obj/structure/target_stake/attackby(obj/item/used_item, mob/user)
-	if(dummy?.repair_target_dummy(used_item, user))
-		return TRUE
-	return ..()
-
 /obj/structure/target_stake/take_damage(damage, damage_type, damage_flags, inflicter, armor_pen, silent, do_update_health)
 	if(dummy)
 		. = dummy.take_damage(damage, damage_type, damage_flags, inflicter, armor_pen, silent, do_update_health)
@@ -42,6 +37,8 @@
 	return ..()
 
 /obj/structure/target_stake/attackby(obj/item/used_item, mob/user)
+	if(dummy?.repair_target_dummy(used_item, user))
+		return TRUE
 	if(istype(used_item, /obj/item/training_dummy) && can_hold_dummy(user, used_item))
 		if(dummy)
 			to_chat(user, SPAN_WARNING("\The [src] is already holding \the [dummy]."))

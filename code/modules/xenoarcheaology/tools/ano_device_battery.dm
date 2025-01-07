@@ -57,6 +57,7 @@
 
 /obj/item/anodevice/Destroy()
 	inserted_battery = null
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/anodevice/attackby(var/obj/I, var/mob/user)
@@ -187,10 +188,6 @@
 		icon_state = "anodev[round(inserted_battery.percent(),25)]"
 	else
 		icon_state = "anodev_empty"
-
-/obj/item/anodevice/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
 
 /obj/item/anodevice/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	if (!istype(target))

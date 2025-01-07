@@ -467,9 +467,6 @@
 /datum/fabricator_recipe/imprinter/circuit/long_range_relay
 	path = /obj/item/stock_parts/circuitboard/relay/long_range
 
-/datum/fabricator_recipe/imprinter/circuit/inertial_damper
-	path = /obj/item/stock_parts/circuitboard/inertial_damper
-
 /datum/fabricator_recipe/imprinter/circuit/docking_beacon
 	path = /obj/item/stock_parts/circuitboard/docking_beacon
 

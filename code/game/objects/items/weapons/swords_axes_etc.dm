@@ -66,8 +66,8 @@
 	update_held_icon()
 
 /obj/item/telebaton/on_update_icon()
-	if(length(blood_DNA))
-		generate_blood_overlay(TRUE) // Force recheck.
+	if(coating?.total_volume || blood_DNA)
+		generate_coating_overlay(TRUE) // Force recheck.
 	. = ..()
 	if(on)
 		icon = 'icons/obj/items/weapon/telebaton_extended.dmi'

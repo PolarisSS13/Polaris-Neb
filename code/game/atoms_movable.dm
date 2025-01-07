@@ -272,7 +272,7 @@
 
 		if(isturf(loc))
 			var/turf/T = loc
-			if(T.reagents)
+			if(T.reagents?.total_volume && submerged())
 				fluid_act(T.reagents)
 
 		for(var/mob/viewer in storage?.storage_ui?.is_seeing)

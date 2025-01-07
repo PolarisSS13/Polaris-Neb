@@ -17,6 +17,7 @@
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"
 
+	#include "../../mods/content/standard_jobs/_standard_jobs.dme"
 	#include "../../mods/content/dungeon_loot/_dungeon_loot.dme"
 	#include "../../mods/content/mundane.dm"
 	#include "../../mods/content/baychems/_baychems.dme"
@@ -59,7 +60,6 @@
 
 	#include "tradeship_antagonists.dm"
 	#include "tradeship_areas.dm"
-	#include "tradeship_departments.dm"
 	#include "tradeship_documents.dm"
 	#include "tradeship_jobs.dm"
 	#include "tradeship_loadouts.dm"
@@ -79,7 +79,6 @@
 	#include "jobs/engineering.dm"
 	#include "jobs/medical.dm"
 	#include "jobs/science.dm"
-	#include "jobs/synthetics.dm"
 
 	#include "outfits/_outfits.dm"
 	#include "outfits/command.dm"

@@ -368,7 +368,7 @@
 	deactivate_string = "Deactivate Thrusters"
 
 	interface_name = "maneuvering jets"
-	interface_desc = "An inbuilt EVA maneuvering system that runs off a seperate gas supply."
+	interface_desc = "An inbuilt EVA maneuvering system that runs off a separate gas supply."
 	origin_tech = @'{"materials":6,"engineering":7}'
 	material = /decl/material/solid/metal/steel
 	matter = list(

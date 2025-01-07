@@ -24,7 +24,7 @@
 /area/shaded_hills/outside/downlands)
 "bu" = (
 /obj/structure/table/desk/dresser,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "bv" = (
 /obj/structure/bed/chair/rustic{
@@ -45,11 +45,11 @@
 /obj/item/chems/glass/handmade/cup/wood,
 /obj/item/chems/glass/handmade/cup/wood,
 /obj/item/chems/glass/handmade/cup/wood,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "cl" = (
 /obj/structure/table/wood/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "cq" = (
 /obj/structure/table/wood/ebony,
@@ -89,11 +89,11 @@
 /area/shaded_hills/general_store)
 "dK" = (
 /obj/structure/table/wood/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "dL" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "dN" = (
 /obj/structure/wall_sconce/lantern{
@@ -107,7 +107,7 @@
 /area/shaded_hills/shrine)
 "eD" = (
 /obj/structure/working/loom/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "eG" = (
 /obj/structure/door/walnut,
@@ -149,7 +149,7 @@
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/inn/kitchen)
 "fR" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "fS" = (
 /obj/structure/table/marble,
@@ -176,14 +176,14 @@
 /turf/floor/path/basalt,
 /area/shaded_hills/slaughterhouse)
 "ge" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "gg" = (
 /obj/structure/wall_sconce/lantern{
 	dir = 4
 	},
 /obj/structure/table/wood/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "gn" = (
 /obj/item/flame/candle/handmade,
@@ -200,7 +200,7 @@
 /obj/structure/wall_sconce/lantern{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "gA" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -212,7 +212,7 @@
 /obj/structure/wall_sconce/lantern{
 	start_lit = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "gL" = (
 /obj/structure/reagent_dispensers/barrel/ebony/oil,
@@ -246,7 +246,7 @@
 /obj/structure/bed/chair/bench/ebony{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "hu" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -256,7 +256,7 @@
 	dir = 1;
 	pixel_y = 10
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "hE" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -267,7 +267,7 @@
 /area/shaded_hills/outside/downlands)
 "hJ" = (
 /obj/item/stool/rustic,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "hU" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -280,7 +280,7 @@
 	dir = 1;
 	pixel_y = 10
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "id" = (
 /obj/structure/table/wood/ebony,
@@ -313,6 +313,12 @@
 /obj/abstract/landmark/lock_preset/shaded_hills/inn_interior,
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/inn)
+"iJ" = (
+/obj/structure/wall_sconce/lantern{
+	dir = 4
+	},
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/shrine)
 "iK" = (
 /turf/wall/brick/basalt{
 	unique_merge_identifier = "shrine wall"
@@ -329,17 +335,17 @@
 /obj/structure/wall_sconce/lantern{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "jk" = (
 /obj/structure/bed/chair/bench/pew/mahogany{
 	dir = 1
 	},
 /obj/abstract/landmark/start/shaded_hills/cleric,
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "js" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "jx" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
@@ -357,7 +363,7 @@
 "jA" = (
 /obj/structure/bed/simple/ebony,
 /obj/item/bedsheet/furs,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "jI" = (
 /obj/structure/wall_sconce/lantern{
@@ -381,11 +387,11 @@
 /obj/structure/banner_frame/wall/ebony/green{
 	pixel_y = 32
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "kE" = (
 /obj/structure/door/walnut,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "kI" = (
 /obj/structure/bed/chair/bench/pew/ebony{
@@ -405,7 +411,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "lE" = (
 /obj/abstract/level_data_spawner/shaded_hills_downlands,
@@ -419,7 +425,7 @@
 	dir = 1
 	},
 /obj/abstract/landmark/start/shaded_hills/farmer,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "me" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
@@ -438,13 +444,13 @@
 "ml" = (
 /obj/structure/table/wood/ebony,
 /obj/item/shears,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "mG" = (
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "mJ" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -454,8 +460,14 @@
 	dir = 1;
 	pixel_y = 10
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
+"mK" = (
+/obj/structure/door/walnut{
+	dir = 4
+	},
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/farmhouse)
 "nn" = (
 /turf/wall/log/walnut,
 /area/shaded_hills/stable)
@@ -507,7 +519,7 @@
 /obj/structure/bed/chair/bench/pew/mahogany{
 	dir = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "pi" = (
 /obj/structure/table/wood/ebony,
@@ -522,13 +534,13 @@
 /obj/structure/bed/simple/ebony,
 /obj/abstract/landmark/start/shaded_hills/shrine_attendant,
 /obj/item/bedsheet/furs,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "qf" = (
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "qG" = (
 /turf/wall/brick/basalt,
@@ -556,7 +568,7 @@
 /obj/structure/table/wood/ebony,
 /obj/item/chems/glass/mortar,
 /obj/item/rock/basalt,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "rc" = (
 /obj/structure/railing/mapped/wooden/walnut,
@@ -596,7 +608,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "rC" = (
 /obj/structure/table/marble,
@@ -614,7 +626,7 @@
 /obj/structure/wall_sconce/lantern{
 	start_lit = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "rY" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner/walnut,
@@ -625,6 +637,10 @@
 /obj/abstract/landmark/lock_preset/shaded_hills/inn_interior,
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/inn/kitchen)
+"sz" = (
+/obj/structure/door/walnut,
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/shrine)
 "sJ" = (
 /obj/structure/closet/cabinet/wooden/ebony,
 /turf/floor/wood/walnut,
@@ -672,7 +688,7 @@
 /obj/structure/bed/chair/rustic{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "uk" = (
 /obj/structure/bed/chair/bench/pew/ebony{
@@ -710,13 +726,13 @@
 	dir = 1;
 	pixel_y = 10
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "vz" = (
 /obj/structure/table/wood/ebony,
 /obj/item/chems/cooking_vessel/baking_dish/earthenware,
 /obj/item/chems/cooking_vessel/baking_dish/earthenware,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "vA" = (
 /obj/structure/table/marble,
@@ -755,16 +771,12 @@
 /obj/structure/closet/crate/chest/ebony,
 /turf/floor/path/basalt,
 /area/shaded_hills/general_store)
-"wA" = (
-/obj/abstract/exterior_marker/inside,
-/turf/floor/dirt,
-/area/shaded_hills/outside/downlands)
 "xh" = (
 /obj/structure/table/wood/ebony,
 /obj/item/chems/condiment/large/salt,
 /obj/item/chems/condiment/flour,
 /obj/item/chems/condiment/sugar,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "xk" = (
 /obj/structure/flora/tree/dead/mahogany,
@@ -789,7 +801,7 @@
 /area/shaded_hills/outside/downlands)
 "ya" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "yn" = (
 /obj/structure/door/walnut,
@@ -807,7 +819,7 @@
 /obj/item/seeds/extracted/cabbage,
 /obj/item/seeds/extracted/cabbage,
 /obj/item/seeds/extracted/cabbage,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "yx" = (
 /obj/structure/table/marble,
@@ -822,11 +834,11 @@
 	dir = 1
 	},
 /obj/abstract/landmark/start/shaded_hills/farmer,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "yN" = (
 /obj/structure/closet/crate/chest/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "yY" = (
 /turf/floor/grass,
@@ -866,7 +878,7 @@
 /turf/floor/wood/walnut,
 /area/shaded_hills/inn)
 "zQ" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/general_store/porch)
 "Ak" = (
 /turf/floor/path/basalt,
@@ -878,7 +890,8 @@
 /area/shaded_hills/inn)
 "Aq" = (
 /obj/structure/working/loom/ebony,
-/turf/floor/wood/walnut,
+/obj/structure/wall_sconce/lantern,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "Aw" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -907,7 +920,7 @@
 "AG" = (
 /obj/structure/table/wood/ebony,
 /obj/item/bag/sack,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "AW" = (
 /obj/structure/railing/mapped/wooden/walnut,
@@ -918,11 +931,11 @@
 /obj/structure/wall_sconce/lantern{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "Bp" = (
 /obj/structure/working/butter_churn/walnut,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "Br" = (
 /turf/floor/path/basalt,
@@ -952,7 +965,7 @@
 /area/shaded_hills/general_store)
 "BX" = (
 /obj/structure/wall_sconce/lantern,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "Cj" = (
 /obj/item/stack/material/log/mapped/walnut/twenty,
@@ -964,10 +977,13 @@
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/shrine/kitchen)
 "CR" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
+/area/shaded_hills/shrine)
+"CV" = (
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "Dl" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "Dn" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
@@ -979,7 +995,7 @@
 /obj/item/seeds/extracted/wheat,
 /obj/item/seeds/extracted/wheat,
 /obj/item/seeds/extracted/wheat,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "Dr" = (
 /obj/structure/bed/simple/ebony/cloth,
@@ -990,7 +1006,7 @@
 /obj/structure/bed/simple/ebony/cloth,
 /obj/abstract/landmark/start/shaded_hills/shrine_keeper,
 /obj/item/bedsheet/furs,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "Ee" = (
 /turf/wall/log/walnut,
@@ -1045,7 +1061,7 @@
 /obj/structure/wall_sconce/lantern{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "FD" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
@@ -1093,7 +1109,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/general_store/porch)
 "Gu" = (
 /obj/structure/table/marble,
@@ -1153,7 +1169,7 @@
 /area/shaded_hills/stable)
 "HF" = (
 /obj/structure/working/spinning_wheel/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "HI" = (
 /turf/floor/grass,
@@ -1175,7 +1191,7 @@
 /obj/item/flame/candle/handmade{
 	pixel_y = 12
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/stable)
 "Ic" = (
 /turf/floor/path/running_bond/basalt,
@@ -1184,7 +1200,7 @@
 /obj/structure/door/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "Im" = (
 /obj/structure/wall_sconce/lantern{
@@ -1192,14 +1208,10 @@
 	},
 /turf/floor/wood/walnut,
 /area/shaded_hills/inn)
-"Iz" = (
-/obj/abstract/exterior_marker/inside,
-/turf/wall/brick/basalt,
-/area/shaded_hills/outside/downlands)
 "IB" = (
 /obj/structure/door/walnut,
 /obj/abstract/landmark/lock_preset/shaded_hills/shrine,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "IC" = (
 /obj/structure/bookcase/ebony,
@@ -1209,7 +1221,7 @@
 /obj/structure/door/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "IQ" = (
 /turf/wall/log/walnut/shutter/open,
@@ -1246,11 +1258,11 @@
 /area/shaded_hills/inn)
 "Jt" = (
 /obj/structure/closet/cabinet/wooden/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "Jw" = (
 /obj/structure/bed/chair/rustic,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "Jz" = (
 /obj/structure/door/walnut{
@@ -1268,11 +1280,12 @@
 /obj/structure/table/wood/ebony,
 /obj/item/ancient_surgery/cautery,
 /obj/item/ancient_surgery/scalpel,
+/obj/structure/wall_sconce/lantern,
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/shrine)
 "JU" = (
 /obj/structure/railing/mapped/wooden/walnut,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "Ka" = (
 /mob/living/simple_animal/cow,
@@ -1303,8 +1316,7 @@
 /turf/floor/path/basalt,
 /area/shaded_hills/outside/downlands)
 "Lj" = (
-/obj/structure/reagent_dispensers/well/mapped,
-/obj/abstract/exterior_marker/inside,
+/obj/structure/reagent_dispensers/well/mapped/covered,
 /turf/floor/dirt,
 /area/shaded_hills/outside/downlands)
 "Ly" = (
@@ -1317,7 +1329,7 @@
 "LH" = (
 /obj/structure/table/wood/ebony,
 /obj/item/chems/glass/bucket/wood,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse)
 "LK" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -1392,7 +1404,7 @@
 "Ot" = (
 /obj/structure/table/wood/ebony,
 /obj/item/chems/cooking_vessel/pot/iron,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "ON" = (
 /obj/structure/table/marble,
@@ -1424,7 +1436,7 @@
 /area/shaded_hills/stable)
 "PG" = (
 /obj/structure/door/walnut,
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "PQ" = (
 /obj/item/food/butchery/meat/beef,
@@ -1436,7 +1448,7 @@
 /area/shaded_hills/slaughterhouse)
 "PS" = (
 /obj/structure/reagent_dispensers/barrel/ebony/oil,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/storehouse)
 "Qb" = (
 /turf/floor/carpet,
@@ -1464,7 +1476,7 @@
 	dir = 8;
 	start_lit = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "QQ" = (
 /turf/wall/log/walnut,
@@ -1473,7 +1485,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 4
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/general_store/porch)
 "QW" = (
 /turf/floor/path/herringbone/basalt,
@@ -1536,11 +1548,11 @@
 /obj/structure/bed/chair/rustic{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "Sy" = (
 /obj/structure/working/spinning_wheel/ebony,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "SB" = (
 /obj/structure/door/walnut{
@@ -1614,7 +1626,7 @@
 /obj/item/food/grown/carrot,
 /obj/item/food/grown/carrot,
 /obj/item/food/grown/cabbage,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "TR" = (
 /turf/floor/dirt,
@@ -1624,10 +1636,15 @@
 /obj/abstract/landmark/lock_preset/shaded_hills/shrine,
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/shrine)
+"Ue" = (
+/obj/structure/door/walnut,
+/obj/abstract/landmark/lock_preset/shaded_hills/farmhouse,
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/farmhouse)
 "UD" = (
 /obj/item/flame/candle/handmade,
 /obj/structure/table/end/alt,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine)
 "US" = (
 /obj/structure/bed/chair/rustic{
@@ -1649,7 +1666,7 @@
 /area/shaded_hills/shrine)
 "VE" = (
 /obj/structure/cask_rack/large/mapped,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "VM" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -1657,11 +1674,14 @@
 	},
 /turf/floor/dirt,
 /area/shaded_hills/outside/shrine)
+"VO" = (
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/farmhouse)
 "VU" = (
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/farmhouse/porch)
 "VW" = (
 /obj/structure/table/marble,
@@ -1680,7 +1700,7 @@
 /obj/structure/table/wood/ebony,
 /obj/item/chems/glass/mortar,
 /obj/item/rock/basalt,
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/shrine/kitchen)
 "Wk" = (
 /obj/structure/railing/mapped/wooden/walnut{
@@ -1704,7 +1724,7 @@
 /obj/structure/railing/mapped/wooden/walnut{
 	dir = 8
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "WE" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
@@ -1762,7 +1782,7 @@
 	pixel_y = 10;
 	start_lit = 1
 	},
-/turf/floor/wood/walnut,
+/turf/floor/wood/mahogany,
 /area/shaded_hills/shrine)
 "XM" = (
 /turf/floor/carpet/red,
@@ -1774,7 +1794,7 @@
 /turf/wall/brick/basalt,
 /area/shaded_hills/shrine)
 "Yg" = (
-/turf/floor/wood/walnut,
+/turf/floor/wood/rough/walnut,
 /area/shaded_hills/inn/porch)
 "Yj" = (
 /obj/structure/meat_hook,
@@ -7806,9 +7826,9 @@ HI
 HI
 HI
 TR
-Iz
-Iz
-Iz
+TR
+TR
+TR
 TR
 TR
 EV
@@ -7958,9 +7978,9 @@ HI
 HI
 TR
 TR
-wA
-wA
-wA
+TR
+TR
+TR
 TR
 TR
 EV
@@ -8110,9 +8130,9 @@ HI
 HI
 TR
 TR
-wA
+TR
 Lj
-wA
+TR
 TR
 TR
 EV
@@ -8262,9 +8282,9 @@ HI
 HI
 TR
 TR
-wA
-wA
-wA
+TR
+TR
+TR
 TR
 TR
 TR
@@ -8414,9 +8434,9 @@ HI
 HI
 HI
 TR
-Iz
-Iz
-Iz
+TR
+TR
+TR
 TR
 TR
 EV
@@ -13289,8 +13309,8 @@ EV
 TR
 LN
 cl
-qP
-qP
+VO
+VO
 yN
 LN
 TR
@@ -13442,7 +13462,7 @@ TR
 IQ
 LH
 yJ
-qP
+VO
 yN
 LN
 TR
@@ -13593,8 +13613,8 @@ EV
 TR
 LN
 ml
-qP
-qP
+VO
+VO
 gB
 LN
 TR
@@ -13745,8 +13765,8 @@ EV
 TR
 LN
 AG
-qP
-qP
+VO
+VO
 ya
 LN
 zH
@@ -13897,7 +13917,7 @@ VU
 VU
 LN
 LN
-Ti
+mK
 LN
 LN
 LN
@@ -14048,8 +14068,8 @@ Ic
 Dl
 BX
 LN
-qP
-qP
+VO
+VO
 hJ
 Bp
 IQ
@@ -14199,12 +14219,12 @@ EV
 EV
 Dl
 Dl
-WO
-qP
-qP
-qP
-qP
-WO
+Ue
+VO
+VO
+VO
+VO
+Ue
 TR
 Rl
 GW
@@ -14353,9 +14373,9 @@ Dl
 lL
 LN
 hJ
-qP
-qP
-qP
+VO
+VO
+VO
 LN
 xW
 Rl
@@ -18706,7 +18726,7 @@ By
 iK
 QB
 Dt
-CR
+CV
 QB
 QB
 QB
@@ -18858,13 +18878,13 @@ By
 iK
 QB
 Jt
-CR
-PG
-CR
-CR
-AX
-CR
-CR
+CV
+sz
+CV
+CV
+iJ
+CV
+CV
 IB
 CR
 CR
@@ -19164,10 +19184,10 @@ iK
 kv
 kv
 Kh
-CR
+CV
 rS
 QB
-CR
+CV
 rS
 QB
 CR

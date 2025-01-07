@@ -63,10 +63,23 @@ SUBSYSTEM_DEF(ambience)
 
 		// Grab what we need to set ambient light from our level handler.
 		var/datum/level_data/level_data = SSmapping.levels_by_z[z]
+		var/daycycle_id = level_data.daycycle_id
+		// if we don't have a daycycle ourselves, and we're indoors because of a turf blocking us
+		// find the first daycycle above us to use
+		if(!outsideness && !daycycle_id && HasAbove(z))
+			var/turf/above = src
+			var/datum/level_data/above_level_data
+			while ((above = GetAbove(above)))
+				if((above.z_flags & ZM_TERMINATOR) || !HasAbove(above.z))
+					break
+				above_level_data = SSmapping.levels_by_z[above.z]
+				if(above_level_data.daycycle_id)
+					daycycle_id = above_level_data.daycycle_id
+					break
 
 		// Check for daycycle ambience.
-		if(level_data.daycycle_id)
-			var/datum/daycycle/daycycle = SSdaycycle.get_daycycle(level_data.daycycle_id)
+		if(daycycle_id)
+			var/datum/daycycle/daycycle = SSdaycycle.get_daycycle(daycycle_id)
 			var/new_power = daycycle?.current_period?.power
 			if(!isnull(new_power))
 				if(new_power > 0)

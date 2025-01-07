@@ -1,4 +1,4 @@
-/datum/job/ministation/tradehouse/rep
+/datum/job/tradehouse_rep
 	title = "Tradehouse Representative"
 	alt_titles = list("Narc")
 	hud_icon = "hudnarc"

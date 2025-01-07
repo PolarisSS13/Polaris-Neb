@@ -99,7 +99,7 @@
 	if(user == src)
 		check_self_injuries()
 		return TRUE
-	if(ishuman(user) && (is_asystole() || (status_flags & FAKEDEATH) || failed_last_breath) && !on_fire && !(user.get_target_zone() == BP_R_ARM || user.get_target_zone() == BP_L_ARM))
+	if(ishuman(user) && (is_asystole() || (status_flags & FAKEDEATH) || failed_last_breath) && !is_on_fire() && !(user.get_target_zone() == BP_R_ARM || user.get_target_zone() == BP_L_ARM))
 		if (performing_cpr)
 			performing_cpr = FALSE
 		else
@@ -123,10 +123,6 @@
 
 	if(user.incapacitated())
 		to_chat(user, SPAN_WARNING("You can't attack while incapacitated."))
-		return TRUE
-
-	// AI driven mobs have a melee telegraph that needs to be handled here.
-	if(user.check_intent(I_FLAG_HARM) && !user.do_attack_windup_checking(src))
 		return TRUE
 
 	if(!ishuman(user))
@@ -228,9 +224,12 @@
 	rand_damage *= damage_multiplier
 	real_damage = max(1, real_damage)
 	// Apply additional unarmed effects.
-	attack.apply_effects(H, src, rand_damage, hit_zone)
+	attack.apply_attack_effects(H, src, rand_damage, hit_zone)
 	// Finally, apply damage to target
 	apply_damage(real_damage, attack.get_damage_type(), hit_zone, damage_flags=attack.damage_flags())
+	if(attack.apply_cooldown)
+		H.setClickCooldown(attack.apply_cooldown)
+
 	if(istype(ai))
 		ai.retaliate(user)
 	return TRUE

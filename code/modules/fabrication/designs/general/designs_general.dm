@@ -118,7 +118,7 @@
 
 /datum/fabricator_recipe/struts
 	name = "strut, steel"
-	path = /obj/item/stack/material/strut/mapped/steel
+	path = /obj/item/stack/material/rods/mapped/steel
 
 /datum/fabricator_recipe/struts/get_resources()
 	resources = list(
@@ -127,7 +127,7 @@
 
 /datum/fabricator_recipe/struts/plastic
 	name = "strut, plastic"
-	path = /obj/item/stack/material/strut/mapped/plastic
+	path = /obj/item/stack/material/rods/mapped/plastic
 
 /datum/fabricator_recipe/struts/plastic/get_resources()
 	resources = list(
@@ -136,7 +136,7 @@
 
 /datum/fabricator_recipe/struts/aluminium
 	name = "strut, aluminium"
-	path = /obj/item/stack/material/strut/mapped/aluminium
+	path = /obj/item/stack/material/rods/mapped/aluminium
 	fabricator_types = list(FABRICATOR_CLASS_INDUSTRIAL)
 
 /datum/fabricator_recipe/struts/aluminium/get_resources()
@@ -146,7 +146,7 @@
 
 /datum/fabricator_recipe/struts/titanium
 	name = "strut, titanium"
-	path = /obj/item/stack/material/strut/mapped/titanium
+	path = /obj/item/stack/material/rods/mapped/titanium
 	fabricator_types = list(FABRICATOR_CLASS_INDUSTRIAL)
 
 /datum/fabricator_recipe/struts/titanium/get_resources()
@@ -188,22 +188,13 @@
 /datum/fabricator_recipe/fishing_line_high_quality
 	path = /obj/item/fishing_line/high_quality
 
-/datum/fabricator_recipe/chipboard
+/datum/fabricator_recipe/chipboard // base type is for oak
 	path = /obj/item/stack/material/sheet/mapped/chipboard_oak
 	category = "Textiles"
 	fabricator_types = list(
 		FABRICATOR_CLASS_GENERAL,
 		FABRICATOR_CLASS_TEXTILE
 	)
-
-/datum/fabricator_recipe/chipboard/get_resources()
-	resources = list(
-		/decl/material/solid/organic/wood/oak = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2),
-		/decl/material/solid/organic/plastic  = ceil((SHEET_MATERIAL_AMOUNT * FABRICATOR_EXTRA_COST_FACTOR)/2)
-	)
-
-/datum/fabricator_recipe/chipboard
-	path = /obj/item/stack/material/sheet/mapped/chipboard_oak
 
 /datum/fabricator_recipe/chipboard/get_resources()
 	resources = list(

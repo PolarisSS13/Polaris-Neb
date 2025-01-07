@@ -27,6 +27,7 @@ var/global/list/card_decks = list()
 /obj/item/deck/Initialize()
 	. = ..()
 	global.card_decks += src
+	generate_cards()
 
 /obj/item/deck/Destroy()
 	. = ..()
@@ -69,10 +70,6 @@ var/global/list/card_decks = list()
 	name = "deck of cards"
 	desc = "A simple deck of playing cards."
 	icon_state = "deck"
-
-/obj/item/deck/Initialize()
-	. = ..()
-	generate_cards()
 
 /obj/item/deck/proc/generate_cards()
 	return

@@ -28,12 +28,18 @@
 	eye_icon             = 'mods/species/drakes/icons/eyes.dmi'
 	icon_template        = 'mods/species/drakes/icons/template.dmi'
 	skeletal_icon        = 'mods/species/drakes/icons/skeleton.dmi'
+	damage_overlays      = 'mods/species/drakes/icons/damage.dmi'
+	surgery_overlay_icon = null // todo: 'mods/species/drakes/icons/surgery.dmi'
 	bodytype_category    = BODYTYPE_GRAFADREKA
 	eye_blend            = ICON_MULTIPLY
 	limb_blend           = ICON_MULTIPLY
 	appearance_flags     = HAS_SKIN_COLOR | HAS_EYE_COLOR
 	mob_size             = MOB_SIZE_LARGE
-	override_limb_types  = list(BP_TAIL = /obj/item/organ/external/tail/grafadreka)
+	override_limb_types  = list(
+		BP_TAIL   = /obj/item/organ/external/tail/grafadreka,
+		BP_L_HAND = /obj/item/organ/external/hand/quadruped/grafadreka,
+		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka
+	)
 	base_color           = "#608894"
 	base_eye_color       = COLOR_SILVER
 	pixel_offset_x       = -16
@@ -118,48 +124,58 @@
 	eye_low_light_vision_adjustment_speed = 0.3
 	eye_darksight_range                   = 7
 
-	var/list/sitting_equip_adjust
-	var/list/lying_equip_adjust
+	// Copied from riot armor, as drakes cannot wear equipment
+	// or hold shields. May need to be toned down at some point.
+	natural_armour_values = list(
+		ARMOR_MELEE  = ARMOR_MELEE_VERY_HIGH,
+		ARMOR_BULLET = ARMOR_BALLISTIC_SMALL,
+		ARMOR_LASER  = ARMOR_LASER_SMALL,
+		ARMOR_ENERGY = ARMOR_ENERGY_MINOR,
+		ARMOR_BOMB   = ARMOR_BOMB_PADDED
+	)
+
+	VAR_PRIVATE/list/_sitting_equip_adjust
+	VAR_PRIVATE/list/_lying_equip_adjust
 
 /decl/bodytype/quadruped/grafadreka/Initialize()
-	if(!length(equip_adjust))
-		equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_equip_adjust))
+		_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list(16,  -8),
 				"[SOUTH]" = list(16, -12),
-				"[EAST]" =  list(38,  -8),
-				"[WEST]" =  list(-6,  -8)
+				"[EAST]"  = list(38,  -8),
+				"[WEST]"  = list(-6,  -8)
 			)
 		)
 
-	if(!length(sitting_equip_adjust))
-		sitting_equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_sitting_equip_adjust))
+		_sitting_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list(16, -2),
 				"[SOUTH]" = list(16, -2),
-				"[EAST]" =  list(22, -2),
-				"[WEST]" =  list(12, -2)
+				"[EAST]"  = list(22, -2),
+				"[WEST]"  = list(12, -2)
 			)
 		)
 
-	if(!length(lying_equip_adjust))
-		lying_equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_lying_equip_adjust))
+		_lying_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list( 24, -24),
 				"[SOUTH]" = list( 24, -24),
-				"[EAST]" =  list( 24, -24),
-				"[WEST]" =  list(-10, -24)
+				"[EAST]"  = list( 24, -24),
+				"[WEST]"  = list(-10, -24)
 			)
 		)
 
 	return ..()
 
-/decl/bodytype/quadruped/grafadreka/get_equip_adjust(mob/mob)
+/decl/bodytype/quadruped/grafadreka/get_equip_adjustments(mob/mob)
 	switch(mob.current_posture?.name)
 		if("lying", "resting")
-			return lying_equip_adjust
+			return _lying_equip_adjust
 		if("sitting")
-			return sitting_equip_adjust
+			return _sitting_equip_adjust
 	return ..()
 
 /decl/bodytype/quadruped/grafadreka/hatchling
@@ -190,31 +206,31 @@
 	uid = "bodytype_drake_hatchling"
 
 /decl/bodytype/quadruped/grafadreka/hatchling/Initialize()
-	if(!length(equip_adjust))
-		equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_equip_adjust))
+		_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list( 0, -18),
 				"[SOUTH]" = list( 0, -18),
-				"[EAST]" =  list( 8, -18),
-				"[WEST]" =  list(-8, -18)
+				"[EAST]"  = list( 8, -18),
+				"[WEST]"  = list(-8, -18)
 			)
 		)
-	if(!length(sitting_equip_adjust))
-		sitting_equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_sitting_equip_adjust))
+		_sitting_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list( 0, -14),
 				"[SOUTH]" = list( 0, -14),
-				"[EAST]" =  list( 4, -14),
-				"[WEST]" =  list(-4, -14)
+				"[EAST]"  = list( 4, -14),
+				"[WEST]"  = list(-4, -14)
 			)
 		)
-	if(!length(lying_equip_adjust))
-		lying_equip_adjust = list(
-			slot_head_str = list(
+	if(!length(_lying_equip_adjust))
+		_lying_equip_adjust = list(
+			(slot_head_str) = list(
 				"[NORTH]" = list( 0, -24),
 				"[SOUTH]" = list( 0, -24),
-				"[EAST]" =  list( 0, -24),
-				"[WEST]" =  list( 0, -24)
+				"[EAST]"  = list( 0, -24),
+				"[WEST]"  = list( 0, -24)
 			)
 		)
 	return ..()
@@ -274,3 +290,36 @@
 
 /obj/item/organ/external/tail/grafadreka/hatchling
 	tail_icon  = 'mods/species/drakes/icons/hatchling_body.dmi'
+
+// Technically means that severed drake paws can be used as shovels, but whatever.
+/obj/item/organ/external/hand/quadruped/grafadreka
+	_base_attack_force = 8
+	needs_attack_dexterity = DEXTERITY_NONE
+
+/obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+	. = ..()
+	item_flags |= ITEM_FLAG_NO_BLUDGEON
+	set_extension(src, /datum/extension/tool, list(
+		TOOL_SHOVEL = TOOL_QUALITY_GOOD,
+		TOOL_HOE    = TOOL_QUALITY_GOOD
+	))
+
+/obj/item/organ/external/hand/quadruped/grafadreka/set_bodytype(decl/bodytype/new_bodytype, override_material, apply_to_internal_organs)
+	override_material = /decl/material/solid/organic/bone
+	. = ..()
+
+/obj/item/organ/external/hand/right/quadruped/grafadreka
+	_base_attack_force = 8
+	needs_attack_dexterity = DEXTERITY_NONE
+
+/obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+	. = ..()
+	item_flags |= ITEM_FLAG_NO_BLUDGEON
+	set_extension(src, /datum/extension/tool, list(
+		TOOL_SHOVEL = TOOL_QUALITY_GOOD,
+		TOOL_HOE    = TOOL_QUALITY_GOOD
+	))
+
+/obj/item/organ/external/hand/right/quadruped/grafadreka/set_bodytype(decl/bodytype/new_bodytype, override_material, apply_to_internal_organs)
+	override_material = /decl/material/solid/organic/bone
+	. = ..()

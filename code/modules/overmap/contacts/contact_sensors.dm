@@ -16,18 +16,15 @@
 		var/obj/effect/overmap/overmap_location = loc
 		if(overmap_location.requires_contact)
 			new /datum/overmap_contact(src, overmap_location)
+	if(!contact_datums[linked])
+		var/datum/overmap_contact/record = new(src, linked)
+		record.marker.alpha = 255
 
 /obj/machinery/computer/ship/sensors/Destroy()
 	objects_in_view.Cut()
 	QDEL_LIST_ASSOC_VAL(contact_datums)
 	trackers.Cut()
 	. = ..()
-
-/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
-	. = ..()
-	if(. && linked && !contact_datums[linked])
-		var/datum/overmap_contact/record = new(src, linked)
-		record.marker.alpha = 255
 
 /obj/machinery/computer/ship/sensors/proc/reveal_contacts(var/mob/user)
 	if(user && user.client)

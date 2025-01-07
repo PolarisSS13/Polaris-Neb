@@ -1,0 +1,4 @@
+author: MistakeNot4892
+changes:
+  - {tweak: Mud and blood can now leave footprints.}
+delete-after: true

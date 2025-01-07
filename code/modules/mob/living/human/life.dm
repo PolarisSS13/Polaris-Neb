@@ -258,7 +258,7 @@
 	return
 
 /mob/living/human/get_bodytemperature_difference()
-	if (on_fire)
+	if (is_on_fire())
 		return 0 //too busy for pesky metabolic regulation
 	return ..()
 
@@ -490,7 +490,7 @@
 
 				// Apply a fire overlay if we're burning.
 				var/crit_markers = get_ui_icon(client?.prefs?.UI_style, UI_ICON_CRIT_MARKER)
-				if(on_fire)
+				if(is_on_fire())
 					health_images += image(crit_markers, "burning")
 
 				// Show a general pain/crit indicator if needed.

@@ -61,12 +61,8 @@
 
 	keyname = C.key
 	if(C.mob) //Most of the time this is the dead/observer mob; we can totally use him if there is no better name
-		var/mindname
+		var/mindname = C.mob.mind?.name // the mind's "original name"
 		var/realname = C.mob.real_name
-		if(C.mob.mind)
-			mindname = C.mob.mind.name
-			if(C.mob.mind.original && C.mob.mind.original.real_name)
-				realname = C.mob.mind.original.real_name
 		if(mindname && mindname != realname)
 			name = "[realname] died as [mindname]"
 		else

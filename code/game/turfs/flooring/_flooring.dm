@@ -78,7 +78,7 @@ var/global/list/flooring_cache = list()
 	var/render_trenches = TRUE
 	var/floor_layer = TURF_LAYER
 	var/holographic = FALSE
-	var/dirt_color = "#7c5e42"
+	var/dirt_color = /decl/material/solid/soil::color
 
 	var/list/burned_states
 	var/list/broken_states
@@ -349,4 +349,10 @@ var/global/list/flooring_cache = list()
 	return PROCESS_KILL
 
 /decl/flooring/proc/handle_turf_digging(turf/floor/target)
+	return TRUE
+
+/decl/flooring/proc/turf_crossed(atom/movable/crosser)
+	return
+
+/decl/flooring/proc/can_show_footsteps(turf/target)
 	return TRUE

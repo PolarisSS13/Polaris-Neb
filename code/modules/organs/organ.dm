@@ -22,6 +22,7 @@
 	var/mob/living/human/owner      // Current mob owning the organ.
 	var/decl/species/species               // Original species.
 	var/decl/bodytype/bodytype             // Original bodytype.
+	var/decl/bodytype/appearance_bodytype  // A bodytype used only for icons, marking validation and equipment offsets.
 	var/list/ailments                      // Current active ailments if any.
 	var/meat_name                          // Taken from first owner.
 
@@ -372,11 +373,11 @@
 	if (germ_level < INFECTION_LEVEL_ONE)
 		germ_level = 0	//cure instantly
 	else if (germ_level < INFECTION_LEVEL_TWO)
-		germ_level -= 5	//at germ_level == 500, this should cure the infection in 5 minutes
+		germ_level -= round(5 * antibiotics)	//at germ_level == 500, this should cure the infection in 5 minutes
 	else
-		germ_level -= 3 //at germ_level == 1000, this will cure the infection in 10 minutes
+		germ_level -= round(3 * antibiotics) //at germ_level == 1000, this will cure the infection in 10 minutes
 	if(owner && owner.current_posture.prone)
-		germ_level -= 2
+		germ_level -= round(2 * antibiotics)
 	germ_level = max(0, germ_level)
 
 /obj/item/organ/proc/take_general_damage(var/amount, var/silent = FALSE)
@@ -674,3 +675,16 @@ var/global/list/ailment_reference_cache = list()
 		new /obj/effect/decal/cleanable/ash(loc)
 	if(!QDELETED(src))
 		qdel(src)
+
+// For overriding on shapeshifters/changelings in the future.
+/obj/item/organ/proc/set_organ_appearance_bodytype(decl/bodytype/new_bodytype, update_sprite_accessories = TRUE, skip_owner_update = FALSE)
+	if(ispath(new_bodytype, /decl/bodytype))
+		new_bodytype = GET_DECL(new_bodytype)
+	if((new_bodytype && !istype(new_bodytype)) || appearance_bodytype == new_bodytype || bodytype == new_bodytype)
+		return FALSE
+	appearance_bodytype = new_bodytype
+	return TRUE
+
+/obj/item/organ/proc/get_organ_appearance_bodytype()
+	RETURN_TYPE(/decl/bodytype)
+	return appearance_bodytype || bodytype

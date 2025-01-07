@@ -125,6 +125,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	// Icons
 	var/icon_base = 'icons/turf/walls/solid.dmi'
 	var/icon_base_natural = 'icons/turf/walls/natural.dmi'
+	/// Either the icon used for reinforcement, or a list of icons to pick from.
 	var/icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	var/wall_flags = 0
 	var/list/wall_blend_icons = list() // Which wall icon types walls of this material type will consider blending with. Assoc list (icon path = TRUE/FALSE)
@@ -140,6 +141,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/list/stack_origin_tech = @'{"materials":1}' // Research level for stacks.
 
 	// Attributes
+	/// Does this material float to the top of liquids, allowing it to be skimmed off? Specific to cream at time of writing.
+	var/skimmable = FALSE
 	/// How rare is this material in exoplanet xenoflora?
 	var/exoplanet_rarity_plant = MAT_RARITY_MUNDANE
 	/// How rare is this material in exoplanet atmospheres?
@@ -261,6 +264,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/cocktail_ingredient
 	var/defoliant
 	var/fruit_descriptor // String added to fruit desc if this chemical is present.
+	/// Does this reagent have an antibiotic effect (helping with infections)?
+	var/antibiotic_strength = 0
 
 	var/dirtiness = DIRTINESS_NEUTRAL // How dirty turfs are after being exposed to this material. Negative values cause a cleaning/sterilizing effect.
 	var/decontamination_dose = 0      // Amount required for a decontamination effect, if any.
@@ -286,13 +291,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/chilling_message = "crackles and freezes!"
 	var/chilling_sound = 'sound/effects/bubbles.ogg'
 	var/list/chilling_products
-	var/bypass_chilling_products_for_root_type
 
 	var/heating_point
 	var/heating_message = "begins to boil!"
 	var/heating_sound = 'sound/effects/bubbles.ogg'
 	var/list/heating_products
-	var/bypass_heating_products_for_root_type
 	var/accelerant_value = FUEL_VALUE_NONE
 	var/burn_temperature = 100 CELSIUS
 	var/burn_product
@@ -444,7 +447,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	else if(isnull(temperature_damage_threshold))
 		var/new_temperature_damage_threshold = max(melting_point, boiling_point, heating_point)
 		// Don't let the threshold be lower than the ignition point.
-		if(!isnull(new_temperature_damage_threshold) && (isnull(ignition_point) || (new_temperature_damage_threshold > ignition_point)))
+		if(isnull(new_temperature_damage_threshold) && !isnull(ignition_point))
+			temperature_damage_threshold = ignition_point
+		else if(isnull(ignition_point) || (new_temperature_damage_threshold > ignition_point))
 			temperature_damage_threshold = new_temperature_damage_threshold
 
 	if(!shard_icon)
@@ -563,13 +568,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 				. += "'[icon_base_natural]' - missing natural shine icon state 'shine[i]'"
 
 	if(icon_reinf)
-		if(use_reinf_state)
-			if(!check_state_in_icon(use_reinf_state, icon_reinf))
-				. += "'[icon_reinf]' - missing reinf icon state '[use_reinf_state]'"
-		else
-			for(var/i = 0 to 7)
-				if(!check_state_in_icon("[i]", icon_reinf))
-					. += "'[icon_reinf]' - missing directional reinf icon state '[i]'"
+		var/list/all_reinf_icons = islist(icon_reinf) ? icon_reinf : list(icon_reinf)
+		for(var/sub_icon in all_reinf_icons)
+			if(use_reinf_state)
+				if(!check_state_in_icon(use_reinf_state, sub_icon))
+					. += "'[sub_icon]' - missing reinf icon state '[use_reinf_state]'"
+			else
+				for(var/i = 0 to 7)
+					if(!check_state_in_icon(num2text(i), sub_icon))
+						. += "'[sub_icon]' - missing directional reinf icon state '[i]'"
 
 	if(length(color) != 7)
 		. += "invalid color (not #RRGGBB)"
@@ -746,7 +753,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 // This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /decl/material/proc/touch_mob(var/mob/living/M, var/amount, var/datum/reagents/holder)
 	if(accelerant_value != FUEL_VALUE_NONE && amount && istype(M))
-		M.fire_stacks += floor((amount * accelerant_value)/FLAMMABLE_LIQUID_DIVISOR)
+		M.adjust_fire_intensity(floor((amount * accelerant_value)/FLAMMABLE_LIQUID_DIVISOR))
 #undef FLAMMABLE_LIQUID_DIVISOR
 
 /decl/material/proc/touch_turf(var/turf/T, var/amount, var/datum/reagents/holder) // Cleaner cleaning, lube lubbing, etc, all go here
@@ -829,6 +836,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	if(M.status_flags & GODMODE)
 		return
+
+	if(antibiotic_strength)
+		M.adjust_immunity(-0.1 * antibiotic_strength)
+		M.add_chemical_effect(CE_ANTIBIOTIC, antibiotic_strength)
+		if(REAGENT_VOLUME(holder, type) > 10)
+			M.adjust_immunity(-0.3 * antibiotic_strength)
+		if(LAZYACCESS(M.chem_doses, type) > 15)
+			M.adjust_immunity(-0.25 * antibiotic_strength)
 
 	if(nutriment_factor || hydration_factor)
 		if(injectable_nutrition)

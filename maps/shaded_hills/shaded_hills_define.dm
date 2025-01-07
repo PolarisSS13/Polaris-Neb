@@ -31,6 +31,7 @@
 		'sound/music/Miris-Magic-Dance.ogg'
 	)
 	game_year = -914 // in 2024, the year should be 1110, roughly a century after the fall of the Imperial Aegis
+	security_state = /decl/security_state/none
 
 	char_preview_bgstate_options = list(
 		"000",

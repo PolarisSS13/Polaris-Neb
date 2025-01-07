@@ -29,8 +29,8 @@
 	var/mob/living/cameraFollow = null
 	var/list/datum/action/actions = list()
 
-	var/on_fire = 0 //The "Are we on fire?" var
-	var/fire_stacks
+	VAR_PRIVATE/_on_fire = 0 //The "Are we on fire?" var
+	VAR_PRIVATE/_fire_intensity
 
 	var/ticks_since_last_successful_breath = 0 //if we failed to breathe last tick
 	var/failed_last_breath = 0 //This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.

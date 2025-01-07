@@ -204,7 +204,7 @@
 	icon = 'icons/clothing/head/cakehat.dmi'
 	body_parts_covered = SLOT_HEAD
 	item_flags = null
-	var/is_on_fire = FALSE
+	VAR_PRIVATE/_on_fire = FALSE
 
 /obj/item/clothing/head/cakehat/equipped(mob/user, slot)
 	. = ..()
@@ -217,7 +217,7 @@
 /obj/item/clothing/head/cakehat/on_update_icon(mob/user)
 	. = ..()
 	z_flags &= ~ZMM_MANGLE_PLANES
-	if(is_on_fire && check_state_in_icon("[icon_state]-flame", icon))
+	if(is_on_fire() && check_state_in_icon("[icon_state]-flame", icon))
 		if(plane == HUD_PLANE)
 			add_overlay("[icon_state]-flame")
 		else
@@ -230,7 +230,7 @@
 		return emissive_overlay(overlay.icon, "[overlay.icon_state]-flame")
 
 /obj/item/clothing/head/cakehat/apply_additional_mob_overlays(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
-	if(overlay && is_on_fire)
+	if(overlay && is_on_fire())
 		var/image/I = get_mob_flame_overlay(overlay, bodytype)
 		if(I)
 			overlay.overlays += I
@@ -241,7 +241,7 @@
 	return ..()
 
 /obj/item/clothing/head/cakehat/Process()
-	if(!is_on_fire)
+	if(!is_on_fire())
 		STOP_PROCESSING(SSobj, src)
 		return
 	var/turf/location = loc
@@ -255,9 +255,9 @@
 /obj/item/clothing/head/cakehat/attack_self(mob/user)
 	. = ..()
 	if(!.)
-		is_on_fire = !is_on_fire
+		_on_fire = !_on_fire
 		update_icon()
-		if(is_on_fire)
+		if(is_on_fire())
 			atom_damage_type = BURN
 			START_PROCESSING(SSobj, src)
 		else

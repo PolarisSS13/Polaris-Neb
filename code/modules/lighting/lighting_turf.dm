@@ -1,16 +1,22 @@
 /turf
 	var/dynamic_lighting = TRUE
-	var/ambient_light	// If non-null, a hex RGB light color that should be applied to this turf.
-	var/ambient_light_multiplier = 0.3	// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+	/// If non-null, a hex RGB light color that should be applied to this turf.
+	var/ambient_light
+	/// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+	var/ambient_light_multiplier = 0.3
 	luminosity           = 1
 
 	var/tmp/lighting_corners_initialised = FALSE
 
-	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
+	/// List of light sources affecting this turf.
+	var/tmp/list/datum/light_source/affecting_lights
+	/// Our lighting overlay, used to apply multiplicative lighting to the tile and its contents.
+	var/tmp/atom/movable/lighting_overlay/lighting_overlay
 	var/tmp/list/datum/lighting_corner/corners
-	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
-	var/tmp/ambient_has_indirect = FALSE // If this is TRUE, an above turf's ambient light is affecting this turf.
+	/// Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
+	var/tmp/has_opaque_atom = FALSE
+	/// If this is TRUE, an above turf's ambient light is affecting this turf.
+	var/tmp/ambient_has_indirect = FALSE
 
 	// Record-keeping, do not touch -- that means you, admins.
 	var/tmp/ambient_light_old
@@ -92,14 +98,14 @@
 
 	ambient_light_old = ambient_light
 
-// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
+/// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()
 	var/datum/light_source/L
 	for (var/thing in affecting_lights)
 		L = thing
 		L.vis_update()
 
-// Forces a lighting update. Reconsider lights is preferred when possible.
+/// Forces a lighting update. Reconsider lights is preferred when possible.
 /turf/proc/force_update_lights()
 	var/datum/light_source/L
 	for (var/thing in affecting_lights)
@@ -137,7 +143,7 @@
 
 				C.active = TRUE
 
-// Returns the average color of this tile. Roughly corresponds to the color of a single old-style lighting overlay.
+/// Returns the average color of this tile. Roughly corresponds to the color of a single old-style lighting overlay.
 /turf/proc/get_avg_color()
 	if (!lighting_overlay)
 		return null
@@ -159,7 +165,7 @@
 
 #define SCALE(targ,min,max) (targ - min) / (max - min)
 
-// Used to get a scaled lumcount.
+/// Returns a lumcount (average intensity of color channels) scaled between minlum and maxlum.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	if (!lighting_overlay)
 		return 0.5
@@ -176,7 +182,7 @@
 
 #undef SCALE
 
-// Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
+/// Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
 /turf/proc/recalc_atom_opacity()
 #ifdef AO_USE_LIGHTING_OPACITY
 	var/old = has_opaque_atom

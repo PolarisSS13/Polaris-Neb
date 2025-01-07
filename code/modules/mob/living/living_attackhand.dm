@@ -26,6 +26,7 @@
 			attackby(attacking_with, predator)
 		else
 			attack_animal(predator)
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
 	return FALSE
 
@@ -52,11 +53,11 @@
 
 // Returns TRUE if further interactions should be halted, FALSE otherwise.
 /mob/living/proc/try_extinguish(mob/living/user)
-	if (!on_fire || !istype(user))
+	if (!is_on_fire() || !istype(user))
 		return FALSE
 
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-	if (user.on_fire)
+	if (user.is_on_fire())
 		user.visible_message(
 			SPAN_WARNING("\The [user] tries to pat out \the [src]'s flames, but to no avail!"),
 			SPAN_WARNING("You try to pat out [src]'s flames, but to no avail! Put yourself out first!")
@@ -71,25 +72,25 @@
 	if(!do_mob(user, src, 15))
 		return TRUE
 
-	fire_stacks -= 0.5
-	if (prob(10) && (user.fire_stacks <= 0))
-		user.fire_stacks += 1
-	user.IgniteMob()
-	if (user.on_fire)
+	adjust_fire_intensity(-0.5)
+	if (prob(10) && (user.get_fire_intensity() <= 0))
+		user.adjust_fire_intensity(1)
+	user.ignite_fire()
+	if (user.is_on_fire())
 		user.visible_message(
 			SPAN_DANGER("The fire spreads from \the [src] to \the [user]!"),
 			SPAN_DANGER("The fire spreads to you as well!")
 		)
 		return TRUE
 
-	fire_stacks -= 0.5 //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
-	if (fire_stacks <= 0)
+	adjust_fire_intensity(-0.5) //Less effective than stop, drop, and roll - also accounting for the fact that it takes half as long.
+	if (get_fire_intensity() <= 0)
 		user.visible_message(
 			SPAN_NOTICE("\The [user] successfully pats out \the [src]'s flames."),
 			SPAN_NOTICE("You successfully pat out \the [src]'s flames.")
 		)
-		ExtinguishMob()
-		fire_stacks = 0
+		extinguish_fire()
+		set_fire_intensity(0)
 
 	return TRUE
 

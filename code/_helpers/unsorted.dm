@@ -169,8 +169,10 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			return 1
 	return 0
 
+#if DM_VERSION < 516
 /proc/sign(x)
 	return x!=0?x/abs(x):0
+#endif
 
 /proc/getline(atom/M,atom/N)//Ultra-Fast Bresenham Line-Drawing Algorithm
 	var/px=M.x		//starting x
@@ -717,11 +719,8 @@ Turf and target are seperate in case you want to teleport some distance from a t
 /obj/item/weldingtool/can_puncture()
 	return 1
 
-/obj/item/screwdriver/can_puncture()
-	return 1
-
 /obj/item/clothing/mask/smokable/cigarette/can_puncture()
-	return src.lit
+	return ..() || lit // in case someone has a sharp cigarette for some reason
 
 /*
 Checks if that loc and dir has a item on the wall

@@ -165,16 +165,23 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 			mob_icon_state_flags |= MOB_ICON_HAS_PARALYZED_STATE
 		global.simplemob_icon_bitflag_cache[type] = mob_icon_state_flags
 
+/mob/living/simple_animal/proc/add_additional_visible_overlays(list/accumulator)
+	return
+
 /mob/living/simple_animal/refresh_visible_overlays()
 
+	var/list/add_overlays = list()
 	if(length(draw_visible_overlays))
-		var/list/add_overlays = list()
 		for(var/overlay_state in draw_visible_overlays)
 			var/overlay_color = draw_visible_overlays[overlay_state]
 			if(overlay_state == "base")
 				add_overlays += overlay_image(icon, icon_state, overlay_color, RESET_COLOR)
 			else
 				add_overlays += overlay_image(icon, "[icon_state]-[overlay_state]", overlay_color, RESET_COLOR)
+
+	add_additional_visible_overlays(add_overlays)
+
+	if(length(add_overlays))
 		set_current_mob_overlay(HO_SKIN_LAYER, add_overlays)
 	else
 		set_current_mob_overlay(HO_SKIN_LAYER, null)
@@ -334,6 +341,7 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 		take_damage(dealt_damage, damage_type, damage_flags = damage_flags, inflicter = user)
 		user.visible_message(SPAN_DANGER("\The [user] [harm_verb] \the [src]!"))
 		user.do_attack_animation(src)
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
 
 /mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)

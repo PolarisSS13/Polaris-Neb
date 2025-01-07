@@ -12,6 +12,14 @@
 		'icons/turf/walls/log.dmi' = TRUE,
 		'icons/turf/walls/metal.dmi' = TRUE
 	)
+	icon_reinf = list(
+		'icons/turf/walls/reinforced_timber.dmi',
+		'icons/turf/walls/reinforced_timber_alt_1.dmi',
+		'icons/turf/walls/reinforced_timber_alt_2.dmi',
+		'icons/turf/walls/reinforced_timber_alt_3.dmi',
+		'icons/turf/walls/reinforced_timber_alt_4.dmi'
+	)
+	use_reinf_state = null
 	table_icon_base = "wood"
 	bench_icon = 'icons/obj/structures/wood_benches.dmi'
 	pew_icon = 'icons/obj/structures/wood_pews.dmi'

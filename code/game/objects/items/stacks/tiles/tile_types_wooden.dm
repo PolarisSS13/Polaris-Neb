@@ -28,6 +28,9 @@
 /obj/item/stack/tile/wood/laminate
 	abstract_type = /obj/item/stack/tile/wood/laminate
 
+/obj/item/stack/tile/wood/rough
+	abstract_type = /obj/item/stack/tile/wood/rough
+
 WOOD_TILE_SUBTYPE("oak",               oak,               oak)
 WOOD_TILE_SUBTYPE("mahogany",          mahogany,          mahogany)
 WOOD_TILE_SUBTYPE("maple",             maple,             maple)
@@ -35,6 +38,13 @@ WOOD_TILE_SUBTYPE("ebony",             ebony,             ebony)
 WOOD_TILE_SUBTYPE("walnut",            walnut,            walnut)
 WOOD_TILE_SUBTYPE("bamboo",            bamboo,            bamboo)
 WOOD_TILE_SUBTYPE("yew",               yew,               yew)
+WOOD_TILE_SUBTYPE("rough oak",         rough/oak,         oak)
+WOOD_TILE_SUBTYPE("rough mahogany",    rough/mahogany,    mahogany)
+WOOD_TILE_SUBTYPE("rough maple",       rough/maple,       maple)
+WOOD_TILE_SUBTYPE("rough ebony",       rough/ebony,       ebony)
+WOOD_TILE_SUBTYPE("rough walnut",      rough/walnut,      walnut)
+WOOD_TILE_SUBTYPE("rough bamboo",      rough/bamboo,      bamboo)
+WOOD_TILE_SUBTYPE("rough yew",         rough/yew,         yew)
 WOOD_TILE_SUBTYPE("oak laminate",      laminate/oak,      chipboard)
 WOOD_TILE_SUBTYPE("mahogany laminate", laminate/mahogany, chipboard/mahogany)
 WOOD_TILE_SUBTYPE("maple laminate",    laminate/maple,    chipboard/maple)

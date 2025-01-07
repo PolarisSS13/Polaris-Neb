@@ -164,7 +164,7 @@
 		/obj/effect/decal/cleanable/ash,
 		/obj/effect/decal/cleanable/generic,
 		/obj/effect/decal/cleanable/flour,
-		/obj/effect/decal/cleanable/dirt,
+		/obj/effect/decal/cleanable/dirt/visible,
 		/obj/item/remains/robot
 	)
 	return spawnable_choices
@@ -211,8 +211,8 @@
 		/obj/item/stack/material/plank/mapped/wood/fifty,
 		/obj/item/stack/material/cardstock/mapped/cardboard/fifty,
 		/obj/item/stack/material/sheet/reinforced/mapped/plasteel/fifty,
-		/obj/item/stack/material/rods/ten,
-		/obj/item/stack/material/rods/fifty
+		/obj/item/stack/material/rods/mapped/steel/ten,
+		/obj/item/stack/material/rods/mapped/steel/fifty
 	)
 	return spawnable_choices
 
@@ -465,16 +465,6 @@
 		/obj/item/cosmetics/eyeshadow/white,
 		/obj/item/cosmetics/eyeshadow/black
 	)
-	return spawnable_choices
-
-/obj/random/crayon
-	name = "random crayon"
-	desc = "This is a random crayon."
-	icon = 'icons/obj/items/crayons.dmi'
-	icon_state = "crayonred"
-
-/obj/random/crayon/spawn_choices()
-	var/static/list/spawnable_choices = subtypesof(/obj/item/pen/crayon)
 	return spawnable_choices
 
 /obj/random/umbrella

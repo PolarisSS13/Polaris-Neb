@@ -324,6 +324,29 @@
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	material = /decl/material/solid/organic/wood/oak
 	color = /decl/material/solid/organic/wood/oak::color
+	var/icon/overlay_icon = 'icons/obj/closets/bases/chest.dmi'
+	// TODO: Rework chest crafting so that this can use reinf_material instead.
+	/// The material used for the opacity and color of the trim overlay.
+	var/decl/material/overlay_material = /decl/material/solid/metal/iron
+
+/obj/structure/closet/crate/chest/Initialize()
+	. = ..()
+	if(ispath(overlay_material))
+		overlay_material = GET_DECL(overlay_material)
+	// icon update is already queued in parent because of closet appearance
+
+/obj/structure/closet/crate/chest/update_material_desc(override_desc)
+	..()
+	if(overlay_material)
+		desc = "[desc] It has a trim made of [overlay_material.solid_name]."
+
+/obj/structure/closet/crate/chest/on_update_icon()
+	. = ..()
+	if(istype(overlay_material))
+		var/overlay_state = opened ? "open-overlay" : "base-overlay"
+		var/image/trim = overlay_image(overlay_icon, overlay_state, overlay_material.color, RESET_COLOR|RESET_ALPHA)
+		trim.alpha = clamp((50 + overlay_material.opacity * 255), 0, 255)
+		add_overlay(trim)
 
 /obj/structure/closet/crate/chest/ebony
 	material = /decl/material/solid/organic/wood/ebony

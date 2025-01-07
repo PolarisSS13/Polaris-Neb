@@ -34,7 +34,7 @@
 			var/obj/item/clothing/mask/smokable/cigarette/cig = W
 			if (cig.lit == 1)
 				visible_message(SPAN_NOTICE("\The [user] crushes \the [cig] in \the [src], putting it out."))
-				W = cig.extinguish(no_message = 1)
+				W = cig.extinguish_fire(no_message = TRUE)
 			else if (cig.lit == 0)
 				to_chat(user, SPAN_NOTICE("You place \the [cig] in \the [src] without even smoking it. Why would you do that?"))
 		else

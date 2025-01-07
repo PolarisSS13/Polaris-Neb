@@ -87,11 +87,11 @@
 /decl/material/liquid/water/touch_mob(var/mob/living/M, var/amount, var/datum/reagents/holder)
 	..()
 	if(istype(M))
-		var/needed = M.fire_stacks * 10
+		var/needed = M.get_fire_intensity() * 10
 		if(amount > needed)
-			M.fire_stacks = 0
-			M.ExtinguishMob()
+			M.set_fire_intensity(0)
+			M.extinguish_fire()
 			holder.remove_reagent(type, needed)
 		else
-			M.adjust_fire_stacks(-(amount / 10))
+			M.adjust_fire_intensity(-(amount / 10))
 			holder.remove_reagent(type, amount)

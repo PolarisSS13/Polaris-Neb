@@ -50,6 +50,21 @@
 				"[WEST]"  = list("x" = 8, "y" = 0)
 			)
 		)
+	if(pilot_coverage >= 100) //Open cockpits dont get to have air
+		cockpit = new
+		cockpit.volume = 200
+		if(loc)
+			var/datum/gas_mixture/air = loc.return_air()
+			if(air)
+				//Essentially at this point its like we created a vacuum, but realistically making a bottle doesnt actually increase volume of a room and neither should a mech
+				for(var/g in air.gas)
+					cockpit.gas[g] = (air.gas[g] / air.volume) * cockpit.volume
+
+				cockpit.temperature = air.temperature
+				cockpit.update_values()
+
+		air_supply = new /obj/machinery/portable_atmospherics/canister/air(src)
+	storage_compartment = new(src)
 
 /obj/item/mech_component/chassis/Destroy()
 	QDEL_NULL(cell)
@@ -73,24 +88,6 @@
 		to_chat(user, SPAN_WARNING("It is missing a diagnostics unit."))
 	if(!m_armour)
 		to_chat(user, SPAN_WARNING("It is missing exosuit armour plating."))
-
-/obj/item/mech_component/chassis/Initialize()
-	. = ..()
-	if(pilot_coverage >= 100) //Open cockpits dont get to have air
-		cockpit = new
-		cockpit.volume = 200
-		if(loc)
-			var/datum/gas_mixture/air = loc.return_air()
-			if(air)
-				//Essentially at this point its like we created a vacuum, but realistically making a bottle doesnt actually increase volume of a room and neither should a mech
-				for(var/g in air.gas)
-					cockpit.gas[g] = (air.gas[g] / air.volume) * cockpit.volume
-
-				cockpit.temperature = air.temperature
-				cockpit.update_values()
-
-		air_supply = new /obj/machinery/portable_atmospherics/canister/air(src)
-	storage_compartment = new(src)
 
 /obj/item/mech_component/chassis/proc/update_air(var/take_from_supply)
 

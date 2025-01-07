@@ -97,7 +97,7 @@
 	else animate_movement = NO_STEPS
 	. = ..()
 
-/obj/item/projectile/CanPass()
+/obj/item/projectile/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	return TRUE
 
 /obj/item/projectile/damage_flags()
@@ -314,9 +314,6 @@
 /obj/item/projectile/explosion_act()
 	SHOULD_CALL_PARENT(FALSE)
 	return
-
-/obj/item/projectile/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return 1
 
 /obj/item/projectile/proc/before_move()
 	return
