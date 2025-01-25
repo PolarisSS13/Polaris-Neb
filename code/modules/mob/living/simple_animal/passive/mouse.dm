@@ -37,9 +37,6 @@
 /mob/living/simple_animal/passive/mouse/get_remains_type()
 	return /obj/item/remains/mouse
 
-/mob/living/simple_animal/passive/mouse/get_dexterity(var/silent)
-	return DEXTERITY_NONE // Mice are troll bait, give them no power.
-
 /datum/mob_controller/passive/mouse/do_process()
 	if(!(. = ..()))
 		return
