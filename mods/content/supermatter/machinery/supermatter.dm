@@ -113,7 +113,7 @@ var/global/list/supermatter_delam_accent_sounds = list(
 	light_range = 4
 	layer = ABOVE_HUMAN_LAYER
 	matter = list(
-		/decl/material/solid/supermatter = MATTER_AMOUNT_PRIMARY,
+		/decl/material/solid/exotic_matter = MATTER_AMOUNT_PRIMARY,
 		/decl/material/solid/metal/steel = MATTER_AMOUNT_REINFORCEMENT
 	)
 	w_class = ITEM_SIZE_LARGE_STRUCTURE
