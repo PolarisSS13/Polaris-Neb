@@ -112,7 +112,7 @@
 	hidden_from_codex = TRUE
 
 /decl/fusion_reaction/helium_exotic_matter/phoron_supermatter
-	p_react = /decl/material/solid/supermatter
+	p_react = /decl/material/solid/exotic_matter
 	s_react = /decl/material/solid/phoron
 
 /decl/fusion_reaction/helium_exotic_matter/handle_reaction_special(var/obj/effect/fusion_em_field/holder)

@@ -129,12 +129,6 @@
 		to_chat(user, SPAN_NOTICE("You add the contents of \the [thing] to \the [src]'s material buffer."))
 		return TRUE
 
-	if(istype(thing, /obj/machinery/power/supermatter/shard))
-		stored_material[/decl/material/solid/supermatter] = 5 * SHEET_MATERIAL_AMOUNT
-		to_chat(user, SPAN_NOTICE("You awkwardly cram \the [thing] into \the [src]'s material buffer."))
-		qdel(thing)
-		return TRUE
-
 	if(istype(thing, /obj/item/stack/material))
 		var/obj/item/stack/material/M = thing
 		var/decl/material/mat = M.get_material()

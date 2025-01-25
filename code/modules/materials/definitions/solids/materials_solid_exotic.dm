@@ -100,7 +100,7 @@
 	if(prob(10 * accelerant_value))
 		M.handle_contaminants()
 
-/decl/material/solid/supermatter
+/decl/material/solid/exotic_matter
 	name = "exotic matter"
 	uid = "solid_exotic_matter"
 	lore_text = "Exotic matter is a non-baryonic form of matter, which features heavily in all kinds of fringe physics-defying technology."

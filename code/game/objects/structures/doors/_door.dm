@@ -294,7 +294,7 @@
 	material = /decl/material/solid/organic/plastic
 
 /obj/structure/door/exotic_matter
-	material = /decl/material/solid/supermatter
+	material = /decl/material/solid/exotic_matter
 
 /obj/structure/door/shuttle
 	material = /decl/material/solid/metal/steel
