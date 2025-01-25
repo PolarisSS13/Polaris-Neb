@@ -1,5 +1,6 @@
 /decl/material/liquid/alcohol
 	abstract_type = /decl/material/liquid/alcohol
+	codex_name = "alcohol"
 	color = "#404030"
 	touch_met = 5
 	ignition_point = T0C+150
