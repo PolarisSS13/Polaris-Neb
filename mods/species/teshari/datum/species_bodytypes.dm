@@ -67,7 +67,7 @@
 	uid                  = "bodytype_avian_additive_raptor"
 
 /decl/bodytype/avian/Initialize()
-	equip_adjust = list(
+	_equip_adjust = list(
 		slot_l_ear_str     = list("[NORTH]" = list( 1, -5), "[EAST]" = list(-2, -5), "[SOUTH]" = list(-1, -5),  "[WEST]" = list( 0, -5)),
 		slot_r_ear_str     = list("[NORTH]" = list( 1, -5), "[EAST]" = list( 0, -5), "[SOUTH]" = list(-1, -5),  "[WEST]" = list( 2, -5)),
 		BP_L_HAND          = list("[NORTH]" = list( 3, -3), "[EAST]" = list( 1, -3), "[SOUTH]" = list(-3, -3),  "[WEST]" = list(-5, -3)),
