@@ -23,7 +23,7 @@
 	unarmed_attacks = list(
 		/decl/natural_attack/bite/sharp/drake,
 		/decl/natural_attack/claws/strong/drake
-
+	)
 	available_background_info = list(
 		/decl/background_category/heritage   = list(/decl/background_detail/heritage/grafadreka),
 		/decl/background_category/homeworld = list(/decl/background_detail/location/grafadreka),
