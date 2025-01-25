@@ -45,8 +45,8 @@
 	var/template_tags_whitelist
 	///Bit flag of the ruin tags that may never be picked for this planet.
 	var/template_tags_blacklist
-	///Maximume amount of subtemplates/ruins/sites that may be picked and spawned on the planet.
-	var/subtemplate_budget = 4
+	///Maximum amount of subtemplates/ruins/sites that may be picked and spawned on the planet.
+	var/subtemplate_budget = 8
 	///Ruin sites map template category to use for creating ruins on this planet.
 	var/template_category = MAP_TEMPLATE_CATEGORY_PLANET_SITE
 
