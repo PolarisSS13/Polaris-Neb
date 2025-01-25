@@ -132,7 +132,7 @@
 	name = "costume selection"
 	description = "A selection of ridiculous costume hats that are likely to elicit funny looks."
 	path = /obj/item/clothing/head
-	uid = "gear_head_formal"
+	uid = "gear_head_costume"
 
 /decl/loadout_option/head/costume/get_gear_tweak_options()
 	. = ..()
