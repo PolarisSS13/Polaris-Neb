@@ -32,14 +32,6 @@
 		/mob/living/human/proc/toggle_vox_pressure_seal
 	)
 
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/claws/strong/gloves,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite/strong
-	)
-
 	rarity_value = 4
 
 	description = {"The Vox are the broken remnants of a once-proud race, now reduced to little more

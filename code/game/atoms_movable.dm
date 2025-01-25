@@ -40,6 +40,9 @@
 	// Marker for alpha mask update process. null == never update, TRUE == currently updating, FALSE == finished updating.
 	var/updating_turf_alpha_mask = null
 
+	// Damage type from using or throwing this atom.
+	var/atom_damage_type = BRUTE
+
 // This proc determines if the instance is preserved when the process() despawn of crypods occurs.
 /atom/movable/proc/preserve_in_cryopod(var/obj/machinery/cryopod/pod)
 	return FALSE
@@ -269,7 +272,7 @@
 
 		if(isturf(loc))
 			var/turf/T = loc
-			if(T.reagents)
+			if(T.reagents?.total_volume && submerged())
 				fluid_act(T.reagents)
 
 		for(var/mob/viewer in storage?.storage_ui?.is_seeing)
@@ -581,7 +584,29 @@
 	if(!.) // If we're under or inside shelter, use the z-level rain (for ambience)
 		. = SSweather.weather_by_z[my_turf.z]
 
+/atom/movable/proc/handle_post_automoved(atom/old_loc)
+	return
+
 /atom/movable/take_vaporized_reagent(reagent, amount)
 	if(ATOM_IS_OPEN_CONTAINER(src))
 		return loc?.take_vaporized_reagent(reagent, amount)
 	return null
+
+/atom/movable/immune_to_floor_hazards()
+	return ..() || !!throwing
+
+// TODO: make everything use this.
+/atom/movable/proc/set_anchored(new_anchored)
+	SHOULD_CALL_PARENT(TRUE)
+	if(anchored != new_anchored)
+		anchored = new_anchored
+		return TRUE
+	return FALSE
+
+// updates pixel offsets, triggers fluids, etc.
+/atom/movable/proc/on_turf_height_change(new_height)
+	if(simulated)
+		reset_offsets()
+		return TRUE
+	return FALSE
+

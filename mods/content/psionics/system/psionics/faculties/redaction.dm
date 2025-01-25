@@ -1,7 +1,7 @@
 /decl/psionic_faculty/redaction
 	id = PSI_REDACTION
 	name = "Redaction"
-	associated_intent = I_HELP
+	associated_intent_flag = I_FLAG_HELP
 	armour_types = list(ARMOR_BIO, ARMOR_RAD)
 
 /decl/psionic_power/redaction

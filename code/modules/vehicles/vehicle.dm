@@ -106,7 +106,7 @@
 	return ..() // handles bash()
 
 /obj/vehicle/bash(obj/item/weapon, mob/user)
-	if(isliving(user) && user.a_intent == I_HELP)
+	if(isliving(user) && user.check_intent(I_FLAG_HELP))
 		return FALSE
 	if(!weapon.user_can_attack_with(user))
 		return FALSE
@@ -115,10 +115,10 @@
 	// physical damage types that can impart force; swinging a bat or energy sword
 	switch(weapon.atom_damage_type)
 		if(BURN)
-			current_health -= weapon.get_attack_force(user) * fire_dam_coeff
+			current_health -= weapon.expend_attack_force(user) * fire_dam_coeff
 			. = TRUE
 		if(BRUTE)
-			current_health -= weapon.get_attack_force(user) * brute_dam_coeff
+			current_health -= weapon.expend_attack_force(user) * brute_dam_coeff
 			. = TRUE
 		else
 			. = FALSE
@@ -144,23 +144,17 @@
 		healthcheck()
 
 /obj/vehicle/emp_act(severity)
-	var/was_on = on
+	addtimer(CALLBACK(src, PROC_REF(end_emp), on), severity * 30 SECONDS)
 	stat |= EMPED
-	var/obj/effect/overlay/pulse2 = new /obj/effect/overlay(loc)
-	pulse2.icon = 'icons/effects/effects.dmi'
-	pulse2.icon_state = "empdisable"
-	pulse2.SetName("emp sparks")
-	pulse2.anchored = TRUE
-	pulse2.set_dir(pick(global.cardinal))
-
-	spawn(10)
-		qdel(pulse2)
+	var/obj/effect/temp_visual/emp_burst/burst = new /obj/effect/temp_visual/emp_burst(loc)
+	burst.set_dir(pick(global.cardinal))
 	if(on)
 		turn_off()
-	spawn(severity*300)
-		stat &= ~EMPED
-		if(was_on)
-			turn_on()
+
+/obj/vehicle/proc/end_emp(was_on)
+	stat &= ~EMPED
+	if(was_on)
+		turn_on()
 
 /obj/vehicle/attack_ai(mob/living/silicon/ai/user)
 	return
@@ -240,23 +234,23 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/human/H)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/user)
 	if(cell)
 		return
 	if(!istype(C))
 		return
-	if(!H.try_unequip(C, src))
+	if(!user.try_unequip(C, src))
 		return
 	cell = C
 	powercheck()
-	to_chat(usr, "<span class='notice'>You install [C] in [src].</span>")
+	to_chat(user, "<span class='notice'>You install [C] in [src].</span>")
 
-/obj/vehicle/proc/remove_cell(var/mob/living/human/H)
+/obj/vehicle/proc/remove_cell(var/mob/living/user)
 	if(!cell)
 		return
 
-	to_chat(usr, "<span class='notice'>You remove [cell] from [src].</span>")
-	H.put_in_hands(cell)
+	to_chat(user, "<span class='notice'>You remove [cell] from [src].</span>")
+	user.put_in_hands(cell)
 	cell = null
 	powercheck()
 

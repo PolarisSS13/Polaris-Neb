@@ -92,8 +92,8 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot process \the [thing]."))
 
 /obj/machinery/fabricator/attackby(var/obj/item/O, var/mob/user)
-	if(component_attackby(O, user))
-		return TRUE
+	if((. = component_attackby(O, user)))
+		return
 	if(panel_open && (IS_MULTITOOL(O) || IS_WIRECUTTER(O)))
 		attack_hand_with_interaction_checks(user)
 		return TRUE
@@ -103,7 +103,7 @@
 		return TRUE
 
 	// Gate some simple interactions beind intent so people can still feed lathes disks.
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 
 		// Set or update our local network.
 		if(IS_MULTITOOL(O))
@@ -115,10 +115,10 @@
 		if(istype(O, /obj/item/disk/design_disk))
 			var/obj/item/disk/design_disk/disk = O
 			if(!disk.blueprint)
-				to_chat(usr, SPAN_WARNING("\The [O] is blank."))
+				to_chat(user, SPAN_WARNING("\The [O] is blank."))
 				return TRUE
 			if(disk.blueprint in installed_designs)
-				to_chat(usr, SPAN_WARNING("\The [src] is already loaded with the blueprint stored on \the [O]."))
+				to_chat(user, SPAN_WARNING("\The [src] is already loaded with the blueprint stored on \the [O]."))
 				return TRUE
 			installed_designs += disk.blueprint
 			design_cache |= disk.blueprint

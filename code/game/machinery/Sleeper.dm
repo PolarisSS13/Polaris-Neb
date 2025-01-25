@@ -248,7 +248,7 @@
 
 /obj/machinery/sleeper/CanUseTopic(user)
 	if(user == occupant)
-		to_chat(usr, SPAN_WARNING("You can't reach the controls from the inside."))
+		to_chat(user, SPAN_WARNING("You can't reach the controls from the inside."))
 		return STATUS_CLOSE
 	. = ..()
 

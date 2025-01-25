@@ -51,7 +51,7 @@
 
 	var/atom/blade
 	for(var/obj/item/held in shuffle(user.get_held_items()))
-		if(has_edge(held))
+		if(held.has_edge())
 			blade = held
 			break
 	if(!blade)
@@ -113,5 +113,5 @@
 	animate(src, alpha = 255, time = 3)
 	sleep(13)
 	animate(src, alpha = 0, time = 40)
-	sleep(40)
-	qdel(src)
+	if(!QDELING(src))
+		QDEL_IN(src, 4 SECONDS)

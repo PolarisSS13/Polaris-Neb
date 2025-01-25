@@ -1,6 +1,5 @@
 /mob/living/Life()
 	set invisibility = FALSE
-	set background = BACKGROUND_ENABLED
 
 	..()
 
@@ -23,6 +22,8 @@
 
 	//Handle temperature/pressure differences between body and environment
 	handle_environment(loc.return_air())
+	if(QDELETED(src)) // Destroyed by fire or pressure damage in handle_environment()
+		return PROCESS_KILL
 	handle_regular_status_updates() // Status & health update, are we dead or alive etc.
 	handle_stasis()
 
@@ -121,7 +122,7 @@
 	return TRUE
 
 /mob/living/proc/experiences_hunger_and_thirst()
-	return TRUE
+	return !isSynthetic() // Doesn't really apply to robots. Maybe unify this with cells in the future.
 
 /mob/living/proc/get_hunger_factor()
 	var/decl/species/my_species = get_species()
@@ -273,9 +274,10 @@
 	if(!loc)
 		return
 	var/datum/reagents/touching_reagents = get_contact_reagents()
-	if(!touching_reagents?.total_volume)
+	if(touching_reagents?.total_volume <= FLUID_MINIMUM_TRANSFER)
+		touching_reagents?.clear_reagents()
 		return
-	var/drip_amount = max(1, round(touching_reagents.total_volume * 0.1))
+	var/drip_amount = max(FLUID_MINIMUM_TRANSFER, round(touching_reagents.total_volume * 0.2))
 	if(drip_amount)
 		touching_reagents.trans_to(loc, drip_amount)
 
@@ -583,8 +585,7 @@
 	if(!root_bodytype)
 		return
 
-	var/static/list/all_stance_limbs = list(ORGAN_CATEGORY_STANCE, ORGAN_CATEGORY_STANCE_ROOT)
-	var/expected_limbs_for_bodytype = root_bodytype.get_expected_organ_count_for_categories(all_stance_limbs)
+	var/expected_limbs_for_bodytype = root_bodytype.get_expected_organ_count_for_categories(global.all_stance_limbs)
 	if(expected_limbs_for_bodytype <= 0)
 		return // we don't care about stance for whatever reason.
 
@@ -596,7 +597,7 @@
 
 	var/found_limbs = 0
 	var/had_limb_pain = FALSE
-	for(var/obj/item/organ/external/limb in get_organs_by_categories(all_stance_limbs))
+	for(var/obj/item/organ/external/limb in get_organs_by_categories(global.all_stance_limbs))
 		found_limbs++
 		var/add_stance_damage = 0
 		if(limb.is_malfunctioning())
@@ -631,7 +632,7 @@
 
 	// Calculate the expected and actual number of functioning legs we have.
 	var/has_sufficient_working_legs = TRUE
-	var/list/root_limb_tags  = root_bodytype.organ_tags_by_category[ORGAN_CATEGORY_STANCE_ROOT]
+	var/list/root_limb_tags  = root_bodytype.get_expected_organ_tags_for_category(ORGAN_CATEGORY_STANCE_ROOT)
 	var/minimum_working_legs = ceil(length(root_limb_tags) * 0.5)
 	if(minimum_working_legs > 0)
 		var/leg_count = 0

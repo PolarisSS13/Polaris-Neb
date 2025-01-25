@@ -1,5 +1,5 @@
-/obj/item/proc/standard_dispenser_refill(var/mob/user, var/obj/structure/reagent_dispensers/target) // This goes into afterattack
-	if(!istype(target) || (target.atom_flags & ATOM_FLAG_OPEN_CONTAINER))
+/obj/item/proc/standard_dispenser_refill(mob/user, obj/structure/reagent_dispensers/target, skip_container_check = FALSE) // This goes into afterattack
+	if(!istype(target) || (!skip_container_check && (target.atom_flags & ATOM_FLAG_OPEN_CONTAINER)))
 		return FALSE
 
 	if(!target.reagents || !target.reagents.total_volume)
@@ -18,7 +18,7 @@
 	if(!istype(target))
 		return FALSE
 
-	if(user.a_intent == I_HELP)
+	if(user.check_intent(I_FLAG_HELP))
 		to_chat(user, SPAN_NOTICE("You can't splash people on help intent."))
 		return TRUE
 
@@ -64,12 +64,12 @@
 		return TRUE
 
 	var/had_liquids = length(reagents.liquid_volumes)
-	var/trans = reagents.trans_to(target, amount)
+	var/transferred_amount = reagents.trans_to(target, amount)
 
 	if(had_liquids)
 		playsound(src, 'sound/effects/pour.ogg', 25, 1)
 	else
 		// Sounds more like pouring small pellets or dust.
 		playsound(src, 'sound/effects/refill.ogg', 25, 1)
-	to_chat(user, SPAN_NOTICE("You transfer [trans] unit\s of the solution to \the [target].  \The [src] now contains [src.reagents.total_volume] units."))
+	to_chat(user, SPAN_NOTICE("You transfer [transferred_amount] unit\s of the solution to \the [target]. \The [src] now contains [reagents.total_volume] unit\s."))
 	return TRUE

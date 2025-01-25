@@ -5,13 +5,11 @@
 	speak_emote = list("hisses")
 	base_animal_type = /mob/living/simple_animal/construct
 	base_movement_delay = -1
-
 	response_help_1p = "You think better of touching $TARGET$."
 	response_help_3p = "$USER$ thinks better of touching $TARGET$."
 	response_disarm =  "flails at"
 	response_harm =    "punches"
 	icon = 'icons/mob/simple_animal/shade.dmi'
-	a_intent = I_HURT
 	status_flags = CANPUSH
 	universal_speak = FALSE
 	universal_understand = TRUE
@@ -32,7 +30,7 @@
 	z_flags = ZMM_MANGLE_PLANES
 	glowing_eyes = TRUE
 	ai = /datum/mob_controller/aggressive/construct
-	var/list/construct_spells = list()
+	var/list/construct_spells
 
 /datum/mob_controller/aggressive/construct
 	emote_speech = list("Hsssssssszsht.", "Hsssssssss...", "Tcshsssssssszht!")
@@ -55,7 +53,7 @@
 	add_language(/decl/language/cultcommon)
 	add_language(/decl/language/cult)
 	for(var/spell in construct_spells)
-		src.add_spell(new spell, "const_spell_ready")
+		add_ability(spell)
 	set_light(1.5, -2, COLOR_WHITE)
 	update_icon()
 
@@ -108,7 +106,9 @@
 	environment_smash = 2
 	status_flags = 0
 	resistance = 10
-	construct_spells = list(/spell/aoe_turf/conjure/forcewall/lesser)
+	construct_spells = list(
+		/decl/ability/cult/construct/forcewall/lesser
+	)
 	hud_used = /datum/hud/construct/juggernaut
 	base_movement_delay = 2
 	ai = /datum/mob_controller/aggressive/construct_armoured
@@ -164,7 +164,9 @@
 	natural_weapon = /obj/item/natural_weapon/wraith
 	environment_smash = 1
 	see_in_dark = 7
-	construct_spells = list(/spell/targeted/ethereal_jaunt/shift)
+	construct_spells = list(
+		/decl/ability/cult/construct/shift
+	)
 	hud_used = /datum/hud/construct/wraith
 
 /obj/item/natural_weapon/wraith
@@ -195,11 +197,11 @@
 	natural_weapon = /obj/item/natural_weapon/cult_builder
 	environment_smash = 1
 	construct_spells = list(
-		/spell/aoe_turf/conjure/construct/lesser,
-		/spell/aoe_turf/conjure/wall,
-		/spell/aoe_turf/conjure/floor,
-		/spell/aoe_turf/conjure/soulstone,
-		/spell/aoe_turf/conjure/pylon
+		/decl/ability/cult/construct/lesser,
+		/decl/ability/cult/construct/wall,
+		/decl/ability/cult/construct/floor,
+		/decl/ability/cult/construct/soulstone,
+		/decl/ability/cult/construct/pylon
 	)
 	hud_used = /datum/hud/construct/artificer
 	base_movement_delay = 0
@@ -229,7 +231,9 @@
 	natural_weapon = /obj/item/natural_weapon/juggernaut/behemoth
 	environment_smash = 2
 	resistance = 10
-	construct_spells = list(/spell/aoe_turf/conjure/forcewall/lesser)
+	construct_spells = list(
+		/decl/ability/cult/construct/lesser
+	)
 	hud_used = /datum/hud/construct/juggernaut
 	base_movement_delay = 2
 	ai = /datum/mob_controller/aggressive/construct_armoured
@@ -250,7 +254,7 @@
 	see_in_dark = 7
 	hud_used = /datum/hud/construct/harvester
 	construct_spells = list(
-		/spell/targeted/harvest
+		/decl/ability/cult/construct/harvest
 	)
 
 /obj/item/natural_weapon/harvester
@@ -265,14 +269,14 @@
 /mob/living/simple_animal/construct/handle_regular_status_updates()
 	. = ..()
 	if(.)
-		silence_spells(purge)
+		disable_abilities(purge)
 
 /mob/living/simple_animal/construct/handle_regular_hud_updates()
 	. = ..()
 	if(.)
 		if(fire)
 			fire.icon_state = "fire[!!GET_HUD_ALERT(src, /decl/hud_element/condition/fire)]"
-		silence_spells(purge)
+		disable_abilities(purge)
 		if(healths)
 			switch(current_health)
 				if(250 to INFINITY)		healths.icon_state = "health0"

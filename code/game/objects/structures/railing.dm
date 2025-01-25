@@ -14,10 +14,13 @@
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	max_health = 100
 	parts_amount = 2
-	parts_type = /obj/item/stack/material/strut
+	parts_type = /obj/item/stack/material/rods
 
 	var/broken =    FALSE
 	var/neighbor_status = 0
+
+/obj/structure/railing/should_have_alpha_mask()
+	return simulated && isturf(loc) && !(locate(/obj/structure/railing) in get_step(loc, SOUTH))
 
 /obj/structure/railing/mapped
 	anchored = TRUE
@@ -28,7 +31,7 @@
 	density = FALSE
 
 /obj/structure/railing/mapped/wooden
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	parts_type = /obj/item/stack/material/plank
 	color = WOOD_COLOR_GENERIC
 	paint_color = null
@@ -218,7 +221,7 @@ WOOD_RAILING_SUBTYPE(yew)
 		to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 		return TRUE
 
-	if(user.a_intent == I_HURT && ishuman(victim))
+	if(user.check_intent(I_FLAG_HARM) && ishuman(victim))
 		visible_message(SPAN_DANGER("\The [user] slams \the [victim]'s face against \the [src]!"))
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 		var/blocked = victim.get_blocked_ratio(BP_HEAD, BRUTE, damage = 8)
@@ -288,7 +291,7 @@ WOOD_RAILING_SUBTYPE(yew)
 			update_icon()
 		return TRUE
 
-	var/force = W.get_attack_force(user)
+	var/force = W.expend_attack_force(user)
 	if(force && (W.atom_damage_type == BURN || W.atom_damage_type == BRUTE))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		visible_message("<span class='danger'>\The [src] has been [LAZYLEN(W.attack_verb) ? pick(W.attack_verb) : "attacked"] with \the [W] by \the [user]!</span>")

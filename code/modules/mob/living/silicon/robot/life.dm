@@ -258,12 +258,12 @@
 
 /mob/living/silicon/robot/update_fire()
 	overlays -= image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing")
-	if(on_fire)
+	if(is_on_fire())
 		overlays += image("icon"='icons/mob/OnFire.dmi', "icon_state"="Standing")
 
 //Silicons don't gain stacks from hotspots, but hotspots can ignite them
-/mob/living/silicon/increase_fire_stacks(exposed_temperature)
+/mob/living/silicon/increase_fire_intensity(exposed_temperature)
 	return
 
 /mob/living/silicon/can_ignite()
-	return !on_fire
+	return !is_on_fire()

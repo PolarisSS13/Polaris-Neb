@@ -137,6 +137,9 @@
 /proc/cmp_decl_uid_asc(decl/a, decl/b)
 	return sorttext(b.uid, a.uid)
 
+/proc/cmp_decl_sort_value_asc(decl/a, decl/b)
+	return a.sort_order - b.sort_order
+
 /proc/cmp_inventory_slot_desc(datum/inventory_slot/a, datum/inventory_slot/b)
 	return b.quick_equip_priority - a.quick_equip_priority
 
@@ -155,3 +158,6 @@
 			return -1 // goes after
 		return cmp_skill_asc(a, GET_DECL(b.prerequisites[1]))
 	return cmp_name_or_type_asc(a, b)
+
+/proc/cmp_priority_list(list/A, list/B)
+	return A["priority"] - B["priority"]

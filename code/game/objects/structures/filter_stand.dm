@@ -5,7 +5,7 @@
 	icon_state = ICON_STATE_WORLD
 	density = TRUE
 	anchored = TRUE
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 

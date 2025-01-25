@@ -213,6 +213,7 @@ Thus, the two variables affect pump operation are set in New():
 /decl/interaction_handler/binary_pump_toggle
 	name = "Switch On/Off"
 	expected_target_type = /obj/machinery/atmospherics/binary/pump
+	examine_desc = "turn $TARGET_THEM$ on or off"
 
 /decl/interaction_handler/binary_pump_toggle/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/atmospherics/binary/pump/P = target

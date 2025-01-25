@@ -52,9 +52,9 @@
 	else
 		switch(W.atom_damage_type)
 			if(BURN)
-				current_health -= W.get_attack_force(user) * 0.75
+				current_health -= W.expend_attack_force(user) * 0.75
 			if(BRUTE)
-				current_health -= W.get_attack_force(user) * 0.5
+				current_health -= W.expend_attack_force(user) * 0.5
 		if (current_health <= 0)
 			explode()
 		return TRUE

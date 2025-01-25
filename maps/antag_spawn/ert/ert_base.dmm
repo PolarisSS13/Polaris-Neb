@@ -415,9 +415,6 @@
 /obj/item/flash,
 /turf/unsimulated/floor/dark,
 /area/map_template/rescue_base/base)
-"bs" = (
-/turf/unsimulated/floor/vault,
-/area/map_template/rescue_base/base)
 "bt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Cell 2"
@@ -1198,10 +1195,6 @@
 /obj/machinery/vending/medical,
 /turf/unsimulated/wall,
 /area/map_template/rescue_base/base)
-"dj" = (
-/obj/effect/wingrille_spawn/reinforced/crescent,
-/turf/space,
-/area/map_template/rescue_base/base)
 "dk" = (
 /obj/machinery/door/airlock/centcom{
 	name = "EVA"
@@ -1396,9 +1389,6 @@
 /obj/structure/bed/chair/office/dark,
 /turf/unsimulated/floor/vault,
 /area/map_template/rescue_base/base)
-"dP" = (
-/turf/unsimulated/floor/vault,
-/area/map_template/rescue_base/base)
 "dQ" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/door/airlock/external/shuttle{
@@ -1464,10 +1454,6 @@
 	pixel_x = -24;
 	pixel_y = -4
 	},
-/turf/unsimulated/floor/vault,
-/area/map_template/rescue_base/base)
-"ec" = (
-/obj/structure/table/reinforced,
 /turf/unsimulated/floor/vault,
 /area/map_template/rescue_base/base)
 "ed" = (
@@ -1547,7 +1533,7 @@
 "et" = (
 /obj/structure/rack,
 /obj/item/secure_storage/briefcase,
-/obj/item/clothing/head/beret/corp/centcom/captain,
+/obj/item/clothing/head/beret,
 /turf/unsimulated/floor/vault,
 /area/map_template/rescue_base/base)
 "eu" = (
@@ -1555,7 +1541,7 @@
 /turf/unsimulated/floor/vault,
 /area/map_template/rescue_base/base)
 "ev" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/machinery/button/blast_door{
@@ -1567,7 +1553,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "ew" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/item/radio/phone{
@@ -1577,7 +1563,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "ex" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/machinery/button/blast_door{
@@ -1747,7 +1733,7 @@
 /turf/unsimulated/floor/dark,
 /area/map_template/rescue_base/base)
 "eH" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /obj/item/ashtray,
@@ -1761,7 +1747,7 @@
 /turf/unsimulated/floor/cult,
 /area/map_template/rescue_base/base)
 "eJ" = (
-/obj/structure/table/woodentable{
+/obj/structure/table/laminate{
 	dir = 5
 	},
 /turf/unsimulated/floor/cult,
@@ -1833,8 +1819,7 @@
 "eV" = (
 /obj/machinery/door/blast/regular/open{
 	id_tag = "rescuebridge";
-	name = "Cockpit Blast Shutters";
-
+	name = "Cockpit Blast Shutters"
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/blue,
@@ -1843,8 +1828,7 @@
 "eW" = (
 /obj/machinery/door/blast/regular/open{
 	id_tag = "rescuedock";
-	name = "Blast Shutters";
-
+	name = "Blast Shutters"
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/blue,
@@ -2075,8 +2059,7 @@
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
 	id_tag = "rescuebridge";
-	name = "Cockpit Blast Shutters";
-
+	name = "Cockpit Blast Shutters"
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/blue,
@@ -2135,8 +2118,7 @@
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
 	id_tag = "rescueeva";
-	name = "Blast Shutters";
-
+	name = "Blast Shutters"
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/blue,
@@ -2539,8 +2521,7 @@
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
 	id_tag = "rescuebridge";
-	name = "Blast Shutters";
-
+	name = "Blast Shutters"
 	},
 /obj/effect/paint/blue,
 /turf/floor/plating,
@@ -2590,8 +2571,7 @@
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
 	id_tag = "rescueinfirm";
-	name = "Blast Shutters";
-
+	name = "Blast Shutters"
 	},
 /obj/effect/paint/blue,
 /turf/floor/plating,
@@ -3513,7 +3493,7 @@ ao
 ao
 dU
 ao
-dP
+ao
 ad
 ac
 ac
@@ -4285,7 +4265,7 @@ ar
 cH
 ar
 cS
-dj
+bg
 ao
 ao
 bg
@@ -4350,7 +4330,7 @@ ar
 cI
 ar
 cT
-dj
+bg
 ao
 ao
 bg
@@ -4415,7 +4395,7 @@ ar
 ar
 ar
 cU
-dj
+bg
 ao
 ao
 bg
@@ -4480,7 +4460,7 @@ cy
 cJ
 cO
 cV
-dj
+bg
 ao
 ao
 ad
@@ -4680,7 +4660,7 @@ ao
 ao
 ad
 cR
-dP
+ao
 dY
 dY
 eu
@@ -4988,11 +4968,11 @@ ar
 ar
 ad
 ar
-bs
+ao
 ar
 ar
 ar
-bs
+ao
 ar
 ad
 cq
@@ -5011,7 +4991,7 @@ ao
 ao
 ao
 ao
-ec
+de
 ad
 bB
 eN
@@ -5076,7 +5056,7 @@ ao
 ao
 ao
 ao
-ec
+de
 ad
 bC
 eN
@@ -5136,12 +5116,12 @@ ao
 ad
 ad
 ad
-ec
+de
 ao
 ao
 ao
 ao
-ec
+de
 ad
 bA
 eO
@@ -5206,7 +5186,7 @@ ao
 ao
 ao
 ao
-ec
+de
 ad
 bA
 bB
@@ -5271,7 +5251,7 @@ eq
 eq
 eq
 ao
-ec
+de
 ad
 bB
 bC
@@ -5464,9 +5444,9 @@ ac
 ac
 ac
 ad
-ec
+de
 eq
-ec
+de
 ad
 ac
 ac

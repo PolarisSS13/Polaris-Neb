@@ -45,7 +45,7 @@
 
 	. = ..()
 
-/datum/pipeline/Process()//This use to be called called from the pipe networks
+/datum/pipeline/Process()//This use to be called from the pipe networks
 	//Check to see if pressure is within acceptable limits
 	var/pressure = air.return_pressure()
 	if(pressure > maximum_pressure)
@@ -193,13 +193,23 @@
 		network.update = 1
 
 /datum/pipeline/proc/temperature_interact(turf/target, share_volume, thermal_conductivity)
+
+	if(air.volume <= 0) // Avoid div by zero.
+		return
+
 	var/total_heat_capacity = air.heat_capacity()
 	var/partial_heat_capacity = total_heat_capacity*(share_volume/air.volume)
 
+	if(total_heat_capacity <= 0) // Avoid div by zero.
+		return
+
 	if(SHOULD_PARTICIPATE_IN_ZONES(target) && !target.blocks_air)
+
+		if(partial_heat_capacity <= 0)
+			return
+
 		var/delta_temperature = 0
 		var/sharer_heat_capacity = 0
-
 		if(target.zone)
 			delta_temperature = (air.temperature - target.zone.air.temperature)
 			sharer_heat_capacity = target.zone.air.heat_capacity()
@@ -207,18 +217,14 @@
 			delta_temperature = (air.temperature - target.air.temperature)
 			sharer_heat_capacity = target.air.heat_capacity()
 
+		if(sharer_heat_capacity <= 0)
+			return
+
 		var/self_temperature_delta = 0
 		var/sharer_temperature_delta = 0
-
-		if((sharer_heat_capacity > 0) && (partial_heat_capacity > 0))
-			var/heat = thermal_conductivity*delta_temperature* \
-				(partial_heat_capacity*sharer_heat_capacity/(partial_heat_capacity+sharer_heat_capacity))
-
-			self_temperature_delta = -heat/total_heat_capacity
-			sharer_temperature_delta = heat/sharer_heat_capacity
-		else
-			return 1
-
+		var/heat = thermal_conductivity * delta_temperature * ( partial_heat_capacity * sharer_heat_capacity / (partial_heat_capacity + sharer_heat_capacity) )
+		self_temperature_delta = -heat/total_heat_capacity
+		sharer_temperature_delta = heat/sharer_heat_capacity
 		air.temperature += self_temperature_delta
 
 		if(target.zone)
@@ -228,33 +234,29 @@
 
 	else if(target.external_atmosphere_participation && !target.blocks_air)
 
-		var/turf/modeled_location = target
-		var/datum/gas_mixture/target_air = modeled_location.return_air()
+		if(partial_heat_capacity <= 0)
+			return
+
+		var/datum/gas_mixture/target_air = target.return_air()
+		var/sharer_heat_capacity = target_air?.heat_capacity()
+
+		if(sharer_heat_capacity <= 0)
+			return
 
 		var/delta_temperature = air.temperature - target_air.temperature
-		var/sharer_heat_capacity = target_air.heat_capacity()
+		var/heat = thermal_conductivity * delta_temperature * ( partial_heat_capacity * sharer_heat_capacity / (partial_heat_capacity+sharer_heat_capacity) )
+		air.temperature += -heat/total_heat_capacity
 
-		if((sharer_heat_capacity > 0) && (partial_heat_capacity > 0))
-			var/heat = thermal_conductivity*delta_temperature* \
-				(partial_heat_capacity*sharer_heat_capacity/(partial_heat_capacity+sharer_heat_capacity))
-			air.temperature += -heat/total_heat_capacity
-		else
-			return 1
-
-	else
-		if((target.heat_capacity > 0) && (partial_heat_capacity > 0))
-			var/delta_temperature = air.temperature - target.temperature
-
-			var/heat = thermal_conductivity*delta_temperature* \
-				(partial_heat_capacity*target.heat_capacity/(partial_heat_capacity+target.heat_capacity))
-
-			air.temperature -= heat/total_heat_capacity
-			// Only increase the temperature of the target if it's simulated.
-			if(target.simulated)
-				target.temperature += heat/target.heat_capacity
+	else if((target.heat_capacity > 0) && (partial_heat_capacity > 0))
+		var/delta_temperature = air.temperature - target.temperature
+		var/heat = thermal_conductivity * delta_temperature * ( partial_heat_capacity * target.heat_capacity / (partial_heat_capacity + target.heat_capacity) )
+		air.temperature -= heat/total_heat_capacity
+		// Only increase the temperature of the target if it's simulated.
+		if(target.simulated)
+			target.temperature += heat/target.heat_capacity
 
 	if(network)
-		network.update = 1
+		network.update = TRUE
 
 //surface must be the surface area in m^2
 /datum/pipeline/proc/radiate_heat_to_space(surface, thermal_conductivity)

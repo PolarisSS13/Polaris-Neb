@@ -377,6 +377,7 @@ var/global/list/all_gps_units = list()
 /decl/interaction_handler/gps_toggle
 	name = "Toggle Tracking"
 	expected_target_type = /obj/item/gps
+	examine_desc = "toggle GPS tracking"
 
 /decl/interaction_handler/gps_toggle/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gps/G = target

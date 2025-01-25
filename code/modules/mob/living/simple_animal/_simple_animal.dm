@@ -165,16 +165,23 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 			mob_icon_state_flags |= MOB_ICON_HAS_PARALYZED_STATE
 		global.simplemob_icon_bitflag_cache[type] = mob_icon_state_flags
 
+/mob/living/simple_animal/proc/add_additional_visible_overlays(list/accumulator)
+	return
+
 /mob/living/simple_animal/refresh_visible_overlays()
 
+	var/list/add_overlays = list()
 	if(length(draw_visible_overlays))
-		var/list/add_overlays = list()
 		for(var/overlay_state in draw_visible_overlays)
 			var/overlay_color = draw_visible_overlays[overlay_state]
 			if(overlay_state == "base")
 				add_overlays += overlay_image(icon, icon_state, overlay_color, RESET_COLOR)
 			else
 				add_overlays += overlay_image(icon, "[icon_state]-[overlay_state]", overlay_color, RESET_COLOR)
+
+	add_additional_visible_overlays(add_overlays)
+
+	if(length(add_overlays))
 		set_current_mob_overlay(HO_SKIN_LAYER, add_overlays)
 	else
 		set_current_mob_overlay(HO_SKIN_LAYER, null)
@@ -334,6 +341,7 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 		take_damage(dealt_damage, damage_type, damage_flags = damage_flags, inflicter = user)
 		user.visible_message(SPAN_DANGER("\The [user] [harm_verb] \the [src]!"))
 		user.do_attack_animation(src)
+		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
 
 /mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)
@@ -423,7 +431,7 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 	return /decl/material/liquid/nutriment
 
 /mob/living/simple_animal/proc/reflect_unarmed_damage(var/mob/living/human/attacker, var/damage_type, var/description)
-	if(attacker.a_intent == I_HURT)
+	if(attacker.check_intent(I_FLAG_HARM))
 		attacker.apply_damage(rand(return_damage_min, return_damage_max), damage_type, attacker.get_active_held_item_slot(), used_weapon = description)
 		if(rand(25))
 			to_chat(attacker, SPAN_WARNING("Your attack has no obvious effect on \the [src]'s [description]!"))
@@ -527,16 +535,16 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 /mob/living/simple_animal/proc/get_pry_desc()
 	return "prying"
 
-/mob/living/simple_animal/pry_door(var/mob/user, var/delay, var/obj/machinery/door/pesky_door)
+/mob/living/simple_animal/pry_door(delay, obj/machinery/door/target)
 	if(!can_pry_door())
 		return
-	visible_message(SPAN_DANGER("\The [user] begins [get_pry_desc()] at \the [pesky_door]!"))
+	visible_message(SPAN_DANGER("\The [src] begins [get_pry_desc()] at \the [target]!"))
 	if(istype(ai))
 		ai.pause()
-	if(do_after(user, delay, pesky_door))
-		pesky_door.open(1)
+	if(do_after(src, delay, target))
+		target.open(1)
 	else
-		visible_message(SPAN_NOTICE("\The [user] is interrupted."))
+		visible_message(SPAN_NOTICE("\The [src] is interrupted."))
 	if(istype(ai))
 		ai.resume()
 

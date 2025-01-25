@@ -25,7 +25,7 @@
 	var/obj/item/assembly/signaler/signaler = get_active_held_item()
 	if(istype(signaler) && signaler.deadman)
 		log_and_message_admins("has triggered a signaler deadman's switch")
-		src.visible_message("<span class='warning'>[src] triggers their deadman's switch!</span>")
+		visible_message(SPAN_WARNING("[src] triggers their deadman's switch!"))
 		signaler.signal()
 	//Armor
 	var/damage = P.damage
@@ -83,7 +83,7 @@
 
 
 //Handles the effects of "stun" weapons
-/mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon)
 	flash_pain()
 
 	if (stun_amount)
@@ -97,8 +97,53 @@
 		apply_effect(agony_amount/10, STUTTER)
 		apply_effect(agony_amount/10, EYE_BLUR)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, def_zone = null)
-	  return 0 // No root logic, implemented separately on human and silicon.
+/mob/living/proc/electrocute_act(shock_damage, obj/source, siemens_coeff = 1, def_zone)
+	SHOULD_CALL_PARENT(TRUE)
+	if(status_flags & GODMODE)
+		return 0
+
+	var/decl/species/my_species = get_species()
+	if(my_species?.species_flags & SPECIES_FLAG_ABSORB_ELECTRICITY)
+		spark_at(loc, amount=5, cardinal_only = TRUE)
+		LAZYADD(global.stored_shock_by_ref["\ref[src]"], shock_damage)
+		return 0
+
+	if(!shock_damage)
+		return 0
+
+	stun_effect_act(agony_amount=shock_damage, def_zone=def_zone)
+
+	playsound(loc, "sparks", 50, 1, -1)
+	if (shock_damage > 15)
+		visible_message(
+			SPAN_DANGER("\The [src] was electrocuted[source ? " by \the [source]" : ""]!"),
+			SPAN_DANGER("You feel a powerful shock course through your body!"),
+			SPAN_WARNING("You hear a heavy electrical crack.")
+		)
+	else
+		visible_message(
+			SPAN_DANGER("\The [src] was shocked[source ? " by \the [source]" : ""]."),
+			SPAN_DANGER("You feel a shock course through your body."),
+			SPAN_WARNING("You hear a zapping sound.")
+		)
+
+	switch(shock_damage)
+		if(11 to 15)
+			SET_STATUS_MAX(src, STAT_STUN, 1)
+		if(16 to 20)
+			SET_STATUS_MAX(src, STAT_STUN, 2)
+		if(21 to 25)
+			SET_STATUS_MAX(src, STAT_WEAK, 2)
+		if(26 to 30)
+			SET_STATUS_MAX(src, STAT_WEAK, 5)
+		if(31 to INFINITY)
+			SET_STATUS_MAX(src, STAT_WEAK, 10) //This should work for now, more is really silly and makes you lay there forever
+
+	set_status(STAT_JITTER, min(shock_damage*5, 200))
+
+	spark_at(loc, amount=5, cardinal_only = TRUE)
+
+	return shock_damage
 
 /mob/living/emp_act(severity)
 	for(var/obj/O in get_mob_contents())
@@ -189,7 +234,7 @@
 			visible_message(SPAN_NOTICE("\The [O] misses \the [src] narrowly!"))
 			return FALSE
 
-	visible_message(SPAN_DANGER("\The [src] is hit [affecting ? "in \the [affecting.name] " : ""]by \the [O]!"))
+	visible_message(SPAN_DANGER("\The [src] is hit [affecting ? "in \the [affecting] " : ""]by \the [O]!"))
 	if(TT?.thrower?.client)
 		admin_attack_log(TT.thrower, src, "Threw \an [O] at the victim.", "Had \an [O] thrown at them.", "threw \an [O] at")
 	try_embed_in_mob(TT.thrower, O, zone, throw_damage, dtype, null, affecting, direction = TT.init_dir)
@@ -218,7 +263,7 @@
 
 	if(affecting && istype(supplied_wound) && supplied_wound.is_open() && dtype == BRUTE) // Can't embed in a small bruise.
 		var/obj/item/I = O
-		var/sharp = is_sharp(I)
+		var/sharp = I.is_sharp() || I.has_edge()
 		embed_damage *= (1 - get_blocked_ratio(def_zone, BRUTE, O.damage_flags(), O.armor_penetration, I.get_attack_force(user)))
 
 		//blunt objects should really not be embedding in things unless a huge amount of force is involved
@@ -259,13 +304,13 @@
 
 //This is called when the mob is thrown into a dense turf
 /mob/living/proc/turf_collision(var/turf/T, var/speed)
-	visible_message("<span class='danger'>[src] slams into \the [T]!</span>")
+	visible_message(SPAN_DANGER("\The [src] slams into \the [T]!"))
 	playsound(T, 'sound/effects/bangtaper.ogg', 50, 1, 1)//so it plays sounds on the turf instead, makes for awesome carps to hull collision and such
 	apply_damage(speed*5, BRUTE)
 
 /mob/living/proc/near_wall(var/direction,var/distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
-	var/turf/last_turf = src.loc
+	var/turf/last_turf = loc
 	var/i = 1
 
 	while(i>0 && i<=distance)
@@ -286,95 +331,10 @@
 
 	admin_attack_log(user, src, "Attacked", "Was attacked", "attacked")
 
-	src.visible_message("<span class='danger'>\The [user] has [attack_message] \the [src]!</span>")
+	visible_message(SPAN_DANGER("\The [user] has [attack_message] \the [src]!"))
 	take_damage(damage)
 	user.do_attack_animation(src)
 	return 1
-
-/mob/living/proc/can_ignite()
-	return fire_stacks > 0 && !on_fire
-
-/mob/living/proc/IgniteMob()
-	if(can_ignite())
-		on_fire = TRUE
-		set_light(4, l_color = COLOR_ORANGE)
-		update_fire()
-
-/mob/living/proc/ExtinguishMob()
-	if(on_fire)
-		on_fire = FALSE
-		fire_stacks = 0
-		set_light(0)
-		update_fire()
-
-/mob/living/proc/update_fire(var/update_icons=1)
-	if(on_fire)
-		var/decl/bodytype/mob_bodytype = get_bodytype()
-		var/image/standing = overlay_image(mob_bodytype?.get_ignited_icon(src) || 'icons/mob/OnFire.dmi', mob_bodytype?.get_ignited_icon_state(src) || "Generic_mob_burning", RESET_COLOR)
-		set_current_mob_overlay(HO_FIRE_LAYER, standing, update_icons)
-	else
-		set_current_mob_overlay(HO_FIRE_LAYER, null, update_icons)
-
-/mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
-	fire_stacks = clamp(fire_stacks + add_fire_stacks, FIRE_MIN_STACKS, FIRE_MAX_STACKS)
-
-/mob/living/proc/handle_fire()
-	if(fire_stacks < 0)
-		fire_stacks = min(0, ++fire_stacks) //If we've doused ourselves in water to avoid fire, dry off slowly
-
-	if(!on_fire)
-		return TRUE
-	else if(fire_stacks <= 0)
-		ExtinguishMob() //Fire's been put out.
-		return TRUE
-
-	fire_stacks = max(0, fire_stacks - 0.2) //I guess the fire runs out of fuel eventually
-
-	var/datum/gas_mixture/G = loc.return_air() // Check if we're standing in an oxygenless environment
-	if(G.get_by_flag(XGM_GAS_OXIDIZER) < 1)
-		ExtinguishMob() //If there's no oxygen in the tile we're on, put out the fire
-		return TRUE
-
-	var/turf/location = get_turf(src)
-	location.hotspot_expose(fire_burn_temperature(), 50, 1)
-
-	var/burn_temperature = fire_burn_temperature()
-	var/thermal_protection = get_heat_protection(burn_temperature)
-
-	if (thermal_protection < 1 && bodytemperature < burn_temperature)
-		bodytemperature += round(BODYTEMP_HEATING_MAX*(1-thermal_protection), 1)
-
-	var/species_heat_mod = 1
-
-	var/protected_limbs = get_heat_protection_flags(burn_temperature)
-
-	if(burn_temperature < get_mob_temperature_threshold(HEAT_LEVEL_2))
-		species_heat_mod = 0.5
-	else if(burn_temperature < get_mob_temperature_threshold(HEAT_LEVEL_3))
-		species_heat_mod = 0.75
-
-	burn_temperature -= get_mob_temperature_threshold(HEAT_LEVEL_1)
-
-	if(burn_temperature < 1)
-		return
-
-	if(has_external_organs())
-		for(var/obj/item/organ/external/E in get_external_organs())
-			if(!(E.body_part & protected_limbs) && prob(20))
-				E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = "fire")
-	else // fallback for simplemobs
-		take_damage(round(species_heat_mod * log(10, (burn_temperature + 10))), 0.1, BURN, DAM_DISPERSED)
-
-/mob/living/proc/increase_fire_stacks(exposed_temperature)
-	if(fire_stacks <= 4 || fire_burn_temperature() < exposed_temperature)
-		adjust_fire_stacks(2)
-
-/mob/living/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	//once our fire_burn_temperature has reached the temperature of the fire that's giving fire_stacks, stop adding them.
-	//allow fire_stacks to go up to 4 for fires cooler than 700 K, since are being immersed in flame after all.
-	increase_fire_stacks(exposed_temperature)
-	IgniteMob()
-	return ..()
 
 /mob/living/proc/get_cold_protection()
 	return 0
@@ -384,12 +344,12 @@
 
 //Finds the effective temperature that the mob is burning at.
 /mob/living/proc/fire_burn_temperature()
-	if (fire_stacks <= 0)
+	var/fire_level = get_fire_intensity()
+	if (fire_level <= 0)
 		return 0
-
 	//Scale quadratically so that single digit numbers of fire stacks don't burn ridiculously hot.
 	//lower limit of 700 K, same as matches and roughly the temperature of a cool flame.
-	return max(2.25*round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_stacks/FIRE_MAX_FIRESUIT_STACKS)**2), 700)
+	return max(2.25*round(FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE*(fire_level/FIRE_MAX_FIRESUIT_STACKS)**2), 700)
 
 /mob/living/proc/reagent_permeability()
 	return 1

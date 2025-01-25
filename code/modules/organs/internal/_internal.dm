@@ -56,6 +56,12 @@
 		affected.cavity_max_w_class = max(affected.cavity_max_w_class, w_class)
 		affected.update_internal_organs_cost()
 
+	// This might need revisiting to stop people successfully implanting brains in groins and transferring minds.
+	if(transfer_brainmob_with_organ && istype(owner))
+		var/mob/living/brainmob = get_brainmob(create_if_missing = FALSE)
+		if(brainmob?.key)
+			transfer_key_from_mob_to_mob(brainmob, owner)
+
 /obj/item/organ/internal/do_uninstall(in_place, detach, ignore_children, update_icon)
 
 	var/mob/living/victim = owner // cleared in parent proc
@@ -171,7 +177,7 @@
 
 		// We clamp/round here so that we don't accidentally heal past the threshold and
 		// cheat our way into a full second threshold of healing.
-		damage = clamp(damage-get_organ_heal_amount(), min_heal_val, absolute_max_damage)
+		damage = clamp(damage - max(0, get_organ_heal_amount()), min_heal_val, absolute_max_damage)
 
 		// If we're within 1 damage of the nearest threshold (such as 0), round us down.
 		// This should be removed when float-aware modulo comes in in 515, but for now is needed
@@ -289,11 +295,3 @@
 /obj/item/organ/internal/preserve_in_cryopod(var/obj/machinery/cryopod/pod)
 	var/mob/living/brainmob = get_brainmob()
 	return brainmob?.key
-
-// This might need revisiting to stop people successfully implanting brains in groins and transferring minds.
-/obj/item/organ/internal/do_install(mob/living/human/target, obj/item/organ/external/affected, in_place, update_icon, detached)
-	. = ..()
-	if(transfer_brainmob_with_organ && istype(owner))
-		var/mob/living/brainmob = get_brainmob(create_if_missing = FALSE)
-		if(brainmob?.key)
-			transfer_key_from_mob_to_mob(brainmob, owner)

@@ -79,12 +79,10 @@ var/global/list/_test_storage_items = list()
 			LAZYDISTINCTADD(., storage_inv)
 
 /datum/storage/proc/show_to(mob/user)
-	if(storage_ui)
-		storage_ui.show_to(user)
+	storage_ui?.show_to(user)
 
 /datum/storage/proc/hide_from(mob/user)
-	if(storage_ui)
-		storage_ui.hide_from(user)
+	storage_ui?.hide_from(user)
 
 /datum/storage/proc/open(mob/user)
 	if(!opened)
@@ -98,11 +96,12 @@ var/global/list/_test_storage_items = list()
 			robot.hud_used.toggle_show_robot_modules()
 
 	prepare_ui()
-	storage_ui.on_open(user)
-	storage_ui.show_to(user)
+	if(storage_ui)
+		storage_ui.on_open(user)
+		storage_ui.show_to(user)
 
 /datum/storage/proc/prepare_ui()
-	storage_ui.prepare_ui()
+	storage_ui?.prepare_ui()
 
 /datum/storage/proc/close(mob/user)
 	if(opened)
@@ -110,12 +109,10 @@ var/global/list/_test_storage_items = list()
 		play_close_sound()
 		holder?.queue_icon_update()
 	hide_from(user)
-	if(storage_ui)
-		storage_ui.after_close(user)
+	storage_ui?.after_close(user)
 
 /datum/storage/proc/close_all()
-	if(storage_ui)
-		storage_ui.close_all()
+	storage_ui?.close_all()
 
 /datum/storage/proc/storage_space_used()
 	. = 0
@@ -153,10 +150,10 @@ var/global/list/_test_storage_items = list()
 			return 0
 
 	//If attempting to lable the storage item, silently fail to allow it
-	if(istype(W, /obj/item/hand_labeler) && user?.a_intent != I_HELP)
+	if(istype(W, /obj/item/hand_labeler) && !user?.check_intent(I_FLAG_HELP))
 		return FALSE
 	//Prevent package wrapper from being inserted by default
-	if(istype(W, /obj/item/stack/package_wrap) && user?.a_intent != I_HELP)
+	if(istype(W, /obj/item/stack/package_wrap) && !user?.check_intent(I_FLAG_HELP))
 		return FALSE
 
 	// Don't allow insertion of unsafed compressed matter implants
@@ -255,6 +252,8 @@ var/global/list/_test_storage_items = list()
 	storage_ui?.on_insertion()
 
 /datum/storage/proc/update_ui_after_item_removal(obj/item/removed)
+	if(QDELETED(holder))
+		return
 	prepare_ui()
 	storage_ui?.on_post_remove()
 

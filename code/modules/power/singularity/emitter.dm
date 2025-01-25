@@ -11,7 +11,7 @@
 	active_power_usage = 100 KILOWATTS
 
 	var/efficiency = 0.3	// Energy efficiency. 30% at this time, so 100kW load means 30kW laser pulses.
-	var/minimum_power = 10 KILOWATTS // The minimum power the emitter will still fire at it it doesn't have enough power available.
+	var/minimum_power = 10 KILOWATTS // The minimum power below which the emitter will turn off; different than the power needed to fire.
 	var/active = 0
 	var/fire_delay = 100
 	var/max_burst_delay = 100
@@ -67,8 +67,8 @@
 			if(active==1)
 				active = 0
 				to_chat(user, "You turn off \the [src].")
-				log_and_message_admins("turned off \the [src]")
-				investigate_log("turned <font color='red'>off</font> by [key_name_admin(user || usr)]","singulo")
+				log_and_message_admins("turned off \the [src]", user)
+				investigate_log("turned <font color='red'>off</font> by [key_name_admin(user)]","singulo")
 			else
 				active = 1
 				if(user)
@@ -77,8 +77,8 @@
 				to_chat(user, "You turn on \the [src].")
 				shot_number = 0
 				fire_delay = get_initial_fire_delay()
-				log_and_message_admins("turned on \the [src]")
-				investigate_log("turned <font color='green'>on</font> by [key_name_admin(user || usr)]","singulo")
+				log_and_message_admins("turned on \the [src]", user)
+				investigate_log("turned <font color='green'>on</font> by [key_name_admin(user)]","singulo")
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>The controls are locked!</span>")

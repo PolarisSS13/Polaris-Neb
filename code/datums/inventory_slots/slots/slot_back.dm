@@ -7,6 +7,7 @@
 	requires_slot_flags = SLOT_BACK
 	mob_overlay_layer = HO_BACK_LAYER
 	quick_equip_priority = 14
+	fluid_height = (FLUID_SHALLOW + FLUID_OVER_MOB_HEAD) / 2 // halfway between waist and top of head, so roughly chest level
 
 /datum/inventory_slot/back/simple
 	requires_organ_tag = null

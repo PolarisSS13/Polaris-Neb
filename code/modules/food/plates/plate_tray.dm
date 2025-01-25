@@ -145,7 +145,7 @@ TRAY TYPES GO HERE
 
 /obj/item/plate/tray/wood
 	desc = "A wooden tray to serve food on."
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/plate/tray/metal
 	obj_flags = OBJ_FLAG_CONDUCTIBLE

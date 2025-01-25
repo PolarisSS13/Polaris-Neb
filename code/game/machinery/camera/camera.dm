@@ -187,7 +187,7 @@
 /obj/machinery/camera/physical_attack_hand(mob/living/human/user)
 	if(!istype(user))
 		return TRUE
-	if(user.species.can_shred(user))
+	if(user.can_shred())
 		user.do_attack_animation(src)
 		visible_message(SPAN_WARNING("\The [user] slashes at [src]!"))
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)

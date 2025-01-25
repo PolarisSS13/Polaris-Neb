@@ -270,11 +270,6 @@
 /// Returns the hex value of a number given a value assumed to be a base-ten value, padded to a supplied minimum length.
 #define num2hex_padded(num, len) num2text(num, len, 16)
 
-//NOTE: INTENT_HOTKEY_* defines are not actual intents!
-//they are here to support hotkeys
-#define INTENT_HOTKEY_LEFT  "left"
-#define INTENT_HOTKEY_RIGHT "right"
-
 //Turf/area values for 'this space is outside' checks
 #define OUTSIDE_AREA null
 #define OUTSIDE_NO   FALSE
@@ -375,3 +370,11 @@
 #define RADIAL_LABELS_NONE     0
 #define RADIAL_LABELS_OFFSET   1
 #define RADIAL_LABELS_CENTERED 2
+
+#define CRAYON_DRAW_RUNE     "rune"
+#define CRAYON_DRAW_GRAFFITI "graffiti"
+#define CRAYON_DRAW_LETTER   "letter"
+#define CRAYON_DRAW_ARROW    "arrow"
+
+// Default UI style applied to client prefs.
+#define DEFAULT_UI_STYLE /decl/ui_style/midnight

@@ -157,14 +157,11 @@
 	return ..()
 
 /obj/item/stool/rustic
-	name = "stool"
-	icon = 'icons/obj/stool_rustic.dmi'
-	material = /decl/material/solid/organic/wood/walnut
-	color = /decl/material/solid/organic/wood/walnut::color
-
-/obj/item/stool/rustic/update_name()
-	..()
-	SetName("rustic [name]") // rustic oaken stool, not oaken rustic stool
+	name_prefix = "rustic"
+	name        = "stool"
+	icon        = 'icons/obj/stool_rustic.dmi'
+	material    = /decl/material/solid/organic/wood/walnut
+	color       = /decl/material/solid/organic/wood/walnut::color
 
 /obj/item/stool/rustic/can_be_padded()
 	return FALSE
@@ -174,4 +171,4 @@
 
 //Generated subtypes for mapping porpoises
 /obj/item/stool/wood
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak

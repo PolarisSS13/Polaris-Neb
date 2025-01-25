@@ -26,7 +26,7 @@
 
 /obj/item/seeds/populate_reagents()
 	. = ..()
-	add_to_reagents(/decl/material/liquid/nutriment/plant_oil, 3)
+	add_to_reagents(/decl/material/liquid/oil/plant, 3)
 
 /obj/item/seeds/get_single_monetary_worth()
 	. = seed ? seed.get_monetary_value() : ..()

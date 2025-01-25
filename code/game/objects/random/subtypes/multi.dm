@@ -1,7 +1,3 @@
-/hook/roundstart/proc/roundstart_multi_spawn()
-	generate_multi_spawn_items()
-	return TRUE
-
 /proc/generate_multi_spawn_items()
 	for(var/id in multi_point_spawns)
 		var/list/spawn_points = multi_point_spawns[id]

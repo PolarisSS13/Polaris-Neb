@@ -45,8 +45,7 @@
 				break
 
 		sleep(delay)
-	sleep(10)
-	qdel(src)
+	QDEL_IN(src, 1 SECOND)
 
 /obj/effect/effect/water/Move(turf/newloc)
 	if(newloc.density)

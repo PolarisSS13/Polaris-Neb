@@ -160,7 +160,7 @@
 /area/map_template/syndicate_mothership/raider_base)
 "aK" = (
 /obj/structure/bed,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/sign/painting/monkey_painting{
 	pixel_x = -28;
 	pixel_y = 4
@@ -317,7 +317,7 @@
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bf" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bg" = (
@@ -371,7 +371,7 @@
 /turf/unsimulated/floor/freezer,
 /area/map_template/syndicate_mothership/raider_base)
 "bo" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/effect/floor_decal/carpet{
 	dir = 8
 	},
@@ -380,7 +380,7 @@
 /turf/unsimulated/floor/carpet,
 /area/map_template/syndicate_mothership/raider_base)
 "bp" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/action_figure,
 /obj/random/contraband,
 /obj/random/junk,
@@ -421,7 +421,7 @@
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bv" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/structure/window/reinforced{
@@ -435,7 +435,7 @@
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bx" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/unsimulated/floor/plating,
@@ -505,36 +505,36 @@
 /turf/unsimulated/floor/carpet,
 /area/map_template/syndicate_mothership/raider_base)
 "bJ" = (
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "bK" = (
-/turf/unsimulated/floor/wood/broken,
+/turf/unsimulated/floor/laminate/broken,
 /area/map_template/syndicate_mothership/raider_base)
 "bL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/plate/tray{
 	pixel_y = 5
 	},
 /obj/item/backpack,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "bM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/box/glasses/rocks,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "bN" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/chemical_dispenser/bar_soft/full,
-/turf/unsimulated/floor/wood/broken6,
+/turf/unsimulated/floor/laminate/broken6,
 /area/map_template/syndicate_mothership/raider_base)
 "bO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/washing_machine,
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bP" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
@@ -558,14 +558,14 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "bS" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/unsimulated/floor/plating,
@@ -580,33 +580,33 @@
 /area/map_template/syndicate_mothership/raider_base)
 "bV" = (
 /obj/item/stool/padded,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "bW" = (
 /obj/effect/decal/cleanable/generic,
 /obj/item/stool/padded,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "bZ" = (
 /obj/machinery/acting/changer,
 /turf/unsimulated/floor/dark,
 /area/map_template/syndicate_mothership/raider_base)
 "ca" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/pizzabox/meat,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "cb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/ashtray,
 /obj/item/trash/cigbutt/cigarbutt,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "cc" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/chems/glass/rag,
 /obj/random/loot,
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "cd" = (
 /obj/machinery/vending/cigarette{
@@ -631,11 +631,11 @@
 /turf/unsimulated/floor/dark,
 /area/map_template/syndicate_mothership/raider_base)
 "ch" = (
-/turf/unsimulated/floor/wood/broken1,
+/turf/unsimulated/floor/laminate/broken1,
 /area/map_template/syndicate_mothership/raider_base)
 "ci" = (
 /obj/item/stool/padded,
-/turf/unsimulated/floor/wood/broken1,
+/turf/unsimulated/floor/laminate/broken1,
 /area/map_template/syndicate_mothership/raider_base)
 "cj" = (
 /mob/living/simple_animal/hostile/parrot/pirate,
@@ -664,11 +664,11 @@
 	icon_state = "plant-25";
 	name = "Jamie"
 	},
-/turf/unsimulated/floor/wood,
+/turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
 "cn" = (
 /obj/structure/reagent_dispensers/beerkeg,
-/turf/unsimulated/floor/wood/broken1,
+/turf/unsimulated/floor/laminate/broken1,
 /area/map_template/syndicate_mothership/raider_base)
 "co" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -1149,7 +1149,7 @@
 "dB" = (
 /obj/structure/rack,
 /obj/item/gun/launcher/bow/crossbow/powered,
-/obj/item/stack/material/rods/ten,
+/obj/item/stack/material/rods/mapped/steel/ten,
 /obj/machinery/light/small{
 	dir = 8
 	},

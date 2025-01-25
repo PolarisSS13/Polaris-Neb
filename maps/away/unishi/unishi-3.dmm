@@ -639,7 +639,7 @@
 /area/unishi/med)
 "cd" = (
 /obj/structure/bed/chair/armchair/black,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "ce" = (
 /obj/machinery/vending/tool,
@@ -757,7 +757,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cr" = (
 /obj/structure/cable{
@@ -842,17 +842,17 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cy" = (
 /obj/machinery/vending/games,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cz" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cA" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -893,24 +893,24 @@
 /obj/structure/bed/chair/armchair/beige{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cH" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/cell/crap,
 /obj/item/stock_parts/circuitboard/gyrotron_control,
 /obj/item/paper_bin,
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cI" = (
 /obj/effect/shuttle_landmark/nav_unishi/nav1,
 /turf/space,
 /area/space)
 "cJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/trash/raisins,
 /obj/item/pizzabox/margherita,
 /obj/random/advdevice,
@@ -920,22 +920,22 @@
 /turf/floor/tiled,
 /area/unishi/living)
 "cK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/dice,
 /obj/item/deck/cards,
 /obj/item/pen/fancy,
 /obj/random/tech_supply,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/board,
 /obj/item/book/manual/mass_spectrometry,
 /obj/item/book/fluff/stasis,
 /turf/floor/tiled,
 /area/unishi/living)
 "cM" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -970,7 +970,7 @@
 /obj/structure/bed/chair/armchair/black{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/lounge)
 "cQ" = (
 /obj/structure/bed/chair/padded/brown{
@@ -1024,7 +1024,7 @@
 /turf/floor/tiled,
 /area/unishi/living)
 "cY" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/trash/raisins,
 /obj/item/book/manual/nuclear,
 /turf/floor/tiled,
@@ -1091,7 +1091,7 @@
 /turf/floor/tiled,
 /area/unishi/kitchen)
 "dg" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/trash/candy,
 /obj/machinery/recharger,
 /turf/floor/tiled,
@@ -1268,7 +1268,7 @@
 /turf/floor/tiled,
 /area/unishi/living)
 "dD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/cane/fancy/sword,
 /obj/item/clothing/suit/radiation,
 /turf/floor/tiled,
@@ -1441,7 +1441,7 @@
 /turf/floor/tiled,
 /area/unishi/living)
 "eb" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/poster,
 /obj/item/grooming/comb/colorable/random,
 /obj/random/advdevice,
@@ -1625,11 +1625,11 @@
 /obj/random/clothing,
 /obj/random/clothing,
 /obj/random/hat,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "ey" = (
 /obj/structure/bed/padded,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "ez" = (
 /obj/structure/closet/toolcloset,
@@ -1638,17 +1638,17 @@
 "eA" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/rd,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eB" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
 /obj/item/toy/plushie/lizard,
 /obj/random/advdevice,
 /obj/random/drinkbottle,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1657,7 +1657,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eD" = (
 /obj/machinery/door/airlock{
@@ -1711,22 +1711,22 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eI" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eJ" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/grooming/brush,
 /obj/item/cosmetics/lipstick/black,
 /obj/item/cosmetics/lipstick/green,
 /obj/item/cosmetics/lipstick/violet,
 /obj/random/drinkbottle,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eK" = (
 /obj/structure/bed/chair/office,
@@ -1734,7 +1734,7 @@
 	dir = 4;
 	icon_state = "bulb1"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1750,10 +1750,10 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eN" = (
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -1777,28 +1777,28 @@
 /obj/structure/bed/chair/office/comfy/black{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/pen/fancy,
 /obj/random/drinkbottle,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eV" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper_bin,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1809,7 +1809,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eX" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1820,7 +1820,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eY" = (
 /obj/structure/safe,
@@ -1837,7 +1837,7 @@
 /obj/item/cash/c200,
 /obj/item/cash/c200,
 /obj/item/grenade/supermatter,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "eZ" = (
 /obj/structure/safe,
@@ -1850,14 +1850,14 @@
 /obj/item/cash/c500,
 /obj/item/pen/reagent/sleepy,
 /obj/random/hardsuit,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "fa" = (
 /obj/machinery/light/small{
 	dir = 4;
 	icon_state = "bulb1"
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "fb" = (
 /obj/effect/wallframe_spawn/reinforced/hull,
@@ -1865,7 +1865,7 @@
 /area/unishi/living)
 "fc" = (
 /obj/structure/bed/chair/armchair/black,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "fd" = (
 /obj/structure/table/reinforced,
@@ -1873,7 +1873,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "fe" = (
 /obj/abstract/map_data{
@@ -1936,7 +1936,7 @@
 /obj/random/contraband,
 /obj/random/clothing,
 /obj/random/hat,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "qS" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -1944,12 +1944,12 @@
 /obj/random/drinkbottle,
 /obj/random/clothing,
 /obj/random/hat,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "sS" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/random/clothing,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "ur" = (
 /obj/machinery/hologram/holopad/longrange/remoteship,
@@ -1975,7 +1975,7 @@
 /obj/random/contraband,
 /obj/random/clothing,
 /obj/random/hat,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/unishi/living)
 "AF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

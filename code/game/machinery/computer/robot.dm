@@ -68,7 +68,7 @@
 			return TOPIC_HANDLED
 
 		// Antag AI checks
-		if(!isAI(user) || !(user.mind.assigned_special_role && user.mind.original == user))
+		if(!isAI(user) || !player_is_antag(user.mind))
 			to_chat(user, "<span class='warning'>Access Denied</span>")
 			return TOPIC_HANDLED
 
@@ -103,9 +103,9 @@
 		. = TOPIC_REFRESH
 
 // Proc: get_cyborgs()
-// Parameters: 1 (operator - mob which is operating the console.)
+// Parameters: 1 (user - mob which is operating the console.)
 // Description: Returns NanoUI-friendly list of accessible cyborgs.
-/obj/machinery/computer/robotics/proc/get_cyborgs(var/mob/operator)
+/obj/machinery/computer/robotics/proc/get_cyborgs(var/mob/user)
 	var/list/robots = list()
 
 	for(var/mob/living/silicon/robot/R in global.silicon_mob_list)
@@ -145,7 +145,7 @@
 		robot["master_ai"] = R.connected_ai ? R.connected_ai.name : "None"
 		robot["hackable"] = 0
 		// Antag AIs know whether linked cyborgs are hacked or not.
-		if(operator && isAI(operator) && (R.connected_ai == operator) && (operator.mind.assigned_special_role && operator.mind.original == operator))
+		if(user && isAI(user) && (R.connected_ai == user) && player_is_antag(user.mind))
 			robot["hacked"] = R.emagged ? 1 : 0
 			robot["hackable"] = R.emagged? 0 : 1
 		robots.Add(list(robot))

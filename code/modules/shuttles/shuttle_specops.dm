@@ -14,10 +14,7 @@
 	var/reset_time = 0	//the world.time at which the shuttle will be ready to move again.
 	var/launch_prep = 0
 	var/cancel_countdown = 0
-	category = /datum/shuttle/autodock/ferry/specops
-
-/datum/shuttle/autodock/ferry/specops/New()
-	..()
+	abstract_type = /datum/shuttle/autodock/ferry/specops
 
 /datum/shuttle/autodock/ferry/specops/launch(var/user)
 	if (!can_launch())
@@ -98,7 +95,7 @@
 	return ..()
 
 /datum/shuttle/autodock/ferry/specops/proc/sleep_until_launch()
-	var/message_tracker[] = list(0,1,2,3,5,10,30,45)//Create a a list with potential time values.
+	var/message_tracker[] = list(0,1,2,3,5,10,30,45)//Create a list with potential time values.
 
 	var/launch_time = world.time + specops_countdown_time
 	var/time_until_launch

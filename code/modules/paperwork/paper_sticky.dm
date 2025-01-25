@@ -60,7 +60,7 @@
 	. = ..()
 
 /obj/item/sticky_pad/attack_hand(var/mob/user)
-	if(user.a_intent == I_GRAB)
+	if(user.check_intent(I_FLAG_GRAB))
 		return ..()
 	if(!top)
 		return TRUE
@@ -84,7 +84,7 @@
 
 /obj/item/sticky_pad/random/Initialize()
 	. = ..()
-	color = pick(COLOR_YELLOW, COLOR_LIME, COLOR_CYAN, COLOR_ORANGE, COLOR_PINK)
+	set_color(pick(COLOR_YELLOW, COLOR_LIME, COLOR_CYAN, COLOR_ORANGE, COLOR_PINK))
 
 ////////////////////////////////////////////////
 // Sticky Note Sheet

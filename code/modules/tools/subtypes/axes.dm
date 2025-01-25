@@ -5,7 +5,7 @@
 	icon                             = 'icons/obj/items/tool/axes/handaxe.dmi'
 	sharp                            = TRUE
 	edge                             = TRUE
-	handle_material                  = /decl/material/solid/organic/wood
+	handle_material                  = /decl/material/solid/organic/wood/oak
 	item_flags                       = ITEM_FLAG_IS_WEAPON
 	origin_tech                      = @'{"materials":2,"combat":1}'
 	attack_verb                      = list("chopped", "torn", "cut")
@@ -19,7 +19,14 @@
 	return tool_qualities
 
 /obj/item/tool/axe/ebony
+	material = /decl/material/solid/metal/iron
 	handle_material = /decl/material/solid/organic/wood/ebony
+
+/obj/item/tool/axe/iron
+	material = /decl/material/solid/metal/iron
+
+/obj/item/tool/axe/ebony/bronze
+	material = /decl/material/solid/metal/bronze
 
 // Legacy SS13 hatchet.
 /obj/item/tool/axe/hatchet

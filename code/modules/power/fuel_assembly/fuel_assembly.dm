@@ -93,6 +93,9 @@
 /obj/item/fuel_assembly/supermatter
 	material = /decl/material/solid/supermatter
 
+/obj/item/fuel_assembly/exotic_matter
+	material = /decl/material/solid/exotic_matter
+
 /obj/item/fuel_assembly/hydrogen
 	material = /decl/material/gas/hydrogen
 

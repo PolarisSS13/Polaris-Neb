@@ -45,14 +45,22 @@
 
 /turf/floor/straw
 	name = "loose straw"
-	icon = 'icons/turf/flooring/wildgrass.dmi'
-	icon_state = "wildgrass"
+	icon = 'icons/turf/flooring/straw.dmi'
+	icon_state = "straw"
 	color = COLOR_WHEAT
 	_flooring = /decl/flooring/straw
 
 // Defining this here as a dummy mapping shorthand so mappers can search for 'plating'.
 /turf/floor/plating
 	_base_flooring = /decl/flooring/plating // Setting here so overrides on /turf/floor do not impact explicitly typed plating turfs.
+
+// Dirt plating for Tradeship farms.
+/turf/floor/plating/dirt
+	name = "dirt"
+	icon = 'icons/turf/flooring/dirt.dmi'
+	icon_state = "dirt"
+	color = "#41311b"
+	_flooring = /decl/flooring/dirt
 
 /turf/floor/plating/broken
 	_floor_broken = TRUE

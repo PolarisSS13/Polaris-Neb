@@ -58,21 +58,9 @@
 
 // ============================================================================
 
-var/global/default_mobloc = null
-
-/proc/create_test_mob_with_mind(var/turf/mobloc = null, var/mobtype = /mob/living/human)
+/datum/unit_test/mob_damage/proc/create_test_mob_with_mind(var/turf/mobloc, var/mobtype = /mob/living/human)
 	var/list/test_result = list("result" = FAILURE, "msg"    = "", "mobref" = null)
 
-	if(isnull(mobloc))
-		if(!default_mobloc)
-			for(var/turf/floor/tiled/T in world)
-				if(!T.zone?.air)
-					continue
-				var/pressure = T.zone.air.return_pressure()
-				if(90 < pressure && pressure < 120) // Find a turf between 90 and 120
-					default_mobloc = T
-					break
-		mobloc = default_mobloc
 	if(!mobloc)
 		test_result["msg"] = "Unable to find a location to create test mob"
 		return test_result
@@ -129,7 +117,7 @@ var/global/default_mobloc = null
 
 /datum/unit_test/mob_damage
 	name = "MOB: Template for mob damage"
-	template = /datum/unit_test/mob_damage
+	abstract_type = /datum/unit_test/mob_damage
 	var/damagetype = BRUTE
 	var/mob_type = /mob/living/human
 	var/expected_vulnerability = STANDARD
@@ -260,15 +248,15 @@ var/global/default_mobloc = null
 		fail("[icon_file] is not a valid icon file.")
 		return 1
 
-	var/list/valid_states = icon_states(icon_file)
+	var/list/valid_states = get_states_in_icon_cached(icon_file)
 
-	if(!valid_states.len)
+	if(!length(valid_states))
 		return 1
 
 	for(var/i=1, i<=SSrobots.all_module_names.len, i++)
 		var/modname = lowertext(SSrobots.all_module_names[i])
 		var/bad_msg = "[ascii_red]--------------- [modname]"
-		if(!(modname in valid_states))
+		if(!valid_states[modname])
 			log_unit_test("[bad_msg] does not contain a valid icon state in [icon_file][ascii_reset]")
 			failed=1
 

@@ -13,7 +13,6 @@
 		UI_ICON_HEALTH      = 'icons/mob/screen/styles/health.dmi',
 		UI_ICON_CRIT_MARKER = 'icons/mob/screen/styles/crit_markers.dmi',
 		UI_ICON_HYDRATION   = 'icons/mob/screen/styles/hydration.dmi',
-		UI_ICON_INTENT      = 'icons/mob/screen/styles/intents.dmi',
 		UI_ICON_INTERACTION = 'icons/mob/screen/styles/midnight/interaction.dmi',
 		UI_ICON_INTERNALS   = 'icons/mob/screen/styles/internals.dmi',
 		UI_ICON_INVENTORY   = 'icons/mob/screen/styles/midnight/inventory.dmi',
@@ -27,6 +26,12 @@
 	)
 	/// A subset of UI keys to icon files used to override the above.
 	var/list/override_icons
+	/// A color to reset this UI to on pref selection.
+	var/default_color = COLOR_WHITE
+	/// An alpha to reset this UI to on pref selection.
+	var/default_alpha = 255
+	var/use_overlay_color = FALSE
+	var/use_ui_color      = FALSE
 
 /decl/ui_style/Initialize()
 	for(var/ui_key in override_icons)
@@ -47,11 +52,16 @@
 		var/check_icon = icons[ui_key]
 		var/list/missing_states  = list()
 		var/list/checking_states = states_to_check[ui_key]
-		var/list/remaining_states = icon_states(check_icon)
+		var/list/remaining_states = get_states_in_icon(check_icon)
 		for(var/check_state in checking_states)
 			remaining_states -= check_state
-			if(!check_state_in_icon(check_state, check_icon))
+			if(check_state_in_icon(check_state, check_icon))
+				check_state = "[check_state]-overlay"
+				if(check_state_in_icon(check_state, check_icon))
+					remaining_states -= check_state
+			else
 				missing_states |= check_state
+
 		if(length(remaining_states))
 			. += "icon [check_icon] for key [ui_key] has extraneous states: '[jointext(remaining_states, "', '")]'"
 		if(length(missing_states))

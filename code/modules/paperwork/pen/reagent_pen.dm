@@ -1,7 +1,7 @@
 /obj/item/pen/reagent
 	atom_flags  = ATOM_FLAG_OPEN_CONTAINER
 	origin_tech = @'{"materials":2,"esoteric":5}'
-	sharp       = 1
+	sharp       = TRUE
 	pen_quality = TOOL_QUALITY_MEDIOCRE
 
 /obj/item/pen/reagent/Initialize()
@@ -15,7 +15,7 @@
 /obj/item/pen/reagent/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 
 	var/allow = target.can_inject(user, user.get_target_zone())
-	if(allow && user.a_intent == I_HELP)
+	if(allow && user.check_intent(I_FLAG_HELP))
 		if (allow == INJECTION_PORT)
 			if(target != user)
 				to_chat(user, SPAN_WARNING("You begin hunting for an injection port on \the [target]'s suit!"))

@@ -7,9 +7,9 @@
 	icon               = 'icons/obj/items/posters.dmi'
 	icon_state         = "poster0"
 	anchored           = TRUE
-	directional_offset = @'{"NORTH":{"y":32}, "SOUTH":{"y":-32}, "WEST":{"x":32}, "EAST":{"x":-32}}'
+	directional_offset = @'{"NORTH":{"y":32}, "SOUTH":{"y":-32}, "EAST":{"x":32}, "WEST":{"x":-32}}'
 	material           = /decl/material/solid/organic/paper
-	max_health = 10
+	max_health         = 10
 	parts_type         = /obj/item/poster
 	parts_amount       = 1
 
@@ -71,7 +71,7 @@
 	return TRUE
 
 /obj/structure/sign/poster/attack_hand(mob/user)
-	if(user.a_intent != I_HURT || ruined)
+	if(!user.check_intent(I_FLAG_HARM) || ruined)
 		return ..()
 	if(!CanPhysicallyInteract(user) || !user.check_dexterity(DEXTERITY_HOLD_ITEM))
 		return TRUE

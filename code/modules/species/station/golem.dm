@@ -16,7 +16,6 @@
 
 	available_bodytypes = list(/decl/bodytype/crystalline/golem)
 
-	unarmed_attacks = list(/decl/natural_attack/stomp, /decl/natural_attack/kick, /decl/natural_attack/punch)
 	species_flags = SPECIES_FLAG_NO_POISON
 	spawn_flags = SPECIES_IS_RESTRICTED
 	shock_vulnerability = 0

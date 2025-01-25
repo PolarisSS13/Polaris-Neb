@@ -70,16 +70,16 @@
 
 /decl/tool_archetype/knife/get_default_quality(obj/item/tool)
 	if(tool)
-		if(tool.sharp && tool.edge)
+		if(tool.is_sharp() && tool.has_edge())
 			return TOOL_QUALITY_DEFAULT
-		else if(tool.sharp || tool.edge)
+		else if(tool.is_sharp() || tool.has_edge())
 			return TOOL_QUALITY_MEDIOCRE
 	return ..()
 
 /decl/tool_archetype/knife/get_default_speed(obj/item/tool)
 	if(tool)
-		if(tool.sharp && tool.edge)
+		if(tool.is_sharp() && tool.has_edge())
 			return TOOL_SPEED_DEFAULT
-		else if(tool.sharp || tool.edge)
+		else if(tool.is_sharp() || tool.has_edge())
 			return TOOL_SPEED_MEDIOCRE
 	return ..()

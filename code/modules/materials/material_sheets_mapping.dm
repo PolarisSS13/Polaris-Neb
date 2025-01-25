@@ -64,14 +64,14 @@ STACK_SUBTYPES(steel,          "steel",                         solid/metal/stee
 STACK_SUBTYPES(aluminium,      "aluminium",                     solid/metal/aluminium,       sheet/shiny,      null)
 STACK_SUBTYPES(titanium,       "titanium",                      solid/metal/titanium,        sheet/reinforced, null)
 STACK_SUBTYPES(plasteel,       "plasteel",                      solid/metal/plasteel,        sheet/reinforced, null)
-STACK_SUBTYPES(wood,           "wood",                          solid/organic/wood,          plank,            null)
+STACK_SUBTYPES(wood,           "wood",                          solid/organic/wood/oak,      plank,            null)
 STACK_SUBTYPES(mahogany,       "mahogany",                      solid/organic/wood/mahogany, plank,            null)
 STACK_SUBTYPES(maple,          "maple",                         solid/organic/wood/maple,    plank,            null)
 STACK_SUBTYPES(ebony,          "ebony",                         solid/organic/wood/ebony,    plank,            null)
 STACK_SUBTYPES(walnut,         "walnut",                        solid/organic/wood/walnut,   plank,            null)
 STACK_SUBTYPES(bamboo,         "bamboo",                        solid/organic/wood/bamboo,   plank,            null)
 STACK_SUBTYPES(yew,            "yew",                           solid/organic/wood/yew,      plank,            null)
-STACK_SUBTYPES(wood,           "wood",                          solid/organic/wood,          log,              null)
+STACK_SUBTYPES(wood,           "wood",                          solid/organic/wood/oak,      log,              null)
 STACK_SUBTYPES(mahogany,       "mahogany",                      solid/organic/wood/mahogany, log,              null)
 STACK_SUBTYPES(maple,          "maple",                         solid/organic/wood/maple,    log,              null)
 STACK_SUBTYPES(ebony,          "ebony",                         solid/organic/wood/ebony,    log,              null)
@@ -115,7 +115,19 @@ STACK_SUBTYPES(plastic,        "plastic",                       solid/organic/pl
 STACK_SUBTYPES(aluminium,      "aluminium",                     solid/metal/aluminium,       strut,            null)
 STACK_SUBTYPES(titanium,       "titanium",                      solid/metal/titanium,        strut,            null)
 
+STACK_SUBTYPES(steel,          "steel",                         solid/metal/steel,           rods,             null)
+STACK_SUBTYPES(plastic,        "plastic",                       solid/organic/plastic,       rods,             null)
+STACK_SUBTYPES(aluminium,      "aluminium",                     solid/metal/aluminium,       rods,             null)
+STACK_SUBTYPES(titanium,       "titanium",                      solid/metal/titanium,        rods,             null)
+
 STACK_SUBTYPES(cotton,         "cotton",                        solid/organic/cloth,         thread,           null)
 STACK_SUBTYPES(dried_gut,      "dried gut",                     solid/organic/leather/gut,   thread,           null)
+
+STACK_SUBTYPES(chipboard_oak,      "oak chipboard",      solid/organic/wood/chipboard,          sheet,         null)
+STACK_SUBTYPES(chipboard_maple,    "maple chipboard",    solid/organic/wood/chipboard/maple,    sheet,         null)
+STACK_SUBTYPES(chipboard_mahogany, "mahogany chipboard", solid/organic/wood/chipboard/mahogany, sheet,         null)
+STACK_SUBTYPES(chipboard_ebony,    "ebony chipboard",    solid/organic/wood/chipboard/ebony,    sheet,         null)
+STACK_SUBTYPES(chipboard_walnut,   "walnut chipboard",   solid/organic/wood/chipboard/walnut,   sheet,         null)
+STACK_SUBTYPES(chipboard_yew,      "yew chipboard",      solid/organic/wood/chipboard/yew,      sheet,         null)
 
 #undef STACK_SUBTYPES

@@ -2,7 +2,11 @@
 	time                        = 1 SECOND
 	abstract_type               = /decl/stack_recipe/soft
 	craft_stack_types           = null
-	forbidden_craft_stack_types = null
+	forbidden_craft_stack_types = list(
+		/obj/item/stack/material/bundle,
+		/obj/item/stack/material/thread,
+		/obj/item/stack/material/bolt
+	)
 	required_min_hardness       = 0
 	required_max_hardness       = MAT_VALUE_SOFT
 	crafting_extra_cost_factor  = 1 // No wastage for just resculpting materials.
@@ -85,3 +89,20 @@
 /decl/stack_recipe/soft/mould/ingot
 	name = "mould, ingot"
 	result_type = /obj/item/chems/mould/ingot
+
+/decl/stack_recipe/soft/sculpture
+	abstract_type               = /decl/stack_recipe/soft/sculpture
+	one_per_turf                = TRUE
+	on_floor                    = TRUE
+	category                    = "sculptures"
+
+/decl/stack_recipe/soft/sculpture/snowman
+	result_type                 = /obj/structure/snowman
+
+/decl/stack_recipe/soft/sculpture/snowspider
+	result_type                 = /obj/structure/snowman/spider
+	difficulty                  = MAT_VALUE_HARD_DIY
+
+/decl/stack_recipe/soft/sculpture/snowbot
+	result_type                 = /obj/structure/snowman/bot
+	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE

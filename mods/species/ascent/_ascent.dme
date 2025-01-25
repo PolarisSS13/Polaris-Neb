@@ -14,6 +14,7 @@
 #include "datum\species_bodytypes.dm"
 #include "datum\traits.dm"
 #include "effects\razorweb.dm"
+#include "items\_overrides.dm"
 #include "items\cell.dm"
 #include "items\clothing.dm"
 #include "items\clustertool.dm"

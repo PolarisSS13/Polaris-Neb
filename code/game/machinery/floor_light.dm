@@ -58,13 +58,13 @@ var/global/list/floor_light_cache = list()
 		qdel(src)
 		return TRUE
 
-	if(W.get_attack_force(user) && user.a_intent == I_HURT)
+	if(W.get_attack_force(user) && user.check_intent(I_FLAG_HARM))
 		return physical_attack_hand(user)
 
 	return ..()
 
 /obj/machinery/floor_light/physical_attack_hand(var/mob/user)
-	if(user.a_intent == I_HURT && !issmall(user))
+	if(user.check_intent(I_FLAG_HARM) && !issmall(user))
 		if(!isnull(damaged) && !(stat & BROKEN))
 			visible_message(SPAN_DANGER("\The [user] smashes \the [src]!"))
 			playsound(src, "shatter", 70, 1)

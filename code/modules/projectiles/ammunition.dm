@@ -39,17 +39,20 @@
 		pixel_y = rand(-randpixel, randpixel)
 	. = ..()
 
+/obj/item/ammo_casing/Destroy()
+	QDEL_NULL(BB)
+	return ..()
+
 //removes the projectile from the ammo casing
 /obj/item/ammo_casing/proc/expend()
 	. = BB
 	BB = null
 	set_dir(pick(global.alldirs)) //spin spent casings
-
 	// Aurora forensics port, gunpowder residue.
 	if(leaves_residue)
 		leave_residue()
-
 	update_icon()
+	update_name()
 
 /obj/item/ammo_casing/Crossed(atom/movable/AM)
 	..()
@@ -119,6 +122,11 @@
 	else if(spent_icon && !BB)
 		icon_state = spent_icon
 
+/obj/item/ammo_casing/update_name()
+	. = ..()
+	if(!BB)
+		SetName("spent [name]")
+
 /obj/item/ammo_casing/examine(mob/user)
 	. = ..()
 	if(caliber)
@@ -167,6 +175,7 @@
 		return
 	for(var/i in 1 to initial_ammo)
 		stored_ammo += new ammo_type(src)
+	contents_initialized = TRUE
 
 /obj/item/ammo_magazine/proc/get_stored_ammo_count()
 	. = length(stored_ammo)
@@ -269,10 +278,9 @@ var/global/list/magazine_icondata_states = list()
 /proc/magazine_icondata_cache_add(var/obj/item/ammo_magazine/M)
 	var/list/icon_keys = list()
 	var/list/ammo_states = list()
-	var/list/states = icon_states(M.icon)
 	for(var/i = 0, i <= M.max_ammo, i++)
 		var/ammo_state = "[M.icon_state]-[i]"
-		if(ammo_state in states)
+		if(check_state_in_icon(ammo_state, M.icon))
 			icon_keys += i
 			ammo_states += ammo_state
 

@@ -99,7 +99,7 @@
 					generated_tokens += "[token][clothes.markings_state_modifier]"
 
 			// Keep track of which states we've looked for or otherwise evaluated for later state checking.
-			var/list/check_states = icon_states(clothes.icon)
+			var/list/check_states = get_states_in_icon(clothes.icon)
 
 			// Validate against the list of generated tokens.
 			for(var/gen_token in generated_tokens)

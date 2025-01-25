@@ -10,6 +10,8 @@
 	var/begins_with_object_type
 	var/list/next_stages
 	var/product
+	/// What is the minimum map tech level to have access to this recipe?
+	var/available_to_map_tech_level = MAP_TECH_LEVEL_ANY
 
 /decl/crafting_stage/Initialize()
 	. = ..()
@@ -18,12 +20,37 @@
 		stages += GET_DECL(nid)
 	next_stages = stages
 
+/decl/crafting_stage/proc/generate_completion_string()
+	var/list/names = assemble_name_strings()
+	if(ispath(completion_trigger_type, /obj/item/stack) || stack_consume_amount)
+		names.Insert(1, max(stack_consume_amount, 1))
+	return jointext(names, " ")
+
+/decl/crafting_stage/proc/assemble_name_strings()
+	SHOULD_CALL_PARENT(TRUE)
+	var/list/names = list()
+	var/obj/item/prop = completion_trigger_type
+	if(ispath(prop, /obj/item/stack))
+		var/obj/item/stack/stack = prop
+		if(stack_consume_amount == 1)
+			names += stack::singular_name
+		else
+			names += stack::plural_name
+	else if(stack_consume_amount > 1)
+		names += "[prop::name]\s"
+	else
+		names += prop::name
+	return names
+
+/decl/crafting_stage/proc/is_available()
+	return global.using_map.map_tech_level >= available_to_map_tech_level
+
 /decl/crafting_stage/proc/can_begin_with(var/obj/item/thing)
 	. = istype(thing, begins_with_object_type)
 
 /decl/crafting_stage/proc/get_next_stage(var/obj/item/trigger)
 	for(var/decl/crafting_stage/next_stage in next_stages)
-		if(next_stage.is_appropriate_tool(trigger) && next_stage.is_sufficient_amount(null, trigger))
+		if(next_stage.is_available() && next_stage.is_appropriate_tool(trigger) && next_stage.is_sufficient_amount(null, trigger))
 			return next_stage
 
 /decl/crafting_stage/proc/progress_to(var/obj/item/thing, var/mob/user, var/obj/item/target)
@@ -49,17 +76,18 @@
 	. = !consume_completion_trigger || user.try_unequip(thing, target)
 	if(. && stack_consume_amount > 0)
 		var/obj/item/stack/stack = thing
-		if(!istype(stack) || stack.amount < stack_consume_amount)
+		if(!istype(stack) || stack.get_amount() < stack_consume_amount)
 			on_insufficient_material(user, stack)
 			return FALSE
 		var/obj/item/stack/used_stack
-		if(stack.amount == stack_consume_amount)
+		if(stack.amount > stack_consume_amount)
+			used_stack = stack.split(stack_consume_amount)
+		else
 			if(!user.try_unequip(thing, target))
 				return FALSE
 			used_stack = stack
-		else
-			used_stack = stack.split(stack_consume_amount)
-		used_stack.forceMove(target)
+		if(!QDELETED(used_stack))
+			used_stack.forceMove(target)
 	target?.update_icon()
 
 /decl/crafting_stage/proc/on_insufficient_material(var/mob/user, var/obj/item/stack/thing)
@@ -83,6 +111,14 @@
 	stack_consume_amount = 5
 	consume_completion_trigger = FALSE
 	var/stack_material = /decl/material/solid/metal/steel
+
+/decl/crafting_stage/material/assemble_name_strings()
+	var/list/names = ..()
+	if(stack_material)
+		var/decl/material/mat = GET_DECL(stack_material)
+		if(mat)
+			names.Insert(1, mat.solid_name)
+	return names
 
 /decl/crafting_stage/material/consume_crafting_resource(var/mob/user, var/obj/item/thing, var/obj/item/target)
 	var/obj/item/stack/material/M = thing

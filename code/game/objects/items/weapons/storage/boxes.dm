@@ -275,13 +275,6 @@
 /obj/item/box/anti_photons/WillContain()
 	return list(/obj/item/grenade/anti_photon = 5)
 
-/obj/item/box/supermatters
-	name = "box of supermatter grenades"
-	desc = "A box containing 5 highly experimental supermatter grenades."
-	icon_state = "radbox"
-/obj/item/box/supermatters/WillContain()
-	return list(/obj/item/grenade/supermatter = 5)
-
 /obj/item/box/decompilers
 	name = "box of decompiler grenades"
 	desc = "A box containing 5 experimental decompiler grenades."

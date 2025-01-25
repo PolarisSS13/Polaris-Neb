@@ -142,7 +142,7 @@
 /obj/item/food/Destroy()
 	QDEL_NULL(plate)
 	trash = null
-	if(contents)
+	if(length(contents))
 		for(var/atom/movable/something in contents)
 			something.dropInto(loc)
 	. = ..()

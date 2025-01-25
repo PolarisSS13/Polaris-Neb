@@ -445,7 +445,7 @@ var/global/list/all_apcs = list()
 	return ..()
 
 /obj/machinery/power/apc/bash(obj/item/used_item, mob/user)
-	if (!(user.a_intent == I_HURT) || (used_item.item_flags & ITEM_FLAG_NO_BLUDGEON))
+	if (!(user.check_intent(I_FLAG_HARM)) || (used_item.item_flags & ITEM_FLAG_NO_BLUDGEON))
 		return FALSE
 
 	if(!used_item.user_can_attack_with(user))
@@ -491,21 +491,20 @@ var/global/list/all_apcs = list()
 
 /obj/machinery/power/apc/physical_attack_hand(mob/user)
 	//Human mob special interaction goes here.
-	if(ishuman(user))
-		var/mob/living/human/H = user
-
-		if(H.species.can_shred(H))
-			user.visible_message("<span class='warning'>\The [user] slashes at \the [src]!</span>", "<span class='notice'>You slash at \the [src]!</span>")
-			playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
-
-			var/allcut = wires.IsAllCut()
-			if(beenhit >= pick(3, 4) && allcut == 0)
-				wires.CutAll()
-				src.update_icon()
-				src.visible_message("<span class='warning'>\The [src]'s wires are shredded!</span>")
-			else
-				beenhit += 1
-			return TRUE
+	if(user.can_shred())
+		user.visible_message(
+			SPAN_DANGER("\The [user] slashes at \the [src]!"),
+			SPAN_DANGER("You slash at \the [src]!")
+		)
+		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
+		var/allcut = wires.IsAllCut()
+		if(beenhit >= pick(3, 4) && allcut == 0)
+			wires.CutAll()
+			update_icon()
+			visible_message(SPAN_DANGER("\The [src]'s wires are shredded!"))
+		else
+			beenhit += 1
+		return TRUE
 	return FALSE
 
 /obj/machinery/power/apc/interface_interact(mob/user)

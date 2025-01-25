@@ -20,13 +20,6 @@
 	)
 	sound_env = GENERIC
 	ambience = list()
-	var/list/additional_fishing_results
-
-/area/shaded_hills/Initialize()
-	if(additional_fishing_results)
-		for(var/fish in additional_fishing_results)
-			fishing_results[fish] = additional_fishing_results[fish]
-	. = ..()
 
 /area/shaded_hills/outside
 	name = "\improper Grasslands"

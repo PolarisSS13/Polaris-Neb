@@ -49,6 +49,12 @@
 			ammo_magazine = new magazine_type(src)
 	update_icon()
 
+/obj/item/gun/projectile/Destroy()
+	chambered = null
+	loaded.Cut()
+	ammo_magazine = null
+	return ..()
+
 /obj/item/gun/projectile/consume_next_projectile()
 	if(!is_jammed && prob(jam_chance))
 		src.visible_message("<span class='danger'>\The [src] jams!</span>")
@@ -74,8 +80,8 @@
 			if(handle_casings == HOLD_CASINGS)
 				ammo_magazine.stored_ammo += chambered
 			ammo_magazine.initial_ammo--
-		else if(ammo_magazine.stored_ammo.len)
-			chambered = ammo_magazine.stored_ammo[ammo_magazine.stored_ammo.len]
+		else if(length(ammo_magazine.stored_ammo))
+			chambered = ammo_magazine.stored_ammo[length(ammo_magazine.stored_ammo)]
 			if(handle_casings != HOLD_CASINGS)
 				ammo_magazine.stored_ammo -= chambered
 
@@ -334,9 +340,9 @@
 
 /obj/item/gun/projectile/proc/get_ammo_indicator()
 	var/base_state = get_world_inventory_state()
-	if(!ammo_magazine || !LAZYLEN(ammo_magazine.stored_ammo))
+	if(!ammo_magazine || !ammo_magazine.get_stored_ammo_count())
 		return mutable_appearance(icon, "[base_state]_ammo_bad")
-	else if(LAZYLEN(ammo_magazine.stored_ammo) <= 0.5 * ammo_magazine.max_ammo)
+	else if(LAZYLEN(ammo_magazine.get_stored_ammo_count()) <= 0.5 * ammo_magazine.max_ammo)
 		return mutable_appearance(icon, "[base_state]_ammo_warn")
 	else
 		return mutable_appearance(icon, "[base_state]_ammo_ok")
@@ -354,6 +360,7 @@
 
 /decl/interaction_handler/projectile/remove_silencer
 	name = "Remove Silencer"
+	examine_desc = "remove the silencer"
 
 /decl/interaction_handler/projectile/remove_silencer/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gun/projectile/gun = target
@@ -361,6 +368,7 @@
 
 /decl/interaction_handler/projectile/unload_ammo
 	name = "Remove Ammunition"
+	examine_desc = "unload the ammunition"
 
 /decl/interaction_handler/projectile/unload_ammo/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gun/projectile/gun = target

@@ -112,7 +112,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/toxicity = 0 // Organ damage from ingestion.
 	var/toxicity_targets_organ // Bypass liver/kidneys when ingested, harm this organ directly (using BP_FOO defines).
 
-	var/can_backfill_turf_type
+	var/can_backfill_floor_type
 
 	// Shards/tables/structures
 	var/shard_type = SHARD_SHRAPNEL       // Path of debris object.
@@ -125,6 +125,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	// Icons
 	var/icon_base = 'icons/turf/walls/solid.dmi'
 	var/icon_base_natural = 'icons/turf/walls/natural.dmi'
+	/// Either the icon used for reinforcement, or a list of icons to pick from.
 	var/icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
 	var/wall_flags = 0
 	var/list/wall_blend_icons = list() // Which wall icon types walls of this material type will consider blending with. Assoc list (icon path = TRUE/FALSE)
@@ -140,6 +141,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/list/stack_origin_tech = @'{"materials":1}' // Research level for stacks.
 
 	// Attributes
+	/// Does this material float to the top of liquids, allowing it to be skimmed off? Specific to cream at time of writing.
+	var/skimmable = FALSE
 	/// How rare is this material in exoplanet xenoflora?
 	var/exoplanet_rarity_plant = MAT_RARITY_MUNDANE
 	/// How rare is this material in exoplanet atmospheres?
@@ -261,6 +264,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/cocktail_ingredient
 	var/defoliant
 	var/fruit_descriptor // String added to fruit desc if this chemical is present.
+	/// Does this reagent have an antibiotic effect (helping with infections)?
+	var/antibiotic_strength = 0
 
 	var/dirtiness = DIRTINESS_NEUTRAL // How dirty turfs are after being exposed to this material. Negative values cause a cleaning/sterilizing effect.
 	var/decontamination_dose = 0      // Amount required for a decontamination effect, if any.
@@ -286,13 +291,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/chilling_message = "crackles and freezes!"
 	var/chilling_sound = 'sound/effects/bubbles.ogg'
 	var/list/chilling_products
-	var/bypass_chilling_products_for_root_type
 
 	var/heating_point
 	var/heating_message = "begins to boil!"
 	var/heating_sound = 'sound/effects/bubbles.ogg'
 	var/list/heating_products
-	var/bypass_heating_products_for_root_type
 	var/accelerant_value = FUEL_VALUE_NONE
 	var/burn_temperature = 100 CELSIUS
 	var/burn_product
@@ -363,10 +366,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	/// If an item has a null paint_verb, it automatically sets it based on material.
 	var/paint_verb = "painted"
 
+	/// Chance of a natural wall made of this material dropping a gemstone, if the gemstone_types list is populated.
+	var/gemstone_chance = 5
+	/// Assoc weighted list of gemstone material types to weighting.
+	var/list/gemstone_types
+
 // Placeholders for light tiles and rglass.
 /decl/material/proc/reinforce(var/mob/user, var/obj/item/stack/material/used_stack, var/obj/item/stack/material/target_stack, var/use_sheets = 1)
 	if(!used_stack.can_use(use_sheets))
-		to_chat(user, SPAN_WARNING("You need need at least one [used_stack.singular_name] to reinforce [target_stack]."))
+		to_chat(user, SPAN_WARNING("You need at least one [used_stack.singular_name] to reinforce [target_stack]."))
 		return
 
 	var/decl/material/reinf_mat = used_stack.get_material()
@@ -375,7 +383,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 		return
 
 	if(!target_stack.can_use(use_sheets))
-		to_chat(user, SPAN_WARNING("You need need at least [use_sheets] [use_sheets == 1 ? target_stack.singular_name : target_stack.plural_name] for reinforcement with \the [used_stack]."))
+		to_chat(user, SPAN_WARNING("You need at least [use_sheets] [use_sheets == 1 ? target_stack.singular_name : target_stack.plural_name] for reinforcement with \the [used_stack]."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You reinforce the [target_stack] with [reinf_mat.solid_name]."))
@@ -439,7 +447,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	else if(isnull(temperature_damage_threshold))
 		var/new_temperature_damage_threshold = max(melting_point, boiling_point, heating_point)
 		// Don't let the threshold be lower than the ignition point.
-		if(!isnull(new_temperature_damage_threshold) && (isnull(ignition_point) || (new_temperature_damage_threshold > ignition_point)))
+		if(isnull(new_temperature_damage_threshold) && !isnull(ignition_point))
+			temperature_damage_threshold = ignition_point
+		else if(isnull(ignition_point) || (new_temperature_damage_threshold > ignition_point))
 			temperature_damage_threshold = new_temperature_damage_threshold
 
 	if(!shard_icon)
@@ -558,13 +568,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 				. += "'[icon_base_natural]' - missing natural shine icon state 'shine[i]'"
 
 	if(icon_reinf)
-		if(use_reinf_state)
-			if(!check_state_in_icon(use_reinf_state, icon_reinf))
-				. += "'[icon_reinf]' - missing reinf icon state '[use_reinf_state]'"
-		else
-			for(var/i = 0 to 7)
-				if(!check_state_in_icon("[i]", icon_reinf))
-					. += "'[icon_reinf]' - missing directional reinf icon state '[i]'"
+		var/list/all_reinf_icons = islist(icon_reinf) ? icon_reinf : list(icon_reinf)
+		for(var/sub_icon in all_reinf_icons)
+			if(use_reinf_state)
+				if(!check_state_in_icon(use_reinf_state, sub_icon))
+					. += "'[sub_icon]' - missing reinf icon state '[use_reinf_state]'"
+			else
+				for(var/i = 0 to 7)
+					if(!check_state_in_icon(num2text(i), sub_icon))
+						. += "'[sub_icon]' - missing directional reinf icon state '[i]'"
 
 	if(length(color) != 7)
 		. += "invalid color (not #RRGGBB)"
@@ -706,12 +718,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 /decl/material/proc/touch_obj(var/obj/O, var/amount, var/datum/reagents/holder) // Acid melting, cleaner cleaning, etc
 
-	if(solvent_power >= MAT_SOLVENT_MILD)
-		if(istype(O, /obj/item/paper))
+	if(solvent_power >= MAT_SOLVENT_MODERATE)
+		if(istype(O, /obj/item/paper) && amount >= FLUID_MINIMUM_TRANSFER)
 			var/obj/item/paper/paperaffected = O
 			paperaffected.clearpaper()
 			O.visible_message(SPAN_NOTICE("The solution dissolves the ink on the paper."), range = 1)
-		else if(istype(O, /obj/item/book) && amount >= 5)
+		else if(istype(O, /obj/item/book) && amount >= FLUID_PUDDLE)
 			var/obj/item/book/affectedbook = O
 			if(affectedbook.can_dissolve_text)
 				affectedbook.dat = null
@@ -741,31 +753,30 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 // This doesn't apply to skin contact - this is for, e.g. extinguishers and sprays. The difference is that reagent is not directly on the mob's skin - it might just be on their clothing.
 /decl/material/proc/touch_mob(var/mob/living/M, var/amount, var/datum/reagents/holder)
 	if(accelerant_value != FUEL_VALUE_NONE && amount && istype(M))
-		M.fire_stacks += floor((amount * accelerant_value)/FLAMMABLE_LIQUID_DIVISOR)
+		M.adjust_fire_intensity(floor((amount * accelerant_value)/FLAMMABLE_LIQUID_DIVISOR))
 #undef FLAMMABLE_LIQUID_DIVISOR
 
-/decl/material/proc/touch_turf(var/turf/T, var/amount, var/datum/reagents/holder) // Cleaner cleaning, lube lubbing, etc, all go here
+/decl/material/proc/touch_turf(var/turf/touching_turf, var/amount, var/datum/reagents/holder) // Cleaner cleaning, lube lubbing, etc, all go here
 
 	if(REAGENT_VOLUME(holder, type) < turf_touch_threshold)
 		return
 
-	if(istype(T) && T.simulated)
-		var/turf/wall/W = T
+	if(istype(touching_turf) && touching_turf.simulated)
 		if(defoliant)
-			for(var/obj/effect/overlay/wallrot/E in W)
-				W.visible_message(SPAN_NOTICE("\The [E] is completely dissolved by the solution!"))
-				qdel(E)
-		if(slipperiness != 0 && !T.check_fluid_depth()) // Don't make floors slippery if they have an active fluid on top of them please.
+			for(var/obj/effect/overlay/wallrot/rot in touching_turf)
+				touching_turf.visible_message(SPAN_NOTICE("\The [rot] is completely dissolved by the solution!"))
+				qdel(rot)
+		if(slipperiness != 0 && !touching_turf.check_fluid_depth()) // Don't make floors slippery if they have an active fluid on top of them please.
 			if(slipperiness < 0)
-				W.unwet_floor(TRUE)
+				touching_turf.unwet_floor(TRUE)
 			else if (REAGENT_VOLUME(holder, type) >= slippery_amount)
-				W.wet_floor(slipperiness)
+				touching_turf.wet_floor(slipperiness)
 
 	if(length(vapor_products))
 		var/volume = REAGENT_VOLUME(holder, type)
 		var/temperature = holder?.my_atom?.temperature || T20C
 		for(var/vapor in vapor_products)
-			T.assume_gas(vapor, (volume * vapor_products[vapor]), temperature)
+			touching_turf.assume_gas(vapor, (volume * vapor_products[vapor]), temperature)
 		holder.remove_reagent(type, volume)
 
 /decl/material/proc/on_mob_life(var/mob/living/M, var/metabolism_class, var/datum/reagents/holder, var/list/life_dose_tracker)
@@ -824,6 +835,14 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	if(M.status_flags & GODMODE)
 		return
+
+	if(antibiotic_strength)
+		M.adjust_immunity(-0.1 * antibiotic_strength)
+		M.add_chemical_effect(CE_ANTIBIOTIC, antibiotic_strength)
+		if(REAGENT_VOLUME(holder, type) > 10)
+			M.adjust_immunity(-0.3 * antibiotic_strength)
+		if(LAZYACCESS(M.chem_doses, type) > 15)
+			M.adjust_immunity(-0.25 * antibiotic_strength)
 
 	if(nutriment_factor || hydration_factor)
 		if(injectable_nutrition)
@@ -941,60 +960,60 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 			subject.adjust_hydration(effective_power)
 
 // Slightly different to other reagent processing - return TRUE to consume the removed amount, FALSE not to consume.
-/decl/material/proc/affect_touch(var/mob/living/M, var/removed, var/datum/reagents/holder)
+/decl/material/proc/affect_touch(var/mob/living/victim, var/removed, var/datum/reagents/holder)
 
 	SHOULD_CALL_PARENT(TRUE)
 
-	if(!istype(M))
+	if(!istype(victim))
 		return FALSE
 
 	if(radioactivity)
-		M.apply_damage((radioactivity / 2) * removed, IRRADIATE)
+		victim.apply_damage((radioactivity / 2) * removed, IRRADIATE)
 		. = TRUE
 
 	if(dirtiness <= DIRTINESS_STERILE)
-		if(M.germ_level < INFECTION_LEVEL_TWO) // rest and antibiotics is required to cure serious infections
-			M.germ_level -= min(removed*20, M.germ_level)
-		for(var/obj/item/I in M.contents)
+		if(victim.germ_level < INFECTION_LEVEL_TWO) // rest and antibiotics is required to cure serious infections
+			victim.germ_level -= min(removed*20, victim.germ_level)
+		for(var/obj/item/I in victim.contents)
 			I.was_bloodied = null
-		M.was_bloodied = null
+		victim.was_bloodied = null
 		. = TRUE
 
 	// TODO: clean should add the gross reagents washed off to a holder to dump on the loc.
 	if(dirtiness <= DIRTINESS_CLEAN)
-		for(var/obj/item/thing in M.get_held_items())
+		for(var/obj/item/thing in victim.get_held_items())
 			thing.clean()
-		var/obj/item/mask = M.get_equipped_item(slot_wear_mask_str)
+		var/obj/item/mask = victim.get_equipped_item(slot_wear_mask_str)
 		if(mask)
 			mask.clean()
-		if(ishuman(M))
-			var/mob/living/human/H = M
-			var/obj/item/head = H.get_equipped_item(slot_head_str)
+		if(ishuman(victim))
+			var/mob/living/human/human_victim = victim
+			var/obj/item/head = human_victim.get_equipped_item(slot_head_str)
 			if(head)
 				head.clean()
-			var/obj/item/suit = H.get_equipped_item(slot_wear_suit_str)
+			var/obj/item/suit = human_victim.get_equipped_item(slot_wear_suit_str)
 			if(suit)
 				suit.clean()
 			else
-				var/obj/item/uniform = H.get_equipped_item(slot_w_uniform_str)
+				var/obj/item/uniform = human_victim.get_equipped_item(slot_w_uniform_str)
 				if(uniform)
 					uniform.clean()
 
-			var/obj/item/shoes = H.get_equipped_item(slot_shoes_str)
+			var/obj/item/shoes = human_victim.get_equipped_item(slot_shoes_str)
 			if(shoes)
 				shoes.clean()
 			else
-				H.clean()
-				return
-		M.clean()
+				human_victim.clean()
+		else
+			victim.clean()
 
-	if(solvent_power > MAT_SOLVENT_NONE && removed >= solvent_melt_dose && M.solvent_act(min(removed * solvent_power * ((removed < solvent_melt_dose) ? 0.1 : 0.2), solvent_max_damage), solvent_melt_dose, solvent_power))
+	if(solvent_power > MAT_SOLVENT_NONE && removed >= solvent_melt_dose && victim.solvent_act(min(removed * solvent_power * ((removed < solvent_melt_dose) ? 0.1 : 0.2), solvent_max_damage), solvent_melt_dose, solvent_power))
 		holder.remove_reagent(type, REAGENT_VOLUME(holder, type))
 		. = TRUE
 
-/decl/material/proc/affect_overdose(mob/living/M, total_dose) // Overdose effect. Doesn't happen instantly.
-	M.add_chemical_effect(CE_TOXIN, 1)
-	M.take_damage(REM, TOX)
+/decl/material/proc/affect_overdose(mob/living/victim, total_dose) // Overdose effect. Doesn't happen instantly.
+	victim.add_chemical_effect(CE_TOXIN, 1)
+	victim.take_damage(REM, TOX)
 
 /decl/material/proc/initialize_data(list/newdata) // Called when the reagent is first added to a reagents datum.
 	. = newdata
@@ -1047,6 +1066,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 					tastes -= taste
 		if(length(tastes))
 			LAZYSET(., DATA_TASTE, tastes)
+
+	// Blend our extra_colour...
+	var/new_extra_color = newdata?[DATA_EXTRA_COLOR]
+	if(new_extra_color)
+		.[DATA_EXTRA_COLOR] = BlendRGBasHSV(new_extra_color, .[DATA_EXTRA_COLOR], new_fraction)
 
 /decl/material/proc/explosion_act(obj/item/chems/holder, severity)
 	SHOULD_CALL_PARENT(TRUE)
@@ -1166,8 +1190,28 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 				return data_color
 	return color
 
+/decl/material/proc/get_reagent_overlay_color(datum/reagents/holder)
+	var/list/rdata = REAGENT_DATA(holder, type)
+	return LAZYACCESS(rdata, DATA_EXTRA_COLOR) || get_reagent_color(holder) + num2hex(opacity * 255)
+
 /decl/material/proc/can_hold_sharpness()
 	return hardness > MAT_VALUE_FLEXIBLE
 
 /decl/material/proc/can_hold_edge()
 	return hardness > MAT_VALUE_FLEXIBLE
+
+// TODO: expand this to more than just Actual Poison.
+/decl/material/proc/is_unsafe_to_drink(mob/user)
+	return toxicity > 0
+
+/// Used for material-dependent effects on stain dry.
+/// Return TRUE to skip default drying handling.
+/decl/material/proc/handle_stain_dry(obj/effect/decal/cleanable/blood/stain)
+	return FALSE
+
+/// Returns (in deciseconds) how long until dry() will be called on this stain,
+/// or null to use the stain's default.
+/// If 0 is returned, it dries instantly.
+/// If any value below 0 is returned, it doesn't start processing.
+/decl/material/proc/get_time_to_dry_stain(obj/effect/decal/cleanable/blood/stain)
+	return initial(stain.time_to_dry)

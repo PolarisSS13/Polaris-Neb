@@ -16,21 +16,21 @@
 #define ui_entire_screen "WEST,SOUTH to EAST,NORTH"
 #define ui_center_fullscreen "CENTER-7,CENTER-7"
 
-//Lower left, persistant menu
+//Lower left, persistent menu
 #define ui_inventory "LEFT:6,BOTTOM:5"
 
-//Lower center, persistant menu
+//Lower center, persistent menu
 #define ui_sstore1 "LEFT+2:10,BOTTOM:5"
-#define ui_id "LEFT+3:12,BOTTOM:5"
-#define ui_belt "LEFT+4:14,BOTTOM:5"
-#define ui_back "CENTER-2:14,BOTTOM:5"
+#define ui_back "LEFT+3:22,BOTTOM:5"
+#define ui_id "LEFT+4:26,BOTTOM:5"
+#define ui_belt "RIGHT-5:16,BOTTOM:5"
 #define ui_rhand "CENTER-1:16,BOTTOM:5"
 #define ui_lhand "CENTER:16,BOTTOM:5"
 #define ui_equip "CENTER-1:16,BOTTOM+1:5"
 #define ui_swaphand1 "CENTER-1:16,BOTTOM+1:5"
 #define ui_swaphand2 "CENTER:16,BOTTOM+1:5"
-#define ui_storage1 "CENTER+1:16,BOTTOM:5"
-#define ui_storage2 "CENTER+2:16,BOTTOM:5"
+#define ui_storage1 "RIGHT-3:16,BOTTOM:5"
+#define ui_storage2 "RIGHT-4:16,BOTTOM:5"
 
 #define ui_alien_head "CENTER-3:12,BOTTOM:5"		//aliens
 #define ui_alien_oclothing "CENTER-2:14,BOTTOM:5"//aliens
@@ -48,13 +48,13 @@
 #define ui_construct_fire "RIGHT-1:16,CENTER+1:13" //above health, slightly to the left
 #define ui_construct_pull "RIGHT-1:28,BOTTOM+1:10" //above the zone selector icon
 
-//Lower right, persistant menu
+//Lower right, persistent menu
 #define ui_dropbutton "RIGHT-4:22,BOTTOM:5"
 #define ui_drop_throw "RIGHT-1:28,BOTTOM+1:7"
 #define ui_pull_resist "RIGHT-2:26,BOTTOM+1:7"
-#define ui_acti "RIGHT-2:26,BOTTOM:5"
-#define ui_movi "RIGHT-3:24,BOTTOM:5"
-#define ui_attack_selector "RIGHT-3:24,BOTTOM+1:6"
+#define ui_acti "CENTER,BOTTOM:5"
+#define ui_movi "RIGHT-2:24,BOTTOM:5"
+#define ui_attack_selector "RIGHT-2:27,BOTTOM+2:9"
 #define ui_zonesel "RIGHT-1:28,BOTTOM:5"
 #define ui_acti_alt "RIGHT-1:28,BOTTOM:5" //alternative intent switcher for when the interface is hidden
 #define ui_stamina "RIGHT-3:24,BOTTOM+1:5"

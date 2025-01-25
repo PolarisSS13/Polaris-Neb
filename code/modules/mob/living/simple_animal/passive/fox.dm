@@ -32,12 +32,12 @@
 	uid = "bodytype_animal_fox"
 
 /decl/bodytype/quadruped/animal/fox/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list( 1,  -9),
 			"[SOUTH]" = list( 1,  -8),
-			"[EAST]" =  list( 11,  -9),
-			"[WEST]" =  list(-11,  -9)
+			"[EAST]"  = list( 11,  -9),
+			"[WEST]"  = list(-11,  -9)
 		)
 	)
 	return ..()

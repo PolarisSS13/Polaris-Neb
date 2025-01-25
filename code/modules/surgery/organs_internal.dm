@@ -104,7 +104,7 @@
 	for(var/obj/item/organ/I in target.get_internal_organs())
 		if(I && !(I.status & ORGAN_CUT_AWAY) && I.parent_organ == target_zone)
 			var/image/radial_button = image(icon = I.icon, icon_state = I.icon_state)
-			radial_button.name = "Detach \the [I.name]"
+			radial_button.name = "Detach \the [I]"
 			LAZYSET(attached_organs, I.organ_tag, radial_button)
 	if(!LAZYLEN(attached_organs))
 		to_chat(user, SPAN_WARNING("You can't find any organs to separate."))
@@ -158,7 +158,7 @@
 		for(var/obj/item/organ/internal/I in affected.implants)
 			if(I.status & ORGAN_CUT_AWAY)
 				var/image/radial_button = image(icon = I.icon, icon_state = I.icon_state)
-				radial_button.name = "Remove \the [I.name]"
+				radial_button.name = "Remove \the [I]"
 				LAZYSET(removable_organs, I, radial_button)
 		if(!LAZYLEN(removable_organs))
 			to_chat(user, SPAN_WARNING("You can't find any removable organs."))
@@ -262,7 +262,7 @@
 		return FALSE
 
 	if(O.w_class > affected.cavity_max_w_class)
-		to_chat(user, SPAN_WARNING("\The [O.name] [pronouns.is] too big for [affected.cavity_name] cavity!"))
+		to_chat(user, SPAN_WARNING("\The [O.name] [pronouns.is] too big for \the [affected.cavity_name]!"))
 		return FALSE
 
 	var/obj/item/organ/internal/I = GET_INTERNAL_ORGAN(target, O.organ_tag)
@@ -336,7 +336,7 @@
 	for(var/obj/item/organ/I in (affected.implants|affected.internal_organs))
 		if(I.status & ORGAN_CUT_AWAY)
 			var/image/radial_button = image(icon = I.icon, icon_state = I.icon_state)
-			radial_button.name = "Attach \the [I.name]"
+			radial_button.name = "Attach \the [I]"
 			LAZYSET(attachable_organs, I, radial_button)
 
 	if(!LAZYLEN(attachable_organs))

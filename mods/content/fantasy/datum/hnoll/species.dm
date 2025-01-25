@@ -30,13 +30,6 @@
 	move_trail          = /obj/effect/decal/cleanable/blood/tracks/paw
 	base_external_prosthetics_model = null
 
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite/sharp
-	)
-
 	available_background_info = list(
 		/decl/background_category/homeworld = list(
 			/decl/background_detail/location/fantasy,

@@ -32,11 +32,6 @@
 
 	preview_outfit = null
 
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/punch
-	)
 	available_pronouns = list(
 		/decl/pronouns,
 		/decl/pronouns/neuter

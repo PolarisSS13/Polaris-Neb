@@ -13,7 +13,7 @@
 	name = "chair"
 	desc = "An ornate, detailed chair made from wood. It has armrests!"
 	icon = 'icons/obj/structures/fancy_rustic_chair.dmi'
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	color = COLOR_WHITE // preview state is precolored
 	reinf_material = /decl/material/solid/organic/cloth
 	padding_color = COLOR_CHERRY_RED

@@ -8,7 +8,7 @@
 	guard_material            = null
 	slot_flags                = null
 	material                  = /decl/material/solid/metal/bronze
-	hilt_material             = /decl/material/solid/organic/wood
+	hilt_material             = /decl/material/solid/organic/wood/oak
 	_base_attack_force        = 5
 
 	var/open                  = FALSE
@@ -25,7 +25,7 @@
 	update_attack_force()
 
 /obj/item/bladed/folding/attack_self(mob/user)
-	if(user.a_intent != I_HELP)
+	if(!user.check_intent(I_FLAG_HELP))
 		set_open(!open, user)
 		return TRUE
 	var/decl/interaction_handler/folding_knife/interaction = GET_DECL(/decl/interaction_handler/folding_knife)
@@ -53,9 +53,8 @@
 
 /obj/item/bladed/folding/update_attack_force()
 	..()
-	// TODO: check sharp/edge.
-	edge  = open
-	sharp = open
+	set_edge(open)
+	set_sharp(open)
 	if(open)
 		w_class     = open_item_size
 		attack_verb = open_attack_verbs
@@ -98,6 +97,7 @@
 	name = "Adjust Folding Knife"
 	expected_target_type = /obj/item/bladed/folding
 	interaction_flags = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION
+	examine_desc = "adjust $TARGET_THEM$"
 
 /decl/interaction_handler/folding_knife/is_possible(atom/target, mob/user)
 	. = ..()

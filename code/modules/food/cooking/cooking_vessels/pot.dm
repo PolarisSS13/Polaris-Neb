@@ -13,19 +13,22 @@
 	material = /decl/material/solid/metal/iron
 	color = /decl/material/solid/metal/iron::color
 
-/obj/item/chems/cooking_vessel/pot/on_update_icon()
+/obj/item/chems/cooking_vessel/pot/get_reagents_overlay(state_prefix)
+	var/image/our_overlay = ..()
+	if(our_overlay && last_boil_status && check_state_in_icon("[our_overlay.icon_state]_boiling", our_overlay.icon))
+		our_overlay.icon_state = "[our_overlay.icon_state]_boiling"
+	return our_overlay
+
+/obj/item/chems/cooking_vessel/pot/on_reagent_change()
+	last_boil_temp   = null
+	last_boil_status = null
 	. = ..()
-	if(reagents?.total_volume)
-		if(last_boil_status)
-			add_overlay(overlay_image(icon, "[icon_state]-boiling", reagents.get_color(), RESET_COLOR | RESET_ALPHA))
-		else
-			add_overlay(overlay_image(icon, "[icon_state]-still", reagents.get_color(), RESET_COLOR | RESET_ALPHA))
 
 /obj/item/chems/cooking_vessel/pot/ProcessAtomTemperature()
 	. = ..()
 
 	// Largely ignore return value so we don't skip this update on the final time we temperature process.
-	if(isnull(last_boil_temp) || temperature != last_boil_temp)
+	if(temperature != last_boil_temp)
 
 		last_boil_temp = temperature
 		var/next_boil_status = FALSE
@@ -40,4 +43,18 @@
 			update_icon()
 
 	if(. == PROCESS_KILL)
-		last_boil_temp = null
+		last_boil_temp   = null
+		last_boil_status = null
+
+/obj/item/chems/cooking_vessel/cauldron
+	name     = "cauldron"
+	desc     = "A large round-bodied vessel for making large quantities of potion or soup."
+	material = /decl/material/solid/metal/iron
+	color    = /decl/material/solid/metal/iron::color
+	icon     = 'icons/obj/food/cooking_vessels/cauldron.dmi'
+	volume   = 1000
+	w_class  = ITEM_SIZE_STRUCTURE
+	density  = TRUE
+
+/obj/item/chems/cooking_vessel/cauldron/can_be_picked_up(mob/user)
+	return FALSE

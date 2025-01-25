@@ -106,9 +106,12 @@
 #define show_image(target, image)                           target << (image)
 #define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)
 #define open_link(target, url)                              target << link(url)
+#define ftp_to(target, file_entry, suggested_name)          target << ftp(file_entry, suggested_name)
+#define open_file_for(target, file)                         target << run(file)
 #define to_savefile(target, key, value)                     target[(key)] << (value)
 #define from_savefile(target, key, value)                   target[(key)] >> (value)
 #define to_output(target, output_content, output_args)      target << output((output_content), (output_args))
+// Avoid using this where possible, prefer the other helpers instead.
 #define direct_output(target, value)                        target << (value)
 
 /proc/html_icon(var/thing) // Proc instead of macro to avoid precompiler problems.
@@ -147,34 +150,35 @@
 #define SPAN_STYLE(S, X) "<span style='[S]'>[X]</span>"
 
 #define SPAN_CLASS(C, X) "<span class='[C]'>[X]</span>"
-#define SPAN_ITALIC(X)   SPAN_CLASS("italic",        X)
-#define SPAN_BOLD(X)     SPAN_CLASS("bold",          X)
-#define SPAN_NOTICE(X)   SPAN_CLASS("notice",        X)
-#define SPAN_WARNING(X)  SPAN_CLASS("warning",       X)
-#define SPAN_DANGER(X)   SPAN_CLASS("danger",        X)
-#define SPAN_ROSE(X)     SPAN_CLASS("rose",          X)
-#define SPAN_OCCULT(X)   SPAN_CLASS("cult",          X)
-#define SPAN_MFAUNA(X)   SPAN_CLASS("mfauna",        X)
-#define SPAN_SUBTLE(X)   SPAN_CLASS("subtle",        X)
-#define SPAN_INFO(X)     SPAN_CLASS("info",          X)
-#define SPAN_RED(X)      SPAN_CLASS("font_red",      X)
-#define SPAN_ORANGE(X)   SPAN_CLASS("font_orange",   X)
-#define SPAN_YELLOW(X)   SPAN_CLASS("font_yellow",   X)
-#define SPAN_GREEN(X)    SPAN_CLASS("font_green",    X)
-#define SPAN_BLUE(X)     SPAN_CLASS("font_blue",     X)
-#define SPAN_VIOLET(X)   SPAN_CLASS("font_violet",   X)
-#define SPAN_PURPLE(X)   SPAN_CLASS("font_purple",   X)
-#define SPAN_GREY(X)     SPAN_CLASS("font_grey",     X)
-#define SPAN_MAROON(X)   SPAN_CLASS("font_maroon",   X)
-#define SPAN_PINK(X)     SPAN_CLASS("font_pink",     X)
-#define SPAN_PALEPINK(X) SPAN_CLASS("font_palepink", X)
-#define SPAN_SINISTER(X) SPAN_CLASS("sinister", X)
-#define SPAN_MODERATE(X) SPAN_CLASS("moderate", X)
+#define SPAN_ITALIC(X)        SPAN_CLASS("italic",        X)
+#define SPAN_BOLD(X)          SPAN_CLASS("bold",          X)
+#define SPAN_NOTICE(X)        SPAN_CLASS("notice",        X)
+#define SPAN_WARNING(X)       SPAN_CLASS("warning",       X)
+#define SPAN_DANGER(X)        SPAN_CLASS("danger",        X)
+#define SPAN_ROSE(X)          SPAN_CLASS("rose",          X)
+#define SPAN_OCCULT(X)        SPAN_CLASS("cult",          X)
+#define SPAN_CULT_ANNOUNCE(X) SPAN_CLASS("cultannounce",  X)
+#define SPAN_MFAUNA(X)        SPAN_CLASS("mfauna",        X)
+#define SPAN_SUBTLE(X)        SPAN_CLASS("subtle",        X)
+#define SPAN_INFO(X)          SPAN_CLASS("info",          X)
+#define SPAN_RED(X)           SPAN_CLASS("font_red",      X)
+#define SPAN_ORANGE(X)        SPAN_CLASS("font_orange",   X)
+#define SPAN_YELLOW(X)        SPAN_CLASS("font_yellow",   X)
+#define SPAN_GREEN(X)         SPAN_CLASS("font_green",    X)
+#define SPAN_BLUE(X)          SPAN_CLASS("font_blue",     X)
+#define SPAN_VIOLET(X)        SPAN_CLASS("font_violet",   X)
+#define SPAN_PURPLE(X)        SPAN_CLASS("font_purple",   X)
+#define SPAN_GREY(X)          SPAN_CLASS("font_grey",     X)
+#define SPAN_MAROON(X)        SPAN_CLASS("font_maroon",   X)
+#define SPAN_PINK(X)          SPAN_CLASS("font_pink",     X)
+#define SPAN_PALEPINK(X)      SPAN_CLASS("font_palepink", X)
+#define SPAN_SINISTER(X)      SPAN_CLASS("sinister", X)
+#define SPAN_MODERATE(X)      SPAN_CLASS("moderate", X)
 // placeholders
-#define SPAN_GOOD(X)     SPAN_GREEN(X)
-#define SPAN_NEUTRAL(X)  SPAN_BLUE(X)
-#define SPAN_BAD(X)      SPAN_RED(X)
-#define SPAN_HARDSUIT(X) SPAN_BLUE(X)
+#define SPAN_GOOD(X)          SPAN_GREEN(X)
+#define SPAN_NEUTRAL(X)       SPAN_BLUE(X)
+#define SPAN_BAD(X)           SPAN_RED(X)
+#define SPAN_HARDSUIT(X)      SPAN_BLUE(X)
 
 #define CSS_CLASS_RADIO "radio"
 
@@ -195,3 +199,7 @@
 #define FONT_GIANT(X) "<font size='5'>[X]</font>"
 
 #define PRINT_STACK_TRACE(X) get_stack_trace(X, __FILE__, __LINE__)
+
+/// Checks if potential_weakref is a weakref of thing.
+/// NOTE: These argments are the opposite order of TG's, because I think TG's are counterintuitive.
+#define IS_WEAKREF_OF(potential_weakref, thing) (istype(thing, /datum) && !isnull(potential_weakref) && thing.weakref == potential_weakref)

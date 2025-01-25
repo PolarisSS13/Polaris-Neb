@@ -10,12 +10,23 @@
 	matter = null
 	pixel_z = 8
 	color = "#7c5e42"
+
+	// Not actually a machine, per se.
+	frame_type                = null
+	uncreated_component_parts = list()
+	maximum_component_parts   = list()
+	construct_state           = /decl/machine_construction/noninteractive
+
 	var/obj/item/stack/material/brick/reinforced_with
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/get_alt_interactions(var/mob/user)
 	. = ..()
-	. -= /decl/interaction_handler/drink
-	. -= /decl/interaction_handler/wash_hands
+	LAZYREMOVE(., global._reagent_interactions)
+	LAZYADD(., /decl/interaction_handler/empty_into)
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/get_growth_rate()
+	var/turf/my_turf = get_turf(src)
+	return max(0, my_turf?.get_plant_growth_rate())
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/Initialize()
 
@@ -32,11 +43,10 @@
 	pixel_y = rand(-1,1)
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/physically_destroyed()
-	if(reinforced_with)
-		reinforced_with.dropInto(loc)
-		reinforced_with = null
-	return ..()
+/obj/machinery/portable_atmospherics/hydroponics/soil/dismantle()
+	dump_contents()
+	qdel(src)
+	return null
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/Destroy()
 	var/oldloc = loc
@@ -57,7 +67,7 @@
 		return
 	if(prob(25))
 		return
-	to_chat(walker, SPAN_DANGER("You trample \the [seed]!"))
+	to_chat(walker, SPAN_DANGER("You trample \the [seed.display_name]!"))
 	plant_health = max(0, plant_health - rand(3,5))
 	check_plant_health()
 
@@ -101,7 +111,7 @@
 				neighbor.update_icon()
 		return TRUE
 
-	if(!seed && user.a_intent == I_HURT && (IS_SHOVEL(O) || IS_HOE(O)))
+	if(!seed && user.check_intent(I_FLAG_HARM) && (IS_SHOVEL(O) || IS_HOE(O)))
 		var/use_tool = O.get_tool_quality(TOOL_SHOVEL) > O.get_tool_quality(TOOL_HOE) ? TOOL_SHOVEL : TOOL_HOE
 		if(use_tool)
 			if(O.do_tool_interaction(use_tool, user, src, 3 SECONDS, "filling in", "filling in", check_skill = SKILL_BOTANY))
@@ -156,7 +166,6 @@
 	dead = 0
 	age = start_mature ? seed.get_trait(TRAIT_MATURATION) : 1
 	plant_health = seed.get_trait(TRAIT_ENDURANCE)
-	lastcycle = world.time
 	if(isnull(default_pixel_y))
 		default_pixel_y = rand(-12,12)
 	if(isnull(default_pixel_y))
@@ -194,3 +203,6 @@
 		if(plant.invisibility == INVISIBILITY_MAXIMUM)
 			plant.set_invisibility(initial(plant.invisibility))
 	. = ..()
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/get_growth_rate()
+	return max(..(), 1)

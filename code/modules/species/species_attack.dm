@@ -2,8 +2,8 @@
 	attack_verb = list("bit", "chomped on")
 	attack_sound = 'sound/weapons/bite.ogg'
 	shredding = 0
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 	name = "sharp bite"
 
 /decl/natural_attack/claws
@@ -14,8 +14,8 @@
 	eye_attack_text_victim = "sharp claws"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 	name = "claws"
 	usable_with_limbs = list(BP_L_HAND, BP_R_HAND)
 	var/blocked_by_gloves = TRUE
@@ -90,7 +90,7 @@
 	damage = 2
 	usable_with_limbs = list(BP_CHEST, BP_GROIN)
 
-/decl/natural_attack/slime_glomp/apply_effects(mob/living/user, mob/living/target, attack_damage, zone)
+/decl/natural_attack/slime_glomp/apply_attack_effects(mob/living/user, mob/living/target, attack_damage, zone)
 	. = ..()
 	if(.)
 		user.apply_stored_shock_to(target)

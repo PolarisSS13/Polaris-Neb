@@ -112,17 +112,17 @@
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
 		M.add_chemical_effect(CE_BREATHLOSS, 1 * boozed) //drinking and opiating suppresses breathing.
 
-/decl/material/liquid/painkillers/affect_overdose(mob/living/M, total_dose)
+/decl/material/liquid/painkillers/affect_overdose(mob/living/victim, total_dose)
 	..()
-	M.add_chemical_effect(CE_PAINKILLER, pain_power*0.5) //extra painkilling for extra trouble
+	victim.add_chemical_effect(CE_PAINKILLER, pain_power*0.5) //extra painkilling for extra trouble
 	if(narcotic)
-		SET_STATUS_MAX(M, STAT_DRUGGY, 10)
-		M.set_hallucination(120, 30)
-		M.add_chemical_effect(CE_BREATHLOSS, breathloss_severity*2) //ODing on opiates can be deadly.
-		if(isboozed(M))
-			M.add_chemical_effect(CE_BREATHLOSS, breathloss_severity*4) //Don't drink and OD on opiates folks
+		SET_STATUS_MAX(victim, STAT_DRUGGY, 10)
+		victim.set_hallucination(120, 30)
+		victim.add_chemical_effect(CE_BREATHLOSS, breathloss_severity*2) //ODing on opiates can be deadly.
+		if(isboozed(victim))
+			victim.add_chemical_effect(CE_BREATHLOSS, breathloss_severity*4) //Don't drink and OD on opiates folks
 	else
-		M.add_chemical_effect(CE_TOXIN, 1)
+		victim.add_chemical_effect(CE_TOXIN, 1)
 
 /decl/material/liquid/painkillers/proc/isboozed(var/mob/living/M)
 	. = 0
@@ -132,7 +132,7 @@
 	if(ingested)
 		var/list/pool = M.reagents.reagent_volumes | ingested.reagent_volumes
 		for(var/rtype in pool)
-			var/decl/material/liquid/ethanol/booze = GET_DECL(rtype)
+			var/decl/material/liquid/alcohol/booze = GET_DECL(rtype)
 			if(!istype(booze) ||LAZYACCESS(M.chem_doses, rtype) < 2) //let them experience false security at first
 				continue
 			. = 1

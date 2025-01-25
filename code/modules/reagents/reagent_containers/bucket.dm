@@ -15,6 +15,12 @@
 	drop_sound = 'sound/foley/donk1.ogg'
 	pickup_sound = 'sound/foley/pickup2.ogg'
 
+/obj/item/chems/glass/bucket/get_edible_material_amount(mob/eater)
+	return 0
+
+/obj/item/chems/glass/bucket/get_utensil_food_type()
+	return null
+
 /obj/item/chems/glass/bucket/attackby(var/obj/D, mob/user)
 	if(istype(D, /obj/item/mop))
 		if(reagents.total_volume < 1)
@@ -44,7 +50,7 @@
 	desc = "It's a wooden bucket. How rustic."
 	icon = 'icons/obj/items/wooden_bucket.dmi'
 	volume = 200
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_COLOR //  name is already modified
 	/// The material used for the chain, belts, and rivets holding the wood together, typically iron or steel.
 	/// Mostly used for visual and matter reasons. Initially a typepath, set to a decl on init.

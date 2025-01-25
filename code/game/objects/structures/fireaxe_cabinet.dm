@@ -81,7 +81,7 @@
 				update_icon()
 			return TRUE
 
-	var/force = O.get_attack_force(user)
+	var/force = O.expend_attack_force(user)
 	if(force)
 		user.setClickCooldown(10)
 		attack_animation(user)

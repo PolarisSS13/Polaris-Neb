@@ -223,7 +223,7 @@
 		return FALSE
 
 	if(!flooring.can_paint || F.is_floor_damaged())
-		to_chat(user, SPAN_WARNING("\The [src] cannot paint \the [F.name]."))
+		to_chat(user, SPAN_WARNING("\The [src] cannot paint \the [F]."))
 		return FALSE
 
 	var/list/decal_data = decals[decal]
@@ -456,6 +456,7 @@
 	name = "Change Color Preset"
 	expected_target_type = /obj/item/paint_sprayer
 	interaction_flags = INTERACTION_NEEDS_PHYSICAL_INTERACTION | INTERACTION_NEEDS_INVENTORY
+	examine_desc = "change the color preset"
 
 /decl/interaction_handler/paint_sprayer_colour/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/paint_sprayer/sprayer = target

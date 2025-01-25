@@ -192,7 +192,7 @@
 		var/turf/location = get_turf(user)
 		if(isliving(O))
 			var/mob/living/L = O
-			L.IgniteMob()
+			L.ignite_fire()
 		else if(isatom(O))
 			O.handle_external_heating(WELDING_TOOL_HOTSPOT_TEMP_ACTIVE, src, user)
 		if (isturf(location))
@@ -243,7 +243,7 @@
 		var/mob/living/L = loc
 		if(!(src in L.get_held_items()))
 			fuel_usage = max(fuel_usage, 2)
-			L.IgniteMob()
+			L.ignite_fire()
 	else if(isturf(loc))
 		var/turf/location = get_turf(src)
 		location.hotspot_expose(WELDING_TOOL_HOTSPOT_TEMP_IDLE, 5) //a bit colder when idling
@@ -345,7 +345,7 @@
 
 /obj/item/weldingtool/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	var/obj/item/organ/external/affecting = istype(target) && GET_EXTERNAL_ORGAN(target, user?.get_target_zone())
-	if(affecting && user.a_intent == I_HELP)
+	if(affecting && user.check_intent(I_FLAG_HELP))
 		if(!affecting.is_robotic())
 			to_chat(user, SPAN_WARNING("\The [target]'s [affecting.name] is not robotic. \The [src] cannot repair it."))
 		else if(BP_IS_BRITTLE(affecting))
@@ -423,7 +423,7 @@
 		return TRUE
 	if(handle_eaten_by_mob(user, O) != EATEN_INVALID)
 		return TRUE
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		if(standard_splash_mob(user, O))
 			return TRUE
 		if(reagents && reagents.total_volume)
@@ -432,7 +432,7 @@
 			return TRUE
 	return ..()
 
-/obj/item/chems/welder_tank/standard_dispenser_refill(mob/user, obj/structure/reagent_dispensers/target)
+/obj/item/chems/welder_tank/standard_dispenser_refill(mob/user, obj/structure/reagent_dispensers/target, skip_container_check = FALSE)
 	if(!can_refuel)
 		to_chat(user, SPAN_DANGER("\The [src] does not have a refuelling port."))
 		return FALSE

@@ -262,9 +262,9 @@
 		// attempt to break the light
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
-	else if(lightbulb && (lightbulb.status != LIGHT_BROKEN) && user.a_intent != I_HELP)
+	else if(lightbulb && (lightbulb.status != LIGHT_BROKEN) && !user.check_intent(I_FLAG_HELP))
 
-		if(prob(1 + W.get_attack_force(user) * 5))
+		if(prob(1 + W.expend_attack_force(user) * 5))
 
 			user.visible_message("<span class='warning'>[user.name] smashed the light!</span>", "<span class='warning'>You smash the light!</span>", "You hear a tinkle of breaking glass.")
 			if(on && (W.obj_flags & OBJ_FLAG_CONDUCTIBLE))
@@ -316,12 +316,13 @@
 		to_chat(user, "There is no [get_fitting_name()] in this light.")
 		return TRUE
 
-	if(ishuman(user))
-		var/mob/living/human/H = user
-		if(H.species.can_shred(H))
-			visible_message("<span class='warning'>[user.name] smashed the light!</span>", 3, "You hear a tinkle of breaking glass.")
-			broken()
-			return TRUE
+	if(user.can_shred())
+		visible_message(
+			SPAN_DANGER("\The [user] smashes the light!"),
+			blind_message = "You hear a tinkle of breaking glass."
+		)
+		broken()
+		return TRUE
 
 	// make it burn hands if not wearing fire-insulated gloves
 	if(on)
@@ -329,15 +330,15 @@
 		var/prot = FALSE
 		var/mob/living/human/H = user
 		if(istype(H))
-			var/obj/item/clothing/gloves/pronouns = H.get_equipped_item(slot_gloves_str)
-			if(istype(pronouns) && pronouns.max_heat_protection_temperature > LIGHT_BULB_TEMPERATURE)
+			var/obj/item/clothing/gloves/gloves = H.get_equipped_item(slot_gloves_str)
+			if(istype(gloves) && gloves.max_heat_protection_temperature > LIGHT_BULB_TEMPERATURE)
 				prot = TRUE
 
 		if(prot > 0 || user.has_genetic_condition(GENE_COND_COLD_RESISTANCE))
 			to_chat(user, "You remove the [get_fitting_name()].")
 		else if(istype(user) && user.is_telekinetic())
 			to_chat(user, "You telekinetically remove the [get_fitting_name()].")
-		else if(user.a_intent != I_HELP)
+		else if(!user.check_intent(I_FLAG_HELP))
 			var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(H, user.get_active_held_item_slot())
 			if(hand && hand.is_usable() && !hand.can_feel_pain())
 				user.apply_damage(3, BURN, hand.organ_tag, used_weapon = src)
@@ -482,7 +483,7 @@
 
 /obj/item/light/set_color(color)
 	b_color = isnull(color) ? COLOR_WHITE : color
-	update_icon()
+	queue_icon_update() // avoid running update_icon before Initialize
 
 /obj/item/light/tube
 	name = "light tube"
@@ -552,7 +553,6 @@
 // update the icon state and description of the light
 /obj/item/light/on_update_icon()
 	. = ..()
-	color = b_color
 	var/broken
 	switch(status)
 		if(LIGHT_OK)
@@ -565,9 +565,7 @@
 			icon_state = "[base_state]_broken"
 			desc = "A broken [name]."
 			broken = TRUE
-	var/image/I = image(icon, src, "[base_state]_attachment[broken ? "_broken" : ""]")
-	I.color = null
-	add_overlay(I)
+	add_overlay(overlay_image(icon, "[base_state]_attachment[broken ? "_broken" : ""]", flags = RESET_COLOR|RESET_ALPHA))
 
 /obj/item/light/Initialize(mapload)
 	. = ..()
@@ -598,7 +596,7 @@
 	if(!proximity) return
 	if(istype(target, /obj/machinery/light))
 		return
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return
 
 	shatter()
@@ -607,7 +605,7 @@
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
 		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>You hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
-		sharp = 1
+		set_sharp(TRUE)
 		set_base_attack_force(5)
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		update_icon()
@@ -615,19 +613,22 @@
 /obj/item/light/proc/switch_on()
 	switchcount++
 	if(rigged)
-		log_and_message_admins("Rigged light explosion, last touched by [fingerprintslast]")
-		var/turf/T = get_turf(src.loc)
-		spawn(0)
-			sleep(2)
-			explosion(T, 0, 0, 3, 5)
-			sleep(1)
-			qdel(src)
+		addtimer(CALLBACK(src, PROC_REF(do_rigged_explosion)), 0.2 SECONDS)
 		status = LIGHT_BROKEN
 	else if(prob(min(60, switchcount*switchcount*0.01)))
 		status = LIGHT_BURNED
 	else if(sound_on)
 		playsound(src, sound_on, 75)
 	return status
+
+/obj/item/light/proc/do_rigged_explosion()
+	if(!rigged)
+		return
+	log_and_message_admins("Rigged light explosion, last touched by [fingerprintslast]")
+	var/turf/T = get_turf(src)
+	explosion(T, 0, 0, 3, 5)
+	if(!QDELETED(src))
+		QDEL_IN(src, 1)
 
 /obj/machinery/light/do_simple_ranged_interaction(var/mob/user)
 	if(lightbulb)

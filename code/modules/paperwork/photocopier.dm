@@ -46,7 +46,7 @@
 
 /obj/machinery/photocopier/Initialize(mapload, d=0, populate_parts = TRUE)
 	. = ..()
-	if(.!= INITIALIZE_HINT_QDEL && populate_parts && printer)
+	if(. != INITIALIZE_HINT_QDEL && populate_parts && printer)
 		//Mapped photocopiers shall spawn with ink and paper
 		printer.make_full()
 
@@ -268,6 +268,7 @@
 /decl/interaction_handler/empty/photocopier_paper_bin
 	name = "Empty Paper Bin"
 	expected_target_type = /obj/machinery/photocopier
+	examine_desc         = "empty $TARGET_THEM$"
 
 /decl/interaction_handler/empty/photocopier_paper_bin/is_possible(obj/machinery/photocopier/target, mob/user, obj/item/prop)
 	return (target.printer?.get_amount_paper() > 0) && ..()
@@ -288,6 +289,7 @@
 /decl/interaction_handler/remove/photocopier_scanner_item
 	name = "Remove Item From Scanner"
 	expected_target_type = /obj/machinery/photocopier
+	examine_desc         = "remove a loaded item"
 
 /decl/interaction_handler/remove/photocopier_scanner_item/is_possible(obj/machinery/photocopier/target, mob/user, obj/item/prop)
 	return target.scanner_item && ..()

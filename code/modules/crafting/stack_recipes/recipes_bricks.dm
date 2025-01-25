@@ -71,6 +71,19 @@
 	name                       = "pillar, round"
 	result_type                = /obj/structure/pillar/round
 
+/decl/stack_recipe/bricks/furniture/pillar/wide_round
+	name                       = "pillar, wide round"
+	result_type                = /obj/structure/pillar/wide
+
+/decl/stack_recipe/bricks/furniture/pillar/wide_square
+	name                       = "pillar, wide square"
+
+	result_type                = /obj/structure/pillar/wide/square
+
+/decl/stack_recipe/bricks/furniture/pillar/wide_inset
+	name                       = "pillar, wide inset"
+	result_type                = /obj/structure/pillar/wide/inset
+
 /decl/stack_recipe/bricks/furniture/pillar/pedestal
 	name                       = "pedestal, square"
 	result_type                = /obj/structure/pedestal

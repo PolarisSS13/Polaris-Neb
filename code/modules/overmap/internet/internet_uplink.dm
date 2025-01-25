@@ -181,7 +181,7 @@ var/global/list/internet_uplinks = list()
 
 	return ..()
 
-/obj/machinery/computer/internet_uplink/interface_interact(user)
+/obj/machinery/computer/internet_uplink/interface_interact(mob/user)
 	var/datum/extension/local_network_member/uplink_comp = get_extension(src, /datum/extension/local_network_member)
 	var/datum/local_network/lan = uplink_comp.get_local_network()
 
@@ -193,5 +193,5 @@ var/global/list/internet_uplinks = list()
 		return FALSE
 
 	var/datum/topic_state/remote/R = new(src, linked)
-	linked.ui_interact(usr, state = R)
+	linked.ui_interact(user, state = R)
 	return TRUE

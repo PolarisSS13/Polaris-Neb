@@ -253,7 +253,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 				dat+="<B><A href='byond://?src=\ref[src];set_new_message=1'>Message Body</A>:</B> [src.msg] <BR>"
 				dat+="<B>Photo</B>: "
 				if(photo_data && photo_data.photo)
-					send_rsc(usr, photo_data.photo.img, "tmp_photo.png")
+					send_rsc(user, photo_data.photo.img, "tmp_photo.png")
 					dat+="<BR><img src='tmp_photo.png' width = '180'>"
 					dat+="<BR><B><A href='byond://?src=\ref[src];set_attachment=1'>Delete Photo</A></B></BR>"
 				else
@@ -325,7 +325,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 							dat+="-[MESSAGE.body] <BR>"
 							if(MESSAGE.img)
 								var/resourc_name = "newscaster_photo_[sanitize(viewing_channel.channel_name)]_[i].png"
-								send_asset(usr.client, resourc_name)
+								send_asset(user.client, resourc_name)
 								dat+="<img src='[resourc_name]' width = '180'><BR>"
 								if(MESSAGE.caption)
 									dat+="<FONT SIZE=1><B>[MESSAGE.caption]</B></FONT><BR>"
@@ -397,7 +397,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 				dat+="<A href='byond://?src=\ref[src];set_wanted_desc=1'>Description</A>: [src.msg] <BR>"
 				dat+="<B>Photo</B>: "
 				if(photo_data && photo_data.photo)
-					send_rsc(usr, photo_data.photo.img, "tmp_photo.png")
+					send_rsc(user, photo_data.photo.img, "tmp_photo.png")
 					dat+="<BR><img src='tmp_photo.png' width = '180'>"
 					dat+="<BR><B><A href='byond://?src=\ref[src];set_attachment=1'>Delete Photo</A></B></BR>"
 				else
@@ -431,7 +431,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 				dat+="<B>Description</B>: [news_network.wanted_issue.body]<BR>"
 				dat+="<B>Photo</B>: "
 				if(news_network.wanted_issue.img)
-					send_rsc(usr, news_network.wanted_issue.img, "tmp_photow.png")
+					send_rsc(user, news_network.wanted_issue.img, "tmp_photow.png")
 					dat+="<BR><img src='tmp_photow.png' width = '180'>"
 				else
 					dat+="None"

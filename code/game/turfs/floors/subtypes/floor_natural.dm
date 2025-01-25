@@ -8,7 +8,7 @@
 	name = "dirt"
 	icon = 'icons/turf/flooring/dirt.dmi'
 	icon_state = "dirt"
-	color = "#41311b"
+	color = /decl/material/solid/soil::color // preview color
 	_base_flooring = /decl/flooring/dirt
 
 /turf/floor/chlorine_sand
@@ -72,6 +72,7 @@
 	name = "mud"
 	icon = 'icons/turf/flooring/mud.dmi'
 	icon_state = "mud"
+	color = /decl/material/solid/soil::color // preview color
 	_base_flooring = /decl/flooring/mud
 
 /turf/floor/mud/water
@@ -93,6 +94,13 @@
 	_base_flooring = /decl/flooring/dry_mud
 
 /turf/floor/rock/sand
+	name = "sand"
+	icon = 'icons/turf/flooring/sand.dmi'
+	icon_state = "sand0"
+	color = "#ae9e66"
+	_flooring = /decl/flooring/sand
+
+/turf/floor/rock/basalt/sand
 	name = "sand"
 	icon = 'icons/turf/flooring/sand.dmi'
 	icon_state = "sand0"

@@ -56,7 +56,7 @@
 	if(istype(ai))
 		ai.retaliate(user)
 
-	var/damage = O.get_attack_force(user)
+	var/damage = O.expend_attack_force(user)
 	if(damage <= resistance)
 		to_chat(user, SPAN_WARNING("This weapon is ineffective; it does no damage."))
 		return 0

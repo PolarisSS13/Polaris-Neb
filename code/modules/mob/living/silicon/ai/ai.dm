@@ -149,15 +149,7 @@ var/global/list/ai_verbs_default = list(
 			. = INITIALIZE_HINT_QDEL
 		else if(brainmob.mind)
 			brainmob.mind.transfer_to(src)
-			hud_list[HEALTH_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[STATUS_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[LIFE_HUD] 		  = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[ID_HUD]          = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[WANTED_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[IMPLOYAL_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[IMPCHEM_HUD]     = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[IMPTRACK_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-			hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
+			reset_hud_overlays()
 			ai_list += src
 
 	create_powersupply()
@@ -659,7 +651,7 @@ var/global/list/custom_ai_icons_by_ckey_and_name = list()
 		set_light(1, 1, selected_sprite.alive_light)
 
 // Pass lying down or getting up to our pet human, if we're in a rig.
-/mob/living/silicon/ai/lay_down()
+/mob/living/silicon/ai/lay_down(block_posture as null)
 	var/obj/item/rig/rig = src.get_rig()
 	if(rig)
 		rig.force_rest(src)

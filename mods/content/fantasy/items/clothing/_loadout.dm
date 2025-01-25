@@ -34,10 +34,26 @@
 	slot = slot_w_uniform_str
 	uid = "gear_fantasy_loincloth"
 
+/decl/loadout_option/fantasy/uniform/shirt
+	name = "shirt"
+	path = /obj/item/clothing/shirt/crafted
+	uid = "gear_fantasy_shirt"
+	available_materials = list(
+		/decl/material/solid/organic/cloth,
+		/decl/material/solid/organic/cloth/wool,
+		/decl/material/solid/organic/cloth/hemp,
+		/decl/material/solid/organic/cloth/linen
+	)
+
 /decl/loadout_option/fantasy/uniform/jerkin
 	name = "jerkin"
 	path = /obj/item/clothing/shirt/jerkin
 	uid = "gear_fantasy_jerkin"
+	available_materials = list(
+		/decl/material/solid/organic/leather,
+		/decl/material/solid/organic/skin/feathers,
+		/decl/material/solid/organic/skin/fur
+	)
 
 /decl/loadout_option/fantasy/uniform/tunic
 	name = "tunic"
@@ -101,6 +117,11 @@
 	name = "cloak, hooded"
 	path = /obj/item/clothing/suit/hooded_cloak
 	uid = "gear_fantasy_cloak_hooded"
+
+/decl/loadout_option/fantasy/suit/winter_cloak
+	name = "cloak, winter"
+	path = /obj/item/clothing/suit/hooded_cloak/winter
+	uid = "gear_fantasy_cloak_hooded_winter"
 
 /decl/loadout_option/fantasy/suit/poncho
 	name = "poncho"
@@ -168,7 +189,7 @@
 	slot = slot_shoes_str
 	available_materials = list(
 		/decl/material/solid/organic/leather,
-		/decl/material/solid/organic/wood,
+		/decl/material/solid/organic/wood/oak,
 		/decl/material/solid/organic/wood/mahogany,
 		/decl/material/solid/organic/wood/maple,
 		/decl/material/solid/organic/wood/ebony,
@@ -182,7 +203,7 @@
 
 /decl/loadout_option/fantasy/neck/prayer_beads
 	name = "prayer beads"
-	path = /obj/item/clothing/neck/necklace/prayer_beads
+	path = /obj/item/clothing/neck/prayer_beads
 	available_materials = list(
 		/decl/material/solid/organic/bone,
 		/decl/material/solid/stone/marble,
@@ -243,7 +264,7 @@
 	name = "shovel"
 	path = /obj/item/tool/shovel/one_material
 	available_materials = list(
-		/decl/material/solid/organic/wood,
+		/decl/material/solid/organic/wood/oak,
 		/decl/material/solid/organic/wood/mahogany,
 		/decl/material/solid/organic/wood/maple,
 		/decl/material/solid/organic/wood/ebony,
@@ -265,7 +286,7 @@
 
 /decl/loadout_option/fantasy/utility/waterskin
 	name = "waterskin selection"
-	path = /obj/item/chems/waterskin
+	path = /obj/item/chems/glass/waterskin
 	available_materials = null
 	apply_to_existing_if_possible = TRUE // overwrite beggar knight's wineskin
 	uid = "gear_fantasy_waterskin"
@@ -273,20 +294,32 @@
 /decl/loadout_option/fantasy/utility/waterskin/get_gear_tweak_options()
 	. = ..()
 	LAZYDISTINCTADD(.[/datum/gear_tweak/path], list(
-		"crafted leather waterskin" = /obj/item/chems/waterskin/crafted,
-		"dried stomach waterskin" =   /obj/item/chems/waterskin,
+		"crafted leather waterskin" = /obj/item/chems/glass/waterskin/crafted,
+		"dried stomach waterskin" =   /obj/item/chems/glass/waterskin,
 	))
 	LAZYDISTINCTADD(.[/datum/gear_tweak/reagents], list(
-		"ale" =         /decl/material/liquid/ethanol/ale,
-		"apple cider" = /decl/material/liquid/ethanol/cider_apple,
-		"beer" =        /decl/material/liquid/ethanol/beer,
-		"kvass" =       /decl/material/liquid/ethanol/kvass,
-		"pear cider" =  /decl/material/liquid/ethanol/cider_pear,
-		"red wine" =    /decl/material/liquid/ethanol/wine,
-		"sake" =        /decl/material/liquid/ethanol/sake,
+		"ale" =         /decl/material/liquid/alcohol/ale,
+		"apple cider" = /decl/material/liquid/alcohol/cider_apple,
+		"beer" =        /decl/material/liquid/alcohol/beer,
+		"kvass" =       /decl/material/liquid/alcohol/kvass,
+		"pear cider" =  /decl/material/liquid/alcohol/cider_pear,
+		"red wine" =    /decl/material/liquid/alcohol/wine,
+		"sake" =        /decl/material/liquid/alcohol/sake,
 		"water" =       /decl/material/liquid/water,
-		"white wine" =  /decl/material/liquid/ethanol/wine/premium,
+		"white wine" =  /decl/material/liquid/alcohol/wine/premium,
 	))
+
+/decl/loadout_option/fantasy/utility/crutch
+	name = "crutch"
+	path = /obj/item/crutch/wooden/padded
+	available_materials = list(
+		/decl/material/solid/organic/wood/oak,
+		/decl/material/solid/organic/wood/mahogany,
+		/decl/material/solid/organic/wood/maple,
+		/decl/material/solid/organic/wood/ebony,
+		/decl/material/solid/organic/wood/walnut
+	)
+	uid = "gear_fantasy_crutch"
 
 /decl/loadout_option/fantasy/eyes
 	abstract_type = /decl/loadout_option/fantasy/eyes

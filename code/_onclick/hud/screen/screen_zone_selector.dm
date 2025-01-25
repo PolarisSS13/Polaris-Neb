@@ -64,10 +64,6 @@
 	set_selected_zone(new_selecting)
 	return TRUE
 
-/obj/screen/zone_selector/Initialize(mapload, mob/_owner, ui_style, ui_color, ui_alpha)
-	. = ..()
-	update_icon()
-
 /obj/screen/zone_selector/proc/set_selected_zone(bodypart)
 	var/old_selecting = selecting
 	selecting = bodypart
@@ -75,5 +71,6 @@
 		update_icon()
 		return TRUE
 
-/obj/screen/zone_selector/on_update_icon()
-	set_overlays(image('icons/mob/zone_sel.dmi', "[selecting]"))
+/obj/screen/zone_selector/rebuild_screen_overlays()
+	..()
+	add_overlay(image('icons/mob/zone_sel.dmi', "[selecting]"))

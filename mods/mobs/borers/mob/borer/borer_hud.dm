@@ -14,7 +14,7 @@
 	. = ..()
 
 /datum/hud/borer/FinalizeInstantiation()
-	hud_intent_selector =  new(null, mymob, get_ui_style_data(), get_ui_color(), get_ui_alpha(), UI_ICON_INTENT)
+	hud_intent_selector =  new(null, mymob)
 	adding += hud_intent_selector
 	hud_inject_chemicals = new(null, mymob)
 	hud_leave_host =       new(null, mymob)
@@ -50,11 +50,12 @@
 	icon = 'mods/mobs/borers/icons/borer_ui.dmi'
 	alpha = 0
 	invisibility = INVISIBILITY_MAXIMUM
+	requires_ui_style = FALSE
 
 /obj/screen/borer/handle_click(mob/user, params)
 	if(!isborer(user))
 		return FALSE
-	var/mob/living/simple_animal/borer/worm = usr
+	var/mob/living/simple_animal/borer/worm = user
 	if(!worm.host)
 		return FALSE
 	return TRUE

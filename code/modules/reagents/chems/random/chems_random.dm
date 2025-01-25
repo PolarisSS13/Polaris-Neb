@@ -7,7 +7,7 @@ var/global/list/random_chem_interaction_blacklist = list(
 	/decl/material/liquid/drink,
 	/decl/material/liquid/random,
 	/decl/material/solid/phoron,
-	/decl/material/liquid/ethanol // Includes alcoholic beverages
+	/decl/material/liquid/alcohol // Includes alcoholic beverages
 )
 
 #define FOR_ALL_EFFECTS \

@@ -22,7 +22,7 @@
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	tool_interaction_flags = TOOL_INTERACTION_DECONSTRUCT
 	parts_amount = 2
-	parts_type = /obj/item/stack/material/strut
+	parts_type = /obj/item/stack/material/rods
 	user_comfort = 1
 	obj_flags = OBJ_FLAG_SUPPORT_MOB
 	var/base_icon = "bed"
@@ -176,7 +176,7 @@
 	buckle_pixel_shift = list("x" = 0, "y" = 0, "z" = 6)
 	movable_flags = MOVABLE_FLAG_WHEELED
 	user_comfort = 0
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/structure/bed/travois/can_apply_padding()
 	return FALSE
@@ -234,8 +234,8 @@
 	remove_beaker(user)
 	return TRUE
 
-/obj/structure/bed/roller/proc/collapse()
-	visible_message("[usr] collapses [src].")
+/obj/structure/bed/roller/proc/collapse(mob/user)
+	visible_message("[user] collapses [src].")
 	new item_form_type(get_turf(src))
 	qdel(src)
 
@@ -300,7 +300,7 @@
 		remove_beaker(user)
 		return TRUE
 	if(!buckled_mob)
-		collapse()
+		collapse(user)
 		return TRUE
 	. = ..()
 

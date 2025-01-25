@@ -145,23 +145,25 @@
 /obj/structure/window/attack_hand(mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (user.a_intent && user.a_intent == I_HURT)
+	if (user.check_intent(I_FLAG_HARM))
 
-		if (ishuman(user))
-			var/mob/living/human/H = user
-			if(H.species.can_shred(H))
-				return attack_generic(H,25)
+		if(user.can_shred())
+			return attack_generic(user, 25)
 
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
 		user.do_attack_animation(src)
-		user.visible_message(SPAN_DANGER("\The [user] bangs against \the [src]!"),
-							SPAN_DANGER("You bang against \the [src]!"),
-							"You hear a banging sound.")
+		user.visible_message(
+			SPAN_DANGER("\The [user] bangs against \the [src]!"),
+			SPAN_DANGER("You bang against \the [src]!"),
+			"You hear a banging sound."
+		)
 	else
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
-		user.visible_message("[user.name] knocks on \the [src].",
-							"You knock on \the [src].",
-							"You hear a knocking sound.")
+		user.visible_message(
+			SPAN_NOTICE("\The [user] knocks on \the [src]."),
+			SPAN_NOTICE("You knock on \the [src]."),
+			"You hear a knocking sound."
+		)
 	return TRUE
 
 /obj/structure/window/do_simple_ranged_interaction(var/mob/user)
@@ -206,6 +208,9 @@
 			to_chat(user, SPAN_NOTICE("You have pried the window out of the frame."))
 	playsound(loc, crowbar.get_tool_sound(TOOL_CROWBAR) || 'sound/items/Crowbar.ogg', 75, 1)
 	return TRUE
+
+/obj/structure/window/handle_default_hammer_attackby(mob/user, obj/item/hammer)
+	return FALSE
 
 /obj/structure/window/handle_default_wrench_attackby(mob/user, obj/item/wrench)
 	if(anchored || (reinf_material && construction_state > CONSTRUCTION_STATE_NO_FRAME))
@@ -279,7 +284,7 @@
 	return ..() // handle generic interactions, bashing, etc
 
 /obj/structure/window/bash(obj/item/weapon, mob/user)
-	if(isliving(user) && user.a_intent == I_HELP)
+	if(isliving(user) && user.check_intent(I_FLAG_HELP))
 		return FALSE
 	if(!weapon.user_can_attack_with(user))
 		return FALSE
@@ -289,7 +294,7 @@
 	// physical damage types that can impart force; swinging a bat or energy sword
 	if(weapon.atom_damage_type == BRUTE || weapon.atom_damage_type == BURN)
 		user.do_attack_animation(src)
-		hit(weapon.get_attack_force(user))
+		hit(weapon.expend_attack_force(user))
 		if(current_health <= 7)
 			set_anchored(FALSE)
 			step(src, get_dir(user, src))
@@ -311,7 +316,7 @@
 			thing.set_color(paint_color)
 
 /obj/structure/window/grab_attack(obj/item/grab/grab, mob/user)
-	if (user.a_intent != I_HURT)
+	if (!user.check_intent(I_FLAG_HARM))
 		return TRUE
 	if (!grab.force_danger())
 		to_chat(user, SPAN_DANGER("You need a better grip to do that!"))
@@ -401,12 +406,10 @@
 	if (polarized)
 		to_chat(user, SPAN_NOTICE("It appears to be wired."))
 
-/obj/structure/window/proc/set_anchored(var/new_anchored)
-	if(anchored == new_anchored)
-		return
-	anchored = new_anchored
-	update_connections(1)
-	update_nearby_icons()
+/obj/structure/window/set_anchored(new_anchored)
+	if((. = ..()))
+		update_connections(1)
+		update_nearby_icons()
 
 //This proc is used to update the icons of nearby windows. It should not be confused with update_nearby_tiles(), which is an atmos proc!
 /obj/structure/window/proc/update_nearby_icons()

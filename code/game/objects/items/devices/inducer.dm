@@ -33,7 +33,7 @@
 	target.update_icon()
 
 /obj/item/inducer/afterattack(obj/O, mob/living/user, var/proximity)
-	if (!proximity || user.a_intent == I_HURT || CannotUse(user) || !recharge(O, user))
+	if (!proximity || user.check_intent(I_FLAG_HARM) || CannotUse(user) || !recharge(O, user))
 		return ..()
 
 /obj/item/inducer/proc/CannotUse(mob/user)

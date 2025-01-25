@@ -42,12 +42,12 @@
 	uid = "bodytype_animal_crab"
 
 /decl/bodytype/hexapod/animal/crab/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list(-1, -10),
 			"[SOUTH]" = list(-1, -10),
-			"[EAST]" =  list(-1, -10),
-			"[WEST]" =  list(-1, -10)
+			"[EAST]"  = list(-1, -10),
+			"[WEST]"  = list(-1, -10)
 		)
 	)
 	. = ..()

@@ -28,6 +28,7 @@
 	return TRUE
 
 /obj/screen/default_attack_selector/on_update_icon()
+	..()
 	var/mob/living/human/owner = owner_ref?.resolve()
 	var/decl/natural_attack/attack = istype(owner) && owner.default_attack
 	icon_state = attack?.selector_icon_state || "attack_none"

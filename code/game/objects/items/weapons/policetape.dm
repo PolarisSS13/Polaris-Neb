@@ -250,7 +250,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 /obj/structure/tape_barricade/proc/update_neighbors(var/location = loc)
 	for (var/look_dir in global.cardinal)
 		var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade, get_step(location, look_dir))
-		if(B && !QDELETED(B))
+		if(!QDELETED(B))
 			B.update_icon()
 
 	if(!QDELETED(src))
@@ -261,10 +261,11 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 	neighbors = 0
 	for (var/look_dir in global.cardinal)
 		var/turf/target_turf = get_step(src, look_dir)
-		var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade, target_turf)
-		//We connect to walls and other tape_barricades
-		if((B && !QDELETED(B)) || (!B && target_turf?.is_wall()))
-			neighbors |= look_dir
+		if(target_turf)
+			var/obj/structure/tape_barricade/B = locate(/obj/structure/tape_barricade) in target_turf
+			//We connect to walls and other tape_barricades
+			if((B && !QDELETED(B)) || (!B && target_turf.is_wall()))
+				neighbors |= look_dir
 
 /**Allow sutypes to override with their own forced icon state name.*/
 /obj/structure/tape_barricade/proc/icon_name_override()
@@ -316,12 +317,12 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 
 /obj/structure/tape_barricade/attack_hand(mob/user)
 
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		user.visible_message(SPAN_DANGER("\The [user] tears \the [src]!"))
 		physically_destroyed()
 		return TRUE
 
-	if (user.a_intent != I_HELP || !allowed(user) || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
+	if (!user.check_intent(I_FLAG_HELP) || !allowed(user) || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
 		return ..()
 
 	if(TAPE_BARRICADE_IS_CORNER_NEIGHBORS(neighbors) || (TAPE_BARRICADE_GET_NB_NEIGHBORS(neighbors) > 2))
@@ -349,7 +350,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 /obj/structure/tape_barricade/CanPass(atom/movable/mover, turf/target, height, air_group)
 	if(!is_lifted && ismob(mover))
 		var/mob/M = mover
-		if (!allowed(M) && M.a_intent == I_HELP)
+		if (!allowed(M) && M.check_intent(I_FLAG_HELP))
 			return FALSE
 	return ..()
 
@@ -362,7 +363,7 @@ var/global/list/image/hazard_overlays //Cached hazard floor overlays for the bar
 	shake_animation(2)
 	if (!allowed(M))	//only select few learn art of not crumpling the tape
 		to_chat(M, SPAN_NOTICE("You are not supposed to go past \the [src]..."))
-		if(M.a_intent != I_HELP)
+		if(!M.check_intent(I_FLAG_HELP))
 			crumple()
 
 /obj/structure/tape_barricade/proc/crumple()

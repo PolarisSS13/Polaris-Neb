@@ -8,8 +8,14 @@
 /atom/proc/can_interact_with_storage(user, strict = FALSE)
 	return isliving(user)
 
+/atom/proc/get_required_interaction_dexterity()
+	return DEXTERITY_NONE
+
 /atom/proc/attack_hand(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(!user.check_dexterity(get_required_interaction_dexterity(), silent = TRUE))
+		return FALSE
 
 	if(can_interact_with_storage(user, strict = TRUE) && storage && user.check_dexterity((DEXTERITY_HOLD_ITEM|DEXTERITY_EQUIP_ITEM), TRUE))
 		add_fingerprint(user)
@@ -17,6 +23,9 @@
 		return TRUE
 
 	if(handle_grab_interaction(user))
+		return TRUE
+
+	if(try_handle_interactions(user, get_standard_interactions(user), user?.get_active_held_item(), check_alt_interactions = FALSE))
 		return TRUE
 
 	if(!LAZYLEN(climbers) || (user in climbers) || !user.check_dexterity(DEXTERITY_HOLD_ITEM, silent = TRUE))
@@ -57,7 +66,7 @@
 /mob/living/RestrainedClickOn(var/atom/A)
 	if (A != src)
 		return ..()
-	if(world.time < next_restraint_chew || !get_equipped_item(slot_handcuffed_str) || a_intent != I_HURT || get_target_zone() != BP_MOUTH)
+	if(world.time < next_restraint_chew || !get_equipped_item(slot_handcuffed_str) || !check_intent(I_FLAG_HARM) || get_target_zone() != BP_MOUTH)
 		return FALSE
 	// Cannot chew with a mask or a full body restraint.
 	if (get_equipped_item(slot_wear_mask_str) || istype(get_equipped_item(slot_wear_suit_str), /obj/item/clothing/suit/straight_jacket))
@@ -66,9 +75,9 @@
 	var/obj/item/organ/external/hand/O = GET_EXTERNAL_ORGAN(src, get_active_held_item_slot())
 	if(!istype(O))
 		return FALSE
-	var/decl/pronouns/G = get_pronouns()
+	var/decl/pronouns/pronouns = get_pronouns()
 	visible_message(
-		SPAN_DANGER("\The [src] chews on [G.his] [O.name]"),
+		SPAN_DANGER("\The [src] chews on [pronouns.his] [O.name]"),
 		SPAN_DANGER("You chew on your [O.name]!")
 	)
 	admin_attacker_log(src, "chewed on their [O.name]!")
@@ -94,10 +103,10 @@
 		return
 
 	var/attacking_with = get_natural_weapon()
-	if(a_intent == I_HELP || !attacking_with)
+	if(check_intent(I_FLAG_HELP) || !attacking_with)
 		return A.attack_animal(src)
 
-	a_intent = I_HURT
+	set_intent(I_FLAG_HARM)
 	. = A.attackby(attacking_with, src)
 	// attack effects are handled in natural_weapon's apply_hit_effect() instead of here
 	if(!.)

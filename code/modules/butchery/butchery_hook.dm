@@ -19,7 +19,7 @@
 	)
 	tool_interaction_flags = (TOOL_INTERACTION_ANCHOR | TOOL_INTERACTION_DECONSTRUCT)
 	parts_amount = 2
-	parts_type = /obj/item/stack/material/strut
+	parts_type = /obj/item/stack/material/rods
 
 	var/mob/living/occupant
 	var/occupant_state =   CARCASS_EMPTY
@@ -35,7 +35,7 @@
 	name = "truss"
 	icon_state = "improvised"
 	secures_occupant = FALSE
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	parts_type = /obj/item/stack/material/plank
 
 /obj/structure/meat_hook/attack_hand(var/mob/user)
@@ -195,11 +195,13 @@
 	update_icon()
 	if(!tool?.do_tool_interaction(TOOL_KNIFE, user, src, 3 SECONDS, start_message = butchery_string, success_message = butchery_string, check_skill = SKILL_COOKING))
 		return FALSE
-	if(!QDELETED(user) && !QDELETED(last_occupant) && occupant == last_occupant && occupant_state == last_state)
+	if(!QDELETED(user) && !QDELETED(last_occupant) && occupant == last_occupant && occupant_state == last_state && user.get_active_held_item() == tool)
 
 		var/decl/butchery_data/butchery_data = GET_DECL(occupant.butchery_data)
 		if(!butchery_data)
 			return FALSE
+
+		tool.add_blood(occupant)
 
 		switch(next_state)
 			if(CARCASS_SKINNED)

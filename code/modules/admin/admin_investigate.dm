@@ -11,10 +11,6 @@
 /proc/investigate_subject2file(var/subject)
 	return file("[INVESTIGATE_DIR][subject].html")
 
-/hook/startup/proc/resetInvestigate()
-	investigate_reset()
-	return 1
-
 /proc/investigate_reset()
 	if(fdel(INVESTIGATE_DIR))	return 1
 	return 0
@@ -38,7 +34,7 @@
 				return
 			show_browser(src, F, "window=investigate[subject];size=800x300")
 
-		if("hrefs")				//persistant logs and stuff
+		if("hrefs")				//persistent logs and stuff
 			if(get_config_value(/decl/config/toggle/log_hrefs))
 				if(global.world_href_log)
 					show_browser(src, global.world_href_log, "window=investigate[subject];size=800x300")

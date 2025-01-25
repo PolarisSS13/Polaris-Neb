@@ -1,7 +1,7 @@
 /decl/psionic_faculty/coercion
 	id = PSI_COERCION
 	name = "Coercion"
-	associated_intent = I_DISARM
+	associated_intent_flag = I_FLAG_DISARM
 	armour_types = list(PSIONIC)
 
 /decl/psionic_power/coercion
@@ -179,7 +179,7 @@
 			return TRUE
 
 		if(accepted_glamour == "Yes")
-			to_chat(user,   SPAN_DANGER("You layer a glamour across the \the [target]'s senses, beguiling them to unwittingly follow your commands."))
+			to_chat(user,   SPAN_DANGER("You layer a glamour across \the [target]'s senses, beguiling them to unwittingly follow your commands."))
 			to_chat(target, SPAN_DANGER("You have been ensnared by \the [user]'s glamour!"))
 			beguiled.add_antagonist(target.mind, new_controller = user)
 		else

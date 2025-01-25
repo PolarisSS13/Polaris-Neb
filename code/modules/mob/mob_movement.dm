@@ -39,11 +39,10 @@
 			attack_self()
 			return
 		if(SOUTHWEST)
-			if(isliving(usr))
-				var/mob/living/M = usr
-				M.toggle_throw_mode()
+			if(isliving(mob))
+				mob.toggle_throw_mode()
 			else
-				to_chat(usr, "<span class='warning'>This mob type cannot throw items.</span>")
+				to_chat(src, "<span class='warning'>This mob type cannot throw items.</span>")
 			return
 		if(NORTHWEST)
 			mob.hotkey_drop()
@@ -269,8 +268,8 @@
 /mob/proc/set_move_intent(var/decl/move_intent/next_intent)
 	if(next_intent && move_intent != next_intent && next_intent.can_be_used_by(src))
 		move_intent = next_intent
-		if(istype(hud_used))
-			hud_used.move_intent.icon_state = move_intent.hud_icon_state
+		if(istype(hud_used) && hud_used.move_intent)
+			hud_used.move_intent.update_icon()
 		return TRUE
 	return FALSE
 

@@ -7,37 +7,36 @@
 	spawn_decl = /decl/spawnpoint/gateway
 
 /datum/map/exodus
-	default_job_type = /datum/job/assistant
+	default_job_type = /datum/job/standard/assistant
 	default_department_type = /decl/department/civilian
-	id_hud_icons = 'maps/exodus/hud.dmi'
 	allowed_jobs = list(
-		/datum/job/captain,
-		/datum/job/hop,
-		/datum/job/chaplain,
-		/datum/job/bartender,
-		/datum/job/chef,
-		/datum/job/hydro,
-		/datum/job/qm,
-		/datum/job/cargo_tech,
-		/datum/job/mining,
-		/datum/job/janitor,
-		/datum/job/librarian,
-		/datum/job/lawyer,
-		/datum/job/chief_engineer,
-		/datum/job/engineer,
-		/datum/job/cmo,
-		/datum/job/doctor,
-		/datum/job/chemist,
-		/datum/job/counselor,
-		/datum/job/rd,
-		/datum/job/scientist,
-		/datum/job/roboticist,
-		/datum/job/hos,
-		/datum/job/detective,
-		/datum/job/warden,
-		/datum/job/officer,
-		/datum/job/robot,
-		/datum/job/computer
+		/datum/job/standard/captain,
+		/datum/job/standard/hop,
+		/datum/job/standard/chaplain,
+		/datum/job/standard/bartender,
+		/datum/job/standard/chef,
+		/datum/job/standard/hydro,
+		/datum/job/standard/qm,
+		/datum/job/standard/cargo_tech,
+		/datum/job/standard/mining,
+		/datum/job/standard/janitor,
+		/datum/job/standard/librarian,
+		/datum/job/standard/lawyer,
+		/datum/job/standard/chief_engineer,
+		/datum/job/standard/engineer,
+		/datum/job/standard/cmo,
+		/datum/job/standard/doctor,
+		/datum/job/standard/chemist,
+		/datum/job/standard/counselor,
+		/datum/job/standard/rd,
+		/datum/job/standard/scientist,
+		/datum/job/standard/roboticist,
+		/datum/job/standard/hos,
+		/datum/job/standard/detective,
+		/datum/job/standard/warden,
+		/datum/job/standard/officer,
+		/datum/job/standard/robot,
+		/datum/job/standard/computer
 	)
 
 #define HUMAN_ONLY_JOBS /datum/job/captain, /datum/job/hop, /datum/job/hos
