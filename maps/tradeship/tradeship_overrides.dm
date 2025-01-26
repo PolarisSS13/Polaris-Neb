@@ -39,7 +39,7 @@
 /decl/species/mantid
 	force_background_info = list(
 		/decl/background_category/heritage =   /decl/background_detail/heritage/ascent,
-		/decl/background_category/citizenship = /decl/background_detail/citizenship/other
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
 		/decl/background_category/faction =   /decl/background_detail/faction/ascent_alate,
 		/decl/background_category/religion =  /decl/background_detail/religion/kharmaani
 	)
@@ -47,7 +47,7 @@
 /decl/species/mantid/gyne
 	force_background_info = list(
 		/decl/background_category/heritage =   /decl/background_detail/heritage/ascent,
-		/decl/background_category/citizenship = /decl/background_detail/citizenship/other
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
 		/decl/background_category/faction =   /decl/background_detail/faction/ascent_gyne,
 		/decl/background_category/religion =  /decl/background_detail/religion/kharmaani
 	)
