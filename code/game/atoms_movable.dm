@@ -603,3 +603,5 @@
 		return TRUE
 	return FALSE
 
+/atom/movable/proc/get_cryogenic_power()
+	return 0

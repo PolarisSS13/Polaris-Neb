@@ -38,7 +38,6 @@
 	var/possession_candidate = FALSE // Can be possessed by ghosts if unplayed.
 
 	var/job = null//Living
-	var/list/obj/aura/auras = null //Basically a catch-all aura/force-field thing.
 
 	var/last_resist = 0
 	var/admin_paralyzed = FALSE
@@ -56,8 +55,6 @@
 	var/list/stressors
 
 	var/life_tick
-	var/list/stasis_sources
-	var/stasis_value
 
 	var/nutrition = 400
 	var/hydration = 400

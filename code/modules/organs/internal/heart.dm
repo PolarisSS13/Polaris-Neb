@@ -114,7 +114,7 @@
 		return
 
 	//Dead or cryosleep people do not pump the blood.
-	if(!owner || owner.is_in_stasis() || owner.stat == DEAD || owner.bodytemperature < 170)
+	if(!owner || owner.has_mob_modifier(/decl/mob_modifier/stasis) || owner.stat == DEAD || owner.bodytemperature < 170)
 		return
 
 	if(pulse != PULSE_NONE || BP_IS_PROSTHETIC(src))
@@ -173,7 +173,7 @@
 				FONT_HUGE(SPAN_DANGER("Blood sprays out from your [spray_organ]!"))
 			)
 			SET_STATUS_MAX(owner, STAT_STUN, 1)
-			owner.set_status(STAT_BLURRY, 2)
+			owner.set_status_condition(STAT_BLURRY, 2)
 
 			//AB occurs every heartbeat, this only throttles the visible effect
 			next_blood_squirt = world.time + 80

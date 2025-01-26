@@ -48,7 +48,7 @@
 	SHOULD_CALL_PARENT(FALSE)
 	update_health()
 
-	set_status(STAT_PARA, min(GET_STATUS(src, STAT_PARA), 30))
+	set_status_condition(STAT_PARA, min(GET_STATUS(src, STAT_PARA), 30))
 	if(HAS_STATUS(src, STAT_ASLEEP))
 		SET_STATUS_MAX(src, STAT_PARA, 3)
 
@@ -68,7 +68,7 @@
 		SET_STATUS_MAX(src, STAT_BLIND, 2)
 
 	if(has_genetic_condition(GENE_COND_DEAFENED))
-		src.set_status(STAT_DEAF, 1)
+		src.set_status_condition(STAT_DEAF, 1)
 
 	//update the state of modules and components here
 	if (stat != CONSCIOUS)

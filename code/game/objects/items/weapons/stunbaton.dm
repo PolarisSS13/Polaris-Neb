@@ -35,7 +35,7 @@
 
 /obj/item/baton/infinite/Initialize(var/ml, var/material_key, var/loaded_cell_type)
 	. = ..(ml, material_key, loaded_cell_type = /obj/item/cell/device/infinite)
-	set_status(1, null)
+	set_cell_status(1, null)
 
 /obj/item/baton/proc/update_status()
 	var/obj/item/cell/cell = get_cell()
@@ -66,10 +66,10 @@
 		set_light(0)
 
 /obj/item/baton/attack_self(mob/user)
-	set_status(!status, user)
+	set_cell_status(!status, user)
 	add_fingerprint(user)
 
-/obj/item/baton/proc/set_status(var/newstatus, mob/user)
+/obj/item/baton/proc/set_cell_status(var/newstatus, mob/user)
 	var/obj/item/cell/cell = get_cell()
 	if(cell?.charge >= hitcost)
 		if(status != newstatus)

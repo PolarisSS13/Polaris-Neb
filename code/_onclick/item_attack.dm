@@ -154,7 +154,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	user.setClickCooldown(attack_cooldown + w_class)
 	if(animate)
 		user.do_attack_animation(target)
-	if(!user.aura_check(AURA_TYPE_WEAPON, src, user))
+
+	if(target.mob_modifiers_block_attack(MM_ATTACK_TYPE_WEAPON, user, src))
 		return FALSE
 
 	var/hit_zone = target.resolve_item_attack(src, user, user.get_target_zone())

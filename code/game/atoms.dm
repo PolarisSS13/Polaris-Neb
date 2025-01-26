@@ -145,7 +145,7 @@
 /atom/proc/try_on_reagent_change()
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
-	if(QDELETED(src) ||_reagent_update_started >= world.time)
+	if(QDELETED(src) || _reagent_update_started >= world.time)
 		return FALSE
 	_reagent_update_started = world.time
 	sleep(0) // Defer to end of tick so we don't drop subsequent reagent updates.

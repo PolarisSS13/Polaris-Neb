@@ -3,7 +3,7 @@
 #define UNCONSCIOUS 1
 #define DEAD        2
 
-// Bitflags defining which status effects could be or are inflicted on a mob.
+// Bitflags defining which status conditions could be or are inflicted on a mob.
 #define CANSTUN      BITFLAG(0)
 #define CANWEAKEN    BITFLAG(1)
 #define CANPARALYSE  BITFLAG(2)
@@ -278,17 +278,6 @@
 #define SURGERY_RETRACTED 2
 #define SURGERY_ENCASED 3
 
-#define STASIS_MISC     "misc"
-#define STASIS_CRYOBAG  "cryobag"
-#define STASIS_COLD     "cold"
-
-#define AURA_CANCEL 1
-#define AURA_FALSE  2
-#define AURA_TYPE_BULLET "Bullet"
-#define AURA_TYPE_WEAPON "Weapon"
-#define AURA_TYPE_THROWN "Thrown"
-#define AURA_TYPE_LIFE   "Life"
-
 #define SPECIES_BLOOD_DEFAULT 560
 
 #define SLIME_EVOLUTION_THRESHOLD 15
@@ -387,7 +376,8 @@ var/global/list/dexterity_levels = list(
 #define HO_HANDCUFF_LAYER   25
 #define HO_INHAND_LAYER     26
 #define HO_FIRE_LAYER       27 //If you're on fire
-#define TOTAL_OVER_LAYERS   27
+#define HO_EFFECT_LAYER     28
+#define TOTAL_OVER_LAYERS   28
 //////////////////////////////////
 
 // Underlay defines; vestigal implementation currently.

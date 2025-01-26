@@ -124,7 +124,7 @@
 	_base_attack_force = 30
 
 /mob/living/simple_animal/construct/armoured/handle_regular_status_updates()
-	set_status(STAT_WEAK, 0)
+	set_status_condition(STAT_WEAK, 0)
 	if ((. = ..()))
 		return
 

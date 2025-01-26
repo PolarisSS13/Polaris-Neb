@@ -86,7 +86,7 @@
 	set_extension(src, /datum/extension/network_device/camera, null, null, null, TRUE, preset_channels, c_tag, cameranet_enabled, requires_connection)
 
 /obj/machinery/camera/Destroy()
-	set_status(0) //kick anyone viewing out
+	set_camera_status(0) //kick anyone viewing out
 	return ..()
 
 /obj/machinery/camera/Process()
@@ -227,7 +227,7 @@
 		//sparks
 		spark_at(loc, amount=5)
 
-/obj/machinery/camera/proc/set_status(var/newstatus, var/mob/user)
+/obj/machinery/camera/proc/set_camera_status(var/newstatus, var/mob/user)
 	if (status != newstatus && (!cut_power || status == TRUE))
 		status = newstatus
 		// The only way for AI to reactivate cameras are malf abilities, this gives them different messages.
@@ -337,7 +337,7 @@
 	)
 
 /obj/machinery/camera/proc/toggle_status()
-	set_status(!status)
+	set_camera_status(!status)
 
 /decl/public_access/public_method/toggle_camera
 	name = "toggle camera"

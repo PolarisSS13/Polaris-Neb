@@ -20,7 +20,8 @@ var/global/list/_ui_all_keys = list(
 	(HUD_CHARGE),
 	(HUD_THROW),
 	(HUD_MANEUVER),
-	(HUD_INTENT)
+	(HUD_INTENT),
+	(HUD_MODIFIERS)
 )
 
 var/global/list/_ui_expected_states
@@ -175,6 +176,10 @@ var/global/list/_ui_expected_states
 		(HUD_THROW) = list(
 			"act_throw_on",
 			"act_throw_off"
+		),
+		(HUD_MODIFIERS) = list(
+			"blank",
+			"modifier_base"
 		)
 	)
 

@@ -549,7 +549,7 @@
 	SET_STATUS_MAX(M, STAT_DIZZY,  20)
 	ADJ_STATUS(M, STAT_DIZZY, 2)
 	ADJ_STATUS(M, STAT_JITTER, 2)
-	M.set_status(STAT_DROWSY, 0)
+	M.set_status_condition(STAT_DROWSY, 0)
 
 /decl/material/liquid/drink/grenadine
 	name = "grenadine syrup"

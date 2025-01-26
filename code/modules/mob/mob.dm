@@ -1477,3 +1477,7 @@
 /mob/proc/isSynthetic()
 	return FALSE
 
+// Returns true if the mob is cloaked, otherwise false
+/mob/proc/is_cloaked()
+	return FALSE
+

@@ -51,11 +51,11 @@
 
 /mob/living/bot/secbot/turn_on()
 	..()
-	stun_baton.set_status(on, null)
+	stun_baton.set_cell_status(on, null)
 
 /mob/living/bot/secbot/turn_off()
 	..()
-	stun_baton.set_status(on, null)
+	stun_baton.set_cell_status(on, null)
 
 /mob/living/bot/secbot/on_update_icon()
 	..()

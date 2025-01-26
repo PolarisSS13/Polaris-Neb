@@ -60,28 +60,6 @@
 /mob/living/get_bullet_impact_effect_type(var/def_zone)
 	return BULLET_IMPACT_MEAT
 
-/mob/living/proc/aura_check(var/type)
-	if(!auras)
-		return TRUE
-	. = TRUE
-	var/list/newargs = args - args[1]
-	for(var/obj/aura/aura as anything in auras)
-		var/result = 0
-		switch(type)
-			if(AURA_TYPE_WEAPON)
-				result = aura.attackby(arglist(newargs))
-			if(AURA_TYPE_BULLET)
-				result = aura.bullet_act(arglist(newargs))
-			if(AURA_TYPE_THROWN)
-				result = aura.hitby(arglist(newargs))
-			if(AURA_TYPE_LIFE)
-				result = aura.life_tick()
-		if(result & AURA_FALSE)
-			. = FALSE
-		if(result & AURA_CANCEL)
-			break
-
-
 //Handles the effects of "stun" weapons
 /mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon)
 	flash_pain()
@@ -139,7 +117,7 @@
 		if(31 to INFINITY)
 			SET_STATUS_MAX(src, STAT_WEAK, 10) //This should work for now, more is really silly and makes you lay there forever
 
-	set_status(STAT_JITTER, min(shock_damage*5, 200))
+	set_status_condition(STAT_JITTER, min(shock_damage*5, 200))
 
 	spark_at(loc, amount=5, cardinal_only = TRUE)
 
@@ -192,7 +170,7 @@
 				SET_STATUS_MAX(M, STAT_WEAK, rand(4,8))
 			M.visible_message(SPAN_DANGER("\The [M] collides with \the [src]!"))
 
-		if(!aura_check(AURA_TYPE_THROWN, AM, TT.speed))
+		if(mob_modifiers_block_attack(MM_ATTACK_TYPE_THROWN, AM, TT.speed))
 			return FALSE
 
 		if(istype(AM, /obj))
@@ -402,3 +380,13 @@
 		if(shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text))
 			return TRUE
 	return FALSE
+
+/mob/living/mob_modifiers_block_attack(attack_type, atom/movable/attacker, additional_data)
+	. = FALSE
+	if(length(_mob_modifiers))
+		for(var/decl/mob_modifier/archetype in _mob_modifiers)
+			var/result = archetype.check_modifiers_block_attack(src, _mob_modifiers[archetype], attack_type, attacker, additional_data)
+			if(result & MM_ATTACK_RESULT_DEFLECTED)
+				. = TRUE
+			if(result & MM_ATTACK_RESULT_BLOCKED)
+				break

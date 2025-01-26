@@ -496,7 +496,6 @@
 
 	//Handle old species transition
 	if(species)
-		species.remove_base_auras(src)
 		species.remove_inherent_verbs(src)
 
 	//Update our species

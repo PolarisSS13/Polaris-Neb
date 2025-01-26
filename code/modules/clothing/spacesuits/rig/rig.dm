@@ -565,7 +565,7 @@
 	for(var/obj/item/thing in list(chest, boots, gloves, helmet))
 		thing.update_icon()
 
-	if(equipment_overlay_icon && LAZYLEN(installed_modules))
+	if(equipment_overlay_icon && LAZYLEN(installed_modules) && istype(chest, /obj/item))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
 				chest.add_overlay(image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH))

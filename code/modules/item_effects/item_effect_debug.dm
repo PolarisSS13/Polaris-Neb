@@ -58,7 +58,7 @@
 		(IE_CAT_EXAMINE),
 		(IE_CAT_RANGED)   = list(IE_PAR_USES = 5)
 	))
-	add_item_effect(/decl/item_effect/aura/regeneration, list(
+	add_item_effect(/decl/item_effect/mob_modifier/regeneration, list(
 		(IE_CAT_EXAMINE),
 		(IE_CAT_WIELDED)
 	))

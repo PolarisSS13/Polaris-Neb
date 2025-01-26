@@ -42,6 +42,9 @@
 	add_reagent_canister(null, new /obj/item/chems/chem_disp_cartridge/antitoxins())
 	add_reagent_canister(null, new /obj/item/chems/chem_disp_cartridge/oxy_meds())
 
+/obj/machinery/sleeper/get_cryogenic_power()
+	return stasis
+
 /obj/machinery/sleeper/Destroy()
 	QDEL_NULL(beaker)
 	QDEL_NULL_LIST(loaded_canisters)
@@ -168,7 +171,7 @@
 			toggle_lavage()
 
 	if(isliving(occupant) && stasis > 1)
-		occupant.set_stasis(stasis)
+		occupant.add_mob_modifier(/decl/mob_modifier/stasis, 2 SECONDS, source = src)
 
 /obj/machinery/sleeper/on_update_icon()
 	cut_overlays()

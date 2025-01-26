@@ -5,7 +5,7 @@
 		drop_from_inventory(W)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
-	set_status(STAT_STUN, 1)
+	set_status_condition(STAT_STUN, 1)
 	icon = null
 	set_invisibility(INVISIBILITY_ABSTRACT)
 	for(var/t in get_external_organs())
@@ -18,7 +18,7 @@
 	//animation = null
 
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
-	set_status(STAT_STUN, 0)
+	set_status_condition(STAT_STUN, 0)
 	update_posture()
 	set_invisibility(initial(invisibility))
 

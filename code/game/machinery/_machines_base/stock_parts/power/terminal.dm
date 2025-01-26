@@ -48,7 +48,7 @@
 //Is willing to provide power if the wired contribution is nonnegligible and there is enough total local power to run the machine.
 /obj/item/stock_parts/power/terminal/can_provide_power(var/obj/machinery/machine)
 	if(is_functional() && terminal && terminal.surplus() && machine.can_use_power_oneoff(machine.get_power_usage(), LOCAL) <= 0)
-		set_status(machine, PART_STAT_ACTIVE)
+		set_component_status(machine, PART_STAT_ACTIVE)
 		machine.update_power_channel(LOCAL)
 		return TRUE
 	return FALSE
@@ -76,7 +76,7 @@
 	terminal.queue_icon_update()
 
 	set_extension(src, /datum/extension/event_registration/shuttle_stationary, GET_DECL(/decl/observ/moved), machine, PROC_REF(machine_moved), get_area(src))
-	set_status(machine, PART_STAT_CONNECTED)
+	set_component_status(machine, PART_STAT_CONNECTED)
 	start_processing(machine)
 
 /obj/item/stock_parts/power/terminal/proc/machine_moved(var/obj/machinery/machine, var/turf/old_loc, var/turf/new_loc)

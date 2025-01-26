@@ -125,7 +125,7 @@
 			ret.Blend(eyes_icon, ICON_OVERLAY)
 	return ret
 
-/obj/item/organ/external/head/get_mob_overlays()
+/obj/item/organ/external/head/get_limb_mob_overlays()
 	. = ..()
 	var/image/eye_glow = get_organ_eyes_overlay()
 	if(eye_glow)

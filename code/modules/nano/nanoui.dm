@@ -134,7 +134,7 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/set_status(state, push_update)
+/datum/nanoui/proc/set_nano_status(state, push_update)
 	if (state != status) // Only update if it is different
 		if (status == STATUS_DISABLED)
 			status = state
@@ -164,7 +164,7 @@ nanoui is used to open and update nano browser uis
 	if(new_status == STATUS_CLOSE)
 		close()
 		return 1
-	set_status(new_status, push_update)
+	set_nano_status(new_status, push_update)
 
  /**
   * Set the ui to auto update (every master_controller tick)

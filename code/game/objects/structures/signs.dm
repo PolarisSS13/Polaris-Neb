@@ -87,7 +87,7 @@
 ///A wall mountable sign structure
 /obj/structure/sign
 	name               = "sign"
-	icon               = 'icons/obj/decals.dmi'
+	icon               = 'icons/obj/signs/warnings.dmi'
 	anchored           = TRUE
 	opacity            = FALSE
 	density            = FALSE

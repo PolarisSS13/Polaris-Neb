@@ -204,7 +204,7 @@
 /obj/item/grab/proc/action_used()
 	if(ishuman(assailant))
 		var/mob/living/human/H = assailant
-		H.remove_cloaking_source(H.species)
+		H.remove_mob_modifier(/decl/mob_modifier/cloaked, source = H.species)
 	last_action = world.time
 	leave_forensic_traces()
 

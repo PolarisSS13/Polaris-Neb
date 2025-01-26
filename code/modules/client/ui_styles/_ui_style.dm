@@ -29,7 +29,8 @@
 		(HUD_UP_HINT)         = 'icons/mob/screen/styles/midnight/uphint.dmi',
 		(HUD_ZONE_SELECT)     = 'icons/mob/screen/styles/midnight/zone_selector.dmi',
 		(HUD_CHARGE)          = 'icons/mob/screen/styles/charge.dmi',
-		(HUD_INTENT)          = 'icons/screen/intents.dmi'
+		(HUD_INTENT)          = 'icons/screen/intents.dmi',
+		(HUD_MODIFIERS)       = 'icons/mob/screen/styles/midnight/modifiers.dmi'
 	)
 	/// A subset of UI keys to icon files used to override the above.
 	var/list/override_icons

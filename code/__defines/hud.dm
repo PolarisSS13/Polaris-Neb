@@ -24,6 +24,7 @@
 #define HUD_FIRE         /decl/hud_element/fire
 #define HUD_CHARGE       /decl/hud_element/charge
 #define HUD_ROBOT_MODULE /decl/hud_element/module_selection
+#define HUD_MODIFIERS    /decl/hud_element/modifiers
 
 #define GET_HUD_ALERT(M, A)        ((istype(M?.hud_used, /datum/hud) && (A in M.hud_used.alerts)) ? M.hud_used.alerts[A] : 0)
 #define CLEAR_HUD_ALERTS(M)        if(istype(M?.hud_used, /datum/hud) && M.hud_used.alerts)                    { M.hud_used.alerts = null; }

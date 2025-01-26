@@ -1,14 +1,30 @@
 var/global/list/status_marker_holders = list()
 
-// Check code/modules/mob/mob_status.dm code/modules/mob/living/living_status.dm 
-// for the procs that check/set/process these status conditions. 
+// Check code/modules/mob/mob_status.dm code/modules/mob/living/living_status.dm
+// for the procs that check/set/process these status conditions.
 /decl/status_condition
 	var/name
 	var/check_flags = 0
 	var/list/victim_data
+
+	var/hud_icon
+	var/hud_state
+
+	var/decl/mob_modifier/associated_mob_modifier
+
 	var/status_marker_icon = 'icons/effects/status.dmi'
 	var/status_marker_state
 	var/status_marker_private = FALSE
+
+/decl/status_condition/Initialize()
+	. = ..()
+	if(ispath(associated_mob_modifier))
+		associated_mob_modifier = GET_DECL(associated_mob_modifier)
+
+/decl/status_condition/validate()
+	. = ..()
+	if(associated_mob_modifier && !istype(associated_mob_modifier))
+		. += "invalid associated_mob_modifier '[associated_mob_modifier]'"
 
 /decl/status_condition/proc/handle_changed_amount(var/mob/living/victim, var/new_amount, var/last_amount)
 	set waitfor = FALSE

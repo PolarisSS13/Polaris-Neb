@@ -49,7 +49,7 @@
 	if(istype(machine))
 		machine.power_change()
 		machine.queue_icon_update()
-	set_status(machine, PART_STAT_CONNECTED)
+	set_component_status(machine, PART_STAT_CONNECTED)
 	update_icon()
 	return cell
 
@@ -112,7 +112,7 @@
 /obj/item/stock_parts/power/battery/can_provide_power(var/obj/machinery/machine)
 	if(is_functional() && cell && cell.check_charge(CELLRATE * machine.get_power_usage()))
 		machine.update_power_channel(LOCAL)
-		set_status(machine, PART_STAT_ACTIVE)
+		set_component_status(machine, PART_STAT_ACTIVE)
 		return TRUE
 	return FALSE
 

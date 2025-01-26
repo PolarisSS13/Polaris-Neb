@@ -185,16 +185,16 @@
 /obj/item/organ/external/groin/insectoid/serpentid/refresh_action_button()
 	. = ..()
 	if(. && istype(action))
-		action.button_icon_state = "cloak-[owner && owner.is_cloaked_by(species) ? 1 : 0]"
+		action.button_icon_state = "cloak-[owner?.has_mob_modifier(/decl/mob_modifier/cloaked, source = species) ? 1 : 0]"
 		action.button?.update_icon()
 
 /obj/item/organ/external/groin/insectoid/serpentid/attack_self(var/mob/user)
 	. = ..()
-	if(.)
-		if(owner.is_cloaked_by(species))
-			owner.remove_cloaking_source(species)
+	if(. && owner)
+		if(owner.has_mob_modifier(/decl/mob_modifier/cloaked, source = species))
+			owner.remove_mob_modifier(/decl/mob_modifier/cloaked, source = species)
 		else
-			owner.add_cloaking_source(species)
+			owner.add_mob_modifier(/decl/mob_modifier/cloaked, source = species)
 			owner.apply_effect(2, STUN, 0)
 		refresh_action_button()
 
