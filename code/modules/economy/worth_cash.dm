@@ -15,7 +15,11 @@
 	var/can_flip = TRUE // Cooldown tracker for single-coin flips.
 	var/static/overlay_cap = 50 // Max overlays to show in this pile.
 
-/obj/item/cash/Initialize(ml, material_key)
+/obj/item/cash/Initialize(ml, material_key, starting_amount)
+
+	if(!isnull(starting_amount))
+		absolute_worth = starting_amount
+
 	. = ..()
 
 	if(!ispath(currency, /decl/currency))
@@ -137,7 +141,7 @@
 	if(QDELETED(src) || get_worth() <= 1 || user.incapacitated() || loc != user)
 		return TRUE
 
-	var/amount = input(usr, "How many [cur.name] do you want to take? (0 to [get_worth() - 1])", "Take Money", 20) as num
+	var/amount = input(user, "How many [cur.name] do you want to take? (0 to [get_worth() - 1])", "Take Money", 20) as num
 	amount = round(clamp(amount, 0, floor(get_worth() - 1)))
 
 	if(!amount || QDELETED(src) || get_worth() <= 1 || user.incapacitated() || loc != user)

@@ -29,15 +29,14 @@
 /obj/item/knife/folding/update_attack_force()
 	..()
 	if(open)
-		// TODO: check sharp/edge.
-		edge = TRUE
-		sharp = TRUE
+		set_edge(TRUE)
+		set_sharp(TRUE)
 		w_class = ITEM_SIZE_NORMAL
 		attack_verb = list("slashed", "stabbed")
 		..()
 	else
-		edge = initial(edge)
-		sharp = initial(sharp)
+		set_edge(initial(edge))
+		set_sharp(initial(sharp))
 		w_class = initial(w_class)
 		attack_verb = closed_attack_verbs
 

@@ -3,7 +3,7 @@
 /turf/space,
 /area/space)
 "ab" = (
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "ac" = (
 /turf/unsimulated/mask,
@@ -24,7 +24,7 @@
 /turf/floor,
 /area/smugglers/base)
 "ah" = (
-/turf/floor,
+/turf/floor/barren,
 /area/space)
 "aj" = (
 /obj/item/ammo_casing/pistol/magnum{
@@ -37,11 +37,11 @@
 	pixel_y = -5
 	},
 /obj/effect/decal/cleanable/blood,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "ak" = (
 /obj/effect/decal/cleanable/blood,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "al" = (
 /obj/effect/wallframe_spawn/reinforced,
@@ -98,7 +98,7 @@
 	pixel_y = 7
 	},
 /obj/item/flashlight/flare/glowstick/yellow,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "av" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -204,7 +204,7 @@
 /turf/floor,
 /area/smugglers/base)
 "aF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
@@ -281,11 +281,11 @@
 	pixel_x = -25;
 	pixel_y = 25
 	},
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "aM" = (
 /obj/random/trash,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "aN" = (
 /obj/machinery/light/small{
@@ -367,7 +367,7 @@
 /turf/floor,
 /area/smugglers/base)
 "aW" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor,
 /area/smugglers/base)
 "aX" = (
@@ -432,7 +432,7 @@
 /obj/item/tool/xeno/hand{
 	pixel_x = -15
 	},
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "bh" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -476,7 +476,7 @@
 /area/smugglers/base)
 "bn" = (
 /obj/structure/boulder,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "bo" = (
 /obj/item/stack/material/ore/silver,
@@ -484,7 +484,7 @@
 	pixel_x = 10;
 	pixel_y = -5
 	},
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "bp" = (
 /obj/structure/cable{
@@ -607,11 +607,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/office)
 "bD" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/item/paper,
 /obj/item/pen,
 /obj/item/flashlight/lamp,
@@ -661,11 +661,11 @@
 /turf/floor,
 /area/smugglers/base)
 "bJ" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/office)
 "bK" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/laminate,
 /obj/random/coin{
 	pixel_x = -5;
 	pixel_y = -3
@@ -777,8 +777,8 @@
 /turf/wall,
 /area/smugglers/dorms)
 "cd" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -788,7 +788,7 @@
 /obj/structure/noticeboard{
 	default_pixel_y = 30
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/table,
 /obj/machinery/microwave{
 	pixel_y = 10
@@ -796,7 +796,7 @@
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cf" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/closet/crate,
 /obj/random/snack,
 /obj/random/snack,
@@ -806,21 +806,21 @@
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cg" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/closet/crate,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "ch" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/machinery/computer/arcade,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "ci" = (
 /obj/structure/closet/crate/plastic/rations,
 /obj/effect/decal/cleanable/cobweb2,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cj" = (
@@ -828,8 +828,8 @@
 /turf/floor/plating/airless,
 /area/smugglers/dorms)
 "cl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	dir = 8;
@@ -839,12 +839,12 @@
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cm" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cn" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "co" = (
@@ -854,7 +854,7 @@
 /turf/floor,
 /area/smugglers/dorms)
 "cp" = (
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/random/medical/lite,
 /turf/floor/plating/airless,
 /area/smugglers/dorms)
@@ -874,7 +874,7 @@
 /area/smugglers/dorms)
 "cs" = (
 /obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/item/paper/smug_3,
 /obj/item/flame/fuelled/lighter,
 /obj/random/coin,
@@ -882,7 +882,7 @@
 /area/smugglers/dorms)
 "ct" = (
 /obj/structure/table,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/item/cash/c10,
 /obj/random/smokes,
 /obj/random/snack,
@@ -897,7 +897,7 @@
 /area/smugglers/dorms)
 "cv" = (
 /obj/structure/closet,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/tech_supply,
@@ -910,29 +910,29 @@
 /area/smugglers/dorms)
 "cx" = (
 /obj/structure/bed,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cy" = (
 /obj/structure/closet/smuggler,
 /obj/random/suit,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cz" = (
 /obj/structure/bed,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /mob/living/simple_animal/hostile/malf_drone,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /obj/random/trash,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cB" = (
 /obj/machinery/light/small,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cC" = (
@@ -946,7 +946,7 @@
 "db" = (
 /obj/effect/decal/cleanable/blood,
 /obj/abstract/landmark/corpse/doctor,
-/turf/floor,
+/turf/floor/barren,
 /area/mine/explored)
 "eb" = (
 /obj/machinery/light/small{

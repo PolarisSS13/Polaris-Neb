@@ -62,7 +62,7 @@ var/global/list/string_slot_flags = list(
 		. = new /mob/living/human/dummy/mannequin()
 		mannequins_[ckey] = .
 
-/hook/global_init/proc/makeDatumRefLists()
+/proc/makeDatumRefLists()
 	// Keybindings
 	for(var/KB in subtypesof(/datum/keybinding))
 		var/datum/keybinding/keybinding = KB
@@ -108,3 +108,12 @@ var/global/list/bodytype_species_pairs = list() // A list of bodytypes -> specie
 /proc/get_bodytype_species_pairs()
 	build_species_lists()
 	. = global.bodytype_species_pairs
+
+// Used to avoid constantly generating new lists during movement.
+var/global/list/all_stance_limbs   = list(
+	ORGAN_CATEGORY_STANCE,
+	ORGAN_CATEGORY_STANCE_ROOT
+)
+var/global/list/child_stance_limbs = list(
+	ORGAN_CATEGORY_STANCE
+)

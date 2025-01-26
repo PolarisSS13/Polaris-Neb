@@ -1,16 +1,22 @@
 /turf
 	var/dynamic_lighting = TRUE
-	var/ambient_light	// If non-null, a hex RGB light color that should be applied to this turf.
-	var/ambient_light_multiplier = 0.3	// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+	/// If non-null, a hex RGB light color that should be applied to this turf.
+	var/ambient_light
+	/// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+	var/ambient_light_multiplier = 0.3
 	luminosity           = 1
 
 	var/tmp/lighting_corners_initialised = FALSE
 
-	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
+	/// List of light sources affecting this turf.
+	var/tmp/list/datum/light_source/affecting_lights
+	/// Our lighting overlay, used to apply multiplicative lighting to the tile and its contents.
+	var/tmp/atom/movable/lighting_overlay/lighting_overlay
 	var/tmp/list/datum/lighting_corner/corners
-	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
-	var/tmp/ambient_has_indirect = FALSE // If this is TRUE, an above turf's ambient light is affecting this turf.
+	/// Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
+	var/tmp/has_opaque_atom = FALSE
+	/// If this is TRUE, an above turf's ambient light is affecting this turf.
+	var/tmp/ambient_has_indirect = FALSE
 
 	// Record-keeping, do not touch -- that means you, admins.
 	var/tmp/ambient_light_old
@@ -43,9 +49,9 @@
 	var/ambient_b = 0
 
 	if (ambient_light)
-		ambient_r = ((HEX_RED(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_r
-		ambient_g = ((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_g
-		ambient_b = ((HEX_BLUE(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_b
+		ambient_r = round(((HEX_RED(ambient_light)   / 255) * ambient_light_multiplier)/4 - ambient_light_old_r, LIGHTING_ROUND_VALUE)
+		ambient_g = round(((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_g, LIGHTING_ROUND_VALUE)
+		ambient_b = round(((HEX_BLUE(ambient_light)  / 255) * ambient_light_multiplier)/4 - ambient_light_old_b, LIGHTING_ROUND_VALUE)
 	else
 		ambient_r = -ambient_light_old_r
 		ambient_g = -ambient_light_old_g
@@ -55,31 +61,21 @@
 	ambient_light_old_g += ambient_g
 	ambient_light_old_b += ambient_b
 
-	if (ambient_r + ambient_g + ambient_b == 0)
+	if (abs(ambient_r + ambient_g + ambient_b) == 0)
 		return
 
 	// Unlit turfs will have corners if they have a lit neighbor -- don't generate corners for them, but do update them if they're there.
-	// if (!corners)
-	// 	var/force_build_corners = FALSE
-	// 	for (var/turf/T as anything in RANGE_TURFS(src, 1))
-	// 		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-	// 			force_build_corners = TRUE
-	// 			break
+	if (!corners)
+		var/force_build_corners = FALSE
+		for (var/turf/T as anything in RANGE_TURFS(src, 1))
+			if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+				force_build_corners = TRUE
+				break
 
-	// 	if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-	// 		generate_missing_corners()
-	// 	else
-	// 		return
-
-	// still inefficient :(
-	if(!corners || !lighting_corners_initialised)
-		/* Commented out pending working out why this doesn't work properly on Neb.
-		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
+		if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 			generate_missing_corners()
 		else
 			return
-		*/
-		generate_missing_corners()
 
 	// This list can contain nulls on things like space turfs -- they only have their neighbors' corners.
 	for (var/datum/lighting_corner/C in corners)
@@ -92,14 +88,14 @@
 
 	ambient_light_old = ambient_light
 
-// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
+/// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()
 	var/datum/light_source/L
 	for (var/thing in affecting_lights)
 		L = thing
 		L.vis_update()
 
-// Forces a lighting update. Reconsider lights is preferred when possible.
+/// Forces a lighting update. Reconsider lights is preferred when possible.
 /turf/proc/force_update_lights()
 	var/datum/light_source/L
 	for (var/thing in affecting_lights)
@@ -120,8 +116,7 @@
 // Builds a lighting overlay for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay(now = FALSE)
 	if (lighting_overlay)
-		return	// shrug
-		// CRASH("Attempted to create lighting_overlay on tile that already had one.")
+		CRASH("Attempted to create lighting_overlay on tile that already had one.")
 
 	if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 		if (!lighting_corners_initialised || !corners)
@@ -137,7 +132,7 @@
 
 				C.active = TRUE
 
-// Returns the average color of this tile. Roughly corresponds to the color of a single old-style lighting overlay.
+/// Returns the average color of this tile. Roughly corresponds to the color of a single old-style lighting overlay.
 /turf/proc/get_avg_color()
 	if (!lighting_overlay)
 		return null
@@ -159,7 +154,7 @@
 
 #define SCALE(targ,min,max) (targ - min) / (max - min)
 
-// Used to get a scaled lumcount.
+/// Returns a lumcount (average intensity of color channels) scaled between minlum and maxlum.
 /turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	if (!lighting_overlay)
 		return 0.5
@@ -176,7 +171,7 @@
 
 #undef SCALE
 
-// Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
+/// Can't think of a good name, this proc will recalculate the has_opaque_atom variable.
 /turf/proc/recalc_atom_opacity()
 #ifdef AO_USE_LIGHTING_OPACITY
 	var/old = has_opaque_atom

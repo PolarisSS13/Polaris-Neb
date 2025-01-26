@@ -22,6 +22,10 @@
 	ec_cartridge = new cartridge_type(src)
 	. = ..()
 
+/obj/item/clothing/mask/smokable/ecig/Destroy()
+	QDEL_NULL(ec_cartridge)
+	return ..()
+
 /obj/item/clothing/mask/smokable/ecig/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 	loaded_cell_type   = loaded_cell_type   || /obj/item/cell/device/standard
 	accepted_cell_type = accepted_cell_type || /obj/item/cell/device

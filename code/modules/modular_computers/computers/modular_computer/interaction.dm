@@ -85,23 +85,22 @@
 		return TRUE
 	. = ..()
 
-/obj/item/modular_computer/attackby(var/obj/item/W, var/mob/user)
+/obj/item/modular_computer/attackby(var/obj/item/used_item, var/mob/user)
+
 	var/datum/extension/assembly/assembly = get_extension(src, /datum/extension/assembly)
-	. = assembly.attackby(W, user)
-	if(.)
+	if(assembly?.attackby(used_item, user))
 		update_verbs()
 		return TRUE
 
-	if(IS_PEN(W) && (W.w_class <= ITEM_SIZE_TINY) && stores_pen)
+	if(IS_PEN(used_item) && (used_item.w_class <= ITEM_SIZE_TINY) && stores_pen)
 		if(istype(stored_pen))
-			to_chat(user, "<span class='notice'>There is already a pen in [src].</span>")
-			return TRUE
-		if(!user.try_unequip(W, src))
-			return TRUE
-		stored_pen = W
-		update_verbs()
-		to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
+			to_chat(user, SPAN_NOTICE("There is already \a [stored_pen] in \the [src]."))
+		else if(user.try_unequip(used_item, src))
+			stored_pen = used_item
+			update_verbs()
+			to_chat(user, SPAN_NOTICE("You insert \the [used_item] into [src]."))
 		return TRUE
+
 	return ..()
 
 /obj/item/modular_computer/examine(mob/user)
@@ -136,10 +135,13 @@
 
 /obj/item/modular_computer/get_alt_interactions(var/mob/user)
 	. = ..()
-	LAZYADD(., /decl/interaction_handler/remove_id/modular_computer)
-	LAZYADD(., /decl/interaction_handler/remove_pen/modular_computer)
-	LAZYADD(., /decl/interaction_handler/emergency_shutdown)
-	LAZYADD(., /decl/interaction_handler/remove_chargestick)
+	var/static/list/_modular_computer_interactions = list(
+		/decl/interaction_handler/remove_id/modular_computer,
+		/decl/interaction_handler/remove_pen/modular_computer,
+		/decl/interaction_handler/emergency_shutdown,
+		/decl/interaction_handler/remove_chargestick
+	)
+	LAZYADD(., _modular_computer_interactions)
 
 //
 // Remove ID
@@ -181,6 +183,7 @@
 	icon = 'icons/screen/radial.dmi'
 	icon_state = "radial_power_off"
 	expected_target_type = /obj/item/modular_computer
+	examine_desc = "perform an emergency shutdown"
 
 /decl/interaction_handler/emergency_shutdown/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()
@@ -201,6 +204,7 @@
 	icon = 'icons/screen/radial.dmi'
 	icon_state = "radial_eject"
 	expected_target_type = /obj/item/modular_computer
+	examine_desc = "remove a chargestick"
 
 /decl/interaction_handler/remove_chargestick/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

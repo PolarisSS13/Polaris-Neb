@@ -9,6 +9,7 @@
 	nutriment_factor = 0
 	hydration_factor = 6
 	affect_blood_on_ingest = FALSE
+	affect_blood_on_inhale = FALSE
 
 	var/adj_dizzy = 0 // Per tick
 	var/adj_drowsy = 0
@@ -177,15 +178,16 @@
 	allergen_flags = ALLERGEN_VEGETABLE
 
 /decl/material/liquid/drink/juice/garlic
-	name = "garlic juice"
-	lore_text = "Who would even drink this?"
+	name = "garlic oil"
+	lore_text = "A strong-smelling, pungent oil pressed from garlic cloves. It has some antibiotic properties, and can help with infections."
 	taste_description = "bad breath"
 	nutriment_factor = 1
 	color = "#eeddcc"
 	uid = "chem_drink_garlic"
+	antibiotic_strength = 0.65
 
-	glass_name = "garlic juice"
-	glass_desc = "Who would even drink juice from garlic?"
+	glass_name = "garlic oil"
+	glass_desc = "A potion of guaranteed bad breath."
 	allergen_flags = ALLERGEN_ALLIUM
 
 /decl/material/liquid/drink/juice/onion
@@ -307,6 +309,7 @@
 	taste_description = "creamy milk"
 	color = "#dfd7af"
 	uid = "chem_drink_cream"
+	skimmable = TRUE
 
 	glass_name = "cream"
 	glass_desc = "Ewwww..."
@@ -376,9 +379,9 @@
 	..()
 	M.add_chemical_effect(CE_PULSE, 2)
 
-/decl/material/liquid/drink/coffee/affect_overdose(mob/living/M, total_dose)
-	ADJ_STATUS(M, STAT_JITTER, 5)
-	M.add_chemical_effect(CE_PULSE, 1)
+/decl/material/liquid/drink/coffee/affect_overdose(mob/living/victim, total_dose)
+	ADJ_STATUS(victim, STAT_JITTER, 5)
+	victim.add_chemical_effect(CE_PULSE, 1)
 
 /decl/material/liquid/drink/coffee/build_presentation_name_from_reagents(var/obj/item/prop, var/supplied)
 

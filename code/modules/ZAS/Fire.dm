@@ -17,7 +17,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	return simulated
 
 /turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
-	if(locate(/obj/fire) in src)
+	if((locate(/obj/fire) in src) || !simulated)
 		return 1
 
 	var/datum/gas_mixture/air_contents = return_air()

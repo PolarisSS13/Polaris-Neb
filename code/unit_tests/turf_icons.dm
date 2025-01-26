@@ -8,8 +8,7 @@
 		/turf/unsimulated
 	)
 	var/list/excepted_types = list(
-		/turf/unsimulated/map,
-		/turf/unsimulated/wall/cascade
+		/turf/unsimulated/map
 	)
 
 /datum/unit_test/turf_floor_icons_shall_be_valid/setup_test()
@@ -127,14 +126,21 @@
 	)
 
 /turf/wall/proc/get_turf_validation_corner_states()
-	. = list("", "other")
-	if(paint_color)
+	. = list("")
+	if(!material)
+		CRASH("[type] lacks a material!")
+	if(material?.wall_flags & WALL_HAS_EDGES)
+		. |= "other"
+	if(paint_color || (material?.wall_flags & PAINT_PAINTABLE))
 		. |= "paint"
-	if(stripe_color)
+	if(stripe_color || (material?.wall_flags & PAINT_STRIPABLE))
 		. |= "stripe"
 
 /turf/wall/natural/get_turf_validation_corner_states()
 	return list("", "shine")
+
+/turf/wall/log/get_turf_validation_corner_states()
+	return list("", "other")
 
 /turf/wall/validate_turf()
 

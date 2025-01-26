@@ -163,7 +163,7 @@ mob
 			// Send the icon to src's local cache
 			send_rsc(src, getFlatIcon(src), iconName)
 			// Display the icon in their browser
-			direct_output(src, browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>"))
+			show_browser(src, "<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
 
 		Output_Icon()
 			set name = "2. Output Icon"

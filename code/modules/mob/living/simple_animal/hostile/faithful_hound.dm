@@ -37,7 +37,7 @@
 		var/new_aggress = 1
 		var/dist = get_dist(mailman, body)
 		if(dist < 2) //Attack! Attack!
-			body.a_intent = I_HURT
+			body.set_intent(I_FLAG_HARM)
 			body.ClickOn(mailman)
 			return
 		if(dist == 2)

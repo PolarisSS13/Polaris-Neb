@@ -94,7 +94,7 @@
 
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)
-		if(user.a_intent == I_HELP) //don't shoot if we're on help intent
+		if(user.check_intent(I_FLAG_HELP)) //don't shoot if we're on help intent
 			to_chat(user, SPAN_WARNING("You refrain from firing \the [src] as your intent is set to help."))
 			return
 
@@ -296,7 +296,7 @@
 	target.create_fire(tank.air_contents.temperature * 2 + 400)
 	target.hotspot_expose(1000, 100)
 	for(var/mob/living/M in target)
-		M.IgniteMob(1)
+		M.ignite_fire()
 
 // slightly weird looking initialize cuz it has to do some stuff first
 /obj/item/flamethrower/full/Initialize()

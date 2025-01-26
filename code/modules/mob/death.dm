@@ -51,7 +51,7 @@
 		spawn_gibber(lastloc)
 
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
-//Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
+//Originally created for Disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the brain, so it's a bit more powerful than gib() /N
 /mob/proc/dust()
 	SHOULD_CALL_PARENT(TRUE)

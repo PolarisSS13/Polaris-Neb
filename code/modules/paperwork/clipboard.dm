@@ -9,7 +9,7 @@
 	throw_range             = 10
 	slot_flags              = SLOT_LOWER_BODY
 	material_alteration     = MAT_FLAG_ALTERATION_COLOR
-	material                = /decl/material/solid/organic/wood
+	material                = /decl/material/solid/organic/wood/oak
 	drop_sound              = 'sound/foley/tooldrop5.ogg'
 	pickup_sound            = 'sound/foley/paperpickup2.ogg'
 
@@ -111,7 +111,7 @@
 	user.set_machine(src)
 	show_browser(user, dat, "window=[initial(name)]")
 	onclose(user, initial(name))
-	add_fingerprint(usr)
+	add_fingerprint(user)
 	return
 
 /obj/item/clipboard/proc/add_pen(var/obj/item/I, var/mob/user)
@@ -198,6 +198,7 @@
 /decl/interaction_handler/clipboard_remove_pen
 	name = "Remove Pen"
 	expected_target_type = /obj/item/clipboard
+	examine_desc = "remove the pen"
 
 /decl/interaction_handler/clipboard_remove_pen/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

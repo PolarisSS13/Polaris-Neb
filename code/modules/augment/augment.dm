@@ -2,11 +2,13 @@
 	name = "embedded augment"
 	desc = "An embedded augment."
 	icon = 'icons/obj/augment.dmi'
+	w_class = ITEM_SIZE_TINY // Need to be tiny to fit inside limbs.
 	//By default these fit on both flesh and robotic organs and are robotic
 	organ_properties = ORGAN_PROP_PROSTHETIC
 	default_action_type = /datum/action/item_action/organ/augment
 	material = /decl/material/solid/metal/steel
 	origin_tech = @'{"materials":1,"magnets":2,"engineering":2,"biotech":1}'
+	w_class = ITEM_SIZE_TINY
 
 	var/descriptor = ""
 	var/known = TRUE
@@ -16,7 +18,9 @@
 /obj/item/organ/internal/augment/Initialize()
 	. = ..()
 	organ_tag = pick(allowed_organs)
+	set_bodytype(/decl/bodytype/prosthetic/augment)
 	update_parent_organ()
+	reagents?.clear_reagents() // Removing meat from the reagents list.
 
 /obj/item/organ/internal/augment/attackby(obj/item/W, mob/user)
 	if(IS_SCREWDRIVER(W) && allowed_organs.len > 1)

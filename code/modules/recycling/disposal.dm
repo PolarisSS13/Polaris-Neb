@@ -114,7 +114,7 @@ var/global/list/diversion_junctions = list()
 
 /obj/machinery/disposal/receive_mouse_drop(atom/dropping, mob/user, params)
 
-	. = (user?.a_intent != I_HURT && ..())
+	. = (!user?.check_intent(I_FLAG_HARM) && ..())
 
 	if(!. && !(stat & BROKEN))
 

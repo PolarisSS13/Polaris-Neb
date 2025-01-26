@@ -16,7 +16,7 @@
 		user.remove_aura(aura_type)
 	return TRUE
 
-/decl/item_effect/aura/examined(obj/item/item, mob/user)
+/decl/item_effect/aura/on_examined(obj/item/item, mob/user)
 	var/obj/aura/aura = aura_type
 	to_chat(user, SPAN_NOTICE("\The [item] grants \a [initial(aura.name)] to the wielder."))
 

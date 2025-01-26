@@ -1,7 +1,7 @@
 /obj/item/pen/fancy/quill
 	name              = "quill pen"
 	icon              = 'icons/obj/items/pens/pen_quill.dmi'
-	sharp             = 0
+	sharp             = FALSE
 	material          = /decl/material/solid/organic/skin/feathers
 	pen_quality       = TOOL_QUALITY_DEFAULT
 	max_uses          = 5 // gotta re-ink it often!
@@ -61,6 +61,12 @@
 	var/starting_volume_low = 20
 	/// The maximum amount of ink in the inkwell when populating reagents.
 	var/starting_volume_high = 30
+
+/obj/item/chems/glass/inkwell/get_edible_material_amount(mob/eater)
+	return 0
+
+/obj/item/chems/glass/inkwell/get_utensil_food_type()
+	return null
 
 /obj/item/chems/glass/inkwell/can_lid()
 	return FALSE

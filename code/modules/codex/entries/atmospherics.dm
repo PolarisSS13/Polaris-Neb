@@ -19,7 +19,7 @@
 //Normal valves
 /datum/codex_entry/atmos_valve
 	associated_paths = list(/obj/machinery/atmospherics/valve)
-	mechanics_text = "Click this to turn the valve.  If red, the pipes on each end are seperated.  Otherwise, they are connected."
+	mechanics_text = "Click this to turn the valve.  If red, the pipes on each end are separated.  Otherwise, they are connected."
 	disambiguator = "atmospherics"
 	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE
 

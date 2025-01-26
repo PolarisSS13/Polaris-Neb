@@ -39,19 +39,27 @@
 
 /obj/item/staff/broom/resolve_attackby(atom/A, mob/user, click_params)
 
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 
 		// Sweep up dirt.
 		if(isturf(A))
+
 			var/turf/cleaning = A
+
 			var/dirty = cleaning.get_dirt()
 			if(dirty > 10) // a small amount so that you can't sweep immediately after someone walks somewhere
 				user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 				user.visible_message(SPAN_NOTICE("\The [user] sweeps \the [A]."))
 				playsound(A, "sweeping", 100, TRUE)
 				cleaning.remove_dirt(min(dirty, rand(20,30)))
-			else
-				to_chat(user, SPAN_WARNING("\The [cleaning] is not in need of sweeping."))
+				return TRUE
+
+			var/obj/effect/footprints/prints = locate() in cleaning
+			if(prints)
+				user.visible_message(SPAN_NOTICE("\The [user] sweeps away the footprints."))
+				return TRUE
+
+			to_chat(user, SPAN_WARNING("\The [cleaning] is not in need of sweeping."))
 			return TRUE
 
 		// Sweep up dry spills.

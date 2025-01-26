@@ -200,7 +200,7 @@
 /obj/effect/vine/attackby(var/obj/item/W, var/mob/user)
 	START_PROCESSING(SSvines, src)
 
-	if(W.edge && W.w_class < ITEM_SIZE_NORMAL && user.a_intent != I_HURT)
+	if(W.has_edge() && W.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(!is_mature())
 			to_chat(user, SPAN_WARNING("\The [src] is not mature enough to yield a sample yet."))
 			return TRUE
@@ -216,8 +216,8 @@
 		return TRUE
 	else
 		. = ..()
-		var/damage = W.get_attack_force(user)
-		if(W.edge)
+		var/damage = W.expend_attack_force(user)
+		if(W.has_edge())
 			damage *= 2
 		adjust_health(-damage)
 		playsound(get_turf(src), W.hitsound, 100, 1)
@@ -275,16 +275,17 @@
 /decl/interaction_handler/vine_chop
 	name = "Chop Down"
 	expected_target_type = /obj/effect/vine
+	examine_desc = "chop $TARGET_THEM$ down"
 
 /decl/interaction_handler/vine_chop/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/effect/vine/vine = target
 	var/obj/item/holding = user.get_active_held_item()
-	if(!istype(holding) || !holding.edge || holding.w_class < ITEM_SIZE_NORMAL)
+	if(!istype(holding) || !holding.has_edge() || holding.w_class < ITEM_SIZE_NORMAL)
 		to_chat(user, SPAN_WARNING("You need a larger or sharper object for this task!"))
 		return
 	user.visible_message(SPAN_NOTICE("\The [user] starts chopping down \the [vine]."))
 	playsound(get_turf(vine), holding.hitsound, 100, 1)
-	var/chop_time = (vine.current_health/holding.get_attack_force(user)) * 0.5 SECONDS
+	var/chop_time = (vine.current_health/holding.expend_attack_force(user)) * 0.5 SECONDS
 	if(user.skill_check(SKILL_BOTANY, SKILL_ADEPT))
 		chop_time *= 0.5
 	if(do_after(user, chop_time, vine, TRUE))

@@ -141,9 +141,6 @@ About the new airlock wires panel:
 			return
 	..(user)
 
-/obj/machinery/door/airlock/bumpopen(mob/living/simple_animal/user)
-	..(user)
-
 /obj/machinery/door/airlock/proc/isElectrified()
 	if(src.electrified_until != 0)
 		return 1
@@ -783,7 +780,7 @@ About the new airlock wires panel:
 					close(1)
 			return TRUE
 
-	if(istype(C, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.a_intent == I_HURT))
+	if(istype(C, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.check_intent(I_FLAG_HARM)))
 		var/obj/item/bladed/axe/fire/F = C
 		if(F.is_held_twohanded(user))
 			if(locked)
@@ -805,7 +802,7 @@ About the new airlock wires panel:
 	else if((stat & (BROKEN|NOPOWER)) && isanimal(user))
 		var/mob/living/simple_animal/A = user
 		var/obj/item/I = A.get_natural_weapon()
-		if(I?.get_attack_force(user) >= 10)
+		if(I?.expend_attack_force(user) >= 10)
 			if(density)
 				visible_message(SPAN_DANGER("\The [A] forces \the [src] open!"))
 				open(1)
@@ -820,12 +817,12 @@ About the new airlock wires panel:
 
 /obj/machinery/door/airlock/bash(obj/item/weapon, mob/user)
 	//if door is unbroken, hit with fire axe using harm intent
-	if (istype(weapon, /obj/item/bladed/axe/fire) && !(stat & BROKEN) && user.a_intent == I_HURT && weapon.user_can_attack_with(user))
+	if (istype(weapon, /obj/item/bladed/axe/fire) && !(stat & BROKEN) && user.check_intent(I_FLAG_HARM) && weapon.user_can_attack_with(user))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		var/obj/item/bladed/axe/fire/F = weapon
 		if (F.is_held_twohanded())
 			playsound(src, 'sound/weapons/smash.ogg', 100, 1)
-			current_health -= F.get_attack_force(user) * 2
+			current_health -= F.expend_attack_force(user) * 2
 			if(current_health <= 0)
 				user.visible_message(SPAN_DANGER("[user] smashes \the [weapon] into the airlock's control panel! It explodes in a shower of sparks!"), SPAN_DANGER("You smash \the [weapon] into the airlock's control panel! It explodes in a shower of sparks!"))
 				current_health = 0

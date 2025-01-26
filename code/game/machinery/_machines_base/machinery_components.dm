@@ -255,8 +255,8 @@ var/global/list/machine_path_to_circuit_type
 /obj/machinery/proc/component_stat_change(var/obj/item/stock_parts/part, old_stat, flag)
 
 /obj/machinery/attackby(obj/item/I, mob/user)
-	if(component_attackby(I, user))
-		return TRUE
+	if((. = component_attackby(I, user)))
+		return
 	return ..()
 
 /obj/machinery/proc/component_attackby(obj/item/I, mob/user)
@@ -265,7 +265,7 @@ var/global/list/machine_path_to_circuit_type
 			continue
 		if((. = part.attackby(I, user)))
 			return
-	return construct_state && construct_state.attackby(I, user, src)
+	return construct_state?.attackby(I, user, src)
 
 /obj/machinery/proc/component_attack_hand(mob/user)
 	for(var/obj/item/stock_parts/part in component_parts)
@@ -352,3 +352,12 @@ Standard helpers for users interacting with machinery parts.
 			var/present = number_of_components(required_type, only_functional)
 			if(present < needed)
 				LAZYSET(., required_type, needed - present)
+
+/obj/machinery/get_alt_interactions(mob/user)
+	. = ..()
+	for(var/obj/item/stock_parts/component in component_parts)
+		if(!components_are_accessible(component.type))
+			continue
+		var/list/machine_alt_interactions = component.get_machine_alt_interactions(user)
+		if(LAZYLEN(machine_alt_interactions))
+			LAZYADD(., machine_alt_interactions)

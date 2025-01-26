@@ -76,6 +76,18 @@
 		heal_damage(OXY, rads, do_update_health = FALSE)
 		heal_damage(TOX, rads)
 
+/*
+/mob/living/simple_animal/alien/diona/get_default_intent()
+	return GET_DECL(/decl/intent/help/binary/diona)
+
+/mob/living/simple_animal/alien/diona/get_available_intents()
+	var/static/list/available_intents = list(
+		GET_DECL(/decl/intent/harm/binary/diona),
+		GET_DECL(/decl/intent/help/binary/diona)
+	)
+	return available_intents
+*/
+
 /decl/bodytype/diona
 	name = "nymph"
 	bodytype_flag = 0
@@ -83,12 +95,12 @@
 	uid = "bodytype_diona"
 
 /decl/bodytype/diona/Initialize()
-	equip_adjust = list(
-		slot_head_str = list(
+	_equip_adjust = list(
+		(slot_head_str) = list(
 			"[NORTH]" = list(0, -8),
 			"[SOUTH]" = list(0, -8),
-			"[EAST]" =  list(0, -8),
-			"[WEST]" =  list(0, -8)
+			"[EAST]"  = list(0, -8),
+			"[WEST]"  = list(0, -8)
 		)
 	)
 	. = ..()

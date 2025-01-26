@@ -6,3 +6,9 @@
 /obj/screen/throw_toggle/handle_click(mob/user, params)
 	if(!user.stat && isturf(user.loc) && !user.restrained())
 		user.toggle_throw_mode()
+
+/obj/screen/throw_toggle/on_update_icon()
+	var/mob/living/owner = owner_ref?.resolve()
+	if(istype(owner))
+		icon_state = "act_throw_[owner.in_throw_mode ? "on" : "off"]"
+	. = ..()

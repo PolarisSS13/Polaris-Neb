@@ -7,7 +7,7 @@
 	buckle_dir = FALSE
 	buckle_lying = FALSE //force people to sit up in chairs when buckled
 	obj_flags = OBJ_FLAG_ROTATABLE | OBJ_FLAG_ANCHORABLE
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	reinf_material = /decl/material/solid/organic/cloth
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 

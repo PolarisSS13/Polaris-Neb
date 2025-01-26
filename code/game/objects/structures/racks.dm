@@ -10,7 +10,7 @@
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	throwpass = TRUE
 	parts_amount = 2
-	parts_type = /obj/item/stack/material/strut
+	parts_type = /obj/item/stack/material/rods
 	density = TRUE
 	anchored = TRUE
 	structure_flags = STRUCTURE_FLAG_SURFACE
@@ -28,6 +28,12 @@
 			I.pixel_x = 1  // There's a sprite layering bug for 0/0 pixelshift, so we avoid it.
 			I.pixel_y = max(3-i*3, -3) + 1
 			I.pixel_z = 0
+
+/obj/structure/rack/adjust_required_attack_dexterity(mob/user, required_dexterity)
+	// Let people put stuff on tables without necessarily being able to use a gun or such.
+	if(user?.check_intent(I_FLAG_HELP))
+		return DEXTERITY_HOLD_ITEM
+	return ..()
 
 /obj/structure/rack/attackby(obj/item/O, mob/user, click_params)
 	. = ..()

@@ -28,6 +28,9 @@
 	abstract_type = /obj/structure/fire_source
 	throwpass = TRUE
 
+	// Counter for world.time, used to reduce lighting spam.
+	var/next_light_spam_guard = 0
+
 	var/has_draught = TRUE
 	var/static/list/draught_values = list(
 		"all the way open"      = 1,
@@ -67,7 +70,8 @@
 	var/lit = FIRE_OUT
 	/// How much fuel is left?
 	var/fuel = 0
-
+	/// Have we been fed by a bellows recently?
+	var/bellows_oxygenation = 0
 
 /obj/structure/fire_source/Initialize()
 	. = ..()
@@ -135,6 +139,7 @@
 
 /obj/structure/fire_source/proc/die()
 	if(lit == FIRE_LIT)
+		bellows_oxygenation = 0
 		lit = FIRE_DEAD
 		last_fuel_ignite_temperature = null
 		last_fuel_burn_temperature = T20C
@@ -158,6 +163,9 @@
 	if(lit == FIRE_LIT && !force)
 		return FALSE
 	if(!process_fuel(ignition_temperature))
+		if(world.time >= next_light_spam_guard)
+			visible_message(SPAN_WARNING("\The [src] smoulders, but fails to catch alight. Perhaps it needs better airflow or more fuel?"))
+			next_light_spam_guard = world.time + 3 SECONDS
 		return FALSE
 	last_fuel_burn_temperature = max(last_fuel_burn_temperature, ignition_temperature) // needed for initial burn procs to function
 	lit = FIRE_LIT
@@ -210,7 +218,7 @@
 		update_icon()
 		return TRUE
 
-	if(lit != FIRE_LIT && user.a_intent == I_HURT)
+	if(lit != FIRE_LIT && user.check_intent(I_FLAG_HARM))
 		to_chat(user, SPAN_DANGER("You start stomping on \the [src], trying to destroy it."))
 		if(do_after(user, 5 SECONDS, src))
 			visible_message(SPAN_DANGER("\The [user] stamps and kicks at \the [src] until it is completely destroyed."))
@@ -223,7 +231,7 @@
 	var/mob/living/victim = grab.get_affecting_mob()
 	if(!istype(victim))
 		return FALSE
-	if (user.a_intent != I_HURT)
+	if (!user.check_intent(I_FLAG_HARM))
 		return TRUE
 	if (!grab.force_danger())
 		to_chat(user, SPAN_WARNING("You need a better grip!"))
@@ -237,9 +245,6 @@
 
 /obj/structure/fire_source/isflamesource()
 	return (lit == FIRE_LIT)
-
-/obj/structure/fire_source/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	return ..() || (istype(mover) && mover.checkpass(PASS_FLAG_TABLE))
 
 /obj/structure/fire_source/proc/burn_material(var/decl/material/mat, var/amount)
 	var/effective_burn_temperature = get_effective_burn_temperature()
@@ -272,7 +277,7 @@
 /obj/structure/fire_source/attackby(var/obj/item/thing, var/mob/user)
 
 	// Gate a few interactions behind intent so they can be bypassed if needed.
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		// Put cooking items onto the fire source.
 		if(istype(thing, /obj/item/chems/cooking_vessel) && user.try_unequip(thing, get_turf(src)))
 			thing.reset_offsets()
@@ -292,7 +297,7 @@
 		try_light(thing.get_heat())
 		return TRUE
 
-	if((lit != FIRE_LIT || user.a_intent == I_HURT))
+	if((lit != FIRE_LIT || user.check_intent(I_FLAG_HARM)))
 		// Only drop in one log at a time.
 		if(istype(thing, /obj/item/stack))
 			var/obj/item/stack/stack = thing
@@ -305,7 +310,9 @@
 	return ..()
 
 /obj/structure/fire_source/proc/get_draught_multiplier()
-	return has_draught ? draught_values[draught_values[current_draught]] : 1
+	. = has_draught ? draught_values[draught_values[current_draught]] : 1
+	if(bellows_oxygenation)
+		. *= 1.25 // Burns 25% hotter while oxygenated.
 
 /obj/structure/fire_source/proc/process_fuel(ignition_temperature)
 	var/draught_mult = get_draught_multiplier()
@@ -410,6 +417,10 @@
 		die()
 		return
 
+	// Spend our bellows charge.
+	if(bellows_oxygenation > 0)
+		bellows_oxygenation--
+
 	fuel -= (FUEL_CONSUMPTION_CONSTANT * get_draught_multiplier())
 	if(!process_fuel())
 		die()
@@ -435,7 +446,6 @@
 				removed.add_thermal_energy(heat_transfer)
 		environment.merge(removed)
 
-
 	queue_icon_update()
 
 /obj/structure/fire_source/proc/has_fuel()
@@ -459,7 +469,7 @@
 
 	switch(lit)
 		if(FIRE_LIT)
-			if(fuel >= HIGH_FUEL)
+			if(bellows_oxygenation || fuel >= HIGH_FUEL)
 				var/image/I = image(icon, "[icon_state]_lit")
 				I.appearance_flags |= RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
@@ -486,10 +496,10 @@
 	try_light(1000)
 
 /obj/structure/fire_source/CanPass(atom/movable/mover, turf/target, height, air_group)
-	. = ..()
+	. = ..() || mover?.checkpass(PASS_FLAG_TABLE)
 	if(. && lit && ismob(mover))
 		var/mob/M = mover
-		if(!MOVING_QUICKLY(M))
+		if(M.client && !M.current_posture?.prone && !MOVING_QUICKLY(M))
 			to_chat(M, SPAN_WARNING("You refrain from stepping into \the [src]."))
 			return FALSE
 	return ..()
@@ -508,6 +518,7 @@
 /decl/interaction_handler/adjust_draught
 	name = "Adjust Draught"
 	expected_target_type = /obj/structure/fire_source
+	examine_desc = "adjust the draught"
 
 /decl/interaction_handler/adjust_draught/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/structure/fire_source/fire = target

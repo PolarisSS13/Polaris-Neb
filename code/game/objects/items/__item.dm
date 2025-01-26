@@ -6,10 +6,14 @@
 	abstract_type = /obj/item
 	temperature_sensitive = TRUE
 
+	/// Set to prefix name with this string ('woven' for 'woven basket' etc)
+	var/name_prefix
+
 	/// Set to false to skip state checking and never draw an icon on the mob (except when held)
 	var/draw_on_mob_when_equipped = TRUE
 
-	var/image/blood_overlay = null //this saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
+	/// this saves our blood splatter/coating overlay, which will be processed not to go over the edges of the sprite.
+	var/image/coating_overlay
 	var/randpixel = 6
 	var/material_health_multiplier = 0.2
 	var/hitsound
@@ -96,7 +100,8 @@
 	var/paint_verb
 
 	/// What dexterity is required to attack with this item?
-	var/needs_attack_dexterity = DEXTERITY_WIELD_ITEM
+	var/needs_attack_dexterity      = DEXTERITY_WIELD_ITEM
+	var/needs_interaction_dexterity = DEXTERITY_HOLD_ITEM
 
 	/// Vars relating to wielding the item with two or more hands.
 	var/can_be_twohanded        = FALSE
@@ -115,6 +120,20 @@
 	/// Can this item knock someone out if used as a weapon? Overridden for natural weapons as a nerf to simplemobs.
 	var/weapon_can_knock_prone = TRUE
 
+/// Returns a dexterity value required to use this item as a weapon.
+/obj/item/proc/get_required_attack_dexterity(mob/user, atom/target)
+	// We can likely assume that if we're located inside a rig, then the wearer
+	// has the appropriate dexterity to wear and use the rig, even if they aren't
+	// manually dexterous; specifically useful for things like baxxid and drakes.
+	var/obj/item/rig/rig = get_recursive_loc_of_type(/obj/item/rig)
+	. = istype(rig) ? DEXTERITY_NONE : needs_attack_dexterity
+	if(istype(target))
+		. = target.adjust_required_attack_dexterity(user, .)
+
+// Returns a dexterity value required to interact with this item at all, such as picking it up.
+/obj/item/get_required_interaction_dexterity()
+	return needs_interaction_dexterity
+
 /obj/item/get_color()
 	if(paint_color)
 		return paint_color
@@ -123,20 +142,21 @@
 	return initial(color)
 
 /obj/item/set_color(new_color)
-
 	if(new_color == COLOR_WHITE)
 		new_color = null
-
 	if(paint_color != new_color)
 		paint_color = new_color
 		. = TRUE
+		refresh_color()
 
+/obj/item/refresh_color()
 	if(paint_color)
 		color = paint_color
 	else if(material && (material_alteration & MAT_FLAG_ALTERATION_COLOR))
 		color = material.color
 	else
-		color = new_color
+		color = null
+
 
 /obj/item/proc/can_contaminate()
 	return !(obj_flags & ITEM_FLAG_NO_CONTAMINATION)
@@ -169,6 +189,19 @@
 		set_material(material_key)
 	paint_verb ||= "painted" // fallback for the case of no material
 
+	// This is a bit gross, but it makes writing rings and necklaces much easier.
+	// If the decorations list is already populated at this point, we assume it's
+	// prebaked decorations.
+	// Only things handled appropriately at the moment are gems and material inlays.
+	if(length(decorations))
+		for(var/decoration_type in decorations)
+			decorations -= decoration_type
+			if(ispath(decoration_type, /obj/item/gemstone))
+				decorations[GET_DECL(/decl/item_decoration/setting)] = list("object" = new decoration_type(src))
+			else if(ispath(decoration_type, /decl/material))
+				decorations[GET_DECL(/decl/item_decoration/inset)]   = list("material" = GET_DECL(decoration_type))
+			else
+				PRINT_STACK_TRACE("Item [type] tried to initialize with an unsupported initial decoration type ('[decoration_type]')")
 	. = ..()
 
 	setup_sprite_sheets()
@@ -195,6 +228,9 @@
 			update_icon()
 
 /obj/item/Destroy()
+
+	// May contain object references.
+	LAZYCLEARLIST(decorations)
 
 	if(LAZYLEN(_item_effects))
 		_item_effects = null
@@ -224,7 +260,7 @@
 /obj/item/PopulateClone(obj/item/clone)
 	clone = ..()
 	clone.contaminated = contaminated
-	clone.blood_overlay = image(blood_overlay)
+	clone.coating_overlay = image(coating_overlay)
 	clone.current_health = current_health
 
 	//#TODO: once item damage in, check health!
@@ -299,11 +335,7 @@
 		var/list/available_recipes = list()
 		for(var/decl/crafting_stage/initial_stage in SSfabrication.find_crafting_recipes(type))
 			if(initial_stage.can_begin_with(src) && ispath(initial_stage.completion_trigger_type))
-				var/atom/movable/prop = initial_stage.completion_trigger_type
-				if(initial_stage.stack_consume_amount > 1)
-					available_recipes[initial_stage] = "[initial_stage.stack_consume_amount] [initial(prop.name)]\s"
-				else
-					available_recipes[initial_stage] = "\a [initial(prop.name)]"
+				available_recipes[initial_stage] = initial_stage.generate_completion_string()
 
 		if(length(available_recipes))
 
@@ -362,7 +394,7 @@
 	return ..(user, distance, "", jointext(desc_comp, "<br/>"))
 
 /obj/item/check_mousedrop_adjacency(var/atom/over, var/mob/user)
-	. = (loc == user && istype(over, /obj/screen/inventory)) || ..()
+	. = (loc == user && istype(over, /obj/screen)) || ..()
 
 /obj/item/handle_mouse_drop(atom/over, mob/user, params)
 
@@ -454,7 +486,7 @@
 	return . || TRUE
 
 /obj/item/attack_self(mob/user)
-	if(user.a_intent == I_HURT && istype(material))
+	if(user.check_intent(I_FLAG_HARM) && istype(material))
 		var/list/results = squash_item(skip_qdel = TRUE)
 		if(results && user.try_unequip(src, user.loc))
 			user.visible_message(SPAN_DANGER("\The [user] squashes \the [src] into a lump."))
@@ -552,12 +584,12 @@
 		return TRUE
 	return FALSE
 
-/obj/item/proc/user_can_attack_with(mob/user, silent = FALSE)
-	return !needs_attack_dexterity || user.check_dexterity(needs_attack_dexterity, silent = silent)
+/obj/item/proc/user_can_attack_with(mob/user, atom/target, silent = FALSE)
+	return user.check_dexterity(get_required_attack_dexterity(user, target), silent = silent)
 
 /obj/item/attackby(obj/item/used_item, mob/user)
 	// if can_wield is false we still need to call parent for storage objects to work properly
-	var/can_wield = user_can_attack_with(user, silent = TRUE)
+	var/can_wield = used_item.user_can_attack_with(user, silent = TRUE)
 
 	if(can_wield && try_slapcrafting(used_item, user))
 		return TRUE
@@ -579,11 +611,6 @@
 			return cell_loaded.try_load(user, used_item)
 
 	return ..()
-
-/obj/item/attack_ghost(mob/user)
-	var/mob/observer/ghost/pronouns = user
-	if(pronouns.client?.holder || pronouns.antagHUD)
-		storage?.show_to(user)
 
 /obj/item/proc/talk_into(mob/living/M, message, message_mode, var/verb = "says", var/decl/language/speaking = null)
 	return
@@ -778,7 +805,7 @@
 	if(was_bloodied && !fluorescent)
 		fluorescent = FLUORESCENT_GLOWS
 		blood_color = COLOR_LUMINOL
-		blood_overlay.color = COLOR_LUMINOL
+		coating_overlay.color = COLOR_LUMINOL
 		update_icon()
 
 /obj/item/add_blood(mob/living/M, amount = 2, list/blood_data)
@@ -802,21 +829,19 @@
 		LAZYSET(blood_DNA, unique_enzymes, blood_type)
 	return TRUE
 
-var/global/list/_blood_overlay_cache = list()
-var/global/icon/_item_blood_mask = icon('icons/effects/blood.dmi', "itemblood")
-/obj/item/proc/generate_blood_overlay(force = FALSE)
-	if(blood_overlay && !force)
+var/global/list/icon/_coating_overlay_cache = list()
+var/global/icon/_item_coating_mask = icon('icons/effects/blood.dmi', "itemblood")
+/obj/item/proc/generate_coating_overlay(force = FALSE)
+	if(coating_overlay && !force)
 		return
-	var/cache_key = "[icon]-[icon_state]"
-	if(global._blood_overlay_cache[cache_key])
-		blood_overlay = global._blood_overlay_cache[cache_key]
-		return
-	var/icon/I = new /icon(icon, icon_state)
-	I.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1)         // Sets the icon RGB channel to pure white.
-	I.Blend(global._item_blood_mask, ICON_MULTIPLY) // Masks the blood overlay against the generated mask.
-	blood_overlay = image(I)
-	blood_overlay.appearance_flags |= NO_CLIENT_COLOR|RESET_COLOR
-	global._blood_overlay_cache[cache_key] = blood_overlay
+	var/cache_key = "\ref[icon]-[icon_state]" // this needs to use ref because of stringification
+	if(!global._coating_overlay_cache[cache_key])
+		var/icon/I = new /icon(icon, icon_state)
+		I.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1)         // Sets the icon RGB channel to pure white.
+		I.Blend(global._item_coating_mask, ICON_MULTIPLY) // Masks the coating overlay against the generated mask.
+		global._coating_overlay_cache[cache_key] = I
+	coating_overlay = image(global._coating_overlay_cache[cache_key])
+	coating_overlay.appearance_flags |= NO_CLIENT_COLOR|RESET_COLOR
 
 /obj/item/proc/showoff(mob/user)
 	for(var/mob/M in view(user))
@@ -965,6 +990,11 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	if(citem.item_state)
 		set_icon_state(citem.item_state)
 
+/obj/item/clothing/inherit_custom_item_data(var/datum/custom_item/citem)
+	. = ..()
+	base_clothing_icon  = icon
+	base_clothing_state = icon_state
+
 /obj/item/proc/is_special_cutting_tool(var/high_power)
 	return FALSE
 
@@ -986,11 +1016,11 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_autopsy_descriptors()
 	var/list/descriptors = list()
 	descriptors += w_class_description()
-	if(sharp)
+	if(is_sharp())
 		descriptors += "sharp"
-	if(edge)
+	if(has_edge())
 		descriptors += "edged"
-	if(get_attack_force() >= 10 && !sharp && !edge)
+	if(get_attack_force() >= 10 && !is_sharp() && !has_edge())
 		descriptors += "heavy"
 	if(material)
 		descriptors += "made of [material.solid_name]"
@@ -1001,13 +1031,15 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 
 /obj/item/proc/add_coating(reagent_type, amount, data)
 	if(!coating)
-		coating = new/datum/reagents(10, src)
-	coating.add_reagent(reagent_type, amount, data)
-
-	if(!blood_overlay)
-		generate_blood_overlay()
-	blood_overlay.color = coating.get_color()
-
+		coating = new /datum/reagents(10, src)
+	if(ispath(reagent_type))
+		coating.add_reagent(reagent_type, amount, data)
+	else if(istype(reagent_type, /datum/reagents))
+		var/datum/reagents/source = reagent_type
+		source.trans_to_holder(coating, amount)
+	if(!coating_overlay)
+		generate_coating_overlay()
+	coating_overlay.color = coating.get_color()
 	update_icon()
 
 /obj/item/proc/remove_coating(amount)
@@ -1020,7 +1052,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 /obj/item/clean(clean_forensics=TRUE)
 	. = ..()
 	QDEL_NULL(coating)
-	blood_overlay = null
+	coating_overlay = null
 	if(clean_forensics)
 		var/datum/extension/forensic_evidence/forensics = get_extension(src, /datum/extension/forensic_evidence)
 		if(forensics)
@@ -1036,16 +1068,38 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	if(item_flags & ITEM_FLAG_IS_BELT)
 		LAZYADD(., slot_belt_str)
 
+	// Where are we usually worn?
+	var/default_slot = get_fallback_slot()
+	if(default_slot)
+		LAZYDISTINCTADD(., default_slot)
+		// Uniforms can show or hide ID.
+		if(default_slot == slot_w_uniform_str)
+			LAZYDISTINCTADD(., slot_wear_id_str)
+
+	// Currently this proc is used for clothing updates, so we
+	// need to care what slot we are being worn in, if any.
+	if(ismob(loc))
+		var/mob/wearer = loc
+		var/equipped_slot = wearer.get_equipped_slot_for_item(src)
+		if(equipped_slot)
+			LAZYDISTINCTADD(., equipped_slot)
+
 // Updates the icons of the mob wearing the clothing item, if any.
 /obj/item/proc/update_clothing_icon(do_update_icon = TRUE)
+
+	// Accessories should pass this back to their holder.
+	if(isitem(loc))
+		var/obj/item/holder = loc
+		return holder.update_clothing_icon(do_update_icon)
+
+	// If we're not on a mob, we do not care.
+	if(!ismob(loc))
+		return FALSE
+
+	// We refresh our equipped slot and any associated slots that might depend on the state of this slot.
 	var/mob/wearer = loc
-	if(!istype(wearer))
-		return FALSE
-	var/equip_slots = get_associated_equipment_slots()
-	if(!islist(equip_slots))
-		return FALSE
-	for(var/slot in equip_slots)
-		wearer.update_equipment_overlay(slot, FALSE)
+	for(var/equipped_slot in get_associated_equipment_slots())
+		wearer.update_equipment_overlay(equipped_slot, FALSE)
 	if(do_update_icon)
 		wearer.update_icon()
 	return TRUE
@@ -1076,9 +1130,6 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	else if(current_size > STAGE_ONE)
 		step_towards(src,S)
 	else ..()
-
-/obj/item/check_mousedrop_adjacency(var/atom/over, var/mob/user)
-	. = (loc == user && istype(over, /obj/screen)) || ..()
 
 // Supplied during loadout gear tweaking.
 /obj/item/proc/set_custom_name(var/new_name)
@@ -1218,7 +1269,19 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	var/image/reagent_overlay = overlay_image(icon, reagents_state, reagents.get_color(), RESET_COLOR | RESET_ALPHA)
 	for(var/reagent_type in reagents.reagent_volumes)
 		var/decl/material/reagent = GET_DECL(reagent_type)
+		if(!reagent.reagent_overlay)
+			continue
 		var/modified_reagent_overlay = state_prefix ? "[state_prefix]_[reagent.reagent_overlay]" : reagent.reagent_overlay
-		if(modified_reagent_overlay && check_state_in_icon(modified_reagent_overlay, icon))
-			reagent_overlay.overlays += overlay_image(icon, modified_reagent_overlay, reagent.get_reagent_color(), RESET_COLOR | RESET_ALPHA)
+		if(!check_state_in_icon(modified_reagent_overlay, icon))
+			continue
+		reagent_overlay.overlays += overlay_image(icon, modified_reagent_overlay, reagent.get_reagent_overlay_color(reagents), RESET_COLOR | RESET_ALPHA)
 	return reagent_overlay
+
+/obj/item/on_reagent_change()
+	. = ..()
+	// You can't put liquids in clay/sand/dirt vessels, sorry.
+	if(reagents?.total_liquid_volume > 0 && material && material.hardness <= MAT_VALUE_MALLEABLE && !QDELETED(src))
+		visible_message(SPAN_DANGER("\The [src] falls apart!"))
+		squash_item()
+		if(!QDELETED(src))
+			physically_destroyed()

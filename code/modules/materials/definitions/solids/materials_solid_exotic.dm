@@ -100,10 +100,10 @@
 	if(prob(10 * accelerant_value))
 		M.handle_contaminants()
 
-/decl/material/solid/supermatter
+/decl/material/solid/exotic_matter
 	name = "exotic matter"
 	uid = "solid_exotic_matter"
-	lore_text = "Hypercrystalline supermatter is a subset of non-baryonic 'exotic' matter. It is found mostly in the heart of large stars, and features heavily in all kinds of fringe physics-defying technology."
+	lore_text = "Exotic matter is a non-baryonic form of matter, which features heavily in all kinds of fringe physics-defying technology."
 	color = "#ffff00"
 	radioactivity = 20
 	stack_origin_tech = @'{"wormholes":2,"materials":6,"exoticmatter":4}'

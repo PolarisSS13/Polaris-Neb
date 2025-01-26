@@ -10,6 +10,7 @@
 	var/image/ore_overlay
 	var/static/list/exterior_wall_shine_cache = list()
 	var/being_mined = FALSE
+	var/gem_dropped = FALSE
 
 /turf/wall/natural/flooded
 	flooded = /decl/material/liquid/water
@@ -150,6 +151,10 @@
 	if(prob(30) && !ramp_slope_direction && material)
 		var/drop_type = material.ore_type || /obj/item/stack/material/ore
 		pass_geodata_to(new drop_type(src, material.ore_result_amount, material.type))
+	if(!gem_dropped && material && prob(material.gemstone_chance) && LAZYLEN(material.gemstone_types))
+		gem_dropped = TRUE
+		new /obj/item/gemstone(get_turf(src), pickweight(material.gemstone_types))
+		visible_message(SPAN_NOTICE("A glimmer of colour shines amongst the rubble..."))
 
 /turf/wall/natural/proc/pass_geodata_to(obj/O)
 	var/datum/extension/geological_data/ours = get_extension(src, /datum/extension/geological_data)
@@ -167,7 +172,7 @@
 		if(!prob(reinf_material.ore_spread_chance))
 			continue
 		var/turf/wall/natural/target_turf = get_step_resolving_mimic(src, trydir)
-		if(!istype(target_turf) || !isnull(target_turf.reinf_material))
+		if(!istype(target_turf) || !isnull(target_turf.reinf_material) || target_turf.ramp_slope_direction)
 			continue
 		target_turf.set_turf_materials(target_turf.material, reinf_material)
 		target_turf.spread_deposit()

@@ -66,13 +66,13 @@
 		L = locate("landmark*[C.data]") // use old stype
 
 	if(istype(L, /obj/abstract/landmark) && isturf(L.loc) && user.try_unequip(I))
-		to_chat(usr, "You insert the coordinates into the machine.")
-		to_chat(usr, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the [station_name()] at all times.")
+		to_chat(user, "You insert the coordinates into the machine.")
+		to_chat(user, "A message flashes across the screen reminding the traveller that the nuclear authentication disk is to remain on the [station_name()] at all times.")
 		qdel(I)
 		audible_message(SPAN_NOTICE("Locked in."))
 		src.locked = L
 		one_time_use = 1
-		add_fingerprint(usr)
+		add_fingerprint(user)
 	return TRUE
 
 /obj/machinery/computer/teleporter/interface_interact(var/mob/user)

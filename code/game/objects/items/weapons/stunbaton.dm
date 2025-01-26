@@ -5,8 +5,6 @@
 	icon = 'icons/obj/items/weapon/stunbaton.dmi'
 	icon_state = ICON_STATE_WORLD
 	slot_flags = SLOT_LOWER_BODY
-	sharp = 0
-	edge = 0
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = @'{"combat":2}'
 	attack_verb = list("beaten")
@@ -112,7 +110,7 @@
 		var/mob/living/human/H = target
 		affecting = GET_EXTERNAL_ORGAN(H, hit_zone)
 	var/abuser =  user ? "" : "by [user]"
-	if(user && user.a_intent == I_HURT)
+	if(user && user.check_intent(I_FLAG_HARM))
 		. = ..()
 		if(.)
 			return

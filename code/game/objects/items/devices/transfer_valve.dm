@@ -7,10 +7,26 @@
 	var/obj/item/tank/tank_one
 	var/obj/item/tank/tank_two
 	var/obj/item/assembly/attached_device
-	var/mob/attacher = null
+	var/weakref/attacher_ref = null
 	var/valve_open = 0
 	var/toggle = 1
 	movable_flags = MOVABLE_FLAG_PROXMOVE
+
+/obj/item/transfer_valve/Destroy()
+	if(!QDELETED(tank_one))
+		QDEL_NULL(tank_one)
+	else
+		tank_one = null
+	if(!QDELETED(tank_two))
+		QDEL_NULL(tank_two)
+	else
+		tank_two = null
+	if(!QDELETED(attached_device))
+		QDEL_NULL(attached_device)
+	else
+		attached_device = null
+	attacher_ref = null
+	return ..()
 
 /obj/item/transfer_valve/attackby(obj/item/item, mob/user)
 	var/turf/location = get_turf(src) // For admin logs
@@ -56,7 +72,7 @@
 		global.bombers += "[key_name(user)] attached a [item] to a transfer valve."
 		message_admins("[key_name_admin(user)] attached a [item] to a transfer valve. (<A HREF='byond://?_src_=holder;adminplayerobservecoodjump=1;X=[location.x];Y=[location.y];Z=[location.z]'>JMP</a>)")
 		log_game("[key_name_admin(user)] attached a [item] to a transfer valve.")
-		attacher = user
+		attacher_ref = weakref(user)
 		. = TRUE
 	if(.)
 		update_icon()
@@ -189,6 +205,7 @@
 		var/area/A = get_area(bombturf)
 
 		var/attacher_name = ""
+		var/mob/attacher = attacher_ref.resolve()
 		if(!attacher)
 			attacher_name = "Unknown"
 		else

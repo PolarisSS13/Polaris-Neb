@@ -19,8 +19,7 @@
 	var/list/selectable_labels_to_states = list()
 
 /decl/sprite_accessory_metadata/gradient/Initialize()
-	var/list/selectable = icon_states(icon)
-	for(var/state in selectable)
+	for(var/state in get_states_in_icon_cached(icon))
 		if(!selectable_states_to_labels[state])
 			selectable_states_to_labels[state] = capitalize(state)
 	for(var/state in selectable_states_to_labels)

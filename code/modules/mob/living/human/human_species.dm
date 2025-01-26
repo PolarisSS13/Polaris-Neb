@@ -37,9 +37,6 @@
 		corpse.equip_corpse_outfit(src)
 	return INITIALIZE_HINT_LATELOAD
 
-/mob/living/human/corpse/get_death_message(gibbed)
-	return SKIP_DEATH_MESSAGE
-
 /mob/living/human/corpse/LateInitialize()
 	..()
 	var/current_max_health = get_max_health()

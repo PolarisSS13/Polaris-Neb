@@ -174,20 +174,20 @@
 	if(href_list["set_tag"])
 		var/new_tag = input(user, "Enter a new tag to use. Warning: this will reset all tags used by this machine, not just the main one!", "Tag Selection", controller.id_tag) as text|null
 		if(extension_status(user) != STATUS_INTERACTIVE)
-			return MT_NOACTION
+			return TOPIC_NOACTION
 		new_tag = sanitize_name(new_tag, MAX_MESSAGE_LEN, TRUE, FALSE)
 		if(new_tag)
 			controller.reset_id_tags(new_tag)
 			controller.set_frequency(controller.frequency)
-			return MT_REFRESH
+			return TOPIC_REFRESH
 
 	if(href_list["set_freq"])
 		var/new_frequency = input(user, "Enter a new frequency to use.", "frequency Selection", controller.frequency) as num|null
 		if(!new_frequency || (extension_status(user) != STATUS_INTERACTIVE))
-			return MT_NOACTION
+			return TOPIC_NOACTION
 		new_frequency = sanitize_frequency(new_frequency, RADIO_LOW_FREQ, RADIO_HIGH_FREQ)
 		controller.set_frequency(new_frequency)
-		return MT_REFRESH
+		return TOPIC_REFRESH
 
 /decl/stock_part_preset/radio/receiver/vent_pump/airlock
 	frequency = EXTERNAL_AIR_FREQ

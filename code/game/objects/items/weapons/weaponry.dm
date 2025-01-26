@@ -34,8 +34,7 @@
 	return ..()
 
 /obj/item/nullrod/proc/holy_act(mob/living/target, mob/living/user)
-	if(target.mind && LAZYLEN(target.mind.learned_spells))
-		target.silence_spells(30 SECONDS)
+	if(target.disable_abilities(30 SECONDS))
 		to_chat(target, SPAN_DANGER("You've been silenced!"))
 		return TRUE
 	return FALSE
@@ -65,8 +64,7 @@
 
 /obj/item/energy_net/dropped()
 	..()
-	spawn(10)
-		if(src) qdel(src)
+	QDEL_IN(src, 1 SECOND)
 
 /obj/item/energy_net/throw_impact(atom/hit_atom)
 	..()
@@ -86,8 +84,7 @@
 		qdel(src)
 
 	// If we miss or hit an obstacle, we still want to delete the net.
-	spawn(10)
-		if(src) qdel(src)
+	QDEL_IN(src, 1 SECOND)
 
 /obj/effect/energy_net
 	name = "energy net"
@@ -192,15 +189,11 @@
 		healthcheck()
 
 /obj/effect/energy_net/attack_hand(var/mob/user)
-	if(user.a_intent != I_HURT)
+	if(!user.check_intent(I_FLAG_HARM))
 		return ..()
-	var/decl/species/my_species = user.get_species()
-	if(my_species)
-		if(my_species.can_shred(user))
-			playsound(src.loc, 'sound/weapons/slash.ogg', 80, 1)
-			current_health -= rand(10, 20)
-		else
-			current_health -= rand(1,3)
+	if(user.can_shred())
+		playsound(src.loc, 'sound/weapons/slash.ogg', 80, 1)
+		current_health -= rand(10, 20)
 	else
 		current_health -= rand(5,8)
 	to_chat(user, SPAN_DANGER("You claw at the energy net."))
@@ -208,7 +201,7 @@
 	return TRUE
 
 /obj/effect/energy_net/attackby(obj/item/W, mob/user)
-	current_health -= W.get_attack_force(user)
+	current_health -= W.expend_attack_force(user)
 	healthcheck()
 	return TRUE
 

@@ -71,10 +71,6 @@
 	owner = null
 	canremove = TRUE
 
-/obj/item/mech_equipment/Destroy()
-	owner = null
-	. = ..()
-
 /obj/item/mech_equipment/proc/get_effective_obj()
 	return src
 

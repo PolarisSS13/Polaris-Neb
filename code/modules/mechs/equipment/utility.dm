@@ -119,7 +119,7 @@
 		//attacking - Cannot be carrying something, cause then your clamp would be full
 		else if(isliving(target))
 			var/mob/living/M = target
-			if(user.a_intent == I_HURT)
+			if(user.check_intent(I_FLAG_HARM))
 				admin_attack_log(user, M, "attempted to clamp [M] with [src] ", "Was subject to a clamping attempt.", ", using \a [src], attempted to clamp")
 				owner.setClickCooldown(owner.arms ? owner.arms.action_delay * 3 : 30) //This is an inefficient use of your powers
 				if(prob(33))
@@ -196,6 +196,7 @@
 /decl/interaction_handler/mech_equipment/clamp
 	name = "Release Clamp"
 	expected_target_type = /obj/item/mech_equipment/clamp
+	examine_desc = "release $TARGET_THEM$"
 
 /decl/interaction_handler/mech_equipment/clamp/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/mech_equipment/clamp/clamp = target
@@ -517,7 +518,7 @@
 		for(var/turf/asteroid as anything in RANGE_TURFS(target, 1))
 			if (!(get_dir(owner, asteroid) & owner.dir))
 				continue
-			if(asteroid.can_be_dug(drill_head.material?.hardness) && asteroid.drop_diggable_resources())
+			if(asteroid.can_be_dug(drill_head.material?.hardness) && asteroid.drop_diggable_resources(user))
 				drill_head.durability -= 1
 				scoop_ore(asteroid)
 		return
@@ -693,6 +694,7 @@
 /decl/interaction_handler/mech_equipment/ionjets
 	name = "Toggle Stabilizers"
 	expected_target_type = /obj/item/mech_equipment/ionjets
+	examine_desc = "toggle the stabilizers"
 
 /decl/interaction_handler/mech_equipment/ionjets/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

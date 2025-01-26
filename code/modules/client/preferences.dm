@@ -295,7 +295,7 @@ var/global/list/time_prefs_fixed = list()
 		return
 	if(href_list["preference"] == "open_whitelist_forum")
 		if(get_config_value(/decl/config/text/forumurl))
-			direct_output(user, link(get_config_value(/decl/config/text/forumurl)))
+			open_link(user, get_config_value(/decl/config/text/forumurl))
 		else
 			to_chat(user, "<span class='danger'>The forum URL is not set in the server configuration.</span>")
 			return
@@ -380,7 +380,6 @@ var/global/list/time_prefs_fixed = list()
 
 	character.set_gender(gender)
 	character.blood_type = blood_type
-
 
 	character.set_skin_colour(skin_colour, skip_update = TRUE)
 	character.skin_tone = skin_tone
@@ -501,7 +500,7 @@ var/global/list/time_prefs_fixed = list()
 	key_bindings = deepCopyList(global.hotkey_keybinding_list_by_key)
 
 	if(istype(client))
-		// Preferences datum - also holds some persistant data for the client (because we may as well keep these datums to a minimum).
+		// Preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum).
 		SScharacter_setup.preferences_datums[client.ckey] = src
 		setup()
 

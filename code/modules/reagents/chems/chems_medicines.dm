@@ -52,14 +52,12 @@
 	uid = "chem_styptic"
 	var/effectiveness = 1
 
-/decl/material/liquid/brute_meds/affect_overdose(mob/living/M, var/datum/reagents/holder)
+/decl/material/liquid/brute_meds/affect_overdose(mob/living/victim, total_dose)
 	..()
-	if(ishuman(M))
-		M.add_chemical_effect(CE_BLOCKAGE, (15 + REAGENT_VOLUME(holder, type))/100)
-		var/mob/living/human/H = M
-		for(var/obj/item/organ/external/E in H.get_external_organs())
-			if(E.status & ORGAN_ARTERY_CUT && prob(2 + REAGENT_VOLUME(holder, type) / overdose))
-				E.status &= ~ORGAN_ARTERY_CUT
+	victim.add_chemical_effect(CE_BLOCKAGE, (15 + total_dose) / 100)
+	for(var/obj/item/organ/external/limb in victim.get_external_organs())
+		if((limb.status & ORGAN_ARTERY_CUT) && prob(2 + total_dose / overdose))
+			limb.status &= ~ORGAN_ARTERY_CUT
 
 //This is a logistic function that effectively doubles the healing rate as brute amounts get to around 200. Any injury below 60 is essentially unaffected and there's a scaling inbetween.
 #define ADJUSTED_REGEN_VAL(X) (6+(6/(1+200*2.71828**(-0.05*(X)))))
@@ -169,12 +167,10 @@
 	if(immunity_to_add > 0)
 		M.adjust_immunity(immunity_to_add) // Rapidly brings someone up to half immunity.
 
-/decl/material/liquid/immunobooster/affect_overdose(mob/living/M, total_dose)
+/decl/material/liquid/immunobooster/affect_overdose(mob/living/victim, total_dose)
 	..()
-	M.add_chemical_effect(CE_TOXIN, 1)
-	var/mob/living/human/H = M
-	if(istype(H))
-		M.adjust_immunity(-0.5)
+	victim.add_chemical_effect(CE_TOXIN, 1)
+	victim.adjust_immunity(-0.5)
 
 /decl/material/liquid/stimulants
 	name = "stimulants"
@@ -236,25 +232,16 @@
 	overdose = REAGENTS_OVERDOSE/2
 	scannable = 1
 	value = 1.5
+	antibiotic_strength = 1
 	exoplanet_rarity_gas = MAT_RARITY_EXOTIC
 	uid = "chem_antibiotics"
 
-/decl/material/liquid/antibiotics/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
-	. = ..()
-	M.adjust_immunity(-0.1)
-	M.add_chemical_effect(CE_ANTIBIOTIC, 1)
-	if(volume > 10)
-		M.adjust_immunity(-0.3)
-	if(LAZYACCESS(M.chem_doses, type) > 15)
-		M.adjust_immunity(-0.25)
-
-/decl/material/liquid/antibiotics/affect_overdose(mob/living/M, total_dose)
+/decl/material/liquid/antibiotics/affect_overdose(mob/living/victim, total_dose)
 	..()
-	M.adjust_immunity(-0.5)
-	M.immunity = max(M.immunity - 0.25, 0)
+	victim.adjust_immunity(-0.5)
+	victim.immunity = max(victim.immunity - 0.25, 0)
 	if(prob(2))
-		M.immunity_norm = max(M.immunity_norm - 1, 0)
+		victim.immunity_norm = max(victim.immunity_norm - 1, 0)
 
 /decl/material/liquid/retrovirals
 	name = "retrovirals"
@@ -267,14 +254,12 @@
 	exoplanet_rarity_gas = MAT_RARITY_EXOTIC
 	uid = "chem_retrovirals"
 
-/decl/material/liquid/retrovirals/affect_overdose(mob/living/M, total_dose)
+/decl/material/liquid/retrovirals/affect_overdose(mob/living/victim, total_dose)
 	. = ..()
-	if(ishuman(M))
-		var/mob/living/human/H = M
-		for(var/obj/item/organ/external/E in H.get_external_organs())
-			if(!BP_IS_PROSTHETIC(E) && prob(25) && !(E.status & ORGAN_MUTATED))
-				E.mutate()
-				E.limb_flags |= ORGAN_FLAG_DEFORMED
+	for(var/obj/item/organ/external/limb in victim.get_external_organs())
+		if(!BP_IS_PROSTHETIC(limb) && prob(25) && !(limb.status & ORGAN_MUTATED))
+			limb.mutate()
+			limb.limb_flags |= ORGAN_FLAG_DEFORMED
 
 /decl/material/liquid/retrovirals/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
@@ -413,8 +398,8 @@
 				break
 	..()
 
-/decl/material/liquid/clotting_agent/affect_overdose(mob/living/M, total_dose)
-	var/obj/item/organ/internal/heart = GET_INTERNAL_ORGAN(M, BP_HEART)
+/decl/material/liquid/clotting_agent/affect_overdose(mob/living/victim, total_dose)
+	var/obj/item/organ/internal/heart = GET_INTERNAL_ORGAN(victim, BP_HEART)
 	if(heart && prob(25))
 		heart.take_general_damage(rand(1,3))
 	return ..()

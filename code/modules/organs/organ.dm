@@ -22,6 +22,7 @@
 	var/mob/living/human/owner      // Current mob owning the organ.
 	var/decl/species/species               // Original species.
 	var/decl/bodytype/bodytype             // Original bodytype.
+	var/decl/bodytype/appearance_bodytype  // A bodytype used only for icons, marking validation and equipment offsets.
 	var/list/ailments                      // Current active ailments if any.
 	var/meat_name                          // Taken from first owner.
 
@@ -36,6 +37,9 @@
 
 	/// Set to true if this organ should return info to Stat(). See get_stat_info().
 	var/has_stat_info
+
+/obj/item/organ/proc/reset_matter()
+	matter = null
 
 /obj/item/organ/Destroy()
 	if(owner)
@@ -141,9 +145,16 @@
 	max_damage *= bodytype.hardiness
 	min_broken_damage *= bodytype.hardiness
 	bodytype.resize_organ(src)
-	set_material(override_material || bodytype.material)
-	matter = bodytype.matter?.Copy()
+
+	reset_matter()
+	set_material(override_material || bodytype.organ_material)
+	for(var/mat in bodytype.matter)
+		if(mat in matter)
+			matter[mat] += bodytype.matter[mat]
+		else
+			LAZYSET(matter, mat, bodytype.matter[mat])
 	create_matter()
+
 	// maybe this should be a generalized repopulate_reagents helper??
 	if(reagents)
 		reagents.clear_reagents()
@@ -362,11 +373,11 @@
 	if (germ_level < INFECTION_LEVEL_ONE)
 		germ_level = 0	//cure instantly
 	else if (germ_level < INFECTION_LEVEL_TWO)
-		germ_level -= 5	//at germ_level == 500, this should cure the infection in 5 minutes
+		germ_level -= round(5 * antibiotics)	//at germ_level == 500, this should cure the infection in 5 minutes
 	else
-		germ_level -= 3 //at germ_level == 1000, this will cure the infection in 10 minutes
+		germ_level -= round(3 * antibiotics) //at germ_level == 1000, this will cure the infection in 10 minutes
 	if(owner && owner.current_posture.prone)
-		germ_level -= 2
+		germ_level -= round(2 * antibiotics)
 	germ_level = max(0, germ_level)
 
 /obj/item/organ/proc/take_general_damage(var/amount, var/silent = FALSE)
@@ -379,7 +390,7 @@
 			owner.update_health()
 
 /obj/item/organ/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
-	if(BP_IS_PROSTHETIC(src) || !istype(target) || !istype(user) || (user != target && user.a_intent == I_HELP))
+	if(BP_IS_PROSTHETIC(src) || !istype(target) || !istype(user) || (user != target && user.check_intent(I_FLAG_HELP)))
 		return ..()
 
 	if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
@@ -471,8 +482,10 @@
 	return
 
 var/global/list/ailment_reference_cache = list()
-/proc/get_ailment_reference(var/ailment_type)
+/proc/get_ailment_reference(var/datum/ailment/ailment_type)
 	if(!ispath(ailment_type, /datum/ailment))
+		return
+	if(TYPE_IS_ABSTRACT(ailment_type))
 		return
 	if(!global.ailment_reference_cache[ailment_type])
 		global.ailment_reference_cache[ailment_type] = new ailment_type
@@ -484,7 +497,7 @@ var/global/list/ailment_reference_cache = list()
 		return .
 	for(var/ailment_type in subtypesof(/datum/ailment))
 		var/datum/ailment/ailment = ailment_type
-		if(initial(ailment.category) == ailment_type)
+		if(TYPE_IS_ABSTRACT(ailment))
 			continue
 		ailment = get_ailment_reference(ailment_type)
 		if(ailment.can_apply_to(src))
@@ -664,3 +677,16 @@ var/global/list/ailment_reference_cache = list()
 		new /obj/effect/decal/cleanable/ash(loc)
 	if(!QDELETED(src))
 		qdel(src)
+
+// For overriding on shapeshifters/changelings in the future.
+/obj/item/organ/proc/set_organ_appearance_bodytype(decl/bodytype/new_bodytype, update_sprite_accessories = TRUE, skip_owner_update = FALSE)
+	if(ispath(new_bodytype, /decl/bodytype))
+		new_bodytype = GET_DECL(new_bodytype)
+	if((new_bodytype && !istype(new_bodytype)) || appearance_bodytype == new_bodytype || bodytype == new_bodytype)
+		return FALSE
+	appearance_bodytype = new_bodytype
+	return TRUE
+
+/obj/item/organ/proc/get_organ_appearance_bodytype()
+	RETURN_TYPE(/decl/bodytype)
+	return appearance_bodytype || bodytype

@@ -157,7 +157,7 @@
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<span class='danger'>\The [src] was hit by \the [I].</span>")
 		if(I.atom_damage_type == BRUTE || I.atom_damage_type == BURN)
-			take_damage(I.get_attack_force(user))
+			take_damage(I.expend_attack_force(user))
 		return TRUE
 
 	src.add_fingerprint(user)

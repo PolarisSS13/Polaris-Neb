@@ -106,7 +106,7 @@
 		flick("farmbot_broke", src)
 
 /mob/living/bot/farmbot/handleAdjacentTarget()
-	UnarmedAttack(target)
+	UnarmedAttack(target, TRUE)
 
 /mob/living/bot/farmbot/lookForTargets()
 	if(emagged)
@@ -122,24 +122,6 @@
 			for(var/obj/structure/hygiene/sink/source in view(7, src))
 				target = source
 				return
-
-/mob/living/bot/farmbot/calcTargetPath() // We need to land NEXT to the tray, because the tray itself is impassable
-	for(var/trayDir in list(NORTH, SOUTH, EAST, WEST))
-		target_path = AStar(get_turf(loc), get_step(get_turf(target), trayDir), TYPE_PROC_REF(/turf, CardinalTurfsWithAccess), TYPE_PROC_REF(/turf, Distance), 0, max_target_dist, id = botcard)
-		if(target_path)
-			break
-	if(!target_path)
-		ignore_list |= target
-		target = null
-		target_path = list()
-	return
-
-/mob/living/bot/farmbot/stepToTarget() // Same reason
-	var/turf/T = get_turf(target)
-	if(!target_path.len || !T.Adjacent(target_path[target_path.len]))
-		calcTargetPath()
-	makeStep(target_path)
-	return
 
 /mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
 	. = ..()
@@ -240,21 +222,21 @@
 		if(prob(50))
 			new /obj/item/robot_parts/l_arm(my_turf)
 
-/mob/living/bot/farmbot/confirmTarget(var/atom/targ)
+/mob/living/bot/farmbot/confirmTarget(atom/target)
 	if(!..())
 		return 0
 
-	if(emagged && ishuman(targ))
-		if(targ in view(world.view, src))
+	if(emagged && ishuman(target))
+		if(target in view(world.view, src))
 			return 1
 		return 0
 
-	if(istype(targ, /obj/structure/hygiene/sink))
+	if(istype(target, /obj/structure/hygiene/sink))
 		if(!tank || tank.reagents.total_volume >= tank.reagents.maximum_volume)
 			return 0
 		return 1
 
-	var/obj/machinery/portable_atmospherics/hydroponics/tray = targ
+	var/obj/machinery/portable_atmospherics/hydroponics/tray = target
 	if(!istype(tray))
 		return 0
 

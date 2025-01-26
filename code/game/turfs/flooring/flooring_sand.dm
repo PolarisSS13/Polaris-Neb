@@ -8,6 +8,8 @@
 	has_base_range  = 4
 	turf_flags      = TURF_FLAG_BACKGROUND | TURF_IS_HOLOMAP_PATH | TURF_FLAG_ABSORB_LIQUID
 	force_material  = /decl/material/solid/sand
+	can_collect     = TRUE
+	print_type      = /obj/effect/footprints
 
 /decl/flooring/sand/fire_act(turf/floor/target, datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if((exposed_temperature > T0C + 1700 && prob(5)) || exposed_temperature > T0C + 3000)

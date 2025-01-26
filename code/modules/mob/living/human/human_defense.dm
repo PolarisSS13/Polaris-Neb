@@ -28,7 +28,7 @@ meteor_act
 
 	return blocked
 
-/mob/living/human/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone)
+/mob/living/human/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon)
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(src, def_zone)
 	if(!affected)
 		return
@@ -85,20 +85,6 @@ meteor_act
 	// Add inherent armor to the end of list so that protective equipment is checked first
 	. += ..()
 
-/mob/living/human/proc/check_head_coverage()
-	for(var/slot in global.standard_headgear_slots)
-		var/obj/item/clothing/clothes = get_equipped_item(slot)
-		if(istype(clothes) && (clothes.body_parts_covered & SLOT_HEAD))
-			return TRUE
-	return FALSE
-
-//Used to check if they can be fed food/drinks/pills
-/mob/living/human/check_mouth_coverage()
-	for(var/slot in global.standard_headgear_slots)
-		var/obj/item/gear = get_equipped_item(slot)
-		if(istype(gear) && (gear.body_parts_covered & SLOT_FACE) && !(gear.item_flags & ITEM_FLAG_FLEXIBLEMATERIAL))
-			return gear
-
 /mob/living/human/resolve_item_attack(obj/item/I, mob/living/user, var/target_zone)
 
 	for (var/obj/item/grab/grab as anything in grabbed_by)
@@ -154,7 +140,7 @@ meteor_act
 
 	var/blocked = get_blocked_ratio(hit_zone, I.atom_damage_type, I.damage_flags(), I.armor_penetration, I.get_attack_force(user))
 	// Handle striking to cripple.
-	if(user.a_intent == I_DISARM)
+	if(user.check_intent(I_FLAG_DISARM))
 		effective_force *= 0.66 //reduced effective force...
 		if(!..(I, user, effective_force, hit_zone))
 			return 0
@@ -197,14 +183,14 @@ meteor_act
 		return
 
 	//make non-sharp low-force weapons less likely to be bloodied
-	if(W.sharp || prob(effective_force*4))
+	if(W.is_sharp() || prob(effective_force*4))
 		if(!(W.atom_flags & ATOM_FLAG_NO_BLOOD))
 			W.add_blood(src)
 	else
 		return //if the weapon itself didn't get bloodied than it makes little sense for the target to be bloodied either
 
 	//getting the weapon bloodied is easier than getting the target covered in blood, so run prob() again
-	if(prob(33 + W.sharp*10))
+	if(prob(33 + W.is_sharp() * 10))
 		var/turf/location = loc
 		if(istype(location) && location.simulated)
 			location.add_blood(src)
@@ -234,7 +220,7 @@ meteor_act
 /mob/living/human/proc/projectile_hit_bloody(obj/item/projectile/P, var/effective_force, var/hit_zone, var/obj/item/organ/external/organ)
 	if(P.atom_damage_type != BRUTE || P.nodamage)
 		return
-	if(!(P.sharp || prob(effective_force*4)))
+	if(!(P.is_sharp() || prob(effective_force*4)))
 		return
 	if(prob(effective_force))
 		var/turf/location = loc
@@ -360,60 +346,6 @@ meteor_act
 		fire_act(air, temperature)
 	return FALSE
 
-//Removed the horrible safety parameter. It was only being used by ninja code anyways.
-//Now checks siemens_coefficient of the affected area by default
-/mob/living/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
-
-	if(status_flags & GODMODE)	return 0	//godmode
-
-	if(species.get_shock_vulnerability(src) == -1)
-		if(stored_shock_by_ref["\ref[src]"])
-			stored_shock_by_ref["\ref[src]"] += shock_damage
-		else
-			stored_shock_by_ref["\ref[src]"] = shock_damage
-		return
-
-	if (!def_zone)
-		def_zone = pick(BP_L_HAND, BP_R_HAND)
-
-	shock_damage = apply_shock(shock_damage, def_zone, base_siemens_coeff)
-
-	if(!shock_damage)
-		return 0
-
-	stun_effect_act(agony_amount=shock_damage, def_zone=def_zone)
-
-	playsound(loc, "sparks", 50, 1, -1)
-	if (shock_damage > 15)
-		src.visible_message(
-			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
-			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
-			"<span class='warning'>You hear a heavy electrical crack.</span>" \
-		)
-	else
-		src.visible_message(
-			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
-			"<span class='warning'>You feel a shock course through your body.</span>", \
-			"<span class='warning'>You hear a zapping sound.</span>" \
-		)
-
-	switch(shock_damage)
-		if(11 to 15)
-			SET_STATUS_MAX(src, STAT_STUN, 1)
-		if(16 to 20)
-			SET_STATUS_MAX(src, STAT_STUN, 2)
-		if(21 to 25)
-			SET_STATUS_MAX(src, STAT_WEAK, 2)
-		if(26 to 30)
-			SET_STATUS_MAX(src, STAT_WEAK, 5)
-		if(31 to INFINITY)
-			SET_STATUS_MAX(src, STAT_WEAK, 10) //This should work for now, more is really silly and makes you lay there forever
-
-	set_status(STAT_JITTER, min(shock_damage*5, 200))
-
-	spark_at(loc, amount=5, cardinal_only = TRUE)
-
-	return shock_damage
 
 /mob/living/human/explosion_act(severity)
 	..()

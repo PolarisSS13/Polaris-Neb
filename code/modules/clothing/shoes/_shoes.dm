@@ -24,7 +24,7 @@
 	var/hidden_item_max_w_class = ITEM_SIZE_SMALL
 	var/obj/item/hidden_item = null
 	var/shine = -1 // if material should apply shine overlay. Set to -1 for it to not do that
-
+	var/footprint_icon = 'icons/mob/footprints/footprints.dmi'
 	/// A multiplier applied to footstep volume.
 	var/footstep_volume_mod = 1
 	/// A multiplier applied to footstep range.
@@ -161,10 +161,6 @@
 			verbs -= /obj/item/clothing/shoes/proc/try_remove_cuffs
 			attached_cuffs = null
 	return
-
-/obj/item/clothing/shoes/get_associated_equipment_slots()
-	. = ..()
-	LAZYDISTINCTADD(., slot_shoes_str)
 
 /obj/item/clothing/shoes/set_material(var/new_material)
 	..()

@@ -407,22 +407,22 @@
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bw" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/chemical_dispenser/bar_soft/full,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bx" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/box/glasses,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "by" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/box/sinpockets,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bz" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/machinery/microwave,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
@@ -464,7 +464,7 @@
 /turf/unsimulated/floor/freezer,
 /area/map_template/ninja_dojo/dojo)
 "bF" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/chems/drinks/dry_ramen,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
@@ -494,7 +494,7 @@
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bL" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
@@ -539,7 +539,7 @@
 /turf/unsimulated/floor/carpet,
 /area/map_template/ninja_dojo/dojo)
 "bS" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/food/soylentgreen,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
@@ -560,7 +560,7 @@
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bW" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/toy/figure/wizard,
 /obj/item/radio/intercom/ninja{
 	dir = 1;
@@ -569,7 +569,7 @@
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)
 "bX" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/clothing/shoes/sandal,
 /obj/item/clothing/mask/balaclava,
 /turf/unsimulated/floor/wood,
@@ -585,7 +585,7 @@
 /turf/unsimulated/floor/freezer,
 /area/map_template/ninja_dojo/dojo)
 "ca" = (
-/obj/structure/table/woodentable,
+/obj/structure/table/wood,
 /obj/item/flame/candle,
 /turf/unsimulated/floor/wood,
 /area/map_template/ninja_dojo/dojo)

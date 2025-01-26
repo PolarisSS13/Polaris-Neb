@@ -177,12 +177,8 @@
 /obj/item/form_printer/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	return FALSE
 
-/obj/item/form_printer/afterattack(atom/target, mob/living/user, flag, params)
-
-	if(!target || !flag)
-		return
-
-	if(istype(target,/obj/structure/table))
+/obj/item/form_printer/afterattack(atom/target, mob/living/user, proximity, params)
+	if(istype(target) && !istype(target, /obj/screen) && proximity)
 		deploy_paper(get_turf(target))
 
 /obj/item/form_printer/attack_self(mob/user)
@@ -191,7 +187,6 @@
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
 	T.visible_message(SPAN_NOTICE("\The [src.loc] dispenses a sheet of crisp white paper."))
 	new /obj/item/paper(T)
-
 
 //Personal shielding for the combat module.
 /obj/item/borg/combat/shield
@@ -243,9 +238,9 @@
 	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
 	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
 
-/obj/item/inflatable_dispenser/attack_self()
+/obj/item/inflatable_dispenser/attack_self(mob/user)
 	mode = !mode
-	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
+	to_chat(user, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
 /obj/item/inflatable_dispenser/afterattack(var/atom/A, var/mob/user)
 	..(A, user)
@@ -301,7 +296,7 @@
 	if(istype(A, /obj/item/inflatable))
 		if(istype(A, /obj/item/inflatable/door))
 			if(stored_doors >= max_doors)
-				to_chat(usr, "\The [src] is full!")
+				to_chat(user, "\The [src] is full!")
 				return
 			stored_doors++
 			qdel(A)

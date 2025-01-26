@@ -13,7 +13,6 @@
 	/// multiplies melee combat damage
 	var/damage_multiplier = 1
 	var/list/worn_underwear = list()
-	var/datum/backpack_setup/backpack_setup
 	var/list/background_info = list()
 	var/obj/screen/default_attack_selector/attack_selector
 	var/icon/stand_icon = null
@@ -24,8 +23,6 @@
 	var/mob/remoteview_target = null
 	var/hand_blood_color
 	var/list/flavor_texts = list()
-	/// Are you trying not to hurt your opponent?
-	var/pulling_punches
 	/// We are a robutt.
 	var/full_prosthetic
 	/// Number of robot limbs.

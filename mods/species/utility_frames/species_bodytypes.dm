@@ -10,7 +10,7 @@
 	body_flags =        BODY_FLAG_NO_PAIN | BODY_FLAG_NO_DNA | BODY_FLAG_NO_DEFIB | BODY_FLAG_NO_STASIS
 	base_color = "#333355"
 	base_eye_color = "#00ccff"
-	material = /decl/material/solid/metal/steel
+	organ_material = /decl/material/solid/metal/steel
 	vital_organs = list(
 		BP_BRAIN,
 		BP_CELL
@@ -32,14 +32,14 @@
 	uid = "bodytype_prosthetic_utility_frame"
 
 /decl/bodytype/prosthetic/utility_frame/Initialize()
-	equip_adjust = list(
-		"[slot_l_ear_str]" =  list(
+	_equip_adjust = list(
+		(slot_l_ear_str) =  list(
 			"[NORTH]" = list( 2, 0),
 			"[EAST]"  = list( 0, 0),
 			"[SOUTH]" = list(-2, 0),
 			"[WEST]"  = list( 0, 0)
 		),
-		"[slot_r_ear_str]" =  list(
+		(slot_r_ear_str) =  list(
 			"[NORTH]" = list(-2, 0),
 			"[EAST]"  = list( 0, 0),
 			"[SOUTH]" = list( 2, 0),
@@ -49,7 +49,6 @@
 	. = ..()
 
 DEFINE_ROBOLIMB_DESIGNS(/decl/bodytype/prosthetic/utility_frame, utility_frame)
-
 /decl/bodytype/prosthetic/utility_frame/positronic
 	has_organ = list(
 		BP_BRAIN = /obj/item/organ/internal/brain/robotic/positronic,

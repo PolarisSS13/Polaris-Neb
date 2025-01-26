@@ -601,10 +601,6 @@
 /datum/codex_entry/guide/construction
 	name = "Guide to Construction"
 
-/datum/codex_entry/guide/supermatter
-	name = "Guide to Supermatter Engines"
-	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE
-
 /datum/codex_entry/guide/fusion
 	name = "Guide to Fusion Reactors"
 	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE

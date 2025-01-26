@@ -12,8 +12,12 @@
 	if(material)
 		explosion_resistance = material.explosion_resistance
 		hitsound = material.hitsound
-	if(reinf_material && reinf_material.explosion_resistance > explosion_resistance)
-		explosion_resistance = reinf_material.explosion_resistance
+	if(reinf_material)
+		reinf_icon = islist(reinf_material.icon_reinf) ? pick(reinf_material.icon_reinf) : reinf_material.icon_reinf
+		if(reinf_material.explosion_resistance > explosion_resistance)
+			explosion_resistance = reinf_material.explosion_resistance
+	else
+		reinf_icon = null
 	update_strings()
 	refresh_opacity()
 	SSradiation.resistance_cache.Remove(src)
@@ -52,7 +56,16 @@
 	. = (istype(material) && material.icon_base) || 'icons/turf/walls/solid.dmi'
 
 /turf/wall/proc/apply_reinf_overlay()
-	. = istype(reinf_material)
+	. = istype(reinf_material) && reinf_icon
+
+/// Gets the base wall colour for icon rendering. Can be overridden on wall subtypes. Not equivalent to get_color().
+/// Should only be used in places where material is known to be set, e.g. update_wall_icon().
+/turf/wall/proc/get_base_color()
+	return material.color
+
+/// Gets the reinforcement colour. Can be overridden so that some wall types don't apply paint colour to their reinforcements.
+/turf/wall/proc/get_reinf_color()
+	return paint_color || reinf_material?.color
 
 /turf/wall/proc/refresh_connections()
 	if(wall_connections && other_connections)
@@ -100,7 +113,7 @@
 
 /turf/wall/proc/update_wall_icon()
 	var/material_icon_base = get_wall_icon()
-	var/base_color = material.color
+	var/base_color = get_base_color()
 
 	var/new_icon
 	var/new_icon_state
@@ -124,17 +137,17 @@
 
 	if(apply_reinf_overlay())
 		var/image/I
-		var/reinf_color = paint_color ? paint_color : reinf_material.color
+		var/reinf_color = get_reinf_color()
 		if(construction_stage != null && construction_stage < 6)
 			I = image('icons/turf/walls/_construction_overlays.dmi', "[construction_stage]")
 			I.color = reinf_color
 			add_overlay(I)
 		else
 			if(reinf_material.use_reinf_state)
-				I = image(reinf_material.icon_reinf, reinf_material.use_reinf_state)
+				I = image(reinf_icon, reinf_material.use_reinf_state)
 				I.color = reinf_color
 			else
-				I = image(_get_wall_subicon(reinf_material.icon_reinf, wall_connections, reinf_color))
+				I = image(_get_wall_subicon(reinf_icon, wall_connections, reinf_color))
 			add_overlay(I)
 
 // Update icon on ambient light change, for shutter overlays.

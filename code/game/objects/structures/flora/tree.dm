@@ -7,7 +7,7 @@
 	density      = TRUE
 	pixel_x      = -16
 	layer        = ABOVE_HUMAN_LAYER
-	material     = /decl/material/solid/organic/wood
+	material     = /decl/material/solid/organic/wood/oak
 	w_class      = ITEM_SIZE_STRUCTURE
 	hitsound     = 'sound/effects/hit_wood.ogg'
 	snd_cut      = 'sound/effects/plants/tree_fall.ogg'
@@ -102,12 +102,21 @@
 /obj/structure/flora/tree/pine/init_appearance()
 	icon_state = "pine_[rand(1, 3)]"
 
+var/global/list/christmas_trees = list()
 /obj/structure/flora/tree/pine/xmas
 	name         = "\improper Christmas tree"
 	desc         = "O Christmas tree, O Christmas tree..."
 	icon         = 'icons/obj/flora/pinetrees.dmi'
 	icon_state   = "pine_c"
 	stump_type   = /obj/structure/flora/stump/tree/pine/xmas
+
+/obj/structure/flora/tree/pine/xmas/Initialize(ml, _mat, _reinf_mat)
+	. = ..()
+	global.christmas_trees += src
+
+/obj/structure/flora/tree/pine/xmas/Destroy()
+	global.christmas_trees -= src
+	return ..()
 
 /obj/structure/flora/tree/pine/xmas/init_appearance()
 	return //Only one possible icon

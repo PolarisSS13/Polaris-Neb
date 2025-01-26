@@ -16,7 +16,7 @@ var/global/list/flooring_cache = list()
 	var/gender = PLURAL /// "that's some grass"
 	var/icon_base
 	var/color = COLOR_WHITE
-	var/footstep_type = /decl/footsteps/blank
+	var/footstep_type = /decl/footsteps/plating
 	var/growth_value = 0
 
 	var/neighbour_type
@@ -35,11 +35,17 @@ var/global/list/flooring_cache = list()
 	/// BYOND ticks.
 	var/build_time = 0
 
+	var/drop_material_on_remove
+
 	var/descriptor
 	var/flooring_flags
 	var/remove_timer = 10
 	var/can_paint
 	var/can_engrave = TRUE
+	var/can_collect = FALSE
+
+	// Not bloody prints, but rather prints on top of the turf (snow, mud)
+	var/print_type
 
 	var/turf_light_range
 	var/turf_light_power
@@ -78,7 +84,7 @@ var/global/list/flooring_cache = list()
 	var/render_trenches = TRUE
 	var/floor_layer = TURF_LAYER
 	var/holographic = FALSE
-	var/dirt_color = "#7c5e42"
+	var/dirt_color = /decl/material/solid/soil::color
 
 	var/list/burned_states
 	var/list/broken_states
@@ -261,8 +267,9 @@ var/global/list/flooring_cache = list()
 		global.flooring_cache[cache_key] = I
 	return global.flooring_cache[cache_key]
 
-/decl/flooring/proc/on_remove()
-	return
+/decl/flooring/proc/on_flooring_remove(turf/removing_from)
+	if(force_material && drop_material_on_remove)
+		force_material.create_object(removing_from, rand(3,5))
 
 /decl/flooring/proc/get_movement_delay(var/travel_dir, var/mob/mover)
 	return movement_delay
@@ -270,9 +277,20 @@ var/global/list/flooring_cache = list()
 /decl/flooring/proc/get_movable_alpha_mask_state(atom/movable/mover)
 	return
 
+/decl/flooring/proc/handle_hand_interaction(turf/floor/floor, mob/user)
+	if(!force_material || !can_collect)
+		return FALSE
+	user.visible_message(SPAN_NOTICE("\The [user] begins scraping together some of \the [name]..."))
+	if(do_after(user, 3 SECONDS, floor) && !QDELETED(floor) && !QDELETED(user) && floor.get_topmost_flooring() == src && isnull(user.get_active_held_item()))
+		var/list/created = force_material.create_object(floor, 1)
+		user.visible_message(SPAN_NOTICE("\The [user] scrapes together [english_list(created)]."))
+		for(var/obj/item/stack/stack in created)
+			stack.add_to_stacks(user, TRUE)
+	return TRUE
+
 /decl/flooring/proc/handle_item_interaction(turf/floor/floor, mob/user, obj/item/item)
 
-	if(!istype(user) || !istype(item) || !istype(floor) || user.a_intent == I_HURT)
+	if(!istype(user) || !istype(item) || !istype(floor) || user.check_intent(I_FLAG_HARM))
 		return FALSE
 
 	if(!(IS_SCREWDRIVER(item) && (flooring_flags & TURF_REMOVE_SCREWDRIVER)) && floor.try_graffiti(user, item))
@@ -347,3 +365,35 @@ var/global/list/flooring_cache = list()
 
 /decl/flooring/proc/handle_environment_proc(turf/floor/target)
 	return PROCESS_KILL
+
+/decl/flooring/proc/handle_turf_digging(turf/floor/target)
+	return TRUE
+
+/decl/flooring/proc/turf_exited(turf/target, atom/movable/crosser, atom/new_loc)
+	return print_type && try_place_footprints(crosser, target, target, new_loc, "going")
+
+/decl/flooring/proc/turf_entered(turf/target, atom/movable/crosser, atom/old_loc)
+	return print_type && try_place_footprints(crosser, target, old_loc, target, "coming")
+
+/decl/flooring/proc/try_place_footprints(atom/movable/crosser, turf/target, turf/from_turf, turf/to_turf, use_state = "going")
+	if(!ismob(crosser) || !crosser.simulated || !isturf(from_turf) || !isturf(to_turf))
+		return FALSE
+	if(target.check_fluid_depth(FLUID_QDEL_POINT))
+		return FALSE
+	var/movement_dir = get_dir(from_turf, to_turf)
+	if(!movement_dir)
+		return FALSE
+	var/mob/walker = crosser
+	var/footprint_icon = walker.get_footprints_icon()
+	if(!footprint_icon)
+		return FALSE
+	var/obj/effect/footprints/prints = (locate() in target) || new print_type(target)
+	prints.add_footprints(crosser, footprint_icon, movement_dir, use_state)
+
+/decl/flooring/proc/turf_crossed(atom/movable/crosser)
+	return
+
+/// target is the turf that wants to know if it supports footprints
+/// contaminant is, optionally, the material of the coating that wants to be added.
+/decl/flooring/proc/can_show_coating_footprints(turf/target, decl/material/contaminant)
+	return TRUE

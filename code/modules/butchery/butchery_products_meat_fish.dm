@@ -14,8 +14,19 @@
 	backyard_grilling_announcement = "steams gently."
 	slice_path                     = /obj/item/food/sashimi
 	slice_num                      = 3
-	meat_name                      = "fish"
+	butchery_data                  = /decl/butchery_data/animal/fish
 	allergen_flags                 = ALLERGEN_FISH
+	var/oil_type                   = /decl/material/liquid/oil/fish
+	var/oil_amount                 = 2
+
+/obj/item/food/butchery/meat/fish/oily
+	nutriment_amt                  = 4
+	oil_amount                     = 4
+
+/obj/item/food/butchery/meat/fish/populate_reagents()
+	. = ..()
+	if(oil_type && oil_amount > 0)
+		add_to_reagents(oil_type, oil_amount)
 
 /obj/item/food/butchery/meat/fish/get_meat_icons()
 	var/static/list/meat_icons = list(
@@ -44,7 +55,7 @@
 	backyard_grilling_product      = null
 	backyard_grilling_announcement = null
 	slice_path                     = null
-	slice_num                      = null
+	slice_num                      = 0 // null means autoset, 0 means none
 	material_alteration            = MAT_FLAG_ALTERATION_NONE
 	cooked_food                    = FOOD_COOKED
 
@@ -52,36 +63,36 @@
 	. = ..()
 	SetName("grilled [name]")
 
-/obj/item/food/butchery/meat/fish/get_meat_icons()
+/obj/item/food/butchery/meat/fish/grilled/get_meat_icons()
 	var/static/list/meat_icons = list(
 		'icons/obj/food/butchery/fish_grilled.dmi'
 	)
 	return meat_icons
 
 /obj/item/food/butchery/meat/fish/poison
-	meat_name = "space carp"
+	butchery_data = /decl/butchery_data/animal/fish/space_carp
 
 /obj/item/food/butchery/meat/fish/poison/populate_reagents()
 	. = ..()
 	add_to_reagents(/decl/material/liquid/carpotoxin, 6)
 
 /obj/item/food/butchery/meat/fish/shark
-	meat_name = "shark"
+	butchery_data = /decl/butchery_data/animal/fish/shark
 
 /obj/item/food/butchery/meat/fish/carp
-	meat_name = "carp"
+	butchery_data = /decl/butchery_data/animal/fish/carp
 
 /obj/item/food/butchery/meat/fish/octopus
-	meat_name = "tako"
+	butchery_data = /decl/butchery_data/animal/fish/mollusc/octopus
 
 /obj/item/food/butchery/meat/fish/mollusc
 	name           = "meat"
 	desc           = "Some slimy meat from clams or molluscs."
-	meat_name      = "mollusc"
+	butchery_data  = /decl/butchery_data/animal/fish/mollusc
 	nutriment_type = /decl/material/liquid/nutriment/slime_meat
 
 /obj/item/food/butchery/meat/fish/mollusc/clam
-	meat_name = "clam"
+	butchery_data  = /decl/butchery_data/animal/fish/mollusc/clam
 
 /obj/item/food/butchery/meat/fish/mollusc/barnacle
-	meat_name = "barnacle"
+	butchery_data  = /decl/butchery_data/animal/fish/mollusc/barnacle

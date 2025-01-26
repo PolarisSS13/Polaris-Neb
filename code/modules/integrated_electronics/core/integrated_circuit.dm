@@ -53,7 +53,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 /obj/item/integrated_circuit/proc/any_examine(mob/user)
 	return
 
-/obj/item/integrated_circuit/proc/attackby_react(var/atom/movable/A,mob/user)
+/obj/item/integrated_circuit/proc/attackby_react(var/atom/movable/A, mob/user, decl/intent/intent)
 	return
 
 /obj/item/integrated_circuit/proc/sense(var/atom/movable/A,mob/user,prox)

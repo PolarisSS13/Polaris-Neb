@@ -89,7 +89,7 @@
 		if(laser)
 			created_wound = createwound(LASER, burn)
 			if(prob(40))
-				owner.IgniteMob()
+				owner.ignite_fire()
 		else
 			created_wound = createwound(BURN, burn)
 

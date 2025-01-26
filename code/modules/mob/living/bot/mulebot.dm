@@ -172,18 +172,18 @@
 	if(target == src.loc)
 		custom_emote(2, "makes a chiming sound.")
 		playsound(loc, 'sound/machines/chime.ogg', 50, 0)
-		UnarmedAttack(target)
+		UnarmedAttack(target, TRUE)
 		resetTarget()
 		if(auto_return && home && (loc != home))
 			target = home
 			targetName = "Home"
 
-/mob/living/bot/mulebot/confirmTarget()
+/mob/living/bot/mulebot/confirmTarget(atom/target)
 	return 1
 
 /mob/living/bot/mulebot/calcTargetPath()
 	..()
-	if(!target_path.len && target != home) // I presume that target is not null
+	if(!length(target_path) && target != home) // I presume that target is not null
 		resetTarget()
 		target = home
 		targetName = "Home"

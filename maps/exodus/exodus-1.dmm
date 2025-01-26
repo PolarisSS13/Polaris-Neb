@@ -430,7 +430,7 @@
 /obj/item/deck/cards{
 	pixel_y = 4
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bn" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -441,7 +441,7 @@
 "bo" = (
 /obj/structure/table/gamblingtable,
 /obj/random/coin,
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bp" = (
 /obj/random/obstruction,
@@ -464,7 +464,7 @@
 /obj/structure/bed/chair/wood/wings{
 	dir = 1
 	},
-/turf/floor/wood,
+/turf/floor/laminate,
 /area/exodus/maintenance/sub/port)
 "bt" = (
 /obj/structure/bed/chair/wood/wings{
@@ -2424,7 +2424,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/sub/central)
 "gJ" = (
-/obj/item/stack/material/rods,
+/obj/item/stack/material/rods/mapped/steel,
 /turf/space,
 /area/space)
 "gK" = (
@@ -3496,8 +3496,7 @@
 	department = "Atmospherics";
 	name = "Atmos RC";
 	pixel_y = 32;
-	dir = 1;
-
+	dir = 1
 	},
 /obj/structure/table/steel,
 /turf/floor/tiled/steel_grid,
@@ -5467,6 +5466,10 @@
 	},
 /turf/floor/lino,
 /area/exodus/maintenance/telecomms)
+"rd" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space,
+/area/space)
 "rj" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/camera/network/command{
@@ -16599,7 +16602,7 @@ aa
 aa
 aa
 aa
-aa
+rd
 aa
 aa
 aa
@@ -44175,7 +44178,7 @@ aa
 aa
 aa
 aa
-aa
+rd
 aa
 aa
 aa
@@ -49205,7 +49208,7 @@ aa
 aa
 aa
 aa
-aa
+rd
 aa
 aa
 aa

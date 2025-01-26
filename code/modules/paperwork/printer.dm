@@ -63,15 +63,13 @@
 		if(toner)
 			to_chat(user, SPAN_WARNING("There is already \a [W] in \the [src]!"))
 			return TRUE
-		else
-			return insert_toner(W, user)
+		return insert_toner(W, user)
 
 	else if(istype(W, /obj/item/paper) || istype(W, /obj/item/paper_bundle))
 		if(paper_left >= paper_max)
 			to_chat(user, SPAN_WARNING("There is no more room for paper in \the [src]!"))
 			return TRUE
-		else
-			return insert_paper(W, user)
+		return insert_paper(W, user)
 	. = ..()
 
 /obj/item/stock_parts/printer/attack_hand(mob/user)
@@ -425,6 +423,7 @@
 /decl/interaction_handler/empty/stock_parts_printer
 	name = "Empty Paper Bin"
 	expected_target_type = /obj/item/stock_parts/printer
+	examine_desc         = "empty $TARGET_THEM$"
 
 /decl/interaction_handler/empty/stock_parts_printer/is_possible(obj/item/stock_parts/printer/target, mob/user, obj/item/prop)
 	return (target.get_amount_paper() > 0) && ..()

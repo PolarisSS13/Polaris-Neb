@@ -1,10 +1,10 @@
 /datum/unit_test/movement
 	name = "MOVEMENT template"
-	template = /datum/unit_test/movement
+	abstract_type = /datum/unit_test/movement
 	async = 0
 
 /datum/unit_test/movement/force_move_shall_trigger_crossed_when_entering_turf
-	name = "MOVEMENT - Force Move Shall Trigger Crossed When Entering Turf"
+	name = "MOVEMENT: Force Move Shall Trigger Crossed When Entering Turf"
 
 /datum/unit_test/movement/force_move_shall_trigger_crossed_when_entering_turf/start_test()
 	var/turf/start = get_safe_turf()
@@ -27,7 +27,7 @@
 	return TRUE
 
 /datum/unit_test/movement/force_move_shall_trigger_entered
-	name = "MOVEMENT - Force Move Shall Trigger Entered"
+	name = "MOVEMENT: Force Move Shall Trigger Entered"
 
 /datum/unit_test/movement/force_move_shall_trigger_entered/start_test()
 	var/turf/start = get_safe_turf()

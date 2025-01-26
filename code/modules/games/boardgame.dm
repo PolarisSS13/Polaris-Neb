@@ -3,7 +3,7 @@
 	desc = "A standard 16\" checkerboard. Well used." //Goddamn imperial system.
 	icon = 'icons/obj/pieces.dmi'
 	icon_state = "board"
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 	var/num = 0
 	var/board_icons = list()
@@ -101,7 +101,7 @@
 	if(selected >= 0 && !isobserver(user))
 		dat += "<br><A href='byond://?src=\ref[src];remove=0'>Remove Selected Piece</A>"
 	show_browser(user, jointext(dat, null), "window=boardgame;size=430x500") // 50px * 8 squares + 30 margin
-	onclose(usr, "boardgame")
+	onclose(user, "boardgame")
 
 /obj/item/board/Topic(href, href_list)
 	if(!usr.Adjacent(src))

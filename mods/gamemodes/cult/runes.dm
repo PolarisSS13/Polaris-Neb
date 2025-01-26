@@ -2,7 +2,7 @@
 	name = "rune"
 	desc = "A strange collection of symbols drawn in blood."
 	anchored = TRUE
-	icon = 'icons/effects/uristrunes.dmi'
+	icon = 'mods/gamemodes/cult/icons/runes.dmi'
 	icon_state = "blank"
 	layer = RUNE_LAYER
 
@@ -24,7 +24,7 @@
 	if(cult.rune_strokes[type])
 		var/list/f = cult.rune_strokes[type]
 		for(var/i in f)
-			var/image/t = image('icons/effects/uristrunes.dmi', "rune-[i]")
+			var/image/t = image(icon, "rune-[i]")
 			overlays += t
 	else
 		var/list/q = list(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
@@ -33,7 +33,7 @@
 			var/j = pick(q)
 			f += j
 			q -= f
-			var/image/t = image('icons/effects/uristrunes.dmi', "rune-[j]")
+			var/image/t = image(icon, "rune-[j]")
 			overlays += t
 		cult.rune_strokes[type] = f.Copy()
 	color = bcolor
@@ -322,7 +322,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] touches \the [src] with \the [I], and it disappears."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [I]."))
 		qdel(src)
 		return TRUE
-	var/force = I.get_attack_force(user)
+	var/force = I.expend_attack_force(user)
 	if(force)
 		user.visible_message(SPAN_NOTICE("\The [user] hits \the [src] with \the [I]."), SPAN_NOTICE("You hit \the [src] with \the [I]."))
 		take_damage(force, I.atom_damage_type)
@@ -480,9 +480,8 @@
 		var/list/mob/living/casters = get_cultists()
 		if(casters.len < 3)
 			break
-		//T.turf_animation('icons/effects/effects.dmi', "rune_sac")
-		victim.fire_stacks = max(2, victim.fire_stacks)
-		victim.IgniteMob()
+		victim.set_fire_intensity(max(2, victim.get_fire_intensity()))
+		victim.ignite_fire()
 		var/dam_amt = 2 + length(casters)
 		victim.take_organ_damage(dam_amt, dam_amt) // This is to speed up the process and also damage mobs that don't take damage from being on fire, e.g. borgs
 		if(ishuman(victim))
@@ -505,9 +504,8 @@
 		to_chat(victim, SPAN_OCCULT("The Geometer of Blood claims your body."))
 		victim.dust()
 	if(victim)
-		victim.ExtinguishMob() // Technically allows them to put the fire out by sacrificing them and stopping immediately, but I don't think it'd have much effect
+		victim.extinguish_fire() // Technically allows them to put the fire out by sacrificing them and stopping immediately, but I don't think it'd have much effect
 		victim = null
-
 
 /obj/effect/rune/drain
 	cultname = "blood drain"

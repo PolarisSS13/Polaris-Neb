@@ -53,7 +53,7 @@
 /obj/item/knife/folding/swiss/attack_self(mob/user)
 
 	var/choice
-	if(user.a_intent != I_HELP && ((SWISSKNF_LBLADE in tools) || (SWISSKNF_SBLADE in tools)) && active_tool == SWISSKNF_CLOSED)
+	if(!user.check_intent(I_FLAG_HELP) && ((SWISSKNF_LBLADE in tools) || (SWISSKNF_SBLADE in tools)) && active_tool == SWISSKNF_CLOSED)
 		open = TRUE
 		if(SWISSKNF_LBLADE in tools)
 			choice = SWISSKNF_LBLADE
@@ -102,8 +102,8 @@
 		else
 			siemens_coefficient = initial(siemens_coefficient)
 	else
-		edge = initial(edge)
-		sharp = initial(sharp)
+		set_edge(initial(edge))
+		set_sharp(initial(sharp))
 		attack_verb = closed_attack_verbs
 		siemens_coefficient = initial(siemens_coefficient)
 

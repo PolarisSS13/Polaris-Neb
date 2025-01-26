@@ -73,16 +73,16 @@
 		to_chat(user, SPAN_WARNING("You need an empty hand to draw \the [holstered]!"))
 		return 1
 	var/using_intent_preference = user.client ? user.client.get_preference_value(/datum/client_preference/holster_on_intent) == PREF_YES : FALSE
-	if(avoid_intent || (using_intent_preference && user.a_intent != I_HELP))
+	if(avoid_intent || (using_intent_preference && !user.check_intent(I_FLAG_HELP)))
 		var/sound_vol = 25
-		if(user.a_intent == I_HURT)
+		if(user.check_intent(I_FLAG_HARM))
 			sound_vol = 50
 			if(istype(holstered, /obj/item/gun))
 				var/obj/item/gun/G = holstered
 				G.check_accidents(user)
 				if(G.safety() && !user.skill_fail_prob(SKILL_WEAPONS, 100, SKILL_EXPERT, 0.5)) //Experienced shooter will disable safety before shooting.
 					G.toggle_safety(user)
-			usr.visible_message(
+			user.visible_message(
 				"<span class='danger'>\The [user] draws \the [holstered], ready to go!</span>",
 				"<span class='warning'>You draw \the [holstered], ready to go!</span>"
 				)
@@ -111,7 +111,7 @@
 		to_chat(user, "It is empty.")
 
 /datum/extension/holster/proc/check_holster()
-	if(holstered.loc != storage)
+	if(holstered.loc != storage.holder)
 		clear_holster()
 
 /atom/proc/holster_verb(var/holster_name in get_holsters())
@@ -155,3 +155,62 @@
 			for(var/i = 1 to holster_accessories.len)
 				var/holster_name = "[accessory_name] [i]"
 				.[holster_name] = get_extension(holster_accessories[i], /datum/extension/holster)
+
+// Basic unholster for an item at the top level.
+/decl/interaction_handler/unholster
+	name = "Unholster"
+
+/decl/interaction_handler/unholster/is_possible(atom/target, mob/user, obj/item/prop)
+	. = ..() && !prop
+	if(.)
+		var/datum/extension/holster/holster = get_extension(target, /datum/extension/holster)
+		return !!holster?.holstered
+
+/decl/interaction_handler/unholster/invoked(atom/target, mob/user, obj/item/prop)
+	var/datum/extension/holster/holster = get_extension(target, /datum/extension/holster)
+	return holster?.unholster(user, avoid_intent = TRUE)
+
+// Interaction procs for getting this interaction for basic items.
+/obj/item/get_quick_interaction_handler(mob/user)
+	if(!(. = ..()))
+		var/datum/extension/holster/holster = get_extension(src, /datum/extension/holster)
+		if(holster?.holstered)
+			return GET_DECL(/decl/interaction_handler/unholster)
+
+// More complex version of the above that iterates clothing accessories.
+/decl/interaction_handler/unholster_accessory
+	name = "Unholster From Accessory"
+	expected_target_type = /obj/item/clothing
+
+/decl/interaction_handler/unholster_accessory/is_possible(atom/target, mob/user, obj/item/prop)
+	. = ..() && !prop
+	if(.)
+		var/obj/item/clothing/clothes = target
+		for(var/obj/item/thing in clothes.accessories)
+			var/datum/extension/holster/holster = get_extension(thing, /datum/extension/holster)
+			if(holster?.holstered)
+				return TRUE
+		return FALSE
+
+/decl/interaction_handler/unholster_accessory/invoked(atom/target, mob/user, obj/item/prop)
+	var/obj/item/clothing/clothes = target
+	for(var/obj/item/thing in clothes.accessories)
+		var/datum/extension/holster/holster = get_extension(thing, /datum/extension/holster)
+		if(holster?.unholster(user, avoid_intent = TRUE))
+			return TRUE
+	return FALSE
+
+// Interaction procs for getting this interaction for clothing accessories.
+/obj/item/clothing/get_alt_interactions(mob/user)
+	. = ..()
+	for(var/obj/item/thing in accessories)
+		var/datum/extension/holster/holster = get_extension(thing, /datum/extension/holster)
+		if(holster?.holstered)
+			LAZYADD(., GET_DECL(/decl/interaction_handler/unholster_accessory))
+
+/obj/item/clothing/get_quick_interaction_handler(mob/user)
+	if(!(. = ..()))
+		for(var/obj/item/thing in accessories)
+			var/datum/extension/holster/holster = get_extension(thing, /datum/extension/holster)
+			if(holster?.holstered)
+				return GET_DECL(/decl/interaction_handler/unholster_accessory)

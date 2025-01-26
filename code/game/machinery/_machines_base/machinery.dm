@@ -234,6 +234,8 @@ Class Procs:
 /obj/machinery/CouldUseTopic(var/mob/user)
 	..()
 	user.set_machine(src)
+	if(clicksound && isliving(user))
+		playsound(src, clicksound, clickvol)
 
 /obj/machinery/CouldNotUseTopic(var/mob/user)
 	user.unset_machine()
@@ -391,11 +393,6 @@ Class Procs:
 /datum/proc/remove_visual(mob/M)
 	return
 
-/obj/machinery/CouldUseTopic(var/mob/user)
-	..()
-	if(clicksound && isliving(user))
-		playsound(src, clicksound, clickvol)
-
 /obj/machinery/proc/display_parts(mob/user)
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
 	for(var/obj/item/C in component_parts)
@@ -433,6 +430,8 @@ Class Procs:
 			var/obj/item/fake_thing = type
 			parts += "[num2text(missing[type])] [initial(fake_thing.name)]"
 		to_chat(user, "\The [src] is missing [english_list(parts)], rendering it inoperable.")
+	for(var/obj/item/stock_parts/part in component_parts)
+		part.on_machine_examined(user)
 
 // This is really pretty crap and should be overridden for specific machines.
 /obj/machinery/fluid_act(var/datum/reagents/fluids)

@@ -178,7 +178,7 @@ What is the naming convention for planes or layers?
 #define ABOVE_LIGHTING_PLANE     4 // laser beams, etc. that shouldn't be affected by darkness
   #define ABOVE_LIGHTING_LAYER     1
   #define BEAM_PROJECTILE_LAYER    2
-  #define SUPERMATTER_WALL_LAYER   3
+  #define SUBSPACE_WALL_LAYER      3
   #define OBFUSCATION_LAYER        4
 
 #define FULLSCREEN_PLANE         5 // for fullscreen overlays that do not cover the hud.

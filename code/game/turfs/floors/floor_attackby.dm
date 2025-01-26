@@ -1,10 +1,14 @@
 /turf/floor/attack_hand(mob/user)
-	if(!ishuman(user))
-		return ..()
-	var/mob/living/human/H = user
-	var/obj/item/hand = GET_EXTERNAL_ORGAN(H, H.get_active_held_item_slot())
-	if(hand && try_graffiti(H, hand))
+
+	// Collect snow or mud.
+	var/decl/flooring/flooring = get_topmost_flooring()
+	if(flooring?.handle_hand_interaction(src, user))
 		return TRUE
+
+	var/obj/item/hand = GET_EXTERNAL_ORGAN(user, user.get_active_held_item_slot())
+	if(hand && try_graffiti(user, hand))
+		return TRUE
+
 	return ..()
 
 /turf/floor/attackby(var/obj/item/used_item, var/mob/user)
@@ -24,7 +28,7 @@
 	return ..()
 
 /turf/floor/proc/try_build_catwalk(var/obj/item/used_item, var/mob/user)
-	if(!(locate(/obj/structure/catwalk) in src) && istype(used_item, /obj/item/stack/material/rods))
+	if(istype(used_item, /obj/item/stack/material/rods) && !get_supporting_platform())
 		var/obj/item/stack/material/rods/R = used_item
 		if (R.use(2))
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
@@ -73,8 +77,8 @@
 	if((istype(flooring) && flooring.constructed) || !istype(used_item) || !istype(user))
 		return FALSE
 
-	flooring = get_base_flooring()
-	if(istype(flooring) && flooring.constructed)
+	var/decl/flooring/base_flooring = get_base_flooring()
+	if(istype(base_flooring) && base_flooring.constructed)
 		return FALSE
 
 	if(!istype(used_item, /obj/item/stack/material/ore) && !istype(used_item, /obj/item/stack/material/lump))
@@ -84,11 +88,11 @@
 		to_chat(user, SPAN_WARNING("\The [src] is flush with ground level and cannot be backfilled."))
 		return TRUE
 
-	if(!used_item.material?.can_backfill_turf_type)
+	if(!used_item.material?.can_backfill_floor_type)
 		to_chat(user, SPAN_WARNING("You cannot use \the [used_item] to backfill \the [src]."))
 		return TRUE
 
-	var/can_backfill = islist(used_item.material.can_backfill_turf_type) ? is_type_in_list(src, used_item.material.can_backfill_turf_type) : istype(src, used_item.material.can_backfill_turf_type)
+	var/can_backfill = islist(used_item.material.can_backfill_floor_type) ? is_type_in_list(flooring, used_item.material.can_backfill_floor_type) : istype(flooring, used_item.material.can_backfill_floor_type)
 	if(!can_backfill)
 		to_chat(user, SPAN_WARNING("You cannot use \the [used_item] to backfill \the [src]."))
 		return TRUE

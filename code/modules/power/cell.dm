@@ -85,7 +85,8 @@
 	to_chat(user, "The charge meter reads [round(src.percent(), 0.1)]%.")
 
 /obj/item/cell/emp_act(severity)
-	//remove this once emp changes on dev are merged in
+	// remove this if EMPs are ever rebalanced so that they don't instantly drain borg cells
+	// todo: containers (partially) shielding contents?
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
 		severity *= R.cell_emp_mult

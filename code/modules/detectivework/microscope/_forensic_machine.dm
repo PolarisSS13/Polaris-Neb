@@ -42,10 +42,10 @@
 	return res + ..()
 
 /obj/machinery/forensic/attackby(obj/item/W, mob/user)
-	if(component_attackby(W, user))
-		return TRUE
+	if((. = component_attackby(W, user)))
+		return
 
-	if(user?.a_intent == I_HURT)
+	if(user?.check_intent(I_FLAG_HARM))
 		return ..() // bash, bash!
 
 	if(sample)
@@ -111,7 +111,7 @@
 
 /obj/machinery/forensic/handle_mouse_drop(atom/over, mob/user, params)
 	if(user == over)
-		remove_sample(usr)
+		remove_sample(user)
 		return TRUE
 	. = ..()
 
@@ -122,7 +122,8 @@
 /decl/interaction_handler/forensics_remove_sample
 	name = "Remove Sample"
 	expected_target_type = /obj/machinery/forensic
+	examine_desc = "remove a sample"
 
 /decl/interaction_handler/forensics_remove_sample/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/forensic/F = target
-	F.remove_sample(usr)
+	F.remove_sample(user)

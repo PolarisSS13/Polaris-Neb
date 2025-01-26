@@ -1,14 +1,12 @@
-var/global/datum/matchmaker/matchmaker = new()
+/decl/modpack/matchmaking/on_roundstart()
+	do_matchmaking()
 
-/hook/roundstart/proc/matchmaking()
-	matchmaker.do_matchmaking()
-	return TRUE
-
-/datum/matchmaker/matchmaker/New()
+// It doesn't really matter when this registers during init as long as it's before roundstart.
+/decl/modpack/matchmaking/post_initialize()
 	. = ..()
 	events_repository.register_global(/decl/observ/player_latejoin, src, PROC_REF(matchmake_latejoiner))
 
-/datum/matchmaker/proc/matchmake_latejoiner(mob/living/character, datum/job/job)
+/decl/modpack/matchmaking/proc/matchmake_latejoiner(mob/living/character, datum/job/job)
 	if(character.mind && character.client?.prefs.relations.len)
 		for(var/T in character.client.prefs.relations)
 			var/TT = relation_types[T]
@@ -30,17 +28,17 @@ var/global/datum/matchmaker/matchmaker = new()
 	QDEL_NULL_LIST(known_connections)
 	. = ..()
 
-/datum/matchmaker
+/decl/modpack/matchmaking
 	var/list/relation_types = list()
 	var/list/relations = list()
 
-/datum/matchmaker/New()
-	..()
+/decl/modpack/matchmaking/Initialize()
+	. = ..()
 	for(var/T in subtypesof(/datum/relation/))
 		var/datum/relation/R = T
 		relation_types[initial(R.name)] = T
 
-/datum/matchmaker/proc/do_matchmaking()
+/decl/modpack/matchmaking/proc/do_matchmaking()
 	var/list/to_warn = list()
 	for(var/datum/relation/R in relations)
 		if(R.other)
@@ -51,13 +49,13 @@ var/global/datum/matchmaker/matchmaker = new()
 	for(var/mob/M in to_warn)
 		to_chat(M,"<span class='warning'>You have new connections. Use \"<a href='byond://?src=\ref[M];show_relationship_info=1'>See Relationship Info</a>\" to view and finalize them.</span>")
 
-/datum/matchmaker/proc/get_relationships(datum/mind/M, finalized_only)
+/decl/modpack/matchmaking/proc/get_relationships(datum/mind/M, finalized_only)
 	. = list()
 	for(var/datum/relation/R in relations)
 		if(R.holder == M && R.other && (R.finalized || !finalized_only))
 			. += R
 
-/datum/matchmaker/proc/get_relationships_between(datum/mind/holder, datum/mind/target, finalized_only)
+/decl/modpack/matchmaking/proc/get_relationships_between(datum/mind/holder, datum/mind/target, finalized_only)
 	. = list()
 	for(var/datum/relation/R in relations)
 		if(R.holder == holder && R.other && R.other.holder == target && (R.finalized || !finalized_only))
@@ -68,6 +66,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		return
 	if(!source.mind || !user.mind || source.name != source.real_name)
 		return
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	if(!length(matchmaker.get_relationships_between(user.mind, source.mind, TRUE)))
 		return
 	return "<br><span class='notice'>You know them. <a href='byond://?src=\ref[src];show_relations=1'>More...</a></span><br>"
@@ -89,10 +88,12 @@ var/global/datum/matchmaker/matchmaker = new()
 	..()
 	if(!can_connect_to)
 		can_connect_to = list(type)
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	matchmaker.relations += src
 
 /datum/relation/proc/get_candidates()
 	.= list()
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	for(var/datum/relation/R in matchmaker.relations)
 		if(!valid_candidate(R.holder) || !can_connect(R))
 			continue
@@ -112,6 +113,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	return TRUE
 
 /datum/relation/proc/can_connect(var/datum/relation/R)
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	for(var/datum/relation/D in matchmaker.relations) //have to check all connections between us and them
 		if(D.holder == R.holder && D.other && D.other.holder == holder)
 			if(D.type in incompatible)
@@ -141,6 +143,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	to_chat(holder.current,"<span class='warning'>Your connection with [other.holder] is no more.</span>")
 	to_chat(other.holder.current,"<span class='warning'>Your connection with [holder] is no more.</span>")
 	other.other = null
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	matchmaker.relations -= other
 	matchmaker.relations -= src
 	qdel(other)
@@ -187,6 +190,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	set desc = "See what connections between people you know of."
 	set category = "IC"
 
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	var/list/relations = matchmaker.get_relationships(mind)
 	var/list/dat = list()
 	var/editable = 0
@@ -221,6 +225,7 @@ var/global/datum/matchmaker/matchmaker = new()
 /mob/living/proc/see_relationship_info_with(var/mob/living/other)
 	if(!other.mind)
 		return
+	var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 	var/list/relations = matchmaker.get_relationships(mind,other.mind,TRUE)
 	var/list/dat = list("<h2>[other]</h2>")
 	if(mind.gen_relations_info)
@@ -268,11 +273,12 @@ var/global/datum/matchmaker/matchmaker = new()
 		var/ok = "Close anyway"
 		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
 		if(ok == "Close anyway")
+			var/decl/modpack/matchmaking/matchmaker = IMPLIED_DECL
 			var/list/relations = matchmaker.get_relationships(mind)
 			for(var/datum/relation/R in relations)
 				R.finalize()
-			show_browser(usr,null, "window=relations")
+			show_browser(src,null, "window=relations")
 		else
-			show_browser(usr,null, "window=relations")
+			show_browser(src,null, "window=relations")
 		return TOPIC_HANDLED
 	return ..()

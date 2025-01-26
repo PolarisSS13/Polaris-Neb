@@ -36,7 +36,7 @@
 	if(!..())
 		return 0
 
-	usr.visible_message("<b>[src]</b> points to <a href='byond://?src=\ref[A];look_at_me=1'>[A]</a>")
+	visible_message("<b>[src]</b> points to <a href='byond://?src=\ref[A];look_at_me=1'>[A]</a>")
 	return 1
 
 /*one proc, four uses
@@ -62,7 +62,7 @@ default behaviour is:
 		if(mob_bump_flag & context_flags)
 			return 1
 		else
-			return ((a_intent == I_HELP && swapped.a_intent == I_HELP) && swapped.can_move_mob(src, swapping, 1))
+			return ((check_intent(I_FLAG_HELP) && swapped.check_intent(I_FLAG_HELP)) && swapped.can_move_mob(src, swapping, 1))
 
 /mob/living/canface()
 	if(stat)
@@ -107,7 +107,7 @@ default behaviour is:
 			if(src.restrained())
 				now_pushing = 0
 				return
-			if(tmob.a_intent != I_HELP)
+			if(!tmob.check_intent(I_FLAG_HELP))
 				for(var/obj/item/shield/riot/shield in tmob.get_held_items())
 					if(prob(99))
 						now_pushing = 0
@@ -176,7 +176,7 @@ default behaviour is:
 	if(tmob.buckled || buckled || tmob.anchored)
 		return 0
 	//BubbleWrap: people in handcuffs are always switched around as if they were on 'help' intent to prevent a person being pulled from being seperated from their puller
-	if(!(tmob.mob_always_swap || (tmob.a_intent == I_HELP || tmob.restrained()) && (a_intent == I_HELP || src.restrained())))
+	if(!(tmob.mob_always_swap || (tmob.check_intent(I_FLAG_HELP) || tmob.restrained()) && (check_intent(I_FLAG_HELP) || src.restrained())))
 		return 0
 	if(!tmob.MayMove(src) || incapacitated())
 		return 0
@@ -312,8 +312,8 @@ default behaviour is:
 	BITSET(hud_updateflag, HEALTH_HUD)
 	BITSET(hud_updateflag, STATUS_HUD)
 	BITSET(hud_updateflag, LIFE_HUD)
-	ExtinguishMob()
-	fire_stacks = 0
+	extinguish_fire()
+	set_fire_intensity(0)
 	var/obj/item/cuffs = get_equipped_item(slot_handcuffed_str)
 	if (cuffs)
 		try_unequip(cuffs, get_turf(src))
@@ -406,7 +406,7 @@ default behaviour is:
 /mob/living/proc/update_damage_overlays(update_icons = TRUE)
 
 	// first check whether something actually changed about damage appearance
-	var/damage_appearance = ""
+	var/damage_appearance = get_overlay_state_modifier() || ""
 	for(var/obj/item/organ/external/O in get_external_organs())
 		damage_appearance += O.damage_state || "00"
 
@@ -426,7 +426,7 @@ default behaviour is:
 			continue
 		var/icon/DI
 		var/use_colour = (BP_IS_PROSTHETIC(O) ? SYNTH_BLOOD_COLOR : O.species.get_species_blood_color(src))
-		var/cache_index = "[O.damage_state]/[O.bodytype.type]/[O.icon_state]/[use_colour]/[O.species.name]"
+		var/cache_index = "[O.damage_state]/[O.bodytype.uid]/[O.icon_state]/[use_colour]/[O.species.name]"
 		if(!(cache_index in damage_icon_parts))
 			var/damage_overlay_icon = O.bodytype.get_damage_overlays(src)
 			if(check_state_in_icon(O.damage_state, damage_overlay_icon))
@@ -551,8 +551,8 @@ default behaviour is:
 			spawn() escape_buckle()
 		return TRUE
 	//drop && roll
-	else if(on_fire)
-		fire_stacks = max(0, fire_stacks-1.2)
+	else if(is_on_fire())
+		set_fire_intensity(max(0, get_fire_intensity()-1.2))
 		SET_STATUS_MAX(src, STAT_WEAK, 3)
 		spin(32,2)
 		var/decl/pronouns/pronouns = get_pronouns()
@@ -561,12 +561,12 @@ default behaviour is:
 			SPAN_NOTICE("You stop, drop, and roll!")
 		)
 		sleep(3 SECONDS)
-		if(fire_stacks <= 0)
+		if(get_fire_intensity() <= 0)
 			visible_message(
 				SPAN_NOTICE("\The [src] successfully extinguishes [pronouns.him][pronouns.self]!"),
 				SPAN_NOTICE("You extinguish yourself.")
 			)
-			ExtinguishMob()
+			extinguish_fire()
 		return TRUE
 
 	//Breaking out of a structure?
@@ -639,9 +639,9 @@ default behaviour is:
 /mob/living/verb/rest_verb()
 	set name = "Rest"
 	set category = "IC"
-	lay_down()
+	lay_down(block_posture = /decl/posture/sitting)
 
-/mob/living/verb/lay_down()
+/mob/living/verb/lay_down(block_posture as null)
 	set name = "Change Posture"
 	set category = "IC"
 
@@ -650,6 +650,15 @@ default behaviour is:
 		return
 
 	var/list/selectable_postures = get_selectable_postures()
+
+	if(block_posture)
+		for(var/decl/posture/selectable_posture in selectable_postures)
+			if(islist(block_posture))
+				if(is_type_in_list(selectable_posture, block_posture))
+					selectable_postures -= selectable_posture
+			else if(istype(selectable_posture, block_posture))
+				selectable_postures -= selectable_posture
+
 	if(!length(selectable_postures))
 		return
 
@@ -657,7 +666,7 @@ default behaviour is:
 	if(length(selectable_postures) == 1)
 		selected_posture = selectable_postures[1]
 	else
-		selected_posture = input(usr, "Which posture do you wish to adopt?", "Change Posture", current_posture) as null|anything in selectable_postures
+		selected_posture = input(src, "Which posture do you wish to adopt?", "Change Posture", current_posture) as null|anything in selectable_postures
 		if(!selected_posture || length(get_available_postures()) <= 1 || incapacitated(INCAPACITATION_KNOCKOUT) || !canClick())
 			return
 		if(current_posture == selected_posture || !(selected_posture in get_selectable_postures()))
@@ -685,7 +694,14 @@ default behaviour is:
 /mob/living/proc/has_brain()
 	return TRUE
 
-/mob/living/proc/slip(var/slipped_on, stun_duration = 8)
+// We are jumping, levitating or being thrown.
+/mob/living/immune_to_floor_hazards()
+	. = ..() || is_floating
+
+/mob/living/proc/slip(slipped_on, stun_duration = 8)
+
+	if(immune_to_floor_hazards())
+		return FALSE
 
 	var/decl/species/my_species = get_species()
 	if(my_species?.check_no_slip(src))
@@ -848,13 +864,18 @@ default behaviour is:
 
 /mob/living/fluid_act(var/datum/reagents/fluids)
 	..()
-	if(QDELETED(src) || !fluids?.total_volume)
+	if(QDELETED(src) || fluids?.total_volume < FLUID_PUDDLE)
 		return
 	fluids.touch_mob(src)
-	if(QDELETED(src) || !fluids.total_volume)
+	if(QDELETED(src) || fluids?.total_volume < FLUID_PUDDLE)
 		return
+	var/on_turf = fluids.my_atom == get_turf(src)
 	for(var/atom/movable/A as anything in get_equipped_items(TRUE))
 		if(!A.simulated)
+			continue
+		// if we're being affected by reagent fluids, items check if they're submerged
+		// todo: i don't like how this works, it feels hacky. maybe separate coating and submersion somehow and make this only checked for submersion
+		if(on_turf && !A.submerged())
 			continue
 		A.fluid_act(fluids)
 		if(QDELETED(src) || !fluids.total_volume)
@@ -920,7 +941,7 @@ default behaviour is:
 	nutrition = clamp(amt, 0, get_max_nutrition())
 
 /mob/living/proc/get_nutrition()
-	return nutrition
+	return isSynthetic() ? get_max_nutrition() : nutrition
 
 /mob/living/proc/adjust_nutrition(var/amt)
 	set_nutrition(get_nutrition() + amt)
@@ -929,7 +950,7 @@ default behaviour is:
 	return 500
 
 /mob/living/proc/get_hydration(var/amt)
-	return hydration
+	return isSynthetic() ? get_max_hydration() : hydration
 
 /mob/living/proc/set_hydration(var/amt)
 	hydration = clamp(amt, 0, get_max_hydration())
@@ -1063,7 +1084,7 @@ default behaviour is:
 				if(user.mob_size >= exosuit.body.min_pilot_size && user.mob_size <= exosuit.body.max_pilot_size)
 					exosuit.enter(src)
 				else
-					to_chat(usr, SPAN_WARNING("You cannot pilot a exosuit of this size."))
+					to_chat(user, SPAN_WARNING("You cannot pilot a exosuit of this size."))
 				return TRUE
 	. = ..()
 
@@ -1079,17 +1100,19 @@ default behaviour is:
 			ADJ_STATUS(src, STAT_STUN, -3)
 			ADJ_STATUS(src, STAT_WEAK, -3)
 
-		if(fire_stacks >= target.fire_stacks + 3)
-			target.fire_stacks += 1
-			fire_stacks -= 1
-		else if(target.fire_stacks >= fire_stacks + 3)
-			fire_stacks += 1
-			target.fire_stacks -= 1
+		var/fire_level        = get_fire_intensity()
+		var/target_fire_level = target.get_fire_intensity()
+		if(fire_level >= target_fire_level + 3)
+			target.adjust_fire_intensity(1)
+			adjust_fire_intensity(-1)
+		else if(target_fire_level >= fire_level + 3)
+			adjust_fire_intensity(1)
+			target.adjust_fire_intensity(-1)
 
-		if(on_fire && !target.on_fire)
-			target.IgniteMob()
-		else if(!on_fire && target.on_fire)
-			IgniteMob()
+		if(is_on_fire() && !target.is_on_fire())
+			target.ignite_fire()
+		else if(!is_on_fire() && target.is_on_fire())
+			ignite_fire()
 
 /mob/living/proc/jump_layer_shift()
 	jumping = TRUE
@@ -1189,6 +1212,7 @@ default behaviour is:
 	expected_user_type = /mob/observer
 	expected_target_type = /mob/living
 	interaction_flags = 0
+	examine_desc = null // DO NOT show this in general.
 
 /decl/interaction_handler/admin_kill/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()
@@ -1359,11 +1383,6 @@ default behaviour is:
 			return FALSE
 	return TRUE
 
-//gets name from ID or PDA itself, ID inside PDA doesn't matter
-//Useful when player is being seen by other mobs
-/mob/living/proc/get_id_name(if_no_id = "Unknown")
-	return GetIdCard(exceptions = list(/obj/item/holder))?.registered_name || if_no_id
-
 /mob/living/get_default_temperature_threshold(threshold)
 	if(isSynthetic())
 		switch(threshold)
@@ -1486,7 +1505,7 @@ default behaviour is:
 
 /mob/living/proc/can_direct_mount(var/mob/user)
 	if((user.faction == faction || !faction) && can_buckle && istype(user) && !user.incapacitated() && user == buckled_mob)
-		if(client && a_intent != I_HELP)
+		if(client && !check_intent(I_FLAG_HELP))
 			return FALSE // do not Ratatouille your colleagues
 		// TODO: Piloting skillcheck for hands-free moving? Stupid but amusing
 		for(var/obj/item/grab/reins in user.get_held_items())
@@ -1522,6 +1541,13 @@ default behaviour is:
 				qdel(grab)
 	if(istype(ai))
 		ai.on_buckled(M)
+	reset_layer()
+	update_icon()
+
+/mob/living/unbuckle_mob()
+	. = ..()
+	reset_layer()
+	update_icon()
 
 /mob/living/try_make_grab(mob/living/user, defer_hand = FALSE)
 	. = ..()
@@ -1534,7 +1560,7 @@ default behaviour is:
 /mob/living/OnSimulatedTurfEntered(turf/T, old_loc)
 	T.add_dirt(0.5)
 
-	HandleBloodTrail(T, old_loc)
+	handle_walking_tracks(T, old_loc)
 
 	if(current_posture.prone)
 		return
@@ -1565,8 +1591,50 @@ default behaviour is:
 			step(src, dir)
 			sleep(1)
 
-/mob/living/proc/HandleBloodTrail(turf/T, old_loc)
-	return
+/mob/living/proc/handle_walking_tracks(turf/T, old_loc)
+
+	if(!T.can_show_coating_footprints())
+		return
+
+	// Tracking blood or other contaminants
+	var/obj/item/source
+	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
+	if(istype(shoes))
+		shoes.handle_movement(src, MOVING_QUICKLY(src))
+		if(shoes.coating && shoes.coating.total_volume > 1)
+			source = shoes
+	else
+		for(var/obj/item/organ/external/stomper in get_organs_by_categories(global.child_stance_limbs))
+			if(stomper.coating?.total_volume > 1)
+				source = stomper
+				break
+
+	var/decl/species/my_species = get_species()
+	if(!source)
+		my_species?.handle_trail(src, T, old_loc)
+		return
+
+	var/use_move_trail = my_species?.get_move_trail(src)
+	if(!use_move_trail)
+		return
+
+	var/decl/material/contaminant_type = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
+	if(!T.can_show_coating_footprints(contaminant_type))
+		return
+	/// An associative list of DNA unique enzymes -> blood type. Used by forensics, mostly.
+	var/list/bloodDNA = list()
+	var/track_color
+	var/list/source_data = REAGENT_DATA(source.coating, contaminant_type)
+	if(source_data && source_data[DATA_BLOOD_DNA] && source_data[DATA_BLOOD_TYPE])
+		bloodDNA = list(source_data[DATA_BLOOD_DNA] = source_data[DATA_BLOOD_TYPE])
+	track_color = source.coating.get_color()
+	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant_type) // Coming
+	if(isturf(old_loc))
+		var/turf/old_turf = old_loc
+		if(old_turf.can_show_coating_footprints(contaminant_type))
+			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant_type) // Going
+	source.remove_coating(1)
+	update_equipment_overlay(slot_shoes_str)
 
 /mob/living/proc/handle_general_grooming(user, obj/item/grooming/tool)
 	if(tool.grooming_flags & (GROOMABLE_BRUSH|GROOMABLE_COMB))
@@ -1697,7 +1765,7 @@ default behaviour is:
 	user.set_special_ability_cooldown(5 SECONDS)
 	visible_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."))
 	var/obj/item/I = user.get_active_held_item()
-	var/force = I?.get_attack_force(user)
+	var/force = I?.expend_attack_force(user)
 	if(!force)
 		return
 	var/d = rand(round(force / 4), force)
@@ -1789,7 +1857,7 @@ default behaviour is:
 /mob/living/proc/get_door_pry_time()
 	return 7 SECONDS
 
-/mob/living/proc/pry_door(atom/target, pry_time)
+/mob/living/proc/pry_door(delay, obj/machinery/door/target)
 	return
 
 /mob/living/proc/turf_is_safe(turf/target)
@@ -1867,8 +1935,8 @@ default behaviour is:
 		var/screen_locs = gear.get_preview_screen_locs()
 		if(screen_locs)
 			return screen_locs
-	var/decl/species/my_species = get_species()
-	return my_species?.character_preview_screen_locs
+	var/decl/bodytype/my_bodytype = get_bodytype()
+	return my_bodytype?.character_preview_screen_locs
 
 /mob/living/can_twohand_item(obj/item/item)
 	if(!istype(item) || !item.can_be_twohanded)
@@ -1881,23 +1949,14 @@ default behaviour is:
 		var/datum/inventory_slot/gripper/slot = get_inventory_slot_datum(empty_hand)
 		if(!istype(slot))
 			continue
+		var/req_item_dex = item.get_required_attack_dexterity(src)
 		if(slot.requires_organ_tag)
 			var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(src, slot.requires_organ_tag)
-			if(istype(hand) && hand.is_usable() && (!item.needs_attack_dexterity || hand.get_manual_dexterity() >= item.needs_attack_dexterity))
+			if(istype(hand) && hand.is_usable() && (!req_item_dex || hand.get_manual_dexterity() >= req_item_dex))
 				return TRUE
-		else if(!item.needs_attack_dexterity || slot.dexterity >= item.needs_attack_dexterity)
+		else if(!req_item_dex || slot.dexterity >= req_item_dex)
 			return TRUE
 	return FALSE
-
-/mob/living/buckle_mob(mob/living/M)
-	. = ..()
-	reset_layer()
-	update_icon()
-
-/mob/living/unbuckle_mob()
-	. = ..()
-	reset_layer()
-	update_icon()
 
 /mob/living/proc/flee(atom/target, upset = FALSE)
 	var/static/datum/automove_metadata/_flee_automove_metadata = new(
@@ -1933,3 +1992,43 @@ default behaviour is:
 			to_chat(user, SPAN_NOTICE("\The [src] can be milked into a bucket or other container."))
 		else
 			to_chat(user, SPAN_WARNING("\The [src] cannot currently be milked."))
+
+/mob/living/proc/get_age()
+	. = LAZYACCESS(appearance_descriptors, "age") || 30
+
+/mob/living/proc/get_walking_contaminant_targets()
+	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
+	if(istype(shoes))
+		if(!buckled)
+			return list(shoes)
+	else
+		return get_organs_by_categories(global.child_stance_limbs)
+	return null
+
+/// Adds `amount` units of `material_type` contaminant to whatever we're walking with,
+/// be it shoes, normal human feet, dog paws, robot treads, a million millipede legs,
+/// the sky's the limit. If multiple targets are returned from
+/// `get_walking_contaminant_targets()`, then `amount` is split evenly
+/// between them.
+/mob/living/proc/add_walking_contaminant(material_type, amount, data)
+	if(amount <= 0)
+		return FALSE
+	var/list/obj/item/sources = get_walking_contaminant_targets()
+	if(!LAZYLEN(sources))
+		return FALSE
+	var/amount_per = max(CHEMS_QUANTIZE(amount / length(sources)), MINIMUM_CHEMICAL_VOLUME) // don't let it round down to 0, always add something
+	for(var/obj/item/dirty_item in sources)
+		dirty_item.add_coating(material_type, amount_per, data)
+	// i don't like how hardcoded this is, it might be better to use RAISE_EVENT or something
+	// like /decl/observ/on_add_walking_contaminant or something
+	// or things should just update their worn slot when coating is added
+	update_equipment_overlay(slot_shoes_str)
+	return TRUE
+
+/mob/living/verb/pull_punches()
+	set name = "Switch Stance"
+	set desc = "Try not to hurt them."
+	set category = "IC"
+	if(!incapacitated())
+		pulling_punches = !pulling_punches
+		to_chat(src, SPAN_NOTICE("You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"]."))

@@ -51,7 +51,7 @@
 /obj/item/clothing/mask/chewable/Process()
 	chew(1)
 	if(chewtime < 1)
-		extinguish()
+		extinguish_fire()
 
 /obj/item/clothing/mask/chewable/tobacco
 	name = "wad"
@@ -72,7 +72,7 @@
 	desc = "A disgusting spitwad."
 	icon = 'icons/clothing/mask/chewables/chew_spit.dmi'
 
-/obj/item/clothing/mask/chewable/proc/extinguish(var/mob/user, var/no_message)
+/obj/item/clothing/mask/chewable/extinguish_fire(mob/user, no_message = FALSE)
 	STOP_PROCESSING(SSobj, src)
 	if(type_butt)
 		var/obj/item/trash/cigbutt/butt = new type_butt(get_turf(src))
@@ -137,10 +137,11 @@
 /obj/item/clothing/mask/chewable/candy/proc/get_possible_initial_reagents()
 	return
 
-/obj/item/clothing/mask/chewable/candy/initialize_reagents(populate)
+/obj/item/clothing/mask/chewable/candy/initialize_reagents()
 	. = ..()
-	color = reagents.get_color()
-	desc += " This one is labeled '[reagents.get_primary_reagent_name()]'."
+	if(reagents?.total_volume)
+		set_color(reagents.get_color())
+		desc += " This one is labeled '[reagents.get_primary_reagent_name()]'."
 
 /obj/item/trash/cigbutt/spitgum
 	name = "old gum"

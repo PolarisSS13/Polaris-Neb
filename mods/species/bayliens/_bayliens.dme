@@ -1,7 +1,8 @@
 #ifndef MODPACK_BAYLIENS
 #define MODPACK_BAYLIENS
 // BEGIN_INCLUDE
-#include "bayliens.dm"
+#include "_bayliens.dm"
+#include "_overrides.dm"
 #include "adherent\_adherent.dm"
 #include "adherent\datum\culture.dm"
 #include "adherent\datum\emotes.dm"

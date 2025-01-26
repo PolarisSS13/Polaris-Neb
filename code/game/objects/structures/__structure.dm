@@ -32,13 +32,16 @@
 		new_color = null
 	if(paint_color != new_color)
 		paint_color = new_color
+		. = TRUE
+		refresh_color()
+
+/obj/structure/refresh_color()
 	if(paint_color)
 		color = paint_color
 	else if(material && (material_alteration & MAT_FLAG_ALTERATION_COLOR))
 		color = material.color
 	else
-		color = new_color
-	return FALSE
+		color = null
 
 /obj/structure/create_matter()
 	..()
@@ -85,19 +88,19 @@
 
 		if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 			if(anchored)
-				to_chat(user, SPAN_SUBTLE("Can be unanchored with a wrench, and moved around."))
+				to_chat(user, SPAN_SUBTLE("Can be unanchored with a wrench or hammer, and moved around."))
 			else
-				to_chat(user, SPAN_SUBTLE("Can be anchored in place with a wrench."))
+				to_chat(user, SPAN_SUBTLE("Can be anchored in place with a wrench or hammer."))
 
 		if(tool_interaction_flags & TOOL_INTERACTION_DECONSTRUCT)
-			var/removed_with = "a crowbar"
+			var/removed_with = "a crowbar or hammer"
 			if(material && material.removed_by_welder)
 				removed_with = "a welding torch"
 			if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 				if(anchored)
 					to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
 				else
-					to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with], if anchored down with a wrench first."))
+					to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with], if anchored down with a wrench or hammer first."))
 			else
 				to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
 
@@ -156,7 +159,7 @@
 		last_damage_message = 0.75
 
 /obj/structure/physically_destroyed(var/skip_qdel)
-	if(..(TRUE))
+	if((. = ..(TRUE)))
 		return dismantle_structure()
 
 /obj/structure/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -223,7 +226,7 @@
 		return TRUE
 
 	var/mob/living/victim = grab.get_affecting_mob()
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 
 		if(!istype(victim))
 			to_chat(user, SPAN_WARNING("You need to be grabbing a living creature to do that!"))
@@ -242,12 +245,12 @@
 			playsound(loc, 'sound/weapons/tablehit1.ogg', 50, 1)
 		var/list/L = take_damage(rand(1,5))
 		for(var/obj/item/shard/S in L)
-			if(S.sharp && prob(50))
+			if(S.is_sharp() && prob(50))
 				victim.visible_message(
 					SPAN_DANGER("\The [S] slices into [victim]'s face!"),
 					SPAN_DANGER("\The [S] slices into your face!")
 				)
-				victim.standard_weapon_hit_effects(S, user, S.get_attack_force()*2, BP_HEAD)
+				victim.standard_weapon_hit_effects(S, user, S.expend_attack_force()*2, BP_HEAD)
 		qdel(grab)
 	else if(atom_flags & ATOM_FLAG_CLIMBABLE)
 		var/obj/occupied = turf_is_crowded()
@@ -319,3 +322,22 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
 	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
 	W.pixel_z = 0
+
+// Does this structure override turf depth for the purposes of mob offsets?
+/obj/structure/proc/is_platform()
+	return FALSE
+
+/obj/structure/proc/is_z_passable()
+	return TRUE
+
+/obj/structure/on_turf_height_change(new_height)
+	 // We may be a fixed point.
+	return !is_platform() && ..()
+
+/obj/structure/hitby(var/atom/movable/AM, var/datum/thrownthing/TT)
+	. = ..()
+	if(. && (structure_flags & STRUCTURE_FLAG_THROWN_DAMAGE))
+		visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."))
+		playsound(src.loc, hitsound, 100, 1)
+		take_damage(AM.get_thrown_attack_force() * (TT.speed/THROWFORCE_SPEED_DIVISOR), AM.atom_damage_type)
+

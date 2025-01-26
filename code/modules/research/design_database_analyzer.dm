@@ -81,7 +81,7 @@
 
 /obj/machinery/destructive_analyzer/attackby(var/obj/item/O, var/mob/user)
 
-	if(IS_MULTITOOL(O) && user.a_intent != I_HURT)
+	if(IS_MULTITOOL(O) && !user.check_intent(I_FLAG_HARM))
 		var/datum/extension/local_network_member/fabnet = get_extension(src, /datum/extension/local_network_member)
 		fabnet.get_new_tag(user)
 		return TRUE
@@ -89,8 +89,8 @@
 	if(busy)
 		to_chat(user, SPAN_WARNING("\The [src] is busy right now."))
 		return TRUE
-	if(component_attackby(O, user))
-		return TRUE
+	if((. = component_attackby(O, user)))
+		return
 	if(isrobot(user))
 		return TRUE
 	if(loaded_item)

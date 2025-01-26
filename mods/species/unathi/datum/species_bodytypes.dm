@@ -19,6 +19,13 @@
 	nail_noun               = "claws"
 	uid                     = "bodytype_unathi_fem"
 
+	override_limb_types = list(
+		BP_TAIL   = /obj/item/organ/external/tail/unathi,
+		BP_HEAD   = /obj/item/organ/external/head/strong_bite,
+		BP_L_HAND = /obj/item/organ/external/hand/clawed,
+		BP_R_HAND = /obj/item/organ/external/hand/right/clawed
+	)
+
 	age_descriptor = /datum/appearance_descriptor/age/unathi
 
 	default_sprite_accessories = list(
@@ -80,3 +87,7 @@
 /obj/item/organ/external/tail/unathi
 	tail_icon             = 'mods/species/unathi/icons/tail.dmi'
 	tail_animation_states = 9
+
+/obj/item/organ/external/tail/unathi/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/tail)
+	return unarmed_attack

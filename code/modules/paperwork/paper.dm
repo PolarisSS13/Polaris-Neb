@@ -131,7 +131,7 @@
 	return TRUE
 
 /obj/item/paper/attack_self(mob/user)
-	if(user.a_intent == I_HURT)
+	if(user.check_intent(I_FLAG_HARM))
 		if(is_crumpled)
 			user.show_message(SPAN_WARNING("\The [src] is already crumpled."))
 			return
@@ -332,7 +332,7 @@
 		var/pen_flags = I.get_tool_property(TOOL_PEN, TOOL_PROP_PEN_FLAG)
 		var/decl/tool_archetype/pen/parch = GET_DECL(TOOL_PEN)
 		if(!(pen_flags & PEN_FLAG_ACTIVE))
-			parch.toggle_active(usr, I)
+			parch.toggle_active(user, I)
 		var/iscrayon = pen_flags & PEN_FLAG_CRAYON
 		var/isfancy  = pen_flags & PEN_FLAG_FANCY
 
@@ -636,6 +636,8 @@ var/global/datum/topic_state/default/paper_state/paper_topic_state = new
 
 /decl/interaction_handler/scroll/furl
 	name = "Furl Scroll"
+	examine_desc = "furl $TARGET_THEM$"
 
 /decl/interaction_handler/scroll/unfurl
 	name = "Unfurl Scroll"
+	examine_desc = "unfurl $TARGET_THEM$"

@@ -85,7 +85,7 @@
 /obj/machinery/bash(obj/item/W, mob/user)
 	if(!istype(W))
 		return FALSE
-	var/force = W.get_attack_force(user)
+	var/force = W.expend_attack_force(user)
 	if(force <= 5)
 		return FALSE
 	. = ..()

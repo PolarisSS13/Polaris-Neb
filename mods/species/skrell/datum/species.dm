@@ -12,12 +12,6 @@
 		)
 
 	primitive_form = "Neaera"
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite
-	)
 
 	description = "The skrell are a highly advanced species of amphibians hailing from \
 	the system known as Qerr'Vallis, which translates to 'Star of the royals' or 'Light of the Crown'. \

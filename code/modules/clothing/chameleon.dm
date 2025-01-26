@@ -3,28 +3,24 @@
 //*****************
 
 /obj/item/proc/disguise(var/newtype, var/mob/user)
-	if(!user || !CanPhysicallyInteract(user))
-		return
-	//this is necessary, unfortunately, as initial() does not play well with list vars
-	var/obj/item/copy = new newtype(null)
-	desc = copy.desc
-	name = copy.name
-	icon = copy.icon
-	color = copy.color
-	icon_state = copy.icon_state
-	item_state = copy.item_state
-	body_parts_covered = copy.body_parts_covered
-	flags_inv = copy.flags_inv
-	set_gender(copy.gender)
-	if(copy.sprite_sheets)
-		sprite_sheets = copy.sprite_sheets.Copy()
-
-	OnDisguise(copy, user)
-	qdel(copy)
+	if(user && CanPhysicallyInteract(user))
+		return OnDisguise(atom_info_repository.get_instance_of(newtype), user)
+	return FALSE
 
 // Subtypes shall override this, not /disguise()
 /obj/item/proc/OnDisguise(var/obj/item/copy, var/mob/user)
-	return
+	. = istype(copy) && !QDELETED(copy)
+	if(.)
+		desc                 = copy.desc
+		name                 = copy.name
+		icon                 = copy.icon
+		color                = copy.color
+		icon_state           = copy.icon_state
+		item_state           = copy.item_state
+		body_parts_covered   = copy.body_parts_covered
+		sprite_sheets        = copy.sprite_sheets?.Copy()
+		flags_inv            = copy.flags_inv
+		set_gender(copy.gender)
 
 /proc/generate_chameleon_choices(var/basetype)
 	. = list()
@@ -102,6 +98,7 @@
 	desc = "It's a plain jumpsuit. It seems to have a small dial on the wrist."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/jumpsuit/chameleon/Initialize()
@@ -137,6 +134,7 @@
 	origin_tech = @'{"esoteric":3}'
 	body_parts_covered = 0
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/head/chameleon/Initialize()
@@ -166,6 +164,7 @@
 	desc = "It appears to be a vest of standard armor, except this is embedded with a hidden holographic cloaker, allowing it to change its appearance, but offering no protection. It seems to have a small dial inside."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/suit/chameleon/Initialize()
@@ -194,6 +193,7 @@
 	desc = "They're comfy black shoes, with clever cloaking technology built in. It seems to have a small dial on the back of each shoe."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/shoes/chameleon/Initialize()
@@ -257,6 +257,7 @@
 	desc = "It looks like a pair of gloves, but it seems to have a small dial inside."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/gloves/chameleon/Initialize()
@@ -286,6 +287,7 @@
 	desc = "It looks like a plain gask mask, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/mask/chameleon/Initialize()
@@ -315,6 +317,7 @@
 	desc = "It looks like a plain set of mesons, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = @'{"esoteric":3}'
 	item_flags = ITEM_FLAG_INVALID_FOR_CHAMELEON
+	bodytype_equip_flags = null
 	var/static/list/clothing_choices
 
 /obj/item/clothing/glasses/chameleon/Initialize()

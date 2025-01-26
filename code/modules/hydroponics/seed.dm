@@ -131,23 +131,23 @@
 		return
 
 	var/damage = 0
-	var/has_edge = 0
+	var/edged = 0
 	if(get_trait(TRAIT_CARNIVOROUS) >= 2)
 		if(affecting)
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns pierce your [affecting.name] greedily!</span>")
 		else
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns pierce your flesh greedily!</span>")
 		damage = max(5, round(15*get_trait(TRAIT_POTENCY)/100, 1))
-		has_edge = prob(get_trait(TRAIT_POTENCY)/2)
+		edged = prob(get_trait(TRAIT_POTENCY)/2)
 	else
 		if(affecting)
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns dig deeply into your [affecting.name]!</span>")
 		else
 			to_chat(target, "<span class='danger'>\The [fruit]'s thorns dig deeply into your flesh!</span>")
 		damage = max(1, round(5*get_trait(TRAIT_POTENCY)/100, 1))
-		has_edge = prob(get_trait(TRAIT_POTENCY)/5)
+		edged = prob(get_trait(TRAIT_POTENCY)/5)
 
-	var/damage_flags = DAM_SHARP|(has_edge? DAM_EDGE : 0)
+	var/damage_flags = DAM_SHARP|(edged? DAM_EDGE : 0)
 	target.apply_damage(damage, BRUTE, target_limb, damage_flags, used_weapon = "Thorns")
 
 // Adds reagents to a target.
@@ -256,16 +256,15 @@
 
 	var/growth_rate = 1
 	var/turf/current_turf = isturf(holder) ? holder : get_turf(holder)
-	if(istype(holder) && !holder.mechanical && current_turf)
-		growth_rate = current_turf.get_plant_growth_rate()
+	if(istype(holder))
+		growth_rate = holder.get_growth_rate()
 
 	var/health_change = 0
 	// Handle gas consumption.
 	if(consume_gasses && consume_gasses.len)
 		var/missing_gas = 0
 		for(var/gas in consume_gasses)
-			if(environment && environment.gas && environment.gas[gas] && \
-			 environment.gas[gas] >= consume_gasses[gas])
+			if(LAZYACCESS(environment?.gas, gas) >= consume_gasses[gas])
 				if(!check_only)
 					environment.adjust_gas(gas,-consume_gasses[gas],1)
 			else

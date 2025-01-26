@@ -193,7 +193,7 @@ var/global/list/turret_icons
 		return STATUS_CLOSE
 
 	if(!anchored)
-		to_chat(usr, "<span class='notice'>\The [src] has to be secured first!</span>")
+		to_chat(user, "<span class='notice'>\The [src] has to be secured first!</span>")
 		return STATUS_CLOSE
 
 	return ..()
@@ -290,7 +290,7 @@ var/global/list/turret_icons
 
 	else
 		//if the turret was attacked with the intention of harming it:
-		var/force = I.get_attack_force(user) * 0.5
+		var/force = I.expend_attack_force(user) * 0.5
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		take_damage(force, I.atom_damage_type)
 		if(force > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off

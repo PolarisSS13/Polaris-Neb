@@ -265,6 +265,7 @@
 	req_components = list()
 	additional_spawn_components = list(
 		/obj/item/stock_parts/power/apc/buildable = 1,
+		/obj/item/stock_parts/item_holder/disk_reader/buildable = 1,
 		/obj/item/stock_parts/console_screen = 1,
 		/obj/item/stock_parts/keyboard = 1
 	)

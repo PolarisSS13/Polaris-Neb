@@ -1,15 +1,3 @@
-/mob/living/get_organs()
-	for(var/organ in get_external_organs())
-		LAZYADD(., organ)
-	for(var/organ in get_internal_organs())
-		LAZYADD(., organ)
-
-/mob/living/proc/get_external_organs()
-	return
-
-/mob/living/proc/get_internal_organs()
-	return
-
 /mob/living/proc/get_organs_by_categories(var/category)
 	return
 

@@ -12,10 +12,6 @@
 	var/ignore_area_flags = FALSE  // Set to TRUE to skip area flag checks such as nonpersistent areas.
 	var/ignore_invalid_loc = FALSE // Set to TRUE to skip checking for a non-null station turf for the entry.
 
-/decl/persistence_handler/Initialize()
-	SetFilename()
-	. = ..()
-
 /decl/persistence_handler/proc/SetFilename()
 	if(name)
 		filename = "data/persistent/[ckey(global.using_map.name)]-[ckey(name)].json"
@@ -30,14 +26,16 @@
 	return TRUE
 
 /decl/persistence_handler/proc/CheckTokenSanity(var/list/tokens)
-	return ( \
-		islist(tokens) && \
-		!isnull(tokens["x"]) && \
-		!isnull(tokens["y"]) && \
-		!isnull(tokens["z"]) && \
-		!isnull(tokens["age"]) && \
-		tokens["age"] <= entries_expire_at \
-	)
+	if(!islist(tokens))
+		return FALSE
+	if(isnull(tokens["x"]) || isnull(tokens["y"]) || isnull(tokens["z"]))
+		return FALSE
+	if(!isnull(entries_expire_at))
+		if(isnull(tokens["age"]))
+			return FALSE
+		if(tokens["age"] > entries_expire_at)
+			return FALSE
+	return TRUE
 
 /decl/persistence_handler/proc/CreateEntryInstance(var/turf/creating, var/list/tokens)
 	return
@@ -65,7 +63,7 @@
 
 	. = GetValidTurf(locate(tokens["x"], tokens["y"], tokens["z"]), tokens)
 	if(.)
-		CreateEntryInstance(., tokens)
+		. = CreateEntryInstance(., tokens)
 
 /decl/persistence_handler/proc/IsValidEntry(var/atom/entry)
 	if(!istype(entry))
@@ -92,9 +90,11 @@
 	.["age"] = GetEntryAge(entry)
 
 /decl/persistence_handler/proc/FinalizeTokens(var/list/tokens)
-	. = tokens
+	. = tokens || list()
 
 /decl/persistence_handler/Initialize()
+
+	SetFilename()
 
 	. = ..()
 

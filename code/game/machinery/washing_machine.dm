@@ -250,6 +250,7 @@
 /decl/interaction_handler/start_washer
 	name = "Start washer"
 	expected_target_type = /obj/machinery/washing_machine
+	examine_desc = "start a wash cycle"
 
 /decl/interaction_handler/start_washer/is_possible(obj/machinery/washing_machine/washer, mob/user)
 	. = ..()
@@ -263,6 +264,7 @@
 /decl/interaction_handler/toggle_open/washing_machine
 	name = "Toggle detergent port"
 	expected_target_type = /obj/machinery/washing_machine
+	examine_desc = "open the detergent port"
 
 /decl/interaction_handler/toggle_open/washing_machine/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/washing_machine/washer = target

@@ -148,6 +148,7 @@ var/global/const/MAX_GEOTHERMAL_PRESSURE =               12000
 /obj/machinery/geothermal/Destroy()
 	var/atom/last_loc = loc
 	unset_vent()
+	connector = null
 	. = ..()
 	if(istype(last_loc))
 		propagate_refresh_neighbors(last_loc)

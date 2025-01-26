@@ -236,9 +236,6 @@
 	storage_types = CLOSET_STORAGE_ITEMS|CLOSET_STORAGE_STRUCTURES
 	icon = 'icons/obj/closets/bases/large_crate.dmi'
 
-/obj/structure/closet/crate/secure/large/supermatter
-	closet_appearance = /decl/closet_appearance/large_crate/secure/hazard
-
 //fluff variant
 /obj/structure/closet/crate/secure/large/reinforced
 	desc = "A hefty, reinforced metal crate with an electronic locking system."
@@ -322,8 +319,31 @@
 	close_sound = 'sound/effects/storage/briefcase.ogg'
 	closet_appearance = /decl/closet_appearance/crate/chest
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
-	material = /decl/material/solid/organic/wood
-	color = /decl/material/solid/organic/wood::color
+	material = /decl/material/solid/organic/wood/oak
+	color = /decl/material/solid/organic/wood/oak::color
+	var/icon/overlay_icon = 'icons/obj/closets/bases/chest.dmi'
+	// TODO: Rework chest crafting so that this can use reinf_material instead.
+	/// The material used for the opacity and color of the trim overlay.
+	var/decl/material/overlay_material = /decl/material/solid/metal/iron
+
+/obj/structure/closet/crate/chest/Initialize()
+	. = ..()
+	if(ispath(overlay_material))
+		overlay_material = GET_DECL(overlay_material)
+	// icon update is already queued in parent because of closet appearance
+
+/obj/structure/closet/crate/chest/update_material_desc(override_desc)
+	..()
+	if(overlay_material)
+		desc = "[desc] It has a trim made of [overlay_material.solid_name]."
+
+/obj/structure/closet/crate/chest/on_update_icon()
+	. = ..()
+	if(istype(overlay_material))
+		var/overlay_state = opened ? "open-overlay" : "base-overlay"
+		var/image/trim = overlay_image(overlay_icon, overlay_state, overlay_material.color, RESET_COLOR|RESET_ALPHA)
+		trim.alpha = clamp((50 + overlay_material.opacity * 255), 0, 255)
+		add_overlay(trim)
 
 /obj/structure/closet/crate/chest/ebony
 	material = /decl/material/solid/organic/wood/ebony

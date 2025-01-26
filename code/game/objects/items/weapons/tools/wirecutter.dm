@@ -9,8 +9,8 @@
 	material = /decl/material/solid/metal/steel
 	center_of_mass = @'{"x":18,"y":10}'
 	attack_verb = list("pinched", "nipped")
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 	material_alteration = MAT_FLAG_ALTERATION_COLOR
 	drop_sound = 'sound/foley/singletooldrop1.ogg'
 
@@ -44,9 +44,9 @@
 /obj/item/wirecutters/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 
 	var/obj/item/handcuffs/cable/cuffs = target.get_equipped_item(slot_handcuffed_str)
-	if(user.a_intent == I_HELP && istype(cuffs) && target.try_unequip(cuffs))
+	if(user.check_intent(I_FLAG_HELP) && istype(cuffs) && target.try_unequip(cuffs))
 		user.visible_message(
-			"\The [usr] cuts \the [target]'s restraints with \the [src]!",
+			"\The [user] cuts \the [target]'s restraints with \the [src]!",
 			"You cut \the [target]'s restraints with \the [src]!",
 			"You hear cable being cut."
 		)

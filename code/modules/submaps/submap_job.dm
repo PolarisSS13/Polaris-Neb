@@ -7,7 +7,8 @@
 	create_record = FALSE
 	total_positions = 4
 	outfit_type = /decl/outfit/job/survivor
-	hud_icon = "hudblank"
+	hud_icon_state = "hudblank"
+	hud_icon = null
 	available_by_default = FALSE
 	allowed_ranks = null
 	allowed_branches = null
@@ -55,7 +56,12 @@
 	if(islist(blacklisted_species) && !length(blacklisted_species))
 		blacklisted_species |= SSmodpacks.default_submap_blacklisted_species
 
-	if(!abstract_job)
+	if(abstract_job)
+		if(!hud_icon)
+			hud_icon = global.using_map.hud_icons
+		if(!hud_icon_state)
+			hud_icon_state = "hud[ckey(title)]"
+	else
 		spawnpoints = list()
 		owner = _owner
 		..()
@@ -78,17 +84,17 @@
 		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age[S.get_root_species_name()]].</span>")
 		return TRUE
 	if(LAZYLEN(whitelisted_species) && !(prefs.species in whitelisted_species))
-		to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted as [title] on \a [owner.archetype.descriptor].</span>")
+		to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted as [title] on \a [owner.archetype.name].</span>")
 		return TRUE
 	if(prefs.species in blacklisted_species)
-		to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted as [title] on \a [owner.archetype.descriptor].</span>")
+		to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted as [title] on \a [owner.archetype.name].</span>")
 		return TRUE
 	if(owner && owner.archetype)
 		if(LAZYLEN(owner.archetype.whitelisted_species) && !(prefs.species in owner.archetype.whitelisted_species))
-			to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted on \a [owner.archetype.descriptor].</span>")
+			to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted on \a [owner.archetype.name].</span>")
 			return TRUE
 		if(prefs.species in owner.archetype.blacklisted_species)
-			to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted on \a [owner.archetype.descriptor].</span>")
+			to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted on \a [owner.archetype.name].</span>")
 			return TRUE
 	return FALSE
 

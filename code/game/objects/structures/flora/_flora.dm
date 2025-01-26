@@ -26,7 +26,7 @@
 	return ..()
 
 /obj/structure/flora/attackby(obj/item/O, mob/user)
-	if(user.a_intent != I_HURT && can_cut_down(O, user))
+	if(!user.check_intent(I_FLAG_HARM) && can_cut_down(O, user))
 		play_cut_sound(user)
 		cut_down(O, user)
 		return TRUE
@@ -34,7 +34,7 @@
 
 /**Whether the item used by user can cause cut_down to be called. Used to bypass default attack proc for some specific items/tools. */
 /obj/structure/flora/proc/can_cut_down(var/obj/item/I, var/mob/user)
-	return (I.get_attack_force(user) >= 5) && I.sharp //Anything sharp and relatively strong can cut us instantly
+	return (I.expend_attack_force(user) >= 5) && I.is_sharp() //Anything sharp and relatively strong can cut us instantly
 
 /**What to do when the can_cut_down check returns true. Normally simply calls dismantle. */
 /obj/structure/flora/proc/play_cut_sound(mob/user)

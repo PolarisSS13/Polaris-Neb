@@ -53,12 +53,6 @@
 	swap_flags = MONKEY|SIMPLE_ANIMAL
 	push_flags = MONKEY|SIMPLE_ANIMAL
 
-	unarmed_attacks = list(
-		/decl/natural_attack/bite/sharp,
-		/decl/natural_attack/claws,
-		/decl/natural_attack/stomp/weak
-	)
-
 	blood_types = list(
 		/decl/blood_type/avian/taplus,
 		/decl/blood_type/avian/taminus,

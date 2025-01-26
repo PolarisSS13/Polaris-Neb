@@ -48,7 +48,7 @@
 
 /obj/item/rig_module/device/flash/installed()
 	. = ..()
-	if(!holder.gloves)//gives select option for gloveless suits, why even use rig at this point
+	if(!holder?.gloves)//gives select option for gloveless suits, why even use rig at this point
 		selectable = 1
 		activates_on_touch = 0
 		toggleable = 0
@@ -215,10 +215,6 @@
 
 	var/obj/item/gun/gun
 
-/obj/item/rig_module/mounted/Destroy()
-	QDEL_NULL(gun)
-	. = ..()
-
 /obj/item/rig_module/mounted/Initialize()
 	. = ..()
 	if(ispath(gun))
@@ -320,7 +316,7 @@
 	if(!check() || !gun)
 		return 0
 
-	if(holder.wearer.a_intent == I_HURT || !target.Adjacent(holder.wearer))
+	if(holder.wearer.check_intent(I_FLAG_HARM) || !target.Adjacent(holder.wearer))
 		gun.Fire(target,holder.wearer)
 		return 1
 	else

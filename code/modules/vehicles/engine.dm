@@ -48,7 +48,7 @@
 			cell.dropInto(loc)
 			cell = null
 			return TRUE
-		if(user.a_intent != I_HURT)
+		if(!user.check_intent(I_FLAG_HARM))
 			to_chat(user, SPAN_WARNING("There is no cell in \the [src] to remove with \the [I]!"))
 			return TRUE
 	return ..()
@@ -110,8 +110,8 @@
 	for(var/rtype in temp_reagents_holder.reagents.reagent_volumes)
 		var/new_multiplier = 1
 		var/decl/material/R = GET_DECL(rtype)
-		if(istype(R,/decl/material/liquid/ethanol))
-			var/decl/material/liquid/ethanol/E = R
+		if(istype(R, /decl/material/liquid/alcohol))
+			var/decl/material/liquid/alcohol/E = R
 			new_multiplier = (10/E.strength)
 			actually_flameable = 1
 		else if(istype(R,/decl/material/liquid/fuel/hydrazine))
@@ -140,5 +140,5 @@
 /obj/item/engine/thermal/rev_engine(var/atom/movable/M)
 	M.audible_message("\The [M] rumbles to life.")
 
-/obj/item/engine/electric/putter(var/atom/movable/M)
+/obj/item/engine/thermal/putter(var/atom/movable/M)
 	M.audible_message("\The [M] putters before turning off.")

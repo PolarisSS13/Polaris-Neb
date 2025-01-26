@@ -6,10 +6,13 @@
 	base_icon = "bench"
 	color = WOOD_COLOR_GENERIC
 	reinf_material = null
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	obj_flags = 0
 	anchored = TRUE
 	var/connect_neighbors = TRUE
+
+/obj/structure/bed/chair/bench/should_have_alpha_mask()
+	return simulated && isturf(loc) && connect_neighbors && !(locate(/obj/structure/bed/chair/bench) in get_step(loc, SOUTH))
 
 /obj/structure/bed/chair/bench/single
 	name = "slatted seat"
@@ -133,3 +136,19 @@
 /obj/structure/bed/chair/bench/pew/ebony
 	color    = /decl/material/solid/organic/wood/ebony::color
 	material = /decl/material/solid/organic/wood/ebony
+
+/obj/structure/bed/chair/bench/lounge
+	name       = "lounge"
+	desc       = "An elegant lounge, perfect for reclining on."
+	icon       = 'icons/obj/structures/lounge.dmi'
+	icon_state = "lounge_standing"
+	base_icon  = "lounge"
+
+/obj/structure/bed/chair/bench/lounge/get_material_icon()
+	return icon
+
+/obj/structure/bed/chair/bench/lounge/mapped
+	color          = /decl/material/solid/organic/wood/mahogany::color
+	material       = /decl/material/solid/organic/wood/mahogany
+	reinf_material = /decl/material/solid/organic/cloth
+	padding_color  = COLOR_RED_GRAY

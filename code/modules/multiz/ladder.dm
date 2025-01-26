@@ -23,6 +23,12 @@
 
 	var/static/list/radial_options = list("up" = radial_ladder_up, "down" = radial_ladder_down)
 
+/obj/structure/ladder/handle_default_hammer_attackby()
+	var/last_anchored = anchored
+	. = ..()
+	if(anchored != last_anchored)
+		find_connections()
+
 /obj/structure/ladder/handle_default_wrench_attackby()
 	var/last_anchored = anchored
 	. = ..()
@@ -65,8 +71,8 @@
 		var/turf/L = loc
 		if(HasBelow(z) && istype(L) && L.is_open())
 			var/failed
-			for(var/obj/structure/catwalk/catwalk in loc)
-				if(catwalk.plated_tile)
+			for(var/obj/structure/platform in loc)
+				if(!platform.is_z_passable())
 					failed = TRUE
 					break
 			if(!failed)
@@ -80,8 +86,8 @@
 			var/turf/T = GetAbove(src)
 			if(istype(T) && T.is_open())
 				var/failed
-				for(var/obj/structure/catwalk/catwalk in T)
-					if(catwalk.plated_tile)
+				for(var/obj/structure/platform in T)
+					if(!platform.is_z_passable())
 						failed = TRUE
 						break
 				if(!failed)
@@ -139,7 +145,7 @@
 		landing.visible_message(SPAN_DANGER("\The [I] falls from the top of \the [target_down]!"))
 
 /obj/structure/ladder/attack_hand(var/mob/user)
-	if(user.a_intent == I_HURT || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES))
+	if(user.check_intent(I_FLAG_HARM) || !user.check_dexterity(DEXTERITY_SIMPLE_MACHINES))
 		return ..()
 	climb(user)
 	return TRUE
@@ -208,18 +214,18 @@
 			if(!istype(T) || !T.is_open())
 				to_chat(M, SPAN_WARNING("The ceiling is in the way!"))
 				return null
-			for(var/obj/structure/catwalk/catwalk in target_up.loc)
-				if(catwalk.plated_tile)
-					to_chat(M, SPAN_WARNING("\The [catwalk] is in the way!"))
+			for(var/obj/structure/platform in target_up.loc)
+				if(!platform.is_z_passable())
+					to_chat(M, SPAN_WARNING("\The [platform] is in the way!"))
 					return null
 		if(. == target_down)
 			var/turf/T = loc
 			if(!istype(T) || !T.is_open())
 				to_chat(M, SPAN_WARNING("\The [loc] is in the way!"))
 				return null
-			for(var/obj/structure/catwalk/catwalk in loc)
-				if(catwalk.plated_tile)
-					to_chat(M, SPAN_WARNING("\The [catwalk] is in the way!"))
+			for(var/obj/structure/platform in loc)
+				if(!platform.is_z_passable())
+					to_chat(M, SPAN_WARNING("\The [platform] is in the way!"))
 					return null
 
 /mob/proc/may_climb_ladders(var/ladder)

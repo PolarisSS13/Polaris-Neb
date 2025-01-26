@@ -30,7 +30,7 @@
 			return TRUE
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		sharp = TRUE
+		set_sharp(TRUE)
 		name = "syringe dart"
 		update_icon()
 		return TRUE
@@ -41,7 +41,7 @@
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
 		user.put_in_hands(syringe)
 		syringe = null
-		sharp = initial(sharp)
+		set_sharp(initial(sharp))
 		SetName(initial(name))
 		update_icon()
 

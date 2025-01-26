@@ -415,20 +415,20 @@
 	ffuu.add_to_reagents(/decl/material/liquid/acrylamide, amount/10)
 	return ffuu
 
-/obj/machinery/microwave/OnTopic(href, href_list)
+/obj/machinery/microwave/OnTopic(mob/user, href_list)
 	switch(href_list["action"])
 		if ("cook")
 			cook()
 			return TOPIC_REFRESH
 
 		if ("dispose")
-			dispose(usr)
+			dispose(user)
 			return TOPIC_REFRESH
 
 		if ("ejectitem")
 			for(var/obj/O in get_contained_external_atoms())
 				if(strip_improper(O.name) == href_list["target"])
-					eject_item(usr, O)
+					eject_item(user, O)
 					break
 			return TOPIC_REFRESH
 
@@ -437,7 +437,7 @@
 			for(var/material_type in reagents.reagent_volumes)
 				mat = GET_DECL(material_type)
 				if(mat.name == href_list["target"])
-					eject_reagent(usr, material_type)
+					eject_reagent(user, material_type)
 					break
 			return TOPIC_REFRESH
 

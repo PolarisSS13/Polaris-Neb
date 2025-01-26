@@ -51,7 +51,7 @@
 	icon_state = "sliver1"
 	randpixel = 8
 	w_class = ITEM_SIZE_TINY
-	sharp = 1
+	sharp = TRUE
 	material = /decl/material/solid/stone/sandstone
 	material_health_multiplier = 0.25
 

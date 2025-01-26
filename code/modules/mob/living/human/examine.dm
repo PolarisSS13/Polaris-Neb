@@ -72,24 +72,25 @@
 						to_chat(user, "<span class='deadsay'>[use_He] [use_has] a pulse!</span>")
 
 	var/datum/reagents/touching_reagents = get_contact_reagents()
-	if(touching_reagents?.total_volume)
+	if(touching_reagents?.total_volume >= 1)
 		var/saturation = touching_reagents.total_volume / touching_reagents.maximum_volume
 		if(saturation > 0.9)
 			msg += "[use_He] [use_is] completely saturated.\n"
 		else if(saturation > 0.6)
-			msg += "[use_He] [use_is] looking like a drowned cat.\n"
+			msg += "[use_He] [use_is] looking half-drowned.\n"
 		else if(saturation > 0.3)
 			msg += "[use_He] [use_is] looking notably soggy.\n"
 		else
-			msg += "[use_He] [use_is] looking a bit damp.\n"
+			msg += "[use_He] [use_is] looking a bit soggy.\n"
 
-	if(fire_stacks > 0)
+	var/fire_level = get_fire_intensity()
+	if(fire_level > 0)
 		msg += "[use_He] [use_is] looking highly flammable!\n"
-	else if(fire_stacks < 0)
-		msg += "[use_He] [use_is] looking rather damp.\n"
+	else if(fire_level < 0)
+		msg += "[use_He] [use_is] looking rather incombustible.\n"
 
-	if(on_fire)
-		msg += "<span class='warning'>[use_He] [use_is] on fire!.</span>\n"
+	if(is_on_fire())
+		msg += "<span class='warning'>[use_He] [use_is] on fire!</span>\n"
 
 	var/ssd_msg = species.get_ssd(src)
 	if(ssd_msg && (!should_have_organ(BP_BRAIN) || has_brain()) && stat != DEAD)
@@ -268,13 +269,13 @@
 	return
 
 /mob/living/human/getHUDsource(hudtype)
-	var/obj/item/clothing/glasses/pronouns = get_equipped_item(slot_glasses_str)
-	if(!istype(pronouns))
+	var/obj/item/clothing/glasses/glasses = get_equipped_item(slot_glasses_str)
+	if(!istype(glasses))
 		return ..()
-	if(pronouns.glasses_hud_type & hudtype)
-		return pronouns
-	if(pronouns.hud && (pronouns.hud.glasses_hud_type & hudtype))
-		return pronouns.hud
+	if(glasses.glasses_hud_type & hudtype)
+		return glasses
+	if(glasses.hud && (glasses.hud.glasses_hud_type & hudtype))
+		return glasses.hud
 
 /mob/living/silicon/robot/getHUDsource(hudtype)
 	for(var/obj/item/borg/sight/sight in list(module_state_1, module_state_2, module_state_3))

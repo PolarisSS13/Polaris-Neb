@@ -278,7 +278,7 @@ var/global/bomb_set
 					to_chat(usr, "<span class='warning'>Nothing happens, something might be wrong with the wiring.</span>")
 					return 1
 				if(!timing && !safety)
-					start_bomb()
+					start_bomb(usr)
 				else
 					check_cutoff()
 			if(href_list["safety"])
@@ -306,9 +306,9 @@ var/global/bomb_set
 					to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
 	return 1
 
-/obj/machinery/nuclearbomb/proc/start_bomb()
+/obj/machinery/nuclearbomb/proc/start_bomb(user)
 	timing = 1
-	log_and_message_admins("activated the detonation countdown of \the [src]")
+	log_and_message_admins("activated the detonation countdown of \the [src]", user)
 	bomb_set++ //There can still be issues with this resetting when there are multiple bombs. Not a big deal though for Nuke/N
 	var/decl/security_state/security_state = GET_DECL(global.using_map.security_state)
 	original_level = security_state.current_security_level
@@ -479,11 +479,11 @@ var/global/bomb_set
 	if(href_list["anchor"])
 		return
 
-/obj/machinery/nuclearbomb/station/start_bomb()
+/obj/machinery/nuclearbomb/station/start_bomb(mob/user)
 	for(var/inserter in inserters)
 		var/obj/machinery/self_destruct/sd = inserter
 		if(!istype(sd) || !sd.armed)
-			to_chat(usr, "<span class='warning'>An inserter has not been armed or is damaged.</span>")
+			to_chat(user, "<span class='warning'>An inserter has not been armed or is damaged.</span>")
 			return
 	visible_message("<span class='warning'>Warning. The self-destruct sequence override will be disabled [self_destruct_cutoff] seconds before detonation.</span>")
 	..()

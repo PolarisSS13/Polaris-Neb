@@ -133,15 +133,15 @@
 	var/list/dead_organs
 	if(E.status & ORGAN_DEAD)
 		var/image/radial_button = image(icon = E.icon, icon_state = E.icon_state)
-		radial_button.name = "Regenerate \the [E.name]"
+		radial_button.name = "Regenerate \the [E]"
 		LAZYSET(dead_organs, E.organ_tag, radial_button)
 
 	for(var/obj/item/organ/I in target.get_internal_organs())
 		if(I && (I.status & ORGAN_DEAD) && I.parent_organ == target_zone)
 			if(!I.can_recover())
-				to_chat(user, SPAN_WARNING("\The [I.name] is beyond saving."))
+				to_chat(user, SPAN_WARNING("\The [I] is beyond saving."))
 			var/image/radial_button = image(icon = I.icon, icon_state = I.icon_state)
-			radial_button.name = "Regenerate \the [I.name]"
+			radial_button.name = "Regenerate \the [I]"
 			LAZYSET(dead_organs, I.organ_tag, radial_button)
 
 	if(!LAZYLEN(dead_organs))

@@ -13,7 +13,7 @@
 		web.buckle_mob(hit_atom)
 		web.visible_message(SPAN_DANGER("\The [hit_atom] is tangled in \the [web]!"))
 	web.entangle(hit_atom, TRUE)
-	playsound(usr, 'mods/species/ascent/sounds/razorweb_twang.ogg', 50)
+	playsound(src, 'mods/species/ascent/sounds/razorweb_twang.ogg', 50)
 	qdel(src)
 
 // Hey, did you ever see The Cube (1997) directed by Vincenzo Natali?
@@ -68,7 +68,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/effect/razorweb/proc/decay()
-	playsound(usr, 'mods/species/ascent/sounds/razorweb_break.ogg', 50)
+	playsound(src, 'mods/species/ascent/sounds/razorweb_break.ogg', 50)
 	qdel_self()
 
 /obj/effect/razorweb/attack_hand(mob/user)
@@ -81,7 +81,7 @@
 /obj/effect/razorweb/attackby(var/obj/item/thing, var/mob/user)
 
 	var/destroy_self
-	if(thing.get_attack_force(user))
+	if(thing.expend_attack_force(user))
 		visible_message(SPAN_DANGER("\The [user] breaks \the [src] with \the [thing]!"))
 		destroy_self = TRUE
 
@@ -163,8 +163,8 @@
 
 	if(prob(break_chance))
 		visible_message(SPAN_DANGER("\The [src] breaks apart!"))
-		playsound(usr, 'mods/species/ascent/sounds/razorweb_break.ogg', 50)
+		playsound(src, 'mods/species/ascent/sounds/razorweb_break.ogg', 50)
 		qdel(src)
 	else
-		playsound(usr, 'mods/species/ascent/sounds/razorweb_twang.ogg', 50)
+		playsound(src, 'mods/species/ascent/sounds/razorweb_twang.ogg', 50)
 		break_chance = min(break_chance+10, 100)

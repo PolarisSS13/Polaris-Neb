@@ -4,7 +4,7 @@
 	abstract_type = /decl/chemical_reaction/recipe/food
 	var/obj_result
 
-/decl/chemical_reaction/recipe/food/on_reaction(datum/reagents/holder, created_volume, reaction_flags, list/reaction_data)
+/decl/chemical_reaction/recipe/food/on_reaction(datum/reagents/holder, created_volume, list/reaction_data)
 	..()
 	var/location = get_turf(holder.get_reaction_loc(chemical_reaction_flags))
 	if(obj_result && isturf(location))
@@ -58,7 +58,7 @@
 	name = "Enzyme Margarine"
 	required_reagents = list(
 		/decl/material/solid/sodiumchloride = 1,
-		/decl/material/liquid/nutriment/plant_oil = 20
+		/decl/material/liquid/oil/plant = 20
 	)
 	catalysts = list(/decl/material/liquid/enzyme = 5)
 	mix_message = "The solution thickens and curdles into a pale yellow solid."
@@ -210,7 +210,7 @@
 	name = "Space Liberty Duff"
 	required_reagents = list(
 		/decl/material/liquid/water = 10,
-		/decl/material/liquid/ethanol/vodka = 5,
+		/decl/material/liquid/alcohol/vodka = 5,
 		/decl/material/liquid/psychotropics = 5
 	)
 	obj_result = /obj/item/food/spacylibertyduff
@@ -219,7 +219,7 @@
 	name = "Amanita Jelly"
 	required_reagents = list(
 		/decl/material/liquid/water = 10,
-		/decl/material/liquid/ethanol/vodka = 5,
+		/decl/material/liquid/alcohol/vodka = 5,
 		/decl/material/liquid/amatoxin = 5
 	)
 	obj_result = /obj/item/food/amanitajelly

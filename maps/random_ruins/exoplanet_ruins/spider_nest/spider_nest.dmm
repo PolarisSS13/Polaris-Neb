@@ -83,7 +83,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /turf/floor/tiled/techfloor,
 /area/template_noop)
 "q" = (
@@ -242,7 +242,7 @@
 /obj/effect/spider/stickyweb,
 /obj/random/voidsuit,
 /obj/random/loot,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/decal/cleanable/vomit/mapped,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -29;
 	dir = 4

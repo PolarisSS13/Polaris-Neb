@@ -5,9 +5,6 @@
 /atom/movable
 	var/list/filter_data // For handling persistent filters
 
-/proc/cmp_filter_data_priority(list/A, list/B)
-	return A["priority"] - B["priority"]
-
 // Defining this for future proofing and ease of searching for erroneous usage.
 /image/proc/add_filter(filter_name, priority, list/params)
 	filters += filter(arglist(params))
@@ -35,7 +32,7 @@
 
 /atom/movable/proc/update_filters()
 	filters = null
-	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = sortTim(filter_data, /proc/cmp_priority_list, TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -55,8 +52,8 @@
 		LAZYREMOVE(filter_data, filter_name)
 		filters -= thing
 		update_filters()
-		return FALSE
-	return TRUE
+		return TRUE
+	return FALSE
 
 /// Animate a given filter on this atom. All params after the first are passed to animate().
 /atom/movable/proc/animate_filter(filter_name, list/params)

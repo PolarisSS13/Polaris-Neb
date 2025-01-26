@@ -27,9 +27,11 @@
 	eye_low_light_vision_adjustment_speed = 0.3
 
 	override_limb_types = list(
-		BP_TAIL = /obj/item/organ/external/tail/cat
+		BP_TAIL   = /obj/item/organ/external/tail/cat,
+		BP_HEAD   = /obj/item/organ/external/head/sharp_bite,
+		BP_L_HAND = /obj/item/organ/external/hand/clawed,
+		BP_R_HAND = /obj/item/organ/external/hand/right/clawed
 	)
-
 	default_sprite_accessories = list(
 		SAC_HAIR     = list(/decl/sprite_accessory/hair/taj/lynx        = list(SAM_COLOR = "#46321c")),
 		SAC_MARKINGS = list(/decl/sprite_accessory/marking/tajaran/ears = list(SAM_COLOR = "#ae7d32"))
@@ -52,10 +54,10 @@
 	)
 
 /decl/bodytype/feline/Initialize()
-	equip_adjust = list(
-		slot_glasses_str =   list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
-		slot_wear_mask_str = list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
-		slot_head_str =      list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2))
+	_equip_adjust = list(
+		(slot_glasses_str) =   list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
+		(slot_wear_mask_str) = list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
+		(slot_head_str) =      list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2))
 	)
 	. = ..()
 

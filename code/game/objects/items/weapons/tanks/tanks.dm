@@ -147,12 +147,12 @@ var/global/list/global/tank_gauge_cache = list()
 
 				var/obj/item/assembly_holder/assy = proxyassembly.assembly
 				if(assy.a_left && assy.a_right)
-					assy.dropInto(usr.loc)
+					assy.dropInto(user.loc)
 					assy.master = null
 					proxyassembly.assembly = null
 				else
 					if(!proxyassembly.assembly.a_left)
-						assy.a_right.dropInto(usr.loc)
+						assy.a_right.dropInto(user.loc)
 						assy.a_right.holder = null
 						assy.a_right = null
 						proxyassembly.assembly = null
@@ -193,7 +193,7 @@ var/global/list/global/tank_gauge_cache = list()
 		var/obj/item/weldingtool/WT = W
 		if(WT.weld(1,user))
 			if(!valve_welded)
-				to_chat(user, "<span class='notice'>You begin welding the \the [src] emergency pressure relief valve.</span>")
+				to_chat(user, "<span class='notice'>You begin welding \the [src] emergency pressure relief valve.</span>")
 				if(do_after(user, 40,src))
 					to_chat(user, "<span class='notice'>You carefully weld \the [src] emergency pressure relief valve shut.</span><span class='warning'> \The [src] may now rupture under pressure!</span>")
 					valve_welded = 1
@@ -299,7 +299,7 @@ var/global/list/global/tank_gauge_cache = list()
 		return TOPIC_REFRESH
 
 	if (href_list["stat"])
-		toggle_valve(usr)
+		toggle_valve(user)
 		return TOPIC_REFRESH
 
 /obj/item/tank/proc/toggle_valve(var/mob/user)
@@ -553,7 +553,7 @@ var/global/list/global/tank_gauge_cache = list()
 	return ..()
 
 /obj/item/tankassemblyproxy/receive_signal()	//This is mainly called by the sensor through sense() to the holder, and from the holder to here.
-	tank.ignite()	//boom (or not boom if you made shijwtty mix)
+	tank.cause_explosion()	//boom (or not boom if you made shijwtty mix)
 
 /obj/item/tank/proc/assemble_bomb(W,user)	//Bomb assembly proc. This turns assembly+tank into a bomb
 	var/obj/item/assembly_holder/S = W
@@ -573,7 +573,7 @@ var/global/list/global/tank_gauge_cache = list()
 
 	update_icon(TRUE)
 
-/obj/item/tank/proc/ignite()	//This happens when a bomb is told to explode
+/obj/item/tank/proc/cause_explosion()	//This happens when a bomb is told to explode
 	var/obj/item/assembly_holder/assy = proxyassembly.assembly
 	var/ign = assy.a_right
 	var/obj/item/other = assy.a_left

@@ -9,7 +9,6 @@
 	icon_state = ICON_STATE_WORLD
 	_base_attack_force = 3
 
-	var/wizard_garb = 0
 	var/flash_protection = FLASH_PROTECTION_NONE	  // Sets the item's level of flash protection.
 	var/tint = TINT_NONE							  // Sets the item's level of visual impairment tint.
 	var/bodytype_equip_flags    // Bitfields; if null, checking is skipped. Determine if a given mob can equip this item or not.
@@ -39,6 +38,9 @@
 	var/markings_color	// for things like colored parts of labcoats or shoes
 	var/should_display_id = TRUE
 	var/fallback_slot
+	// Used to track our icon, or custom icon, for resetting when accessories are added/removed
+	var/base_clothing_icon
+	var/base_clothing_state
 
 /obj/item/clothing/get_equipment_tint()
 	return tint
@@ -98,7 +100,7 @@
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	var/rags = RAG_COUNT(src)
-	if(istype(material) && material.default_solid_form && rags && (I.edge || I.sharp) && user.a_intent == I_HURT)
+	if(istype(material) && material.default_solid_form && rags && (I.is_sharp() || I.has_edge()) && user.check_intent(I_FLAG_HARM))
 		if(length(accessories))
 			to_chat(user, SPAN_WARNING("You should remove the accessories attached to \the [src] first."))
 			return TRUE
@@ -206,29 +208,39 @@
 		ndir = SOUTH
 	return ..()
 
+/obj/item/clothing/proc/should_use_combined_accessory_appearance()
+	for(var/obj/item/clothing/accessory as anything in accessories)
+		if(accessory.draw_on_mob_when_equipped)
+			return TRUE
+	return FALSE
+
 /obj/item/clothing/on_update_icon()
 	. = ..()
 
 	// Clothing does not generally align with each other's world icons, so we just use the mob overlay in this case.
-	var/set_appearance = FALSE
-	if(length(accessories))
+	if(should_use_combined_accessory_appearance())
 		var/image/I = get_mob_overlay(ismob(loc) ? loc : null, get_fallback_slot())
-		if(I)
+		if(I?.icon) // Null or invisible overlay, we don't want to make our clothing invisible just because it has an accessory.
 			I.plane = plane
 			I.layer = layer
-			I.alpha = alpha
 			I.color = color
-			I.name = name
+			I.alpha = alpha
+			I.name  = name
 			appearance = I
 			set_dir(SOUTH)
-			set_appearance = TRUE
-	if(!set_appearance)
-		icon_state = JOINTEXT(list(get_world_inventory_state(), get_clothing_state_modifier()))
-		if(markings_state_modifier && markings_color)
-			add_overlay(mutable_appearance(icon, "[icon_state][markings_state_modifier]", markings_color))
+			update_clothing_icon()
+			return
 
+	if(!base_clothing_icon)
+		base_clothing_icon = initial(icon)
+	set_icon(base_clothing_icon)
+	if(!base_clothing_state)
+		base_clothing_state = initial(icon_state)
+	set_icon_state(base_clothing_state)
+	icon_state = JOINTEXT(list(get_world_inventory_state(), get_clothing_state_modifier()))
+	if(markings_state_modifier && markings_color)
+		add_overlay(mutable_appearance(icon, "[icon_state][markings_state_modifier]", markings_color))
 	update_clothing_icon()
-
 
 // Used by washing machines to temporarily make clothes smell
 /obj/item/clothing/proc/change_smell(decl/material/odorant, time = 10 MINUTES)
@@ -290,12 +302,12 @@
 		update_clothing_icon()
 
 /obj/item/clothing/get_examine_name()
-	var/list/ensemble = list(name)
+	var/list/ensemble = list(..())
 	for(var/obj/item/clothing/accessory in accessories)
 		if(accessory.accessory_visibility == ACCESSORY_VISIBILITY_ENSEMBLE)
-			LAZYADD(ensemble, accessory.get_examine_name())
-	if(length(ensemble) <= 1)
-		return ..()
+			ensemble += accessory.get_examine_name()
+	if(length(ensemble) == 1) // don't worry about it being empty, we always have a minimum of one
+		return ensemble[1]
 	return english_list(ensemble, summarize = TRUE)
 
 /obj/item/clothing/get_examine_line()
@@ -359,7 +371,7 @@
 				var/list/ties = list()
 				for(var/accessory in accessories)
 					ties += "[html_icon(accessory)] \a [accessory]"
-				to_chat(user, "Attached to \the [src] are [english_list(ties)].")
+				to_chat(user, "Attached to \the [src] [length(ties) == 1 ? "is" : "are"] [english_list(ties)].")
 			return TOPIC_HANDLED
 		if(href_list["list_armor_damage"] && can_see)
 			var/datum/extension/armor/ablative/armor_datum = get_extension(src, /datum/extension/armor)
@@ -438,7 +450,8 @@
 /decl/interaction_handler/clothing_set_sensors
 	name = "Set Sensors Level"
 	expected_target_type = /obj/item/clothing
+	examine_desc = "adjust vitals sensors"
 
 /decl/interaction_handler/clothing_set_sensors/invoked(atom/target, mob/user, obj/item/prop)
-	var/obj/item/clothing/U = target
-	U.set_sensors(user)
+	var/obj/item/clothing/clothes = target
+	clothes.set_sensors(user)

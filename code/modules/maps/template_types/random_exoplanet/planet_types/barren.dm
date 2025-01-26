@@ -13,7 +13,7 @@
 
 /datum/level_data/planetoid/exoplanet/barren
 	base_area           = /area/exoplanet/barren
-	base_turf           = /turf/floor
+	base_turf           = /turf/floor/barren
 	exterior_atmosphere = null //Generate me
 	exterior_atmos_temp = null //Generate me
 	level_generators    = list(
@@ -76,7 +76,6 @@
 	overmap_marker_type        = /obj/effect/overmap/visitable/sector/planetoid/exoplanet/barren
 	template_tags_blacklist    = TEMPLATE_TAG_HABITAT|TEMPLATE_TAG_WATER
 	subtemplate_budget         = 6
-	template_parent_type       = /datum/map_template/planetoid/random/exoplanet
 	level_data_type            = /datum/level_data/planetoid/exoplanet/barren
 	prefered_level_data_per_z  = list(
 		/datum/level_data/planetoid/exoplanet/barren,     //surface level
@@ -99,7 +98,7 @@
 ///Generator for fauna and flora spawners for the surface of the barren exoplanet
 /datum/random_map/noise/exoplanet/barren
 	descriptor           = "barren exoplanet"
-	land_type            = /turf/floor
+	land_type            = /turf/floor/barren
 	flora_prob           = 0.1
 	large_flora_prob     = 0
 	fauna_prob           = 0
@@ -111,7 +110,7 @@
 
 /area/exoplanet/barren
 	name       = "\improper Planetary surface"
-	base_turf  = /turf/floor
+	base_turf  = /turf/floor/barren
 	is_outside = OUTSIDE_YES
 	ambience   = list(
 		'sound/effects/wind/wind_2_1.ogg',

@@ -59,7 +59,7 @@
 			return FALSE
 
 		name += " - [S.name]"
-		desc = "Blueprints of \the [S.name]. There is a \"Classified\" stamp and several coffee stains on it."
+		desc = "Blueprints of \the [S]. There is a \"Classified\" stamp and several coffee stains on it."
 		valid_z_levels += S.map_z
 		area_prefix = S.name
 		return TRUE

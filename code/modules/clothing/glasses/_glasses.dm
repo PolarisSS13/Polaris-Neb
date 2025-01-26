@@ -8,6 +8,7 @@
 	body_parts_covered = SLOT_EYES
 	slot_flags = SLOT_EYES
 	fallback_slot = slot_glasses_str
+	gender = PLURAL
 
 	var/vision_flags =     0
 	var/darkness_view =    0
@@ -103,9 +104,9 @@
 
 /obj/item/clothing/glasses/update_clothing_icon()
 	. = ..()
-	if(.)
-		var/mob/M = loc
-		M.update_action_buttons()
+	if(. && ismob(loc))
+		var/mob/wearer = loc
+		wearer.update_action_buttons()
 
 /obj/item/clothing/glasses/proc/toggle()
 	set category = "Object"

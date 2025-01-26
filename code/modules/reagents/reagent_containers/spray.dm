@@ -36,9 +36,6 @@
 	if(A?.storage || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/chems) || istype(A, /obj/structure/hygiene/sink) || istype(A, /obj/structure/janitorialcart))
 		return
 
-	if(istype(A, /spell))
-		return
-
 	if(proximity)
 		if(standard_dispenser_refill(user, A))
 			return
@@ -50,7 +47,7 @@
 	Spray_at(A, user, proximity)
 
 	if(reagents.has_reagent(/decl/material/liquid/acid))
-		log_and_message_admins("fired sulphuric acid from \a [src].", user)
+		log_and_message_admins("fired sulfuric acid from \a [src].", user)
 	if(reagents.has_reagent(/decl/material/liquid/acid/polyacid))
 		log_and_message_admins("fired polyacid from \a [src].", user)
 	if(reagents.has_reagent(/decl/material/liquid/lube))
@@ -85,7 +82,7 @@
 
 /obj/item/chems/spray/attack_self(var/mob/user)
 	if(has_safety())
-		toggle_safety()
+		toggle_safety(user)
 		return TRUE
 	else
 		//If no safety, we just toggle the nozzle
@@ -98,9 +95,9 @@
 /obj/item/chems/spray/proc/has_safety()
 	return FALSE
 
-/obj/item/chems/spray/proc/toggle_safety()
+/obj/item/chems/spray/proc/toggle_safety(mob/user)
 	safety = !safety
-	to_chat(usr, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
+	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
 /obj/item/chems/spray/examine(mob/user, distance)
 	. = ..()
@@ -109,7 +106,7 @@
 	if(has_safety() && distance <= 1)
 		to_chat(user, "The safety is [safety ? "on" : "off"].")
 
-/obj/item/chems/get_alt_interactions(mob/user)
+/obj/item/chems/spray/get_alt_interactions(mob/user)
 	. = ..()
 	LAZYADD(., /decl/interaction_handler/empty/chems)
 	LAZYADD(., /decl/interaction_handler/next_spray_amount)
@@ -119,6 +116,7 @@
 	name                 = "Next Nozzle Setting"
 	expected_target_type = /obj/item/chems/spray
 	interaction_flags    = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION
+	examine_desc         = "select the next nozzle spray amount"
 
 /decl/interaction_handler/next_spray_amount/is_possible(obj/item/chems/spray/target, mob/user, obj/item/prop)
 	. = ..()

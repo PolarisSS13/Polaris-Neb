@@ -32,8 +32,22 @@
 	var/dissipation_energy_loss = 1
 	/// What is the percent chance of an event each tick?
 	var/event_chance
+	/// Do we force a specific event when we proc events?
+	var/decl/singularity_event/forced_event = null
 	/// Will we wander around?
 	var/wander
+	/// Can explosions destroy the singularity?
+	var/explosion_vulnerable
+	/// What is the heavy range for the EM pulse event in this stage?
+	var/em_heavy_range = 8
+	/// What is the light range for the EM pulse event in this stage?
+	var/em_light_range = 10
+	/// What do characters feel when they're mesmerized during this stage?
+	var/mesmerize_text = "weak"
+	/// Do we ignore PPE for mesmerizing in this stage?
+	var/the_goggles_do_nothing = FALSE
+	/// Do we ignore obstacles in our way?
+	var/ignore_obstacles = FALSE
 
 /decl/singularity_stage/validate()
 	. = ..()
@@ -171,29 +185,7 @@
 	dissipates_over_time = FALSE //It cant go smaller due to e loss.
 	wander = TRUE
 	event_chance = 20
+	ignore_obstacles = TRUE
 
 /decl/singularity_stage/stage_five/grow_to(obj/effect/singularity/source)
 	source.visible_message(SPAN_DANGER("<font size='2'>\The [source] has grown out of control!</font>"))
-
-/decl/singularity_stage/stage_five/shrink_to(obj/effect/singularity/source)
-	source.visible_message(SPAN_WARNING("\The [source] miraculously reduces in size and loses its supermatter properties."))
-
-/decl/singularity_stage/stage_super
-	name = "super gravitational singularity"
-	desc = "A gravitational singularity with the properties of supermatter. <b>It has the power to destroy worlds.</b>"
-	min_energy = 50000
-	max_energy = INFINITY
-	stage_size = STAGE_SUPER
-	footprint = 6
-	icon = 'icons/effects/352x352.dmi'
-	icon_state = "singularity_s11"//uh, whoever drew that, you know that black holes are supposed to look dark right? What's this, the clown's singulo?
-	pixel_x = -160
-	pixel_y = -160
-	grav_pull = 16
-	consume_range = 5
-	dissipates_over_time = 0 //It cant go smaller due to e loss
-	event_chance = 25 //Events will fire off more often.
-	wander = TRUE
-
-/decl/singularity_stage/stage_super/grow_to(obj/effect/singularity/source)
-	source.visible_message(SPAN_SINISTER("<font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font>"))
