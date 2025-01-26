@@ -136,7 +136,7 @@
 
 /decl/loadout_option/head/costume/get_gear_tweak_options()
 	. = ..()
-	LAZYINITLIST(.[/datum/gear_tweak/path])
-	.[/datum/gear_tweak/path] |= list(
+	LAZYINITLIST(.[/datum/gear_tweak/path/specified_types_list])
+	.[/datum/gear_tweak/path/specified_types_list] |= list(
 		/obj/item/clothing/head/lobster
 	)
