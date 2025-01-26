@@ -37,11 +37,10 @@ PROCESSING_SUBSYSTEM_DEF(nano)
   * @return /nanoui Returns the found ui, or null if none exists
   */
 /datum/controller/subsystem/processing/nano/proc/get_open_ui(mob/user, src_object, ui_key)
-	var/src_object_key = "\ref[src_object]"
-	if (!open_uis[src_object_key] || !open_uis[src_object_key][ui_key])
+	if (!open_uis[src_object] || !open_uis[src_object][ui_key])
 		return
 
-	for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/datum/nanoui/ui in open_uis[src_object][ui_key])
 		if (ui.user == user)
 			return ui
 
@@ -54,12 +53,11 @@ PROCESSING_SUBSYSTEM_DEF(nano)
   */
 /datum/controller/subsystem/processing/nano/proc/update_uis(src_object)
 	. = 0
-	var/src_object_key = "\ref[src_object]"
-	if (!open_uis[src_object_key])
+	if (!open_uis[src_object])
 		return
 
-	for (var/ui_key in open_uis[src_object_key])
-		for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/ui_key in open_uis[src_object])
+		for (var/datum/nanoui/ui in open_uis[src_object][ui_key])
 			if(ui.src_object && ui.user && ui.src_object.nano_host())
 				ui.try_update(1)
 				.++
@@ -78,12 +76,11 @@ PROCESSING_SUBSYSTEM_DEF(nano)
 	if (!length(open_uis))
 		return
 
-	var/src_object_key = "\ref[src_object]"
-	if (!open_uis[src_object_key])
+	if (!open_uis[src_object])
 		return
 
-	for (var/ui_key in open_uis[src_object_key])
-		for (var/datum/nanoui/ui in open_uis[src_object_key][ui_key])
+	for (var/ui_key in open_uis[src_object])
+		for (var/datum/nanoui/ui in open_uis[src_object][ui_key])
 			ui.close() // If it's missing src_object or user, we want to close it even more.
 			.++
 
@@ -134,9 +131,9 @@ PROCESSING_SUBSYSTEM_DEF(nano)
   * @return nothing
   */
 /datum/controller/subsystem/processing/nano/proc/ui_opened(datum/nanoui/ui)
-	var/src_object_key = "\ref[ui.src_object]"
-	LAZYINITLIST(open_uis[src_object_key])
-	LAZYDISTINCTADD(open_uis[src_object_key][ui.ui_key], ui)
+	var/src_object = ui.src_object
+	LAZYINITLIST(open_uis[src_object])
+	LAZYDISTINCTADD(open_uis[src_object][ui.ui_key], ui)
 	LAZYDISTINCTADD(ui.user.open_uis, ui)
 	START_PROCESSING(SSnano, ui)
 
@@ -149,18 +146,18 @@ PROCESSING_SUBSYSTEM_DEF(nano)
   * @return int 0 if no ui was removed, 1 if removed successfully
   */
 /datum/controller/subsystem/processing/nano/proc/ui_closed(var/datum/nanoui/ui)
-	var/src_object_key = "\ref[ui.src_object]"
-	if (!open_uis[src_object_key] || !open_uis[src_object_key][ui.ui_key])
+	var/src_object = ui.src_object
+	if (!open_uis[src_object] || !open_uis[src_object][ui.ui_key])
 		return 0 // wasn't open
 
 	STOP_PROCESSING(SSnano, ui)
 	if(ui.user)	// Sanity check in case a user has been deleted (say a blown up borg watching the alarm interface)
 		LAZYREMOVE(ui.user.open_uis, ui)
-	open_uis[src_object_key][ui.ui_key] -= ui
-	if(!length(open_uis[src_object_key][ui.ui_key]))
-		open_uis[src_object_key] -= ui.ui_key
-		if(!length(open_uis[src_object_key]))
-			open_uis -= src_object_key
+	open_uis[src_object][ui.ui_key] -= ui
+	if(!length(open_uis[src_object][ui.ui_key]))
+		open_uis[src_object] -= ui.ui_key
+		if(!length(open_uis[src_object]))
+			open_uis -= src_object
 	return 1
 
  /**

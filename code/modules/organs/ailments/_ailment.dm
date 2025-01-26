@@ -1,10 +1,9 @@
 /datum/ailment
+	abstract_type = /datum/ailment
 	var/name                      // Descriptive name, primarily used for adminbus.
 	var/timer_id                  // Current timer waiting to proc next symptom message.
 	var/min_time = 2 MINUTES      // Minimum time between symptom messages.
 	var/max_time = 5 MINUTES      // Maximum time between symptom messages.
-	var/category = /datum/ailment // Used similar to hierarchies, if category == type then the
-	                              // ailment is a category and won't be applied to organs.
 	var/obj/item/organ/organ      // Organ associated with the ailment (ailment is in organ.ailments list).
 
 	// Requirements before applying to a target.

@@ -60,8 +60,6 @@
 	swap_flags = ALLMOBS
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake
 
-	unarmed_attacks = list(/decl/natural_attack/forelimb_slash)
-
 	pain_emotes_with_pain_level = list(
 			list(/decl/emote/audible/bug_hiss) = 40
 	)
@@ -100,12 +98,6 @@
 			return TRUE
 
 	return FALSE
-
-/decl/species/serpentid/can_shred(var/mob/living/human/H, var/ignore_intent, var/ignore_antag)
-	if(!H.get_equipped_item(slot_handcuffed_str) || H.buckled)
-		return ..(H, ignore_intent, TRUE)
-	else
-		return 0
 
 /decl/species/serpentid/handle_movement_delay_special(var/mob/living/human/victim)
 	var/tally = 0

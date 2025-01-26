@@ -694,7 +694,14 @@ default behaviour is:
 /mob/living/proc/has_brain()
 	return TRUE
 
-/mob/living/proc/slip(var/slipped_on, stun_duration = 8)
+// We are jumping, levitating or being thrown.
+/mob/living/immune_to_floor_hazards()
+	. = ..() || is_floating
+
+/mob/living/proc/slip(slipped_on, stun_duration = 8)
+
+	if(immune_to_floor_hazards())
+		return FALSE
 
 	var/decl/species/my_species = get_species()
 	if(my_species?.check_no_slip(src))
@@ -857,10 +864,10 @@ default behaviour is:
 
 /mob/living/fluid_act(var/datum/reagents/fluids)
 	..()
-	if(QDELETED(src) || !fluids?.total_volume)
+	if(QDELETED(src) || fluids?.total_volume < FLUID_PUDDLE)
 		return
 	fluids.touch_mob(src)
-	if(QDELETED(src) || !fluids.total_volume)
+	if(QDELETED(src) || fluids?.total_volume < FLUID_PUDDLE)
 		return
 	var/on_turf = fluids.my_atom == get_turf(src)
 	for(var/atom/movable/A as anything in get_equipped_items(TRUE))
@@ -1205,6 +1212,7 @@ default behaviour is:
 	expected_user_type = /mob/observer
 	expected_target_type = /mob/living
 	interaction_flags = 0
+	examine_desc = null // DO NOT show this in general.
 
 /decl/interaction_handler/admin_kill/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()
@@ -1585,7 +1593,7 @@ default behaviour is:
 
 /mob/living/proc/handle_walking_tracks(turf/T, old_loc)
 
-	if(!T.can_show_footsteps())
+	if(!T.can_show_coating_footprints())
 		return
 
 	// Tracking blood or other contaminants
@@ -1606,23 +1614,27 @@ default behaviour is:
 		my_species?.handle_trail(src, T, old_loc)
 		return
 
-	var/list/bloodDNA
-	var/bloodcolor
-	var/list/blood_data = REAGENT_DATA(source.coating, /decl/material/liquid/blood)
-	if(blood_data)
-		bloodDNA = list(blood_data[DATA_BLOOD_DNA] = blood_data[DATA_BLOOD_TYPE])
-	else
-		bloodDNA = list()
-	bloodcolor = source.coating.get_color()
+	var/use_move_trail = my_species?.get_move_trail(src)
+	if(!use_move_trail)
+		return
+
+	var/decl/material/contaminant_type = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
+	if(!T.can_show_coating_footprints(contaminant_type))
+		return
+	/// An associative list of DNA unique enzymes -> blood type. Used by forensics, mostly.
+	var/list/bloodDNA = list()
+	var/track_color
+	var/list/source_data = REAGENT_DATA(source.coating, contaminant_type)
+	if(source_data && source_data[DATA_BLOOD_DNA] && source_data[DATA_BLOOD_TYPE])
+		bloodDNA = list(source_data[DATA_BLOOD_DNA] = source_data[DATA_BLOOD_TYPE])
+	track_color = source.coating.get_color()
+	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant_type) // Coming
+	if(isturf(old_loc))
+		var/turf/old_turf = old_loc
+		if(old_turf.can_show_coating_footprints(contaminant_type))
+			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant_type) // Going
 	source.remove_coating(1)
 	update_equipment_overlay(slot_shoes_str)
-
-	var/use_move_trail = my_species?.get_move_trail(src)
-	if(use_move_trail)
-		T.AddTracks(use_move_trail, bloodDNA, dir, 0, bloodcolor) // Coming
-		if(isturf(old_loc))
-			var/turf/old_turf = old_loc
-			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, bloodcolor) // Going
 
 /mob/living/proc/handle_general_grooming(user, obj/item/grooming/tool)
 	if(tool.grooming_flags & (GROOMABLE_BRUSH|GROOMABLE_COMB))
@@ -1753,7 +1765,7 @@ default behaviour is:
 	user.set_special_ability_cooldown(5 SECONDS)
 	visible_message(SPAN_DANGER("You hear something rumbling inside [src]'s stomach..."))
 	var/obj/item/I = user.get_active_held_item()
-	var/force = I?.get_attack_force(user)
+	var/force = I?.expend_attack_force(user)
 	if(!force)
 		return
 	var/d = rand(round(force / 4), force)
@@ -1845,7 +1857,7 @@ default behaviour is:
 /mob/living/proc/get_door_pry_time()
 	return 7 SECONDS
 
-/mob/living/proc/pry_door(atom/target, pry_time)
+/mob/living/proc/pry_door(delay, obj/machinery/door/target)
 	return
 
 /mob/living/proc/turf_is_safe(turf/target)
@@ -1923,8 +1935,8 @@ default behaviour is:
 		var/screen_locs = gear.get_preview_screen_locs()
 		if(screen_locs)
 			return screen_locs
-	var/decl/species/my_species = get_species()
-	return my_species?.character_preview_screen_locs
+	var/decl/bodytype/my_bodytype = get_bodytype()
+	return my_bodytype?.character_preview_screen_locs
 
 /mob/living/can_twohand_item(obj/item/item)
 	if(!istype(item) || !item.can_be_twohanded)
@@ -1937,11 +1949,12 @@ default behaviour is:
 		var/datum/inventory_slot/gripper/slot = get_inventory_slot_datum(empty_hand)
 		if(!istype(slot))
 			continue
+		var/req_item_dex = item.get_required_attack_dexterity(src)
 		if(slot.requires_organ_tag)
 			var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(src, slot.requires_organ_tag)
-			if(istype(hand) && hand.is_usable() && (!item.needs_attack_dexterity || hand.get_manual_dexterity() >= item.needs_attack_dexterity))
+			if(istype(hand) && hand.is_usable() && (!req_item_dex || hand.get_manual_dexterity() >= req_item_dex))
 				return TRUE
-		else if(!item.needs_attack_dexterity || slot.dexterity >= item.needs_attack_dexterity)
+		else if(!req_item_dex || slot.dexterity >= req_item_dex)
 			return TRUE
 	return FALSE
 
@@ -1983,12 +1996,39 @@ default behaviour is:
 /mob/living/proc/get_age()
 	. = LAZYACCESS(appearance_descriptors, "age") || 30
 
-/mob/living/proc/add_walking_contaminant(material_type, amount, data)
+/mob/living/proc/get_walking_contaminant_targets()
 	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
 	if(istype(shoes))
 		if(!buckled)
-			shoes.add_coating(material_type, amount, data)
+			return list(shoes)
 	else
-		for(var/obj/item/organ/external/limb in get_organs_by_categories(global.child_stance_limbs))
-			limb.add_coating(material_type, amount, data)
+		return get_organs_by_categories(global.child_stance_limbs)
+	return null
+
+/// Adds `amount` units of `material_type` contaminant to whatever we're walking with,
+/// be it shoes, normal human feet, dog paws, robot treads, a million millipede legs,
+/// the sky's the limit. If multiple targets are returned from
+/// `get_walking_contaminant_targets()`, then `amount` is split evenly
+/// between them.
+/mob/living/proc/add_walking_contaminant(material_type, amount, data)
+	if(amount <= 0)
+		return FALSE
+	var/list/obj/item/sources = get_walking_contaminant_targets()
+	if(!LAZYLEN(sources))
+		return FALSE
+	var/amount_per = max(CHEMS_QUANTIZE(amount / length(sources)), MINIMUM_CHEMICAL_VOLUME) // don't let it round down to 0, always add something
+	for(var/obj/item/dirty_item in sources)
+		dirty_item.add_coating(material_type, amount_per, data)
+	// i don't like how hardcoded this is, it might be better to use RAISE_EVENT or something
+	// like /decl/observ/on_add_walking_contaminant or something
+	// or things should just update their worn slot when coating is added
 	update_equipment_overlay(slot_shoes_str)
+	return TRUE
+
+/mob/living/verb/pull_punches()
+	set name = "Switch Stance"
+	set desc = "Try not to hurt them."
+	set category = "IC"
+	if(!incapacitated())
+		pulling_punches = !pulling_punches
+		to_chat(src, SPAN_NOTICE("You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"]."))

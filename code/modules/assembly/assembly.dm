@@ -12,7 +12,7 @@
 
 	var/secured = 1
 	var/list/attached_overlays = null
-	var/obj/item/assembly_holder/holder = null
+	var/obj/item/assembly_holder/holder = null // currently can be a TTV or assemblyholder, todo make ttv use assemblyholder
 	var/cooldown = 0//To prevent spam
 	var/wires = WIRE_RECEIVE | WIRE_PULSE
 
@@ -24,10 +24,7 @@
 
 /obj/item/assembly/Destroy()
 	if(!QDELETED(holder))
-		if(holder.a_left == src)
-			holder.a_left = null
-		if(holder.a_right == src)
-			holder.a_right = null
+		// the holder has the responsibility to clear its associated vars on destroy
 		QDEL_NULL(holder)
 	else
 		holder = null

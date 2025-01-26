@@ -12,7 +12,6 @@
 	wrenchable                = FALSE
 	storage                   = /datum/storage/barrel
 	amount_dispensed          = 10
-	possible_transfer_amounts = @"[10,25,50,100]"
 	volume                    = 7500
 	movable_flags             = MOVABLE_FLAG_WHEELED
 	throwpass                 = TRUE
@@ -22,6 +21,16 @@
 	// Rivets, bands, etc. Currently just cosmetic.
 	var/decl/material/metal_material = /decl/material/solid/metal/iron
 
+// Overrides due to wonky reagent_dispeners opencontainer flag handling.
+/obj/structure/reagent_dispensers/barrel/can_be_poured_from(mob/user, atom/target)
+	return (reagents?.maximum_volume > 0)
+/obj/structure/reagent_dispensers/barrel/can_be_poured_into(mob/user, atom/target)
+	return (reagents?.maximum_volume > 0)
+
+// Override to skip open container check.
+/obj/structure/reagent_dispensers/barrel/can_drink_from(mob/user)
+	return reagents?.total_volume && user.check_has_mouth()
+
 /obj/structure/reagent_dispensers/barrel/Initialize()
 	if(ispath(metal_material))
 		metal_material = GET_DECL(metal_material)
@@ -30,23 +39,6 @@
 	. = ..()
 	if(. == INITIALIZE_HINT_NORMAL && storage)
 		return INITIALIZE_HINT_LATELOAD //  we want to grab our turf contents.
-
-// Overrides due to wonky reagent_dispeners opencontainer flag handling.
-/obj/structure/reagent_dispensers/barrel/can_be_poured_from(mob/user, atom/target)
-	return (reagents?.maximum_volume > 0)
-/obj/structure/reagent_dispensers/barrel/can_be_poured_into(mob/user, atom/target)
-	return (reagents?.maximum_volume > 0)
-// Override to skip open container check.
-/obj/structure/reagent_dispensers/barrel/can_drink_from(mob/user)
-	return reagents?.total_volume && user.check_has_mouth()
-
-/obj/structure/reagent_dispensers/barrel/get_alt_interactions(mob/user)
-	. = ..()
-	if(reagents?.total_volume >= FLUID_PUDDLE)
-		LAZYADD(., /decl/interaction_handler/dip_item)
-		LAZYADD(., /decl/interaction_handler/fill_from)
-	if(user?.get_active_held_item())
-		LAZYADD(., /decl/interaction_handler/empty_into)
 
 /obj/structure/reagent_dispensers/barrel/LateInitialize(mapload, ...)
 	..()
@@ -91,6 +83,33 @@
 
 	if(istype(loc, /obj/structure/cask_rack))
 		loc.update_icon()
+
+/obj/structure/reagent_dispensers/barrel/get_standard_interactions(var/mob/user)
+	. = ..()
+	if(reagents?.maximum_volume)
+		LAZYADD(., global._reagent_interactions)
+
+	// Disambiguation actions, since barrels can have several different potential interactions for
+	// the same item. It would be nice to enable this on /obj/structure in general but there are a
+	// ton of really bespoke overrides of the standard tool methods (windows, AI core, etc.).
+	if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
+		LAZYADD(., /decl/interaction_handler/structure/unanchor)
+	if(tool_interaction_flags & TOOL_INTERACTION_WIRING)
+		LAZYADD(., /decl/interaction_handler/structure/wiring)
+	if(tool_interaction_flags & TOOL_INTERACTION_DECONSTRUCT)
+		LAZYADD(., /decl/interaction_handler/structure/dismantle)
+	if(LAZYLEN(.) && storage)
+		LAZYADD(., /decl/interaction_handler/put_in_storage)
+
+// Copy of above - maybe we should just have a single 'get interactions' proc at this point?
+/obj/structure/reagent_dispensers/barrel/get_alt_interactions(mob/user)
+	. = ..()
+	if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
+		LAZYADD(., /decl/interaction_handler/structure/unanchor)
+	if(tool_interaction_flags & TOOL_INTERACTION_WIRING)
+		LAZYADD(., /decl/interaction_handler/structure/wiring)
+	if(tool_interaction_flags & TOOL_INTERACTION_DECONSTRUCT)
+		LAZYADD(., /decl/interaction_handler/structure/dismantle)
 
 /obj/structure/reagent_dispensers/barrel/ebony
 	material = /decl/material/solid/organic/wood/ebony

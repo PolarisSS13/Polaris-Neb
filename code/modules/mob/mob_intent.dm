@@ -29,6 +29,8 @@
 	var/intent_flags = 0
 	/// Descriptive string used in status panel.
 	var/name
+	/// Descriptive string shown when examined.
+	var/desc
 	/// Icon used to draw this intent in the selector.
 	var/icon = 'icons/screen/intents.dmi'
 	/// State used to update intent selector.
@@ -51,31 +53,35 @@
 // Basic subtypes.
 /decl/intent/harm
 	name             = "harm"
+	desc             = "<b>HARM INTENT</b>: you will attempt to damage, disrupt or destroy whatever you interact with."
 	uid              = "intent_harm"
 	intent_flags     = I_FLAG_HARM
 	icon_state       = "intent_harm"
-	sort_order       = 1 // Bottom left of intent selector.
+	sort_order       = 4 // Corresponding to hotkey order.
 
 /decl/intent/grab
 	name             = "grab"
+	desc             = "<b>GRAB INTENT</b>: you will attempt to grab hold of any object or creature you interact with."
 	uid              = "intent_grab"
 	intent_flags     = I_FLAG_GRAB
 	icon_state       = "intent_grab"
-	sort_order       = 2 // Bottom left of the intent selector.
+	sort_order       = 3 // Corresponding to hotkey order.
 
 /decl/intent/help
 	name             = "help"
+	desc             = "<b>HELP INTENT</b>: you will attempt to assist, or in general void harming, whatever you interact with."
 	uid              = "intent_help"
 	intent_flags     = I_FLAG_HELP
 	icon_state       = "intent_help"
-	sort_order       = 3 // Top left of the intent selector.
+	sort_order       = 1 // Corresponding to hotkey order.
 
 /decl/intent/disarm
 	name             = "disarm"
+	desc             = "<b>DISARM INTENT</b>: you will attempt to disarm or incapacitate any creature you interact with."
 	uid              = "intent_disarm"
 	intent_flags     = I_FLAG_DISARM
 	icon_state       = "intent_disarm"
-	sort_order       = 4 // Top right of the intent selector.
+	sort_order       = 2 // Corresponding to hotkey order.
 
 // Used by nymphs.
 /decl/intent/harm/binary

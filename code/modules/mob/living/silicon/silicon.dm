@@ -10,7 +10,6 @@
 	var/list/stating_laws = list()// Channels laws are currently being stated on
 	var/obj/item/radio/silicon_radio
 
-	var/list/hud_list[10]
 	var/list/speech_synthesizer_langs = list()	//which languages can be vocalized by the speech synthesizer
 
 	//Used in say.dm.
@@ -40,6 +39,7 @@
 	#define MED_HUD 2 //Medical HUD mode
 
 /mob/living/silicon/Initialize()
+	reset_hud_overlays()
 	global.silicon_mob_list += src
 	. = ..()
 
@@ -103,22 +103,24 @@
 	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
 	..()
 
-/mob/living/silicon/stun_effect_act(var/stun_amount, var/agony_amount)
+/mob/living/silicon/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon)
 	return	//immune
 
-/mob/living/silicon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, def_zone = null)
-
-	if (istype(source, /obj/effect/containment_field))
-		spark_at(loc, amount=5, cardinal_only = TRUE)
-
-		shock_damage *= 0.75	//take reduced damage
-		take_overall_damage(0, shock_damage)
-		visible_message("<span class='warning'>\The [src] was shocked by \the [source]!</span>", \
-			"<span class='danger'>Energy pulse detected, system damaged!</span>", \
-			"<span class='warning'>You hear an electrical crack</span>")
-		if(prob(20))
-			SET_STATUS_MAX(src, STAT_STUN, 2)
-		return
+/mob/living/silicon/electrocute_act(shock_damage, obj/source, siemens_coeff = 1, def_zone)
+	shock_damage = ..()
+	if(shock_damage <= 0 || !istype(source, /obj/effect/containment_field))
+		return 0
+	spark_at(loc, amount=5, cardinal_only = TRUE)
+	shock_damage *= 0.75	//take reduced damage
+	take_overall_damage(0, shock_damage)
+	visible_message(
+		SPAN_DANGER("\The [src] was shocked by \the [source]!"),
+		SPAN_DANGER("Energy pulse detected, system damaged!"),
+		SPAN_DANGER("You hear an electrical crack.")
+	)
+	if(prob(20))
+		SET_STATUS_MAX(src, STAT_STUN, 2)
+	return shock_damage
 
 /mob/living/silicon/bullet_act(var/obj/item/projectile/Proj)
 	if(!Proj.nodamage)

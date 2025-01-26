@@ -1,4 +1,4 @@
-/datum/job/assistant/tradeship
+/datum/job/standard/assistant/tradeship
 	title = "Deck Hand"
 	supervisors = "literally everyone, you bottom feeder"
 	outfit_type = /decl/outfit/job/tradeship/hand

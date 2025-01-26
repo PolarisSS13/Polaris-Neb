@@ -45,6 +45,7 @@
 	drop_sound = 'sound/foley/drop1.ogg'
 	pickup_sound = 'sound/foley/pickup2.ogg'
 	can_be_twohanded = TRUE // also checks one_hand_penalty
+	needs_attack_dexterity = DEXTERITY_WEAPONS
 
 	var/fire_verb = "fire"
 	var/waterproof = FALSE
@@ -193,15 +194,20 @@
 /obj/item/gun/proc/special_check(var/mob/user)
 
 	if(!isliving(user))
-		return 0
-	if(!user.check_dexterity(DEXTERITY_WEAPONS))
-		return 0
+		return FALSE
+
+	if(!user.check_dexterity(get_required_attack_dexterity(user)))
+		return FALSE
+
+	if(is_secure_gun() && !free_fire() && (!authorized_modes[sel_mode] || !registered_owner))
+		audible_message(SPAN_WARNING("\The [src] buzzes, refusing to fire."), hearing_distance = 3)
+		playsound(loc, 'sound/machines/buzz-sigh.ogg', 10, 0)
+		return FALSE
 
 	var/mob/living/M = user
 	if(!safety() && world.time > last_safety_check + 5 MINUTES && !user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(prob(30))
 			toggle_safety()
-			return 1
 
 	if(M.has_genetic_condition(GENE_COND_CLUMSY) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
@@ -218,8 +224,9 @@
 				M.try_unequip(src)
 		else
 			handle_click_empty(user)
-		return 0
-	return 1
+		return FALSE
+
+	return TRUE
 
 /obj/item/gun/emp_act(severity)
 	for(var/obj/O in contents)
@@ -744,6 +751,9 @@
 		return FALSE
 	return TRUE
 
+/obj/item/gun/get_quick_interaction_handler(mob/user)
+	return GET_DECL(/decl/interaction_handler/gun/toggle_safety)
+
 /obj/item/gun/get_alt_interactions(mob/user)
 	. = ..()
 	LAZYADD(., /decl/interaction_handler/gun/toggle_safety)
@@ -756,6 +766,7 @@
 
 /decl/interaction_handler/gun/toggle_safety
 	name = "Toggle Safety"
+	examine_desc = "toggle the safety"
 
 /decl/interaction_handler/gun/toggle_safety/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gun/gun = target
@@ -763,6 +774,7 @@
 
 /decl/interaction_handler/gun/toggle_firemode
 	name = "Change Firemode"
+	examine_desc = "change the firemode"
 
 /decl/interaction_handler/gun/toggle_firemode/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gun/gun = target

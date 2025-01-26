@@ -6,7 +6,6 @@
 	w_class             = ITEM_SIZE_NORMAL
 	origin_tech         = @'{"materials":1,"engineering":1}'
 	attack_verb         = list("hit", "pierced", "sliced", "attacked")
-	sharp               = 0
 	abstract_type       = /obj/item/tool
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
 	_base_attack_force  = 10

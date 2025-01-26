@@ -49,9 +49,9 @@
 	var/ambient_b = 0
 
 	if (ambient_light)
-		ambient_r = ((HEX_RED(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_r
-		ambient_g = ((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_g
-		ambient_b = ((HEX_BLUE(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_b
+		ambient_r = round(((HEX_RED(ambient_light)   / 255) * ambient_light_multiplier)/4 - ambient_light_old_r, LIGHTING_ROUND_VALUE)
+		ambient_g = round(((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_g, LIGHTING_ROUND_VALUE)
+		ambient_b = round(((HEX_BLUE(ambient_light)  / 255) * ambient_light_multiplier)/4 - ambient_light_old_b, LIGHTING_ROUND_VALUE)
 	else
 		ambient_r = -ambient_light_old_r
 		ambient_g = -ambient_light_old_g
@@ -61,31 +61,21 @@
 	ambient_light_old_g += ambient_g
 	ambient_light_old_b += ambient_b
 
-	if (ambient_r + ambient_g + ambient_b == 0)
+	if (abs(ambient_r + ambient_g + ambient_b) == 0)
 		return
 
 	// Unlit turfs will have corners if they have a lit neighbor -- don't generate corners for them, but do update them if they're there.
-	// if (!corners)
-	// 	var/force_build_corners = FALSE
-	// 	for (var/turf/T as anything in RANGE_TURFS(src, 1))
-	// 		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-	// 			force_build_corners = TRUE
-	// 			break
+	if (!corners)
+		var/force_build_corners = FALSE
+		for (var/turf/T as anything in RANGE_TURFS(src, 1))
+			if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+				force_build_corners = TRUE
+				break
 
-	// 	if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
-	// 		generate_missing_corners()
-	// 	else
-	// 		return
-
-	// still inefficient :(
-	if(!corners || !lighting_corners_initialised)
-		/* Commented out pending working out why this doesn't work properly on Neb.
-		if(TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
+		if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 			generate_missing_corners()
 		else
 			return
-		*/
-		generate_missing_corners()
 
 	// This list can contain nulls on things like space turfs -- they only have their neighbors' corners.
 	for (var/datum/lighting_corner/C in corners)
@@ -126,8 +116,7 @@
 // Builds a lighting overlay for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay(now = FALSE)
 	if (lighting_overlay)
-		return	// shrug
-		// CRASH("Attempted to create lighting_overlay on tile that already had one.")
+		CRASH("Attempted to create lighting_overlay on tile that already had one.")
 
 	if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 		if (!lighting_corners_initialised || !corners)

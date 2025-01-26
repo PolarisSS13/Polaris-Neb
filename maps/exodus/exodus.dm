@@ -1,21 +1,15 @@
 #if !defined(USING_MAP_DATUM)
 
-	#include "../../mods/gamemodes/cult/_cult.dme"
-	#include "../../mods/gamemodes/heist/_heist.dme"
-	#include "../../mods/gamemodes/meteor/_meteor.dme"
-	#include "../../mods/gamemodes/ninja/_ninja.dme"
-	#include "../../mods/gamemodes/revolution/_revolution.dme"
-	#include "../../mods/gamemodes/traitor/_traitor.dme"
-	#include "../../mods/gamemodes/spyvspy/_spyvspy.dme"
-	#include "../../mods/gamemodes/mixed/_mixed.dme"
-
 	#include "../../mods/content/mundane.dm"
+
 	#include "../../mods/content/baychems/_baychems.dme"
+
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/government/_government.dme"
 	#include "../../mods/content/matchmaking/_matchmaking.dme"
 	#include "../../mods/content/modern_earth/_modern_earth.dme"
 	#include "../../mods/content/mouse_highlights/_mouse_highlight.dme"
+
 	#include "../../mods/content/polaris/_polaris.dme"
 	#include "../../mods/content/scaling_descriptors.dm"
 	#include "../../mods/content/xenobiology/_xenobiology.dme"
@@ -26,9 +20,18 @@
 	// Must come after borers for compatibility.
 	#include "../../mods/content/psionics/_psionics.dme"
 
-
-	// Must come after psionics for counsellor compatibility.
 	#include "../../mods/content/standard_jobs/_standard_jobs.dme"
+	#include "../../mods/content/supermatter/_supermatter.dme"
+	#include "../../mods/content/tabloids/_tabloids.dme"
+
+	#include "../../mods/gamemodes/cult/_cult.dme"
+	#include "../../mods/gamemodes/heist/_heist.dme"
+	#include "../../mods/gamemodes/meteor/_meteor.dme"
+	#include "../../mods/gamemodes/ninja/_ninja.dme"
+	#include "../../mods/gamemodes/revolution/_revolution.dme"
+	#include "../../mods/gamemodes/spyvspy/_spyvspy.dme"
+	#include "../../mods/gamemodes/traitor/_traitor.dme"
+	#include "../../mods/gamemodes/mixed.dm"
 
 	#include "../../mods/species/skrell/_skrell.dme"
 	#include "../../mods/species/tajaran/_tajaran.dme"

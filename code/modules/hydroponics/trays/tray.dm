@@ -36,8 +36,6 @@
 	// Mechanical concerns.
 	var/plant_health = 0       // Plant health.
 	var/lastproduce = 0        // Last time tray was harvested
-	var/lastcycle = 0          // Cycle timing/tracking var.
-	var/cycledelay = 150       // Delay per cycle.
 	var/closed_system          // If set, the tray will attempt to take atmos from a pipe.
 	var/force_update           // Set this to bypass the cycle time check.
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
@@ -328,7 +326,6 @@
 		return //Weed does not exist, someone fucked up.
 
 	age = 0
-	lastcycle = world.time
 	harvest = 0
 	weedlevel = 0
 	pestlevel = 0
@@ -397,26 +394,57 @@
 	set_seed(SSplants.seeds[newseed])
 	mutate(1)
 	plant_health = seed.get_trait(TRAIT_ENDURANCE) // re-run in case mutation changed our endurance
-	lastcycle = world.time
 
 	update_icon()
 	visible_message("<span class='danger'>The </span><span class='notice'>[previous_plant]</span><span class='danger'> has suddenly mutated into </span><span class='notice'>[seed.display_name]!</span>")
 
 	return
 
-/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O, /obj/item/food/grown))
-		var/obj/item/food/grown/bulb = O
+	if(istype(used_item, /obj/item/food/grown))
+		var/obj/item/food/grown/bulb = used_item
 		if(bulb.seed?.grown_is_seed)
 			plant_seed(user, bulb)
 			return TRUE
 
-	if (ATOM_IS_OPEN_CONTAINER(O))
+	if(IS_HOE(used_item))
+
+		if(weedlevel > 0)
+			if(!used_item.do_tool_interaction(TOOL_HOE, user, src, 2 SECONDS, start_message = "uprooting the weeds in", success_message = "weeding") || weedlevel <= 0 || QDELETED(src))
+				return TRUE
+			weedlevel = 0
+			update_icon()
+			if(seed)
+				var/needed_skill = seed.mysterious ? SKILL_ADEPT : SKILL_BASIC
+				if(!user.skill_check(SKILL_BOTANY, needed_skill))
+					plant_health -= rand(40,60)
+					check_plant_health()
+		else
+			to_chat(user, SPAN_WARNING("This plot is completely devoid of weeds. It doesn't need uprooting."))
+		return TRUE
+
+	if(IS_SHOVEL(used_item))
+		if(seed)
+			var/removing_seed = seed
+			if(used_item.do_tool_interaction(TOOL_SHOVEL, user, src, 3 SECONDS, start_message = "removing \the [seed.display_name] from", success_message = "removing \the [seed.display_name] from") && seed == removing_seed)
+				set_seed(null)
+		else
+			to_chat(user, SPAN_WARNING("There is no plant in \the [src] to remove."))
+		return TRUE
+
+	if(!user.check_intent(I_FLAG_HARM))
+		var/decl/interaction_handler/sample_interaction = GET_DECL(/decl/interaction_handler/hydroponics/sample)
+		if(sample_interaction.is_possible(src, user, used_item))
+			sample_interaction.invoked(src, user, used_item)
+			return TRUE
+
+	// Handled in afterattack/
+	if (ATOM_IS_OPEN_CONTAINER(used_item))
 		return FALSE
 
-	if(istype(O, /obj/item/chems/syringe))
-		var/obj/item/chems/syringe/S = O
+	if(istype(used_item, /obj/item/chems/syringe))
+		var/obj/item/chems/syringe/S = used_item
 		if (S.mode == 1)
 			if(seed)
 				return ..()
@@ -430,57 +458,32 @@
 				to_chat(user, SPAN_WARNING("There's nothing to draw something from."))
 		return TRUE
 
-	if(istype(O, /obj/item/seeds))
-		plant_seed(user, O)
+	if(istype(used_item, /obj/item/seeds))
+		plant_seed(user, used_item)
 		return TRUE
 
-	if(IS_HOE(O))
-
-		if(weedlevel > 0)
-			if(!O.do_tool_interaction(TOOL_HOE, user, src, 2 SECONDS, start_message = "uprooting the weeds in", success_message = "weeding") || weedlevel <= 0 || QDELETED(src))
-				return TRUE
-			weedlevel = 0
-			update_icon()
-			if(seed)
-				var/needed_skill = seed.mysterious ? SKILL_ADEPT : SKILL_BASIC
-				if(!user.skill_check(SKILL_BOTANY, needed_skill))
-					plant_health -= rand(40,60)
-					check_plant_health()
-		else
-			to_chat(user, SPAN_WARNING("This plot is completely devoid of weeds. It doesn't need uprooting."))
-		return TRUE
-
-	if(IS_SHOVEL(O))
-		if(seed)
-			var/removing_seed = seed
-			if(O.do_tool_interaction(TOOL_SHOVEL, user, src, 3 SECONDS, start_message = "removing \the [seed.display_name] from", success_message = "removing \the [seed.display_name] from") && seed == removing_seed)
-				set_seed(null)
-		else
-			to_chat(user, SPAN_WARNING("There is no plant in \the [src] to remove."))
-		return TRUE
-
-	if (istype(O, /obj/item/plants))
+	if (istype(used_item, /obj/item/plants))
 		physical_attack_hand(user) // Harvests and clears out dead plants.
-		if(O.storage)
+		if(used_item.storage)
 			for (var/obj/item/food/grown/G in get_turf(user))
-				if(O.storage.can_be_inserted(G, user))
-					O.storage.handle_item_insertion(user, G, TRUE)
+				if(used_item.storage.can_be_inserted(G, user))
+					used_item.storage.handle_item_insertion(user, G, TRUE)
 		return TRUE
 
-	if ( istype(O, /obj/item/plantspray) )
+	if ( istype(used_item, /obj/item/plantspray) )
 
-		var/obj/item/plantspray/spray = O
+		var/obj/item/plantspray/spray = used_item
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
 		update_icon()
-		to_chat(user, "You spray [src] with [O].")
+		to_chat(user, "You spray [src] with [used_item].")
 		playsound(loc, 'sound/effects/spray3.ogg', 50, 1, -6)
-		qdel(O)
+		qdel(used_item)
 		check_plant_health()
 		return TRUE
 
-	if(mechanical && IS_WRENCH(O))
+	if(mechanical && IS_WRENCH(used_item))
 
 		//If there's a connector here, the portable_atmospherics setup can handle it.
 		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
@@ -491,18 +494,19 @@
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 		return TRUE
 
-	var/force = O.get_attack_force(user)
-	if(force && seed)
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
-		playsound(get_turf(src), O.hitsound, 100, 1)
-		if(!dead)
-			plant_health -= force
-			check_plant_health()
-		return TRUE
+	if(seed)
+		var/force = used_item.expend_attack_force(user)
+		if(force)
+			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [used_item]!</span>")
+			playsound(get_turf(src), used_item.hitsound, 100, 1)
+			if(!dead)
+				plant_health -= force
+				check_plant_health()
+			return TRUE
 
 	if(mechanical)
-		return component_attackby(O, user)
+		return component_attackby(used_item, user)
 
 	return ..()
 
@@ -549,7 +553,6 @@
 	//Snowflakey, maybe move this to the seed datum
 	// re-running to adjust based on planting method
 	plant_health = (istype(S, /obj/item/seeds/extracted/cutting) ? round(seed.get_trait(TRAIT_ENDURANCE)/rand(2,5)) : seed.get_trait(TRAIT_ENDURANCE))
-	lastcycle = world.time
 
 	var/needed_skill = seed.mysterious ? SKILL_ADEPT : SKILL_BASIC
 	if(prob(user.skill_fail_chance(SKILL_BOTANY, 40, needed_skill)))
@@ -647,7 +650,6 @@
 		age = 1
 		// re-running to adjust for planting method
 		plant_health = (istype(S, /obj/item/seeds/extracted/cutting) ? round(seed.get_trait(TRAIT_ENDURANCE)/rand(2,5)) : seed.get_trait(TRAIT_ENDURANCE))
-		lastcycle = world.time
 		check_plant_health()
 	qdel(S)
 
@@ -669,6 +671,7 @@
 
 /decl/interaction_handler/hydroponics/close_lid
 	name = "Open/Close Lid"
+	examine_desc = "open or close the lid"
 
 /decl/interaction_handler/hydroponics/close_lid/is_possible(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/portable_atmospherics/hydroponics/tray = target
@@ -680,9 +683,10 @@
 
 /decl/interaction_handler/hydroponics/sample
 	name = "Sample Plant"
+	examine_desc = "take a sample"
 
 /decl/interaction_handler/hydroponics/sample/is_possible(atom/target, mob/user, obj/item/prop)
-	return ..() && istype(prop) && prop.edge && prop.w_class < ITEM_SIZE_NORMAL
+	return ..() && istype(prop) && prop.has_edge() && prop.w_class < ITEM_SIZE_NORMAL
 
 /decl/interaction_handler/hydroponics/sample/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/portable_atmospherics/hydroponics/tray = target

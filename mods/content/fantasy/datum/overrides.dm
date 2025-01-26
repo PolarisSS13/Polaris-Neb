@@ -31,28 +31,33 @@
 		/decl/background_category/religion  = /decl/background_detail/religion/other
 	)
 
-// Rename grafadreka
-/decl/species/grafadreka
-	name = "Meredrake"
-	name_plural = "Meredrakes"
-	description = "Meredrakes, sometimes called mire-drakes, are large reptillian pack predators, widely assumed to be cousins to true dragons. \
-	They are commonly found living in caves or burrows bordering grassland or forest, and while they prefer to hunt deer or rabbits, they will sometimes attack travellers if pickings are slim enough. \
-	While they are not domesticated, they can be habituated and trained as working animals if captured young enough."
-
-/decl/sprite_accessory/marking/grafadreka
-	species_allowed = list("Meredrake")
-
-/decl/language/grafadreka
-	desc = "Hiss hiss, feed me rabbits."
-
-/decl/material/liquid/sifsap
-	name = "drake spittle"
-	lore_text = "A complex chemical slurry brewed up in the gullet of meredrakes."
-
-/obj/aura/sifsap_salve
-	name = "Drakespittle Salve"
-	descriptor = "glowing spittle"
-
 // Rename wooden prostheses
 /decl/bodytype/prosthetic/wooden
 	name = "carved wooden" // weird to call it 'crude' when it's cutting-edge for the setting
+
+// Just some fun overrides for when robot debris shows up in maint.
+/obj/effect/decal/cleanable/blood/gibs/robot
+	name = "mysterious debris"
+	desc = "Some kind of complex, oily detritus. What could it be?"
+
+/obj/item/remains/robot
+	name = "mysterious remains"
+	desc = "The oily remains of some complex, metallic object. What could they be from?"
+
+// Override to remove non-fantasy stuff.
+/obj/random/trash/spawn_choices()
+	var/static/list/spawnable_choices = list(
+		/obj/item/remains/lizard,
+		/obj/effect/decal/cleanable/blood/gibs/robot,
+		/obj/effect/decal/cleanable/spiderling_remains,
+		/obj/item/remains/mouse,
+		/obj/effect/decal/cleanable/vomit,
+		/obj/effect/decal/cleanable/blood/splatter,
+		/obj/effect/decal/cleanable/ash,
+		/obj/effect/decal/cleanable/generic,
+		/obj/effect/decal/cleanable/flour,
+		/obj/effect/decal/cleanable/filth,
+		/obj/effect/decal/cleanable/dirt/visible,
+		/obj/item/remains/robot
+	)
+	return spawnable_choices

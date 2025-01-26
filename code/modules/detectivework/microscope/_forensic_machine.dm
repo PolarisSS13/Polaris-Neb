@@ -122,6 +122,7 @@
 /decl/interaction_handler/forensics_remove_sample
 	name = "Remove Sample"
 	expected_target_type = /obj/machinery/forensic
+	examine_desc = "remove a sample"
 
 /decl/interaction_handler/forensics_remove_sample/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/forensic/F = target

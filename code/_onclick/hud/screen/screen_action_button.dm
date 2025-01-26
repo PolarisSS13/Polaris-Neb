@@ -14,6 +14,7 @@
 	return FALSE
 
 /obj/screen/action_button/on_update_icon()
+	..()
 	if(!action)
 		return
 	icon = action.background_icon
@@ -72,7 +73,6 @@
 	update_icon()
 	user.update_action_buttons()
 
-/obj/screen/action_button/hide_toggle/on_update_icon()
-	cut_overlays()
+/obj/screen/action_button/hide_toggle/rebuild_screen_overlays()
+	..()
 	add_overlay(hidden ? "show" : "hide")
-	compile_overlays()

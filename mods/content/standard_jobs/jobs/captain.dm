@@ -1,5 +1,6 @@
-/datum/job/captain
+/datum/job/standard/captain
 	title = "Captain"
+	hud_icon_state = "hudcaptain"
 	head_position = 1
 	department_types = list(/decl/department/command)
 	total_positions = 1
@@ -33,16 +34,17 @@
 		/datum/computer_file/program/reports
 	)
 
-/datum/job/captain/equip_job(var/mob/living/human/H)
+/datum/job/standard/captain/equip_job(var/mob/living/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(src)
 
-/datum/job/captain/get_access()
+/datum/job/standard/captain/get_access()
 	return get_all_station_access()
 
-/datum/job/hop
+/datum/job/standard/hop
 	title = "Head of Personnel"
+	hud_icon_state = "hudhop"
 	head_position = 1
 	department_types = list(
 		/decl/department/command,

@@ -1,5 +1,5 @@
 /datum/unit_test/integrated_circuits
-	template = /datum/unit_test/integrated_circuits
+	abstract_type = /datum/unit_test/integrated_circuits
 
 /datum/unit_test/integrated_circuits/unique_names
 	name = "INTEGRATED CIRCUITS: Circuits must have unique names"
@@ -64,7 +64,7 @@
 
 /datum/unit_test/integrated_circuits/input_output
 	name = "INTEGRATED CIRCUITS: INPUT/OUTPUT - TEMPLATE"
-	template = /datum/unit_test/integrated_circuits/input_output
+	abstract_type = /datum/unit_test/integrated_circuits/input_output
 	var/list/all_inputs = list()
 	var/list/all_expected_outputs = list()
 	var/activation_pin = 1

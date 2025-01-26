@@ -18,6 +18,7 @@
 	eye_flash_mod           = 1.2
 	nail_noun               = "claws"
 	uid                     = "bodytype_unathi_fem"
+	footprints_icon         = 'mods/species/bayliens/unathi/icons/footprints.dmi'
 
 	age_descriptor = /datum/appearance_descriptor/age/lizard
 
@@ -33,19 +34,24 @@
 	)
 
 	override_organ_types = list(
-		BP_EYES = /obj/item/organ/internal/eyes/lizard,
-		BP_BRAIN = /obj/item/organ/internal/brain/lizard
+		BP_EYES   = /obj/item/organ/internal/eyes/lizard,
+		BP_BRAIN  = /obj/item/organ/internal/brain/lizard
 	)
 
-	override_limb_types = list(BP_TAIL = /obj/item/organ/external/tail/lizard)
+	override_limb_types = list(
+		BP_TAIL   = /obj/item/organ/external/tail/lizard,
+		BP_HEAD   = /obj/item/organ/external/head/strong_bite,
+		BP_L_HAND = /obj/item/organ/external/hand/clawed,
+		BP_R_HAND = /obj/item/organ/external/hand/right/clawed
+	)
 
-	cold_level_1 = 280 //Default 260 - Lower is better
-	cold_level_2 = 220 //Default 200
-	cold_level_3 = 130 //Default 120
+	cold_level_1  = 280 //Default 260 - Lower is better
+	cold_level_2  = 220 //Default 200
+	cold_level_3  = 130 //Default 120
 
-	heat_level_1 = 420 //Default 360 - Higher is better
-	heat_level_2 = 480 //Default 400
-	heat_level_3 = 1100 //Default 1000
+	heat_level_1  = 420 //Default 360 - Higher is better
+	heat_level_2  = 480 //Default 400
+	heat_level_3  = 1100 //Default 1000
 
 	heat_discomfort_level = 320
 	heat_discomfort_strings = list(
@@ -80,3 +86,7 @@
 /obj/item/organ/external/tail/lizard
 	tail_icon             = 'mods/species/bayliens/unathi/icons/tail.dmi'
 	tail_animation_states = 9
+
+/obj/item/organ/external/tail/lizard/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/tail)
+	return unarmed_attack

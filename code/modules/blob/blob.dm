@@ -182,11 +182,11 @@
 	var/damage = 0
 	switch(W.atom_damage_type)
 		if(BURN)
-			damage = (W.get_attack_force(user) / fire_resist)
+			damage = (W.expend_attack_force(user) / fire_resist)
 			if(IS_WELDER(W))
 				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 		if(BRUTE)
-			damage = (W.get_attack_force(user) / brute_resist)
+			damage = (W.expend_attack_force(user) / brute_resist)
 
 	take_damage(damage, W.atom_damage_type)
 	return TRUE

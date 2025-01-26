@@ -24,13 +24,6 @@
 		/decl/bodytype/lizard,
 		/decl/bodytype/lizard/masculine
 	)
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/tail,
-		/decl/natural_attack/claws,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite/sharp
-	)
 
 	available_accessory_categories = list(
 		SAC_HORNS,

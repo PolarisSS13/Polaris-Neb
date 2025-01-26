@@ -802,7 +802,7 @@ About the new airlock wires panel:
 	else if((stat & (BROKEN|NOPOWER)) && isanimal(user))
 		var/mob/living/simple_animal/A = user
 		var/obj/item/I = A.get_natural_weapon()
-		if(I?.get_attack_force(user) >= 10)
+		if(I?.expend_attack_force(user) >= 10)
 			if(density)
 				visible_message(SPAN_DANGER("\The [A] forces \the [src] open!"))
 				open(1)
@@ -822,7 +822,7 @@ About the new airlock wires panel:
 		var/obj/item/bladed/axe/fire/F = weapon
 		if (F.is_held_twohanded())
 			playsound(src, 'sound/weapons/smash.ogg', 100, 1)
-			current_health -= F.get_attack_force(user) * 2
+			current_health -= F.expend_attack_force(user) * 2
 			if(current_health <= 0)
 				user.visible_message(SPAN_DANGER("[user] smashes \the [weapon] into the airlock's control panel! It explodes in a shower of sparks!"), SPAN_DANGER("You smash \the [weapon] into the airlock's control panel! It explodes in a shower of sparks!"))
 				current_health = 0

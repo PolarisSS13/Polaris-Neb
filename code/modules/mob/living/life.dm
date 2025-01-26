@@ -1,6 +1,5 @@
 /mob/living/Life()
 	set invisibility = FALSE
-	set background = BACKGROUND_ENABLED
 
 	..()
 
@@ -275,9 +274,10 @@
 	if(!loc)
 		return
 	var/datum/reagents/touching_reagents = get_contact_reagents()
-	if(!touching_reagents?.total_volume)
+	if(touching_reagents?.total_volume <= FLUID_MINIMUM_TRANSFER)
+		touching_reagents?.clear_reagents()
 		return
-	var/drip_amount = max(1, round(touching_reagents.total_volume * 0.1))
+	var/drip_amount = max(FLUID_MINIMUM_TRANSFER, round(touching_reagents.total_volume * 0.2))
 	if(drip_amount)
 		touching_reagents.trans_to(loc, drip_amount)
 

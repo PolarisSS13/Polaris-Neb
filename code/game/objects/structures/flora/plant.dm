@@ -81,7 +81,7 @@
 		return TRUE
 
 	// Hydrotray boilerplate for taking samples.
-	if(O.edge && O.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
+	if(O.has_edge() && O.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(sampled)
 			to_chat(user, SPAN_WARNING("There's no bits that can be used for a sampling left."))
 			return TRUE

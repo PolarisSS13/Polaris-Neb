@@ -5,14 +5,12 @@
 	icon_state = "body_m_s"
 	mob_sort_value = 6
 	max_health = 150
-
-	var/list/hud_list[10]
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 
 /mob/living/human/Initialize(mapload, species_name, datum/mob_snapshot/supplied_appearance)
 
 	current_health = max_health
-	setup_hud_overlays()
+	reset_hud_overlays()
 	var/list/newargs = args.Copy(2)
 	setup_human(arglist(newargs))
 	global.human_mob_list |= src
@@ -31,18 +29,6 @@
 
 	if(. != INITIALIZE_HINT_QDEL)
 		post_setup(arglist(newargs))
-
-/mob/living/human/proc/setup_hud_overlays()
-	hud_list[HEALTH_HUD]      = new /image/hud_overlay('icons/mob/hud_med.dmi', src, "100")
-	hud_list[STATUS_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
-	hud_list[LIFE_HUD]	      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
-	hud_list[ID_HUD]          = new /image/hud_overlay(global.using_map.id_hud_icons, src, "hudunknown")
-	hud_list[WANTED_HUD]      = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[IMPLOYAL_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[IMPCHEM_HUD]     = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[IMPTRACK_HUD]    = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[SPECIALROLE_HUD] = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudblank")
-	hud_list[STATUS_HUD_OOC]  = new /image/hud_overlay('icons/mob/hud.dmi', src, "hudhealthy")
 
 /mob/living/human/Destroy()
 	global.human_mob_list -= src
@@ -360,7 +346,7 @@
 			return
 		var/decl/pronouns/pronouns = get_pronouns()
 		visible_message(SPAN_DANGER("\The [src] starts sticking a finger down [pronouns.his] own throat. It looks like [pronouns.he] [pronouns.is] trying to throw up!"))
-		if(!do_after(src, 30))
+		if(!do_after(src, 3 SECONDS))
 			return
 		timevomit = max(timevomit, 5)
 
@@ -369,13 +355,22 @@
 
 	lastpuke = TRUE
 	to_chat(src, SPAN_WARNING("You feel nauseous..."))
+	var/finish_time = 35 SECONDS
 	if(level > 1)
-		sleep(150 / timevomit)	//15 seconds until second warning
-		to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
+		// 15 seconds until second warning
+		addtimer(CALLBACK(src, PROC_REF(vomit_second_warning_message)), 15 SECONDS / timevomit)
+		finish_time += 15 SECONDS / timevomit
 		if(level > 2)
-			sleep(100 / timevomit)	//and you have 10 more for mad dash to the bucket
-			empty_stomach()
-	sleep(350)	//wait 35 seconds before next volley
+			// and you have 10 more for mad dash to the bucket
+			// timer delay must include the time from the prior one also
+			addtimer(CALLBACK(src, PROC_REF(empty_stomach)), 25 SECONDS / timevomit)
+			finish_time += 10 SECONDS / timevomit
+	addtimer(CALLBACK(src, PROC_REF(reset_vomit_cooldown)), finish_time)
+
+/mob/living/human/proc/vomit_second_warning_message()
+	to_chat(src, SPAN_WARNING("You feel like you are about to throw up!"))
+
+/mob/living/human/proc/reset_vomit_cooldown()
 	lastpuke = FALSE
 
 /mob/living/human/proc/increase_germ_level(n)
@@ -439,7 +434,7 @@
 	var/obj/item/organ/internal/stomach/stomach = get_organ(BP_STOMACH, /obj/item/organ/internal/stomach)
 	if(stomach && stomach.contents.len)
 		for(var/obj/item/O in stomach.contents)
-			if((O.edge || O.sharp) && prob(5))
+			if((O.is_sharp() || O.has_edge()) && prob(5))
 				var/obj/item/organ/external/parent = GET_EXTERNAL_ORGAN(src, stomach.parent_organ)
 				if(prob(1) && can_feel_pain() && O.can_embed())
 					to_chat(src, SPAN_DANGER("You feel something rip out of your [stomach.name]!"))

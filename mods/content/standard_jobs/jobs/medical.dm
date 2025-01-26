@@ -1,5 +1,6 @@
-/datum/job/cmo
+/datum/job/standard/cmo
 	title = "Chief Medical Officer"
+	hud_icon_state = "hudcmo"
 	head_position = 1
 	department_types = list(
 		/decl/department/medical,
@@ -74,8 +75,9 @@
 	)
 	event_categories = list(ASSIGNMENT_MEDICAL)
 
-/datum/job/doctor
+/datum/job/standard/doctor
 	title = "Medical Doctor"
+	hud_icon_state = "hudmed"
 	department_types = list(/decl/department/medical)
 	minimal_player_age = 3
 	total_positions = 5
@@ -129,8 +131,9 @@
 	skill_points = 22
 	event_categories = list(ASSIGNMENT_MEDICAL)
 
-/datum/job/chemist
+/datum/job/standard/chemist
 	title = "Pharmacist"
+	hud_icon_state = "hudpharmacist"
 	department_types = list(/decl/department/medical)
 	minimal_player_age = 7
 	total_positions = 2
@@ -164,8 +167,9 @@
 	)
 	skill_points = 16
 
-/datum/job/counselor
+/datum/job/standard/counselor
 	title = "Counselor"
+	hud_icon_state = "hudmed"
 	alt_titles = list("Mentalist")
 	department_types = list(/decl/department/medical)
 	total_positions = 1
@@ -201,15 +205,6 @@
 		/datum/computer_file/program/camera_monitor
 	)
 	give_psionic_implant_on_join = FALSE
-
-#ifdef MODPACK_PSIONICS
-/datum/job/counselor/equip_job(var/mob/living/human/H)
-	if(H.mind.role_alt_title == "Counselor")
-		psi_faculties = list("[PSI_REDACTION]" = PSI_RANK_OPERANT)
-	if(H.mind.role_alt_title == "Mentalist")
-		psi_faculties = list("[PSI_COERCION]" = PSI_RANK_OPERANT)
-	return ..()
-#endif
 
 // Department-flavor IDs
 /obj/item/card/id/medical

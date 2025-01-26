@@ -155,6 +155,7 @@
 /decl/interaction_handler/paper_bin_dump_contents
 	name                 = "Dump Contents"
 	expected_target_type = /obj/item/paper_bin
+	examine_desc         = "empty $TARGET_THEM$"
 
 /decl/interaction_handler/paper_bin_dump_contents/is_possible(var/obj/item/paper_bin/target, mob/user, obj/item/prop)
 	return ..() && target.amount > 0

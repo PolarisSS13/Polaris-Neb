@@ -1,4 +1,4 @@
-/datum/job/captain/tradeship
+/datum/job/standard/captain/tradeship
 	title = "Captain"
 	supervisors = "your profit margin, your conscience, and the Trademaster"
 	outfit_type = /decl/outfit/job/tradeship/captain
@@ -11,7 +11,7 @@
 	ideal_character_age = 70
 	forced_spawnpoint = /decl/spawnpoint/cryo/captain
 
-/datum/job/captain/tradeship/equip_job(var/mob/living/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
+/datum/job/standard/captain/tradeship/equip_job(var/mob/living/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
 	. = ..()
 	if(H)
 		H.verbs |= /mob/proc/tradehouse_rename_ship
@@ -55,6 +55,7 @@
 /datum/job/tradeship_first_mate
 	title = "First Mate"
 	supervisors = "the Captain"
+	hud_icon = 'maps/tradeship/hud.dmi'
 	outfit_type = /decl/outfit/job/tradeship/mate
 	head_position = 1
 	department_types = list(

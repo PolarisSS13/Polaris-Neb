@@ -34,7 +34,8 @@
 	var/announced = TRUE                      // If their arrival is announced on radio
 	var/latejoin_at_spawnpoints               // If this job should use roundstart spawnpoints for latejoin (offstation jobs etc)
 	var/forced_spawnpoint                     // If set to a spawnpoint name, will use that spawn point for joining as this job.
-	var/hud_icon                              // icon used for Sec HUD overlay
+	var/hud_icon                             // icon used for secHUD overlay
+	var/hud_icon_state                        // icon state used for secHUD overlay
 
 	// A list of string IDs for keys to grant on join.
 	var/list/lock_keys = list()
@@ -69,7 +70,7 @@
 
 	if(type == /datum/job && global.using_map.default_job_type == type)
 		title = "Debug Job"
-		hud_icon = "hudblank"
+		hud_icon_state = "hudblank"
 		outfit_type = /decl/outfit/job/generic/scientist
 		autoset_department = TRUE
 
@@ -83,7 +84,9 @@
 		spawn_positions = 0
 
 	if(!hud_icon)
-		hud_icon = "hud[ckey(title)]"
+		hud_icon = global.using_map.hud_icons
+	if(!hud_icon_state)
+		hud_icon_state = "hud[ckey(title)]"
 
 	..()
 

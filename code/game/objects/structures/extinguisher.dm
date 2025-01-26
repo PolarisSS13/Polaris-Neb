@@ -80,6 +80,7 @@
 /decl/interaction_handler/extinguisher_cabinet_open
 	name = "Open/Close"
 	expected_target_type = /obj/structure/extinguisher_cabinet
+	examine_desc = "open or close $TARGET_THEM$"
 
 /decl/interaction_handler/extinguisher_cabinet_open/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/structure/extinguisher_cabinet/C = target

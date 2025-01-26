@@ -1,4 +1,3 @@
-
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	//This should all be moved over to datum/admins/Topic() or something ~Carn
 	if( (usr.client != src) || !src.holder )
@@ -96,17 +95,6 @@
 
 		src.holder.show_player_panel(victim)
 		href_list["datumrefresh"] = href_list["mob_player_panel"]
-
-	else if(href_list["give_spell"])
-		if(!check_rights(R_ADMIN|R_FUN))	return
-
-		var/mob/victim = locate(href_list["give_spell"])
-		if(!istype(victim))
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		src.give_spell(victim)
-		href_list["datumrefresh"] = href_list["give_spell"]
 
 	else if(href_list["godmode"])
 		if(!check_rights(R_REJUVENATE))	return
@@ -302,8 +290,8 @@
 			return
 		var/list/possible_ailments = list()
 		for(var/atype in subtypesof(/datum/ailment))
-			var/datum/ailment/ailment = get_ailment_reference(atype)
-			if(ailment && ailment.category != ailment.type && ailment.can_apply_to(limb))
+			var/datum/ailment/ailment = get_ailment_reference(atype) // will not get abstract ailments
+			if(ailment && ailment.can_apply_to(limb))
 				possible_ailments |= ailment
 
 		var/datum/ailment/ailment = input("Select an ailment type to add.", "Add Ailment") as null|anything in possible_ailments
@@ -689,6 +677,33 @@
 			return
 		item.set_material(new_material.type)
 		to_chat(usr, "Set material of [item] to [item.get_material()].")
+
+	else if(href_list["give_ability"])
+		var/mob/target = locate(href_list["give_ability"])
+		if(!istype(target) || QDELETED(target))
+			to_chat(usr, "Mob no longer exists.")
+		else
+			var/list/abilities = decls_repository.get_decls_of_type_unassociated(/decl/ability)
+			abilities = abilities.Copy()
+			abilities -= target.get_all_abilities()
+			var/decl/ability/ability = input(usr, "Which ability do you wish to grant?", "Give Ability") as null|anything in abilities
+			if(istype(ability) && !QDELETED(usr) && !QDELETED(target))
+				if(target.add_ability(ability.type))
+					log_and_message_admins("has given [ability] to [key_name(target)].")
+				else
+					to_chat(usr, SPAN_WARNING("Failed to give [ability] to [target]!"))
+
+	else if(href_list["remove_ability"])
+		var/mob/target = locate(href_list["remove_ability"])
+		if(!istype(target) || QDELETED(target))
+			to_chat(usr, "Mob no longer exists.")
+		else
+			var/decl/ability/ability = input(usr, "Which ability do you wish to remove?", "Remove Ability") as null|anything in target.get_all_abilities()
+			if(istype(ability) && !QDELETED(usr) && !QDELETED(target))
+				if(target.remove_ability(ability.type))
+					log_and_message_admins("has removed [ability] from [key_name(target)].")
+				else
+					to_chat(usr, SPAN_WARNING("Failed to remove [ability] from [target]!"))
 
 	if(href_list["datumrefresh"])
 		var/datum/datum_to_refresh = locate(href_list["datumrefresh"])

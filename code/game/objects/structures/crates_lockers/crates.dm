@@ -236,9 +236,6 @@
 	storage_types = CLOSET_STORAGE_ITEMS|CLOSET_STORAGE_STRUCTURES
 	icon = 'icons/obj/closets/bases/large_crate.dmi'
 
-/obj/structure/closet/crate/secure/large/supermatter
-	closet_appearance = /decl/closet_appearance/large_crate/secure/hazard
-
 //fluff variant
 /obj/structure/closet/crate/secure/large/reinforced
 	desc = "A hefty, reinforced metal crate with an electronic locking system."

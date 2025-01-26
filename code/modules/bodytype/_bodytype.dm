@@ -41,10 +41,14 @@ var/global/list/bodytypes_by_category = list()
 	var/ignited_icon         = 'icons/mob/OnFire.dmi'
 	/// Drawn over mob bodyparts when they are surgically open/retracted.
 	var/surgery_overlay_icon = 'icons/mob/surgery.dmi'
+	/// Icon to use when walking across snow, sand or mud. Separate to bloody footprints for now.
+	var/footprints_icon = 'icons/mob/footprints/footprints.dmi'
 	/// Used to retrieve bodytypes by pronoun type in get_bodytype_by_pronouns()
 	var/associated_gender
 	/// Appearance/display related features.
 	var/appearance_flags     = 0
+	// Preview in prefs positioning. If null, uses defaults set on a static list in preferences.dm.
+	var/list/character_preview_screen_locs
 	/// What noun is used when filing your nails?
 	var/nail_noun
 	/// What tech levels should limbs of this type use/need?
@@ -845,3 +849,6 @@ var/global/list/limbs_with_nails = list(
 
 /decl/bodytype/proc/get_movement_slowdown(var/mob/living/human/H)
 	return movement_slowdown
+
+/decl/bodytype/proc/get_footprints_icon()
+	return footprints_icon

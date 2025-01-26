@@ -26,7 +26,7 @@ var/global/list/tradeship_paperwork_end_areas = list()
 /datum/goal/department/paperwork/tradeship
 	paperwork_types =    list(/obj/item/paperwork/tradeship)
 	signatory_job_list = list(
-		/datum/job/captain/tradeship,
+		/datum/job/standard/captain/tradeship,
 		/datum/job/tradeship_first_mate
 	)
 

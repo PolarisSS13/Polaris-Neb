@@ -1,5 +1,6 @@
-/datum/job/hos
+/datum/job/standard/hos
 	title = "Head of Security"
+	hud_icon_state = "hudhos"
 	head_position = 1
 	department_types = list(
 		/decl/department/security,
@@ -87,14 +88,15 @@
 	)
 	event_categories = list(ASSIGNMENT_SECURITY)
 
-/datum/job/hos/equip_job(var/mob/living/human/H)
+/datum/job/standard/hos/equip_job(var/mob/living/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)
 
-/datum/job/warden
+/datum/job/standard/warden
 	title = "Warden"
 	department_types = list(/decl/department/security)
+	hud_icon_state = "hudwarden"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security"
@@ -142,10 +144,10 @@
 		/datum/computer_file/program/camera_monitor
 	)
 
-/datum/job/detective
+/datum/job/standard/detective
 	title = "Detective"
 	department_types = list(/decl/department/security)
-
+	hud_icon_state = "huddetective"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the head of security"
@@ -192,8 +194,9 @@
 		/datum/computer_file/program/camera_monitor
 	)
 
-/datum/job/officer
+/datum/job/standard/officer
 	title = "Security Officer"
+	hud_icon_state = "hudsec"
 	department_types = list(/decl/department/security)
 	total_positions = 4
 	spawn_positions = 4

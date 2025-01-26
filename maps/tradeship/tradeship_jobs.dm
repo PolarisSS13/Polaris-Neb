@@ -1,19 +1,18 @@
 /datum/map/tradeship
-	default_job_type = /datum/job/assistant/tradeship
+	default_job_type = /datum/job/standard/assistant/tradeship
 	default_department_type = /decl/department/civilian
 	default_law_type = /datum/ai_laws/corporate
-	id_hud_icons = 'maps/tradeship/hud.dmi'
 	allowed_jobs = list(
-		/datum/job/assistant/tradeship,
-		/datum/job/captain/tradeship,
+		/datum/job/standard/assistant/tradeship,
+		/datum/job/standard/captain/tradeship,
 		/datum/job/tradeship_first_mate,
-		/datum/job/cmo/tradeship,
-		/datum/job/doctor/tradeship,
-		/datum/job/chief_engineer/tradeship,
-		/datum/job/engineer/tradeship,
-		/datum/job/rd/tradeship,
-		/datum/job/scientist/tradeship,
-		/datum/job/robot
+		/datum/job/standard/cmo/tradeship,
+		/datum/job/standard/doctor/tradeship,
+		/datum/job/standard/chief_engineer/tradeship,
+		/datum/job/standard/engineer/tradeship,
+		/datum/job/standard/rd/tradeship,
+		/datum/job/standard/scientist/tradeship,
+		/datum/job/standard/robot
 	)
 
 /obj/machinery/suit_cycler/tradeship

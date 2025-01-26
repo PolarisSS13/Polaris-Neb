@@ -184,8 +184,7 @@
 		if(H)
 			expel(H, T, 0)
 
-	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
-		qdel(src)
+	QDEL_IN(src, 2) // delete pipe after 2 ticks to ensure expel proc finished
 
 
 // pipe affected by explosion
@@ -234,11 +233,6 @@
 
 /obj/structure/disposalpipe/hides_under_flooring()
 	return 1
-
-// *** TEST verb
-//client/verb/dispstop()
-//	for(var/obj/structure/disposalholder/H in world)
-//		H.active = 0
 
 // a straight or bent segment
 /obj/structure/disposalpipe/segment

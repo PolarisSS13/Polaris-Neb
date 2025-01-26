@@ -12,7 +12,7 @@
 
 /datum/unit_test/zas_area_test
 	name = "ZAS: Area Test Template"
-	template = /datum/unit_test/zas_area_test
+	abstract_type = /datum/unit_test/zas_area_test
 	var/area_path = null                    // Put the area you are testing here.
 	var/expectation = UT_NORMAL             // See defines above.
 

@@ -1,10 +1,15 @@
 /datum/ability_handler/predator
+	category_toggle_type = null
 	var/max_dismember_size = MOB_SIZE_SMALL
 
 /datum/ability_handler/predator/can_do_melee_invocation(mob/user, atom/target)
-	return istype(user) && !user.incapacitated() && isatom(target) && target.Adjacent(user)
+	return ..() || (istype(user) && !user.incapacitated() && isatom(target) && target.Adjacent(user))
 
 /datum/ability_handler/predator/do_melee_invocation(mob/user, atom/target)
+
+	. = ..()
+	if(.)
+		return
 
 	// Nibbles!
 	if(user.check_intent(I_FLAG_HARM))

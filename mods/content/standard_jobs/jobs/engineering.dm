@@ -1,5 +1,6 @@
-/datum/job/chief_engineer
+/datum/job/standard/chief_engineer
 	title = "Chief Engineer"
+	hud_icon_state = "hudce"
 	head_position = 1
 	department_types = list(
 		/decl/department/engineering,
@@ -69,16 +70,15 @@
 
 	max_skill = list(
 		SKILL_CONSTRUCTION = SKILL_MAX,
-	    SKILL_ELECTRICAL   = SKILL_MAX,
-	    SKILL_ATMOS        = SKILL_MAX,
-	    SKILL_ENGINES      = SKILL_MAX
+		SKILL_ELECTRICAL   = SKILL_MAX,
+		SKILL_ATMOS        = SKILL_MAX,
+		SKILL_ENGINES      = SKILL_MAX
 	)
 	skill_points = 30
 	software_on_spawn = list(
 		/datum/computer_file/program/comm,
 		/datum/computer_file/program/network_monitor,
 		/datum/computer_file/program/power_monitor,
-		/datum/computer_file/program/supermatter_monitor,
 		/datum/computer_file/program/alarm_monitor,
 		/datum/computer_file/program/atmos_control,
 		/datum/computer_file/program/rcon_console,
@@ -88,10 +88,10 @@
 	)
 	event_categories = list(ASSIGNMENT_ENGINEER)
 
-/datum/job/engineer
+/datum/job/standard/engineer
 	title = "Engineer"
 	department_types = list(/decl/department/engineering)
-
+	hud_icon_state = "hudengineer"
 	total_positions = 8
 	spawn_positions = 7
 	supervisors = "the chief engineer"
@@ -130,22 +130,21 @@
 	min_skill = list(
 		SKILL_LITERACY     = SKILL_ADEPT,
 		SKILL_COMPUTER     = SKILL_BASIC,
-	    SKILL_EVA          = SKILL_BASIC,
-	    SKILL_CONSTRUCTION = SKILL_ADEPT,
-	    SKILL_ELECTRICAL   = SKILL_BASIC,
-	    SKILL_ATMOS        = SKILL_BASIC,
-	    SKILL_ENGINES      = SKILL_BASIC
+		SKILL_EVA          = SKILL_BASIC,
+		SKILL_CONSTRUCTION = SKILL_ADEPT,
+		SKILL_ELECTRICAL   = SKILL_BASIC,
+		SKILL_ATMOS        = SKILL_BASIC,
+		SKILL_ENGINES      = SKILL_BASIC
 	)
 	max_skill = list(
 		SKILL_CONSTRUCTION = SKILL_MAX,
-	    SKILL_ELECTRICAL   = SKILL_MAX,
-	    SKILL_ATMOS        = SKILL_MAX,
-	    SKILL_ENGINES      = SKILL_MAX
+		SKILL_ELECTRICAL   = SKILL_MAX,
+		SKILL_ATMOS        = SKILL_MAX,
+		SKILL_ENGINES      = SKILL_MAX
 	)
 	skill_points = 20
 	software_on_spawn = list(
 		/datum/computer_file/program/power_monitor,
-		/datum/computer_file/program/supermatter_monitor,
 		/datum/computer_file/program/alarm_monitor,
 		/datum/computer_file/program/atmos_control,
 		/datum/computer_file/program/rcon_console,

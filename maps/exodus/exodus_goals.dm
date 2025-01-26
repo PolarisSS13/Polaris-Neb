@@ -29,12 +29,12 @@ var/global/list/exodus_paperwork_end_areas = list()
 /datum/goal/department/paperwork/exodus
 	paperwork_types = list(/obj/item/paperwork/exodus)
 	signatory_job_list = list(
-		/datum/job/captain,
-		/datum/job/hop,
-		/datum/job/cmo,
-		/datum/job/chief_engineer,
-		/datum/job/rd,
-		/datum/job/hos
+		/datum/job/standard/captain,
+		/datum/job/standard/hop,
+		/datum/job/standard/cmo,
+		/datum/job/standard/chief_engineer,
+		/datum/job/standard/rd,
+		/datum/job/standard/hos
 	)
 
 /datum/goal/department/paperwork/exodus/get_paper_spawn_turfs()

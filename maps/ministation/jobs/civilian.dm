@@ -1,15 +1,14 @@
-/datum/job/assistant/ministation
+/datum/job/standard/assistant/ministation
 	title = "Recruit"
 	supervisors = "absolutely everyone"
 	alt_titles = list("Technical Recruit","Medical Recruit","Research Recruit","Visitor")
 	outfit_type = /decl/outfit/job/ministation_assistant
 	event_categories = list(ASSIGNMENT_GARDENER)
-	hud_icon = "hudassistant"
 
 /decl/outfit/job/ministation_assistant
 	name = "Job - Ministation Assistant"
 
-/datum/job/bartender/ministation
+/datum/job/standard/bartender/ministation
 	title = "Bartender"
 	alt_titles = list("Cook","Barista")
 	supervisors = "the Lieutenant and the Captain"
@@ -30,7 +29,7 @@
 	)
 	skill_points = 30
 
-/datum/job/cargo_tech/ministation
+/datum/job/standard/cargo_tech/ministation
 	title = "Cargo Technician"
 	alt_titles = list("Shaft Miner","Drill Technician","Prospector")
 	supervisors = "the Lieutenant and the Captain"
@@ -73,7 +72,7 @@
 	)
 	skill_points = 30
 
-/datum/job/janitor/ministation
+/datum/job/standard/janitor/ministation
 	total_positions = 2
 	supervisors = "the Lieutenant and the Captain"
 	economic_power = 3
@@ -84,7 +83,7 @@
 	)
 	skill_points = 28
 
-/datum/job/librarian/ministation
+/datum/job/standard/librarian/ministation
 	spawn_positions = 2
 	supervisors = "the Lieutenant, the Captain, and the smell of old paper"
 	economic_power = 5

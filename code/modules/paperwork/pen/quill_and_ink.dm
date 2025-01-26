@@ -1,7 +1,7 @@
 /obj/item/pen/fancy/quill
 	name              = "quill pen"
 	icon              = 'icons/obj/items/pens/pen_quill.dmi'
-	sharp             = 0
+	sharp             = FALSE
 	material          = /decl/material/solid/organic/skin/feathers
 	pen_quality       = TOOL_QUALITY_DEFAULT
 	max_uses          = 5 // gotta re-ink it often!

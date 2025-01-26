@@ -309,10 +309,8 @@
 
 	if (href_list["vend"] && !currently_vending)
 		var/key = text2num(href_list["vend"])
-		if(!is_valid_index(key, product_records))
-			return TOPIC_REFRESH
-		var/datum/stored_items/vending_products/R = product_records[key]
-		if(!istype(R))
+		var/datum/stored_items/vending_products/R = LAZYACCESS(product_records, key)
+		if(!R)
 			return TOPIC_REFRESH
 
 		// This should not happen unless the request from NanoUI was bad

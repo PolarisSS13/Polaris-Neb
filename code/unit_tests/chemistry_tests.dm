@@ -1,6 +1,6 @@
 /datum/unit_test/chemistry
 	name = "CHEMISTRY: Reagent Template"
-	template = /datum/unit_test/chemistry
+	abstract_type = /datum/unit_test/chemistry
 
 	var/container_volume = 45
 	var/donor_type = /obj/item

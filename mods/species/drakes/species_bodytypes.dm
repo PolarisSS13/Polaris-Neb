@@ -38,7 +38,8 @@
 	override_limb_types  = list(
 		BP_TAIL   = /obj/item/organ/external/tail/grafadreka,
 		BP_L_HAND = /obj/item/organ/external/hand/quadruped/grafadreka,
-		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka
+		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka,
+		BP_HEAD   = /obj/item/organ/external/head/gripper/grafadreka
 	)
 	base_color           = "#608894"
 	base_eye_color       = COLOR_SILVER
@@ -46,6 +47,8 @@
 	antaghud_offset_x    = 16
 	override_organ_types = list(BP_DRAKE_GIZZARD = /obj/item/organ/internal/drake_gizzard)
 	uid                  = "bodytype_drake"
+	footprints_icon      = 'icons/mob/footprints/footprints_paw.dmi'
+
 	additional_emotes    = list(
 		/decl/emote/audible/drake_warble,
 		/decl/emote/audible/drake_purr,
@@ -92,6 +95,13 @@
 		/decl/emote/visible/pocket,
 		/decl/emote/visible/rsalute,
 		/decl/emote/visible/tfist
+	)
+
+	character_preview_screen_locs = list(
+		"1" = "character_preview_map:1,4:36",
+		"2" = "character_preview_map:1,3:31",
+		"4" = "character_preview_map:1,2:26",
+		"8" = "character_preview_map:1,1:21"
 	)
 
 	available_mob_postures = list(
@@ -184,6 +194,7 @@
 	blood_overlays      = 'mods/species/drakes/icons/hatchling_blood.dmi'
 	eye_icon            = 'mods/species/drakes/icons/hatchling_eyes.dmi'
 	icon_template       = 'icons/mob/human_races/species/template.dmi'
+	damage_overlays     = 'icons/mob/human_races/species/default_damage_overlays.dmi'
 	bodytype_category   = BODYTYPE_GRAFADREKA_HATCHLING
 	mob_size            = MOB_SIZE_SMALL
 	pixel_offset_x      = 0
@@ -192,9 +203,14 @@
 		/datum/ability_handler/predator/grafadreka/hatchling
 	)
 	z_flags             = 0
+	// TODO: weaker attack subtypes for the baby
 	override_limb_types = list(
-		BP_TAIL = /obj/item/organ/external/tail/grafadreka/hatchling
+		BP_TAIL   = /obj/item/organ/external/tail/grafadreka/hatchling,
+		BP_L_HAND = /obj/item/organ/external/hand/quadruped/grafadreka,
+		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka,
+		BP_HEAD   = /obj/item/organ/external/head/gripper/grafadreka
 	)
+
 	default_emotes      = list(
 		/decl/emote/audible/drake_hatchling_growl,
 		/decl/emote/audible/drake_hatchling_whine,
@@ -203,6 +219,7 @@
 		/decl/emote/audible/drake_sneeze
 	)
 	age_descriptor = /datum/appearance_descriptor/age/grafadreka/hatchling
+	character_preview_screen_locs = null
 	uid = "bodytype_drake_hatchling"
 
 /decl/bodytype/quadruped/grafadreka/hatchling/Initialize()
@@ -296,6 +313,10 @@
 	_base_attack_force = 8
 	needs_attack_dexterity = DEXTERITY_NONE
 
+/obj/item/organ/external/hand/quadruped/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
+	return unarmed_attack
+
 /obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
@@ -312,6 +333,10 @@
 	_base_attack_force = 8
 	needs_attack_dexterity = DEXTERITY_NONE
 
+/obj/item/organ/external/hand/right/quadruped/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
+	return unarmed_attack
+
 /obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
@@ -323,3 +348,7 @@
 /obj/item/organ/external/hand/right/quadruped/grafadreka/set_bodytype(decl/bodytype/new_bodytype, override_material, apply_to_internal_organs)
 	override_material = /decl/material/solid/organic/bone
 	. = ..()
+
+/obj/item/organ/external/head/gripper/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/bite/sharp/drake)
+	return unarmed_attack

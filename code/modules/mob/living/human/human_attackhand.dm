@@ -1,13 +1,12 @@
 /mob/living/human/proc/get_unarmed_attack(var/mob/target, var/hit_zone = null)
 	if(!hit_zone)
 		hit_zone = get_target_zone()
-	var/list/available_attacks = get_natural_attacks()
+	var/list/available_attacks = get_mob_natural_attacks()
 	var/decl/natural_attack/use_attack = default_attack
 	if(!use_attack || !use_attack.is_usable(src, target, hit_zone) || !(use_attack.type in available_attacks))
 		use_attack = null
 		var/list/other_attacks = list()
-		for(var/u_attack_type in available_attacks)
-			var/decl/natural_attack/u_attack = GET_DECL(u_attack_type)
+		for(var/decl/natural_attack/u_attack as anything in available_attacks)
 			if(!u_attack.is_usable(src, target, hit_zone))
 				continue
 			if(u_attack.is_starting_default)
@@ -18,11 +17,8 @@
 			use_attack = pick(other_attacks)
 	. = use_attack?.resolve_to_soft_variant(src)
 
-/mob/living/human/proc/get_natural_attacks()
-	. = list()
-	for(var/obj/item/organ/external/limb in get_external_organs())
-		if(length(limb.unarmed_attacks) && limb.is_usable())
-			. |= limb.unarmed_attacks
+/obj/item/organ/external/proc/get_natural_attacks()
+	return null
 
 /obj/item/organ/external/proc/get_injury_status(include_pain = TRUE, include_visible = TRUE)
 	. = list()
@@ -409,14 +405,12 @@
 	set src = usr
 
 	var/list/choices
-	for(var/thing in get_natural_attacks())
-		var/decl/natural_attack/u_attack = GET_DECL(thing)
-		if(istype(u_attack))
-			var/image/radial_button = new
-			radial_button.name = capitalize(u_attack.name)
-			LAZYSET(choices, u_attack, radial_button)
+	for(var/decl/natural_attack/u_attack as anything in get_mob_natural_attacks())
+		var/image/radial_button = new
+		radial_button.name = capitalize(u_attack.name)
+		LAZYSET(choices, u_attack, radial_button)
 	var/decl/natural_attack/new_attack = show_radial_menu(src, (attack_selector || src), choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
-	if(QDELETED(src) || !istype(new_attack) || !(new_attack.type in get_natural_attacks()))
+	if(QDELETED(src) || !istype(new_attack) || !(new_attack in get_mob_natural_attacks()))
 		return
 	default_attack = new_attack
 	to_chat(src, SPAN_NOTICE("Your default unarmed attack is now <b>[default_attack?.name || "cleared"]</b>."))

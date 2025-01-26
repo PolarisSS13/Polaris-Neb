@@ -13,8 +13,6 @@
 	_base_attack_force = 3 // bonk
 	throw_speed        = 1
 	throw_range        = 5
-	sharp              = 0
-	edge               = 0
 	armor_penetration  = 0
 
 	material = /decl/material/solid/metal/steel
@@ -90,8 +88,8 @@
 	if(active)
 
 		obj_flags |= OBJ_FLAG_NO_STORAGE
-		sharp =             active_sharp
-		edge =              active_edge
+		set_sharp(active_sharp)
+		set_edge(active_edge)
 		base_parry_chance = active_parry_chance
 		armor_penetration = active_armour_pen
 		hitsound =          active_hitsound
@@ -105,8 +103,8 @@
 	else
 
 		obj_flags &= ~OBJ_FLAG_NO_STORAGE
-		sharp =             initial(sharp)
-		edge =              initial(edge)
+		set_sharp(initial(sharp))
+		set_edge(initial(edge))
 		base_parry_chance = initial(base_parry_chance)
 		armor_penetration = initial(armor_penetration)
 		hitsound =          initial(hitsound)

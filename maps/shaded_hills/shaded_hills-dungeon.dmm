@@ -466,8 +466,6 @@
 /area/shaded_hills/caves/dungeon/poi)
 "GA" = (
 /obj/structure/door/ebony,
-/obj/structure/door/ebony,
-/obj/structure/door/ebony,
 /obj/abstract/landmark/lock_preset{
 	lock_preset_id = "sunken keep";
 	name = "sunken keep locked door"

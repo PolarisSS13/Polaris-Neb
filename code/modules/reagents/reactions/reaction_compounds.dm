@@ -155,9 +155,19 @@
 	required_reagents = list(/decl/material/liquid/capsaicin = 2)
 	result = list(/decl/material/liquid/capsaicin/condensed = 1)
 
-/decl/chemical_reaction/compound/condensed_capsaicin/on_reaction(datum/reagents/holder, created_volume, reaction_flags, list/reaction_data)
+/decl/chemical_reaction/compound/condensed_capsaicin/on_reaction(datum/reagents/holder, created_volume, list/reaction_data)
 	. = ..()
 	holder?.add_reagent(/decl/material/liquid/water, created_volume)
+
+/decl/chemical_reaction/compound/nanitefluid
+	name = "Nanite Fluid"
+	result = /decl/material/liquid/nanitefluid
+	required_reagents = list(/decl/material/liquid/plasticide = 1, /decl/material/solid/metal/aluminium = 1, /decl/material/liquid/lube = 1)
+	catalysts = list(/decl/material/solid/phoron = 5)
+	result_amount = 3
+	minimum_temperature = (-25 CELSIUS) - 100
+	maximum_temperature = -25 CELSIUS
+	mix_message = "The solution becomes a metallic slime."
 
 // This is a bit silly, but we need a way to unify oil types until someone rewrites lanterns.
 /decl/chemical_reaction/compound/fuel_oil

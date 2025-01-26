@@ -27,6 +27,8 @@
 
 /obj/item/chems/on_update_icon()
 	. = ..()
+	if(detail_state)
+		add_overlay(overlay_image(icon, "[initial(icon_state)][detail_state]", detail_color || COLOR_WHITE, RESET_COLOR))
 	var/image/contents_overlay = get_reagents_overlay(use_single_icon ? icon_state : null)
 	if(contents_overlay)
 		add_overlay(contents_overlay)
@@ -198,12 +200,21 @@
 //
 // Interactions
 //
+/obj/item/chems/get_quick_interaction_handler(mob/user)
+	var/static/interaction = GET_DECL(/decl/interaction_handler/set_transfer/chems)
+	return interaction
+
 /obj/item/chems/get_alt_interactions(var/mob/user)
 	. = ..()
-	LAZYADD(., /decl/interaction_handler/set_transfer/chems)
+	var/static/list/chem_interactions = list(
+		/decl/interaction_handler/set_transfer/chems,
+		/decl/interaction_handler/empty/chems
+	)
+	LAZYADD(., chem_interactions)
 
 /decl/interaction_handler/set_transfer/chems
 	expected_target_type = /obj/item/chems
+	examine_desc         = "set the transfer volume"
 
 /decl/interaction_handler/set_transfer/chems/is_possible(var/atom/target, var/mob/user)
 	. = ..()
@@ -220,6 +231,7 @@
 	name                 = "Empty On Floor"
 	expected_target_type = /obj/item/chems
 	interaction_flags    = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION | INTERACTION_NEVER_AUTOMATIC
+	examine_desc         = "empty $TARGET_THEM$ onto the floor"
 
 /decl/interaction_handler/empty/chems/invoked(atom/target, mob/user, obj/item/prop)
 	var/turf/T = get_turf(user)

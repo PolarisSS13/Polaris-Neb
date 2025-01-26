@@ -205,12 +205,13 @@
 /obj/structure/door/get_alt_interactions(var/mob/user)
 	. = ..()
 	if(density)
-		. += /decl/interaction_handler/knock_on_door
+		LAZYADD(., /decl/interaction_handler/knock_on_door)
 
 /decl/interaction_handler/knock_on_door
 	name = "Knock On Door"
 	expected_target_type = /obj/structure/door
 	interaction_flags = INTERACTION_NEEDS_PHYSICAL_INTERACTION | INTERACTION_NEEDS_TURF
+	examine_desc = "knock on $TARGET_THEM$"
 
 /decl/interaction_handler/knock_on_door/invoked(atom/target, mob/user, obj/item/prop)
 	if(!istype(target) || !target.density)
@@ -293,7 +294,7 @@
 	material = /decl/material/solid/organic/plastic
 
 /obj/structure/door/exotic_matter
-	material = /decl/material/solid/supermatter
+	material = /decl/material/solid/exotic_matter
 
 /obj/structure/door/shuttle
 	material = /decl/material/solid/metal/steel

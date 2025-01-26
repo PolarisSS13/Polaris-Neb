@@ -20,10 +20,7 @@
 		/decl/pronouns/male,
 		/decl/pronouns/female
 	)
-	unarmed_attacks = list(
-		/decl/natural_attack/bite/sharp/drake,
-		/decl/natural_attack/claws/strong/drake
-	)
+
 	force_background_info = list(
 		/decl/background_category/heritage   = /decl/background_detail/heritage/grafadreka,
 		/decl/background_category/homeworld = /decl/background_detail/location/grafadreka,
@@ -37,16 +34,11 @@
 	traits = list(
 		/decl/trait/sivian_biochemistry = TRAIT_LEVEL_EXISTS
 	)
+	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
 	// Drakes must be whitelisted for jobs to be able to join as them, see maps.dm.
 	job_blacklist_by_default = TRUE
 	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED
-	character_preview_screen_locs = list(
-		"1" = "character_preview_map:1,4:36",
-		"2" = "character_preview_map:1,3:31",
-		"4" = "character_preview_map:1,2:26",
-		"8" = "character_preview_map:1,1:21"
-	)
 
 	var/list/adult_pain_emotes_with_pain_level = list(
 		list(/decl/emote/audible/drake_huff, /decl/emote/audible/drake_rattle) = 20

@@ -16,9 +16,9 @@
 
 /obj/item/stick/attackby(obj/item/W, mob/user)
 
-	if(W.sharp && W.edge && !sharp)
+	if(W.is_sharp() && W.has_edge() && !sharp)
 		user.visible_message("<span class='warning'>[user] sharpens [src] with [W].</span>", "<span class='warning'>You sharpen [src] using [W].</span>")
-		sharp = 1 //Sharpen stick
+		set_sharp(TRUE)
 		SetName("sharpened " + name)
 		update_attack_force()
 		return TRUE

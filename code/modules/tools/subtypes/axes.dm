@@ -19,7 +19,11 @@
 	return tool_qualities
 
 /obj/item/tool/axe/ebony
+	material = /decl/material/solid/metal/iron
 	handle_material = /decl/material/solid/organic/wood/ebony
+
+/obj/item/tool/axe/iron
+	material = /decl/material/solid/metal/iron
 
 /obj/item/tool/axe/ebony/bronze
 	material = /decl/material/solid/metal/bronze

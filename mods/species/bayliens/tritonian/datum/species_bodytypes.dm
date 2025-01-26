@@ -6,6 +6,9 @@
 	override_organ_types  = list(
 		BP_LUNGS = /obj/item/organ/internal/lungs/gills
 	)
+	override_limb_types = list(
+		BP_HEAD   = /obj/item/organ/external/head/sharp_bite
+	)
 
 /decl/bodytype/human/tritonian/masculine
 	name                  = "masculine"

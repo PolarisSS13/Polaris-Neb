@@ -482,8 +482,10 @@
 	return
 
 var/global/list/ailment_reference_cache = list()
-/proc/get_ailment_reference(var/ailment_type)
+/proc/get_ailment_reference(var/datum/ailment/ailment_type)
 	if(!ispath(ailment_type, /datum/ailment))
+		return
+	if(TYPE_IS_ABSTRACT(ailment_type))
 		return
 	if(!global.ailment_reference_cache[ailment_type])
 		global.ailment_reference_cache[ailment_type] = new ailment_type
@@ -495,7 +497,7 @@ var/global/list/ailment_reference_cache = list()
 		return .
 	for(var/ailment_type in subtypesof(/datum/ailment))
 		var/datum/ailment/ailment = ailment_type
-		if(initial(ailment.category) == ailment_type)
+		if(TYPE_IS_ABSTRACT(ailment))
 			continue
 		ailment = get_ailment_reference(ailment_type)
 		if(ailment.can_apply_to(src))

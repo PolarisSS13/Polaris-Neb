@@ -7,6 +7,6 @@
 	turf_flags = TURF_ACID_IMMUNE | TURF_REMOVE_WRENCH
 	can_paint  = null
 
-/decl/flooring/reinforced/cult/on_remove()
+/decl/flooring/reinforced/cult/on_flooring_remove(turf/removing_from)
 	var/decl/special_role/cultist/cult = GET_DECL(/decl/special_role/cultist)
 	cult.remove_cultiness(CULTINESS_PER_TURF)

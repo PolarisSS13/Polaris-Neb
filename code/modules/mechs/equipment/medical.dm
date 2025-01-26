@@ -22,7 +22,7 @@
 
 /obj/item/mech_equipment/sleeper/uninstalled()
 	. = ..()
-	sleeper.go_out()
+	sleeper?.go_out()
 
 /obj/item/mech_equipment/sleeper/attack_self(var/mob/user)
 	. = ..()

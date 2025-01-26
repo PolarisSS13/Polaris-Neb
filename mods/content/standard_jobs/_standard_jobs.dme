@@ -11,6 +11,7 @@
 #include "departments\security.dm"
 #include "departments\service.dm"
 #include "departments\supply.dm"
+#include "jobs\_job.dm"
 #include "jobs\captain.dm"
 #include "jobs\civilian.dm"
 #include "jobs\engineering.dm"

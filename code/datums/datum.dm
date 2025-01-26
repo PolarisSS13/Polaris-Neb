@@ -10,9 +10,14 @@
 	/// Used to avoid unnecessary refstring creation in Destroy().
 	var/tmp/has_state_machine = FALSE
 
-#ifdef TESTING
+#ifdef REFTRACKING_ENABLED
 	var/tmp/running_find_references
+	/// When was this datum last touched by a reftracker?
+	/// If this value doesn't match with the start of the search
+	/// We know this datum has never been seen before, and we should check it
 	var/tmp/last_find_references = 0
+	/// How many references we're trying to find when searching
+	var/tmp/references_to_clear = 0
 #endif
 
 // Default implementation of clean-up code.
@@ -54,11 +59,11 @@
 		cleanup_events(src)
 
 	if(has_state_machine)
-		var/list/machines = global.state_machines["\ref[src]"]
+		var/list/machines = global.state_machines[src]
 		if(length(machines))
 			for(var/base_type in machines)
 				qdel(machines[base_type])
-			global.state_machines -= "\ref[src]"
+			global.state_machines -= src
 
 	return QDEL_HINT_QUEUE
 

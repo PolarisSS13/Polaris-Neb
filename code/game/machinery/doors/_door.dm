@@ -335,7 +335,7 @@
 		return FALSE
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
-	var/force = weapon.get_attack_force(user)
+	var/force = weapon.expend_attack_force(user)
 	if(force < min_force)
 		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [weapon] with no visible effect.</span>")
 	else

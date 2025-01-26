@@ -548,6 +548,7 @@ var/global/list/closets = list()
 /decl/interaction_handler/closet_lock_toggle
 	name = "Toggle Lock"
 	expected_target_type = /obj/structure/closet
+	examine_desc = "toggle the lock"
 
 /decl/interaction_handler/closet_lock_toggle/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

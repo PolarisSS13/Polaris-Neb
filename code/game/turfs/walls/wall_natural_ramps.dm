@@ -54,6 +54,7 @@
 /decl/interaction_handler/drill_ramp
 	name = "Drill Ramp"
 	expected_target_type = /turf/wall/natural
+	examine_desc = "drill a ramp in the direction you are facing"
 
 /decl/interaction_handler/drill_ramp/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

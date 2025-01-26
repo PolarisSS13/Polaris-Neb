@@ -47,5 +47,6 @@
 /obj/item/clothing/suit/space/void
 	_feline_onmob_icon = 'mods/species/bayliens/tajaran/icons/clothing/nasa/suit.dmi'
 
+
 /obj/item/clothing/suit/space/void/excavation
 	_feline_onmob_icon = 'mods/species/bayliens/tajaran/icons/clothing/excavation/suit.dmi'

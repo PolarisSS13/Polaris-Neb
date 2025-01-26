@@ -100,7 +100,7 @@
 
 /obj/item/clothing/attackby(obj/item/I, mob/user)
 	var/rags = RAG_COUNT(src)
-	if(istype(material) && material.default_solid_form && rags && (I.edge || I.sharp) && user.check_intent(I_FLAG_HARM))
+	if(istype(material) && material.default_solid_form && rags && (I.is_sharp() || I.has_edge()) && user.check_intent(I_FLAG_HARM))
 		if(length(accessories))
 			to_chat(user, SPAN_WARNING("You should remove the accessories attached to \the [src] first."))
 			return TRUE
@@ -302,12 +302,12 @@
 		update_clothing_icon()
 
 /obj/item/clothing/get_examine_name()
-	var/list/ensemble = list(name)
+	var/list/ensemble = list(..())
 	for(var/obj/item/clothing/accessory in accessories)
 		if(accessory.accessory_visibility == ACCESSORY_VISIBILITY_ENSEMBLE)
-			LAZYADD(ensemble, accessory.get_examine_name())
-	if(length(ensemble) <= 1)
-		return ..()
+			ensemble += accessory.get_examine_name()
+	if(length(ensemble) == 1) // don't worry about it being empty, we always have a minimum of one
+		return ensemble[1]
 	return english_list(ensemble, summarize = TRUE)
 
 /obj/item/clothing/get_examine_line()
@@ -450,7 +450,8 @@
 /decl/interaction_handler/clothing_set_sensors
 	name = "Set Sensors Level"
 	expected_target_type = /obj/item/clothing
+	examine_desc = "adjust vitals sensors"
 
 /decl/interaction_handler/clothing_set_sensors/invoked(atom/target, mob/user, obj/item/prop)
-	var/obj/item/clothing/U = target
-	U.set_sensors(user)
+	var/obj/item/clothing/clothes = target
+	clothes.set_sensors(user)

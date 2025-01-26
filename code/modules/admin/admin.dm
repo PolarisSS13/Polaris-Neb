@@ -321,7 +321,7 @@ var/global/BSACooldown = 0
 				dat += "<A href='byond://?src=\ref[src];remove_player_info=[key];remove_index=[i]'>Remove</A>"
 			dat += "<hr></li>"
 		if(update_file)
-			direct_output(info, infos)
+			to_file(info, infos)
 
 	dat += "</ul><br><A href='byond://?src=\ref[src];add_player_info=[key]'>Add Comment</A><br>"
 

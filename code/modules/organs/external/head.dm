@@ -12,13 +12,31 @@
 	amputation_point = "neck"
 	encased = "skull"
 	artery_name = "carotid artery"
-	cavity_name = "cranial"
+	cavity_name = "cranial cavity"
 	limb_flags = ORGAN_FLAG_CAN_AMPUTATE | ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK | ORGAN_FLAG_CAN_DISLOCATE
 
 	var/glowing_eyes = FALSE
 	var/can_intake_reagents = TRUE
 	var/forehead_graffiti
 	var/graffiti_style
+
+/obj/item/organ/external/head/get_natural_attacks()
+	if(!can_intake_reagents)
+		return null
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/bite)
+	return unarmed_attack
+
+/obj/item/organ/external/head/sharp_bite/get_natural_attacks()
+	if(!can_intake_reagents)
+		return null
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/bite/sharp)
+	return unarmed_attack
+
+/obj/item/organ/external/head/strong_bite/get_natural_attacks()
+	if(!can_intake_reagents)
+		return null
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/bite/strong)
+	return unarmed_attack
 
 /obj/item/organ/external/head/proc/get_organ_eyes_overlay()
 	if(!glowing_eyes && !owner?.has_chemical_effect(CE_GLOWINGEYES, 1))

@@ -120,6 +120,20 @@
 	/// Can this item knock someone out if used as a weapon? Overridden for natural weapons as a nerf to simplemobs.
 	var/weapon_can_knock_prone = TRUE
 
+/// Returns a dexterity value required to use this item as a weapon.
+/obj/item/proc/get_required_attack_dexterity(mob/user, atom/target)
+	// We can likely assume that if we're located inside a rig, then the wearer
+	// has the appropriate dexterity to wear and use the rig, even if they aren't
+	// manually dexterous; specifically useful for things like baxxid and drakes.
+	var/obj/item/rig/rig = get_recursive_loc_of_type(/obj/item/rig)
+	. = istype(rig) ? DEXTERITY_NONE : needs_attack_dexterity
+	if(istype(target))
+		. = target.adjust_required_attack_dexterity(user, .)
+
+// Returns a dexterity value required to interact with this item at all, such as picking it up.
+/obj/item/get_required_interaction_dexterity()
+	return needs_interaction_dexterity
+
 /obj/item/get_color()
 	if(paint_color)
 		return paint_color
@@ -570,12 +584,12 @@
 		return TRUE
 	return FALSE
 
-/obj/item/proc/user_can_attack_with(mob/user, silent = FALSE)
-	return !needs_attack_dexterity || user.check_dexterity(needs_attack_dexterity, silent = silent)
+/obj/item/proc/user_can_attack_with(mob/user, atom/target, silent = FALSE)
+	return user.check_dexterity(get_required_attack_dexterity(user, target), silent = silent)
 
 /obj/item/attackby(obj/item/used_item, mob/user)
 	// if can_wield is false we still need to call parent for storage objects to work properly
-	var/can_wield = user_can_attack_with(user, silent = TRUE)
+	var/can_wield = used_item.user_can_attack_with(user, silent = TRUE)
 
 	if(can_wield && try_slapcrafting(used_item, user))
 		return TRUE
@@ -815,21 +829,19 @@
 		LAZYSET(blood_DNA, unique_enzymes, blood_type)
 	return TRUE
 
-var/global/list/_coating_overlay_cache = list()
+var/global/list/icon/_coating_overlay_cache = list()
 var/global/icon/_item_coating_mask = icon('icons/effects/blood.dmi', "itemblood")
 /obj/item/proc/generate_coating_overlay(force = FALSE)
 	if(coating_overlay && !force)
 		return
-	var/cache_key = "[icon]-[icon_state]"
-	if(global._coating_overlay_cache[cache_key])
-		coating_overlay = global._coating_overlay_cache[cache_key]
-		return
-	var/icon/I = new /icon(icon, icon_state)
-	I.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1)         // Sets the icon RGB channel to pure white.
-	I.Blend(global._item_coating_mask, ICON_MULTIPLY) // Masks the coating overlay against the generated mask.
-	coating_overlay = image(I)
+	var/cache_key = "\ref[icon]-[icon_state]" // this needs to use ref because of stringification
+	if(!global._coating_overlay_cache[cache_key])
+		var/icon/I = new /icon(icon, icon_state)
+		I.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1)         // Sets the icon RGB channel to pure white.
+		I.Blend(global._item_coating_mask, ICON_MULTIPLY) // Masks the coating overlay against the generated mask.
+		global._coating_overlay_cache[cache_key] = I
+	coating_overlay = image(global._coating_overlay_cache[cache_key])
 	coating_overlay.appearance_flags |= NO_CLIENT_COLOR|RESET_COLOR
-	global._coating_overlay_cache[cache_key] = coating_overlay
 
 /obj/item/proc/showoff(mob/user)
 	for(var/mob/M in view(user))
@@ -1004,11 +1016,11 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/get_autopsy_descriptors()
 	var/list/descriptors = list()
 	descriptors += w_class_description()
-	if(sharp)
+	if(is_sharp())
 		descriptors += "sharp"
-	if(edge)
+	if(has_edge())
 		descriptors += "edged"
-	if(get_attack_force() >= 10 && !sharp && !edge)
+	if(get_attack_force() >= 10 && !is_sharp() && !has_edge())
 		descriptors += "heavy"
 	if(material)
 		descriptors += "made of [material.solid_name]"

@@ -74,3 +74,4 @@
 	icon = 'icons/screen/radial.dmi'
 	icon_state = "radial_eject_id"
 	expected_component_type = /obj/item/stock_parts/item_holder/card_reader
+	examine_desc = "eject an inserted ID card"

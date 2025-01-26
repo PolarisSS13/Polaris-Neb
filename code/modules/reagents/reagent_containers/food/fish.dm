@@ -70,7 +70,7 @@
 	qdel(src)
 
 /obj/item/mollusc/attackby(var/obj/item/thing, var/mob/user)
-	if(thing.sharp || thing.edge)
+	if(thing.is_sharp() || thing.has_edge())
 		user.visible_message(SPAN_NOTICE("\The [user] cracks open \the [src] with \the [thing]."))
 		crack_shell(user)
 		return TRUE

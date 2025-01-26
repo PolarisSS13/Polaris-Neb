@@ -7,3 +7,9 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		L.lookup()
+
+/obj/screen/up_hint/on_update_icon()
+	var/mob/owner = owner_ref?.resolve()
+	var/turf/above = istype(owner) ? GetAbove(get_turf(owner)) : null
+	icon_state = "uphint[!!(istype(above) && TURF_IS_MIMICKING(above))]"
+	..()

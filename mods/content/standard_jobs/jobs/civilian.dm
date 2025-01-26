@@ -1,5 +1,6 @@
-/datum/job/assistant
+/datum/job/standard/assistant
 	title = "Assistant"
+	hud_icon_state = "hudassistant"
 	total_positions = -1
 	spawn_positions = -1
 	supervisors = "absolutely everyone"
@@ -10,13 +11,14 @@
 	outfit_type = /decl/outfit/job/generic/assistant
 	department_types = list(/decl/department/civilian)
 
-/datum/job/assistant/get_access()
+/datum/job/standard/assistant/get_access()
 	if(get_config_value(/decl/config/toggle/assistant_maint))
 		return list(access_maint_tunnels)
 	return list()
 
-/datum/job/chaplain
+/datum/job/standard/chaplain
 	title = "Chaplain"
+	hud_icon_state = "hudchaplain" // TODO: not always a crucifix
 	department_types = list(/decl/department/civilian)
 	total_positions = 1
 	spawn_positions = 1
@@ -42,9 +44,10 @@
 	software_on_spawn = list(/datum/computer_file/program/reports)
 
 //Food
-/datum/job/bartender
+/datum/job/standard/bartender
 	title = "Bartender"
 	department_types = list(/decl/department/service)
+	hud_icon_state = "hudbartender"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -68,8 +71,9 @@
 	    SKILL_CHEMISTRY = SKILL_BASIC
 	)
 
-/datum/job/chef
+/datum/job/standard/chef
 	title = "Chef"
+	hud_icon_state = "hudchef"
 	department_types = list(/decl/department/service)
 	total_positions = 2
 	spawn_positions = 2
@@ -89,8 +93,9 @@
 	    SKILL_CHEMISTRY = SKILL_BASIC
 	)
 
-/datum/job/hydro
+/datum/job/standard/hydro
 	title = "Gardener"
+	hud_icon_state = "hudgardener"
 	department_types = list(/decl/department/service)
 	total_positions = 2
 	spawn_positions = 1
@@ -111,8 +116,9 @@
 	event_categories = list(ASSIGNMENT_GARDENER)
 
 //Cargo
-/datum/job/qm
+/datum/job/standard/qm
 	title = "Quartermaster"
+	hud_icon_state = "hudqm"
 	department_types = list(/decl/department/supply)
 	total_positions = 1
 	spawn_positions = 1
@@ -156,11 +162,12 @@
 		/datum/computer_file/program/reports
 	)
 
-/datum/job/cargo_tech
+/datum/job/standard/cargo_tech
 	title = "Cargo Technician"
 	department_types = list(/decl/department/supply)
 	total_positions = 2
 	spawn_positions = 2
+	hud_icon_state = "hudcargo"
 	supervisors = "the quartermaster and the head of personnel"
 	access = list(
 		access_maint_tunnels,
@@ -192,8 +199,9 @@
 		/datum/computer_file/program/reports
 	)
 
-/datum/job/mining
+/datum/job/standard/mining
 	title = "Shaft Miner"
+	hud_icon_state = "hudminer"
 	department_types = list(/decl/department/supply)
 	total_positions = 3
 	spawn_positions = 3
@@ -227,11 +235,12 @@
 		SKILL_PILOT    = SKILL_MAX
 	)
 
-/datum/job/janitor
+/datum/job/standard/janitor
 	title = "Janitor"
 	department_types = list(/decl/department/service)
 	total_positions = 1
 	spawn_positions = 1
+	hud_icon_state = "hudjanitor"
 	supervisors = "the head of personnel"
 	access = list(
 		access_janitor,
@@ -261,8 +270,9 @@
 	event_categories = list(ASSIGNMENT_JANITOR)
 
 //More or less assistants
-/datum/job/librarian
+/datum/job/standard/librarian
 	title = "Librarian"
+	hud_icon_state = "hudlibrarian"
 	department_types = list(/decl/department/civilian)
 	total_positions = 1
 	spawn_positions = 1
@@ -281,8 +291,9 @@
 	skill_points = 20
 	software_on_spawn = list(/datum/computer_file/program/reports)
 
-/datum/job/lawyer
+/datum/job/standard/lawyer
 	title = "Internal Affairs Agent"
+	hud_icon_state = "hudia"
 	department_types = list(/decl/department/support)
 	total_positions = 2
 	spawn_positions = 2
@@ -308,7 +319,7 @@
 	skill_points = 20
 	software_on_spawn = list(/datum/computer_file/program/reports)
 
-/datum/job/lawyer/equip_job(var/mob/living/human/H)
+/datum/job/standard/lawyer/equip_job(var/mob/living/human/H)
 	. = ..()
 	if(.)
 		H.implant_loyalty(H)

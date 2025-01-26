@@ -304,6 +304,7 @@
 
 /decl/interaction_handler/open_pizza_box
 	expected_target_type = /obj/item/pizzabox
+	examine_desc = "open or close $TARGET_THEM$"
 
 /decl/interaction_handler/open_pizza_box/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

@@ -112,7 +112,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/toxicity = 0 // Organ damage from ingestion.
 	var/toxicity_targets_organ // Bypass liver/kidneys when ingested, harm this organ directly (using BP_FOO defines).
 
-	var/can_backfill_turf_type
+	var/can_backfill_floor_type
 
 	// Shards/tables/structures
 	var/shard_type = SHARD_SHRAPNEL       // Path of debris object.
@@ -374,7 +374,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 // Placeholders for light tiles and rglass.
 /decl/material/proc/reinforce(var/mob/user, var/obj/item/stack/material/used_stack, var/obj/item/stack/material/target_stack, var/use_sheets = 1)
 	if(!used_stack.can_use(use_sheets))
-		to_chat(user, SPAN_WARNING("You need need at least one [used_stack.singular_name] to reinforce [target_stack]."))
+		to_chat(user, SPAN_WARNING("You need at least one [used_stack.singular_name] to reinforce [target_stack]."))
 		return
 
 	var/decl/material/reinf_mat = used_stack.get_material()
@@ -383,7 +383,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 		return
 
 	if(!target_stack.can_use(use_sheets))
-		to_chat(user, SPAN_WARNING("You need need at least [use_sheets] [use_sheets == 1 ? target_stack.singular_name : target_stack.plural_name] for reinforcement with \the [used_stack]."))
+		to_chat(user, SPAN_WARNING("You need at least [use_sheets] [use_sheets == 1 ? target_stack.singular_name : target_stack.plural_name] for reinforcement with \the [used_stack]."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You reinforce the [target_stack] with [reinf_mat.solid_name]."))
@@ -718,12 +718,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 /decl/material/proc/touch_obj(var/obj/O, var/amount, var/datum/reagents/holder) // Acid melting, cleaner cleaning, etc
 
-	if(solvent_power >= MAT_SOLVENT_MILD)
-		if(istype(O, /obj/item/paper))
+	if(solvent_power >= MAT_SOLVENT_MODERATE)
+		if(istype(O, /obj/item/paper) && amount >= FLUID_MINIMUM_TRANSFER)
 			var/obj/item/paper/paperaffected = O
 			paperaffected.clearpaper()
 			O.visible_message(SPAN_NOTICE("The solution dissolves the ink on the paper."), range = 1)
-		else if(istype(O, /obj/item/book) && amount >= 5)
+		else if(istype(O, /obj/item/book) && amount >= FLUID_PUDDLE)
 			var/obj/item/book/affectedbook = O
 			if(affectedbook.can_dissolve_text)
 				affectedbook.dat = null
@@ -756,28 +756,27 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 		M.adjust_fire_intensity(floor((amount * accelerant_value)/FLAMMABLE_LIQUID_DIVISOR))
 #undef FLAMMABLE_LIQUID_DIVISOR
 
-/decl/material/proc/touch_turf(var/turf/T, var/amount, var/datum/reagents/holder) // Cleaner cleaning, lube lubbing, etc, all go here
+/decl/material/proc/touch_turf(var/turf/touching_turf, var/amount, var/datum/reagents/holder) // Cleaner cleaning, lube lubbing, etc, all go here
 
 	if(REAGENT_VOLUME(holder, type) < turf_touch_threshold)
 		return
 
-	if(istype(T) && T.simulated)
-		var/turf/wall/W = T
+	if(istype(touching_turf) && touching_turf.simulated)
 		if(defoliant)
-			for(var/obj/effect/overlay/wallrot/E in W)
-				W.visible_message(SPAN_NOTICE("\The [E] is completely dissolved by the solution!"))
-				qdel(E)
-		if(slipperiness != 0 && !T.check_fluid_depth()) // Don't make floors slippery if they have an active fluid on top of them please.
+			for(var/obj/effect/overlay/wallrot/rot in touching_turf)
+				touching_turf.visible_message(SPAN_NOTICE("\The [rot] is completely dissolved by the solution!"))
+				qdel(rot)
+		if(slipperiness != 0 && !touching_turf.check_fluid_depth()) // Don't make floors slippery if they have an active fluid on top of them please.
 			if(slipperiness < 0)
-				W.unwet_floor(TRUE)
+				touching_turf.unwet_floor(TRUE)
 			else if (REAGENT_VOLUME(holder, type) >= slippery_amount)
-				W.wet_floor(slipperiness)
+				touching_turf.wet_floor(slipperiness)
 
 	if(length(vapor_products))
 		var/volume = REAGENT_VOLUME(holder, type)
 		var/temperature = holder?.my_atom?.temperature || T20C
 		for(var/vapor in vapor_products)
-			T.assume_gas(vapor, (volume * vapor_products[vapor]), temperature)
+			touching_turf.assume_gas(vapor, (volume * vapor_products[vapor]), temperature)
 		holder.remove_reagent(type, volume)
 
 /decl/material/proc/on_mob_life(var/mob/living/M, var/metabolism_class, var/datum/reagents/holder, var/list/life_dose_tracker)
@@ -1012,9 +1011,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 		holder.remove_reagent(type, REAGENT_VOLUME(holder, type))
 		. = TRUE
 
-/decl/material/proc/affect_overdose(mob/living/M, total_dose) // Overdose effect. Doesn't happen instantly.
-	M.add_chemical_effect(CE_TOXIN, 1)
-	M.take_damage(REM, TOX)
+/decl/material/proc/affect_overdose(mob/living/victim, total_dose) // Overdose effect. Doesn't happen instantly.
+	victim.add_chemical_effect(CE_TOXIN, 1)
+	victim.take_damage(REM, TOX)
 
 /decl/material/proc/initialize_data(list/newdata) // Called when the reagent is first added to a reagents datum.
 	. = newdata
@@ -1200,3 +1199,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 /decl/material/proc/can_hold_edge()
 	return hardness > MAT_VALUE_FLEXIBLE
+
+// TODO: expand this to more than just Actual Poison.
+/decl/material/proc/is_unsafe_to_drink(mob/user)
+	return toxicity > 0
+
+/// Used for material-dependent effects on stain dry.
+/// Return TRUE to skip default drying handling.
+/decl/material/proc/handle_stain_dry(obj/effect/decal/cleanable/blood/stain)
+	return FALSE
+
+/// Returns (in deciseconds) how long until dry() will be called on this stain,
+/// or null to use the stain's default.
+/// If 0 is returned, it dries instantly.
+/// If any value below 0 is returned, it doesn't start processing.
+/decl/material/proc/get_time_to_dry_stain(obj/effect/decal/cleanable/blood/stain)
+	return initial(stain.time_to_dry)

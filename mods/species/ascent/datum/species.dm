@@ -71,11 +71,6 @@
 	species_flags =           SPECIES_FLAG_NO_SLIP | SPECIES_FLAG_NO_MINOR_CUT
 	spawn_flags =             SPECIES_IS_RESTRICTED
 
-	unarmed_attacks = list(
-		/decl/natural_attack/claws/strong/gloves,
-		/decl/natural_attack/bite/sharp
-	)
-
 	force_background_info = list(
 		/decl/background_category/heritage =   /decl/background_detail/heritage/ascent,
 		/decl/background_category/homeworld = /decl/background_detail/location/kharmaani,

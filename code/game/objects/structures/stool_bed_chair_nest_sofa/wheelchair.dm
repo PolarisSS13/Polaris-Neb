@@ -12,6 +12,7 @@
 	tool_interaction_flags = 0
 
 	var/item_form_type = /obj/item/wheelchair_kit
+	// TODO: Replace with reagent holder? This doesn't even properly handle non-human bloodstains.
 	var/bloodiness
 
 /obj/structure/bed/chair/wheelchair/Initialize()
@@ -141,7 +142,7 @@
 	user.visible_message("<b>[user]</b> starts to lay out \the [src].")
 	if(do_after(user, 4 SECONDS, src))
 		var/obj/structure/bed/chair/wheelchair/W = new structure_form_type(get_turf(user))
-		user.visible_message(SPAN_NOTICE("<b>[user]</b> lays out \the [W.name]."))
+		user.visible_message(SPAN_NOTICE("<b>[user]</b> lays out \the [W]."))
 		W.add_fingerprint(user)
 		qdel(src)
 

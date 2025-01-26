@@ -361,6 +361,7 @@
 	category = /decl/skill_category/engineering
 	uid =  "skill_engines"
 	fallback_key = "/decl/hierarchy/skill/engineering/engines"
+	// TODO: These strings should be modified by the supermatter modpack somehow...
 	desc = "Describes your knowledge of the various engine types common on space stations, such as the PACMAN, singularity, supermatter or RUST engine."
 	levels = list(
 		"Unskilled"   = "You know that \"delamination\" is a bad thing and that you should stay away from the singularity. You know the engine provides power, but you're unclear on the specifics. If you were to try to set up the engine, you would need someone to talk you through every detail--and even then, you'd probably make deadly mistakes.<br>- You can read the SM monitor readings with 40% error. This decreases with level.",

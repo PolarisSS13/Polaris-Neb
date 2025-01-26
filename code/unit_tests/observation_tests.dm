@@ -4,7 +4,7 @@
 
 /datum/unit_test/observation
 	name = "OBSERVATION template"
-	template = /datum/unit_test/observation
+	abstract_type = /datum/unit_test/observation
 	async = 0
 	var/list/received_moves
 	var/list/received_name_set_events

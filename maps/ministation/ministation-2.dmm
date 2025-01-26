@@ -781,7 +781,7 @@
 	},
 /obj/item/med_pouch/trauma,
 /obj/item/stack/tape_roll/duct_tape,
-/obj/item/shield/buckler,
+/obj/item/shield/crafted/buckler,
 /obj/item/gps/explorer,
 /obj/item/belt/holster/machete,
 /obj/item/tool/machete/deluxe,
@@ -2163,7 +2163,7 @@
 "js" = (
 /obj/structure/table,
 /obj/item/chems/glass/beaker/large,
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /obj/item/chems/dropper,
 /obj/effect/floor_decal/corner/purple{
 	dir = 8
@@ -2274,7 +2274,7 @@
 	},
 /obj/item/med_pouch/trauma,
 /obj/item/stack/tape_roll/duct_tape,
-/obj/item/shield/buckler,
+/obj/item/shield/crafted/buckler,
 /obj/item/gps/explorer,
 /obj/item/flashlight/lantern,
 /obj/item/bladed/polearm/spear/improvised/steel,
@@ -3536,6 +3536,10 @@
 	},
 /turf/floor/reinforced,
 /area/ministation/science)
+"sq" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space,
+/area/space)
 "sr" = (
 /turf/floor/tiled/dark/monotile/telecomms,
 /area/ministation/telecomms)
@@ -4430,7 +4434,7 @@
 /obj/machinery/light,
 /obj/item/med_pouch/trauma,
 /obj/item/stack/tape_roll/duct_tape,
-/obj/item/shield/buckler,
+/obj/item/shield/crafted/buckler,
 /obj/item/gps/explorer,
 /obj/item/flashlight/lantern,
 /obj/item/bladed/polearm/spear/improvised/steel,
@@ -29552,7 +29556,7 @@ vA
 vA
 vA
 vA
-vA
+sq
 vA
 vA
 vA
@@ -45788,7 +45792,7 @@ vA
 vA
 vA
 vA
-vA
+sq
 vA
 vA
 vA
@@ -52136,7 +52140,7 @@ vA
 vA
 vA
 vA
-vA
+sq
 vA
 vA
 vA

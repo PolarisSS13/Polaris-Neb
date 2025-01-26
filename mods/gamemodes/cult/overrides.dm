@@ -15,6 +15,7 @@
 			playsound(src, 'sound/effects/ghost2.ogg', 10, 5)
 
 /datum/trader/ship/clothingshop/hatglovesaccessories/New()
+	..()
 	possible_trading_items[/obj/item/clothing/head/culthood] = TRADER_BLACKLIST_ALL
 
 /mob/living/silicon/ai
@@ -47,9 +48,9 @@
 /mob/living/simple_animal/hostile/revenant/cult/on_defilement()
 	return
 
-/obj/item/mop/Initialize()
+/obj/item/mop/populate_moppable_types()
 	. = ..()
-	moppable_types += /obj/effect/rune
+	moppable_types |= /obj/effect/rune
 
 /obj/effect/gateway/active/can_transform(mob/victim)
 	if(iscultist(victim))

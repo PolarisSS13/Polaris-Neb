@@ -331,8 +331,3 @@
 		radio_connection.post_signal(src, signal, device_tag)
 
 	..()
-
-/obj/machinery/computer/air_control/supermatter_core
-	icon = 'icons/obj/computer.dmi'
-	frequency = 1438
-	out_pressure_mode = 1

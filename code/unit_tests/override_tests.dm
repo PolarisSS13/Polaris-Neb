@@ -2,7 +2,7 @@
 
 /datum/unit_test/override
 	name = "OVERRIDE template"
-	template = /datum/unit_test/override
+	abstract_type = /datum/unit_test/override
 
 /datum/unit_test/override/obj_random_shall_spawn_heaviest_item
 	name = "OVERRIDE: obj/random shall spawn heaviest item"

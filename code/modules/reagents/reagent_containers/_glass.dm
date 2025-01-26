@@ -58,9 +58,15 @@
 /obj/item/chems/glass/proc/can_lid()
 	return TRUE
 
+/obj/item/chems/glass/proc/should_drink_from(mob/drinker)
+	. = reagents?.total_volume > 0
+	if(.)
+		var/decl/material/drinking = reagents.get_primary_reagent_decl()
+		return drinking ? !drinking.is_unsafe_to_drink(drinker) : FALSE
+
 /obj/item/chems/glass/attack_self(mob/user)
-	. = ..()
-	if(!. && can_lid())
+
+	if(can_lid() && user.check_intent(I_FLAG_HELP))
 		if(ATOM_IS_OPEN_CONTAINER(src))
 			to_chat(user, SPAN_NOTICE("You put the lid on \the [src]."))
 			atom_flags ^= ATOM_FLAG_OPEN_CONTAINER
@@ -68,9 +74,15 @@
 			to_chat(user, SPAN_NOTICE("You take the lid off \the [src]."))
 			atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 		update_icon()
+		return TRUE
+
+	if(should_drink_from(user) && is_edible(user) && handle_eaten_by_mob(user, user) != EATEN_INVALID)
+		return TRUE
+
+	return ..()
 
 /obj/item/chems/glass/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
-	if(get_attack_force(user) && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.check_intent(I_FLAG_HARM))
+	if(expend_attack_force(user) && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.check_intent(I_FLAG_HARM))
 		return ..()
 	return FALSE
 
@@ -102,17 +114,6 @@
 	. = ..()
 
 // Drinking out of bowls.
-/obj/item/chems/glass/attack_self(mob/user)
-	if(is_edible(user) && handle_eaten_by_mob(user, user) != EATEN_INVALID)
-		return TRUE
-	return ..()
-
-/obj/item/chems/glass/get_food_default_transfer_amount(mob/eater)
-	return eater?.get_eaten_transfer_amount(amount_per_transfer_from_this)
-
-/obj/item/chems/glass/get_food_consumption_method(mob/eater)
-	return EATING_METHOD_DRINK
-
 /obj/item/chems/glass/get_edible_material_amount(mob/eater)
 	return reagents?.total_volume
 
@@ -123,36 +124,53 @@
 // Should we consider moving this down to /chems for any open container? Medicine from a bottle using a spoon, etc.
 /obj/item/chems/glass/attackby(obj/item/used_item, mob/living/user)
 
-	if(ATOM_IS_OPEN_CONTAINER(src))
-		if(istype(used_item, /obj/item/food))
-			if(!reagents?.total_volume)
-				to_chat(user, SPAN_WARNING("\The [src] is empty."))
-				return TRUE
-			var/transferring = min(get_food_default_transfer_amount(user), REAGENTS_FREE_SPACE(used_item.reagents))
-			if(!transferring)
-				to_chat(user, SPAN_WARNING("You cannot dip \the [used_item] in \the [src]."))
-				return TRUE
-			reagents.trans_to_holder(used_item.reagents, transferring)
-			user.visible_message(SPAN_NOTICE("\The [user] dunks \the [used_item] in \the [src]."))
+	if(!ATOM_IS_OPEN_CONTAINER(src))
+		return ..()
+
+	var/obj/item/utensil/utensil = used_item
+	if(istype(utensil) && (utensil.utensil_flags & UTENSIL_FLAG_SCOOP))
+		if(utensil.loaded_food)
+			to_chat(user, SPAN_WARNING("You already have something on \the [utensil]."))
 			return TRUE
-		var/obj/item/utensil/utensil = used_item
-		if(istype(utensil) && (utensil.utensil_flags & UTENSIL_FLAG_SCOOP))
-			if(utensil.loaded_food)
-				to_chat(user, SPAN_WARNING("You already have something on \the [utensil]."))
-				return TRUE
-			if(!reagents?.total_volume)
-				to_chat(user, SPAN_WARNING("\The [src] is empty."))
-				return TRUE
-			seperate_food_chunk(utensil, user)
-			if(utensil.loaded_food?.reagents?.total_volume)
-				to_chat(user, SPAN_NOTICE("You scoop up some of \the [utensil.loaded_food.reagents.get_primary_reagent_name()] with \the [utensil]."))
+		if(!reagents?.total_volume)
+			to_chat(user, SPAN_WARNING("\The [src] is empty."))
 			return TRUE
+		seperate_food_chunk(utensil, user)
+		if(utensil.loaded_food?.reagents?.total_volume)
+			to_chat(user, SPAN_NOTICE("You scoop up some of \the [utensil.loaded_food.reagents.get_primary_reagent_name()] with \the [utensil]."))
+		return TRUE
+
 	return ..()
 
-/obj/structure/glass/get_alt_interactions(mob/user)
+/obj/item/chems/glass/get_alt_interactions(mob/user)
 	. = ..()
 	if(reagents?.total_volume >= FLUID_PUDDLE)
 		LAZYADD(., /decl/interaction_handler/dip_item)
 		LAZYADD(., /decl/interaction_handler/fill_from)
 	if(user?.get_active_held_item())
 		LAZYADD(., /decl/interaction_handler/empty_into)
+	if(can_lid())
+		LAZYADD(., /decl/interaction_handler/toggle_lid)
+
+/decl/interaction_handler/toggle_lid
+	name = "Toggle Lid"
+	expected_target_type = /obj/item/chems/glass
+
+/decl/interaction_handler/toggle_lid/is_possible(atom/target, mob/user, obj/item/prop)
+	. = ..()
+	if(. && !istype(prop))
+		var/obj/item/chems/glass/glass = target
+		return glass.can_lid()
+
+/decl/interaction_handler/toggle_lid/invoked(atom/target, mob/user, obj/item/prop)
+	var/obj/item/chems/glass/glass = target
+	if(istype(glass) && glass.can_lid())
+		if(ATOM_IS_OPEN_CONTAINER(glass))
+			to_chat(user, SPAN_NOTICE("You put the lid on \the [glass]."))
+			glass.atom_flags ^= ATOM_FLAG_OPEN_CONTAINER
+		else
+			to_chat(user, SPAN_NOTICE("You take the lid off \the [glass]."))
+			glass.atom_flags |= ATOM_FLAG_OPEN_CONTAINER
+		glass.update_icon()
+	return TRUE
+

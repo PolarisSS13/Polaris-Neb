@@ -62,15 +62,13 @@
 	var/artery_name = "artery"         // Flavour text for cartoid artery, aorta, etc.
 	var/arterial_bleed_severity = 1    // Multiplier for bleeding in a limb.
 	var/tendon_name = "tendon"         // Flavour text for Achilles tendon, etc.
-	var/cavity_name = "cavity"
+	var/cavity_name = "intramuscular cavity"
 
 	// Surgery vars.
 	var/cavity_max_w_class = ITEM_SIZE_TINY //this is increased if bigger organs spawn by default inside
 	var/hatch_state = 0
 	var/stage = 0
 	var/cavity = 0
-
-	var/list/unarmed_attacks
 
 	var/atom/movable/applied_pressure
 	var/atom/movable/splinted
@@ -141,10 +139,6 @@
 	_icon_cache_key = null
 	. = ..()
 	skin_blend = bodytype.limb_blend
-	for(var/attack_type in species.unarmed_attacks)
-		var/decl/natural_attack/attack = GET_DECL(attack_type)
-		if(istype(attack) && (organ_tag in attack.usable_with_limbs))
-			LAZYADD(unarmed_attacks, attack_type)
 	update_icon()
 
 /obj/item/organ/external/set_bodytype(decl/bodytype/new_bodytype, override_material = null, apply_to_internal_organs = TRUE)
@@ -318,7 +312,7 @@
 //Handles removing internal organs/implants/items still in the detached limb.
 /obj/item/organ/external/proc/try_remove_internal_item(var/obj/item/used_item, var/mob/user)
 
-	if(stage == 0 && used_item.sharp)
+	if(stage == 0 && used_item.is_sharp())
 		user.visible_message(SPAN_NOTICE("<b>\The [user]</b> cuts \the [src] open with \the [used_item]."))
 		stage++
 		return TRUE
@@ -328,7 +322,7 @@
 		stage++
 		return TRUE
 
-	if(stage == 2 && (used_item.sharp || IS_HEMOSTAT(used_item) || IS_WIRECUTTER(used_item)))
+	if(stage == 2 && (used_item.is_sharp() || IS_HEMOSTAT(used_item) || IS_WIRECUTTER(used_item)))
 		var/list/radial_buttons = make_item_radial_menu_choices(get_contents_recursive())
 		if(LAZYLEN(radial_buttons))
 			var/obj/item/removing = show_radial_menu(user, src, radial_buttons, radius = 42, require_near = TRUE, use_labels = RADIAL_LABELS_OFFSET, check_locs = list(src))

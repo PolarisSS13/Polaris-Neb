@@ -39,6 +39,13 @@
 	base_eye_color       = "#f5c842"
 	mob_size             = MOB_SIZE_SMALL
 	nail_noun            = "talons"
+	override_limb_types  = list(
+		BP_L_FOOT = /obj/item/organ/external/foot/avian,
+		BP_R_FOOT = /obj/item/organ/external/foot/right/avian,
+		BP_L_HAND = /obj/item/organ/external/hand/clawed,
+		BP_R_HAND = /obj/item/organ/external/hand/right/clawed,
+		BP_HEAD   = /obj/item/organ/external/head/sharp_bite
+	)
 	has_organ            = list(
 		BP_STOMACH = /obj/item/organ/internal/stomach,
 		BP_HEART   = /obj/item/organ/internal/heart,

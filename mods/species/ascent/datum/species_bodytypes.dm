@@ -30,6 +30,7 @@
 		BP_SYSTEM_CONTROLLER = /obj/item/organ/internal/controller
 	)
 	limb_mapping = list(BP_CHEST = list(BP_CHEST, BP_M_HAND))
+	footprints_icon = 'icons/mob/footprints/footprints_snake.dmi' // big tail
 
 	heat_discomfort_strings = list(
 		"You feel brittle and overheated.",

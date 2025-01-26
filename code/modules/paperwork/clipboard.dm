@@ -198,6 +198,7 @@
 /decl/interaction_handler/clipboard_remove_pen
 	name = "Remove Pen"
 	expected_target_type = /obj/item/clipboard
+	examine_desc = "remove the pen"
 
 /decl/interaction_handler/clipboard_remove_pen/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

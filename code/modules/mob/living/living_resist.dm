@@ -63,8 +63,7 @@
 	return 1
 
 /mob/living/proc/can_break_restraints()
-	var/decl/species/my_species = get_species()
-	return my_species?.can_shred(src, 1)
+	return can_shred(ignore_intent = TRUE)
 
 /mob/living/proc/get_special_resist_time()
 	return 0

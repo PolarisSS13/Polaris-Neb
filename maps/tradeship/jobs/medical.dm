@@ -1,4 +1,4 @@
-/datum/job/doctor/tradeship
+/datum/job/standard/doctor/tradeship
 	title = "Junior Doctor"
 	supervisors = "the Head Doctor and the Captain"
 	alt_titles = list()
@@ -33,7 +33,7 @@
 	outfit_type = /decl/outfit/job/tradeship/doc/junior
 	event_categories = list(ASSIGNMENT_MEDICAL)
 
-/datum/job/cmo/tradeship
+/datum/job/standard/cmo/tradeship
 	title = "Head Doctor"
 	supervisors = "the Captain and your own ethics"
 	outfit_type = /decl/outfit/job/tradeship/doc

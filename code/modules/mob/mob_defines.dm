@@ -60,7 +60,6 @@
 	var/obj/screen/gun/radio/radio_use_icon
 	var/obj/screen/gun/move/gun_move_icon
 	var/obj/screen/gun/mode/gun_setting_icon
-	var/obj/screen/ability_master/ability_master
 
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
@@ -157,3 +156,6 @@
 	// Offset the overhead text if necessary.
 	var/offset_overhead_text_x = 0
 	var/offset_overhead_text_y = 0
+
+	/// Are you trying not to hurt your opponent?
+	var/pulling_punches

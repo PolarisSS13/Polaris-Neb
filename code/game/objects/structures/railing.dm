@@ -19,6 +19,9 @@
 	var/broken =    FALSE
 	var/neighbor_status = 0
 
+/obj/structure/railing/should_have_alpha_mask()
+	return simulated && isturf(loc) && !(locate(/obj/structure/railing) in get_step(loc, SOUTH))
+
 /obj/structure/railing/mapped
 	anchored = TRUE
 	color = COLOR_ORANGE
@@ -288,7 +291,7 @@ WOOD_RAILING_SUBTYPE(yew)
 			update_icon()
 		return TRUE
 
-	var/force = W.get_attack_force(user)
+	var/force = W.expend_attack_force(user)
 	if(force && (W.atom_damage_type == BURN || W.atom_damage_type == BRUTE))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		visible_message("<span class='danger'>\The [src] has been [LAZYLEN(W.attack_verb) ? pick(W.attack_verb) : "attacked"] with \the [W] by \the [user]!</span>")

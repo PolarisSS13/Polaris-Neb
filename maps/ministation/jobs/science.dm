@@ -1,14 +1,13 @@
-/datum/job/scientist/ministation
+/datum/job/standard/scientist/ministation
 	title = "Researcher"
 	alt_titles = list("Scientist","Xenobiologist","Roboticist","Xenobotanist")
 	supervisors = "the Head Researcher"
 	spawn_positions = 1
 	total_positions = 2
 	outfit_type = /decl/outfit/job/ministation/scientist
-	hud_icon = "hudscientist"
 	skill_points = 34
 
-/datum/job/rd/ministation
+/datum/job/standard/rd/ministation
 	title = "Research Director"
 	alt_titles = list("Head Researcher", "Chief Researcher")
 	outfit_type = /decl/outfit/job/ministation/scientist/head
@@ -27,7 +26,6 @@
 		SKILL_SCIENCE  = SKILL_MAX
 	)
 	skill_points = 40
-	hud_icon = "hudheadscientist"
 	access = list(
 		access_rd,
 		access_bridge,

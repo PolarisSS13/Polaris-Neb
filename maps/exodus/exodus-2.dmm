@@ -30773,7 +30773,7 @@
 /obj/machinery/fabricator/imprinter{
 	id_tag = "science"
 	},
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /obj/structure/reagent_dispensers/acid{
 	density = 0;
 	pixel_y = 32
@@ -32592,7 +32592,7 @@
 /obj/machinery/fabricator/imprinter{
 	id_tag = "science"
 	},
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /turf/floor/tiled/dark,
 /area/exodus/research/lab)
 "bqQ" = (
@@ -63723,6 +63723,10 @@
 	},
 /turf/floor/tiled/steel_grid,
 /area/ship/exodus_pod_research)
+"eYg" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space,
+/area/space)
 "eZK" = (
 /obj/effect/floor_decal/corner/purple,
 /obj/machinery/light,
@@ -76795,7 +76799,7 @@ cLU
 cLU
 cLU
 cLU
-cLU
+eYg
 cLU
 cLU
 cLU
@@ -88722,7 +88726,7 @@ cLU
 cLU
 cLU
 cLU
-cLU
+eYg
 cLU
 cLU
 cLU
@@ -108695,7 +108699,7 @@ cLU
 cLU
 cLU
 cLU
-cLU
+eYg
 cLU
 cLU
 cLU
@@ -116645,7 +116649,7 @@ cLU
 cLU
 cLU
 cLU
-cLU
+eYg
 cLU
 cLU
 cLU

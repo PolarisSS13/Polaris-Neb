@@ -16,7 +16,7 @@
 /atom/proc/CanFluidPass(var/coming_from)
 	return TRUE
 
-/atom/movable/proc/is_fluid_pushable(var/amt)
+/atom/movable/proc/try_fluid_push(volume, strength)
 	return simulated && !anchored
 
 /atom/movable/is_flooded(var/lying_mob, var/absolute)
@@ -47,7 +47,7 @@
 // This override exists purely because throwing is movable-level and not atom-level,
 // for obvious reasons (that being that non-movable atoms cannot move).
 /atom/movable/submerged(depth, above_turf)
-	above_turf ||= !!throwing
+	above_turf ||= immune_to_floor_hazards()
 	return ..()
 
 /obj/item/submerged(depth, above_turf)
@@ -66,7 +66,7 @@
 	return ..()
 
 /mob/submerged(depth, above_turf)
-	above_turf ||= is_floating || !!throwing // check throwing here because of the table check coming before parent call
+	above_turf ||= immune_to_floor_hazards() // check throwing here because of the table check coming before parent call
 	var/obj/structure/table/standing_on = locate(/obj/structure/table) in loc
 	// can't stand on a table if we're floating
 	if(!above_turf && standing_on && standing_on.mob_offset > 0) // standing atop a table that is a meaningful amount above the ground (not a bench)

@@ -78,6 +78,9 @@
 /decl/stack_recipe/planks/bowl
 	result_type            = /obj/item/chems/glass/handmade/bowl
 
+/decl/stack_recipe/planks/buckler
+	result_type            = /obj/item/shield_base/buckler
+
 /decl/stack_recipe/planks/fancy
 	abstract_type          = /decl/stack_recipe/planks/fancy
 	difficulty             = MAT_VALUE_VERY_HARD_DIY

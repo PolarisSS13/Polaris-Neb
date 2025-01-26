@@ -37,7 +37,7 @@
 			if(update_neighbors)
 				for(var/obj/effect/shield/shield in T)
 					shield.update_icon(FALSE)
-			add_overlay(image(icon = icon, icon_state = "[icon_state]_edge", dir = direction))
+			add_overlay(image(icon = icon, icon_state = "[icon_state]edge", dir = direction))
 
 // Prevents shuttles, singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
@@ -217,7 +217,7 @@
 	if(!gen.check_flag(MODEFLAG_HYPERKINETIC))
 		user.visible_message("<span class='danger'>\The [user] tries to attack \the [src] with \the [weapon], but it passes through!</span>")
 		return TRUE
-	var/force = weapon.get_attack_force(user)
+	var/force = weapon.expend_attack_force(user)
 	user.visible_message("<span class='danger'>\The [user] [pick(weapon.attack_verb)] \the [src] with \the [weapon]!</span>")
 	switch(weapon.atom_damage_type)
 		if(BURN)

@@ -52,13 +52,6 @@
 	thirst_factor = DEFAULT_THIRST_FACTOR * 1.2
 	gluttonous = GLUT_TINY
 
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite/sharp
-	)
-
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
 	default_emotes = list(

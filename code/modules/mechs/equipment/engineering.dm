@@ -63,6 +63,7 @@
 /decl/interaction_handler/mech_equipment/adjust_atmos_shields
 	name = "Adjust Atmos Shields"
 	expected_target_type = /obj/item/mech_equipment/atmos_shields
+	examine_desc = "adjust the atmos shields"
 
 /decl/interaction_handler/mech_equipment/adjust_atmos_shields/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/mech_equipment/atmos_shields/shields = target

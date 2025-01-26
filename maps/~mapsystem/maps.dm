@@ -1,21 +1,30 @@
-var/global/datum/map/using_map = new USING_MAP_DATUM
-var/global/list/all_maps = list()
+var/global/datum/map/using_map  = new USING_MAP_DATUM
+var/global/list/all_maps        = list()
+var/global/list/votable_maps    = list()
 
 var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
-var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
+var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 
 /proc/initialise_map_list()
-	for(var/type in subtypesof(/datum/map))
-		var/datum/map/M
-		if(type == global.using_map.type)
-			M = global.using_map
-			M.setup_map()
+	for(var/map_type in subtypesof(/datum/map))
+
+		var/datum/map/map_instance = map_type
+		if(TYPE_IS_ABSTRACT(map_instance))
+			continue
+
+		if(map_type == global.using_map.type)
+			map_instance = global.using_map
+			map_instance.setup_map()
+		else if(map_instance::path)
+			map_instance = new map_instance
 		else
-			M = new type
-		if(!M.path)
-			log_error("Map '[M]' ([type]) does not have a defined path, not adding to map list!")
-		else
-			global.all_maps[M.path] = M
+			log_error("Map '[map_type]' does not have a defined path, not adding to map list!")
+			continue
+
+		global.all_maps[map_instance.path] = map_instance
+		if(map_instance.votable)
+			global.votable_maps[map_instance.path] = map_instance
+
 	return 1
 
 /datum/map
@@ -104,7 +113,9 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/default_law_type = /datum/ai_laws/asimov  // The default lawset use by synth units, if not overriden by their laws var.
 	var/security_state = /decl/security_state/default // The default security state system to use.
 
-	var/id_hud_icons = 'icons/mob/hud.dmi' // Used by the ID HUD (primarily sechud) overlay.
+	var/hud_icons         = 'icons/screen/hud.dmi' // Used by the ID HUD (primarily sechud) overlay.
+	var/implant_hud_icons = 'icons/screen/hud_implants.dmi'
+	var/med_hud_icons     = 'icons/screen/hud_med.dmi'
 
 	var/num_exoplanets = 0
 	var/force_exoplanet_type // Used to override exoplanet weighting and always pick the same exoplanet.
@@ -126,6 +137,9 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 	var/list/station_departments = list()//Gets filled automatically depending on jobs allowed
 
 	var/default_species = SPECIES_HUMAN
+
+	// Can this map be voted for by players?
+	var/votable = TRUE
 
 	var/list/available_background_info = list(
 		/decl/background_category/homeworld = list(/decl/background_detail/location/other),
@@ -187,6 +201,12 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		/decl/background_category/religion
 	)
 
+
+	var/default_ui_style
+
+/datum/map/New()
+	..()
+	default_ui_style ||= DEFAULT_UI_STYLE
 
 /datum/map/proc/get_background_categories()
 	if(!background_categories_generated)
@@ -262,10 +282,9 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 
 	if(!allowed_jobs)
 		allowed_jobs = list()
-		for(var/jtype in subtypesof(/datum/job))
-			var/datum/job/job = jtype
-			if(initial(job.available_by_default))
-				allowed_jobs += jtype
+		for(var/datum/job/job as anything in subtypesof(/datum/job))
+			if(!TYPE_IS_ABSTRACT(job) && job::available_by_default)
+				allowed_jobs += job
 
 	if(ispath(default_job_type, /datum/job))
 		var/datum/job/J = default_job_type
@@ -534,5 +553,24 @@ var/global/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 /datum/map/proc/finalize_map_generation()
 	return
 
+/datum/map/proc/validate()
+	. = TRUE
+	if(!length(SSmapping.player_levels))
+		log_error("[name] has no player levels!")
+		. = FALSE
+	if(!length(SSmapping.station_levels))
+		log_error("[name] has no station levels!")
+		. = FALSE
+	// TODO: add an admin level loaded from template for maps like tradeship (generic admin level modpack?)
+	/*
+	if(!length(SSmapping.admin_levels))
+		log_error("[name] has no admin levels!")
+		. = FALSE
+	*/
+	if(!length(SSmapping.contact_levels))
+		log_error("[name] has no contact levels!")
+		. = FALSE
+
 /datum/map/proc/get_available_submap_archetypes()
 	return decls_repository.get_decls_of_subtype_unassociated(/decl/submap_archetype)
+

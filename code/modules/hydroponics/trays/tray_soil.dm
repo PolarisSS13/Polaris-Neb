@@ -21,8 +21,12 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/get_alt_interactions(var/mob/user)
 	. = ..()
-	. -= /decl/interaction_handler/drink
-	. -= /decl/interaction_handler/wash_hands
+	LAZYREMOVE(., global._reagent_interactions)
+	LAZYADD(., /decl/interaction_handler/empty_into)
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/get_growth_rate()
+	var/turf/my_turf = get_turf(src)
+	return max(0, my_turf?.get_plant_growth_rate())
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/Initialize()
 
@@ -63,7 +67,7 @@
 		return
 	if(prob(25))
 		return
-	to_chat(walker, SPAN_DANGER("You trample \the [seed]!"))
+	to_chat(walker, SPAN_DANGER("You trample \the [seed.display_name]!"))
 	plant_health = max(0, plant_health - rand(3,5))
 	check_plant_health()
 
@@ -162,7 +166,6 @@
 	dead = 0
 	age = start_mature ? seed.get_trait(TRAIT_MATURATION) : 1
 	plant_health = seed.get_trait(TRAIT_ENDURANCE)
-	lastcycle = world.time
 	if(isnull(default_pixel_y))
 		default_pixel_y = rand(-12,12)
 	if(isnull(default_pixel_y))
@@ -200,3 +203,6 @@
 		if(plant.invisibility == INVISIBILITY_MAXIMUM)
 			plant.set_invisibility(initial(plant.invisibility))
 	. = ..()
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/invisible/get_growth_rate()
+	return max(..(), 1)

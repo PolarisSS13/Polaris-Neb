@@ -62,11 +62,8 @@
 	if(slot != last_slot && (slot in get_held_item_slots()))
 		_held_item_slot_selected = slot
 		if(istype(hud_used))
-			for(var/obj/screen/inventory/hand in hud_used.hand_hud_objects)
-				hand.cut_overlay("hand_selected")
-				if(hand.slot_id == slot)
-					hand.add_overlay("hand_selected")
-				hand.compile_overlays()
+			for(var/atom/hand as anything in hud_used.hand_hud_objects)
+				hand.update_icon()
 		var/obj/item/I = get_active_held_item()
 		if(istype(I))
 			I.on_active_hand()

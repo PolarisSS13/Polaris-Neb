@@ -168,7 +168,7 @@
 		user.visible_message(SPAN_DANGER("\The [user] smashes \the [src] into [H]'s [affecting.name]!"))
 		// You are going to knock someone out for longer if they are not wearing a helmet.
 		var/blocked = target.get_blocked_ratio(hit_zone, BRUTE, damage = 10) * 100
-		var/weaken_duration = smash_duration + min(0, get_attack_force(user) - blocked + 10)
+		var/weaken_duration = smash_duration + min(0, expend_attack_force(user) - blocked + 10)
 		if(weaken_duration)
 			target.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
 	else
@@ -228,8 +228,7 @@
 	throw_range = 5
 	item_state = "beer"
 	attack_verb = list("stabbed", "slashed", "attacked")
-	sharp = 1
-	edge = 0
+	sharp = TRUE
 	obj_flags = OBJ_FLAG_HOLLOW
 	material = /decl/material/solid/glass
 	_base_attack_force = 9

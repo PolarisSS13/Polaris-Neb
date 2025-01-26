@@ -157,10 +157,14 @@
 	hud_elements.Cut()
 
 	for(var/hardpoint in hardpoints)
-		qdel(hardpoints[hardpoint])
+		var/obj/item/mech_equipment/equipment = hardpoints[hardpoint]
+		if(istype(equipment))
+			equipment.uninstalled()
+		QDEL_NULL(equipment)
 	hardpoints.Cut()
 
 	QDEL_NULL(access_card)
+	QDEL_NULL(radio)
 	QDEL_NULL(arms)
 	QDEL_NULL(legs)
 	QDEL_NULL(head)

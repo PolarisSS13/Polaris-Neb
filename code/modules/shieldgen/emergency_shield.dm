@@ -55,7 +55,7 @@
 	//Calculate damage
 	switch(W.atom_damage_type)
 		if(BRUTE, BURN)
-			current_health -= W.get_attack_force(user)
+			current_health -= W.expend_attack_force(user)
 		else
 			return FALSE
 

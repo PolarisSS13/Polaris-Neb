@@ -159,8 +159,7 @@
 		if(a_right)
 			a_right.holder = null
 			a_right.forceMove(T)
-		spawn(0)
-			qdel(src)
+		qdel(src)
 	return
 
 /obj/item/assembly_holder/hear_talk(mob/living/M, msg, verb, decl/language/speaking)

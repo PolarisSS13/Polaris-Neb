@@ -13,10 +13,3 @@
 
 	body_temperature =    302
 	water_soothe_amount = 5
-
-	unarmed_attacks = list(
-		/decl/natural_attack/stomp,
-		/decl/natural_attack/kick,
-		/decl/natural_attack/punch,
-		/decl/natural_attack/bite/sharp
-	)

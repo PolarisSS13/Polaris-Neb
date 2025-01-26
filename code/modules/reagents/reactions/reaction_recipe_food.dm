@@ -4,7 +4,7 @@
 	abstract_type = /decl/chemical_reaction/recipe/food
 	var/obj_result
 
-/decl/chemical_reaction/recipe/food/on_reaction(datum/reagents/holder, created_volume, reaction_flags, list/reaction_data)
+/decl/chemical_reaction/recipe/food/on_reaction(datum/reagents/holder, created_volume, list/reaction_data)
 	..()
 	var/location = get_turf(holder.get_reaction_loc(chemical_reaction_flags))
 	if(obj_result && isturf(location))

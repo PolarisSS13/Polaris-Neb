@@ -2422,7 +2422,8 @@
 /turf/unsimulated/floor/vault,
 /area/tdome)
 "lSj" = (
-/obj/effect/forcefield{
+/obj/effect{
+	density = 1;
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},
@@ -2434,7 +2435,8 @@
 /turf/unsimulated/floor/dark,
 /area/tdome)
 "mgi" = (
-/obj/effect/forcefield{
+/obj/effect{
+	density = 1;
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},
@@ -2799,7 +2801,8 @@
 /turf/floor/tiled,
 /area/shuttle/escape_shuttle)
 "xSD" = (
-/obj/effect/forcefield{
+/obj/effect{
+	density = 1;
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},

@@ -34,7 +34,7 @@
 	hilt_material       = /decl/material/solid/organic/wood/oak
 	force_binding_color = COLOR_GREEN
 
-/obj/item/bladed/polearm/spear/improvised/supermatter
-	material            = /decl/material/solid/supermatter
+/obj/item/bladed/polearm/spear/improvised/exotic_matter
+	material            = /decl/material/solid/exotic_matter
 	hilt_material       = /decl/material/solid/organic/wood/ebony
 	force_binding_color = COLOR_INDIGO

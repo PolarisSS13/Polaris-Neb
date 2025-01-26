@@ -50,7 +50,7 @@
 
 /obj/item/bash(obj/item/weapon, mob/user)
 	. = ..()
-	var/force = weapon.get_attack_force(user)
+	var/force = weapon.expend_attack_force(user)
 	if(force >= 3 && .)
 		user.setClickCooldown(weapon.attack_cooldown + weapon.w_class)
 		take_damage(force, weapon.atom_damage_type)

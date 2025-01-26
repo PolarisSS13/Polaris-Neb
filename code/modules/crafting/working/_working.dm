@@ -49,7 +49,7 @@
 		work_sound.stop(src)
 	update_icon()
 
-/obj/structure/working/attackby(obj/item/W, mob/user)
+/obj/structure/working/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
@@ -58,12 +58,12 @@
 		to_chat(user, SPAN_WARNING("\The [src] is currently in use, please wait for it to be finished."))
 		return TRUE
 
-	if(try_take_input(W, user))
+	if(try_take_input(used_item, user))
 		return TRUE
 
 	return ..()
 
-/obj/structure/working/proc/try_take_input(obj/item/W, mob/user, silent)
+/obj/structure/working/proc/try_take_input(obj/item/used_item, mob/user, silent)
 	return FALSE
 
 /obj/structure/working/proc/try_unload_material(mob/user)

@@ -25,6 +25,9 @@
 	if(handle_grab_interaction(user))
 		return TRUE
 
+	if(try_handle_interactions(user, get_standard_interactions(user), user?.get_active_held_item(), check_alt_interactions = FALSE))
+		return TRUE
+
 	if(!LAZYLEN(climbers) || (user in climbers) || !user.check_dexterity(DEXTERITY_HOLD_ITEM, silent = TRUE))
 		return FALSE
 

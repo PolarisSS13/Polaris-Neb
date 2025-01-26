@@ -398,6 +398,7 @@
 	icon                 = 'icons/screen/radial.dmi'
 	icon_state           = "radial_eject"
 	expected_target_type = /obj/item/camera
+	examine_desc         = "eject the film"
 
 /decl/interaction_handler/camera_eject_film/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/camera/camera = target

@@ -692,23 +692,17 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return zone_to_descriptor_mapping[zone] || zone
 
 //Whether or not the given item counts as sharp in terms of dealing damage
-/proc/is_sharp(obj/O)
-	if (!O) return 0
-	if (O.sharp) return 1
-	if (O.edge) return 1
-	return 0
+/obj/proc/is_sharp()
+	return FALSE
 
 //Whether or not the given item counts as cutting with an edge in terms of removing limbs
-/proc/has_edge(obj/O)
-	if (!O) return 0
-	if (O.edge) return 1
-	return 0
-
+/obj/proc/has_edge()
+	return FALSE
 
 //For items that can puncture e.g. thick plastic but aren't necessarily sharp
 //Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 /obj/item/proc/can_puncture()
-	return sharp
+	return is_sharp()
 
 /obj/item/screwdriver/can_puncture()
 	return 1

@@ -416,23 +416,20 @@ var/global/list/meteors_major = list(
 	explosion(src.loc, 3, 6, 9, 20, 0)
 
 // This is the final solution against shields - a single impact can bring down most shield generators.
-/obj/effect/meteor/supermatter
-	name = "supermatter shard"
-	desc = "Oh god, what will be next..?"
-	icon = 'icons/obj/supermatter_32.dmi'
-	icon_state = "supermatter"
+/obj/effect/meteor/destroyer
+	abstract_type = /obj/effect/meteor/destroyer
 
-/obj/effect/meteor/supermatter/meteor_effect()
+/obj/effect/meteor/destroyer/meteor_effect()
 	..()
 	explosion(src.loc, 1, 2, 3, 4, 0)
 	for(var/obj/machinery/power/apc/A in range(rand(12, 20), src))
 		A.energy_fail(round(10 * rand(8, 12)))
 
-/obj/effect/meteor/supermatter/get_shield_damage()
+/obj/effect/meteor/destroyer/get_shield_damage()
 	return ..() * rand(80, 120)
 
 //Missiles, for events and so on
-/obj/effect/meteor/supermatter/missile
+/obj/effect/meteor/destroyer/missile
 	name = "photon torpedo"
 	desc = "An advanded warhead designed to tactically destroy space installations."
 	icon = 'icons/obj/missile.dmi'

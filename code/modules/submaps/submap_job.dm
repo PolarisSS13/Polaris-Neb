@@ -7,7 +7,8 @@
 	create_record = FALSE
 	total_positions = 4
 	outfit_type = /decl/outfit/job/survivor
-	hud_icon = "hudblank"
+	hud_icon_state = "hudblank"
+	hud_icon = null
 	available_by_default = FALSE
 	allowed_ranks = null
 	allowed_branches = null
@@ -55,7 +56,12 @@
 	if(islist(blacklisted_species) && !length(blacklisted_species))
 		blacklisted_species |= SSmodpacks.default_submap_blacklisted_species
 
-	if(!abstract_job)
+	if(abstract_job)
+		if(!hud_icon)
+			hud_icon = global.using_map.hud_icons
+		if(!hud_icon_state)
+			hud_icon_state = "hud[ckey(title)]"
+	else
 		spawnpoints = list()
 		owner = _owner
 		..()

@@ -16,6 +16,7 @@
 	base_eye_color       = "#00aa00"
 	nail_noun            = "claws"
 	uid                  = "bodytype_feline"
+	footprints_icon      = 'icons/mob/footprints/footprints_paw.dmi'
 
 	age_descriptor = /datum/appearance_descriptor/age/tajaran
 
@@ -27,7 +28,10 @@
 	eye_low_light_vision_adjustment_speed = 0.3
 
 	override_limb_types = list(
-		BP_TAIL = /obj/item/organ/external/tail/cat
+		BP_TAIL   = /obj/item/organ/external/tail/cat,
+		BP_HEAD   = /obj/item/organ/external/head/sharp_bite,
+		BP_L_HAND = /obj/item/organ/external/hand/clawed,
+		BP_R_HAND = /obj/item/organ/external/hand/right/clawed
 	)
 
 	default_sprite_accessories = list(

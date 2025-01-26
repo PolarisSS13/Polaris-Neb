@@ -26,6 +26,7 @@
 	var/can_flip = TRUE
 	var/is_flipped = FALSE
 	var/decl/material/additional_reinf_material
+	var/base_type = /obj/structure/table
 
 	var/top_surface_noun = "tabletop"
 
@@ -37,11 +38,8 @@
 	/// Whether items can be placed on this table via clicking.
 	var/can_place_items = TRUE
 
-/obj/structure/table/clear_connections()
-	connections = null
-
-/obj/structure/table/set_connections(dirs, other_dirs)
-	connections = dirs_to_corner_states(dirs)
+/obj/structure/table/should_have_alpha_mask()
+	return simulated && isturf(loc) && !(locate(/obj/structure/table) in get_step(loc, SOUTH))
 
 /obj/structure/table/Initialize()
 	if(ispath(additional_reinf_material, /decl/material))
@@ -64,6 +62,29 @@
 	else
 		update_connections(TRUE)
 		update_icon()
+
+/obj/structure/table/Destroy()
+	var/turf/oldloc = loc
+	additional_reinf_material = null
+	. = ..()
+	if(istype(oldloc))
+		for(var/obj/structure/table/table in range(oldloc, 1))
+			if(QDELETED(table))
+				continue
+			table.update_connections(FALSE)
+			table.update_icon()
+
+/obj/structure/table/adjust_required_attack_dexterity(mob/user, required_dexterity)
+	// Let people put stuff on tables without necessarily being able to use a gun or such.
+	if(user?.check_intent(I_FLAG_HELP))
+		return DEXTERITY_HOLD_ITEM
+	return ..()
+
+/obj/structure/table/clear_connections()
+	connections = null
+
+/obj/structure/table/set_connections(dirs, other_dirs)
+	connections = dirs_to_corner_states(dirs)
 
 /obj/structure/table/get_material_health_modifier()
 	. = additional_reinf_material ? 0.75 : 0.5
@@ -101,17 +122,6 @@
 	..()
 	felted = FALSE
 	additional_reinf_material = null
-
-/obj/structure/table/Destroy()
-	var/turf/oldloc = loc
-	additional_reinf_material = null
-	. = ..()
-	if(istype(oldloc))
-		for(var/obj/structure/table/table in range(oldloc, 1))
-			if(QDELETED(table))
-				continue
-			table.update_connections(FALSE)
-			table.update_icon()
 
 /obj/structure/table/can_dismantle(mob/user)
 	. = ..()

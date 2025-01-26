@@ -70,7 +70,8 @@
 	var/lit = FIRE_OUT
 	/// How much fuel is left?
 	var/fuel = 0
-
+	/// Have we been fed by a bellows recently?
+	var/bellows_oxygenation = 0
 
 /obj/structure/fire_source/Initialize()
 	. = ..()
@@ -138,6 +139,7 @@
 
 /obj/structure/fire_source/proc/die()
 	if(lit == FIRE_LIT)
+		bellows_oxygenation = 0
 		lit = FIRE_DEAD
 		last_fuel_ignite_temperature = null
 		last_fuel_burn_temperature = T20C
@@ -308,7 +310,9 @@
 	return ..()
 
 /obj/structure/fire_source/proc/get_draught_multiplier()
-	return has_draught ? draught_values[draught_values[current_draught]] : 1
+	. = has_draught ? draught_values[draught_values[current_draught]] : 1
+	if(bellows_oxygenation)
+		. *= 1.25 // Burns 25% hotter while oxygenated.
 
 /obj/structure/fire_source/proc/process_fuel(ignition_temperature)
 	var/draught_mult = get_draught_multiplier()
@@ -413,6 +417,10 @@
 		die()
 		return
 
+	// Spend our bellows charge.
+	if(bellows_oxygenation > 0)
+		bellows_oxygenation--
+
 	fuel -= (FUEL_CONSUMPTION_CONSTANT * get_draught_multiplier())
 	if(!process_fuel())
 		die()
@@ -461,7 +469,7 @@
 
 	switch(lit)
 		if(FIRE_LIT)
-			if(fuel >= HIGH_FUEL)
+			if(bellows_oxygenation || fuel >= HIGH_FUEL)
 				var/image/I = image(icon, "[icon_state]_lit")
 				I.appearance_flags |= RESET_COLOR | RESET_ALPHA | KEEP_APART
 				add_overlay(I)
@@ -510,6 +518,7 @@
 /decl/interaction_handler/adjust_draught
 	name = "Adjust Draught"
 	expected_target_type = /obj/structure/fire_source
+	examine_desc = "adjust the draught"
 
 /decl/interaction_handler/adjust_draught/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/structure/fire_source/fire = target

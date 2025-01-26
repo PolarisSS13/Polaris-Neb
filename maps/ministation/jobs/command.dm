@@ -1,6 +1,7 @@
-/datum/job/captain/ministation
+/datum/job/standard/captain/ministation
 	supervisors = "your profit margin, your conscience, and the watchful eye of the Tradehouse Rep"
 	outfit_type = /decl/outfit/job/ministation/captain
+	hud_icon = 'maps/ministation/hud.dmi'
 	min_skill = list(
 		SKILL_LITERACY = SKILL_ADEPT,
 		SKILL_WEAPONS  = SKILL_ADEPT,
@@ -13,7 +14,7 @@
 	)
 	skill_points = 40
 
-/datum/job/captain/ministation/equip_job(var/mob/living/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
+/datum/job/standard/captain/ministation/equip_job(var/mob/living/human/H, var/alt_title, var/datum/mil_branch/branch, var/datum/mil_rank/grade)
 	. = ..()
 	if(H)
 		H.verbs |= /mob/proc/freetradeunion_rename_company
@@ -33,10 +34,11 @@
 		command_announcement.Announce("Congratulations to all members of [capitalize(global.using_map.company_name)] on the new name. Their rebranding has changed the [global.using_map.company_short] market value by [0.01*rand(-10,10)]%.", "Trade Union Name Change")
 	verbs -= /mob/proc/freetradeunion_rename_company
 
-/datum/job/hop/ministation
+/datum/job/standard/hop/ministation
 	title = "Lieutenant"
 	outfit_type = /decl/outfit/job/ministation/hop
-	hud_icon = "hudlieutenant"
+	hud_icon = 'maps/ministation/hud.dmi'
+	hud_icon_state = "hudlieutenant"
 	min_skill = list(
 		SKILL_LITERACY = SKILL_ADEPT,
 		SKILL_WEAPONS  = SKILL_BASIC,

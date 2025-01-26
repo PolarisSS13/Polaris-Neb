@@ -29,6 +29,12 @@
 			I.pixel_y = max(3-i*3, -3) + 1
 			I.pixel_z = 0
 
+/obj/structure/rack/adjust_required_attack_dexterity(mob/user, required_dexterity)
+	// Let people put stuff on tables without necessarily being able to use a gun or such.
+	if(user?.check_intent(I_FLAG_HELP))
+		return DEXTERITY_HOLD_ITEM
+	return ..()
+
 /obj/structure/rack/attackby(obj/item/O, mob/user, click_params)
 	. = ..()
 	if(!. && !isrobot(user) && O.loc == user && user.try_unequip(O, loc))

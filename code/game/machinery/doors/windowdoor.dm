@@ -139,13 +139,11 @@
 		return
 
 /obj/machinery/door/window/physical_attack_hand(mob/user)
-	if(ishuman(user))
-		var/mob/living/human/H = user
-		if(H.species.can_shred(H))
-			playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
-			visible_message("<span class='danger'>\The [user] smashes against \the [src].</span>", 1)
-			take_damage(25)
-			return TRUE
+	if(user.can_shred())
+		playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
+		visible_message(SPAN_DANGER("\The [user] smashes against \the [src]."))
+		take_damage(25)
+		return TRUE
 	return ..()
 
 /obj/machinery/door/window/emag_act(var/remaining_charges, var/mob/user)

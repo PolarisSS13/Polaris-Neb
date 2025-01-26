@@ -40,18 +40,14 @@
 		mouse_over_atom_ref = null
 		update_icon()
 
-/obj/screen/inventory/on_update_icon()
+/obj/screen/inventory/rebuild_screen_overlays()
 
-	cut_overlays()
+	..()
 
 	// Validate our owner still exists.
 	var/mob/owner = owner_ref?.resolve()
 	if(!istype(owner) || QDELETED(owner) || !(src in owner.client?.screen))
 		return
-
-	// Mark our selected hand.
-	if(owner.get_active_held_item_slot() == slot_id)
-		add_overlay("hand_selected")
 
 	// Mark anything we're potentially trying to equip.
 	var/obj/item/mouse_over_atom = mouse_over_atom_ref?.resolve()
@@ -65,9 +61,7 @@
 		MA.pixel_y = mouse_over_atom.default_pixel_y
 		MA.pixel_w = mouse_over_atom.default_pixel_w
 		MA.pixel_z = mouse_over_atom.default_pixel_z
+		MA.appearance_flags |= (KEEP_TOGETHER | RESET_COLOR)
 		add_overlay(MA)
 	else
 		mouse_over_atom_ref = null
-
-	// UI needs to be responsive so avoid the subsecond update delay.
-	compile_overlays()

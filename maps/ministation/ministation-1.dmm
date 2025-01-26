@@ -2713,6 +2713,10 @@
 	},
 /turf/floor/tiled,
 /area/ministation/hall/w2)
+"nt" = (
+/obj/effect/shuttle_landmark/automatic,
+/turf/space,
+/area/space)
 "nu" = (
 /obj/effect/floor_decal/carpet{
 	dir = 8
@@ -6710,6 +6714,8 @@
 	},
 /obj/structure/table/laminate,
 /obj/machinery/reagent_temperature,
+/obj/item/chems/cooking_vessel/pot,
+/obj/item/chems/cooking_vessel/skillet,
 /turf/floor/lino,
 /area/ministation/cafe)
 "Ct" = (
@@ -9758,12 +9764,12 @@
 /obj/structure/table/laminate,
 /obj/item/eftpos,
 /obj/item/chems/spray/cleaner,
+/obj/item/chems/packet/honey_fake,
+/obj/item/chems/packet/honey_fake,
 /obj/item/chems/packet/honey,
 /obj/item/chems/packet/honey,
 /obj/item/chems/packet/honey,
-/obj/item/chems/packet/honey,
-/obj/item/chems/packet/honey,
-/obj/item/chems/packet/honey,
+/obj/item/chems/packet/honey_fake,
 /obj/item/chems/packet/honey,
 /turf/floor/lino,
 /area/ministation/cafe)
@@ -54008,7 +54014,7 @@ aa
 aa
 aa
 aa
-aa
+nt
 aa
 aa
 aa
@@ -54341,7 +54347,7 @@ aa
 aa
 aa
 aa
-aa
+nt
 aa
 aa
 aa

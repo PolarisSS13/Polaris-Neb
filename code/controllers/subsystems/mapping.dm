@@ -109,6 +109,8 @@ SUBSYSTEM_DEF(mapping)
 	// Load any queued map template markers.
 	for(var/obj/abstract/landmark/map_load_mark/queued_mark in queued_markers)
 		queued_mark.load_subtemplate()
+		if(!QDELETED(queued_mark)) // for if the tile that lands on the landmark is a no-op tile
+			qdel(queued_mark)
 	queued_markers.Cut()
 
 	// Populate overmap.
@@ -119,15 +121,9 @@ SUBSYSTEM_DEF(mapping)
 	// This needs to be non-null even if the overmap isn't created for this map.
 	overmap_event_handler = GET_DECL(/decl/overmap_event_handler)
 
-	var/old_maxz
-	for(var/z = 1 to world.maxz)
-		var/datum/level_data/level = levels_by_z[z]
-		if(!istype(level))
-			level = new /datum/level_data/space(z)
-			PRINT_STACK_TRACE("Missing z-level data object for z[num2text(z)]!")
-		level.setup_level_data()
+	setup_data_for_levels()
 
-	old_maxz = world.maxz
+	var/old_maxz = world.maxz
 	// Build away sites.
 	global.using_map.build_away_sites()
 	global.using_map.build_planets()
@@ -150,13 +146,7 @@ SUBSYSTEM_DEF(mapping)
 	test_load_map_templates()
 #endif
 
-	// Check/associated/setup our level data objects.
-	for(var/z = old_maxz + 1 to world.maxz)
-		var/datum/level_data/level = levels_by_z[z]
-		if(!istype(level))
-			level = new /datum/level_data/space(z)
-			PRINT_STACK_TRACE("Missing z-level data object for z[num2text(z)]!")
-		level.setup_level_data()
+	setup_data_for_levels(min_z = old_maxz + 1)
 
 	// Generate turbolifts last, since away sites may have elevators to generate too.
 	for(var/obj/abstract/turbolift_spawner/turbolift as anything in turbolifts_to_initialize)
@@ -165,6 +155,14 @@ SUBSYSTEM_DEF(mapping)
 	global.using_map.finalize_map_generation()
 
 	. = ..()
+
+/datum/controller/subsystem/mapping/proc/setup_data_for_levels(min_z = 1, max_z = world.maxz)
+	for(var/z = min_z to max_z)
+		var/datum/level_data/level = levels_by_z[z]
+		if(!istype(level))
+			level = new /datum/level_data/space(z)
+			PRINT_STACK_TRACE("Missing z-level data object for z[num2text(z)]!")
+		level.setup_level_data()
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
@@ -198,7 +196,7 @@ SUBSYSTEM_DEF(mapping)
 	. = list()
 	for(var/template_type in subtypesof(/datum/map_template))
 		var/datum/map_template/template = template_type
-		if(!TYPE_IS_ABSTRACT(template) && initial(template.template_parent_type) != template_type && initial(template.name))
+		if(!TYPE_IS_ABSTRACT(template))
 			. += new template_type(type) // send name as a param to catch people doing illegal ad hoc creation
 
 /datum/controller/subsystem/mapping/proc/get_template(var/template_name)

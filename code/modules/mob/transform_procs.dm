@@ -98,8 +98,7 @@
 	O.add_ai_verbs()
 
 	O.rename_self("ai",1)
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
-		qdel(src)
+	qdel(src)
 	return O
 
 //human -> robot
@@ -136,7 +135,7 @@
 	RAISE_EVENT(/decl/observ/cyborg_created, O)
 	O.Namepick()
 
-	qdel(src) // Queues us for a hard delete
+	qdel(src)
 	return O
 
 /mob/living/human/proc/corgize()
@@ -188,8 +187,7 @@
 
 
 	to_chat(new_mob, "You suddenly feel more... animalistic.")
-	spawn()
-		qdel(src)
+	qdel(src)
 	return
 
 /mob/proc/Animalize()

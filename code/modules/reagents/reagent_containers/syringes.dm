@@ -17,7 +17,7 @@
 	volume = 15
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS
-	sharp = 1
+	sharp = TRUE
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 
 	var/mode = SYRINGE_DRAW

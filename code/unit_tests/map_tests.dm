@@ -503,6 +503,28 @@
 
 //=======================================================================================
 
+// These vars are used to avoid in-world loops in the following unit test.
+var/global/_unit_test_disposal_segments = list()
+var/global/_unit_test_sort_junctions = list()
+
+#ifdef UNIT_TEST
+/obj/structure/disposalpipe/segment/Initialize(mapload)
+	. = ..()
+	_unit_test_disposal_segments += src
+
+/obj/structure/disposalpipe/segment/Destroy()
+	_unit_test_disposal_segments -= src
+	return ..()
+
+/obj/structure/disposalpipe/sortjunction/Initialize(mapload)
+	. = ..()
+	_unit_test_sort_junctions += src
+
+/obj/structure/disposalpipe/sortjunction/Destroy()
+	_unit_test_sort_junctions -= src
+	return ..()
+#endif
+
 /datum/unit_test/disposal_segments_shall_connect_with_other_disposal_pipes
 	name = "MAP: Disposal segments shall connect with other disposal pipes"
 
@@ -522,7 +544,7 @@
 		num2text(SOUTH) = list(list(SOUTH, list(NORTH, WEST)), list(EAST,  list(NORTH, EAST))),
 		num2text(WEST)  = list(list(EAST,  list(NORTH, EAST)), list(SOUTH, list(SOUTH, EAST))))
 
-	for(var/obj/structure/disposalpipe/segment/D in world)
+	for(var/obj/structure/disposalpipe/segment/D in _unit_test_disposal_segments)
 		if(!D.loc)
 			continue
 		if(D.icon_state == "pipe-s")
@@ -760,7 +782,7 @@
 /datum/unit_test/networked_disposals_shall_deliver_tagged_packages/start_test()
 	. = 1
 	var/fail = FALSE
-	for(var/obj/structure/disposalpipe/sortjunction/sort in world)
+	for(var/obj/structure/disposalpipe/sortjunction/sort in _unit_test_sort_junctions)
 		if(!sort.loc)
 			continue
 		if(is_type_in_list(sort, exempt_junctions))

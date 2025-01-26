@@ -746,7 +746,8 @@
 			if(I)
 				var/datum/job/J = SSjobs.get_by_title(I.GetJobName())
 				if(J)
-					holder.icon_state = J.hud_icon
+					holder.icon       = J.hud_icon
+					holder.icon_state = J.hud_icon_state
 
 		hud_list[ID_HUD] = holder
 
@@ -781,17 +782,16 @@
 		var/image/holder2 = hud_list[IMPLOYAL_HUD]
 		var/image/holder3 = hud_list[IMPCHEM_HUD]
 
-		holder1.icon_state = "hudblank"
-		holder2.icon_state = "hudblank"
-		holder3.icon_state = "hudblank"
-
+		holder1.icon_state = "hud_imp_blank"
+		holder2.icon_state = "hud_imp_blank"
+		holder3.icon_state = "hud_imp_blank"
 		for(var/obj/item/implant/I in src)
 			if(I.implanted)
 				if(istype(I,/obj/item/implant/tracking))
 					holder1.icon_state = "hud_imp_tracking"
-				if(istype(I,/obj/item/implant/loyalty))
+				else if(istype(I,/obj/item/implant/loyalty))
 					holder2.icon_state = "hud_imp_loyal"
-				if(istype(I,/obj/item/implant/chem))
+				else if(istype(I,/obj/item/implant/chem))
 					holder3.icon_state = "hud_imp_chem"
 
 		hud_list[IMPTRACK_HUD] = holder1

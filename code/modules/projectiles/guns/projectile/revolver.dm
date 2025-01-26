@@ -74,6 +74,7 @@
 /decl/interaction_handler/revolver_spin_cylinder
 	name = "Spin Cylinder"
 	expected_target_type = /obj/item/gun/projectile/revolver
+	examine_desc = "spin the cylinder"
 
 /decl/interaction_handler/revolver_spin_cylinder/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/gun/projectile/revolver/R = target

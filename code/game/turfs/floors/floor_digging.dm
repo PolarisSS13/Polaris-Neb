@@ -1,13 +1,15 @@
 /turf/floor
 	var/gemstone_dropped = FALSE
 
-/turf/floor/proc/is_fundament()
+/turf/floor/proc/flooring_is_diggable()
 	var/decl/flooring/flooring = get_topmost_flooring()
-	return flooring ? !flooring.constructed : TRUE
+	if(!flooring || flooring.constructed)
+		return FALSE
+	return TRUE
 
 /turf/floor/can_be_dug(tool_hardness = MAT_VALUE_MALLEABLE, using_tool = TOOL_SHOVEL)
 	// This should be removed before digging trenches.
-	if(!is_fundament())
+	if(!flooring_is_diggable())
 		return FALSE
 	var/decl/flooring/flooring = get_base_flooring()
 	if(istype(flooring) && flooring.constructed)
@@ -27,7 +29,7 @@
 	return can_be_dug(tool_hardness, using_tool) && get_physical_height() > -(FLUID_DEEP)
 
 /turf/floor/dig_trench(mob/user, tool_hardness = MAT_VALUE_MALLEABLE, using_tool = TOOL_SHOVEL)
-	if(is_fundament())
+	if(flooring_is_diggable())
 		handle_trench_digging(user)
 
 /turf/floor/proc/handle_trench_digging(mob/user)
@@ -47,10 +49,21 @@
 
 /turf/floor/get_diggable_resources()
 	var/decl/material/my_material = get_material()
-	if(is_fundament() && istype(my_material) && my_material.dug_drop_type && (get_physical_height() > -(FLUID_DEEP)))
-		. = list()
-		.[my_material.dug_drop_type] = list("amount" = 3, "variance" = 2, "material" = my_material.type)
-		if(!gemstone_dropped && prob(my_material.gemstone_chance) && LAZYLEN(my_material.gemstone_types))
-			gemstone_dropped = TRUE
-			var/gem_mat = pick(my_material.gemstone_types)
-			.[/obj/item/gemstone] = list("amount" = 1, "material" = gem_mat)
+	if(!flooring_is_diggable() || !istype(my_material) || !my_material.dug_drop_type || (get_physical_height() <= -(FLUID_DEEP)))
+		return
+
+	. = list()
+
+	// All turfs drop resources to backfill them with (or make firepits, etc)
+	.[my_material.dug_drop_type] = list("amount" = 3, "variance" = 2, "material" = my_material.type)
+
+	// Dirt/mud/etc might have some worms.
+	if(prob(5 * get_plant_growth_rate()))
+		.[/obj/item/food/worm] = list("amount" = 1, "material" = /obj/item/food/worm::material)
+
+	// Some materials (like clay) might contain gemstones.
+	if(!gemstone_dropped && prob(my_material.gemstone_chance) && LAZYLEN(my_material.gemstone_types))
+		gemstone_dropped = TRUE
+		var/gem_mat = pick(my_material.gemstone_types)
+		.[/obj/item/gemstone] = list("amount" = 1, "material" = gem_mat)
+

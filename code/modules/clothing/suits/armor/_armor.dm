@@ -12,7 +12,7 @@
 		/obj/item/handcuffs,
 		/obj/item/gun/magnetic,
 		/obj/item/clothing/head/helmet,
-		/obj/item/shield/buckler,
+		/obj/item/shield/crafted/buckler,
 		/obj/item/bladed/knife,
 		/obj/item/bladed/shortsword,
 		/obj/item/bladed/longsword,

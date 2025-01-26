@@ -1,6 +1,5 @@
 /datum/hud_data
-	/// Set to draw intent box.
-	var/show_intent_selector = 1
+
 	/// Set to draw move intent box.
 	var/has_m_intent = 1
 	/// Set to draw environment warnings.

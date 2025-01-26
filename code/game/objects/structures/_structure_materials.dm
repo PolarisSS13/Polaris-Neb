@@ -37,14 +37,14 @@
 
 /obj/structure/proc/update_material_name(var/override_name)
 	var/base_name = override_name || initial(name)
-	if(istype(material))
+	if(istype(material) && (material_alteration & MAT_FLAG_ALTERATION_NAME))
 		SetName("[material.adjective_name] [base_name]")
 	else
 		SetName(base_name)
 
 /obj/structure/proc/update_material_desc(var/override_desc)
 	var/base_desc = override_desc || initial(desc)
-	if(istype(material))
+	if(istype(material) && (material_alteration & MAT_FLAG_ALTERATION_DESC))
 		desc = "[base_desc] This one is made of [material.solid_name]."
 	else
 		desc = base_desc

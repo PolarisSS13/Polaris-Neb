@@ -3,6 +3,7 @@
 	icon = 'icons/mecha/mech_hud.dmi'
 	icon_state = "base"
 	requires_ui_style = FALSE
+	apply_screen_overlay = FALSE
 	var/initial_maptext
 	var/height = 14
 
@@ -317,7 +318,8 @@
 	var/mob/living/exosuit/owner = get_owning_exosuit()
 	if(owner)
 		toggled = owner.hatch_closed
-		. = ..()
+	. = ..()
+	if(owner)
 		if(toggled)
 			maptext = MECH_UI_STYLE("OPEN")
 			maptext_x = 5

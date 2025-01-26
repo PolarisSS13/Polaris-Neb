@@ -11,13 +11,8 @@
 	if(.)
 		if(!isspaceturf(loc))
 			playsound(src.loc, mech_step_sound, 40, 1)
-
-		var/turf/B = GetAbove(src)
-
-		for(var/thing in pilots)
-			var/mob/pilot = thing
-			if(pilot.up_hint)
-				pilot.up_hint.icon_state = "uphint[!!(B && TURF_IS_MIMICKING(B))]"
+		for(var/mob/pilot as anything in pilots)
+			pilot.up_hint?.update_icon()
 
 //Inertia drift making us face direction makes exosuit flight a bit difficult, plus newtonian flight model yo
 /mob/living/exosuit/set_dir(ndir)

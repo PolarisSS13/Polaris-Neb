@@ -8,8 +8,7 @@
 		CAMERA_CAMERA_CHANNEL_ENGINEERING
 	)
 	software = list(
-		/datum/computer_file/program/power_monitor,
-		/datum/computer_file/program/supermatter_monitor
+		/datum/computer_file/program/power_monitor
 	)
 	supported_upgrades = list(
 		/obj/item/borg/upgrade/rcd

@@ -1,4 +1,4 @@
-/datum/job/officer/ministation
+/datum/job/standard/officer/ministation
 	title = "Security Officer"
 	alt_titles = list("Warden")
 	spawn_positions = 1
@@ -22,7 +22,7 @@
 	)
 	skill_points = 30
 
-/datum/job/detective/ministation
+/datum/job/standard/detective/ministation
 	alt_titles = list("Inspector")
 	supervisors = "Justice... and the Trademaster"
 	spawn_positions = 1
@@ -55,9 +55,8 @@
 	)
 	skill_points = 34
 
-/datum/job/hos/ministation
+/datum/job/standard/hos/ministation
 	outfit_type = /decl/outfit/job/ministation/security/head
-	hud_icon = "hudhos"
 	access = list(
 		access_security,
 		access_sec_doors,

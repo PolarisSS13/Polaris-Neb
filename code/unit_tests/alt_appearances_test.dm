@@ -20,9 +20,8 @@
 
 	for(var/ca_type in decls_repository.get_decl_paths_of_subtype(/decl/cardborg_appearance))
 		var/decl/cardborg_appearance/ca = ca_type
-		var/list/existing_icon_states = icon_states(initial(ca.icon))
 		var/icon_state = initial(ca.icon_state)
-		if(!(icon_state in existing_icon_states))
+		if(!check_state_in_icon(icon_state, initial(ca.icon)))
 			log_unit_test("Icon state [icon_state] is missing.")
 			failed = TRUE
 	if(failed)

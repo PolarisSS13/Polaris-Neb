@@ -105,8 +105,7 @@
 	if(!user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))
 		return ..()
 
-	var/decl/species/species = user.get_species()
-	if(ishuman(user) && species?.can_shred(user) && user.check_intent(I_FLAG_HARM))
+	if(user.can_shred() && user.check_intent(I_FLAG_HARM))
 		take_damage(20)
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE

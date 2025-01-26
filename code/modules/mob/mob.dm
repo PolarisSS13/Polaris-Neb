@@ -17,8 +17,6 @@
 		QDEL_NULL(hud_used)
 	if(active_storage)
 		active_storage.close(src)
-	if(istype(ability_master))
-		QDEL_NULL(ability_master)
 	if(istype(skillset))
 		QDEL_NULL(skillset)
 	QDEL_NULL_LIST(grabbed_by)
@@ -57,7 +55,6 @@
 	QDEL_NULL_SCREEN(radio_use_icon)
 	QDEL_NULL_SCREEN(gun_move_icon)
 	QDEL_NULL_SCREEN(gun_setting_icon)
-	QDEL_NULL_SCREEN(ability_master)
 	QDEL_NULL_SCREEN(zone_sel)
 
 /mob/Initialize()
@@ -68,7 +65,6 @@
 	if(!istype(move_intent))
 		move_intent = GET_DECL(move_intent)
 	. = ..()
-	ability_master = new(null, src)
 	refresh_ai_handler()
 	START_PROCESSING(SSmobs, src)
 
@@ -242,8 +238,6 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(QDELETED(src))
 		return PROCESS_KILL
-	if(ability_master)
-		ability_master.update_spells(0)
 
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
@@ -896,7 +890,7 @@
 
 /mob/proc/toggle_throw_mode(force_set)
 	in_throw_mode = isnull(force_set) ? !in_throw_mode : force_set
-	throw_icon?.icon_state = "act_throw_[in_throw_mode ? "on" : "off"]"
+	throw_icon?.update_icon()
 
 /mob/proc/toggle_antag_pool()
 	set name = "Toggle Add-Antag Candidacy"
@@ -973,12 +967,12 @@
 /mob/proc/get_gender()
 	return gender
 
-/mob/is_fluid_pushable(var/amt)
-	if(..() && !buckled && (current_posture.prone || !Check_Shoegrip()) && (amt >= mob_size * (current_posture.prone ? 5 : 10)))
+/mob/try_fluid_push(volume, strength)
+	if(..() && !buckled && (current_posture.prone || !Check_Shoegrip()) && (strength >= mob_size * (current_posture.prone ? 5 : 10)))
 		if(!current_posture.prone)
 			SET_STATUS_MAX(src, STAT_WEAK, 1)
 			if(current_posture.prone && prob(10))
-				to_chat(src, "<span class='danger'>You are pushed down by the flood!</span>")
+				to_chat(src, SPAN_DANGER("You are pushed down by the flood!"))
 		return TRUE
 	return FALSE
 
@@ -1398,3 +1392,24 @@
 		paw = GET_EXTERNAL_ORGAN(src, BP_R_HAND)
 	if(istype(paw) && paw.is_usable())
 		return paw
+
+// Called when using the shredding behavior.
+/mob/proc/can_shred(var/mob/living/human/H, var/ignore_intent, var/ignore_antag)
+	if((!ignore_intent && !check_intent(I_FLAG_HARM)) || pulling_punches)
+		return FALSE
+	if(!ignore_antag && mind && !player_is_antag(mind))
+		return FALSE
+	if(get_equipped_item(slot_handcuffed_str) || buckled)
+		return FALSE
+	for(var/decl/natural_attack/attack as anything in get_mob_natural_attacks())
+		if(attack.is_usable(src) && attack.shredding)
+			return TRUE
+	return FALSE
+
+/mob/proc/get_mob_natural_attacks()
+	for(var/obj/item/organ/external/limb in get_external_organs())
+		if(!limb.is_usable())
+			continue
+		var/list/limb_unarmed_attacks = limb.get_natural_attacks()
+		if(istype(limb_unarmed_attacks, /decl/natural_attack) || (islist(limb_unarmed_attacks) && length(limb_unarmed_attacks)))
+			LAZYDISTINCTADD(., limb_unarmed_attacks)

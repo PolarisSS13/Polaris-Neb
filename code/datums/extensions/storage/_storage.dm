@@ -252,6 +252,8 @@ var/global/list/_test_storage_items = list()
 	storage_ui?.on_insertion()
 
 /datum/storage/proc/update_ui_after_item_removal(obj/item/removed)
+	if(QDELETED(holder))
+		return
 	prepare_ui()
 	storage_ui?.on_post_remove()
 

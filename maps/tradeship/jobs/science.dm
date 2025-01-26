@@ -1,4 +1,4 @@
-/datum/job/scientist/tradeship
+/datum/job/standard/scientist/tradeship
 	title = "Junior Researcher"
 	supervisors = "the Head Researcher and the Captain"
 	total_positions = 2
@@ -8,7 +8,7 @@
 	// Smaller crew, more points.
 	skill_points = 24
 
-/datum/job/rd/tradeship
+/datum/job/standard/rd/tradeship
 	title = "Head Researcher"
 	alt_titles = list()
 	outfit_type = /decl/outfit/job/tradeship/hand/researcher

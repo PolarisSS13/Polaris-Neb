@@ -8,7 +8,6 @@
 #include "datum\cultures_vox.dm"
 #include "datum\descriptors_vox.dm"
 #include "datum\factions_vox.dm"
-#include "datum\heist_compatibility.dm"
 #include "datum\language.dm"
 #include "datum\locations_vox.dm"
 #include "datum\outfits.dm"

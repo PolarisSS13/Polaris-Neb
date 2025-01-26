@@ -36,9 +36,6 @@
 	if(A?.storage || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/chems) || istype(A, /obj/structure/hygiene/sink) || istype(A, /obj/structure/janitorialcart))
 		return
 
-	if(istype(A, /spell))
-		return
-
 	if(proximity)
 		if(standard_dispenser_refill(user, A))
 			return
@@ -50,7 +47,7 @@
 	Spray_at(A, user, proximity)
 
 	if(reagents.has_reagent(/decl/material/liquid/acid))
-		log_and_message_admins("fired sulphuric acid from \a [src].", user)
+		log_and_message_admins("fired sulfuric acid from \a [src].", user)
 	if(reagents.has_reagent(/decl/material/liquid/acid/polyacid))
 		log_and_message_admins("fired polyacid from \a [src].", user)
 	if(reagents.has_reagent(/decl/material/liquid/lube))
@@ -119,6 +116,7 @@
 	name                 = "Next Nozzle Setting"
 	expected_target_type = /obj/item/chems/spray
 	interaction_flags    = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION
+	examine_desc         = "select the next nozzle spray amount"
 
 /decl/interaction_handler/next_spray_amount/is_possible(obj/item/chems/spray/target, mob/user, obj/item/prop)
 	. = ..()

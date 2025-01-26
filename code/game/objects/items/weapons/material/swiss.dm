@@ -102,8 +102,8 @@
 		else
 			siemens_coefficient = initial(siemens_coefficient)
 	else
-		edge = initial(edge)
-		sharp = initial(sharp)
+		set_edge(initial(edge))
+		set_sharp(initial(sharp))
 		attack_verb = closed_attack_verbs
 		siemens_coefficient = initial(siemens_coefficient)
 

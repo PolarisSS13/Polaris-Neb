@@ -34,12 +34,15 @@
 	color = COLOR_BLUE
 	description = "The soft susurration of running water mingles with the hum of insects and croak of frogs."
 	area_blurb_category = /area/shaded_hills/outside/river
-	additional_fishing_results = list(
+
+/area/shaded_hills/outside/river/get_additional_fishing_results()
+	var/static/list/additional_fishing_results = list(
 		/mob/living/simple_animal/aquatic/fish/large        = 5,
 		/mob/living/simple_animal/aquatic/fish/large/salmon = 5,
 		/mob/living/simple_animal/aquatic/fish/large/trout  = 5,
 		/mob/living/simple_animal/aquatic/fish/large/pike   = 3
 	)
+	return additional_fishing_results
 
 /area/shaded_hills/caves
 	name = "\improper Deep Tunnels"

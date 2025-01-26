@@ -67,6 +67,7 @@
 /decl/interaction_handler/remove_pendant
 	name = "Remove Pendant"
 	expected_target_type = /obj/item/clothing/neck/necklace
+	examine_desc = "remove $TARGET_THEIR$ pendant"
 
 /decl/interaction_handler/remove_pendant/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/clothing/neck/necklace/necklace = target

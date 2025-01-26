@@ -128,6 +128,7 @@
 	name = "Eject Item"
 	icon = 'icons/screen/radial.dmi'
 	icon_state = "radial_eject"
+	examine_desc = "eject an item"
 	var/obj/item/stock_parts/item_holder/expected_component_type
 
 /decl/interaction_handler/remove_held_item/validate()

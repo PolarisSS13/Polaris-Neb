@@ -264,7 +264,7 @@
 
 	else if(lightbulb && (lightbulb.status != LIGHT_BROKEN) && !user.check_intent(I_FLAG_HELP))
 
-		if(prob(1 + W.get_attack_force(user) * 5))
+		if(prob(1 + W.expend_attack_force(user) * 5))
 
 			user.visible_message("<span class='warning'>[user.name] smashed the light!</span>", "<span class='warning'>You smash the light!</span>", "You hear a tinkle of breaking glass.")
 			if(on && (W.obj_flags & OBJ_FLAG_CONDUCTIBLE))
@@ -316,12 +316,13 @@
 		to_chat(user, "There is no [get_fitting_name()] in this light.")
 		return TRUE
 
-	if(ishuman(user))
-		var/mob/living/human/H = user
-		if(H.species.can_shred(H))
-			visible_message("<span class='warning'>[user.name] smashed the light!</span>", 3, "You hear a tinkle of breaking glass.")
-			broken()
-			return TRUE
+	if(user.can_shred())
+		visible_message(
+			SPAN_DANGER("\The [user] smashes the light!"),
+			blind_message = "You hear a tinkle of breaking glass."
+		)
+		broken()
+		return TRUE
 
 	// make it burn hands if not wearing fire-insulated gloves
 	if(on)
@@ -604,7 +605,7 @@
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
 		src.visible_message("<span class='warning'>[name] shatters.</span>","<span class='warning'>You hear a small glass object shatter.</span>")
 		status = LIGHT_BROKEN
-		sharp = 1
+		set_sharp(TRUE)
 		set_base_attack_force(5)
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		update_icon()
@@ -612,19 +613,22 @@
 /obj/item/light/proc/switch_on()
 	switchcount++
 	if(rigged)
-		log_and_message_admins("Rigged light explosion, last touched by [fingerprintslast]")
-		var/turf/T = get_turf(src.loc)
-		spawn(0)
-			sleep(2)
-			explosion(T, 0, 0, 3, 5)
-			sleep(1)
-			qdel(src)
+		addtimer(CALLBACK(src, PROC_REF(do_rigged_explosion)), 0.2 SECONDS)
 		status = LIGHT_BROKEN
 	else if(prob(min(60, switchcount*switchcount*0.01)))
 		status = LIGHT_BURNED
 	else if(sound_on)
 		playsound(src, sound_on, 75)
 	return status
+
+/obj/item/light/proc/do_rigged_explosion()
+	if(!rigged)
+		return
+	log_and_message_admins("Rigged light explosion, last touched by [fingerprintslast]")
+	var/turf/T = get_turf(src)
+	explosion(T, 0, 0, 3, 5)
+	if(!QDELETED(src))
+		QDEL_IN(src, 1)
 
 /obj/machinery/light/do_simple_ranged_interaction(var/mob/user)
 	if(lightbulb)

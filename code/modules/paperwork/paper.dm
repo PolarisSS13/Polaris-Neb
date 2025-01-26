@@ -636,6 +636,8 @@ var/global/datum/topic_state/default/paper_state/paper_topic_state = new
 
 /decl/interaction_handler/scroll/furl
 	name = "Furl Scroll"
+	examine_desc = "furl $TARGET_THEM$"
 
 /decl/interaction_handler/scroll/unfurl
 	name = "Unfurl Scroll"
+	examine_desc = "unfurl $TARGET_THEM$"

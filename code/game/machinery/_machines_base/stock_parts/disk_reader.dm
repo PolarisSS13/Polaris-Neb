@@ -43,3 +43,4 @@
 /decl/interaction_handler/remove_held_item/disk
 	name = "Eject Disk"
 	expected_component_type = /obj/item/stock_parts/item_holder/disk_reader
+	examine_desc = "remove a disk"

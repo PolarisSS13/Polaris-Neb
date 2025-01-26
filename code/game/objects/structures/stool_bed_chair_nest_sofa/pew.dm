@@ -11,6 +11,9 @@
 	anchored = TRUE
 	var/connect_neighbors = TRUE
 
+/obj/structure/bed/chair/bench/should_have_alpha_mask()
+	return simulated && isturf(loc) && connect_neighbors && !(locate(/obj/structure/bed/chair/bench) in get_step(loc, SOUTH))
+
 /obj/structure/bed/chair/bench/single
 	name = "slatted seat"
 	base_icon = "bench_standing"

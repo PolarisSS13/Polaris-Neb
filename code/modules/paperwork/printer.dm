@@ -423,6 +423,7 @@
 /decl/interaction_handler/empty/stock_parts_printer
 	name = "Empty Paper Bin"
 	expected_target_type = /obj/item/stock_parts/printer
+	examine_desc         = "empty $TARGET_THEM$"
 
 /decl/interaction_handler/empty/stock_parts_printer/is_possible(obj/item/stock_parts/printer/target, mob/user, obj/item/prop)
 	return (target.get_amount_paper() > 0) && ..()

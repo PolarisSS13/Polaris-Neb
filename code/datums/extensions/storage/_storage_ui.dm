@@ -216,7 +216,8 @@
 	closer.screen_loc = "LEFT+[SCREEN_LOC_MOD_FIRST + cols + 1]:[SCREEN_LOC_MOD_DIVIDED],BOTTOM+[SCREEN_LOC_MOD_SECOND]:[SCREEN_LOC_MOD_DIVIDED]"
 
 /datum/storage_ui/default/proc/space_orient_objs()
-
+	if(QDELETED(_storage?.holder)) // don't bother if we've been deleted
+		return
 	var/baseline_max_storage_space = DEFAULT_BOX_STORAGE //storage size corresponding to 224 pixels
 	var/storage_cap_width = 2 //length of sprite for start and end of the box representing total storage space
 	var/stored_cap_width = 4 //length of sprite for start and end of the box representing the stored item

@@ -38,6 +38,9 @@
 		UI_ICON_INVENTORY   = 'mods/species/ascent/icons/ui_inventory.dmi'
 	)
 
+/datum/hud/ascent_nymph
+//	action_intent_type = /obj/screen/intent/ascent_nymph
+
 /datum/hud/ascent_nymph/get_ui_style_data()
 	return GET_DECL(/decl/ui_style/ascent)
 
@@ -51,13 +54,12 @@
 	var/decl/ui_style/ui_style = get_ui_style_data()
 	var/ui_color = get_ui_color()
 	var/ui_alpha = get_ui_alpha()
-	molt          = new(                                 null, mymob, ui_style, ui_color, ui_alpha)
-	food          = new /obj/screen/food(                null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_NUTRITION)
-	drink         = new /obj/screen/drink(               null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HYDRATION)
-	action_intent = new /obj/screen/intent(              null) // Swap to /obj/screen/intent/binary/ascent when interaction code supports it.
-	mymob.healths = new /obj/screen/ascent_nymph_health( null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HEALTH)
-	src.other = list()
-	src.adding = list(mymob.healths, molt, food, drink, action_intent)
+	molt          = new(                                null, mymob, ui_style, ui_color, ui_alpha)
+	food          = new /obj/screen/food(               null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_NUTRITION)
+	drink         = new /obj/screen/drink(              null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HYDRATION)
+	mymob.healths = new /obj/screen/ascent_nymph_health(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HEALTH)
+	other = list()
+	adding = list(mymob.healths, molt, food, drink)
 	..()
 
 /obj/screen/ascent_nymph_health

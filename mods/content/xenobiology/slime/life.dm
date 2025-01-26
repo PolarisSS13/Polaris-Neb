@@ -46,6 +46,7 @@
 	. = ..()
 	if(feeding_on)
 		slime_feed()
+	var/datum/reagents/metabolism/ingested = reagents
 	ingested.metabolize()
 
 /mob/living/slime/fluid_act(datum/reagents/fluids)
@@ -86,6 +87,7 @@
 	. = ..()
 	if(feeding_on)
 		slime_feed()
+	var/datum/reagents/metabolism/ingested = reagents
 	ingested.metabolize()
 
 	// Digest whatever we've got floating around in our goop.

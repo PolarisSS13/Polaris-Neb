@@ -16,6 +16,7 @@
 	base_color           = "#ae7d32"
 	base_eye_color       = "#00aa00"
 	uid                  = "bodytype_hnoll"
+	footprints_icon      = 'icons/mob/footprints/footprints_paw.dmi'
 
 	default_sprite_accessories = list(
 		SAC_HAIR     = list(

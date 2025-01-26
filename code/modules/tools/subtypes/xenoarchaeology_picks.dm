@@ -7,7 +7,7 @@
 	material              = /decl/material/solid/metal/chromium
 	matter                = list(/decl/material/solid/metal/steel = MATTER_AMOUNT_SECONDARY)
 	w_class               = ITEM_SIZE_SMALL
-	sharp                 = 1
+	sharp                 = TRUE
 	abstract_type         = /obj/item/tool/xeno
 	material_alteration   = 0
 	handle_material       = /decl/material/solid/organic/plastic
@@ -36,18 +36,18 @@
 		to_chat(user, "This tool has a [get_tool_property(TOOL_PICK, TOOL_PROP_EXCAVATION_DEPTH) || 0] centimetre excavation depth.")
 
 /obj/item/tool/xeno/brush
-	name              = "wire brush"
-	icon_state        = "pick_brush"
-	slot_flags        = SLOT_EARS
-	_base_attack_force             = 1
-	attack_verb       = list("prodded", "attacked")
-	desc              = "A wood-handled brush with thick metallic wires for clearing away dust and loose scree."
-	sharp             = 0
-	material          = /decl/material/solid/metal/steel
-	handle_material   = /decl/material/solid/organic/wood/oak
-	excavation_amount = 1
-	excavation_sound  = "sweeping"
-	excavation_verb   = "brushing"
+	name               = "wire brush"
+	icon_state         = "pick_brush"
+	slot_flags         = SLOT_EARS
+	_base_attack_force = 1
+	attack_verb        = list("prodded", "attacked")
+	desc               = "A wood-handled brush with thick metallic wires for clearing away dust and loose scree."
+	sharp              = FALSE
+	material           = /decl/material/solid/metal/steel
+	handle_material    = /decl/material/solid/organic/wood/oak
+	excavation_amount  = 1
+	excavation_sound   = "sweeping"
+	excavation_verb    = "brushing"
 
 /obj/item/tool/xeno/one_pick
 	name              = "2cm pick"

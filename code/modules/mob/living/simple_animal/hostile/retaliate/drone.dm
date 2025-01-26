@@ -82,6 +82,10 @@
 	ion_trail.set_up(src)
 	ion_trail.start()
 
+/mob/living/simple_animal/hostile/malf_drone/Destroy()
+	QDEL_NULL(ion_trail)
+	return ..()
+
 /mob/living/simple_animal/hostile/malf_drone/Process_Spacemove()
 	return 1
 

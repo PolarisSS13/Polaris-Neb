@@ -4,8 +4,7 @@
 	channels = list ("Engineering" = TRUE)
 	camera_channels = list(CAMERA_CAMERA_CHANNEL_ENGINEERING)
 	software = list(
-		/datum/computer_file/program/power_monitor,
-		/datum/computer_file/program/supermatter_monitor
+		/datum/computer_file/program/power_monitor
 	)
 	module_sprites = list(
 		"Drone" = 'icons/mob/robots/flying/flying_engineering.dmi',

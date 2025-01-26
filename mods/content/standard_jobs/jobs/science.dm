@@ -1,10 +1,11 @@
-/datum/job/rd
+/datum/job/standard/rd
 	title = "Chief Science Officer"
 	head_position = 1
 	department_types = list(
 		/decl/department/science,
 		/decl/department/command
 	)
+	hud_icon_state = "hudrd"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -74,13 +75,14 @@
 	skill_points = 30
 	event_categories = list(ASSIGNMENT_SCIENTIST)
 
-/datum/job/scientist
+/datum/job/standard/scientist
 	title = "Scientist"
 	department_types = list(/decl/department/science)
 	total_positions = 6
 	spawn_positions = 4
 	supervisors = "the Chief Science Officer"
 	selection_color = "#633d63"
+	hud_icon_state = "hudscientist"
 	economic_power = 7
 	access = list(
 		access_robotics,
@@ -122,8 +124,9 @@
 	skill_points = 20
 	event_categories = list(ASSIGNMENT_SCIENTIST)
 
-/datum/job/roboticist
+/datum/job/standard/roboticist
 	title = "Roboticist"
+	hud_icon_state = "hudroboticist"
 	department_types = list(/decl/department/science)
 	total_positions = 2
 	spawn_positions = 2

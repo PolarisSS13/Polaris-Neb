@@ -14,8 +14,7 @@
 	var/list/req_access
 	var/list/matter //Used to store information about the contents of the object.
 	var/w_class // Size of the object.
-	var/sharp = 0		// whether this object cuts
-	var/edge = 0		// whether this object is more likely to dismember
+
 	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
@@ -119,12 +118,12 @@
 
 /obj/proc/damage_flags()
 	. = 0
-	if(has_edge(src))
-		. |= DAM_EDGE
-	if(is_sharp(src))
-		. |= DAM_SHARP
+	if(is_sharp())
+		. |= DAM_SHARP|DAM_EDGE
 		if(atom_damage_type == BURN)
 			. |= DAM_LASER
+	else if(has_edge())
+		. |= DAM_EDGE
 
 /obj/attackby(obj/item/used_item, mob/user)
 	// We need to call parent even if we lack dexterity, so that storage can work.
@@ -156,8 +155,8 @@
 		add_fingerprint(user)
 	return ..()
 
-/obj/is_fluid_pushable(var/amt)
-	return ..() && w_class <= round(amt/20)
+/obj/try_fluid_push(volume, strength)
+	return ..() && w_class <= round(strength/20)
 
 /obj/proc/can_embed()
 	return FALSE

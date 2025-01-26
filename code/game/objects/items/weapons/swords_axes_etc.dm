@@ -19,7 +19,7 @@
 
 /obj/item/classic_baton/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	if (user.has_genetic_condition(GENE_COND_CLUMSY) && prob(50))
-		var/force = get_attack_force(user)
+		var/force = expend_attack_force(user)
 		to_chat(user, SPAN_WARNING("You club yourself over the head."))
 		SET_STATUS_MAX(user, STAT_WEAK, (3 * force))
 		if(ishuman(user))
@@ -76,7 +76,7 @@
 
 /obj/item/telebaton/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	if(on && user.has_genetic_condition(GENE_COND_CLUMSY) && prob(50))
-		var/force = get_attack_force(user)
+		var/force = expend_attack_force(user)
 		to_chat(user, SPAN_DANGER("You club yourself over the head."))
 		SET_STATUS_MAX(user, STAT_WEAK, (3 * force))
 		if(ishuman(user))

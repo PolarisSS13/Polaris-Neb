@@ -145,10 +145,12 @@
 /atom/proc/try_on_reagent_change()
 	SHOULD_NOT_OVERRIDE(TRUE)
 	set waitfor = FALSE
-	if(_reagent_update_started >= world.time)
+	if(QDELETED(src) ||_reagent_update_started >= world.time)
 		return FALSE
 	_reagent_update_started = world.time
 	sleep(0) // Defer to end of tick so we don't drop subsequent reagent updates.
+	if(QDELETED(src))
+		return
 	return on_reagent_change()
 
 /atom/proc/on_reagent_change()
@@ -293,6 +295,17 @@
 
 	to_chat(user, "[html_icon(src)] That's [f_name] [suffix]")
 	to_chat(user, desc)
+
+	var/list/alt_interactions = get_alt_interactions(user)
+	if(LAZYLEN(alt_interactions))
+		var/list/interaction_strings = list()
+		for(var/interaction_type as anything in alt_interactions)
+			var/decl/interaction_handler/interaction = GET_DECL(interaction_type)
+			if(interaction.examine_desc && (interaction.always_show_on_examine || interaction.is_possible(src, user, user?.get_active_held_item())))
+				interaction_strings += emote_replace_target_tokens(interaction.examine_desc, src)
+		if(length(interaction_strings))
+			to_chat(user, SPAN_INFO("Alt-click on \the [src] to [english_list(interaction_strings, and_text = " or ")]."))
+
 	RAISE_EVENT(/decl/observ/atom_examined, src, user, distance)
 	return TRUE
 
@@ -500,10 +513,12 @@
 	- Returns: `TRUE` if qdel() was called, otherwise `FALSE`
 */
 /atom/proc/lava_act()
-	visible_message(SPAN_DANGER("\The [src] sizzles and melts away, consumed by the lava!"))
-	playsound(src, 'sound/effects/flare.ogg', 100, 3)
-	qdel(src)
-	. = TRUE
+	if(simulated)
+		visible_message(SPAN_DANGER("\The [src] sizzles and melts away, consumed by the lava!"))
+		playsound(src, 'sound/effects/flare.ogg', 100, 3)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /**
 	Handle this atom being hit by a thrown atom
@@ -892,22 +907,6 @@
 			return check_loc
 		check_loc = check_loc.loc
 
-/**
-	Get a list of alt interactions for a user from this atom.
-
-	- `user`: The mob that these alt interactions are for
-	- Return: A list containing the alt interactions
-*/
-/atom/proc/get_alt_interactions(var/mob/user)
-	SHOULD_CALL_PARENT(TRUE)
-	RETURN_TYPE(/list)
-	. = list()
-	if(storage)
-		. += /decl/interaction_handler/storage_open
-	if(reagents?.total_volume && ATOM_IS_OPEN_CONTAINER(src))
-		. += /decl/interaction_handler/wash_hands
-		. += /decl/interaction_handler/drink
-
 /atom/proc/can_climb_from_below(var/mob/climber)
 	return FALSE
 
@@ -993,7 +992,16 @@
 	return
 
 /atom/proc/is_watertight()
-	return ATOM_IS_OPEN_CONTAINER(src)
+	return !ATOM_IS_OPEN_CONTAINER(src)
 
 /atom/proc/can_drink_from(mob/user)
 	return ATOM_IS_OPEN_CONTAINER(src) && reagents?.total_volume && user.check_has_mouth()
+
+/atom/proc/adjust_required_attack_dexterity(mob/user, required_dexterity)
+	if(storage) // TODO: possibly check can_be_inserted() to avoid being able to shoot mirrors as a drake.
+		return DEXTERITY_HOLD_ITEM
+	return required_dexterity
+
+/atom/proc/immune_to_floor_hazards()
+	return !simulated
+

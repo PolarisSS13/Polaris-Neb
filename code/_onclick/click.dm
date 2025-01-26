@@ -282,10 +282,17 @@
 	return A.CtrlClick(src)
 
 /atom/proc/CtrlClick(var/mob/user)
+	if(get_recursive_loc_of_type(/mob) == user)
+		var/decl/interaction_handler/handler = get_quick_interaction_handler(user)
+		if(handler)
+			var/using_item = user.get_active_held_item()
+			if(handler.is_possible(src, user, using_item))
+				return handler.invoked(src, user, using_item)
 	return FALSE
 
 /atom/movable/CtrlClick(var/mob/living/user)
-	return try_make_grab(user, defer_hand = TRUE) || ..()
+	if(!(. = ..()) && loc != user)
+		return try_make_grab(user, defer_hand = TRUE) || ..()
 
 /*
 	Alt click
@@ -295,7 +302,7 @@
 	A.AltClick(src)
 
 /atom/proc/AltClick(var/mob/user)
-	if(try_handle_interactions(user, get_alt_interactions(user), user?.get_active_held_item()))
+	if(try_handle_interactions(user, get_alt_interactions(user), user?.get_active_held_item(), check_alt_interactions = TRUE))
 		return TRUE
 	if(user?.get_preference_value(/datum/client_preference/show_turf_contents) == PREF_ALT_CLICK)
 		. = show_atom_list_for_turf(user, get_turf(src))

@@ -196,6 +196,7 @@
 /decl/interaction_handler/mech_equipment/clamp
 	name = "Release Clamp"
 	expected_target_type = /obj/item/mech_equipment/clamp
+	examine_desc = "release $TARGET_THEM$"
 
 /decl/interaction_handler/mech_equipment/clamp/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/item/mech_equipment/clamp/clamp = target
@@ -693,6 +694,7 @@
 /decl/interaction_handler/mech_equipment/ionjets
 	name = "Toggle Stabilizers"
 	expected_target_type = /obj/item/mech_equipment/ionjets
+	examine_desc = "toggle the stabilizers"
 
 /decl/interaction_handler/mech_equipment/ionjets/is_possible(atom/target, mob/user, obj/item/prop)
 	. = ..()

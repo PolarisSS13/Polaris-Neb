@@ -53,9 +53,8 @@
 
 /obj/item/bladed/folding/update_attack_force()
 	..()
-	// TODO: check sharp/edge.
-	edge  = open
-	sharp = open
+	set_edge(open)
+	set_sharp(open)
 	if(open)
 		w_class     = open_item_size
 		attack_verb = open_attack_verbs
@@ -98,6 +97,7 @@
 	name = "Adjust Folding Knife"
 	expected_target_type = /obj/item/bladed/folding
 	interaction_flags = INTERACTION_NEEDS_INVENTORY | INTERACTION_NEEDS_PHYSICAL_INTERACTION
+	examine_desc = "adjust $TARGET_THEM$"
 
 /decl/interaction_handler/folding_knife/is_possible(atom/target, mob/user)
 	. = ..()

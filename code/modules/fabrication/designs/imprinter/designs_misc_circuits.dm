@@ -173,9 +173,6 @@
 /datum/fabricator_recipe/imprinter/circuit/solarcontrol
 	path = /obj/item/stock_parts/circuitboard/solar_control
 
-/datum/fabricator_recipe/imprinter/circuit/supermatter_control
-	path = /obj/item/stock_parts/circuitboard/air_management/supermatter_core
-
 /datum/fabricator_recipe/imprinter/circuit/injector
 	path = /obj/item/stock_parts/circuitboard/air_management/injector_control
 

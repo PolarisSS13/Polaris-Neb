@@ -37,8 +37,6 @@
 	if(!metal && reagents)
 		var/turf/T = get_turf(src)
 		reagents.touch_turf(T)
-		for(var/obj/O in T)
-			reagents.touch_obj(O)
 
 /obj/effect/effect/foam/Process()
 	if(--amount < 0)
@@ -173,7 +171,7 @@
 	return TRUE
 
 /obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
-	if(prob(I.get_attack_force(user) * 20 - metal * 25))
+	if(prob(I.expend_attack_force(user) * 20 - metal * 25))
 		user.visible_message(
 			SPAN_WARNING("\The [user] smashes through the foamed metal."),
 			SPAN_NOTICE("You smash through the foamed metal with \the [I].")

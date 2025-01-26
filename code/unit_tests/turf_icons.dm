@@ -8,8 +8,7 @@
 		/turf/unsimulated
 	)
 	var/list/excepted_types = list(
-		/turf/unsimulated/map,
-		/turf/unsimulated/wall/cascade
+		/turf/unsimulated/map
 	)
 
 /datum/unit_test/turf_floor_icons_shall_be_valid/setup_test()

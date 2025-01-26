@@ -13,6 +13,8 @@
 		hud_used = initial(hud_used)
 	if(ispath(hud_used))
 		hud_used = new hud_used(src)
+	if(istype(hud_used))
+		hud_used.refresh_hud_icons()
 	refresh_lighting_master()
 
 /datum/hud
@@ -22,15 +24,17 @@
 	var/inventory_shown     = TRUE      //the inventory
 	var/hotkey_ui_hidden    = FALSE     //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/default_ui_style = /decl/ui_style/midnight
+	var/default_ui_style = DEFAULT_UI_STYLE
 
 	var/list/alerts
 
 	var/list/hand_hud_objects
 	var/list/swaphand_hud_objects
-	var/obj/screen/intent/action_intent
 	var/obj/screen/movement/move_intent
 	var/obj/screen/stamina/stamina_bar
+
+	var/action_intent_type = /obj/screen/intent
+	var/obj/screen/intent/action_intent
 
 	var/list/adding = list()
 	var/list/other = list()
@@ -44,6 +48,10 @@
 	mymob = owner
 	instantiate()
 	..()
+
+/datum/hud/proc/refresh_hud_icons()
+	for(var/obj/screen/elem in mymob?.client?.screen)
+		elem.queue_icon_update()
 
 /datum/hud/Destroy()
 	. = ..()
@@ -68,19 +76,19 @@
 /datum/hud/proc/hide_inventory()
 	inventory_shown = FALSE
 	hidden_inventory_update()
-	persistant_inventory_update()
+	persistent_inventory_update()
 
 /datum/hud/proc/show_inventory()
 	inventory_shown = TRUE
 	hidden_inventory_update()
-	persistant_inventory_update()
+	persistent_inventory_update()
 
 /datum/hud/proc/hidden_inventory_update()
 	var/decl/species/species = mymob?.get_species()
 	if(istype(species?.species_hud))
 		refresh_inventory_slots(species.species_hud.hidden_slots, (inventory_shown && hud_shown))
 
-/datum/hud/proc/persistant_inventory_update()
+/datum/hud/proc/persistent_inventory_update()
 	var/decl/species/species = mymob?.get_species()
 	if(istype(species?.species_hud))
 		refresh_inventory_slots(species.species_hud.persistent_slots, hud_shown)
@@ -112,9 +120,17 @@
 	return FALSE
 
 /datum/hud/proc/FinalizeInstantiation()
+
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(!action_intent && action_intent_type) // Everyone needs an intent selector.
+		action_intent = new action_intent_type(null, mymob)
+		adding |= action_intent
+		hud_elements |= action_intent
+
 	BuildInventoryUI()
 	BuildHandsUI()
+
 	if(mymob.client)
 		mymob.client.screen = list()
 		if(length(hand_hud_objects))
@@ -127,6 +143,7 @@
 			mymob.client.screen |= adding
 		if(length(hotkeybuttons))
 			mymob.client.screen |= hotkeybuttons
+
 	hide_inventory()
 
 /datum/hud/proc/get_ui_style_data()
@@ -138,6 +155,9 @@
 			. = available_styles[1]
 
 /datum/hud/proc/get_ui_color()
+	var/decl/ui_style/ui_style = get_ui_style_data()
+	if(!ui_style?.use_ui_color)
+		return COLOR_WHITE
 	return mymob?.client?.prefs?.UI_style_color  || COLOR_WHITE
 
 /datum/hud/proc/get_ui_alpha()
@@ -172,25 +192,17 @@
 				break
 
 		if(!inv_box)
-			inv_box = new /obj/screen/inventory(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HANDS)
+			inv_box = new /obj/screen/inventory/hand(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HANDS)
 		else
 			inv_box.set_ui_style(ui_style, UI_ICON_HANDS)
 			inv_box.color = ui_color
 			inv_box.alpha = ui_alpha
 
-		inv_box.SetName(hand_tag)
-		inv_box.icon_state = "hand_base"
-
-		inv_box.cut_overlays()
-		inv_box.add_overlay("hand_[inv_slot.hand_overlay || hand_tag]", TRUE)
-		if(inv_slot.ui_label)
-			inv_box.add_overlay("hand_[inv_slot.ui_label]", TRUE)
-		inv_box.update_icon()
-
-		inv_box.slot_id = hand_tag
-		inv_box.appearance_flags |= KEEP_TOGETHER
-
 		LAZYDISTINCTADD(hand_hud_objects, inv_box)
+
+		inv_box.SetName(hand_tag)
+		inv_box.slot_id = hand_tag
+		inv_box.update_icon()
 
 	// Clear held item boxes with no held slot.
 	for(var/obj/screen/inventory/inv_box in hand_hud_objects)
@@ -201,7 +213,7 @@
 			qdel(inv_box)
 
 	// Rebuild offsets for the hand elements.
-	var/hand_y_offset = 5
+	var/hand_y_offset = 21
 	var/list/elements = hand_hud_objects?.Copy()
 	while(length(elements))
 		var/copy_index = min(length(elements), 2)+1
@@ -363,7 +375,7 @@
 		client.screen += zone_sel				//This one is a special snowflake
 
 	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
+	hud_used.persistent_inventory_update()
 	update_action_buttons()
 
 //Similar to minimize_hud() but keeps zone_sel, gun_setting_icon, and healths.
@@ -400,7 +412,7 @@
 		hud_used.action_intent.screen_loc = ui_acti //Restore intent selection to the original position
 
 	hud_used.hidden_inventory_update()
-	hud_used.persistant_inventory_update()
+	hud_used.persistent_inventory_update()
 	update_action_buttons()
 
 /client/proc/reset_click_catchers()

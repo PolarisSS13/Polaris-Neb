@@ -1,7 +1,7 @@
 /obj/item/pen/reagent
 	atom_flags  = ATOM_FLAG_OPEN_CONTAINER
 	origin_tech = @'{"materials":2,"esoteric":5}'
-	sharp       = 1
+	sharp       = TRUE
 	pen_quality = TOOL_QUALITY_MEDIOCRE
 
 /obj/item/pen/reagent/Initialize()

@@ -2,8 +2,6 @@
 	name                = "hammer"
 	desc                = "A simple hammer. Ancient technology once thought lost."
 	icon                = 'icons/obj/items/tool/hammers/hammer.dmi'
-	sharp               = 0
-	edge                = 0
 	attack_verb         = list(
 		"bludgeons",
 		"slaps",
@@ -77,5 +75,20 @@
 		TOOL_PICK           = TOOL_QUALITY_DEFAULT,
 		TOOL_SURGICAL_DRILL = TOOL_QUALITY_MEDIOCRE,
 		TOOL_SHOVEL         = TOOL_QUALITY_DECENT
+	)
+	return tool_qualities
+
+/obj/item/tool/hammer/forge
+	name        = "forging hammer"
+	desc        = "A heavy hammer, used to forge hot metal at an anvil."
+	icon        = 'icons/obj/items/tool/hammers/forge.dmi'
+	w_class     = ITEM_SIZE_NORMAL
+
+// Forging hammers are not great at general hammer tasks (too heavy I guess),
+// and also don't work as crowbars due to missing the nail ripper/flange,
+// but will be more effective at forging when blacksmithy is merged.
+/obj/item/tool/hammer/forge/get_initial_tool_qualities()
+	var/static/list/tool_qualities = list(
+		TOOL_HAMMER  = TOOL_QUALITY_MEDIOCRE
 	)
 	return tool_qualities

@@ -23,8 +23,6 @@
 	var/mob/remoteview_target = null
 	var/hand_blood_color
 	var/list/flavor_texts = list()
-	/// Are you trying not to hurt your opponent?
-	var/pulling_punches
 	/// We are a robutt.
 	var/full_prosthetic
 	/// Number of robot limbs.

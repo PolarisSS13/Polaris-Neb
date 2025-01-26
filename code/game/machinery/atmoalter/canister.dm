@@ -207,7 +207,7 @@ EMPTY_CANISTER(phoron, /obj/machinery/portable_atmospherics/canister/phoron)
 /obj/machinery/portable_atmospherics/canister/bash(var/obj/item/W, var/mob/user)
 	. = ..()
 	if(.)
-		current_health -= W.get_attack_force(user)
+		current_health -= W.expend_attack_force(user)
 		healthcheck()
 
 /obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W, var/mob/user)

@@ -33,6 +33,14 @@ SUBSYSTEM_DEF(ambience)
 	/// Whether this turf has been queued for an ambient lighting update.
 	var/ambience_queued = FALSE
 
+/turf/proc/shows_outdoor_ambience()
+	return is_outside()
+
+// Starlight can't be blocked by stuff above a space turf.
+// TODO: decide if open sky deserves the same treatment
+/turf/space/shows_outdoor_ambience()
+	return TRUE
+
 /turf/proc/update_ambient_light_from_z_or_area()
 
 	// If we're not outside, we don't show ambient light.
@@ -40,7 +48,7 @@ SUBSYSTEM_DEF(ambience)
 
 	var/ambient_light_modifier
 	// If we're indoors because of our area, OR we're outdoors and not exposed to the weather, get interior ambience.
-	var/outsideness = is_outside()
+	var/outsideness = shows_outdoor_ambience()
 	if((!outsideness && is_outside == OUTSIDE_AREA) || (outsideness && get_weather_exposure() != WEATHER_EXPOSED))
 		var/area/A = get_area(src)
 		if(isnull(A?.interior_ambient_light_modifier))

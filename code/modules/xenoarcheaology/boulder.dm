@@ -1,8 +1,8 @@
 /obj/structure/boulder
 	name = "boulder"
 	desc = "A large boulder, somewhat bigger than a small boulder."
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "boulder1"
+	icon = 'icons/obj/structures/boulder.dmi'
+	icon_state = ICON_STATE_WORLD
 	density = TRUE
 	opacity = TRUE
 	anchored = TRUE
@@ -30,7 +30,7 @@
 
 /obj/structure/boulder/Initialize(var/ml, var/_mat, var/coloration)
 	. = ..()
-	icon_state = "boulder[rand(1,6)]"
+	icon_state = "[initial(icon_state)][rand(1,6)]"
 	if(coloration)
 		color = coloration
 	excavation_level = rand(5, 50)

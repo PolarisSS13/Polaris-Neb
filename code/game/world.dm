@@ -126,7 +126,7 @@ var/global/world_topic_last = world.timeofday
 	throttle[2] = reason
 
 /world/Topic(T, addr, master, key)
-	direct_output(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]")
+	to_file(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]")
 
 	if (global.world_topic_last > world.timeofday)
 		global.world_topic_throttle = list() //probably passed midnight
@@ -146,11 +146,14 @@ var/global/world_topic_last = world.timeofday
 
 	return command.try_use(T, addr, master, key)
 
+var/global/_reboot_announced = FALSE
 /world/Reboot(var/reason)
 
 	if(get_config_value(/decl/config/toggle/wait_for_sigusr1_reboot) && reason != 3)
 		text2file("foo", "reboot_called")
-		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
+		if(!global._reboot_announced)
+			to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
+			global._reboot_announced = TRUE
 		global.Master.restart_timeout = 5 MINUTES
 		return
 
@@ -198,7 +201,7 @@ var/global/world_topic_last = world.timeofday
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
-	direct_output(F, the_mode)
+	to_file(F, the_mode)
 
 /world/proc/load_motd()
 	join_motd = safe_file2text("config/motd.txt", FALSE)

@@ -48,3 +48,4 @@
 /decl/interaction_handler/remove_held_item/cup
 	name = "Remove Cup"
 	expected_component_type = /obj/item/stock_parts/item_holder/cupholder
+	examine_desc = "remove a cup"

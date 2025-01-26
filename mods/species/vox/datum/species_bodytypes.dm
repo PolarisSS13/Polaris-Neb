@@ -30,9 +30,13 @@
 		BP_BRAIN
 	)
 	override_limb_types = list(
-		BP_GROIN = /obj/item/organ/external/groin/vox,
-		BP_TAIL = /obj/item/organ/external/tail/vox
+		BP_GROIN  = /obj/item/organ/external/groin/vox,
+		BP_TAIL   = /obj/item/organ/external/tail/vox,
+		BP_L_HAND = /obj/item/organ/external/hand/vox,
+		BP_R_HAND = /obj/item/organ/external/hand/right/vox,
+		BP_HEAD   = /obj/item/organ/external/head/strong_bite
 	)
+
 	has_organ = list(
 		BP_STOMACH    = /obj/item/organ/internal/stomach/vox,
 		BP_HEART      = /obj/item/organ/internal/heart/vox,
@@ -172,3 +176,11 @@
 
 /obj/item/organ/external/tail/vox/stanchion
 	tail_icon  = 'mods/species/vox/icons/body/stanchion/body.dmi'
+
+/obj/item/organ/external/hand/vox/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/gloves)
+	return unarmed_attack
+
+/obj/item/organ/external/hand/right/vox/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/gloves)
+	return unarmed_attack
