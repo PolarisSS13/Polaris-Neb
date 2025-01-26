@@ -28,3 +28,26 @@
 		/decl/background_category/heritage =   /decl/background_detail/heritage/hidden/cultist,
 		/decl/background_category/faction =   /decl/background_detail/faction/other
 	)
+
+/decl/species/grafadreka
+	force_background_info = list(
+		/decl/background_category/heritage   = /decl/background_detail/heritage/grafadreka,
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/grafadreka,
+		/decl/background_category/faction   = /decl/background_detail/faction/grafadreka,
+		/decl/background_category/religion  = /decl/background_detail/religion/grafadreka
+	)
+/decl/species/mantid
+	force_background_info = list(
+		/decl/background_category/heritage =   /decl/background_detail/heritage/ascent,
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other
+		/decl/background_category/faction =   /decl/background_detail/faction/ascent_alate,
+		/decl/background_category/religion =  /decl/background_detail/religion/kharmaani
+	)
+
+/decl/species/mantid/gyne
+	force_background_info = list(
+		/decl/background_category/heritage =   /decl/background_detail/heritage/ascent,
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other
+		/decl/background_category/faction =   /decl/background_detail/faction/ascent_gyne,
+		/decl/background_category/religion =  /decl/background_detail/religion/kharmaani
+	)
