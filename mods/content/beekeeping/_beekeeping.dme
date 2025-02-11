@@ -2,8 +2,8 @@
 #define MODPACK_BEEKEEPING
 // BEGIN_INCLUDE
 #include "_beekeeping.dm"
-#include "centrifuge.dm"
 #include "closets.dm"
+#include "hive_frame.dm"
 #include "items.dm"
 #include "recipes.dm"
 #include "trading.dm"
