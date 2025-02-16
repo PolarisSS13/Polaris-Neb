@@ -344,6 +344,9 @@
 /datum/fabricator_recipe/imprinter/circuit/cooker
 	path = /obj/item/stock_parts/circuitboard/cooker
 
+/datum/fabricator_recipe/imprinter/circuit/centrifuge
+	path = /obj/item/stock_parts/circuitboard/centrifuge
+
 /datum/fabricator_recipe/imprinter/circuit/seed_extractor
 	path = /obj/item/stock_parts/circuitboard/seed_extractor
 

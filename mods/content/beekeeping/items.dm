@@ -48,6 +48,16 @@
 	. = ..()
 	overlays += "honeycomb"
 
+// This is crap, will be replaced in beewrite PR.
+/obj/item/honey_frame/handle_centrifuge_process(obj/machinery/centrifuge/centrifuge)
+	if(!(. = ..()) || !honey)
+		return
+	centrifuge?.loaded_beaker?.add_to_reagents(/decl/material/liquid/nutriment/honey, honey)
+	honey = 0
+	new /obj/item/honey_frame(centrifuge.loc)
+	new /obj/item/stack/material/bar(centrifuge.loc, 1, /decl/material/solid/organic/wax)
+	qdel(src)
+
 /obj/item/bee_pack
 	name = "bee pack"
 	desc = "Contains a queen bee and some worker bees. Everything you'll need to start a hive!"
