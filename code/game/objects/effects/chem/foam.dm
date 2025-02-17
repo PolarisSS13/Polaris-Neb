@@ -59,8 +59,8 @@
 		if(!metal)
 			F.create_reagents(10)
 			if(reagents)
-				for(var/R in reagents.reagent_volumes)
-					F.add_to_reagents(R, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
+				for(var/reagent in reagents.reagent_volumes)
+					F.add_to_reagents(reagent, 1, safety = 1) //added safety check since reagents in the foam have already had a chance to react
 
 /obj/effect/effect/foam/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume) // foam disolves when heated, except metal foams
 	if(!metal && prob(max(0, exposed_temperature - 475)))
@@ -93,8 +93,8 @@
 	// bit of a hack here. Foam carries along any reagent also present in the glass it is mixed with (defaults to water if none is present). Rather than actually transfer the reagents, this makes a list of the reagent ids and spawns 1 unit of that reagent when the foam disolves.
 
 	if(carry && !metal)
-		for(var/R in carry.reagent_volumes)
-			carried_reagents += R
+		for(var/reagent in carry.reagent_volumes)
+			carried_reagents += reagent
 
 /datum/effect/effect/system/foam_spread/start()
 	spawn(0)

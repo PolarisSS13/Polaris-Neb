@@ -418,8 +418,8 @@ var/global/bomb_set
 
 /obj/item/folder/envelope/nuke_instructions/Initialize()
 	. = ..()
-	var/obj/item/paper/R = new(src)
-	R.set_content({"<center><b>Warning: Classified<br>[global.using_map.station_name] Self-Destruct System - Instructions</b></center><br><br>
+	var/obj/item/paper/codes = new(src)
+	codes.set_content({"<center><b>Warning: Classified<br>[global.using_map.station_name] Self-Destruct System - Instructions</b></center><br><br>
 	In the event of a Delta-level emergency, this document will guide you through the activation of the vessel's
 	on-board nuclear self-destruct system. Please read carefully.<br><br>
 	1) (Optional) Announce the imminent activation to any surviving crew members, and begin evacuation procedures.<br>
@@ -442,7 +442,7 @@ var/global/bomb_set
 		"vessel self-destruct instructions")
 
 	//stamp the paper
-	R.apply_custom_stamp('icons/obj/items/stamps/stamp_cos.dmi', "'Top Secret'")
+	codes.apply_custom_stamp('icons/obj/items/stamps/stamp_cos.dmi', "'Top Secret'")
 
 //====vessel self-destruct system====
 /obj/machinery/nuclearbomb/station

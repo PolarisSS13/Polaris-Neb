@@ -187,15 +187,15 @@ var/global/list/machine_path_to_circuit_type
 		events_repository.unregister(/decl/observ/destroyed, part, src)
 		return part
 
-/obj/machinery/proc/replace_part(mob/user, var/obj/item/part_replacer/R, var/obj/item/stock_parts/old_part, var/obj/item/stock_parts/new_part)
+/obj/machinery/proc/replace_part(mob/user, var/obj/item/part_replacer/replacer, var/obj/item/stock_parts/old_part, var/obj/item/stock_parts/new_part)
 	if(ispath(old_part))
 		old_part = get_component_of_type(old_part, TRUE)
 	old_part = uninstall_component(old_part)
-	if(R)
-		if(R.storage)
-			R.storage.remove_from_storage(null, new_part, src)
-			R.storage.handle_item_insertion(null, old_part, TRUE)
-		R.part_replacement_sound()
+	if(replacer)
+		if(replacer.storage)
+			replacer.storage.remove_from_storage(null, new_part, src)
+			replacer.storage.handle_item_insertion(null, old_part, TRUE)
+		replacer.part_replacement_sound()
 	install_component(new_part)
 	to_chat(user, "<span class='notice'>[old_part.name] replaced with [new_part.name].</span>")
 
@@ -279,15 +279,15 @@ var/global/list/machine_path_to_circuit_type
 Standard helpers for users interacting with machinery parts.
 */
 
-/obj/machinery/proc/part_replacement(mob/user, obj/item/part_replacer/R)
+/obj/machinery/proc/part_replacement(mob/user, obj/item/part_replacer/replacer)
 	for(var/obj/item/stock_parts/A in component_parts)
 		if(!A.base_type)
 			continue
 		if(!(A.part_flags & PART_FLAG_HAND_REMOVE))
 			continue
-		for(var/obj/item/stock_parts/B in R.contents)
+		for(var/obj/item/stock_parts/B in replacer.contents)
 			if(istype(B, A.base_type) && B.rating > A.rating)
-				replace_part(user, R, A, B)
+				replace_part(user, replacer, A, B)
 				return TRUE
 	for(var/path in uncreated_component_parts)
 		var/obj/item/stock_parts/A = path
@@ -295,9 +295,9 @@ Standard helpers for users interacting with machinery parts.
 			continue
 		var/base_type = initial(A.base_type)
 		if(base_type)
-			for(var/obj/item/stock_parts/B in R.contents)
+			for(var/obj/item/stock_parts/B in replacer.contents)
 				if(istype(B, base_type) && B.rating > initial(A.rating))
-					replace_part(user, R, A, B)
+					replace_part(user, replacer, A, B)
 					return TRUE
 
 /obj/machinery/proc/part_insertion(mob/user, obj/item/stock_parts/part) // Second argument may actually be an arbitrary item.

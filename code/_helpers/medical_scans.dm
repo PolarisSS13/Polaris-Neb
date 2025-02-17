@@ -44,20 +44,20 @@
 
 	if(reagents?.total_volume)
 		for(var/liquid_type in reagents.liquid_volumes)
-			var/decl/material/R = GET_DECL(liquid_type)
-			var/list/reagent  = list()
-			reagent["name"]= R.get_reagent_name(reagents, MAT_PHASE_LIQUID)
-			reagent["quantity"] = round(REAGENT_VOLUME(reagents, R.type),1)
-			reagent["scannable"] = R.scannable
-			.["reagents"] += list(reagent)
+			var/decl/material/reagent = GET_DECL(liquid_type)
+			var/list/reagent_data  = list()
+			reagent_data["name"]= reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)
+			reagent_data["quantity"] = round(REAGENT_VOLUME(reagents, reagent.type),1)
+			reagent_data["scannable"] = reagent.scannable
+			.["reagents"] += list(reagent_data)
 
 		for(var/solid_type in reagents.solid_volumes)
-			var/decl/material/R = GET_DECL(solid_type)
-			var/list/reagent  = list()
-			reagent["name"]= R.get_reagent_name(reagents, MAT_PHASE_SOLID)
-			reagent["quantity"] = round(REAGENT_VOLUME(reagents, R.type),1)
-			reagent["scannable"] = R.scannable
-			.["reagents"] += list(reagent)
+			var/decl/material/reagent = GET_DECL(solid_type)
+			var/list/reagent_data  = list()
+			reagent_data["name"]= reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)
+			reagent_data["quantity"] = round(REAGENT_VOLUME(reagents, reagent.type),1)
+			reagent_data["scannable"] = reagent.scannable
+			.["reagents"] += list(reagent_data)
 
 	.["external_organs"] = list()
 	for(var/obj/item/organ/external/limb in get_external_organs())
@@ -241,9 +241,9 @@
 		dat += "<tr><td colspan = '2'>Antibody levels and immune system perfomance are at [scan["immune_system"]*100]% of baseline.</td></tr>"
 
 		var/other_reagent = FALSE
-		for(var/list/R in scan["reagents"])
-			if(R["scannable"])
-				subdat += "<tr><td colspan='2'>[R["quantity"]]u [R["name"]]</td></tr>"
+		for(var/list/reagent_data in scan["reagents"])
+			if(reagent_data["scannable"])
+				subdat += "<tr><td colspan='2'>[reagent_data["quantity"]]u [reagent_data["name"]]</td></tr>"
 			else
 				other_reagent = TRUE
 		if(subdat)

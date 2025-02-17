@@ -32,11 +32,9 @@
 
 /obj/item/chems/borghypo/Initialize()
 	. = ..()
-
-	for(var/T in reagent_ids)
-		reagent_volumes[T] = volume
-		var/decl/material/robot = T
-		reagent_names += initial(robot.name)
+	for(var/decl/material/reagent as anything in reagent_ids)
+		reagent_volumes[reagent] = volume
+		reagent_names += initial(reagent.name)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/chems/borghypo/Destroy()
@@ -51,10 +49,10 @@
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/robot = loc
 		if(robot && robot.cell)
-			for(var/T in reagent_ids)
-				if(reagent_volumes[T] < volume)
+			for(var/reagent in reagent_ids)
+				if(reagent_volumes[reagent] < volume)
 					robot.cell.use(charge_cost)
-					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
+					reagent_volumes[reagent] = min(reagent_volumes[reagent] + 5, volume)
 	return 1
 
 /obj/item/chems/borghypo/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
@@ -103,16 +101,16 @@
 		if(index > 0 && index <= reagent_ids.len)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = index
-			var/decl/material/robot = reagent_ids[mode]
-			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(robot.name)]'.</span>")
+			var/decl/material/reagent = reagent_ids[mode]
+			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(reagent.name)]'.</span>")
 		return TOPIC_REFRESH
 
 /obj/item/chems/borghypo/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 2)
 		return
-	var/decl/material/robot = reagent_ids[mode]
-	. += SPAN_NOTICE("It is currently producing [initial(robot.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
+	var/decl/material/reagent = reagent_ids[mode]
+	. += SPAN_NOTICE("It is currently producing [initial(reagent.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
 
 /obj/item/chems/borghypo/service
 	name = "cyborg drink synthesizer"

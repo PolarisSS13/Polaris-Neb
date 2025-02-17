@@ -614,9 +614,9 @@ var/global/regex/starts_lowercase_regex = regex(@"^[a-z]")
 
 // If char isn't part of the text the entire text is returned
 /proc/copytext_after_last(var/text, var/char)
-	var/regex/R = regex("(\[^[char]\]*)$")
-	R.Find(text)
-	return R.group[1]
+	var/regex/copytext_regex = regex("(\[^[char]\]*)$")
+	copytext_regex.Find(text)
+	return copytext_regex.group[1]
 
 /proc/sql_sanitize_text(var/text)
 	text = replacetext(text, "'", "''")

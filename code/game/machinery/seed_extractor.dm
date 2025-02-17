@@ -37,8 +37,7 @@
 		return TRUE
 
 	if(istype(O, /obj/item/fossil/plant)) // Fossils
-		var/obj/item/seeds/random/R = new(get_turf(src))
-		to_chat(user, SPAN_NOTICE("\The [src] scans \the [O] and spits out \a [R]."))
+		to_chat(user, SPAN_NOTICE("\The [src] scans \the [O] and spits out \a [new /obj/item/seeds/random(get_turf(src))]."))
 		qdel(O)
 		return TRUE
 
