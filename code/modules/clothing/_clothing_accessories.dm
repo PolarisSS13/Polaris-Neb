@@ -91,7 +91,7 @@
 /obj/item/clothing/proc/remove_accessory(mob/user, obj/item/clothing/accessory)
 	if(!accessory || !(accessory in accessories) || !accessory.accessory_removable || !accessory.canremove)
 		return
-	accessory.on_removed(user)
+	accessory.on_accessory_removed(user)
 	update_icon()
 
 /obj/item/clothing/proc/removetie_verb()
@@ -178,7 +178,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/clothing/proc/on_removed(var/mob/user)
+/obj/item/clothing/proc/on_accessory_removed(var/mob/user)
 	var/obj/item/clothing/holder = loc
 	if(istype(holder))
 		if(user)

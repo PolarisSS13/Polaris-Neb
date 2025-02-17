@@ -29,7 +29,7 @@
 
 /datum/hud
 	/// A reference to our owning mob.
-	var/mob/mymob
+	VAR_PRIVATE/weakref/owner
 	/// Used for the HUD toggle (F12)
 	VAR_PRIVATE/hud_shown        = TRUE
 	// Used for showing or hiding the equipment buttons on the left.
@@ -79,7 +79,8 @@
 		/decl/hud_element/oxygen,
 		/decl/hud_element/toxins,
 		/decl/hud_element/bodytemp,
-		/decl/hud_element/pressure
+		/decl/hud_element/pressure,
+		/decl/hud_element/modifiers
 	)
 	/// /decl/hud_element types to be inserted into hud_elements_to_create during init.
 	VAR_PROTECTED/list/additional_hud_elements
@@ -100,9 +101,10 @@
 	VAR_PRIVATE/obj/screen/gun/radio/gun_radio_use_toggle
 
 
-/datum/hud/New(mob/owner)
-	mymob = owner
-	instantiate()
+/datum/hud/New(mob/_owner)
+	if(istype(_owner))
+		owner = weakref(_owner)
+		instantiate(_owner)
 	..()
 
 /datum/hud/Destroy()
@@ -117,10 +119,11 @@
 	LAZYCLEARLIST(hud_elem_decl_to_object)
 	QDEL_NULL_LIST(all_hud_elements)
 
-	if(mymob)
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob))
 		if(mymob.hud_used == src)
 			mymob.hud_used = null
-		mymob = null
+	QDEL_NULL(owner)
 
 /datum/hud/proc/is_hud_shown()
 	return hud_shown
@@ -133,8 +136,10 @@
 	return elem?.update_icon() || FALSE
 
 /datum/hud/proc/refresh_hud_icons()
-	for(var/obj/screen/elem in mymob?.client?.screen)
-		elem.queue_icon_update()
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
+		for(var/obj/screen/elem in mymob.client.screen)
+			elem.queue_icon_update()
 
 /datum/hud/proc/is_inventory_shown()
 	return inventory_shown
@@ -142,28 +147,38 @@
 /datum/hud/proc/hide_inventory()
 	inventory_shown = FALSE
 	if(LAZYLEN(hud_elements_hidable))
-		mymob?.client?.screen -= hud_elements_hidable
+		var/mob/mymob = owner?.resolve()
+		if(istype(mymob) && mymob.client)
+			mymob.client.screen -= hud_elements_hidable
 	hidden_inventory_update()
 	persistent_inventory_update()
 
 /datum/hud/proc/show_inventory()
 	inventory_shown = TRUE
 	if(LAZYLEN(hud_elements_hidable))
-		mymob?.client?.screen += hud_elements_hidable
+		var/mob/mymob = owner?.resolve()
+		if(istype(mymob) && mymob.client)
+			mymob.client.screen += hud_elements_hidable
 	hidden_inventory_update()
 	persistent_inventory_update()
 
 /datum/hud/proc/hidden_inventory_update()
-	var/decl/species/species = mymob?.get_species()
+	var/mob/mymob = owner?.resolve()
+	var/decl/species/species = istype(mymob) && mymob.get_species()
 	if(istype(species?.species_hud))
 		refresh_inventory_slots(species.species_hud.hidden_slots, (inventory_shown && hud_shown))
 
 /datum/hud/proc/persistent_inventory_update()
-	var/decl/species/species = mymob?.get_species()
+	var/mob/mymob = owner?.resolve()
+	var/decl/species/species = istype(mymob) && mymob.get_species()
 	if(istype(species?.species_hud))
 		refresh_inventory_slots(species.species_hud.persistent_slots, hud_shown)
 
 /datum/hud/proc/refresh_inventory_slots(var/list/checking_slots, var/show_hud)
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob))
+		return FALSE
 
 	for(var/slot in checking_slots)
 
@@ -183,18 +198,36 @@
 		else
 			inv_slot.show_slot()
 
-/datum/hud/proc/instantiate()
-	if(ismob(mymob) && mymob.client)
-		finalize_instantiation()
+	return TRUE
+
+/datum/hud/proc/instantiate(mob/_owner)
+	if(ismob(_owner) && _owner.client)
+		finalize_instantiation(_owner)
 		refresh_hud_icons()
 		return TRUE
 	return FALSE
 
 /datum/hud/proc/handle_life_hud_update()
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob))
+		return FALSE
+
+	if(mymob.buckled || mymob.restrained())
+		mymob.add_mob_modifier(/decl/mob_modifier/restrained, source = mymob)
+	else
+		mymob.remove_mob_modifier(/decl/mob_modifier/restrained, source = mymob)
+
+	if(mymob.current_posture?.prone)
+		mymob.add_mob_modifier(/decl/mob_modifier/prone, source = mymob)
+	else
+		mymob.remove_mob_modifier(/decl/mob_modifier/prone, source = mymob)
+
 	for(var/obj/screen/elem as anything in hud_elements_update_in_life)
 		elem.update_icon()
+	return TRUE
 
-/datum/hud/proc/finalize_instantiation()
+/datum/hud/proc/finalize_instantiation(mob/_owner)
 
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -215,11 +248,11 @@
 
 	//Handle the gun settings buttons
 	if(!gun_mode_toggle && gun_mode_toggle_type)
-		gun_mode_toggle = new gun_mode_toggle_type(null, mymob, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
+		gun_mode_toggle = new gun_mode_toggle_type(null, _owner, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
 		LAZYADD(hud_elements_auxilliary, gun_mode_toggle)
-		gun_item_use_toggle  = new(null, mymob, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
-		gun_move_toggle      = new(null, mymob, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
-		gun_radio_use_toggle = new(null, mymob, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
+		gun_item_use_toggle  = new(null, _owner, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
+		gun_move_toggle      = new(null, _owner, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
+		gun_radio_use_toggle = new(null, _owner, ui_style, ui_color, ui_alpha, HUD_FIRE_INTENT)
 
 	build_inventory_ui()
 	build_hands_ui()
@@ -239,16 +272,17 @@
 		all_hud_elements |= hud_elements_auxilliary
 	UNSETEMPTY(all_hud_elements)
 
-	if(mymob.client)
-		mymob.client.screen = list()
+	if(_owner.client)
+		_owner.client.screen = list()
 		if(LAZYLEN(all_hud_elements))
-			mymob.client.screen |= all_hud_elements
+			_owner.client.screen |= all_hud_elements
 
 	hide_inventory()
 
 /datum/hud/proc/get_ui_style_data()
 	RETURN_TYPE(/decl/ui_style)
-	. = GET_DECL(mymob?.client?.prefs?.UI_style) || GET_DECL(default_ui_style)
+	var/mob/mymob = owner?.resolve()
+	. = (istype(mymob) && GET_DECL(mymob.client?.prefs?.UI_style)) || GET_DECL(default_ui_style)
 	if(!.)
 		var/list/available_styles = get_ui_styles()
 		if(length(available_styles))
@@ -258,12 +292,18 @@
 	var/decl/ui_style/ui_style = get_ui_style_data()
 	if(!ui_style?.use_ui_color)
 		return COLOR_WHITE
-	return mymob?.client?.prefs?.UI_style_color  || COLOR_WHITE
+	var/mob/mymob = owner?.resolve()
+	return (istype(mymob) && mymob.client?.prefs?.UI_style_color)  || COLOR_WHITE
 
 /datum/hud/proc/get_ui_alpha()
-	return mymob?.client?.prefs?.UI_style_alpha || 255
+	var/mob/mymob = owner?.resolve()
+	return (istype(mymob) && mymob.client?.prefs?.UI_style_alpha) || 255
 
 /datum/hud/proc/rebuild_hands()
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob))
+		return FALSE
 
 	var/decl/ui_style/ui_style = get_ui_style_data()
 	var/ui_color = get_ui_color()
@@ -355,7 +395,13 @@
 			if(mymob.client)
 				mymob.client.screen |= swap_elem
 
+	return TRUE
+
 /datum/hud/proc/build_inventory_ui()
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob))
+		return FALSE
 
 	var/decl/ui_style/ui_style = get_ui_style_data()
 	var/ui_color = get_ui_color()
@@ -392,11 +438,17 @@
 	if(has_hidden_gear)
 		hud_elements_auxilliary += new /obj/screen/toggle(null, mymob, ui_style, ui_color, ui_alpha, HUD_INVENTORY)
 
+	return TRUE
+
 /datum/hud/proc/build_hands_ui()
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob))
+		return FALSE
 
 	var/list/held_slots = mymob.get_held_item_slots()
 	if(length(held_slots) <= 0)
-		return
+		return FALSE
 
 	var/decl/ui_style/ui_style = get_ui_style_data()
 	var/ui_color = get_ui_color()
@@ -414,6 +466,7 @@
 
 	// Actual hand elems.
 	rebuild_hands()
+	return TRUE
 
 /datum/hud/proc/toggle_show_inventory()
 	if(inventory_shown)
@@ -427,57 +480,63 @@
 	return action_buttons_hidden
 
 /datum/hud/proc/toggle_minimize(var/full)
-	if(hud_shown)
-		hud_shown = FALSE
-		if(hud_elements_auxilliary)
-			mymob?.client?.screen -= hud_elements_auxilliary
-		if(hud_elements_hidable)
-			mymob?.client?.screen -= hud_elements_hidable
-		if(hud_elements_hotkeys)
-			mymob?.client?.screen -= hud_elements_hotkeys
-		if(!full)
-			if(LAZYLEN(hud_elements_hands))
-				mymob?.client?.screen += hud_elements_hands         // we want the hands to be visible
-			if(LAZYLEN(hud_elements_swap))
-				mymob?.client?.screen += hud_elements_swap     // we want the hands swap thingy to be visible
-	else
-		hud_shown = TRUE
-		if(LAZYLEN(hud_elements_auxilliary))
-			mymob?.client?.screen |= hud_elements_auxilliary
-		if(LAZYLEN(hud_elements_hidable) && inventory_shown)
-			mymob?.client?.screen |= hud_elements_hidable
-		if(LAZYLEN(hud_elements_hotkeys) && !hotkey_ui_hidden)
-			mymob?.client?.screen |= hud_elements_hotkeys
+	hud_shown = !hud_shown
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
+		if(hud_shown)
+			if(LAZYLEN(hud_elements_auxilliary))
+				mymob.client.screen |= hud_elements_auxilliary
+			if(LAZYLEN(hud_elements_hidable) && inventory_shown)
+				mymob.client.screen |= hud_elements_hidable
+			if(LAZYLEN(hud_elements_hotkeys) && !hotkey_ui_hidden)
+				mymob.client.screen |= hud_elements_hotkeys
+		else
+			if(hud_elements_auxilliary)
+				mymob.client.screen -= hud_elements_auxilliary
+			if(hud_elements_hidable)
+				mymob.client.screen -= hud_elements_hidable
+			if(hud_elements_hotkeys)
+				mymob.client.screen -= hud_elements_hotkeys
+			if(!full)
+				if(LAZYLEN(hud_elements_hands))
+					mymob.client.screen += hud_elements_hands         // we want the hands to be visible
+				if(LAZYLEN(hud_elements_swap))
+					mymob.client.screen += hud_elements_swap     // we want the hands swap thingy to be visible
+
 	hidden_inventory_update()
 	persistent_inventory_update()
+	return TRUE
 
 /datum/hud/proc/toggle_zoom_hud()
-	if(hud_shown)
-		hud_shown = FALSE
-		if(LAZYLEN(hud_elements_auxilliary))
-			mymob?.client?.screen -= hud_elements_auxilliary
-		if(LAZYLEN(hud_elements_hidable))
-			mymob?.client?.screen -= hud_elements_hidable
-		if(LAZYLEN(hud_elements_hotkeys))
-			mymob?.client?.screen -= hud_elements_hotkeys
-	else
-		hud_shown = TRUE
-		if(LAZYLEN(hud_elements_auxilliary))
-			mymob?.client?.screen += hud_elements_auxilliary
-		if(LAZYLEN(hud_elements_hidable) && inventory_shown)
-			mymob?.client?.screen += hud_elements_hidable
-		if(LAZYLEN(hud_elements_hotkeys) && !hotkey_ui_hidden)
-			mymob?.client?.screen += hud_elements_hotkeys
+	hud_shown = !hud_shown
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
+		if(hud_shown)
+			if(LAZYLEN(hud_elements_auxilliary))
+				mymob.client.screen += hud_elements_auxilliary
+			if(LAZYLEN(hud_elements_hidable) && inventory_shown)
+				mymob.client.screen += hud_elements_hidable
+			if(LAZYLEN(hud_elements_hotkeys) && !hotkey_ui_hidden)
+				mymob.client.screen += hud_elements_hotkeys
+		else
+			if(LAZYLEN(hud_elements_auxilliary))
+				mymob.client.screen -= hud_elements_auxilliary
+			if(LAZYLEN(hud_elements_hidable))
+				mymob.client.screen -= hud_elements_hidable
+			if(LAZYLEN(hud_elements_hotkeys))
+				mymob.client.screen -= hud_elements_hotkeys
+
 	hidden_inventory_update()
 	persistent_inventory_update()
 
 /datum/hud/proc/toggle_hotkeys()
-	if(hotkey_ui_hidden)
-		mymob?.client?.screen += hud_elements_hotkeys
-		hotkey_ui_hidden = 0
-	else
-		mymob?.client?.screen -= hud_elements_hotkeys
-		hotkey_ui_hidden = TRUE
+	hotkey_ui_hidden = !hotkey_ui_hidden
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
+		if(hotkey_ui_hidden)
+			mymob.client.screen -= hud_elements_hotkeys
+		else
+			mymob.client.screen += hud_elements_hotkeys
 
 /mob/verb/toggle_hotkey_verbs()
 	set category = "OOC"
@@ -537,13 +596,15 @@
 	// This can runtime if someone manages to throw a gun out of their hand before the proc is called.
 	if(!gun_item_use_toggle)
 		return TRUE
-	if(mymob?.client)
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
 		mymob.client.screen |= gun_item_use_toggle
 		mymob.client.screen |= gun_move_toggle
 		mymob.client.screen |= gun_radio_use_toggle
 
 /datum/hud/proc/remove_gun_icons()
-	if(mymob?.client)
+	var/mob/mymob = owner?.resolve()
+	if(istype(mymob) && mymob.client)
 		mymob.client.screen -= gun_item_use_toggle
 		mymob.client.screen -= gun_move_toggle
 		mymob.client.screen -= gun_radio_use_toggle
@@ -574,8 +635,11 @@
 		gun_radio_use_toggle.update_icon()
 
 /datum/hud/proc/create_and_register_element(decl/hud_element/ui_elem, decl/ui_style/ui_style, ui_color, ui_alpha)
-	if(!istype(ui_elem) || !ui_elem.elem_type)
+
+	var/mob/mymob = owner?.resolve()
+	if(!istype(mymob) || !istype(ui_elem) || !ui_elem.elem_type)
 		return FALSE
+
 	var/obj/screen/elem = new ui_elem.elem_type(null, mymob, ui_style, ui_color, ui_alpha, ui_elem.elem_reference_type)
 	if(ui_elem.elem_is_hotkey)
 		LAZYDISTINCTADD(hud_elements_hotkeys, elem)

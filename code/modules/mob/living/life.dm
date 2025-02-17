@@ -25,12 +25,9 @@
 	if(QDELETED(src)) // Destroyed by fire or pressure damage in handle_environment()
 		return PROCESS_KILL
 	handle_regular_status_updates() // Status & health update, are we dead or alive etc.
-	handle_stasis()
 
-	if(stat != DEAD)
-		if(!is_in_stasis())
-			. = handle_living_non_stasis_processes()
-		aura_check(AURA_TYPE_LIFE)
+	if(stat != DEAD && !has_mob_modifier(/decl/mob_modifier/stasis))
+		. = handle_living_non_stasis_processes()
 
 	for(var/obj/item/grab/grab as anything in get_active_grabs())
 		grab.Process()
@@ -42,7 +39,8 @@
 	handle_grasp()
 	handle_stance()
 	handle_regular_hud_updates()
-	handle_status_effects()
+	handle_status_conditions()
+	handle_mob_modifiers()
 	return 1
 
 /mob/living/proc/handle_grasp()
@@ -445,6 +443,7 @@
 
 //this handles hud updates. Calls update_vision() and handle_hud_icons()
 /mob/living/proc/handle_regular_hud_updates()
+
 	SHOULD_CALL_PARENT(TRUE)
 	if(!should_do_hud_updates())
 		return FALSE

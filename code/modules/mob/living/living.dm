@@ -233,8 +233,8 @@ default behaviour is:
 	if(stat != DEAD && should_be_dead())
 		death()
 		if(!QDELETED(src)) // death() may delete or remove us
-			set_status(STAT_BLIND, 1)
-			set_status(STAT_SILENCE, 0)
+			set_status_condition(STAT_BLIND, 1)
+			set_status_condition(STAT_SILENCE, 0)
 	return TRUE
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
@@ -330,17 +330,17 @@ default behaviour is:
 	set_damage(OXY, 0)
 	set_damage(CLONE, 0)
 	set_damage(BRAIN, 0)
-	set_status(STAT_PARA, 0)
-	set_status(STAT_STUN, 0)
-	set_status(STAT_WEAK, 0)
+	set_status_condition(STAT_PARA, 0)
+	set_status_condition(STAT_STUN, 0)
+	set_status_condition(STAT_WEAK, 0)
 
 	// shut down ongoing problems
 	radiation = 0
 	bodytemperature = get_species()?.body_temperature || initial(bodytemperature)
 	reset_genetic_conditions()
 
-	// fix all status conditions including blind/deaf
-	clear_status_effects()
+	// clear all status conditions including blind/deaf
+	clear_status_conditions()
 
 	heal_overall_damage(get_damage(BRUTE), get_damage(BURN))
 
@@ -745,48 +745,14 @@ default behaviour is:
 	to_chat(src, "<span class='notice'>Remember to stay in character for a mob of this type!</span>")
 	return 1
 
-/mob/proc/add_aura(var/obj/aura/aura, skip_icon_update = FALSE)
-	return FALSE
-
-/mob/living/add_aura(var/obj/aura/aura, skip_icon_update = FALSE)
-	if(ispath(aura))
-		aura = new aura(src)
-	if(!istype(aura))
-		return FALSE
-	LAZYDISTINCTADD(auras,aura)
-	if(!skip_icon_update)
-		update_icon()
-	return TRUE
-
-/mob/proc/has_aura(aura_type)
-	return FALSE
-
-/mob/living/has_aura(aura_type)
-	return length(auras) && (locate(aura_type) in auras)
-
-/mob/proc/remove_aura(var/obj/aura/aura, skip_icon_update = FALSE)
-	return FALSE
-
-/mob/living/remove_aura(var/obj/aura/aura, skip_icon_update = FALSE)
-	if(ispath(aura))
-		aura = locate() in auras
-	if(!istype(aura))
-		return FALSE
-	LAZYREMOVE(auras,aura)
-	if(!skip_icon_update)
-		update_icon()
-	return TRUE
-
 /mob/living/Destroy()
+	clear_mob_modifiers()
 	QDEL_NULL(aiming)
 	QDEL_NULL_LIST(_hallucinations)
 	QDEL_NULL_LIST(aimed_at_by)
 	LAZYCLEARLIST(smell_cooldown)
 	if(stressors) // Do not QDEL_NULL, keys are managed instances.
 		stressors = null
-	if(auras)
-		for(var/a in auras)
-			remove_aura(a)
 	// done in this order so that icon updates aren't triggered once all our organs are obliterated
 	delete_inventory(TRUE)
 	delete_organs()
@@ -889,7 +855,7 @@ default behaviour is:
 	if(!HAS_STATUS(src, STAT_PARA) && stat == CONSCIOUS)
 		visible_message(SPAN_DANGER("\The [src] starts having a seizure!"))
 		SET_STATUS_MAX(src, STAT_PARA, rand(8,16))
-		set_status(STAT_JITTER, rand(150,200))
+		set_status_condition(STAT_JITTER, rand(150,200))
 		take_damage(rand(50, 60), PAIN)
 
 /mob/living/proc/get_digestion_product()
@@ -2024,3 +1990,5 @@ default behaviour is:
 		pulling_punches = !pulling_punches
 		to_chat(src, SPAN_NOTICE("You are now [pulling_punches ? "pulling your punches" : "not pulling your punches"]."))
 
+/mob/living/is_cloaked()
+	return has_mob_modifier(/decl/mob_modifier/cloaked)

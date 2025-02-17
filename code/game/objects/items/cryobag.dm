@@ -14,6 +14,9 @@
 	)
 	var/stasis_power
 
+/obj/item/bodybag/cryobag/get_cryogenic_power()
+	return stasis_power
+
 /obj/item/bodybag/cryobag/attack_self(mob/user)
 	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
 	if(stasis_power)
@@ -92,9 +95,7 @@
 		stasis_power = round(0.75 * stasis_power)
 		animate(src, color = color_matrix_saturation(get_saturation()), time = 10)
 		update_icon()
-
-	if(LAZYACCESS(patient.stasis_sources, STASIS_CRYOBAG) != stasis_power)
-		patient.set_stasis(stasis_power, STASIS_CRYOBAG)
+	patient.add_mob_modifier(/decl/mob_modifier/stasis, 2 SECONDS, source = src)
 
 /obj/structure/closet/body_bag/cryobag/return_air() //Used to make stasis bags protect from vacuum.
 	if(airtank)

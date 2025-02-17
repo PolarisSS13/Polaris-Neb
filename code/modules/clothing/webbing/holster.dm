@@ -36,7 +36,7 @@
 	if(istype(holder))
 		holder.verbs |= /atom/proc/holster_verb
 
-/obj/item/clothing/webbing/holster/on_removed(mob/user)
+/obj/item/clothing/webbing/holster/on_accessory_removed(mob/user)
 	var/obj/item/clothing/holder = loc
 	if(istype(holder))
 		var/remove_verb = TRUE

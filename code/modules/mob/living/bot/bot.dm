@@ -57,9 +57,9 @@
 /mob/living/bot/handle_regular_status_updates()
 	. = ..()
 	if(.)
-		set_status(STAT_WEAK, 0)
-		set_status(STAT_STUN, 0)
-		set_status(STAT_PARA, 0)
+		set_status_condition(STAT_WEAK, 0)
+		set_status_condition(STAT_STUN, 0)
+		set_status_condition(STAT_PARA, 0)
 
 /mob/living/bot/get_life_damage_types()
 	var/static/list/life_damage_types = list(

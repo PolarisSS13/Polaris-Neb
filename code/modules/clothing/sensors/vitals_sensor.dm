@@ -44,7 +44,7 @@
 	. = ..()
 	update_removable()
 
-/obj/item/clothing/sensor/vitals/on_removed(mob/user)
+/obj/item/clothing/sensor/vitals/on_accessory_removed(mob/user)
 	. = ..()
 	update_removable()
 

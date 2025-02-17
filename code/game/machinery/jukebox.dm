@@ -126,7 +126,7 @@
 			var/mob/living/human/H = M
 			if(H.get_sound_volume_multiplier() < 0.2)
 				continue
-		M.set_status(STAT_ASLEEP,    0)
+		M.set_status_condition(STAT_ASLEEP,    0)
 		ADJ_STATUS(M, STAT_STUTTER,  20)
 		SET_STATUS_MAX(M, STAT_DEAF, 30)
 		SET_STATUS_MAX(M, STAT_WEAK,  3)
@@ -134,7 +134,7 @@
 			SET_STATUS_MAX(M, STAT_STUN, 10)
 			SET_STATUS_MAX(M, STAT_PARA,  4)
 		else
-			M.set_status(STAT_JITTER, 400)
+			M.set_status_condition(STAT_JITTER, 400)
 	spawn(15)
 		explode()
 

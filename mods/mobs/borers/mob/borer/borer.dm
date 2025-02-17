@@ -102,8 +102,8 @@
 
 /mob/living/simple_animal/borer/handle_vision()
 	. = ..()
-	set_status(STAT_BLIND,  host ? GET_STATUS(host, STAT_BLIND)  : 0)
-	set_status(STAT_BLURRY, host ? GET_STATUS(host, STAT_BLURRY) : 0)
+	set_status_condition(STAT_BLIND,  host ? GET_STATUS(host, STAT_BLIND)  : 0)
+	set_status_condition(STAT_BLURRY, host ? GET_STATUS(host, STAT_BLURRY) : 0)
 
 /mob/living/simple_animal/borer/handle_disabilities()
 	. = ..()

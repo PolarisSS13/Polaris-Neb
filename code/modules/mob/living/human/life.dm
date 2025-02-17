@@ -125,8 +125,8 @@
 		vision = GET_INTERNAL_ORGAN(src, vision_organ_tag)
 
 	if(!vision_organ_tag) // Presumably if a species has no vision organs, they see via some other means.
-		set_status(STAT_BLIND, 0)
-		set_status(STAT_BLURRY, 0)
+		set_status_condition(STAT_BLIND, 0)
+		set_status_condition(STAT_BLURRY, 0)
 	else if(!vision || (vision && !vision.is_usable()))   // Vision organs cut out or broken? Permablind.
 		SET_STATUS_MAX(src, STAT_BLIND, 2)
 		SET_STATUS_MAX(src, STAT_BLURRY, 1)
@@ -224,7 +224,7 @@
 			burn_dam = COLD_DAMAGE_LEVEL_2
 		else
 			burn_dam = COLD_DAMAGE_LEVEL_3
-		set_stasis(get_cryogenic_factor(bodytemperature), STASIS_COLD)
+		add_mob_modifier(/decl/mob_modifier/stasis, 2 SECONDS, source = src)
 		if(!has_chemical_effect(CE_CRYO, 1))
 			take_overall_damage(burn=burn_dam, used_weapon = "Low Body Temperature")
 			SET_HUD_ALERT_MAX(src, HUD_FIRE, 1)

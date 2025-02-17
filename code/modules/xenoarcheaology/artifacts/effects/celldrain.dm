@@ -1,7 +1,7 @@
 //todo
 /datum/artifact_effect/celldrain
 	name = "cell drain"
-	origin_type = EFFECT_ELECTRO
+	origin_type = XA_EFFECT_ELECTRO
 	var/last_message
 
 /datum/artifact_effect/celldrain/DoEffectTouch(var/mob/user)

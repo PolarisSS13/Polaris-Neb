@@ -15,7 +15,7 @@
 		return FALSE // Can potentially add uninstall code here, but not currently supported.
 	return ..()
 
-/obj/item/stock_parts/proc/set_status(var/obj/machinery/machine, var/flag)
+/obj/item/stock_parts/proc/set_component_status(var/obj/machinery/machine, var/flag)
 	var/old_stat = status
 	status |= flag
 	if(old_stat != status)
@@ -34,7 +34,7 @@
 			machine.component_stat_change(src, old_stat, flag)
 
 /obj/item/stock_parts/proc/on_install(var/obj/machinery/machine)
-	set_status(machine, PART_STAT_INSTALLED)
+	set_component_status(machine, PART_STAT_INSTALLED)
 
 /obj/item/stock_parts/proc/on_uninstall(var/obj/machinery/machine, var/temporary = FALSE)
 	unset_status(machine, PART_STAT_INSTALLED)
@@ -48,7 +48,7 @@
 	if(istype(machine))
 		LAZYDISTINCTADD(machine.processing_parts, src)
 		START_PROCESSING_MACHINE(machine, MACHINERY_PROCESS_COMPONENTS)
-		set_status(machine, PART_STAT_PROCESSING)
+		set_component_status(machine, PART_STAT_PROCESSING)
 
 /obj/item/stock_parts/proc/stop_processing(var/obj/machinery/machine)
 	if(istype(machine))

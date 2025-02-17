@@ -17,7 +17,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/orange/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/orange/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/orange/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/orange/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/orange/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/orange/modifiers.dmi'
 	)
 
 /decl/ui_style/old
@@ -34,7 +35,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/old/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/old/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/old/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/old/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/old/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/old/modifiers.dmi'
 	)
 
 /decl/ui_style/old_noborder
@@ -51,7 +53,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/old_noborder/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/old/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/old_noborder/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/old_noborder/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/old_noborder/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/old_noborder/modifiers.dmi'
 	)
 
 /decl/ui_style/white
@@ -68,7 +71,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/white/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/white/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/white/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/white/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/white/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/white/modifiers.dmi'
 	)
 	use_overlay_color = TRUE
 	use_ui_color      = TRUE
@@ -87,7 +91,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/minimalist/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/minimalist/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/minimalist/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/minimalist/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/minimalist/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/minimalist/modifiers.dmi'
 	)
 	use_overlay_color = TRUE
 	use_ui_color      = TRUE
@@ -106,7 +111,8 @@
 		(HUD_INVENTORY)   = 'icons/mob/screen/styles/underworld/inventory.dmi',
 		(HUD_MOVEMENT)    = 'icons/mob/screen/styles/underworld/movement.dmi',
 		(HUD_UP_HINT)     = 'icons/mob/screen/styles/underworld/uphint.dmi',
-		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/underworld/zone_selector.dmi'
+		(HUD_ZONE_SELECT) = 'icons/mob/screen/styles/underworld/zone_selector.dmi',
+		(HUD_MODIFIERS)   = 'icons/mob/screen/styles/underworld/modifiers.dmi'
 	)
 	use_overlay_color = TRUE
 	use_ui_color = TRUE

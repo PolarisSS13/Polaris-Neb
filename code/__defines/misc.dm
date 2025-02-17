@@ -390,3 +390,14 @@
 // Default UI style applied to client prefs.
 #define DEFAULT_UI_STYLE /decl/ui_style/midnight
 
+// Indicates a modifier will never expire.
+#define MOB_MODIFIER_INDEFINITE (-1)
+
+// Indicators for attack checking proc.
+#define MM_ATTACK_TYPE_WEAPON      0
+#define MM_ATTACK_TYPE_THROWN      1
+#define MM_ATTACK_TYPE_PROJECTILE  2
+
+#define MM_ATTACK_RESULT_NONE      0
+#define MM_ATTACK_RESULT_DEFLECTED BITFLAG(0)
+#define MM_ATTACK_RESULT_BLOCKED   BITFLAG(1)

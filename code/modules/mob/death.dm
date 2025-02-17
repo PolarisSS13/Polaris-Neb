@@ -92,7 +92,7 @@
 	reset_plane_and_layer()
 	update_posture()
 	if(!gibbed)
-		clear_status_effects()
+		clear_status_conditions()
 
 	set_sight(sight|SEE_TURFS|SEE_MOBS|SEE_OBJS)
 	set_see_in_dark(8)

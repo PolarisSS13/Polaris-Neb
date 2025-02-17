@@ -25,6 +25,9 @@
 /decl/hud_element/attack
 	elem_type = /obj/screen/default_attack_selector
 
+/decl/hud_element/modifiers
+	elem_type = /obj/screen/mob_modifiers
+
 /decl/hud_element/stamina
 	elem_type = /obj/screen/stamina
 	elem_updates_in_life = TRUE

@@ -60,10 +60,10 @@
 
 	if(ispath(camera))
 		camera = new camera(src)
-		camera.set_status(0)
+		camera.set_camera_status(0)
 
 	if(camera)
-		camera.set_status(!camera.status)
+		camera.set_camera_status(!camera.status)
 		if(camera.status)
 			camera.c_tag = user.get_id_name()
 			to_chat(user, "<span class='notice'>User scanned as [camera.c_tag]. Camera activated.</span>")

@@ -71,7 +71,7 @@
 
 /obj/item/clothing/Destroy()
 	if(is_accessory())
-		on_removed()
+		on_accessory_removed()
 	return ..()
 
 /obj/item/clothing/get_fallback_slot(slot)

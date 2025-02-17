@@ -26,9 +26,9 @@
 	uses--
 	to_chat(imp_in, "<span class='notice'>You feel a sudden surge of energy!</span>")
 
-	imp_in.set_status(STAT_STUN, 0)
-	imp_in.set_status(STAT_WEAK, 0)
-	imp_in.set_status(STAT_PARA, 0)
+	imp_in.set_status_condition(STAT_STUN, 0)
+	imp_in.set_status_condition(STAT_WEAK, 0)
+	imp_in.set_status_condition(STAT_PARA, 0)
 
 /obj/item/implant/adrenalin/implanted(mob/source)
 	source.StoreMemory("\A [src] can be activated by using the pale emote, <B>say *pale</B> to attempt to activate.", /decl/memory_options/system)

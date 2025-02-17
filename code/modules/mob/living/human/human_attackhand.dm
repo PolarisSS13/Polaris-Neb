@@ -232,7 +232,7 @@
 
 /mob/living/human/attack_hand(mob/user)
 
-	remove_cloaking_source(species)
+	remove_mob_modifier(/decl/mob_modifier/cloaked, source = species)
 	if(!user.check_intent(I_FLAG_GRAB))
 		for (var/obj/item/grab/grab as anything in user.get_active_grabs())
 			if(grab.assailant == user && grab.affecting == src && grab.resolve_openhand_attack())

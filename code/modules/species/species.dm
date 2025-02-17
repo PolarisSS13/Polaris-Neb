@@ -174,8 +174,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	var/pass_flags = 0
 	var/breathing_sound = 'sound/voice/monkey.ogg'
 
-	var/list/base_auras
-
 	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job receives.
 
 	var/standing_jump_range = 2
@@ -412,21 +410,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 /decl/species/proc/get_manual_dexterity(var/mob/living/human/H)
 	. = manual_dexterity
 
-/decl/species/proc/add_base_auras(var/mob/living/human/H)
-	if(base_auras)
-		for(var/type in base_auras)
-			H.add_aura(new type(H), skip_icon_update = TRUE)
-
-/decl/species/proc/remove_base_auras(var/mob/living/human/H)
-	if(base_auras)
-		var/list/bcopy = base_auras.Copy()
-		for(var/a in H.auras)
-			var/obj/aura/A = a
-			if(is_type_in_list(a, bcopy))
-				bcopy -= A.type
-				H.remove_aura(A)
-				qdel(A)
-
 /decl/species/proc/remove_inherent_verbs(var/mob/living/human/H)
 	if(inherent_verbs)
 		for(var/verb_path in inherent_verbs)
@@ -441,7 +424,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 /decl/species/proc/handle_post_spawn(var/mob/living/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
-	add_base_auras(H)
 	handle_movement_flags_setup(H)
 
 /decl/species/proc/handle_pre_spawn(var/mob/living/human/H)

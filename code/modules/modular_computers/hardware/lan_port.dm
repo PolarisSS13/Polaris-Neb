@@ -31,7 +31,7 @@
 	terminal = new(get_turf(parent))
 	set_extension(src, /datum/extension/event_registration/shuttle_stationary, GET_DECL(/decl/observ/moved), parent, PROC_REF(check_terminal_prox), get_area(src))
 	events_repository.register(/decl/observ/destroyed, terminal, src, PROC_REF(unset_terminal))
-	set_status(parent, PART_STAT_CONNECTED)
+	set_component_status(parent, PART_STAT_CONNECTED)
 
 /obj/item/stock_parts/computer/lan_port/proc/unset_terminal()
 	remove_extension(src, /datum/extension/event_registration/shuttle_stationary)

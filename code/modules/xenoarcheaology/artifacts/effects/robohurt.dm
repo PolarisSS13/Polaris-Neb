@@ -4,7 +4,7 @@
 
 /datum/artifact_effect/robohurt/New()
 	..()
-	origin_type = pick(EFFECT_ELECTRO, EFFECT_PARTICLE)
+	origin_type = pick((XA_EFFECT_ELECTRO), (XA_EFFECT_PARTICLE))
 
 /datum/artifact_effect/robohurt/DoEffectTouch(var/mob/user)
 	if(isrobot(user))
