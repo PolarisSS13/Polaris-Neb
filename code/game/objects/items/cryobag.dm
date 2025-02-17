@@ -12,18 +12,17 @@
 		/decl/material/solid/metal/silver = MATTER_AMOUNT_TRACE,
 		/decl/material/solid/metal/gold = MATTER_AMOUNT_TRACE
 	)
+	bag_type = /obj/structure/closet/body_bag/cryobag
 	var/stasis_power
 
 /obj/item/bodybag/cryobag/get_cryogenic_power()
 	return stasis_power
 
-/obj/item/bodybag/cryobag/attack_self(mob/user)
-	var/obj/structure/closet/body_bag/cryobag/R = new /obj/structure/closet/body_bag/cryobag(user.loc)
-	if(stasis_power)
-		R.stasis_power = stasis_power
-	R.update_icon()
-	R.add_fingerprint(user)
-	qdel(src)
+/obj/item/bodybag/cryobag/create_bag_structure(mob/user)
+	var/obj/structure/closet/body_bag/cryobag/bag = ..()
+	if(istype(bag) && stasis_power)
+		bag.stasis_power = stasis_power
+	return bag
 
 /obj/structure/closet/body_bag/cryobag
 	name = "stasis bag"

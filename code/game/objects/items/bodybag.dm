@@ -7,11 +7,17 @@
 	icon_state = "bodybag_folded"
 	w_class = ITEM_SIZE_SMALL
 	material = /decl/material/solid/organic/plastic
+	var/bag_type = /obj/structure/closet/body_bag
+
+/obj/item/bodybag/proc/create_bag_structure(mob/user)
+	var/atom/bag = new bag_type(user.loc)
+	bag.add_fingerprint(user)
+	return bag
 
 /obj/item/bodybag/attack_self(mob/user)
-	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
-	R.add_fingerprint(user)
+	create_bag_structure(user)
 	qdel(src)
+	return TRUE
 
 /obj/item/box/bodybags
 	name       = "body bags"

@@ -8,6 +8,7 @@
 	origin_tech = @'{"biotech":2}'
 	material = /decl/material/solid/organic/plastic
 	matter = list(/decl/material/solid/silicon = MATTER_AMOUNT_SECONDARY)
+	bag_type = /obj/structure/closet/body_bag/rescue
 	var/obj/item/tank/airtank
 
 /obj/item/bodybag/rescue/loaded
@@ -23,13 +24,12 @@
 	QDEL_NULL(airtank)
 	return ..()
 
-/obj/item/bodybag/rescue/attack_self(mob/user)
-	var/obj/structure/closet/body_bag/rescue/R = new /obj/structure/closet/body_bag/rescue(user.loc)
-	R.add_fingerprint(user)
-	if(airtank)
-		R.set_tank(airtank)
+/obj/item/bodybag/rescue/create_bag_structure(mob/user)
+	var/obj/structure/closet/body_bag/rescue/bag = ..()
+	if(istype(bag) && airtank)
+		bag.set_tank(airtank)
 		airtank = null
-	qdel(src)
+	return bag
 
 /obj/item/bodybag/rescue/attackby(obj/item/W, mob/user, var/click_params)
 	if(istype(W,/obj/item/tank))
