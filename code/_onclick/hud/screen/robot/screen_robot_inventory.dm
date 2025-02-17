@@ -7,6 +7,6 @@
 	if(isrobot(user))
 		var/mob/living/silicon/robot/robot = user
 		if(robot.module)
-			robot.hud_used.toggle_show_robot_modules()
-			return 1
-		to_chat(robot, "You haven't selected a module yet.")
+			robot.module.storage?.open(user)
+		else
+			to_chat(robot, "You haven't selected a module yet.")

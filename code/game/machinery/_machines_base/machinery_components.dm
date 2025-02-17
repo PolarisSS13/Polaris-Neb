@@ -301,7 +301,7 @@ Standard helpers for users interacting with machinery parts.
 					return TRUE
 
 /obj/machinery/proc/part_insertion(mob/user, obj/item/stock_parts/part) // Second argument may actually be an arbitrary item.
-	if(!user.canUnEquip(part) && !isstack(part))
+	if(!user.can_unequip_item(part) && !isstack(part))
 		return FALSE
 	var/number = can_add_component(part, user)
 	if(!number)

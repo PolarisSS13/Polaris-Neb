@@ -282,7 +282,7 @@
 		return glasses.hud
 
 /mob/living/silicon/robot/getHUDsource(hudtype)
-	for(var/obj/item/borg/sight/sight in list(module_state_1, module_state_2, module_state_3))
+	for(var/obj/item/borg/sight/sight in get_held_items())
 		if(istype(sight) && (sight.glasses_hud_type & hudtype))
 			return sight
 

@@ -52,7 +52,7 @@
 
 		else if(H.get_equipped_item(slot_head_str))
 			var/obj/item/clothing/head/HAT = H.get_equipped_item(slot_head_str)
-			if(H.canUnEquip(HAT))
+			if(H.can_unequip_item(HAT))
 				visible_message(SPAN_MFAUNA("\The [src] rips \the [H]'s [HAT] off!"))
 				set_special_ability_cooldown(ability_cooldown)
 				H.try_unequip(HAT, get_turf(src))

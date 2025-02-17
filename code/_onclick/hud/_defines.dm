@@ -52,12 +52,9 @@
 #define ui_movi "RIGHT-2:24,BOTTOM:5"
 #define ui_attack_selector "RIGHT-2:27,BOTTOM+2:9"
 #define ui_zonesel "RIGHT-1:28,BOTTOM:5"
-#define ui_acti_alt "RIGHT-1:28,BOTTOM:5" //alternative intent switcher for when the interface is hidden
 #define ui_stamina "RIGHT-2:24,BOTTOM:8"
 
-#define ui_borg_pull "RIGHT-3:24,BOTTOM+1:7"
-#define ui_borg_module "RIGHT-2:26,BOTTOM+1:7"
-#define ui_borg_panel "RIGHT-1:28,BOTTOM+1:7"
+#define ui_borg_module "RIGHT-1:28,BOTTOM+1:7"
 
 //Gun buttons
 #define ui_gun1 "RIGHT-1:28,BOTTOM+3:7"

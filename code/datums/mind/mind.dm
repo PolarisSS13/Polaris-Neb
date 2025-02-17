@@ -396,37 +396,21 @@
 			if("unemag")
 				var/mob/living/silicon/robot/robot = current
 				if (istype(robot))
-					robot.emagged = 0
-					if (robot.activated(robot.module.emag))
-						robot.module_active = null
-					if(robot.module_state_1 == robot.module.emag)
-						robot.module_state_1 = null
+					if(robot.module?.emag)
+						robot.drop_from_inventory(robot.module.emag)
 						robot.module.emag.forceMove(null)
-					else if(robot.module_state_2 == robot.module.emag)
-						robot.module_state_2 = null
-						robot.module.emag.forceMove(null)
-					else if(robot.module_state_3 == robot.module.emag)
-						robot.module_state_3 = null
-						robot.module.emag.forceMove(null)
+					robot.emagged = FALSE
 					log_admin("[key_name_admin(usr)] has unemag'ed [robot].")
 
 			if("unemagcyborgs")
 				if (isAI(current))
 					var/mob/living/silicon/ai/ai = current
 					for (var/mob/living/silicon/robot/robot in ai.connected_robots)
-						robot.emagged = 0
-						if (robot.module)
-							if (robot.activated(robot.module.emag))
-								robot.module_active = null
-							if(robot.module_state_1 == robot.module.emag)
-								robot.module_state_1 = null
-								robot.module.emag.forceMove(null)
-							else if(robot.module_state_2 == robot.module.emag)
-								robot.module_state_2 = null
-								robot.module.emag.forceMove(null)
-							else if(robot.module_state_3 == robot.module.emag)
-								robot.module_state_3 = null
-								robot.module.emag.forceMove(null)
+						robot.emagged = FALSE
+						if(robot.module?.emag)
+							robot.drop_from_inventory(robot.module.emag)
+							robot.module.emag.forceMove(null)
+
 					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
 
 	else if (href_list["common"])

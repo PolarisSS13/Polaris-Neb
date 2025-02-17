@@ -708,9 +708,6 @@ default behaviour is:
 		return TRUE
 	return FALSE
 
-/mob/living/human/canUnEquip(obj/item/I)
-	. = ..() && !(I in get_organs())
-
 /mob/proc/can_be_possessed_by(var/mob/observer/ghost/possessor)
 	return istype(possessor) && possessor.client
 

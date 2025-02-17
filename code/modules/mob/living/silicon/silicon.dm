@@ -85,7 +85,8 @@
 /mob/living/silicon/drop_item(var/Target)
 	for(var/obj/item/grab/grab as anything in get_active_grabs())
 		qdel(grab)
-		. = TRUE
+		return TRUE
+	return ..()
 
 /mob/living/silicon/emp_act(severity)
 	switch(severity)

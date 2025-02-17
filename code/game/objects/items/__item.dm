@@ -581,15 +581,13 @@
 	return FALSE
 
 /obj/item/attack_ai(mob/living/silicon/ai/user)
-	if (!istype(src.loc, /obj/item/robot_module))
+	if (!istype(loc, /obj/item/robot_module))
 		return
 	//If the item is part of a cyborg module, equip it
 	if(!isrobot(user))
 		return
 	var/mob/living/silicon/robot/robot = user
-	robot.activate_module(src)
-	if(robot.hud_used)
-		robot.hud_used.update_robot_modules_display()
+	robot.put_in_hands(src)
 
 /obj/item/proc/try_slapcrafting(obj/item/used_item, mob/user)
 	if(SSfabrication.try_craft_with(src, used_item, user))
@@ -727,7 +725,6 @@
 		var/obj/item/back = user.get_equipped_item(slot_back_str)
 		return back?.storage?.can_be_inserted(src, user, TRUE)
 
-
 	var/datum/inventory_slot/inv_slot = user.get_inventory_slot_datum(slot)
 	if(!inv_slot)
 		return FALSE
@@ -748,7 +745,7 @@
 	return inv_slot?.is_accessible(user, src, disable_warning)
 
 /obj/item/proc/can_be_dropped_by_client(mob/M)
-	return M.canUnEquip(src)
+	return M.can_unequip_item(src)
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)

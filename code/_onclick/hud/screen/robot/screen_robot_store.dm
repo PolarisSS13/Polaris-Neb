@@ -4,10 +4,10 @@
 	screen_loc = ui_borg_store
 
 /obj/screen/robot/store/handle_click(mob/user, params)
-	if(isrobot(user))
-		var/mob/living/silicon/robot/robot = user
-		if(robot.module)
-			robot.uneq_active()
-			robot.hud_used.update_robot_modules_display()
-		else
-			to_chat(robot, "You haven't selected a module yet.")
+	var/mob/living/silicon/robot/robot = user
+	if(istype(robot) && robot.module)
+		var/obj/item/active_item = robot.get_active_held_item()
+		if(active_item)
+			user.try_unequip(active_item, robot.module, FALSE)
+	else
+		to_chat(robot, "You haven't selected a module yet.")

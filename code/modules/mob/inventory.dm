@@ -18,7 +18,7 @@
 /mob/proc/equip_to_slot_if_possible(obj/item/prop, slot, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, force = FALSE, delete_old_item = TRUE, ignore_equipped = FALSE)
 	if(!istype(prop) || !slot)
 		return FALSE
-	. = (canUnEquip(prop) && can_equip_anything_to_slot(slot) && has_organ_for_slot(slot) && prop.mob_can_equip(src, slot, disable_warning, force, ignore_equipped = ignore_equipped))
+	. = (can_unequip_item(prop) && can_equip_anything_to_slot(slot) && has_organ_for_slot(slot) && prop.mob_can_equip(src, slot, disable_warning, force, ignore_equipped = ignore_equipped))
 	if(.)
 		equip_to_slot(prop, slot, redraw_mob, delete_old_item = delete_old_item) //This proc should not ever fail.
 	else if(del_on_fail)
@@ -263,12 +263,14 @@
 		return FALSE
 	return !!get_equipped_slot_for_item(I)
 
-/mob/proc/canUnEquip(obj/item/I)
+/mob/proc/can_unequip_item(obj/item/I)
 	if(!I) //If there's nothing to drop, the drop is automatically successful.
 		return TRUE
+	if(I in get_organs())
+		return FALSE
 	var/slot = get_equipped_slot_for_item(I)
 	if(!slot && !istype(I.loc, /obj/item/rig_module))
-		return 1 //already unequipped, so success
+		return TRUE //already unequipped, so success
 	return I.mob_can_unequip(src, slot)
 
 /// Gets the inventory slot string ID for the mob whose contents we're in, if any.
@@ -343,7 +345,7 @@
 
 //This differs from remove_from_mob() in that it checks if the item can be unequipped first. Use drop_from_inventory if you don't want to check.
 /mob/proc/try_unequip(obj/item/I, var/atom/target, var/play_dropsound = TRUE)
-	if(!canUnEquip(I))
+	if(!can_unequip_item(I))
 		return FALSE
 	drop_from_inventory(I, target, play_dropsound)
 	return TRUE
@@ -369,9 +371,9 @@
 			object.compile_overlays() // avoid world overlays on inventory state and vice versa
 	return TRUE
 
-/mob/proc/drop_held_items()
+/mob/proc/drop_held_items(drop_loc = loc)
 	for(var/thing in get_held_items())
-		try_unequip(thing)
+		try_unequip(thing, drop_loc)
 
 //Returns the item equipped to the specified slot, if any.
 /mob/proc/get_equipped_item(var/slot)
