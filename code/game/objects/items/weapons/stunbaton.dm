@@ -161,8 +161,8 @@
 // usability without proper checks.
 // Also hard-coded to be unuseable outside their righteous synthetic owners.
 /obj/item/baton/robot/attack_self(mob/user)
-	var/mob/living/silicon/robot/R = isrobot(user) ? user : null // null if the user is NOT a robot
-	if (R)
+	var/mob/living/silicon/robot/robot = isrobot(user) ? user : null // null if the user is NOT a robot
+	if (robot)
 		return ..()
 	else	// Stop pretending and get out of your cardborg suit, human.
 		to_chat(user, "<span class='warning'>You don't seem to be able to interact with this by yourself.</span>")

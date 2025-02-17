@@ -70,12 +70,12 @@
 
 	var/obj/item/cell/target
 	if(isrobot(occupant))
-		var/mob/living/silicon/robot/R = occupant
-		target = R.cell
-		if(R.module)
-			R.module.respawn_consumable(R, charging_power * CELLRATE / 250) //consumables are magical, apparently
+		var/mob/living/silicon/robot/robot = occupant
+		target = robot.cell
+		if(robot.module)
+			robot.module.respawn_consumable(robot, charging_power * CELLRATE / 250) //consumables are magical, apparently
 		// If we are capable of repairing damage, reboot destroyed components and allow them to be repaired for very large power spike.
-		var/list/damaged = R.get_damaged_components(1,1,1)
+		var/list/damaged = robot.get_damaged_components(1,1,1)
 		if(damaged.len && wire_rate && weld_rate)
 			for(var/datum/robot_component/C in damaged)
 				if((C.installed == -1) && use_power_oneoff(100 KILOWATTS, LOCAL) <= 0)
@@ -174,8 +174,8 @@
 	last_overlay_state = overlay_state()
 	overlays = list(image(overlay_icon, overlay_state()))
 
-/obj/machinery/recharge_station/Bumped(var/mob/living/silicon/robot/R)
-	addtimer(CALLBACK(src, PROC_REF(go_in), R), 1)
+/obj/machinery/recharge_station/Bumped(var/mob/living/silicon/robot/robot)
+	addtimer(CALLBACK(src, PROC_REF(go_in), robot), 1)
 
 /obj/machinery/recharge_station/proc/go_in(var/mob/M)
 
@@ -191,8 +191,8 @@
 
 /obj/machinery/recharge_station/proc/hascell(var/mob/M)
 	if(isrobot(M))
-		var/mob/living/silicon/robot/R = M
-		return (R.cell)
+		var/mob/living/silicon/robot/robot = M
+		return (robot.cell)
 	if(ishuman(M))
 		var/mob/living/human/H = M
 		if(H.isSynthetic())

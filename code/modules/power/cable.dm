@@ -899,8 +899,8 @@ By design, d1 is the smallest direction and d2 is the highest
 		var/obj/item/rig_module/module = loc
 		return module.get_cell()
 	if(isrobot(loc))
-		var/mob/living/silicon/robot/R = loc
-		return R.get_cell()
+		var/mob/living/silicon/robot/robot = loc
+		return robot.get_cell()
 
 /obj/item/stack/cable_coil/fabricator/use(var/used)
 	var/obj/item/cell/cell = get_cell()

@@ -150,11 +150,11 @@
 
 /obj/item/rcd/borg/useResource(var/amount, var/mob/user)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.cell)
+		var/mob/living/silicon/robot/robot = user
+		if(robot.cell)
 			var/cost = amount*30
-			if(R.cell.charge >= cost)
-				R.cell.use(cost)
+			if(robot.cell.charge >= cost)
+				robot.cell.use(cost)
 				return 1
 	return 0
 

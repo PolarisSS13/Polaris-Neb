@@ -7,11 +7,11 @@
 /datum/artifact_effect/celldrain/DoEffectTouch(var/mob/user)
 	if(user)
 		if(isrobot(user))
-			var/mob/living/silicon/robot/R = user
-			var/obj/item/cell/C = R.get_cell()
+			var/mob/living/silicon/robot/robot = user
+			var/obj/item/cell/C = robot.get_cell()
 			if(C)
 				C.use(100)
-				to_chat(R, SPAN_WARNING("SYSTEM ALERT: Energy drain detected!"))
+				to_chat(robot, SPAN_WARNING("SYSTEM ALERT: Energy drain detected!"))
 				return 1
 
 /datum/artifact_effect/celldrain/DoEffectAura()

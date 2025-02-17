@@ -471,14 +471,14 @@
 	cooldowntime = (3 SECONDS)
 
 /obj/item/shockpaddles/robot/check_charge(var/charge_amt)
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return (R.cell && R.cell.check_charge(charge_amt))
+	if(isrobot(loc))
+		var/mob/living/silicon/robot/robot = loc
+		return robot.cell?.check_charge(charge_amt)
 
 /obj/item/shockpaddles/robot/checked_use(var/charge_amt)
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return (R.cell && R.cell.checked_use(charge_amt))
+	if(isrobot(loc))
+		var/mob/living/silicon/robot/robot = loc
+		return robot.cell?.checked_use(charge_amt)
 
 /obj/item/shockpaddles/rig
 	name = "mounted defibrillator"
@@ -490,19 +490,19 @@
 	wielded = 1
 
 /obj/item/shockpaddles/rig/check_charge(var/charge_amt)
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		return (module.holder && module.holder.cell && module.holder.cell.check_charge(charge_amt))
 
 /obj/item/shockpaddles/rig/checked_use(var/charge_amt)
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		return (module.holder && module.holder.cell && module.holder.cell.checked_use(charge_amt))
 
 /obj/item/shockpaddles/rig/set_cooldown(var/delay)
 	..()
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		module.next_use = world.time + delay
 /*
 	Shockpaddles that are linked to a base unit

@@ -394,39 +394,39 @@
 		switch(href_list["silicon"])
 
 			if("unemag")
-				var/mob/living/silicon/robot/R = current
-				if (istype(R))
-					R.emagged = 0
-					if (R.activated(R.module.emag))
-						R.module_active = null
-					if(R.module_state_1 == R.module.emag)
-						R.module_state_1 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_2 == R.module.emag)
-						R.module_state_2 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_3 == R.module.emag)
-						R.module_state_3 = null
-						R.module.emag.forceMove(null)
-					log_admin("[key_name_admin(usr)] has unemag'ed [R].")
+				var/mob/living/silicon/robot/robot = current
+				if (istype(robot))
+					robot.emagged = 0
+					if (robot.activated(robot.module.emag))
+						robot.module_active = null
+					if(robot.module_state_1 == robot.module.emag)
+						robot.module_state_1 = null
+						robot.module.emag.forceMove(null)
+					else if(robot.module_state_2 == robot.module.emag)
+						robot.module_state_2 = null
+						robot.module.emag.forceMove(null)
+					else if(robot.module_state_3 == robot.module.emag)
+						robot.module_state_3 = null
+						robot.module.emag.forceMove(null)
+					log_admin("[key_name_admin(usr)] has unemag'ed [robot].")
 
 			if("unemagcyborgs")
 				if (isAI(current))
 					var/mob/living/silicon/ai/ai = current
-					for (var/mob/living/silicon/robot/R in ai.connected_robots)
-						R.emagged = 0
-						if (R.module)
-							if (R.activated(R.module.emag))
-								R.module_active = null
-							if(R.module_state_1 == R.module.emag)
-								R.module_state_1 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_2 == R.module.emag)
-								R.module_state_2 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_3 == R.module.emag)
-								R.module_state_3 = null
-								R.module.emag.forceMove(null)
+					for (var/mob/living/silicon/robot/robot in ai.connected_robots)
+						robot.emagged = 0
+						if (robot.module)
+							if (robot.activated(robot.module.emag))
+								robot.module_active = null
+							if(robot.module_state_1 == robot.module.emag)
+								robot.module_state_1 = null
+								robot.module.emag.forceMove(null)
+							else if(robot.module_state_2 == robot.module.emag)
+								robot.module_state_2 = null
+								robot.module.emag.forceMove(null)
+							else if(robot.module_state_3 == robot.module.emag)
+								robot.module_state_3 = null
+								robot.module.emag.forceMove(null)
 					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
 
 	else if (href_list["common"])

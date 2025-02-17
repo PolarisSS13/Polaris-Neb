@@ -7,11 +7,11 @@
 /datum/artifact_effect/cellcharge/DoEffectTouch(var/mob/user)
 	if(user)
 		if(isrobot(user))
-			var/mob/living/silicon/robot/R = user
-			var/obj/item/cell/C = R.get_cell()
+			var/mob/living/silicon/robot/robot = user
+			var/obj/item/cell/C = robot.get_cell()
 			if(C)
 				C.give(100)
-				to_chat(R, SPAN_NOTICE("SYSTEM ALERT: Energy boost detected!"))
+				to_chat(robot, SPAN_NOTICE("SYSTEM ALERT: Energy boost detected!"))
 				return 1
 
 /datum/artifact_effect/cellcharge/DoEffectAura()

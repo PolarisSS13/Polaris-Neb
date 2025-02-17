@@ -5,8 +5,8 @@
 
 /obj/screen/robot/inventory/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.module)
-			R.hud_used.toggle_show_robot_modules()
+		var/mob/living/silicon/robot/robot = user
+		if(robot.module)
+			robot.hud_used.toggle_show_robot_modules()
 			return 1
-		to_chat(R, "You haven't selected a module yet.")
+		to_chat(robot, "You haven't selected a module yet.")

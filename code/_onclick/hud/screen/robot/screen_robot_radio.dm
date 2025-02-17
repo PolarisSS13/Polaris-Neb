@@ -6,5 +6,5 @@
 
 /obj/screen/robot/radio/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		R.radio_menu()
+		var/mob/living/silicon/robot/robot = user
+		robot.radio_menu()

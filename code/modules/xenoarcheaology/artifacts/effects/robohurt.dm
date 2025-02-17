@@ -8,9 +8,9 @@
 
 /datum/artifact_effect/robohurt/DoEffectTouch(var/mob/user)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		to_chat(R, "<span class='danger'>Your systems report severe damage has been inflicted!</span>")
-		R.take_overall_damage(rand(10,50), rand(10,50))
+		var/mob/living/silicon/robot/robot = user
+		to_chat(robot, "<span class='danger'>Your systems report severe damage has been inflicted!</span>")
+		robot.take_overall_damage(rand(10,50), rand(10,50))
 		return 1
 
 /datum/artifact_effect/robohurt/DoEffectAura()

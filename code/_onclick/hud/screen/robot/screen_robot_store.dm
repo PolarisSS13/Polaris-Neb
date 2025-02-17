@@ -5,9 +5,9 @@
 
 /obj/screen/robot/store/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.module)
-			R.uneq_active()
-			R.hud_used.update_robot_modules_display()
+		var/mob/living/silicon/robot/robot = user
+		if(robot.module)
+			robot.uneq_active()
+			robot.hud_used.update_robot_modules_display()
 		else
-			to_chat(R, "You haven't selected a module yet.")
+			to_chat(robot, "You haven't selected a module yet.")

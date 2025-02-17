@@ -95,6 +95,6 @@
 				attackby(P, H)
 				return
 	else if(isrobot(AM))
-		var/mob/living/silicon/robot/R = AM
-		if(IS_PICK(R.module_active))
-			attackby(R.module_active,R)
+		var/mob/living/silicon/robot/robot = AM
+		if(IS_PICK(robot.module_active))
+			attackby(robot.module_active,robot)

@@ -339,12 +339,12 @@
 	if(!length(held))
 		to_chat(user, "<span class='notice'>The rack is empty.</span>")
 		return
-	var/obj/item/R = held[length(held)]
-	R.dropInto(loc)
-	held -= R
-	R.attack_self(user) // deploy it
-	to_chat(user, "<span class='notice'>You deploy [R].</span>")
-	R.add_fingerprint(user)
+	var/obj/item/rack = held[length(held)]
+	rack.dropInto(loc)
+	held -= rack
+	rack.attack_self(user) // deploy it
+	to_chat(user, "<span class='notice'>You deploy [rack].</span>")
+	rack.add_fingerprint(user)
 
 /obj/item/robot_rack/resolve_attackby(obj/O, mob/user, click_params)
 	if(istype(O, object_type))
@@ -407,8 +407,8 @@
 	. = ..()
 
 /obj/item/bioreactor/Process()
-	var/mob/living/silicon/robot/R = loc
-	if(!istype(R) || !R.cell || R.cell.fully_charged() || !contents.len)
+	var/mob/living/silicon/robot/robot = loc
+	if(!istype(robot) || !robot.cell || robot.cell.fully_charged() || !contents.len)
 		return
 
 	var/generating_power
@@ -435,4 +435,4 @@
 		qdel(using_item)
 
 	if(generating_power)
-		R.cell.give(generating_power * CELLRATE)
+		robot.cell.give(generating_power * CELLRATE)
