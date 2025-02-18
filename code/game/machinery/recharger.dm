@@ -83,11 +83,11 @@
 		update_use_power(POWER_USE_IDLE)
 		icon_state = icon_state_idle
 	else
-		var/obj/item/cell/C = charging.get_cell()
-		if(istype(C))
-			if(!C.fully_charged())
+		var/obj/item/cell/cell = charging.get_cell()
+		if(istype(cell))
+			if(!cell.fully_charged())
 				icon_state = icon_state_charging
-				C.give(active_power_usage*CELLRATE)
+				cell.give(active_power_usage*CELLRATE)
 				update_use_power(POWER_USE_ACTIVE)
 			else
 				icon_state = icon_state_charged
@@ -98,9 +98,9 @@
 		..(severity)
 		return
 	if(charging)
-		var/obj/item/cell/C = charging.get_cell()
-		if(istype(C))
-			C.emp_act(severity)
+		var/obj/item/cell/cell = charging.get_cell()
+		if(istype(cell))
+			cell.emp_act(severity)
 	..(severity)
 
 /obj/machinery/recharger/on_update_icon()	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.

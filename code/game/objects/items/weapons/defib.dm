@@ -365,8 +365,8 @@
 	H.resuscitate()
 	var/obj/item/organ/internal/cell/potato = H.get_organ(BP_CELL, /obj/item/organ/internal/cell)
 	if(potato && potato.cell)
-		var/obj/item/cell/C = potato.cell
-		C.give(chargecost)
+		var/obj/item/cell/cell = potato.cell
+		cell.give(chargecost)
 
 	ADJ_STATUS(H, STAT_ASLEEP, -60)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")

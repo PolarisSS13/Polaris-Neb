@@ -92,8 +92,8 @@
 		qdel(trail)
 	trail = null
 
-/obj/vehicle/bike/load(var/atom/movable/C)
-	var/mob/living/M = C
+/obj/vehicle/bike/load(var/atom/movable/loading)
+	var/mob/living/M = loading
 	if(!istype(M)) return 0
 	if(M.buckled || M.anchored || M.restrained() || !Adjacent(M) || !M.Adjacent(src))
 		return 0
@@ -104,7 +104,7 @@
 		engine.emp_act(severity)
 	..()
 
-/obj/vehicle/bike/insert_cell(var/obj/item/cell/C, var/mob/living/human/H)
+/obj/vehicle/bike/insert_cell(var/obj/item/cell/cell, var/mob/living/human/H)
 	return
 
 /obj/vehicle/bike/attackby(obj/item/W, mob/user)
