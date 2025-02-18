@@ -184,7 +184,7 @@
 	var/obj/effect/shuttle_landmark/old_location = current_location
 	RAISE_EVENT(/decl/observ/shuttle_pre_move, src, old_location, destination)
 	shuttle_moved(destination, translation, angle_offset)
-	RAISE_EVENT_REPEAT(/decl/observ/shuttle_moved, src, old_location, destination)
+	RAISE_EVENT(/decl/observ/shuttle_moved, src, old_location, destination)
 	if(istype(old_location))
 		old_location.shuttle_departed(src)
 	destination.shuttle_arrived(src)
@@ -208,7 +208,7 @@
 	var/obj/effect/shuttle_landmark/old_location = current_location
 	RAISE_EVENT(/decl/observ/shuttle_pre_move, src, old_location, destination)
 	shuttle_moved(destination, translation, angle_offset)
-	RAISE_EVENT_REPEAT(/decl/observ/shuttle_moved, src, old_location, destination)
+	RAISE_EVENT(/decl/observ/shuttle_moved, src, old_location, destination)
 	if(istype(old_location))
 		old_location.shuttle_departed(src)
 	destination.shuttle_arrived(src)

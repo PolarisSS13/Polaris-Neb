@@ -649,7 +649,7 @@
 		addtimer(CALLBACK(user, TYPE_PROC_REF(/mob, check_emissive_equipment)), 0, TIMER_UNIQUE)
 
 	RAISE_EVENT(/decl/observ/mob_unequipped, user, src)
-	RAISE_EVENT_REPEAT(/decl/observ/item_unequipped, src, user)
+	RAISE_EVENT(/decl/observ/item_unequipped, src, user)
 
 // called just after an item is picked up, after it has been equipped to the mob.
 /obj/item/proc/on_picked_up(mob/user)
@@ -709,7 +709,7 @@
 			addtimer(CALLBACK(user, TYPE_PROC_REF(/mob, check_emissive_equipment)), 0, TIMER_UNIQUE)
 
 	RAISE_EVENT(/decl/observ/mob_equipped, user, src, slot)
-	RAISE_EVENT_REPEAT(/decl/observ/item_equipped, src, user, slot)
+	RAISE_EVENT(/decl/observ/item_equipped, src, user, slot)
 
 // As above but for items being equipped to an active module on a robot.
 /obj/item/proc/equipped_robot(var/mob/user)
