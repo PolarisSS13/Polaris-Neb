@@ -249,8 +249,8 @@
 
 	var/list/human_examines = decls_repository.get_decls_of_subtype(/decl/human_examination)
 	for(var/exam in human_examines)
-		var/decl/human_examination/HE = human_examines[exam]
-		var/adding_text = HE.do_examine(user, distance, src)
+		var/decl/human_examination/examiner = human_examines[exam]
+		var/adding_text = examiner.do_examine(user, distance, src)
 		if(adding_text)
 			. += adding_text
 

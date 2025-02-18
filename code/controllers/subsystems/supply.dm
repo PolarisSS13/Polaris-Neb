@@ -41,10 +41,9 @@ SUBSYSTEM_DEF(supply)
 
 	//Build master supply list
 	var/decl/hierarchy/supply_pack/root = IMPLIED_DECL
-	for(var/decl/hierarchy/supply_pack/sp in root.get_descendants())
-		if(!sp.is_category())
-			master_supply_list += sp
-			CHECK_TICK
+	for(var/decl/hierarchy/supply_pack/pack in root.get_descendants())
+		if(!pack.is_category())
+			master_supply_list += pack
 
 // Just add points over time.
 /datum/controller/subsystem/supply/fire()

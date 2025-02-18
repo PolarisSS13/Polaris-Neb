@@ -18,8 +18,8 @@
 	if(!backpacks_by_name)
 		backpacks_by_name = list()
 		var/bos = global.using_map.get_available_backpacks()
-		for(var/bo in bos)
-			var/decl/backpack_outfit/backpack_outfit = bos[bo]
+		for(var/backpack_option in bos)
+			var/decl/backpack_outfit/backpack_outfit = bos[backpack_option]
 			backpacks_by_name[backpack_outfit.name] = backpack_outfit
 
 /datum/category_item/player_setup_item/physical/equipment/load_character(datum/pref_record_reader/R)
@@ -210,13 +210,13 @@
 		var/backpack_name = href_list["backpack"]
 		if(!(backpack_name in backpacks_by_name))
 			return TOPIC_NOACTION
-		var/decl/backpack_outfit/bo = backpacks_by_name[backpack_name]
-		var/datum/backpack_tweak/bt = locate(href_list["tweak"]) in bo.tweaks
+		var/decl/backpack_outfit/backpack_option = backpacks_by_name[backpack_name]
+		var/datum/backpack_tweak/bt = locate(href_list["tweak"]) in backpack_option.tweaks
 		if(!bt)
 			return TOPIC_NOACTION
-		var/new_metadata = bt.get_metadata(user, get_backpack_metadata(bo, bt))
+		var/new_metadata = bt.get_metadata(user, get_backpack_metadata(backpack_option, bt))
 		if(new_metadata)
-			set_backpack_metadata(bo, bt, new_metadata)
+			set_backpack_metadata(backpack_option, bt, new_metadata)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 	else if(href_list["change_cash_choice"])
 		var/list/display_choices = list()

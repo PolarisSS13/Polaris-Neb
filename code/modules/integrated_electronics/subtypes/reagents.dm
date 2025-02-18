@@ -418,8 +418,8 @@
 		if(1)
 			var/cont[0]
 			for(var/rtype in reagents.reagent_volumes)
-				var/decl/material/RE = GET_DECL(rtype)
-				cont += RE.name
+				var/decl/material/reagent = GET_DECL(rtype)
+				cont += reagent.name
 			set_pin_data(IC_OUTPUT, 3, cont)
 			push_data()
 		if(2)

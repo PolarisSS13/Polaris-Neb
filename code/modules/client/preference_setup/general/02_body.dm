@@ -261,8 +261,8 @@
 				var/list/accessory_metadata = length(current_accessories) ? current_accessories[current_accessory] : accessory_decl.get_default_accessory_metadata()
 				var/list/metadata_strings = list()
 				for(var/metadata_type in accessory_decl.accessory_metadata_types)
-					var/decl/sprite_accessory_metadata/sam = GET_DECL(metadata_type)
-					metadata_strings += sam.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
+					var/decl/sprite_accessory_metadata/metadata = GET_DECL(metadata_type)
+					metadata_strings += metadata.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
 				var/acc_decl_ref = "\ref[accessory_decl]"
 				. += "<tr>"
 				. += "<td width = '100px'><b>[accessory_cat_decl.name]</b></td>"
@@ -284,8 +284,8 @@
 				var/list/accessory_metadata = current_accessories[accessory]
 				var/list/metadata_strings = list()
 				for(var/metadata_type in accessory_decl.accessory_metadata_types)
-					var/decl/sprite_accessory_metadata/sam = GET_DECL(metadata_type)
-					metadata_strings += sam.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
+					var/decl/sprite_accessory_metadata/metadata = GET_DECL(metadata_type)
+					metadata_strings += metadata.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
 				var/acc_decl_ref = "\ref[accessory_decl]"
 				. += "<tr>"
 				. += "<td width = '100px'><a href='byond://?src=\ref[src];acc_cat_decl=[cat_decl_ref];acc_decl=[acc_decl_ref];acc_remove=1'>Remove</a></td>"

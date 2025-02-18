@@ -38,8 +38,8 @@
 /decl/loadout_option/proc/can_afford(var/mob/user, var/datum/preferences/pref)
 	if(cost > 0 && (pref.total_loadout_cost + cost) > get_config_value(/decl/config/num/max_gear_cost))
 		return FALSE
-	var/decl/loadout_category/LC = GET_DECL(category)
-	if(!LC || pref.total_loadout_selections[category] >= LC.max_selections)
+	var/decl/loadout_category/loadout_cat = GET_DECL(category)
+	if(!loadout_cat || pref.total_loadout_selections[category] >= loadout_cat.max_selections)
 		return FALSE
 	return TRUE
 
@@ -145,7 +145,7 @@
 	var/firstcat = 1
 	current_tab = current_tab || global.using_map.loadout_categories[1].type
 	var/decl/loadout_category/current_category_decl = GET_DECL(current_tab)
-	for(var/decl/loadout_category/LC as anything in global.using_map.loadout_categories)
+	for(var/decl/loadout_category/loadout_cat as anything in global.using_map.loadout_categories)
 
 		if(firstcat)
 			firstcat = FALSE
@@ -153,21 +153,21 @@
 			. += " |"
 
 		var/category_cost = 0
-		for(var/gear_id in LC.gear)
+		for(var/gear_id in loadout_cat.gear)
 			if(gear_id in pref.gear_list[pref.gear_slot])
-				var/decl/loadout_option/gear = LC.gear[gear_id]
+				var/decl/loadout_option/gear = loadout_cat.gear[gear_id]
 				category_cost += gear.cost
 
 		if(category == current_category_decl.type)
-			. += " <span class='linkOn'>[LC.name] - [category_cost]</span> "
+			. += " <span class='linkOn'>[loadout_cat.name] - [category_cost]</span> "
 		else
 			var/category_selections
-			if(LC.max_selections < INFINITY)
-				category_selections = " - [LC.max_selections - pref.total_loadout_selections[category]] remaining"
+			if(loadout_cat.max_selections < INFINITY)
+				category_selections = " - [loadout_cat.max_selections - pref.total_loadout_selections[category]] remaining"
 			if(category_cost)
-				. += " <a href='byond://?src=\ref[src];select_category=\ref[LC]'><font color = '#e67300'>[LC.name] - [category_cost][category_selections]</font></a> "
+				. += " <a href='byond://?src=\ref[src];select_category=\ref[loadout_cat]'><font color = '#e67300'>[loadout_cat.name] - [category_cost][category_selections]</font></a> "
 			else
-				. += " <a href='byond://?src=\ref[src];select_category=\ref[LC]'>[LC.name] - 0[category_selections]</a> "
+				. += " <a href='byond://?src=\ref[src];select_category=\ref[loadout_cat]'>[loadout_cat.name] - 0[category_selections]</a> "
 
 	. += "</b></center></td></tr>"
 	. += "<tr><td colspan=3><hr></td></tr>"
@@ -366,9 +366,9 @@
 		recalculate_loadout_cost()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["select_category"])
-		var/decl/loadout_category/LC = locate(href_list["select_category"])
-		if(istype(LC) && (LC in global.using_map.loadout_categories))
-			current_tab = LC.type
+		var/decl/loadout_category/loadout_cat = locate(href_list["select_category"])
+		if(istype(loadout_cat) && (loadout_cat in global.using_map.loadout_categories))
+			current_tab = loadout_cat.type
 		else
 			current_tab = global.using_map.loadout_categories[1].type
 		return TOPIC_REFRESH
@@ -435,9 +435,9 @@
 	. = ..()
 
 	if(!global.using_map.loadout_blacklist || !(type in global.using_map.loadout_blacklist))
-		var/decl/loadout_category/LC = GET_DECL(category)
-		ADD_SORTED(LC.gear, uid, /proc/cmp_text_asc)
-		LC.gear[uid] = src
+		var/decl/loadout_category/loadout_cat = GET_DECL(category)
+		ADD_SORTED(loadout_cat.gear, uid, /proc/cmp_text_asc)
+		loadout_cat.gear[uid] = src
 
 	if(FLAGS_EQUALS(loadout_flags, GEAR_HAS_TYPE_SELECTION|GEAR_HAS_SUBTYPE_SELECTION))
 		CRASH("May not have both type and subtype selection tweaks")
