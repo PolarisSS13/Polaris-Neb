@@ -4,14 +4,14 @@
 	var/datum/seed/seed_type // Keeps track of what our seed is
 	var/list/obj/item/seeds/seeds = list() // Tracks actual objects contained in the pile
 
-/datum/seed_pile/New(var/obj/item/seeds/seeds)
-	name = seeds.name
+/datum/seed_pile/New(var/obj/item/seeds/new_seeds)
+	name = new_seeds.name
 	amount = 1
-	seed_type = seeds.seed
-	seeds += seeds
+	seed_type = new_seeds.seed
+	seeds += new_seeds
 
-/datum/seed_pile/proc/matches(var/obj/item/seeds/seeds)
-	if (seeds.seed == seed_type)
+/datum/seed_pile/proc/matches(var/obj/item/seeds/check_seeds)
+	if (check_seeds.seed == seed_type)
 		return 1
 	return 0
 
@@ -294,15 +294,15 @@
 
 	switch(task)
 		if ("vend")
-			var/obj/seeds = pick(our_pile.seeds)
-			if (seeds)
+			var/obj/vending_seeds = pick(our_pile.seeds)
+			if (vending_seeds)
 				--our_pile.amount
-				our_pile.seeds -= seeds
+				our_pile.seeds -= vending_seeds
 				if (our_pile.amount <= 0 || our_pile.seeds.len <= 0)
 					piles -= our_pile
 					qdel(our_pile)
 				flick("[initial(icon_state)]-vend", src)
-				seeds.dropInto(loc)
+				vending_seeds.dropInto(loc)
 			. = TOPIC_REFRESH
 		if ("purge")
 			QDEL_LIST(our_pile.seeds)
@@ -334,23 +334,23 @@
 
 	return ..()
 
-/obj/machinery/seed_storage/proc/add(var/obj/item/seeds/seeds, bypass_removal = 0)
+/obj/machinery/seed_storage/proc/add(var/obj/item/seeds/adding_seeds, bypass_removal = 0)
 	if(!bypass_removal)
-		if (ismob(seeds.loc))
-			var/mob/user = seeds.loc
-			if(!user.try_unequip(seeds, src))
+		if (ismob(adding_seeds.loc))
+			var/mob/user = adding_seeds.loc
+			if(!user.try_unequip(adding_seeds, src))
 				return
-		else if(isobj(seeds.loc))
-			seeds.loc?.storage?.remove_from_storage(null, seeds, src)
+		else if(isobj(adding_seeds.loc))
+			adding_seeds.loc?.storage?.remove_from_storage(null, adding_seeds, src)
 
-	seeds.forceMove(src)
+	adding_seeds.forceMove(src)
 
 	for (var/datum/seed_pile/N in piles)
-		if (N.matches(seeds))
+		if (N.matches(adding_seeds))
 			++N.amount
-			N.seeds += (seeds)
+			N.seeds += adding_seeds
 			return
 
-	piles += new /datum/seed_pile(seeds)
+	piles += new /datum/seed_pile(adding_seeds)
 	flick("[initial(icon_state)]-vend", src)
 	return
