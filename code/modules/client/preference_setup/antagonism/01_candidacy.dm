@@ -2,6 +2,9 @@
 	var/list/may_be_special_role
 	var/list/be_special_role
 
+/datum/category_item/player_setup_item/antagonism
+	abstract_type = /datum/category_item/player_setup_item/antagonism
+
 /datum/category_item/player_setup_item/antagonism/candidacy
 	name = "Candidacy"
 	sort_order = 1

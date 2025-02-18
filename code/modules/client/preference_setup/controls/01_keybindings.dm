@@ -47,6 +47,9 @@
 		to_chat(client, SPAN_DANGER("[conflicted.category]: [conflicted.full_name] needs updating."))
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 
+/datum/category_item/player_setup_item/controls
+	abstract_type = /datum/category_item/player_setup_item/controls
+
 /datum/category_item/player_setup_item/controls/keybindings
 	name = "Keybindings"
 	sort_order = 1

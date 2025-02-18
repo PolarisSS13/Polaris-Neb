@@ -263,14 +263,13 @@
 
 			entry += "<br><i>"
 			var/list/skill_checks = list()
-			for(var/R in skills_required)
-				var/decl/skill/S = R
+			for(var/decl/skill/required_skill in skills_required)
 				var/skill_entry
-				skill_entry += "[S.levels[skills_required[R]]]"
+				skill_entry += "[required_skill.levels[skills_required[required_skill]]]"
 				if(allowed)
-					skill_entry = "<font color=55cc55>[skill_entry] [R]</font>"
+					skill_entry = "<font color=55cc55>[skill_entry] [required_skill]</font>"
 				else
-					skill_entry = "<font color=cc5555>[skill_entry] [R]</font>"
+					skill_entry = "<font color=cc5555>[skill_entry] [required_skill]</font>"
 				skill_checks += skill_entry
 
 			entry += "[english_list(skill_checks)]</i>"

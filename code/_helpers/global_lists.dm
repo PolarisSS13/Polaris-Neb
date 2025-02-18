@@ -9,9 +9,6 @@ var/global/list/mannequins_
 // Uplinks
 var/global/list/obj/item/uplink/world_uplinks = list()
 
-//Preferences stuff
-var/global/datum/category_collection/underwear/underwear = new()
-
 // Visual nets
 var/global/list/datum/visualnet/visual_nets = list()
 var/global/datum/visualnet/camera/cameranet = new()

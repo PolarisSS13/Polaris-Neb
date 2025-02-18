@@ -13,6 +13,9 @@ var/global/list/valid_icon_sizes = list(32, 48, 64, 96, 128)
 	//Style for popup tooltips
 	var/tooltip_style            = "Midnight"
 
+/datum/category_item/player_setup_item/player_global
+	abstract_type = /datum/category_item/player_setup_item/player_global
+
 /datum/category_item/player_setup_item/player_global/ui
 	name = "UI"
 	sort_order = 1
