@@ -63,15 +63,15 @@
 		smoked = 30
 		update_icon()
 		return TRUE
-	else if(istype(I, /obj/item/honey_frame))
+	else if(istype(I, /obj/item/hive_frame/crafted))
 		if(closed)
 			to_chat(user, "<span class='notice'>You need to open \the [src] with a crowbar before inserting \the [I].</span>")
 			return TRUE
 		if(frames >= maxFrames)
 			to_chat(user, "<span class='notice'>There is no place for an another frame.</span>")
 			return TRUE
-		var/obj/item/honey_frame/H = I
-		if(H.honey)
+		var/obj/item/hive_frame/crafted/H = I
+		if(H.reagents?.total_volume)
 			to_chat(user, "<span class='notice'>\The [I] is full with beeswax and honey, empty it in the extractor first.</span>")
 			return TRUE
 		++frames
@@ -140,7 +140,7 @@
 		return
 	user.visible_message("<span class='notice'>\The [user] starts taking the honeycombs out of \the [src].</span>", "<span class='notice'>You start taking the honeycombs out of \the [src]...</span>")
 	while(honeycombs >= 100 && do_after(user, 30, src))
-		new /obj/item/honey_frame/filled(loc)
+		new /obj/item/hive_frame/crafted/filled(loc)
 		honeycombs -= 100
 		--frames
 	update_icon()

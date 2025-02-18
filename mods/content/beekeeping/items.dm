@@ -1,7 +1,7 @@
 /obj/item/beehive_assembly
 	name = "beehive assembly"
 	desc = "Contains everything you need to build a beehive."
-	icon = 'mods/content/beekeeping/apiary_bees_etc.dmi'
+	icon = 'mods/content/beekeeping/icons/apiary_bees_etc.dmi'
 	icon_state = "apiary"
 	material = /decl/material/solid/organic/wood
 
@@ -12,15 +12,6 @@
 		new /obj/machinery/beehive(get_turf(user))
 		qdel(src)
 
-/obj/item/stock_parts/circuitboard/honey
-	name = "circuitboard (honey extractor)"
-	build_path = /obj/machinery/honey_extractor
-	board_type = "machine"
-	origin_tech = @'{"biotech":2,"engineering":1}'
-	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/matter_bin = 2)
-
 /obj/item/bee_smoker
 	name = "bee smoker"
 	desc = "A device used to calm down bees before harvesting honey."
@@ -28,35 +19,6 @@
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_SMALL
 	material = /decl/material/solid/metal/steel
-
-/obj/item/honey_frame
-	name = "beehive frame"
-	desc = "A frame for the beehive that the bees will fill with honeycombs."
-	icon = 'mods/content/beekeeping/icons/beekeeping.dmi'
-	icon_state = "honeyframe"
-	w_class = ITEM_SIZE_SMALL
-	material = /decl/material/solid/organic/wood
-	var/honey = 0
-
-/obj/item/honey_frame/filled
-	name = "filled beehive frame"
-	desc = "A frame for the beehive that the bees have filled with honeycombs."
-	honey = 20
-	material = /decl/material/solid/organic/wood
-
-/obj/item/honey_frame/filled/Initialize()
-	. = ..()
-	overlays += "honeycomb"
-
-// This is crap, will be replaced in beewrite PR.
-/obj/item/honey_frame/handle_centrifuge_process(obj/machinery/centrifuge/centrifuge)
-	if(!(. = ..()) || !honey)
-		return
-	centrifuge?.loaded_beaker?.add_to_reagents(/decl/material/liquid/nutriment/honey, honey)
-	honey = 0
-	new /obj/item/honey_frame(centrifuge.loc)
-	new /obj/item/stack/material/bar(centrifuge.loc, 1, /decl/material/solid/organic/wax)
-	qdel(src)
 
 /obj/item/bee_pack
 	name = "bee pack"
