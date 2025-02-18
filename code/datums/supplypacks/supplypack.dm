@@ -14,8 +14,13 @@
 	var/supply_method = /decl/supply_method
 	var/decl/security_level/security_level
 
-//Is run once on init for non-base-category supplypacks.
 var/global/list/cargoprices = list()
+/decl/hierarchy/supply_pack/Initialize()
+	. = ..()
+	if(!is_category())
+		setup()
+
+//Is run once on init for non-category supplypacks.
 /decl/hierarchy/supply_pack/proc/setup()
 	if(!num_contained)
 		for(var/entry in contains)

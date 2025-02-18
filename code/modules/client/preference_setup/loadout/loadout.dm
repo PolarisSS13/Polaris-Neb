@@ -153,9 +153,9 @@
 			. += " |"
 
 		var/category_cost = 0
-		for(var/gear in LC.gear)
-			var/decl/loadout_option/gear = LC.gear[gear]
-			if(gear in pref.gear_list[pref.gear_slot])
+		for(var/gear_id in LC.gear)
+			if(gear_id in pref.gear_list[pref.gear_slot])
+				var/decl/loadout_option/gear = LC.gear[gear_id]
 				category_cost += gear.cost
 
 		if(category == current_category_decl.type)
@@ -179,8 +179,8 @@
 
 		var/list/other_gear = list()
 		var/i = 0
-		for(var/gear in current_loadout)
-			var/decl/loadout_option/gear = decls_repository.get_decl_by_id(gear, validate_decl_type = FALSE)
+		for(var/gear_id in current_loadout)
+			var/decl/loadout_option/gear = decls_repository.get_decl_by_id(gear_id, validate_decl_type = FALSE)
 			if(istype(gear))
 				if(gear.slot)
 					i++
