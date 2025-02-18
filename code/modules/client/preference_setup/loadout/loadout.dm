@@ -89,25 +89,25 @@
 
 		pref.total_loadout_cost = 0
 		pref.total_loadout_selections = list()
-		var/list/gears = pref.gear_list[index]
-		if(istype(gears))
-			for(var/gear_id in gears)
+		var/list/loadout = pref.gear_list[index]
+		if(istype(loadout))
+			for(var/gear_id in loadout)
 				var/mob/user = preference_mob()
-				var/decl/loadout_option/LO = decls_repository.get_decl_by_id_or_var(gear_id, /decl/loadout_option)
+				var/decl/loadout_option/gear = decls_repository.get_decl_by_id_or_var(gear_id, /decl/loadout_option)
 
-				if(!istype(LO))
-					gears -= gear_id
+				if(!istype(gear))
+					loadout -= gear_id
 					continue
 
 				// Swap names for UIDs to grandfather in old saves.
-				if(LO.uid != gear_id)
-					gears[LO.uid] = gears[gear_id]
-					gears -= gear_id
-					gear_id = LO.uid
+				if(gear.uid != gear_id)
+					loadout[gear.uid] = loadout[gear_id]
+					loadout -= gear_id
+					gear_id = gear.uid
 
-				if(LO && (GET_DECL(LO.category) in global.using_map.loadout_categories) && LO.can_be_taken_by(user, pref) && LO.can_afford(user, pref))
-					pref.total_loadout_cost += LO.cost
-					pref.total_loadout_selections[LO.category] = (pref.total_loadout_selections[LO.category] + 1)
+				if(gear && (GET_DECL(gear.category) in global.using_map.loadout_categories) && gear.can_be_taken_by(user, pref) && gear.can_afford(user, pref))
+					pref.total_loadout_cost += gear.cost
+					pref.total_loadout_selections[gear.category] = (pref.total_loadout_selections[gear.category] + 1)
 		else
 			pref.gear_list[index] = list()
 
@@ -116,12 +116,12 @@
 	pref.total_loadout_cost = 0
 	pref.total_loadout_selections = list()
 
-	var/list/gears = pref.gear_list[pref.gear_slot]
-	for(var/i = 1; i <= gears.len; i++)
-		var/decl/loadout_option/G = decls_repository.get_decl_by_id_or_var(gears[i], /decl/loadout_option)
-		if(G)
-			pref.total_loadout_cost += G.cost
-			pref.total_loadout_selections[G.category] = (pref.total_loadout_selections[G.category] + 1)
+	var/list/loadout = pref.gear_list[pref.gear_slot]
+	for(var/i = 1; i <= loadout.len; i++)
+		var/decl/loadout_option/gear = decls_repository.get_decl_by_id_or_var(loadout[i], /decl/loadout_option)
+		if(gear)
+			pref.total_loadout_cost += gear.cost
+			pref.total_loadout_selections[gear.category] = (pref.total_loadout_selections[gear.category] + 1)
 
 /datum/category_item/player_setup_item/loadout/content()
 	. = list()
@@ -154,9 +154,9 @@
 
 		var/category_cost = 0
 		for(var/gear in LC.gear)
-			var/decl/loadout_option/G = LC.gear[gear]
+			var/decl/loadout_option/gear = LC.gear[gear]
 			if(gear in pref.gear_list[pref.gear_slot])
-				category_cost += G.cost
+				category_cost += gear.cost
 
 		if(category == current_category_decl.type)
 			. += " <span class='linkOn'>[LC.name] - [category_cost]</span> "
@@ -180,13 +180,13 @@
 		var/list/other_gear = list()
 		var/i = 0
 		for(var/gear in current_loadout)
-			var/decl/loadout_option/G = decls_repository.get_decl_by_id(gear, validate_decl_type = FALSE)
-			if(istype(G))
-				if(G.slot)
+			var/decl/loadout_option/gear = decls_repository.get_decl_by_id(gear, validate_decl_type = FALSE)
+			if(istype(gear))
+				if(gear.slot)
 					i++
-					. += "<tr><td colspan=2><center>Layer [i]: [G.name]</center></td><td><a href='byond://?src=\ref[src];gear=\ref[G];layer_lower=1'>Layer under</a><a href='byond://?src=\ref[src];gear=\ref[G];layer_higher=1'>Layer over</a><a href='byond://?src=\ref[src];toggle_gear=\ref[G]'>Remove</a></td></tr>"
+					. += "<tr><td colspan=2><center>Layer [i]: [gear.name]</center></td><td><a href='byond://?src=\ref[src];gear=\ref[gear];layer_lower=1'>Layer under</a><a href='byond://?src=\ref[src];gear=\ref[gear];layer_higher=1'>Layer over</a><a href='byond://?src=\ref[src];toggle_gear=\ref[gear]'>Remove</a></td></tr>"
 				else
-					other_gear += "<tr><td colspan=2><center>[G.name]</center></td><td><a href='byond://?src=\ref[src];toggle_gear=\ref[G]'>Remove</a></td></tr>"
+					other_gear += "<tr><td colspan=2><center>[gear.name]</center></td><td><a href='byond://?src=\ref[src];toggle_gear=\ref[gear]'>Remove</a></td></tr>"
 
 		if(length(other_gear))
 			. += "<tr><td colspan=3><b><hr><center>Other gear</b><hr></center></td></tr>"
@@ -207,24 +207,24 @@
 	var/mob/user = preference_mob()
 	for(var/gear_id in current_category_decl.gear)
 
-		var/decl/loadout_option/G = current_category_decl.gear[gear_id]
-		if(!G.can_be_taken_by(user, pref))
+		var/decl/loadout_option/gear = current_category_decl.gear[gear_id]
+		if(!gear.can_be_taken_by(user, pref))
 			continue
 
-		var/ticked = (G.uid in pref.gear_list[pref.gear_slot])
+		var/ticked = (gear.uid in pref.gear_list[pref.gear_slot])
 		var/list/entry = list()
-		entry += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='byond://?src=\ref[src];toggle_gear=\ref[G]'>[G.name]</a></td>"
-		entry += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"
-		entry += "<td><font size=2>[G.get_description(get_gear_metadata(G, TRUE))]</font>"
+		entry += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='byond://?src=\ref[src];toggle_gear=\ref[gear]'>[gear.name]</a></td>"
+		entry += "<td width = 10% style='vertical-align:top'>[gear.cost]</td>"
+		entry += "<td><font size=2>[gear.get_description(get_gear_metadata(gear, TRUE))]</font>"
 
 		var/allowed = 1
-		if(allowed && G.allowed_roles)
+		if(allowed && gear.allowed_roles)
 			var/good_job = 0
 			var/bad_job = 0
 			entry += "<br><i>"
 			var/list/jobchecks = list()
 			for(var/datum/job/J in jobs)
-				if(J.type in G.allowed_roles)
+				if(J.type in gear.allowed_roles)
 					jobchecks += "<font color=55cc55>[J.title]</font>"
 					good_job = 1
 				else
@@ -233,7 +233,7 @@
 			allowed = good_job || !bad_job
 			entry += "[english_list(jobchecks)]</i>"
 
-		if(allowed && G.allowed_branches)
+		if(allowed && gear.allowed_branches)
 			var/list/branches = list()
 			for(var/datum/job/J in jobs)
 				if(pref.branches[J.title])
@@ -244,7 +244,7 @@
 				entry += "<br><i>"
 				for(var/branch in branches)
 					var/datum/mil_branch/player_branch = mil_branches.get_branch(branch)
-					if(player_branch.type in G.allowed_branches)
+					if(player_branch.type in gear.allowed_branches)
 						branch_checks += "<font color=55cc55>[player_branch.name]</font>"
 						good_branch = 1
 					else
@@ -253,11 +253,11 @@
 
 				entry += "[english_list(branch_checks)]</i>"
 
-		if(allowed && G.allowed_skills)
+		if(allowed && gear.allowed_skills)
 			var/list/skills_required = list()//make it into instances? instead of path
-			for(var/skill in G.allowed_skills)
+			for(var/skill in gear.allowed_skills)
 				var/decl/skill/instance = GET_DECL(skill)
-				skills_required[instance] = G.allowed_skills[skill]
+				skills_required[instance] = gear.allowed_skills[skill]
 
 			allowed = skill_check(jobs, skills_required)//Checks if a single job has all the skills required
 
@@ -277,44 +277,44 @@
 		entry += "</tr>"
 		if(ticked)
 			entry += "<tr><td colspan=3>"
-			for(var/datum/gear_tweak/tweak in G.gear_tweaks)
-				var/contents = tweak.get_contents(get_tweak_metadata(G, tweak))
+			for(var/datum/gear_tweak/tweak in gear.gear_tweaks)
+				var/contents = tweak.get_contents(get_tweak_metadata(gear, tweak))
 				if(contents)
-					entry += " <a href='byond://?src=\ref[src];gear=\ref[G];tweak=\ref[tweak]'>[contents]</a>"
+					entry += " <a href='byond://?src=\ref[src];gear=\ref[gear];tweak=\ref[tweak]'>[contents]</a>"
 			entry += "</td></tr>"
 		if(!hide_unavailable_gear || allowed || ticked)
 			. += entry
 	. += "</table>"
 	. = jointext(.,null)
 
-/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/decl/loadout_option/G, var/readonly)
-	var/list/gear = pref.gear_list[pref.gear_slot]
-	. = gear[G.uid]
+/datum/category_item/player_setup_item/loadout/proc/get_gear_metadata(var/decl/loadout_option/gear, var/readonly)
+	var/list/gears = pref.gear_list[pref.gear_slot]
+	. = gears[gear.uid]
 	if(!.)
 		. = list()
 		if(!readonly)
-			gear[G.uid] = .
+			gears[gear.uid] = .
 
-/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/decl/loadout_option/G, var/datum/gear_tweak/tweak)
-	var/list/metadata = get_gear_metadata(G)
+/datum/category_item/player_setup_item/loadout/proc/get_tweak_metadata(var/decl/loadout_option/gear, var/datum/gear_tweak/tweak)
+	var/list/metadata = get_gear_metadata(gear)
 	. = metadata["[tweak]"]
 	if(!.)
 		. = tweak.get_default()
 		metadata["[tweak]"] = .
 
-/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/decl/loadout_option/G, var/datum/gear_tweak/tweak, var/new_metadata)
-	var/list/metadata = get_gear_metadata(G)
+/datum/category_item/player_setup_item/loadout/proc/set_tweak_metadata(var/decl/loadout_option/gear, var/datum/gear_tweak/tweak, var/new_metadata)
+	var/list/metadata = get_gear_metadata(gear)
 	metadata["[tweak]"] = new_metadata
 
 /datum/category_item/player_setup_item/loadout/OnTopic(href, href_list, user)
 	if(href_list["toggle_gear"])
-		var/decl/loadout_option/TG = locate(href_list["toggle_gear"])
-		if(!istype(TG))
+		var/decl/loadout_option/gear_to_toggle = locate(href_list["toggle_gear"])
+		if(!istype(gear_to_toggle))
 			return TOPIC_REFRESH
-		if(TG.uid in pref.gear_list[pref.gear_slot])
-			pref.gear_list[pref.gear_slot] -= TG.uid
-		else if(TG.can_afford(preference_mob(), pref))
-			pref.gear_list[pref.gear_slot] += TG.uid
+		if(gear_to_toggle.uid in pref.gear_list[pref.gear_slot])
+			pref.gear_list[pref.gear_slot] -= gear_to_toggle.uid
+		else if(gear_to_toggle.can_afford(preference_mob(), pref))
+			pref.gear_list[pref.gear_slot] += gear_to_toggle.uid
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	if(href_list["gear"])
@@ -373,8 +373,8 @@
 			current_tab = global.using_map.loadout_categories[1].type
 		return TOPIC_REFRESH
 	if(href_list["clear_loadout"])
-		var/list/gear = pref.gear_list[pref.gear_slot]
-		gear.Cut()
+		var/list/current_gear = pref.gear_list[pref.gear_slot]
+		current_gear.Cut()
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 	if(href_list["toggle_hiding"])
 		hide_unavailable_gear = !hide_unavailable_gear
