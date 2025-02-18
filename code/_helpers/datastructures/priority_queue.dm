@@ -1,9 +1,9 @@
 /// An automatically ordered list, using the cmp proc to weight the list items
 /datum/priority_queue
 	/// The actual queue
-	var/list/my_queue = list() // For some reason putting VAR_PRIVATE on this causes it to be relatively pathed??
+	VAR_PRIVATE/list/my_queue = list()
 	/// The weight function used to order the queue
-	var/cmp
+	VAR_PRIVATE/cmp
 
 /// Takes a proc `comparer` that will be used to compare the items inserted
 /// * Param `comparer` take two arguments and return the difference in their weight
