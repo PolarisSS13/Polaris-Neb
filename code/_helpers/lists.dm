@@ -279,7 +279,7 @@ Checks if a list has the same entries and values as an element of big.
 
 	total = rand(1, total)
 	for (item in target_list)
-		total -=target_list [item]
+		total -= target_list[item]
 		if (total <= 0)
 			return item
 
