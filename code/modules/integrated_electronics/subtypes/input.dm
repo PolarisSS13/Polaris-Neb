@@ -292,16 +292,15 @@
 
 /obj/item/integrated_circuit/input/gene_scanner/do_work()
 	var/list/greagents = list()
-	var/obj/machinery/portable_atmospherics/hydroponics/H = get_pin_data_as_type(IC_INPUT, 1, /obj/machinery/portable_atmospherics/hydroponics)
-	if(!istype(H)) //Invalid input
+	var/obj/machinery/portable_atmospherics/hydroponics/plant = get_pin_data_as_type(IC_INPUT, 1, /obj/machinery/portable_atmospherics/hydroponics)
+	if(!istype(plant)) //Invalid input
 		return
 	for(var/i=1, i<=outputs.len, i++)
 		set_pin_data(IC_OUTPUT, i, null)
-	if(H in view(get_turf(src))) // Like the medbot's analyzer it can be used at range.
-		if(H.seed)
-			for(var/chem_path in H.seed.chems)
-				var/decl/material/R = chem_path
-				greagents.Add(initial(R.name))
+	if(plant.seed && (plant in view(get_turf(src)))) // Like the medbot's analyzer it can be used at range.
+		for(var/chem_path in plant.seed.chems)
+			var/decl/material/material = GET_DECL(chem_path)
+			greagents.Add(material.use_name)
 
 	set_pin_data(IC_OUTPUT, 1, greagents)
 	push_data()

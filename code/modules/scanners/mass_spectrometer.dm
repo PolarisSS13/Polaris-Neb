@@ -47,8 +47,8 @@
 		..()
 
 /proc/mass_spectrometer_scan(var/datum/reagents/reagents, mob/user, var/details)
-	if(!reagents || !reagents.total_volume)
-		return "<span class='warning'>No sample to scan.</span>"
+	if(!reagents?.total_volume)
+		return SPAN_WARNING("No sample to scan.")
 	var/list/blood_traces = list()
 	var/list/blood_doses = list()
 
@@ -57,27 +57,27 @@
 		if(istype(random))
 			return random.get_scan_data(user)
 
-	for(var/R in reagents.reagent_volumes)
-		if(!ispath(R, /decl/material/liquid/blood))
-			return "<span class='warning'>The sample was contaminated! Please insert another sample</span>"
-		var/data = REAGENT_DATA(reagents, R)
+	for(var/reagent_type in reagents.reagent_volumes)
+		if(!ispath(reagent_type, /decl/material/liquid/blood))
+			return SPAN_WARNING("The sample was contaminated! Please insert another sample.")
+		var/data = REAGENT_DATA(reagents, reagent_type)
 		if(islist(data))
 			blood_traces = data[DATA_BLOOD_TRACE_CHEM]
 			blood_doses = data[DATA_BLOOD_DOSE_CHEM]
 		break
 
 	var/list/dat = list("Trace Chemicals Found: ")
-	for(var/T in blood_traces)
-		var/decl/material/R = T
+	for(var/trace_type in blood_traces)
+		var/decl/material/trace_material = GET_DECL(trace_type)
 		if(details)
-			dat += "[initial(R.name)] ([blood_traces[T]] units) "
+			dat += "[trace_material.use_name] ([blood_traces[trace_type]] units) "
 		else
-			dat += "[initial(R.name)] "
+			dat += "[trace_material.use_name] "
 	if(details)
 		dat += "Metabolism Products of Chemicals Found:"
-		for(var/T in blood_doses)
-			var/decl/material/R = T
-			dat += "[initial(R.name)] ([blood_doses[T]] units) "
+		for(var/dose_type in blood_doses)
+			var/decl/material/dose_material = GET_DECL(dose_type)
+			dat += "[dose_material.use_name] ([blood_doses[dose_type]] units) "
 
 	return jointext(dat, "<br>")
 

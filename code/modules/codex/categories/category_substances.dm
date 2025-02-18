@@ -3,8 +3,8 @@
 	desc = "Various natural and artificial substances."
 
 /decl/codex_category/substances/Populate()
-
-	for(var/decl/material/mat as anything in SSmaterials.materials)
+	var/list/decl/material/alphabetized_materials = sortTim(decls_repository.get_decls_of_subtype_unassociated(/decl/material), /proc/cmp_name_asc)
+	for(var/decl/material/mat as anything in alphabetized_materials)
 
 		if(mat.hidden_from_codex)
 			continue
@@ -67,8 +67,8 @@
 		if(mat.dissolves_in != MAT_SOLVENT_IMMUNE && LAZYLEN(mat.dissolves_into))
 			var/chems = list()
 			for(var/chemical in mat.dissolves_into)
-				var/decl/material/R = chemical
-				chems += "[initial(R.name)] ([mat.dissolves_into[chemical]*100]%)"
+				var/decl/material/material = GET_DECL(chemical)
+				chems += "<span codexlink='[material.codex_name || material.name] (substance)'>[material.name]</span> ([mat.dissolves_into[chemical]*100]%)"
 			var/solvent_needed
 			if(mat.dissolves_in <= MAT_SOLVENT_NONE)
 				solvent_needed = "any liquid"
