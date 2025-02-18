@@ -1,18 +1,18 @@
-var/global/list/global_listen_count = list()
-
 /datum
 	/// Tracks how many event registrations are listening to us. Used in cleanup to prevent dangling references.
 	var/event_source_count = 0
 	/// Tracks how many event registrations we are listening to. Used in cleanup to prevent dangling references.
 	var/event_listen_count = 0
+	/// Tracks how many global event registrations we are listening to. Used in cleanup to prevent dangling references.
+	var/global_listen_count = 0
 
 /proc/cleanup_events(var/datum/source)
-	if(global.global_listen_count && global.global_listen_count[source])
-		cleanup_global_listener(source, global.global_listen_count[source])
+	if(source?.global_listen_count > 0)
+		cleanup_global_listener(source, source.global_listen_count)
 	if(source?.event_source_count > 0)
-		cleanup_source_listeners(source, source?.event_source_count)
+		cleanup_source_listeners(source, source.event_source_count)
 	if(source?.event_listen_count > 0)
-		cleanup_event_listener(source, source?.event_listen_count)
+		cleanup_event_listener(source, source.event_listen_count)
 
 /decl/observ/register(var/datum/event_source, var/datum/listener, var/proc_call)
 	. = ..()
@@ -29,22 +29,19 @@ var/global/list/global_listen_count = list()
 /decl/observ/register_global(var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)
-		global.global_listen_count[listener] += 1
+		listener.global_listen_count += 1
 
 /decl/observ/unregister_global(var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)
-		global.global_listen_count[listener] -= .
-		if(global.global_listen_count[listener] <= 0)
-			global.global_listen_count -= listener
+		listener.global_listen_count -= .
 
 /proc/cleanup_global_listener(listener, listen_count)
-	global.global_listen_count -= listener
 	var/events_removed
 	for(var/entry in global.all_observable_events)
 		var/decl/observ/event = entry
 		if((events_removed = event.unregister_global(listener)))
-			log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still registered to global events.")
+			log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still globally registered to an event.")
 			listen_count -= events_removed
 			if(!listen_count)
 				return
