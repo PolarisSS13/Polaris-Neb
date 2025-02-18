@@ -41,8 +41,8 @@ var/global/list/internet_uplinks = list()
 
 /obj/machinery/internet_uplink/attackby(var/obj/item/used_item, var/mob/user)
 	if(IS_MULTITOOL(used_item))
-		var/datum/extension/local_network_member/uplink = get_extension(src, /datum/extension/local_network_member)
-		uplink.get_new_tag(user)
+		var/datum/extension/local_network_member/uplink_comp = get_extension(src, /datum/extension/local_network_member)
+		uplink_comp.get_new_tag(user)
 		return TRUE
 
 	return ..()
