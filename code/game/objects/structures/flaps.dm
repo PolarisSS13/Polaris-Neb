@@ -41,14 +41,14 @@
 
 	return ..()
 
-/obj/structure/flaps/attackby(obj/item/W, mob/user)
-	if(IS_CROWBAR(W) && !anchored)
+/obj/structure/flaps/attackby(obj/item/used_item, mob/user)
+	if(IS_CROWBAR(used_item) && !anchored)
 		user.visible_message("<span class='notice'>\The [user] begins deconstructing \the [src].</span>", "<span class='notice'>You start deconstructing \the [src].</span>")
 		if(user.do_skilled(3 SECONDS, SKILL_CONSTRUCTION, src))
 			user.visible_message("<span class='warning'>\The [user] deconstructs \the [src].</span>", "<span class='warning'>You deconstruct \the [src].</span>")
 			qdel(src)
 		return TRUE
-	if(IS_SCREWDRIVER(W) && anchored)
+	if(IS_SCREWDRIVER(used_item) && anchored)
 		airtight = !airtight
 		airtight ? become_airtight() : clear_airtight()
 		user.visible_message("<span class='warning'>\The [user] adjusts \the [src], [airtight ? "preventing" : "allowing"] air flow.</span>")

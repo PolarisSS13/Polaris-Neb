@@ -93,13 +93,13 @@
 	qdel(src)
 	return B
 
-/obj/item/chems/drinks/bottle/attackby(obj/item/W, mob/user)
+/obj/item/chems/drinks/bottle/attackby(obj/item/used_item, mob/user)
 	if(!rag)
-		if(istype(W, /obj/item/chems/rag))
-			insert_rag(W, user)
+		if(istype(used_item, /obj/item/chems/rag))
+			insert_rag(used_item, user)
 			return TRUE
-	else if(W.isflamesource())
-		return rag.attackby(W, user)
+	else if(used_item.isflamesource())
+		return rag.attackby(used_item, user)
 	return ..()
 
 /obj/item/chems/drinks/bottle/attack_self(mob/user)

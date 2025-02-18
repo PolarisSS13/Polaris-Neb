@@ -119,8 +119,8 @@
 	else
 		icon_state = "[base_state]-p"
 
-/obj/machinery/sparker/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/machinery/sparker/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		add_fingerprint(user)
 		disable = !disable
 		if(disable)

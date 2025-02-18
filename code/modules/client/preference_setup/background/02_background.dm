@@ -77,12 +77,12 @@
 		if(istype(background))
 			pref.background_info[cat.type] = background.type
 
-/datum/category_item/player_setup_item/background/details/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/background/details/save_character(datum/pref_record_writer/writer)
 	for(var/background_cat_type in pref.background_info)
 		var/decl/background_category/cat = GET_DECL(background_cat_type)
 		var/decl/background_detail/entry = GET_DECL(pref.background_info[background_cat_type])
 		if(istype(cat) && istype(entry))
-			W.write(cat.uid, entry.uid)
+			writer.write(cat.uid, entry.uid)
 
 /datum/category_item/player_setup_item/background/details/content()
 	. = list()

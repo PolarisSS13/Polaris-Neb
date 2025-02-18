@@ -107,18 +107,18 @@
 /obj/vehicle/bike/insert_cell(var/obj/item/cell/cell, var/mob/living/human/H)
 	return
 
-/obj/vehicle/bike/attackby(obj/item/W, mob/user)
+/obj/vehicle/bike/attackby(obj/item/used_item, mob/user)
 	if(open)
-		if(istype(W, /obj/item/engine))
+		if(istype(used_item, /obj/item/engine))
 			if(engine)
 				to_chat(user, "<span class='warning'>There is already an engine block in \the [src].</span>")
 				return TRUE
-			user.visible_message("<span class='warning'>\The [user] installs \the [W] into \the [src].</span>")
-			load_engine(W)
+			user.visible_message("<span class='warning'>\The [user] installs \the [used_item] into \the [src].</span>")
+			load_engine(used_item)
 			return TRUE
-		else if(engine && engine.attackby(W,user))
+		else if(engine && engine.attackby(used_item,user))
 			return TRUE
-		else if(IS_CROWBAR(W) && engine)
+		else if(IS_CROWBAR(used_item) && engine)
 			to_chat(user, "You pop out \the [engine] from \the [src].")
 			unload_engine()
 			return TRUE

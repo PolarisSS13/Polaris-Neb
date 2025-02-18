@@ -46,9 +46,9 @@
 	//If we weren't ruined, mark us as ruined, so next time we get destroyed
 	set_ruined(TRUE)
 
-/obj/structure/sign/poster/attackby(obj/item/W, mob/user)
+/obj/structure/sign/poster/attackby(obj/item/used_item, mob/user)
 	//Prevent the sign implementation from removing us from the wall via unscrewing us
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		return FALSE //#FIXME: once /obj/structure/sign use the generic structure tools procs we won't need to intercept this here anymore.
 	return ..()
 
@@ -158,44 +158,44 @@
 		return
 
 	//must place on a wall and user must not be inside a closet/exosuit/whatever
-	var/turf/W = get_turf(A)
-	if(!istype(W) || !W.is_wall() || !isturf(user.loc))
+	var/turf/used_item = get_turf(A)
+	if(!istype(used_item) || !used_item.is_wall() || !isturf(user.loc))
 		to_chat(user, SPAN_WARNING("You can't place this here!"))
 		return
 
-	var/placement_dir = get_dir(user, W)
+	var/placement_dir = get_dir(user, used_item)
 	if (!(placement_dir in global.cardinal))
 		to_chat(user, SPAN_WARNING("You must stand directly in front of the wall you wish to place that on."))
 		return
 
-	if (ArePostersOnWall(W))
+	if (ArePostersOnWall(used_item))
 		to_chat(user, SPAN_WARNING("There is already a poster there!"))
 		return
 
 	user.visible_message(
-		SPAN_NOTICE("\The [user] starts placing a poster on \the [W]."),
-		SPAN_NOTICE("You start placing the poster on \the [W]."))
+		SPAN_NOTICE("\The [user] starts placing a poster on \the [used_item]."),
+		SPAN_NOTICE("You start placing the poster on \the [used_item]."))
 
 	var/obj/structure/sign/poster/P = new (user.loc, null, null, placement_dir, poster_design)
 	qdel(src)
 	flick("poster_being_set", P)
 	// Time to place is equal to the time needed to play the flick animation
-	if(do_after(user, 28, W) && W.is_wall() && !ArePostersOnWall(W, P))
+	if(do_after(user, 28, used_item) && used_item.is_wall() && !ArePostersOnWall(used_item, P))
 		user.visible_message(
-			SPAN_NOTICE("\The [user] has placed a poster on \the [W]."),
-			SPAN_NOTICE("You have placed the poster on \the [W]."))
+			SPAN_NOTICE("\The [user] has placed a poster on \the [used_item]."),
+			SPAN_NOTICE("You have placed the poster on \the [used_item]."))
 	else
 		// We cannot rely on user being on the appropriate turf when placement fails
 		P.dismantle_structure(user)
 
-/obj/item/poster/proc/ArePostersOnWall(var/turf/W, var/placed_poster)
+/obj/item/poster/proc/ArePostersOnWall(var/turf/used_item, var/placed_poster)
 	//just check if there is a poster on or adjacent to the wall
-	if (locate(/obj/structure/sign/poster) in W)
+	if (locate(/obj/structure/sign/poster) in used_item)
 		return TRUE
 
 	//crude, but will cover most cases. We could do stuff like check pixel_x/y but it's not really worth it.
 	for (var/dir in global.cardinal)
-		var/turf/T = get_step(W, dir)
+		var/turf/T = get_step(used_item, dir)
 		var/poster = locate(/obj/structure/sign/poster) in T
 		if (poster && placed_poster != poster)
 			return TRUE

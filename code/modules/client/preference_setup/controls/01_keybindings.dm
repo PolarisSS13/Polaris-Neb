@@ -58,8 +58,8 @@
 	pref.key_bindings = sanitize_keybindings(pref.key_bindings)
 	pref.check_keybindings()
 
-/datum/category_item/player_setup_item/controls/keybindings/save_preferences(datum/pref_record_writer/W)
-	W.write("key_bindings", pref.key_bindings)
+/datum/category_item/player_setup_item/controls/keybindings/save_preferences(datum/pref_record_writer/writer)
+	writer.write("key_bindings", pref.key_bindings)
 
 /datum/category_item/player_setup_item/controls/keybindings/content(mob/user)
 	. = list()

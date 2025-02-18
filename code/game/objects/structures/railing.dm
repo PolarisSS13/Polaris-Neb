@@ -247,9 +247,9 @@ WOOD_RAILING_SUBTYPE(yew)
 	return TRUE
 
 // TODO: rewrite to use handle_default_wrench_attackby, bash, etc
-/obj/structure/railing/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/railing/attackby(var/obj/item/used_item, var/mob/user)
 	// Dismantle
-	if(IS_WRENCH(W))
+	if(IS_WRENCH(used_item))
 		if(!anchored)
 			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 			if(do_after(user, 2 SECONDS, src))
@@ -272,8 +272,8 @@ WOOD_RAILING_SUBTYPE(yew)
 			update_icon()
 			return TRUE
 	// Repair
-	if(IS_WELDER(W))
-		var/obj/item/weldingtool/F = W
+	if(IS_WELDER(used_item))
+		var/obj/item/weldingtool/F = used_item
 		if(F.isOn())
 			var/current_max_health = get_max_health()
 			if(current_health >= current_max_health)
@@ -288,7 +288,7 @@ WOOD_RAILING_SUBTYPE(yew)
 			return TRUE
 
 	// Install
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		if(!density)
 			to_chat(user, "<span class='notice'>You need to wrench \the [src] from back into place first.</span>")
 			return TRUE
@@ -301,11 +301,11 @@ WOOD_RAILING_SUBTYPE(yew)
 			update_icon()
 		return TRUE
 
-	var/force = W.expend_attack_force(user)
-	if(force && (W.atom_damage_type == BURN || W.atom_damage_type == BRUTE))
+	var/force = used_item.expend_attack_force(user)
+	if(force && (used_item.atom_damage_type == BURN || used_item.atom_damage_type == BRUTE))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		visible_message("<span class='danger'>\The [src] has been [LAZYLEN(W.attack_verb) ? pick(W.attack_verb) : "attacked"] with \the [W] by \the [user]!</span>")
-		take_damage(force, W.atom_damage_type)
+		visible_message("<span class='danger'>\The [src] has been [LAZYLEN(used_item.attack_verb) ? pick(used_item.attack_verb) : "attacked"] with \the [used_item] by \the [user]!</span>")
+		take_damage(force, used_item.atom_damage_type)
 		return TRUE
 	. = ..()
 

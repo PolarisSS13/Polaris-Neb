@@ -279,8 +279,8 @@
 	if(O)
 		var/destination = locate(shunt_x, shunt_y, O.z)
 		var/jumpdist = get_dist(get_turf(ftl_computer.linked), destination)
-		var/obj/effect/portal/wormhole/W = new(destination) //Generate a wormhole effect on overmap to give some indication that something is about to happen.
-		QDEL_IN(W, 6 SECONDS)
+		var/obj/effect/portal/wormhole/wormhole = new(destination) //Generate a wormhole effect on overmap to give some indication that something is about to happen.
+		QDEL_IN(wormhole, 6 SECONDS)
 		addtimer(CALLBACK(src, PROC_REF(do_shunt), shunt_x, shunt_y, jumpdist, destination), 6 SECONDS)
 		jumping = TRUE
 		update_icon()

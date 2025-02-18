@@ -162,7 +162,7 @@
 		return
 
 	var/num_doodles = 0
-	for (var/obj/effect/decal/cleanable/blood/writing/W in T)
+	for (var/obj/effect/decal/cleanable/blood/writing/writing in T)
 		num_doodles++
 	if (num_doodles > 4)
 		to_chat(src, "<span class='warning'>There is no space to write on!</span>")
@@ -179,11 +179,11 @@
 		if (length(message) > max_length)
 			message += "-"
 			to_chat(src, "<span class='warning'>You ran out of blood to write with!</span>")
-		var/obj/effect/decal/cleanable/blood/writing/W = new(T)
-		W.basecolor = (hand_blood_color) ? hand_blood_color : COLOR_BLOOD_HUMAN
-		W.update_icon()
-		W.message = message
-		W.add_fingerprint(src)
+		var/obj/effect/decal/cleanable/blood/writing/writing = new(T)
+		writing.basecolor = (hand_blood_color) ? hand_blood_color : COLOR_BLOOD_HUMAN
+		writing.update_icon()
+		writing.message = message
+		writing.add_fingerprint(src)
 
 /mob/living/human/proc/undislocate()
 	set category = "Object"

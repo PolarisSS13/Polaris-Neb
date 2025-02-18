@@ -30,9 +30,9 @@
 		return TRUE
 
 	if(IS_WELDER(I))
-		var/obj/item/weldingtool/W = I
-		if(W.isOn())
-			if(W.weld(2))
+		var/obj/item/weldingtool/welder = I
+		if(welder.isOn())
+			if(welder.weld(2))
 				if(inside)
 					inside.dropInto(loc)
 					visible_message(SPAN_NOTICE("\The [src] burns away revealing \the [inside]."))

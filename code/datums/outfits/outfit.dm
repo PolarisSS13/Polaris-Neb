@@ -241,22 +241,22 @@
 		return
 	if(OUTFIT_ADJUSTMENT_SKIP_ID_PDA & equip_adjustments)
 		return
-	var/obj/item/card/id/W = new id_type(wearer)
+	var/obj/item/card/id/id_card = new id_type(wearer)
 	if(id_desc)
-		W.desc = id_desc
+		id_card.desc = id_desc
 	if(assignment)
-		W.assignment = assignment
+		id_card.assignment = assignment
 	if(job)
-		W.position = job.title
-		LAZYDISTINCTADD(W.access, job.get_access())
-		if(!W.detail_color)
-			W.detail_color = job.selection_color
-			W.update_icon()
+		id_card.position = job.title
+		LAZYDISTINCTADD(id_card.access, job.get_access())
+		if(!id_card.detail_color)
+			id_card.detail_color = job.selection_color
+			id_card.update_icon()
 	wearer.update_icon()
-	wearer.set_id_info(W)
+	wearer.set_id_info(id_card)
 	equip_pda(wearer, id_pda_assignment || assignment, equip_adjustments)
-	if(wearer.equip_to_slot_or_store_or_drop(W, id_slot))
-		return W
+	if(wearer.equip_to_slot_or_store_or_drop(id_card, id_slot))
+		return id_card
 
 /decl/outfit/proc/equip_pda(var/mob/living/wearer, var/label_assignment, var/equip_adjustments)
 	if(!pda_slot || !pda_type)

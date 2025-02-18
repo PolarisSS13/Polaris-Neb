@@ -35,9 +35,9 @@
 //		src.sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby(obj/item/W, mob/user)
-	if(IS_WIRECUTTER(W))
-		add_fingerprint(user, 0, W)
+/obj/machinery/flasher/attackby(obj/item/used_item, mob/user)
+	if(IS_WIRECUTTER(used_item))
+		add_fingerprint(user, 0, used_item)
 		src.disable = !src.disable
 		if (src.disable)
 			user.visible_message("<span class='warning'>[user] has disconnected \the [src]'s flashbulb!</span>", "<span class='warning'>You disconnect \the [src]'s flashbulb!</span>")
@@ -123,8 +123,8 @@
 		if(!MOVING_DELIBERATELY(M))
 			flash()
 
-/obj/machinery/flasher/portable/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/machinery/flasher/portable/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		add_fingerprint(user)
 		src.anchored = !src.anchored
 

@@ -35,23 +35,23 @@
 	user.visible_message("<span class='notice'>[user] has [!on?"de":""]activated \the [src].</span>", "<span class='notice'>You [!on?"de":""]activate \the [src].</span>")
 	return TRUE
 
-/obj/machinery/floorlayer/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/floorlayer/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(IS_WRENCH(W))
+	if(IS_WRENCH(used_item))
 		var/m = input("Choose work mode", "Mode") as null|anything in mode
 		mode[m] = !mode[m]
 		var/O = mode[m]
 		user.visible_message("<span class='notice'>[user] has set \the [src] [m] mode [!O?"off":"on"].</span>", "<span class='notice'>You set \the [src] [m] mode [!O?"off":"on"].</span>")
 		return TRUE
 
-	if(istype(W, /obj/item/stack/tile))
-		if(!user.try_unequip(W, T))
+	if(istype(used_item, /obj/item/stack/tile))
+		if(!user.try_unequip(used_item, T))
 			return TRUE
-		to_chat(user, "<span class='notice'>\The [W] successfully loaded.</span>")
+		to_chat(user, "<span class='notice'>\The [used_item] successfully loaded.</span>")
 		TakeTile(T)
 		return TRUE
 
-	if(IS_CROWBAR(W))
+	if(IS_CROWBAR(used_item))
 		if(!length(contents))
 			to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
 		else
@@ -62,7 +62,7 @@
 				T = null
 		return TRUE
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		T = input("Choose tile type.", "Tiles") as null|anything in contents
 		return TRUE
 	return ..()

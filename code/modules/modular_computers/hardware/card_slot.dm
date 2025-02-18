@@ -1,7 +1,7 @@
 /obj/item/stock_parts/computer/card_slot
 	name = "RFID card slot"
 	desc = "Slot that allows this computer to write data on RFID cards. Necessary for some programs to run properly."
-	power_usage = 10 //W
+	power_usage = 10 // W
 	critical = 0
 	icon_state = "cardreader"
 	hardware_size = 1

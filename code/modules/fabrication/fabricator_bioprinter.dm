@@ -32,9 +32,9 @@
 			O.copy_from_mob_snapshot(D)
 		O.status |= ORGAN_CUT_AWAY
 
-/obj/machinery/fabricator/bioprinter/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/chems/syringe))
-		var/obj/item/chems/syringe/S = W
+/obj/machinery/fabricator/bioprinter/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item,/obj/item/chems/syringe))
+		var/obj/item/chems/syringe/S = used_item
 		if(REAGENT_VOLUME(S.reagents, /decl/material/liquid/blood))
 			var/sample = REAGENT_DATA(S.reagents, /decl/material/liquid/blood)
 			if(islist(sample))
@@ -48,7 +48,7 @@
 						//Tell nano to do its job
 						SSnano.update_uis(src)
 						return TRUE
-		to_chat(user, SPAN_WARNING("\The [src] displays an error: no viable blood sample could be obtained from \the [W]."))
+		to_chat(user, SPAN_WARNING("\The [src] displays an error: no viable blood sample could be obtained from \the [used_item]."))
 		return TRUE
 	. = ..()
 

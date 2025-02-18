@@ -52,18 +52,18 @@
 	else
 		return SPAN_NOTICE("A few strands of \the [src] have been severed.")
 
-/obj/structure/net/attackby(obj/item/W, mob/user)
-	if(W.is_sharp() || W.has_edge())
-		var/force = W.expend_attack_force(user)
-		if (!(W.is_sharp()) || (W.is_sharp() && force < 10))//is not sharp enough or at all
-			to_chat(user,"<span class='warning'>You can't cut through \the [src] with \the [W], it's too dull.</span>")
+/obj/structure/net/attackby(obj/item/used_item, mob/user)
+	if(used_item.is_sharp() || used_item.has_edge())
+		var/force = used_item.expend_attack_force(user)
+		if (!(used_item.is_sharp()) || (used_item.is_sharp() && force < 10))//is not sharp enough or at all
+			to_chat(user,"<span class='warning'>You can't cut through \the [src] with \the [used_item], it's too dull.</span>")
 			return TRUE
-		visible_message("<span class='warning'>[user] starts to cut through \the [src] with \the [W]!</span>")
+		visible_message("<span class='warning'>[user] starts to cut through \the [src] with \the [used_item]!</span>")
 		while(current_health > 0 && !QDELETED(src) && !QDELETED(user))
 			if (!do_after(user, 20, src))
-				visible_message("<span class='warning'>[user] stops cutting through \the [src] with \the [W]!</span>")
+				visible_message("<span class='warning'>[user] stops cutting through \the [src] with \the [used_item]!</span>")
 				return TRUE
-			take_damage(20 * (1 + (force-10)/10), W.atom_damage_type) //the sharper the faster, every point of force above 10 adds 10 % to damage
+			take_damage(20 * (1 + (force-10)/10), used_item.atom_damage_type) //the sharper the faster, every point of force above 10 adds 10 % to damage
 		new /obj/item/stack/net(src.loc)
 		qdel(src)
 		return TRUE

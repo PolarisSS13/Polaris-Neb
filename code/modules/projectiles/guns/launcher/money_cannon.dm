@@ -111,9 +111,9 @@
 	unload_receptacle(user)
 	return TRUE
 
-/obj/item/gun/launcher/money/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/cash))
-		var/obj/item/cash/bling = W
+/obj/item/gun/launcher/money/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/cash))
+		var/obj/item/cash/bling = used_item
 		if(bling.absolute_worth < 1)
 			to_chat(user, "<span class='warning'>You can't seem to get \the [bling] to slide into the receptacle.</span>")
 			return TRUE

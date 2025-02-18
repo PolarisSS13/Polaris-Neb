@@ -1,7 +1,7 @@
 /obj/item/stock_parts/computer/charge_stick_slot
 	name = "charge-stick slot"
 	desc = "Slot that allows this computer to pay for transactions using an inserted charge-stick."
-	power_usage = 10 //W
+	power_usage = 10 // W
 	critical = 0
 	icon_state = "cardreader"
 	hardware_size = 1

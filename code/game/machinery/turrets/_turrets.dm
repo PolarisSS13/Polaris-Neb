@@ -323,12 +323,12 @@
 
 	else if(length(potential_targets))
 		while(length(potential_targets))
-			var/weakref/W = potential_targets[1]
-			potential_targets -= W
-			if(is_valid_target(W.resolve()))
-				target = W
+			var/weakref/target_ref = potential_targets[1]
+			potential_targets -= target_ref
+			if(is_valid_target(target_ref.resolve()))
+				target = target_ref
 				track_target()
-				return W
+				return target_ref
 
 	target = null
 	return null

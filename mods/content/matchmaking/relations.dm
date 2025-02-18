@@ -15,9 +15,9 @@
 	pref.relations =      R.read("relations")
 	pref.relations_info = R.read("relations_info")
 
-/datum/category_item/player_setup_item/relations/save_character(datum/pref_record_writer/W)
-	W.write("relations",      pref.relations)
-	W.write("relations_info", pref.relations_info)
+/datum/category_item/player_setup_item/relations/save_character(datum/pref_record_writer/writer)
+	writer.write("relations",      pref.relations)
+	writer.write("relations_info", pref.relations_info)
 
 /datum/category_item/player_setup_item/relations/sanitize_character()
 	if(!pref.relations)

@@ -328,9 +328,9 @@
 	..()
 
 // Proc: attackby()
-// Parameters: 2 (W - object that was used on this machine, user - person which used the object)
+// Parameters: 2 (used_item - object that was used on this machine, user - person which used the object)
 // Description: Handles tool interaction. Allows deconstruction/upgrading/fixing.
-/obj/machinery/power/smes/buildable/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/smes/buildable/attackby(var/obj/item/used_item, var/mob/user)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
 		to_chat(user, "<span class='warning'>\The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea.</span>")
@@ -339,7 +339,7 @@
 	if(.)
 		return
 	// Multitool - change RCON tag
-	if(IS_MULTITOOL(W))
+	if(IS_MULTITOOL(used_item))
 		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
 		if(newtag)
 			RCon_tag = newtag

@@ -9,8 +9,8 @@
 	if(confirm != "Yes")
 		return
 
-	for(var/obj/item/W in M.get_contained_external_atoms())
-		M.drop_from_inventory(W)
+	for(var/obj/item/thing in M.get_contained_external_atoms())
+		M.drop_from_inventory(thing)
 
 	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)

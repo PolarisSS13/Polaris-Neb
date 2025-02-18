@@ -224,9 +224,9 @@ var/global/list/deactivated_ai_cores = list()
 		card.clear()
 	qdel(src)
 
-/obj/structure/aicore/deactivated/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/aicard))
-		var/obj/item/aicard/card = W
+/obj/structure/aicore/deactivated/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/aicard))
+		var/obj/item/aicard/card = used_item
 		var/mob/living/silicon/ai/transfer = locate() in card
 		if(transfer)
 			load_ai(transfer,card,user)

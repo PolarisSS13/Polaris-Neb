@@ -54,12 +54,12 @@
 	if(drying_state)
 		add_overlay(drying_state)
 
-/obj/structure/drying_rack/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/drying_rack/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(!drying && W.is_dryable())
-		if(user.try_unequip(W))
-			W.forceMove(src)
-			drying = W
+	if(!drying && used_item.is_dryable())
+		if(user.try_unequip(used_item))
+			used_item.forceMove(src)
+			drying = used_item
 			if(!is_processing)
 				START_PROCESSING(SSobj, src)
 			update_icon()

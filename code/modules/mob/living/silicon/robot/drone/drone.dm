@@ -166,14 +166,14 @@
 	return
 
 //Drones cannot be upgraded with borg modules so we need to catch some items before they get used in ..().
-/mob/living/silicon/robot/drone/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/borg/upgrade))
-		to_chat(user, "<span class='danger'>\The [src] is not compatible with \the [W].</span>")
+/mob/living/silicon/robot/drone/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/borg/upgrade))
+		to_chat(user, "<span class='danger'>\The [src] is not compatible with \the [used_item].</span>")
 		return TRUE
-	else if(IS_CROWBAR(W) && !user.check_intent(I_FLAG_HARM))
+	else if(IS_CROWBAR(used_item) && !user.check_intent(I_FLAG_HARM))
 		to_chat(user, "<span class='danger'>\The [src] is hermetically sealed. You can't open the case.</span>")
 		return TRUE
-	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer))
+	else if (istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer))
 		if(stat == DEAD)
 			if(!get_config_value(/decl/config/toggle/on/allow_drone_spawn) || emagged || should_be_dead()) //It's dead, Dave.
 				to_chat(user, "<span class='danger'>The interface is fried, and a distressing burned smell wafts from the robot's interior. You're not rebooting this one.</span>")

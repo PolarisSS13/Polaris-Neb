@@ -92,15 +92,15 @@
 			to_chat(user, "You attach the screws around the power connection.")
 			return TRUE
 	else if(IS_WELDER(I) && c_mode==1)
-		var/obj/item/weldingtool/W = I
-		if(!W.weld(1,user)) // 'you need more welding fuel' messages are already handled
+		var/obj/item/weldingtool/welder = I
+		if(!welder.weld(1,user)) // 'you need more welding fuel' messages are already handled
 			return TRUE
 		to_chat(user, "You start slicing the floorweld off the delivery chute.")
 		if(!do_after(user, 2 SECONDS, src))
 			to_chat(user, "You stop slicing the floorweld off the delivery chute.")
 			return TRUE
 		playsound(src.loc, 'sound/items/Welder2.ogg', 100, TRUE)
-		if(!src || !W.isOn()) return TRUE
+		if(!src || !welder.isOn()) return TRUE
 		to_chat(user, "You slice the floorweld off the delivery chute.")
 		var/obj/structure/disposalconstruct/C = new (loc, src)
 		C.update()

@@ -387,9 +387,9 @@
 			break
 		if(limb.status & ORGAN_BLEEDING)
 			var/closed_wound = FALSE
-			for(var/datum/wound/W in limb.wounds)
-				if(W.bleeding() && !W.clamped)
-					W.clamped = TRUE
+			for(var/datum/wound/wound in limb.wounds)
+				if(wound.bleeding() && !wound.clamped)
+					wound.clamped = TRUE
 					closed_wound = TRUE
 					break
 			if(closed_wound)

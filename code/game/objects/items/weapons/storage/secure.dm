@@ -46,9 +46,9 @@
 	if(new_locked)
 		storage?.close_all()
 
-/obj/item/secure_storage/attackby(obj/item/W, mob/user)
+/obj/item/secure_storage/attackby(obj/item/used_item, mob/user)
 	var/datum/extension/lockable/lock = get_extension(src, /datum/extension/lockable)
-	if(lock.attackby(W, user))
+	if(lock.attackby(used_item, user))
 		return TRUE
 
 	// -> storage/attackby() what with handle insertion, etc

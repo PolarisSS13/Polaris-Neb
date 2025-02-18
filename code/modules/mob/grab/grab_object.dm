@@ -279,9 +279,9 @@
 /obj/item/grab/proc/stop_move()
 	return current_grab.stop_move
 
-/obj/item/grab/attackby(obj/W, mob/user)
+/obj/item/grab/attackby(obj/item/used_item, mob/user)
 	if(user == assailant)
-		return current_grab.item_attack(src, W)
+		return current_grab.item_attack(src, used_item)
 	return FALSE
 
 /obj/item/grab/proc/assailant_reverse_facing()

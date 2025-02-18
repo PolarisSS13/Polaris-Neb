@@ -52,8 +52,8 @@
 			STOP_PROCESSING_MACHINE(src, MACHINERY_PROCESS_SELF)
 		update_icon()
 
-/obj/machinery/cell_charger/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W) && !panel_open)
+/obj/machinery/cell_charger/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item) && !panel_open)
 		. = TRUE
 		if(get_cell())
 			to_chat(user, "<span class='warning'>Remove the cell first!</span>")

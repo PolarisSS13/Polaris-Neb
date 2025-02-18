@@ -73,9 +73,9 @@
 	bloodiness--
 
 /proc/equip_wheelchair(mob/living/human/H) //Proc for spawning in a wheelchair if a new character has no legs. Used in new_player.dm
-	var/obj/structure/chair/wheelchair/W = new(get_turf(H))
+	var/obj/structure/chair/wheelchair/wheelchair = new(get_turf(H))
 	if(isturf(H.loc))
-		W.buckle_mob(H)
+		wheelchair.buckle_mob(H)
 
 /obj/structure/chair/wheelchair/verb/collapse()
 	set name = "Collapse Wheelchair"
@@ -136,9 +136,9 @@
 
 	user.visible_message("<b>[user]</b> starts to lay out \the [src].")
 	if(do_after(user, 4 SECONDS, src))
-		var/obj/structure/chair/wheelchair/W = new structure_form_type(get_turf(user))
-		user.visible_message("<b>[user]</b> lays out \the [W].")
-		W.add_fingerprint(user)
+		var/obj/structure/chair/wheelchair/wheelchair = new structure_form_type(get_turf(user))
+		user.visible_message("<b>[user]</b> lays out \the [wheelchair].")
+		wheelchair.add_fingerprint(user)
 		qdel(src)
 
 /obj/item/wheelchair_kit/physically_destroyed(skip_qdel)

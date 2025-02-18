@@ -129,22 +129,22 @@
 			var/open_wound
 			if(temp.status & ORGAN_BLEEDING)
 
-				for(var/datum/wound/W in temp.wounds)
+				for(var/datum/wound/wound in temp.wounds)
 
-					if(!open_wound && (W.damage_type == CUT || W.damage_type == PIERCE) && W.damage && !W.is_treated())
+					if(!open_wound && (wound.damage_type == CUT || wound.damage_type == PIERCE) && wound.damage && !wound.is_treated())
 						open_wound = TRUE
 
-					if(W.bleeding())
+					if(wound.bleeding())
 						if(temp.applied_pressure)
 							if(ishuman(temp.applied_pressure))
 								var/mob/living/human/H = temp.applied_pressure
 								H.bloody_hands(src, 0)
 							//somehow you can apply pressure to every wound on the organ at the same time
 							//you're basically forced to do nothing at all, so let's make it pretty effective
-							var/min_eff_damage = max(0, W.damage - 10) / 6 //still want a little bit to drip out, for effect
-							blood_max += max(min_eff_damage, W.damage - 30) / 40
+							var/min_eff_damage = max(0, wound.damage - 10) / 6 //still want a little bit to drip out, for effect
+							blood_max += max(min_eff_damage, wound.damage - 30) / 40
 						else
-							blood_max += W.damage / 40
+							blood_max += wound.damage / 40
 
 			if(temp.status & ORGAN_ARTERY_CUT)
 				var/bleed_amount = floor((owner.vessel.total_volume / (temp.applied_pressure || !open_wound ? 400 : 250))*temp.arterial_bleed_severity)

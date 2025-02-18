@@ -9,7 +9,7 @@
 /turf/floor/holofloor/get_lumcount(var/minlum = 0, var/maxlum = 1)
 	return 0.8
 
-/turf/floor/holofloor/attackby(obj/item/W, mob/user)
+/turf/floor/holofloor/attackby(obj/item/used_item, mob/user)
 	return TRUE
 	// HOLOFLOOR DOES NOT GIVE A FUCK
 
@@ -320,7 +320,7 @@
 	to_chat(user, "The AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/attackby(obj/item/W, mob/user)
+/obj/machinery/readybutton/attackby(obj/item/used_item, mob/user)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 	return TRUE
 
@@ -359,8 +359,8 @@
 
 	eventstarted = 1
 
-	for(var/obj/structure/window/reinforced/holowindow/disappearing/W in currentarea)
-		qdel(W)
+	for(var/obj/structure/window/reinforced/holowindow/disappearing/window in currentarea)
+		qdel(window)
 
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")

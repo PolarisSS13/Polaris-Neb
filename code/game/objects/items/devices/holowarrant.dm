@@ -58,9 +58,9 @@
 
 	if(href_list["select"])
 		var/list/active_warrants = list()
-		for(var/datum/computer_file/report/warrant/W in global.all_warrants)
-			if(!W.archived)
-				active_warrants["[capitalize(W.get_category())] - [W.get_name()]"] = W
+		for(var/datum/computer_file/report/warrant/warrant in global.all_warrants)
+			if(!warrant.archived)
+				active_warrants["[capitalize(warrant.get_category())] - [warrant.get_name()]"] = warrant
 		if(!length(active_warrants))
 			to_chat(user,SPAN_WARNING("There are no active warrants available."))
 			return TOPIC_HANDLED
@@ -81,10 +81,10 @@
 		D.ui_interact(user)
 		return TOPIC_HANDLED
 
-/obj/item/holowarrant/attackby(obj/item/W, mob/user)
+/obj/item/holowarrant/attackby(obj/item/used_item, mob/user)
 	if(!active)
 		return ..()
-	var/obj/item/card/id/I = W.GetIdCard()
+	var/obj/item/card/id/I = used_item.GetIdCard()
 	if(I && check_access_list(I.GetAccess()))
 		var/choice = alert(user, "Would you like to authorize this warrant?","Warrant authorization","Yes","No")
 		var/datum/report_field/signature/auth = active.field_from_name("Authorized by")

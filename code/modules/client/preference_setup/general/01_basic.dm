@@ -32,14 +32,14 @@
 	else
 		pref.spawnpoint = global.using_map.default_spawn
 
-/datum/category_item/player_setup_item/physical/basic/save_character(datum/pref_record_writer/W)
-	W.write("gender",                pref.gender)
-	W.write("bodytype",              pref.bodytype)
-	W.write("real_name",             pref.real_name)
-	W.write("name_is_always_random", pref.be_random_name)
+/datum/category_item/player_setup_item/physical/basic/save_character(datum/pref_record_writer/writer)
+	writer.write("gender",                pref.gender)
+	writer.write("bodytype",              pref.bodytype)
+	writer.write("real_name",             pref.real_name)
+	writer.write("name_is_always_random", pref.be_random_name)
 	var/decl/spawnpoint/spawnpoint = GET_DECL(pref.spawnpoint)
 	if(spawnpoint)
-		W.write("spawnpoint", spawnpoint.uid)
+		writer.write("spawnpoint", spawnpoint.uid)
 
 /datum/category_item/player_setup_item/physical/basic/sanitize_character()
 

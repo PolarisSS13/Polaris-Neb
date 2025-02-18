@@ -203,16 +203,16 @@
 			return SPAN_WARNING("You cannot take this [src] apart, it too exerted due to internal pressure.")
 	return ..()
 
-/obj/machinery/atmospherics/unary/vent_scrubber/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/weldingtool))
+/obj/machinery/atmospherics/unary/vent_scrubber/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/weldingtool))
 
-		var/obj/item/weldingtool/WT = W
+		var/obj/item/weldingtool/welder = used_item
 
-		if(!WT.isOn())
+		if(!welder.isOn())
 			to_chat(user, "<span class='notice'>The welding tool needs to be on to start this task.</span>")
 			return 1
 
-		if(!WT.weld(0,user))
+		if(!welder.weld(0,user))
 			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return 1
 
@@ -226,7 +226,7 @@
 		if(!src)
 			return 1
 
-		if(!WT.isOn())
+		if(!welder.isOn())
 			to_chat(user, "<span class='notice'>The welding tool needs to be on to finish this task.</span>")
 			return 1
 

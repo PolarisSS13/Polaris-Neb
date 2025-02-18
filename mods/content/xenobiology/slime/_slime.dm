@@ -269,15 +269,15 @@
 
 	return ..()
 
-/mob/living/slime/attackby(var/obj/item/W, var/mob/user)
-	var/force = W.expend_attack_force(user)
+/mob/living/slime/attackby(var/obj/item/used_item, var/mob/user)
+	var/force = used_item.expend_attack_force(user)
 	if(force > 0)
 		var/datum/mob_controller/slime/slime_ai = ai
 		if(istype(slime_ai))
 			slime_ai.attacked += 10
 			slime_ai.adjust_friendship(user, -5)
 		if(stat == CONSCIOUS && prob(25)) //Only run this check if we're alive or otherwise motile, otherwise surgery will be agonizing for xenobiologists.
-			to_chat(user, SPAN_WARNING("\The [W] passes right through \the [src]!"))
+			to_chat(user, SPAN_WARNING("\The [used_item] passes right through \the [src]!"))
 			return TRUE
 	. = ..()
 	if(feeding_on && prob(force * 5))

@@ -82,7 +82,7 @@
 	if(!pref.bgstate || !(pref.bgstate in global.using_map.char_preview_bgstate_options))
 		pref.bgstate = global.using_map.char_preview_bgstate_options[1]
 
-/datum/category_item/player_setup_item/physical/body/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/physical/body/save_character(datum/pref_record_writer/writer)
 
 	var/decl/species/mob_species = get_species_by_key(pref.species)
 	var/list/save_accessories = list()
@@ -99,13 +99,13 @@
 				serialize_metadata[metadata.uid] = pref.sprite_accessories[acc_cat][acc][metadata_type]
 			save_accessories[accessory_category.uid][accessory.uid] = serialize_metadata
 
-	W.write("sprite_accessories",     save_accessories)
-	W.write("skin_tone",              pref.skin_tone)
-	W.write("skin_colour",            pref.skin_colour)
-	W.write("eye_colour",             pref.eye_colour)
-	W.write("b_type",                 pref.blood_type)
-	W.write("appearance_descriptors", pref.appearance_descriptors)
-	W.write("bgstate",                pref.bgstate)
+	writer.write("sprite_accessories",     save_accessories)
+	writer.write("skin_tone",              pref.skin_tone)
+	writer.write("skin_colour",            pref.skin_colour)
+	writer.write("eye_colour",             pref.eye_colour)
+	writer.write("b_type",                 pref.blood_type)
+	writer.write("appearance_descriptors", pref.appearance_descriptors)
+	writer.write("bgstate",                pref.bgstate)
 
 /datum/category_item/player_setup_item/physical/body/sanitize_character()
 

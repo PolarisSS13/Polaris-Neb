@@ -27,8 +27,8 @@
 	master = null
 	. = ..()
 
-/obj/machinery/power/terminal/attackby(obj/item/W, mob/user)
-	if(IS_WIRECUTTER(W))
+/obj/machinery/power/terminal/attackby(obj/item/used_item, mob/user)
+	if(IS_WIRECUTTER(used_item))
 		var/turf/T = get_turf(src)
 		var/obj/machinery/machine = master_machine()
 

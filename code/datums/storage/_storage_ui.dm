@@ -35,10 +35,10 @@
 /datum/storage_ui/proc/on_insertion()
 	return
 
-/datum/storage_ui/proc/on_pre_remove(obj/item/W)
+/datum/storage_ui/proc/on_pre_remove(obj/item/removing)
 	return
 
-/datum/storage_ui/proc/on_post_remove(obj/item/W)
+/datum/storage_ui/proc/on_post_remove(obj/item/removing)
 	return
 
 /datum/storage_ui/proc/on_hand_attack(mob/user)
@@ -93,12 +93,12 @@
 /datum/storage_ui/default/on_insertion()
 	refresh_viewers()
 
-/datum/storage_ui/default/on_post_remove(obj/item/W)
+/datum/storage_ui/default/on_post_remove(obj/item/removing)
 	refresh_viewers()
 
-/datum/storage_ui/default/on_pre_remove(obj/item/W)
+/datum/storage_ui/default/on_pre_remove(obj/item/removing)
 	for(var/mob/user in is_seeing)
-		user.client?.screen -= W
+		user.client?.screen -= removing
 
 /datum/storage_ui/default/on_hand_attack(mob/user)
 	for(var/mob/other_user in is_seeing)

@@ -196,10 +196,10 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/camera/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/paper))
+/obj/machinery/camera/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/paper))
 		var/datum/extension/network_device/camera/D = get_extension(src, /datum/extension/network_device)
-		D.show_paper(W, user)
+		D.show_paper(used_item, user)
 	return ..()
 
 /obj/machinery/camera/interface_interact(mob/user)

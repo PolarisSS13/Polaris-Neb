@@ -146,12 +146,12 @@
 		return TRUE
 	else if(istype(I, /obj/item/weldingtool))
 		if(anchored)
-			var/obj/item/weldingtool/W = I
-			if(W.weld(0,user))
+			var/obj/item/weldingtool/welder = I
+			if(welder.weld(0,user))
 				playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 				to_chat(user, "Welding \the [src] in place.")
 				if(do_after(user, 2 SECONDS, src))
-					if(!src || !W.isOn()) return TRUE
+					if(!src || !welder.isOn()) return TRUE
 					to_chat(user, "\The [src] has been welded in place!")
 					build(CP)
 					qdel(src)

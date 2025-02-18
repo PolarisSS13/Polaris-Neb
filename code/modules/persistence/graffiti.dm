@@ -15,8 +15,8 @@
 
 /obj/effect/decal/writing/Initialize(mapload, var/_age, var/_message, var/_author)
 	var/list/random_icon_states = get_states_in_icon(icon)
-	for(var/obj/effect/decal/writing/W in loc)
-		random_icon_states -= W.icon_state
+	for(var/obj/effect/decal/writing/writing in loc)
+		random_icon_states -= writing.icon_state
 	if(length(random_icon_states))
 		icon_state = pick(random_icon_states)
 	SSpersistence.track_value(src, /decl/persistence_handler/graffiti)

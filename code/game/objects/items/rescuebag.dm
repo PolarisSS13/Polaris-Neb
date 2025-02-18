@@ -31,17 +31,17 @@
 		airtank = null
 	return bag
 
-/obj/item/bodybag/rescue/attackby(obj/item/W, mob/user, var/click_params)
-	if(istype(W,/obj/item/tank))
+/obj/item/bodybag/rescue/attackby(obj/item/used_item, mob/user, var/click_params)
+	if(istype(used_item,/obj/item/tank))
 		if(airtank)
 			to_chat(user, "\The [src] already has an air tank installed.")
 			return TRUE
-		if(user.try_unequip(W))
-			W.forceMove(src)
-			airtank = W
-			to_chat(user, "You install \the [W] in \the [src].")
+		if(user.try_unequip(used_item))
+			used_item.forceMove(src)
+			airtank = used_item
+			to_chat(user, "You install \the [used_item] in \the [src].")
 		return TRUE
-	else if(airtank && IS_SCREWDRIVER(W))
+	else if(airtank && IS_SCREWDRIVER(used_item))
 		to_chat(user, "You remove \the [airtank] from \the [src].")
 		airtank.dropInto(loc)
 		airtank = null
@@ -88,15 +88,15 @@
 	if(airtank)
 		add_overlay("tank")
 
-/obj/structure/closet/body_bag/rescue/attackby(obj/item/W, mob/user, var/click_params)
-	if(istype(W,/obj/item/tank))
+/obj/structure/closet/body_bag/rescue/attackby(obj/item/used_item, mob/user, var/click_params)
+	if(istype(used_item,/obj/item/tank))
 		if(airtank)
 			to_chat(user, "\The [src] already has an air tank installed.")
-		else if(user.try_unequip(W, src))
-			set_tank(W)
-			to_chat(user, "You install \the [W] in \the [src].")
+		else if(user.try_unequip(used_item, src))
+			set_tank(used_item)
+			to_chat(user, "You install \the [used_item] in \the [src].")
 		return TRUE
-	else if(airtank && IS_SCREWDRIVER(W))
+	else if(airtank && IS_SCREWDRIVER(used_item))
 		to_chat(user, "You remove \the [airtank] from \the [src].")
 		airtank.dropInto(loc)
 		airtank = null

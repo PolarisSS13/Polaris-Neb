@@ -197,10 +197,10 @@
 	floor = 1
 	return 1
 
-/obj/effect/vine/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/vine/attackby(var/obj/item/used_item, var/mob/user)
 	START_PROCESSING(SSvines, src)
 
-	if(W.has_edge() && W.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
+	if(used_item.has_edge() && used_item.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(!is_mature())
 			to_chat(user, SPAN_WARNING("\The [src] is not mature enough to yield a sample yet."))
 			return TRUE
@@ -216,11 +216,11 @@
 		return TRUE
 	else
 		. = ..()
-		var/damage = W.expend_attack_force(user)
-		if(W.has_edge())
+		var/damage = used_item.expend_attack_force(user)
+		if(used_item.has_edge())
 			damage *= 2
 		adjust_health(-damage)
-		playsound(get_turf(src), W.hitsound, 100, 1)
+		playsound(get_turf(src), used_item.hitsound, 100, 1)
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
 /obj/effect/vine/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/vine/attacker_parent)

@@ -46,8 +46,8 @@
 		return TRUE
 	return FALSE
 
-/obj/item/inducer/attackby(obj/item/W, mob/user)
-	if(CannotUse(user) || recharge(W, user))
+/obj/item/inducer/attackby(obj/item/used_item, mob/user)
+	if(CannotUse(user) || recharge(used_item, user))
 		return TRUE
 	return ..()
 

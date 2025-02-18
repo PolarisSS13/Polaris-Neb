@@ -70,8 +70,8 @@
 		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
 		return TRUE
 	if(IS_WELDER(C))
-		var/obj/item/weldingtool/WT = C
-		if(WT.weld(0, user))
+		var/obj/item/weldingtool/welder = C
+		if(welder.weld(0, user))
 			deconstruct(user)
 		return TRUE
 	if(istype(C, /obj/item/gun/energy/plasmacutter))

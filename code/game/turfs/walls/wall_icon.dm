@@ -24,13 +24,13 @@
 	if(update_neighbors)
 		var/iterate_turfs = list()
 		for(var/direction in global.alldirs)
-			var/turf/wall/W = get_step_resolving_mimic(src, direction)
-			if(istype(W))
-				W.wall_connections = null
-				W.other_connections = null
-				iterate_turfs += W
-		for(var/turf/wall/W as anything in iterate_turfs)
-			W.update_icon()
+			var/turf/wall/wall = get_step_resolving_mimic(src, direction)
+			if(istype(wall))
+				wall.wall_connections = null
+				wall.other_connections = null
+				iterate_turfs += wall
+		for(var/turf/wall/wall as anything in iterate_turfs)
+			wall.update_icon()
 	else
 		wall_connections = null
 		other_connections = null
@@ -219,13 +219,13 @@
 			integrity += reinf_material.integrity
 		add_overlay(SSmaterials.wall_damage_overlays[clamp(round(damage / integrity * DAMAGE_OVERLAY_COUNT) + 1, 1, DAMAGE_OVERLAY_COUNT)])
 
-/turf/wall/proc/can_join_with(var/turf/wall/W)
-	if(unique_merge_identifier != W.unique_merge_identifier)
+/turf/wall/proc/can_join_with(var/turf/wall/wall)
+	if(unique_merge_identifier != wall.unique_merge_identifier)
 		return 0
 	else if(unique_merge_identifier)
 		return 1
-	else if(material && istype(W.material))
-		var/other_wall_icon = W.get_wall_icon()
+	else if(material && istype(wall.material))
+		var/other_wall_icon = wall.get_wall_icon()
 		if(get_wall_icon() == other_wall_icon)
 			return 1
 		if(material.wall_blend_icons[other_wall_icon])

@@ -537,10 +537,10 @@
 		if( istype(T, /turf/wall))
 			success = 1
 			if(propagate)
-				for(var/turf/wall/W in RANGE_TURFS(T, 1))
-					W.wall_connections = null
-					W.other_connections = null
-					W.queue_icon_update()
+				for(var/turf/wall/wall in RANGE_TURFS(T, 1))
+					wall.wall_connections = null
+					wall.other_connections = null
+					wall.queue_icon_update()
 
 		else if(istype(T, /turf/unsimulated/wall))
 			success = 1

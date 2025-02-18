@@ -96,11 +96,11 @@
 	//Disturb treated burns
 	if(brute > 5)
 		var/disturbed = 0
-		for(var/datum/wound/burn/W in wounds)
-			if((W.disinfected || W.salved) && prob(brute + W.damage))
-				W.disinfected = 0
-				W.salved = 0
-				disturbed += W.damage
+		for(var/datum/wound/burn/wound in wounds)
+			if((wound.disinfected || wound.salved) && prob(brute + wound.damage))
+				wound.disinfected = 0
+				wound.salved = 0
+				disturbed += wound.damage
 		if(disturbed)
 			to_chat(owner,"<span class='warning'>Ow! Your burns were disturbed.</span>")
 			add_pain(0.5*disturbed)
@@ -177,15 +177,15 @@
 		return
 
 	//Heal damage on the individual wounds
-	for(var/datum/wound/W in wounds)
+	for(var/datum/wound/wound in wounds)
 		if(brute == 0 && burn == 0)
 			break
 
 		// heal brute damage
-		if(W.damage_type == BURN)
-			burn = W.heal_damage(burn)
+		if(wound.damage_type == BURN)
+			burn = wound.heal_damage(burn)
 		else
-			brute = W.heal_damage(brute)
+			brute = wound.heal_damage(brute)
 
 	if(internal)
 		status &= ~ORGAN_BROKEN

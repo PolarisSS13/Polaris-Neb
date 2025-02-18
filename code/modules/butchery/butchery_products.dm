@@ -147,9 +147,9 @@
 		else if(!drying_wetness)
 			. += "\The [src] can be soaked in water to prepare it for drying."
 
-/obj/item/food/butchery/offal/attackby(obj/item/W, mob/user)
-	if(IS_KNIFE(W) && !_cleaned && !dry)
-		if(W.do_tool_interaction(TOOL_KNIFE, user, src, 3 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE) && !_cleaned)
+/obj/item/food/butchery/offal/attackby(obj/item/used_item, mob/user)
+	if(IS_KNIFE(used_item) && !_cleaned && !dry)
+		if(used_item.do_tool_interaction(TOOL_KNIFE, user, src, 3 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE) && !_cleaned)
 			_cleaned = TRUE
 			SetName("cleaned [name]")
 		return TRUE

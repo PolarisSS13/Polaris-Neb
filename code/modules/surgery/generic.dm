@@ -191,19 +191,19 @@
 
 /decl/surgery_step/generic/cauterize/begin_step(mob/user, mob/living/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
-	var/datum/wound/W = affected.get_incision()
-	user.visible_message("[user] is beginning to [cauterize_term][W ? " \a [W.desc] on" : ""] \the [target]'s [affected.name] with \the [tool]." , \
-	"You are beginning to [cauterize_term][W ? " \a [W.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].")
+	var/datum/wound/wound = affected.get_incision()
+	user.visible_message("[user] is beginning to [cauterize_term][wound ? " \a [wound.desc] on" : ""] \the [target]'s [affected.name] with \the [tool]." , \
+	"You are beginning to [cauterize_term][wound ? " \a [wound.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].")
 	target.custom_pain("Your [affected.name] is being burned!",40,affecting = affected)
 	..()
 
 /decl/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
-	var/datum/wound/W = affected.get_incision()
-	user.visible_message("<span class='notice'>[user] [post_cauterize_term][W ? " \a [W.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].</span>", \
-	"<span class='notice'>You [cauterize_term][W ? " \a [W.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].</span>")
-	if(istype(W))
-		W.close()
+	var/datum/wound/wound = affected.get_incision()
+	user.visible_message("<span class='notice'>[user] [post_cauterize_term][wound ? " \a [wound.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].</span>", \
+	"<span class='notice'>You [cauterize_term][wound ? " \a [wound.desc] on" : ""] \the [target]'s [affected.name] with \the [tool].</span>")
+	if(istype(wound))
+		wound.close()
 		affected.update_wounds()
 	if(affected.clamped())
 		affected.remove_clamps()

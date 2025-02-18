@@ -26,21 +26,21 @@
 	to_chat(user, SPAN_NOTICE("You grab a random ore pile from \the [src]."))
 	return TRUE
 
-/obj/structure/ore_box/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/stack/material/ore))
-		return insert_ore(W, user)
-	if(W.storage)
+/obj/structure/ore_box/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/stack/material/ore))
+		return insert_ore(used_item, user)
+	if(used_item.storage)
 		var/added_ore = FALSE
-		W.storage.hide_from(user)
-		for(var/obj/item/stack/material/ore/O in W.storage.get_contents())
+		used_item.storage.hide_from(user)
+		for(var/obj/item/stack/material/ore/O in used_item.storage.get_contents())
 			if(total_ores >= maximum_ores)
 				break
-			W.storage.remove_from_storage(user, O, src, TRUE)
+			used_item.storage.remove_from_storage(user, O, src, TRUE)
 			insert_ore(O)
 			added_ore = TRUE
 		if(added_ore)
-			W.storage.finish_bulk_removal()
-			to_chat(user, SPAN_NOTICE("You empty \the [W] into \the [src]."))
+			used_item.storage.finish_bulk_removal()
+			to_chat(user, SPAN_NOTICE("You empty \the [used_item] into \the [src]."))
 			return TRUE
 	return ..()
 

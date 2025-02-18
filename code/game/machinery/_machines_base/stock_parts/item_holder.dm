@@ -17,9 +17,9 @@
 	unregister_on_eject()
 	. = ..()
 
-/obj/item/stock_parts/item_holder/attackby(obj/item/W, mob/user)
-	if(is_accepted_type(W))
-		insert_item(W, user)
+/obj/item/stock_parts/item_holder/attackby(obj/item/used_item, mob/user)
+	if(is_accepted_type(used_item))
+		insert_item(used_item, user)
 		return TRUE
 	. = ..()
 

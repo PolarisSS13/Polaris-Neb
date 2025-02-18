@@ -103,12 +103,12 @@ var/global/list/laser_wavelengths
 /obj/item/gun/energy/capacitor/afterattack(atom/A, mob/living/user, adjacent, params)
 	. = !charging && ..()
 
-/obj/item/gun/energy/capacitor/attackby(obj/item/W, mob/user)
+/obj/item/gun/energy/capacitor/attackby(obj/item/used_item, mob/user)
 
 	if(charging)
 		return ..()
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		// Unload the cell before the caps.
 		if(get_cell())
 			return ..()
@@ -121,12 +121,12 @@ var/global/list/laser_wavelengths
 			update_icon()
 			return TRUE
 
-	if(istype(W, /obj/item/stock_parts/capacitor))
+	if(istype(used_item, /obj/item/stock_parts/capacitor))
 		if(length(capacitors) >= max_capacitors)
 			to_chat(user, SPAN_WARNING("\The [src] cannot fit any additional capacitors."))
-		else if(user.try_unequip(W, src))
-			LAZYADD(capacitors, W)
-			to_chat(user, SPAN_NOTICE("You fit \the [W] into \the [src]."))
+		else if(user.try_unequip(used_item, src))
+			LAZYADD(capacitors, used_item)
+			to_chat(user, SPAN_NOTICE("You fit \the [used_item] into \the [src]."))
 			update_icon()
 		return TRUE
 
@@ -279,8 +279,8 @@ var/global/list/laser_wavelengths
 /obj/item/gun/energy/capacitor/rifle/linear_fusion/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 	return ..(/obj/item/cell/infinite, accepted_cell_type, /datum/extension/loaded_cell/unremovable, charge_value)
 
-/obj/item/gun/energy/capacitor/rifle/linear_fusion/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/item/gun/energy/capacitor/rifle/linear_fusion/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		to_chat(user, SPAN_WARNING("\The [src] is hermetically sealed; you can't get the components out."))
 		return TRUE
 	. = ..()

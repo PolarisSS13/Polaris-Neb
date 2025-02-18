@@ -19,13 +19,13 @@
 			to_chat(user, "<span class='notice'>You wrench \the [machine] into place.</span>")
 			machine.anchored = TRUE
 	if(IS_WELDER(I))
-		var/obj/item/weldingtool/WT = I
-		if(!WT.weld(0, user))
+		var/obj/item/weldingtool/welder = I
+		if(!welder.weld(0, user))
 			to_chat(user, "The welding tool must be on to complete this task.")
 			return TRUE
 		playsound(machine.loc, 'sound/items/Welder.ogg', 50, 1)
 		if(do_after(user, 20, machine))
-			if(!WT.isOn())
+			if(!welder.isOn())
 				return TRUE
 			TRANSFER_STATE(/decl/machine_construction/default/deconstructed)
 			to_chat(user, "<span class='notice'>You deconstruct \the [machine].</span>")

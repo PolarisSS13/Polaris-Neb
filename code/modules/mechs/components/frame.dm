@@ -229,17 +229,17 @@
 		is_reinforced = (is_reinforced == FRAME_REINFORCED_SECURE) ? FRAME_REINFORCED : FRAME_REINFORCED_SECURE
 	// Welding metal.
 	else if(IS_WELDER(thing))
-		var/obj/item/weldingtool/WT = thing
+		var/obj/item/weldingtool/welder = thing
 		if(!is_reinforced)
 			to_chat(user, SPAN_WARNING("There is no metal to secure inside \the [src]."))
 			return TRUE
 		if(is_reinforced == FRAME_REINFORCED)
 			to_chat(user, SPAN_WARNING("The reinforcement inside \the [src] has not been secured."))
 			return TRUE
-		if(!WT.isOn())
-			to_chat(user, SPAN_WARNING("Turn \the [WT] on, first."))
+		if(!welder.isOn())
+			to_chat(user, SPAN_WARNING("Turn \the [welder] on, first."))
 			return TRUE
-		if(WT.weld(1, user))
+		if(welder.weld(1, user))
 
 			var/last_reinforced_state = is_reinforced
 			visible_message("\The [user] begins welding the metal reinforcement inside \the [src].")

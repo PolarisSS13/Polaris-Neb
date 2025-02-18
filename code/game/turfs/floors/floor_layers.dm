@@ -100,8 +100,8 @@
 		return
 
 	LAZYCLEARLIST(decals)
-	for(var/obj/effect/decal/writing/W in src)
-		qdel(W)
+	for(var/obj/effect/decal/writing/writing in src)
+		qdel(writing)
 
 	flooring.on_flooring_remove(src)
 

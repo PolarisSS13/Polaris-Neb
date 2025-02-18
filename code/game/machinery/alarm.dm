@@ -913,7 +913,7 @@ FIRE ALARM
 		alarm(rand(30/severity, 60/severity))
 	..()
 
-/obj/machinery/firealarm/attackby(obj/item/W, mob/user)
+/obj/machinery/firealarm/attackby(obj/item/used_item, mob/user)
 	if((. = ..()))
 		return
 	src.alarm()

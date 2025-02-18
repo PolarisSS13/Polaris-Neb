@@ -120,25 +120,25 @@ Using robohead because of restricting to roboticist */
 	material = /decl/material/solid/metal/steel
 
 // TODO: refactor this to use slapcrafting? remove entirely?
-/obj/item/TVAssembly/attackby(var/obj/item/W, var/mob/user)
+/obj/item/TVAssembly/attackby(var/obj/item/used_item, var/mob/user)
 	switch(buildstep)
 		if(0)
-			if(istype(W, /obj/item/robot_parts/robot_component/camera))
+			if(istype(used_item, /obj/item/robot_parts/robot_component/camera))
 				to_chat(user, "<span class='notice'>You add the camera module to [src]</span>")
-				qdel(W)
+				qdel(used_item)
 				desc = "This TV camera assembly has a camera module."
 				buildstep++
 				return TRUE
 		if(1)
-			if(istype(W, /obj/item/taperecorder))
-				qdel(W)
+			if(istype(used_item, /obj/item/taperecorder))
+				qdel(used_item)
 				buildstep++
 				to_chat(user, "<span class='notice'>You add the tape recorder to [src]</span>")
 				desc = "This TV camera assembly has a camera and audio module."
 				return TRUE
 		if(2)
-			if(IS_COIL(W))
-				var/obj/item/stack/cable_coil/C = W
+			if(IS_COIL(used_item))
+				var/obj/item/stack/cable_coil/C = used_item
 				if(!C.use(3))
 					to_chat(user, "<span class='notice'>You need three cable coils to wire the devices.</span>")
 					return TRUE
@@ -147,14 +147,14 @@ Using robohead because of restricting to roboticist */
 				desc = "This TV camera assembly has wires sticking out."
 				return TRUE
 		if(3)
-			if(IS_WIRECUTTER(W))
+			if(IS_WIRECUTTER(used_item))
 				to_chat(user, "<span class='notice'> You trim the wires.</span>")
 				buildstep++
 				desc = "This TV camera assembly needs casing."
 				return TRUE
 		if(4)
-			if(istype(W, /obj/item/stack/material))
-				var/obj/item/stack/material/S = W
+			if(istype(used_item, /obj/item/stack/material))
+				var/obj/item/stack/material/S = used_item
 				if(S.material?.type == /decl/material/solid/metal/steel && S.use(1))
 					buildstep++
 					to_chat(user, "<span class='notice'>You encase the assembly.</span>")

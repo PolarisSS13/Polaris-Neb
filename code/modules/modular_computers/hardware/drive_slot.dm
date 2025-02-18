@@ -1,7 +1,7 @@
 /obj/item/stock_parts/computer/drive_slot
 	name = "removable drive slot"
 	desc = "Slot that allows this computer to accept removable drives."
-	power_usage = 10 //W
+	power_usage = 10 // W
 	critical = 0
 	icon_state = "cardreader"
 	hardware_size = 1

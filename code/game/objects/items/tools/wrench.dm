@@ -60,5 +60,5 @@
 /obj/item/wrench/pipe/afterattack(atom/A, mob/user, proximity)
 	. = ..()
 	if(proximity && istype(A,/obj/structure/window) && is_held_twohanded())
-		var/obj/structure/window/W = A
-		W.shatter()
+		var/obj/structure/window/window = A
+		window.shatter()

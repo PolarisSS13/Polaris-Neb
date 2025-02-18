@@ -275,24 +275,24 @@ var/global/list/possible_say_verbs = list(
 		icon_state = "[icon_state]-rest"
 
 //Overriding this will stop a number of headaches down the track.
-/mob/living/silicon/pai/attackby(obj/item/W, mob/user)
-	var/obj/item/card/id/card = W.GetIdCard()
+/mob/living/silicon/pai/attackby(obj/item/used_item, mob/user)
+	var/obj/item/card/id/card = used_item.GetIdCard()
 	if(card && user.check_intent(I_FLAG_HELP))
 		var/list/new_access = card.GetAccess()
 		idcard.access = new_access
-		visible_message("<span class='notice'>[user] slides [W] across [src].</span>")
+		visible_message("<span class='notice'>[user] slides [used_item] across [src].</span>")
 		to_chat(src, SPAN_NOTICE("Your access has been updated!"))
 		return FALSE // don't continue processing click callstack.
-	if(try_stock_parts_install(W, user))
+	if(try_stock_parts_install(used_item, user))
 		return TRUE
-	if(try_stock_parts_removal(W, user))
+	if(try_stock_parts_removal(used_item, user))
 		return TRUE
-	var/force = W.expend_attack_force(user)
+	var/force = used_item.expend_attack_force(user)
 	if(force)
-		visible_message(SPAN_DANGER("[user] attacks [src] with [W]!"))
+		visible_message(SPAN_DANGER("[user] attacks [src] with [used_item]!"))
 		take_damage(force)
 	else
-		visible_message(SPAN_WARNING("[user] bonks [src] harmlessly with [W]."))
+		visible_message(SPAN_WARNING("[user] bonks [src] harmlessly with [used_item]."))
 
 	spawn(1)
 		if(stat != DEAD) fold()

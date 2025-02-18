@@ -47,17 +47,17 @@
 		icon_state = base_state
 
 // TODO: slapcrafting recipes to replace this block.
-/obj/item/stack/material/rods/attackby(obj/item/W, mob/user)
+/obj/item/stack/material/rods/attackby(obj/item/used_item, mob/user)
 
-	if(IS_WELDER(W))
-		var/obj/item/weldingtool/WT = W
+	if(IS_WELDER(used_item))
+		var/obj/item/weldingtool/welder = used_item
 
 		if(!can_use(2))
 			to_chat(user, SPAN_WARNING("You need at least two rods to do this."))
 			return TRUE
 
-		if(WT.weld(0,user))
-			visible_message(SPAN_NOTICE("\The [src] is fused together by \the [user] with \the [WT]."), 3, SPAN_NOTICE("You hear welding."), 2)
+		if(welder.weld(0,user))
+			visible_message(SPAN_NOTICE("\The [src] is fused together by \the [user] with \the [welder]."), 3, SPAN_NOTICE("You hear welding."), 2)
 			for(var/obj/item/stack/material/new_item in SSmaterials.create_object((material?.type || /decl/material/solid/metal/steel), usr.loc, 1))
 				new_item.add_to_stacks(usr)
 				if(user.is_holding_offhand(src))
@@ -65,8 +65,8 @@
 			use(2)
 		return TRUE
 
-	if (istype(W, /obj/item/stack/tape_roll/duct_tape))
-		var/obj/item/stack/tape_roll/duct_tape/T = W
+	if (istype(used_item, /obj/item/stack/tape_roll/duct_tape))
+		var/obj/item/stack/tape_roll/duct_tape/T = used_item
 		if(!T.can_use(4))
 			to_chat(user, SPAN_WARNING("You need 4 [T.plural_name] to make a splint!"))
 			return TRUE

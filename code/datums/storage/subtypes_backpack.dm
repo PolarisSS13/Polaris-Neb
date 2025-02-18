@@ -6,10 +6,8 @@
 /datum/storage/backpack/holding
 	max_storage_space = 56
 
-/datum/storage/backpack/holding/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params)
-	if(istype(W, /obj/item/backpack/holding))
-		return 1
-	return ..()
+/datum/storage/backpack/holding/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params)
+	return istype(inserting, /obj/item/backpack/holding) || ..()
 
 /datum/storage/backpack/santa
 	max_w_class = ITEM_SIZE_NORMAL

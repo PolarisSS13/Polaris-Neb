@@ -60,10 +60,10 @@
 		return TRUE
 	return ..()
 
-/obj/structure/meat_hook/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/holder))
-		var/mob/victim = (locate() in W)
-		if(istype(victim) && user.try_unequip(W))
+/obj/structure/meat_hook/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/holder))
+		var/mob/victim = (locate() in used_item)
+		if(istype(victim) && user.try_unequip(used_item))
 			try_spike(victim, user, 1) // Delay to allow the holder to despawn and drop the mob in the loc.
 			return TRUE
 	return ..()
@@ -177,8 +177,8 @@
 	else if(occupant_state == CARCASS_EMPTY)
 		for(var/obj/item/embedded in occupant.embedded)
 			occupant.remove_implant(occupant.embedded, TRUE) // surgical removal to prevent pointless damage pre-deletion
-		for(var/obj/item/W in occupant)
-			occupant.drop_from_inventory(W)
+		for(var/obj/item/thing in occupant)
+			occupant.drop_from_inventory(thing)
 		qdel(occupant)
 		clear_occupant()
 	update_icon()

@@ -151,9 +151,9 @@
 	update_icon()
 	update_held_icon()
 
-/obj/item/holder/attackby(obj/item/W, mob/user)
+/obj/item/holder/attackby(obj/item/used_item, mob/user)
 	for(var/mob/M in src.contents)
-		. = M.attackby(W,user)
+		. = M.attackby(used_item,user)
 		if(.)
 			return
 	return FALSE

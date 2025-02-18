@@ -56,14 +56,14 @@
 	if(has_handle)
 		add_overlay(overlay_image(icon, "handle", has_handle, RESET_COLOR))
 
-/obj/item/shard/attackby(obj/item/W, mob/user)
-	if(IS_WELDER(W) && material.shard_can_repair)
-		var/obj/item/weldingtool/WT = W
-		if(WT.weld(0, user))
+/obj/item/shard/attackby(obj/item/used_item, mob/user)
+	if(IS_WELDER(used_item) && material.shard_can_repair)
+		var/obj/item/weldingtool/welder = used_item
+		if(welder.weld(0, user))
 			material.create_object(get_turf(src))
 			qdel(src)
 			return TRUE
-	if(istype(W, /obj/item/stack/cable_coil))
+	if(istype(used_item, /obj/item/stack/cable_coil))
 
 		if(!material || (material.shard_name in list(SHARD_SPLINTER, SHARD_SHRAPNEL)))
 			to_chat(user, SPAN_WARNING("\The [src] is not suitable for using as a shank."))
@@ -71,7 +71,7 @@
 		if(has_handle)
 			to_chat(user, SPAN_WARNING("\The [src] already has a handle."))
 			return TRUE
-		var/obj/item/stack/cable_coil/cable = W
+		var/obj/item/stack/cable_coil/cable = used_item
 		if(cable.use(3))
 			to_chat(user, SPAN_NOTICE("You wind some cable around the thick end of \the [src]."))
 			has_handle = cable.color

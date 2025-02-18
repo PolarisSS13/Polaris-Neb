@@ -34,9 +34,9 @@
 	visible_message("<span class='warning'>\The [src] has been squashed!</span>","<span class='warning'>You hear a smack.</span>")
 	qdel(src)
 
-/obj/item/food/egg/attackby(obj/item/W, mob/user)
-	if(IS_PEN(W))
-		var/clr = W.get_tool_property(TOOL_PEN, TOOL_PROP_COLOR_NAME)
+/obj/item/food/egg/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
+		var/clr = used_item.get_tool_property(TOOL_PEN, TOOL_PROP_COLOR_NAME)
 
 		if(!(clr in list("blue","green","mime","orange","purple","rainbow","red","yellow")))
 			to_chat(user, SPAN_WARNING("The egg refuses to take on this color!"))

@@ -228,15 +228,15 @@
 		internal_cells -= cell
 	return ..()
 
-/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/smes/batteryrack/attackby(var/obj/item/used_item, var/mob/user)
 	. = ..()
 	if(.)
 		return
-	if(istype(W, /obj/item/cell)) // ID Card, try to insert it.
-		if(insert_cell(W, user))
-			to_chat(user, "You insert \the [W] into \the [src].")
+	if(istype(used_item, /obj/item/cell)) // ID Card, try to insert it.
+		if(insert_cell(used_item, user))
+			to_chat(user, "You insert \the [used_item] into \the [src].")
 		else
-			to_chat(user, "\The [src] has no empty slot for \the [W].")
+			to_chat(user, "\The [src] has no empty slot for \the [used_item].")
 		return TRUE
 
 /obj/machinery/power/smes/batteryrack/interface_interact(var/mob/user)

@@ -200,8 +200,8 @@
 	healthcheck()
 	return TRUE
 
-/obj/effect/energy_net/attackby(obj/item/W, mob/user)
-	current_health -= W.expend_attack_force(user)
+/obj/effect/energy_net/attackby(obj/item/used_item, mob/user)
+	current_health -= used_item.expend_attack_force(user)
 	healthcheck()
 	return TRUE
 

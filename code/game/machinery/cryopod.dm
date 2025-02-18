@@ -420,8 +420,8 @@
 	var/list/items = get_contained_external_atoms()
 	if(occupant) items -= occupant
 
-	for(var/obj/item/W in items)
-		W.dropInto(loc)
+	for(var/obj/item/thing in items)
+		thing.dropInto(loc)
 
 	src.go_out()
 	add_fingerprint(usr)
@@ -523,14 +523,14 @@
 		to_chat(user, SPAN_NOTICE("The glass is already open."))
 	return TRUE
 
-/obj/structure/broken_cryo/attackby(obj/item/W, mob/user)
+/obj/structure/broken_cryo/attackby(obj/item/used_item, mob/user)
 	if (busy)
 		to_chat(user, SPAN_NOTICE("Someone else is attempting to open this."))
 		return TRUE
 	if (!closed)
 		to_chat(user, SPAN_NOTICE("The glass cover is already open."))
 		return TRUE
-	if (IS_CROWBAR(W))
+	if (IS_CROWBAR(used_item))
 		busy = 1
 		visible_message("[user] starts to pry the glass cover off of \the [src].")
 		if (!do_after(user, 50, src))

@@ -58,7 +58,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/stack/flag/attackby(var/obj/item/W, var/mob/user)
+/obj/item/stack/flag/attackby(var/obj/item/used_item, var/mob/user)
 	if(upright)
 		return attack_hand_with_interaction_checks(user)
 	return ..()

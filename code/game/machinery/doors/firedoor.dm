@@ -222,14 +222,14 @@
 	if(operating)
 		return TRUE //Already doing something.
 	if(IS_WELDER(C) && !repairing)
-		var/obj/item/weldingtool/W = C
-		if(W.weld(0, user))
+		var/obj/item/weldingtool/welder = C
+		if(welder.weld(0, user))
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			if(do_after(user, 2 SECONDS, src))
-				if(!W.isOn()) return TRUE
+				if(!welder.isOn()) return TRUE
 				blocked = !blocked
-				user.visible_message("<span class='danger'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W].</span>",\
-				"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+				user.visible_message("<span class='danger'>\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [welder].</span>",\
+				"You [blocked ? "weld" : "unweld"] \the [src] with \the [welder].",\
 				"You hear something being welded.")
 				playsound(src, 'sound/items/Welder.ogg', 100, 1)
 				update_icon()

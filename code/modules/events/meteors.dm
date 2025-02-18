@@ -293,8 +293,8 @@ var/global/list/meteors_major = list(
 	SHOULD_CALL_PARENT(FALSE)
 	return
 
-/obj/effect/meteor/attackby(obj/item/W, mob/user, params)
-	if(IS_PICK(W))
+/obj/effect/meteor/attackby(obj/item/used_item, mob/user, params)
+	if(IS_PICK(used_item))
 		qdel(src)
 		return TRUE
 	return ..()

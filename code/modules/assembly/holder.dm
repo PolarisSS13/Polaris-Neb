@@ -118,8 +118,8 @@
 		a_right.holder_movement()
 	return ..()
 
-/obj/item/assembly_holder/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/item/assembly_holder/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		if(!a_left || !a_right)
 			to_chat(user, "<span class='warning'>BUG:Assembly part missing, please report this!</span>")
 			return TRUE

@@ -196,8 +196,8 @@
 /obj/effect/decal/cleanable/blood/writing/Initialize()
 	. = ..()
 	if(LAZYLEN(random_icon_states))
-		for(var/obj/effect/decal/cleanable/blood/writing/W in loc)
-			random_icon_states.Remove(W.icon_state)
+		for(var/obj/effect/decal/cleanable/blood/writing/writing in loc)
+			random_icon_states.Remove(writing.icon_state)
 		icon_state = pick(random_icon_states)
 	else
 		icon_state = "writing1"

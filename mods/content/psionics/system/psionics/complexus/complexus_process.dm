@@ -217,11 +217,11 @@
 						E.status &= ~ORGAN_TENDON_CUT
 						return TRUE
 
-					for(var/datum/wound/W in E.wounds)
-						if(W.bleeding() && spend_power(heal_rate))
-							to_chat(H, SPAN_NOTICE("Your autoredactive faculty knits together severed veins, stemming the bleeding from \a [W.desc] on your [E.name]."))
-							W.bleed_timer = 0
-							W.clamped = TRUE
+					for(var/datum/wound/wound in E.wounds)
+						if(wound.bleeding() && spend_power(heal_rate))
+							to_chat(H, SPAN_NOTICE("Your autoredactive faculty knits together severed veins, stemming the bleeding from \a [wound.desc] on your [E.name]."))
+							wound.bleed_timer = 0
+							wound.clamped = TRUE
 							E.status &= ~ORGAN_BLEEDING
 							return
 

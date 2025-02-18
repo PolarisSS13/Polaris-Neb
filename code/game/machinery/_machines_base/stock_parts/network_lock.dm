@@ -75,10 +75,10 @@
 	if(emagged && user.skill_check_multiple(list(SKILL_FORENSICS = SKILL_EXPERT, SKILL_COMPUTER = SKILL_EXPERT)))
 		. += SPAN_WARNING("On closer inspection, there is something odd about the interface. You suspect it may have been tampered with.")
 
-/obj/item/stock_parts/network_receiver/network_lock/attackby(obj/item/W, mob/user)
+/obj/item/stock_parts/network_receiver/network_lock/attackby(obj/item/used_item, mob/user)
 	. = ..()
-	if(istype(W, /obj/item/card/id))
-		if(check_access(W))
+	if(istype(used_item, /obj/item/card/id))
+		if(check_access(used_item))
 			playsound(src, 'sound/machines/ping.ogg', 20, 0)
 		else
 			playsound(src, 'sound/machines/buzz-two.ogg', 20, 0)

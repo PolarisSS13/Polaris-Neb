@@ -35,8 +35,8 @@
 		return
 	to_chat(user, "<span class='warning'>You can't move.</span>")
 
-/obj/effect/spresent/attackby(obj/item/W, mob/user)
-	if(!IS_WIRECUTTER(W))
+/obj/effect/spresent/attackby(obj/item/used_item, mob/user)
+	if(!IS_WIRECUTTER(used_item))
 		to_chat(user, "<span class='warning'>I need wirecutters for that.</span>")
 		return TRUE
 

@@ -201,9 +201,9 @@
 					SET_STATUS_MAX(src, STAT_STUN, 2)
 
 				//Moving makes open wounds get infected much faster
-				for(var/datum/wound/W in E.wounds)
-					if (W.infection_check())
-						W.germ_level += 1
+				for(var/datum/wound/wound in E.wounds)
+					if (wound.infection_check())
+						wound.germ_level += 1
 
 /mob/living/human/proc/Check_Proppable_Object()
 	for(var/turf/T as anything in RANGE_TURFS(src, 1)) //we only care for non-space turfs

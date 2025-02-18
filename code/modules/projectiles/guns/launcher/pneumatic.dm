@@ -61,12 +61,12 @@
 	unload_hopper(user)
 	return TRUE
 
-/obj/item/gun/launcher/pneumatic/attackby(obj/item/W, mob/user)
-	if(!tank && istype(W, /obj/item/tank) && user.try_unequip(W, src))
-		tank = W
+/obj/item/gun/launcher/pneumatic/attackby(obj/item/used_item, mob/user)
+	if(!tank && istype(used_item, /obj/item/tank) && user.try_unequip(used_item, src))
+		tank = used_item
 		user.visible_message(
-			"\The [user] jams \the [W] into [src]'s valve and twists it closed.",
-			"You jam \the [W] into \the [src]'s valve and twist it closed."
+			"\The [user] jams \the [used_item] into [src]'s valve and twists it closed.",
+			"You jam \the [used_item] into \the [src]'s valve and twist it closed."
 		)
 		update_icon()
 		return TRUE

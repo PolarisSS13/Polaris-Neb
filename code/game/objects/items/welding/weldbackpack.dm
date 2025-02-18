@@ -30,7 +30,7 @@
 /obj/item/weldingtool/weldpack/toggle_unscrewed(mob/user)
 	return FALSE
 
-/obj/item/weldingtool/weldpack/attempt_modify(obj/item/W, mob/user)
+/obj/item/weldingtool/weldpack/attempt_modify(obj/item/used_item, mob/user)
 	return FALSE
 
 /obj/item/weldingtool/weldpack/dropped(mob/user)

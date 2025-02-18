@@ -84,11 +84,11 @@
 
 	return ..()
 
-/obj/machinery/turretid/attackby(obj/item/W, mob/user)
+/obj/machinery/turretid/attackby(obj/item/used_item, mob/user)
 	if(stat & BROKEN)
 		return FALSE
 
-	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer))
+	if(istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer))
 		if(src.allowed(user))
 			if(emagged)
 				to_chat(user, "<span class='notice'>The turret control is unresponsive.</span>")

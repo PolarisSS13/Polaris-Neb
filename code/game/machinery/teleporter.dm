@@ -248,7 +248,7 @@
 	else
 		z_flags &= ~ZMM_MANGLE_PLANES
 
-/obj/machinery/teleport/station/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/teleport/station/attackby(var/obj/item/used_item, var/mob/user)
 	return attack_hand_with_interaction_checks(user) || ..()
 
 /obj/machinery/teleport/station/interface_interact(var/mob/user)

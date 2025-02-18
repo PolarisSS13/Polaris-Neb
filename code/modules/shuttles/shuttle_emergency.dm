@@ -174,8 +174,8 @@
 		emagged = 1
 		return 1
 
-/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/W, mob/user)
-	if(read_authorization(W))
+/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/used_item, mob/user)
+	if(read_authorization(used_item))
 		return TRUE
 	return ..()
 

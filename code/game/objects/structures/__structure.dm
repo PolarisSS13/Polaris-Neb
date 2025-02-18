@@ -301,11 +301,11 @@ auto_align() will then place the sprite so the defined center_of_mass is at the 
 closest to where the cursor has clicked on.
 Note: This proc can be overwritten to allow for different types of auto-alignment.
 */
-/obj/structure/proc/auto_align(obj/item/W, click_params)
-	if (!W.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
-		W.pixel_x = rand(-W.randpixel, W.randpixel)
-		W.pixel_y = rand(-W.randpixel, W.randpixel)
-		W.pixel_z = 0
+/obj/structure/proc/auto_align(obj/item/aligning, click_params)
+	if (!aligning.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
+		aligning.pixel_x = rand(-aligning.randpixel, aligning.randpixel)
+		aligning.pixel_y = rand(-aligning.randpixel, aligning.randpixel)
+		aligning.pixel_z = 0
 		return
 	if (!click_params)
 		return
@@ -324,10 +324,10 @@ Note: This proc can be overwritten to allow for different types of auto-alignmen
 		span_y = bound_height / CELLSIZE
 	var/cell_x = clamp(round(mouse_x/CELLSIZE), 0, span_x-1) // Ranging from 0 to span_x-1
 	var/cell_y = clamp(round(mouse_y/CELLSIZE), 0, span_y-1)
-	var/list/center = cached_json_decode(W.center_of_mass)
-	W.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
-	W.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
-	W.pixel_z = 0
+	var/list/center = cached_json_decode(aligning.center_of_mass)
+	aligning.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
+	aligning.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	aligning.pixel_z = 0
 
 // Does this structure override turf depth for the purposes of mob offsets?
 /obj/structure/proc/is_platform()

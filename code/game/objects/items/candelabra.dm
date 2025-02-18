@@ -7,7 +7,7 @@
 		list("x" =  6, "y" = 17)
 	)
 
-/datum/storage/candelabra/can_be_inserted(obj/item/W, mob/user, stop_messages, click_params)
+/datum/storage/candelabra/can_be_inserted(obj/item/used_item, mob/user, stop_messages, click_params)
 	. = ..() && holder && length(holder.get_stored_inventory()) < length(candle_offsets)
 
 /obj/item/candelabra

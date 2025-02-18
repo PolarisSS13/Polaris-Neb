@@ -84,15 +84,15 @@
 		return TRUE
 	. = ..()
 
-/obj/structure/iv_drip/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/chems))
+/obj/structure/iv_drip/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/chems))
 		if(!isnull(src.beaker))
 			to_chat(user, "There is already a reagent container loaded!")
 			return TRUE
-		if(!user.try_unequip(W, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		beaker = W
-		to_chat(user, "You attach \the [W] to \the [src].")
+		beaker = used_item
+		to_chat(user, "You attach \the [used_item] to \the [src].")
 		queue_icon_update()
 		return TRUE
 	else

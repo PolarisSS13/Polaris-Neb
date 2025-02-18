@@ -84,16 +84,16 @@ var/global/bomb_set
 		switch(removal_stage)
 			if(0)
 				if(IS_WELDER(O))
-					var/obj/item/weldingtool/WT = O
-					if(!WT.isOn()) return TRUE
-					if(WT.get_fuel() < 5) // uses up 5 fuel.
+					var/obj/item/weldingtool/welder = O
+					if(!welder.isOn()) return TRUE
+					if(welder.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 						return TRUE
 
 					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [O]...")
 
 					if(do_after(user, 4 SECONDS, src))
-						if(QDELETED(src) || QDELETED(user) || !WT.weld(5, user)) return TRUE
+						if(QDELETED(src) || QDELETED(user) || !welder.weld(5, user)) return TRUE
 						user.visible_message("\The [user] cuts through the bolt covers on \the [src].", "You cut through the bolt cover.")
 						removal_stage = 1
 				return TRUE
@@ -110,16 +110,16 @@ var/global/bomb_set
 
 			if(2)
 				if(IS_WELDER(O))
-					var/obj/item/weldingtool/WT = O
-					if(!WT.isOn()) return TRUE
-					if (WT.get_fuel() < 5) // uses up 5 fuel.
+					var/obj/item/weldingtool/welder = O
+					if(!welder.isOn()) return TRUE
+					if (welder.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 						return TRUE
 
 					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
 
 					if(do_after(user, 4 SECONDS, src))
-						if(QDELETED(src) || QDELETED(user) || !WT.weld(5, user)) return TRUE
+						if(QDELETED(src) || QDELETED(user) || !welder.weld(5, user)) return TRUE
 						user.visible_message("\The [user] cuts apart the anchoring system sealant on \the [src].", "You cut apart the anchoring system's sealant.")
 						removal_stage = 3
 				return TRUE

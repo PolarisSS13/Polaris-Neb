@@ -265,9 +265,9 @@ var/global/list/closets = list()
 				receive_mouse_drop(grab.affecting, user)      //act like they were dragged onto the closet
 				return TRUE
 			if(IS_WELDER(used_item))
-				var/obj/item/weldingtool/WT = used_item
-				if(WT.weld(0,user))
-					slice_into_parts(WT, user)
+				var/obj/item/weldingtool/welder = used_item
+				if(welder.weld(0,user))
+					slice_into_parts(welder, user)
 					return TRUE
 			if(istype(used_item, /obj/item/gun/energy/plasmacutter))
 				var/obj/item/gun/energy/plasmacutter/cutter = used_item
@@ -315,9 +315,9 @@ var/global/list/closets = list()
 		return FALSE //Return false to get afterattack to be called
 
 	if(IS_WELDER(used_item) && (setup & CLOSET_CAN_BE_WELDED))
-		var/obj/item/weldingtool/WT = used_item
-		if(!WT.weld(0,user))
-			if(WT.isOn())
+		var/obj/item/weldingtool/welder = used_item
+		if(!welder.weld(0,user))
+			if(welder.isOn())
 				to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
 			return TRUE
 		welded = !welded
@@ -330,10 +330,10 @@ var/global/list/closets = list()
 
 	return attack_hand_with_interaction_checks(user)
 
-/obj/structure/closet/proc/slice_into_parts(obj/W, mob/user)
+/obj/structure/closet/proc/slice_into_parts(obj/item/used_item, mob/user)
 	user.visible_message(
-		SPAN_NOTICE("\The [src] has been cut apart by [user] with \the [W]."),
-		SPAN_NOTICE("You have cut \the [src] apart with \the [W]."),
+		SPAN_NOTICE("\The [src] has been cut apart by [user] with \the [used_item]."),
+		SPAN_NOTICE("You have cut \the [src] apart with \the [used_item]."),
 		"You hear welding."
 	)
 	physically_destroyed()

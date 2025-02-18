@@ -56,25 +56,25 @@
 			swagnames += C.get_examine_line()
 		. += "[gender == MALE ? "He" : "She"] is wearing [english_list(swagnames)]."
 
-/obj/structure/skele_stand/attackby(obj/item/W, mob/user)
-	if(IS_PEN(W))
+/obj/structure/skele_stand/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
 		var/nuname = sanitize(input(user,"What do you want to name this skeleton as?","Skeleton Christening",name) as text|null)
 		if(nuname && CanPhysicallyInteract(user))
 			SetName(nuname)
 			return TRUE
-	if(istype(W,/obj/item/clothing))
-		var/obj/item/clothing/clothes = W
+	if(istype(used_item,/obj/item/clothing))
+		var/obj/item/clothing/clothes = used_item
 		if(!clothes.fallback_slot)
 			return FALSE
 		if(swag[clothes.fallback_slot])
 			to_chat(user,SPAN_NOTICE("There is already that kind of clothing on \the [src]."))
-		else if(user.try_unequip(W, src))
-			swag[clothes.fallback_slot] = W
+		else if(user.try_unequip(used_item, src))
+			swag[clothes.fallback_slot] = used_item
 			update_icon()
 		return TRUE
 	. = ..()
 	if(!.)
-		rattle_bones(user, W)
+		rattle_bones(user, used_item)
 		return TRUE
 
 /obj/structure/skele_stand/Destroy()

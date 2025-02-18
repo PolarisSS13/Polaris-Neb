@@ -66,15 +66,15 @@
 		return TRUE
 	return ..()
 
-/turf/unsimulated/wall/cascade/attackby(obj/item/W, mob/user)
-	user.visible_message("<span class=\"warning\">\The [user] touches \a [W] to \the [src] as a silence fills the room...</span>",\
-		"<span class=\"danger\">You touch \the [W] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [W] flashes into dust as you flinch away from \the [src].</span>",\
+/turf/unsimulated/wall/cascade/attackby(obj/item/used_item, mob/user)
+	user.visible_message("<span class=\"warning\">\The [user] touches \a [used_item] to \the [src] as a silence fills the room...</span>",\
+		"<span class=\"danger\">You touch \the [used_item] to \the [src] when everything suddenly goes silent.\"</span>\n<span class=\"notice\">\The [used_item] flashes into dust as you flinch away from \the [src].</span>",\
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 
-	user.drop_from_inventory(W)
-	Bumped(W)
+	user.drop_from_inventory(used_item)
+	Bumped(used_item)
 	return TRUE
 
 /turf/unsimulated/wall/cascade/Entered(var/atom/movable/AM)

@@ -62,8 +62,8 @@
 	if(LAZYLEN(lbls?.labels))
 		add_overlay("bodybag_label")
 
-/obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/hand_labeler))
+/obj/structure/closet/body_bag/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/hand_labeler))
 		return FALSE //Prevent the labeler from opening the bag when trying to apply a label
 	. = ..()
 

@@ -27,12 +27,12 @@ RSF
 	if(distance <= 1)
 		. += "It currently holds [stored_matter]/30 fabrication-units."
 
-/obj/item/rsf/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/rcd_ammo))
+/obj/item/rsf/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/rcd_ammo))
 		if ((stored_matter + 10) > 30)
 			to_chat(user, "The RSF can't hold any more matter.")
 			return TRUE
-		qdel(W)
+		qdel(used_item)
 		stored_matter += 10
 		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
 		to_chat(user, "The RSF now holds [stored_matter]/30 fabrication-units.")

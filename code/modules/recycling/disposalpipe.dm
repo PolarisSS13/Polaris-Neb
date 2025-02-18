@@ -207,14 +207,14 @@
 	if(!can_deconstruct())
 		return TRUE
 	src.add_fingerprint(user, 0, I)
-	var/obj/item/weldingtool/W = I
-	if(W.weld(0,user))
+	var/obj/item/weldingtool/welder = I
+	if(welder.weld(0,user))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 		to_chat(user, "You begin slicing \the [src].")
 		if(!do_after(user, 3 SECONDS, src))
 			to_chat(user, "You must stay still while welding the pipe.")
 			return TRUE
-		if(!W.isOn())
+		if(!welder.isOn())
 			return TRUE
 		welded()
 		return TRUE

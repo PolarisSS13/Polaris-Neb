@@ -49,9 +49,9 @@
 	else
 		icon_state = "barricade"
 
-/obj/structure/barricade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/material/rods) && !reinf_material)
-		var/obj/item/stack/material/rods/rods = W
+/obj/structure/barricade/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/material/rods) && !reinf_material)
+		var/obj/item/stack/material/rods/rods = used_item
 		if(rods.get_amount() < 5)
 			to_chat(user, SPAN_WARNING("You need more rods to build a cheval de frise."))
 		else

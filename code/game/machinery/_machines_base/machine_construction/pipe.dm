@@ -25,10 +25,10 @@
 // Same, but uses different tool.
 /decl/machine_construction/pipe/welder/deconstruct_transition(obj/item/I, mob/user, obj/machinery/machine)
 	if(IS_WELDER(I))
-		var/obj/item/weldingtool/WT = I
-		if(!WT.isOn())
+		var/obj/item/weldingtool/welder = I
+		if(!welder.isOn())
 			return FALSE
-		if(!WT.weld(0,user))
+		if(!welder.weld(0,user))
 			return FALSE
 		var/fail = machine.cannot_transition_to(/decl/machine_construction/default/deconstructed, user)
 		if(istext(fail))
@@ -40,7 +40,7 @@
 		playsound(get_turf(machine), 'sound/items/Welder.ogg', 50, 1)
 		if(!do_after(user, 5 SECONDS, machine))
 			return TRUE
-		if(!WT.isOn())
+		if(!welder.isOn())
 			return TRUE
 		playsound(get_turf(machine), 'sound/items/Welder2.ogg', 50, 1)
 		TRANSFER_STATE(/decl/machine_construction/default/deconstructed)
