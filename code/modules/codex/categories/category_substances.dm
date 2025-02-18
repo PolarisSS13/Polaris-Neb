@@ -35,16 +35,15 @@
 				var/decl/material/catalyst = GET_DECL(catalyst_id)
 				catalysts += "[reaction.catalysts[catalyst_id]]u <span codexlink='[catalyst.codex_name || catalyst.name] (substance)'>[catalyst.name]</span>"
 
-			var/decl/material/result = reaction.result
 			var/mix_link = "Mixing"
 			if(istype(reaction, /decl/chemical_reaction/alloy))
 				mix_link = "Alloying"
 
 			mix_link = "<span codexlink='[reaction.name] (chemical reaction)'>[mix_link]</span>"
 			if(catalysts.len)
-				production_strings += "[mix_link] [english_list(reactant_values)], catalyzed by [english_list(catalysts)], producing [reaction.result_amount]u [lowertext(initial(result.name))]."
+				production_strings += "[mix_link] [english_list(reactant_values)], catalyzed by [english_list(catalysts)], producing [reaction.result_amount]u [mat.name]."
 			else
-				production_strings += "[mix_link] [english_list(reactant_values)], producing [reaction.result_amount]u [lowertext(initial(result.name))]."
+				production_strings += "[mix_link] [english_list(reactant_values)], producing [reaction.result_amount]u [mat.name]."
 			// Todo: smelting and compressing
 
 		if(length(production_strings))
