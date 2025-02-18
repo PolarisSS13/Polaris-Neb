@@ -309,7 +309,10 @@
 		client.eye = loc
 
 /mob/proc/get_descriptive_slot_name(var/slot)
-	return global.descriptive_slot_names[slot] || slot
+	if(global.abstract_slot_names[slot]) // this is an abstract slot like "in backpack"
+		return global.abstract_slot_names[slot]
+	var/datum/inventory_slot/slot_datum = get_inventory_slot_datum(slot)
+	return slot_datum?.slot_name || slot
 
 /mob/proc/show_stripping_window(mob/user)
 
