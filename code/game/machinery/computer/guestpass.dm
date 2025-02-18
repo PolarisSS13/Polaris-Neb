@@ -66,11 +66,11 @@
 	. = ..()
 	uid = "[random_id("guestpass_serial_number",100,999)]-G[rand(10,99)]"
 
-/obj/machinery/computer/guestpass/attackby(obj/O, mob/user)
-	if(istype(O, /obj/item/card/id))
-		if(!giver && user.try_unequip(O))
-			O.forceMove(src)
-			giver = O
+/obj/machinery/computer/guestpass/attackby(obj/used_item, mob/user)
+	if(istype(used_item, /obj/item/card/id))
+		if(!giver && user.try_unequip(used_item))
+			used_item.forceMove(src)
+			giver = used_item
 			updateUsrDialog()
 		else if(giver)
 			to_chat(user, SPAN_WARNING("There is already ID card inside."))
@@ -151,19 +151,19 @@
 			giver = null
 			accesses.Cut()
 		else
-			var/obj/item/I = user.get_active_held_item()
-			if (istype(I, /obj/item/card/id) && user.try_unequip(I))
-				I.forceMove(src)
-				giver = I
+			var/obj/item/used_item = user.get_active_held_item()
+			if (istype(used_item, /obj/item/card/id) && user.try_unequip(used_item))
+				used_item.forceMove(src)
+				giver = used_item
 		. = TOPIC_REFRESH
 
 	else if (href_list["print"])
 		var/dat = "<h3>Activity log of guest pass terminal #[uid]</h3><br>"
 		for (var/entry in internal_log)
 			dat += "[entry]<br><hr>"
-		var/obj/item/paper/P = new/obj/item/paper( loc )
-		P.SetName("activity log")
-		P.info = dat
+		var/obj/item/paper/paper = new/obj/item/paper( loc )
+		paper.SetName("activity log")
+		paper.info = dat
 		. = TOPIC_REFRESH
 
 	else if (href_list["issue"])

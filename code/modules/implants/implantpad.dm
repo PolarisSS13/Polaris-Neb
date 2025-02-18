@@ -22,9 +22,9 @@
 	update_icon()
 	return TRUE
 
-/obj/item/implantpad/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/implantcase))
-		var/obj/item/implantcase/C = I
+/obj/item/implantpad/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/implantcase))
+		var/obj/item/implantcase/C = used_item
 		if(!imp && C.imp)
 			C.imp.forceMove(src)
 			imp = C.imp
@@ -35,8 +35,8 @@
 			imp = null
 		C.update_icon()
 		. = TRUE
-	else if(istype(I, /obj/item/implanter))
-		var/obj/item/implanter/C = I
+	else if(istype(used_item, /obj/item/implanter))
+		var/obj/item/implanter/C = used_item
 		if(!imp && C.imp)
 			C.imp.forceMove(src)
 			imp = C.imp
@@ -47,8 +47,8 @@
 			imp = null
 		C.update_icon()
 		. = TRUE
-	else if(istype(I, /obj/item/implant) && user.try_unequip(I, src))
-		imp = I
+	else if(istype(used_item, /obj/item/implant) && user.try_unequip(used_item, src))
+		imp = used_item
 		. = TRUE
 	if(.)
 		update_icon()

@@ -42,8 +42,8 @@
 
 // Circumvent base machinery attackby
 // TODO: MAKE SHIELDS NOT MACHINERY???
-/obj/machinery/shield/attackby(obj/item/I, mob/user)
-	return bash(I, user)
+/obj/machinery/shield/attackby(obj/item/used_item, mob/user)
+	return bash(used_item, user)
 
 /obj/machinery/shield/bash(obj/item/used_item, mob/user)
 	if(isliving(user) && user.check_intent(I_FLAG_HELP))

@@ -49,9 +49,9 @@
 /obj/item/forensics/sample/proc/merge_evidence_list(var/list/new_evidence)
 	LAZYDISTINCTADD(evidence, new_evidence)
 
-/obj/item/forensics/sample/attackby(var/obj/O, var/mob/user)
-	if(O.type == src.type)
-		if(user.try_unequip(O) && merge_evidence(O, user))
-			qdel(O)
+/obj/item/forensics/sample/attackby(var/obj/used_item, var/mob/user)
+	if(used_item.type == src.type)
+		if(user.try_unequip(used_item) && merge_evidence(used_item, user))
+			qdel(used_item)
 		return 1
 	return ..()

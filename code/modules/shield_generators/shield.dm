@@ -215,8 +215,8 @@
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
-/obj/effect/shield/attackby(var/obj/item/I, var/mob/user)
-	return bash(I, user)
+/obj/effect/shield/attackby(var/obj/item/used_item, var/mob/user)
+	return bash(used_item, user)
 
 /obj/effect/shield/bash(obj/item/weapon, mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

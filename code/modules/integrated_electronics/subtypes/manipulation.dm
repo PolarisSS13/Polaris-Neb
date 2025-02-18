@@ -34,9 +34,9 @@
 	QDEL_NULL(installed_gun)
 	return ..()
 
-/obj/item/integrated_circuit/manipulation/weapon_firing/attackby(var/obj/O, var/mob/user)
-	if(istype(O, /obj/item/gun/energy))
-		var/obj/item/gun/energy/gun = O
+/obj/item/integrated_circuit/manipulation/weapon_firing/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/gun/energy))
+		var/obj/item/gun/energy/gun = used_item
 		if(installed_gun)
 			to_chat(user, "<span class='warning'>There's already a weapon installed.</span>")
 			return TRUE
@@ -181,15 +181,18 @@
 	detach_grenade()
 	return ..()
 
-/obj/item/integrated_circuit/manipulation/grenade/attackby(var/obj/item/grenade/G, var/mob/user)
-	if(istype(G))
+/obj/item/integrated_circuit/manipulation/grenade/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/grenade))
 		if(attached_grenade)
 			to_chat(user, "<span class='warning'>There is already a grenade attached!</span>")
 			return TRUE
-		if(user.try_unequip(G,src))
-			user.visible_message("<span class='warning'>\The [user] attaches \a [G] to \the [src]!</span>", "<span class='notice'>You attach \the [G] to \the [src].</span>")
-			attach_grenade(G)
-			G.forceMove(src)
+		if(user.try_unequip(used_item,src))
+			user.visible_message(
+				SPAN_WARNING("\The [user] attaches \a [used_item] to \the [src]!"),
+				SPAN_NOTICE("You attach \the [used_item] to \the [src].")
+			)
+			attach_grenade(used_item)
+			used_item.forceMove(src)
 		return TRUE
 	else
 		return ..()
@@ -215,9 +218,9 @@
 		log_and_message_admins("activated a grenade assembly. Last touches: Assembly: [holder.fingerprintslast] Circuit: [fingerprintslast] Grenade: [attached_grenade.fingerprintslast]")
 
 // These procs do not relocate the grenade, that's the callers responsibility
-/obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/G)
-	attached_grenade = G
-	G.forceMove(src)
+/obj/item/integrated_circuit/manipulation/grenade/proc/attach_grenade(var/obj/item/grenade/grenade)
+	attached_grenade = grenade
+	grenade.forceMove(src)
 	desc += " \An [attached_grenade] is attached to it!"
 
 /obj/item/integrated_circuit/manipulation/grenade/proc/detach_grenade()
@@ -245,25 +248,25 @@
 /obj/item/integrated_circuit/manipulation/plant_module/do_work()
 	..()
 	var/obj/acting_object = get_object()
-	var/obj/OM = get_pin_data_as_type(IC_INPUT, 1, /obj)
-	var/obj/O = get_pin_data_as_type(IC_INPUT, 3, /obj/item)
+	var/obj/input_obj = get_pin_data_as_type(IC_INPUT, 1, /obj)
+	var/obj/input_item = get_pin_data_as_type(IC_INPUT, 3, /obj/item)
 
-	if(!check_target(OM))
+	if(!check_target(input_obj))
 		push_data()
 		activate_pin(2)
 		return
 
-	if(istype(OM,/obj/effect/vine) && check_target(OM) && get_pin_data(IC_INPUT, 2) == 2)
-		qdel(OM)
+	if(istype(input_obj,/obj/effect/vine) && check_target(input_obj) && get_pin_data(IC_INPUT, 2) == 2)
+		qdel(input_obj)
 		push_data()
 		activate_pin(2)
 		return
 
-	var/obj/machinery/portable_atmospherics/hydroponics/TR = OM
-	if(istype(TR))
+	var/obj/machinery/portable_atmospherics/hydroponics/hydrotray = input_obj
+	if(istype(hydrotray))
 		switch(get_pin_data(IC_INPUT, 2))
 			if(0)
-				var/list/harvest_output = TR.harvest()
+				var/list/harvest_output = hydrotray.harvest()
 				if(harvest_output && !islist(harvest_output))
 					harvest_output = list(harvest_output)
 				for(var/i in 1 to length(harvest_output))
@@ -273,30 +276,30 @@
 					set_pin_data(IC_OUTPUT, 1, harvest_output)
 					push_data()
 			if(1)
-				TR.weedlevel = 0
-				TR.update_icon()
+				hydrotray.weedlevel = 0
+				hydrotray.update_icon()
 			if(2)
-				if(TR.seed) //Could be that they're just using it as a de-weeder
-					TR.age = 0
-					TR.plant_health = 0
-					if(TR.harvest)
-						TR.harvest = FALSE //To make sure they can't just put in another seed and insta-harvest it
-					qdel(TR.seed)
-					TR.seed = null
-				TR.weedlevel = 0 //Has a side effect of cleaning up those nasty weeds
-				TR.dead = 0
-				TR.update_icon()
+				if(hydrotray.seed) //Could be that they're just using it as a de-weeder
+					hydrotray.age = 0
+					hydrotray.plant_health = 0
+					if(hydrotray.harvest)
+						hydrotray.harvest = FALSE //To make sure they can't just put in another seed and insta-harvest it
+					qdel(hydrotray.seed)
+					hydrotray.seed = null
+				hydrotray.weedlevel = 0 //Has a side effect of cleaning up those nasty weeds
+				hydrotray.dead = 0
+				hydrotray.update_icon()
 			if(3)
-				if(!check_target(O))
+				if(!check_target(input_item))
 					activate_pin(2)
 					return FALSE
 
-				else if(istype(O, /obj/item/seeds) && !istype(O, /obj/item/seeds/extracted/cutting))
-					if(!TR.seed)
-						var/obj/item/seeds/seed = O
-						acting_object.visible_message("<span class='notice'>[acting_object] plants [O].</span>")
-						TR.set_seed(seed.seed)
-						QDEL_NULL(O)
+				else if(istype(input_item, /obj/item/seeds) && !istype(input_item, /obj/item/seeds/extracted/cutting))
+					if(!hydrotray.seed)
+						var/obj/item/seeds/seed = input_item
+						acting_object.visible_message("<span class='notice'>[acting_object] plants [input_item].</span>")
+						hydrotray.set_seed(seed.seed)
+						QDEL_NULL(input_item)
 	activate_pin(2)
 
 /obj/item/integrated_circuit/manipulation/seed_extractor
@@ -313,15 +316,15 @@
 
 /obj/item/integrated_circuit/manipulation/seed_extractor/do_work()
 	..()
-	var/obj/item/food/grown/O = get_pin_data_as_type(IC_INPUT, 1, /obj/item/food/grown)
-	if(!check_target(O))
+	var/obj/item/food/grown/grown = get_pin_data_as_type(IC_INPUT, 1, /obj/item/food/grown)
+	if(!check_target(grown))
 		push_data()
 		activate_pin(2)
 		return
 	var/list/seed_output = list()
 	for(var/i in 1 to rand(1,4))
-		seed_output += weakref(new /obj/item/seeds(get_turf(O), null, O.seed))
-	qdel(O)
+		seed_output += weakref(new /obj/item/seeds(get_turf(grown), null, grown.seed))
+	qdel(grown)
 
 	if(seed_output.len)
 		set_pin_data(IC_OUTPUT, 1, seed_output)
@@ -437,8 +440,8 @@
 							step_towards(pulling, F)
 	activate_pin(2)
 
-/obj/item/integrated_circuit/manipulation/claw/proc/can_pull(var/obj/item/I)
-	return assembly && I && I.w_class <= assembly.w_class && !I.anchored
+/obj/item/integrated_circuit/manipulation/claw/proc/can_pull(var/obj/item/used_item)
+	return assembly && used_item && used_item.w_class <= assembly.w_class && !used_item.anchored
 
 /obj/item/integrated_circuit/manipulation/claw/proc/pull()
 	var/obj/acting_object = get_object()
@@ -519,7 +522,7 @@
 			return
 
 	// If the item is in a grabber circuit we'll update the grabber's outputs after we've thrown it.
-	var/obj/item/integrated_circuit/manipulation/grabber/G = A.loc
+	var/obj/item/integrated_circuit/manipulation/grabber/grabber = A.loc
 
 	var/x_abs = clamp(T.x + target_x_rel, 0, world.maxx)
 	var/y_abs = clamp(T.y + target_y_rel, 0, world.maxy)
@@ -531,8 +534,8 @@
 	A.throw_at(locate(x_abs, y_abs, T.z), range, 3)
 
 	// If the item came from a grabber now we can update the outputs since we've thrown it.
-	if(istype(G))
-		G.update_outputs()
+	if(istype(grabber))
+		grabber.update_outputs()
 
 /obj/item/integrated_circuit/manipulation/wormhole
 	name = "wormhole generator"
@@ -650,9 +653,9 @@
 	controlling = null
 
 
-/obj/item/integrated_circuit/manipulation/ai/attackby(var/obj/item/I, var/mob/user)
-	if(is_type_in_list(I, list(/obj/item/aicard, /obj/item/paicard, /obj/item/organ/internal/brain_interface)))
-		load_ai(user, I)
+/obj/item/integrated_circuit/manipulation/ai/attackby(var/obj/item/used_item, var/mob/user)
+	if(is_type_in_list(used_item, list(/obj/item/aicard, /obj/item/paicard, /obj/item/organ/internal/brain_interface)))
+		load_ai(user, used_item)
 		return TRUE
 	else return ..()
 

@@ -201,13 +201,13 @@
 
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct
-/obj/structure/disposalpipe/attackby(var/obj/item/I, var/mob/user)
-	if(!istype(I, /obj/item/weldingtool))
+/obj/structure/disposalpipe/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/weldingtool))
 		return ..()
 	if(!can_deconstruct())
 		return TRUE
-	src.add_fingerprint(user, 0, I)
-	var/obj/item/weldingtool/welder = I
+	src.add_fingerprint(user, 0, used_item)
+	var/obj/item/weldingtool/welder = used_item
 	if(welder.weld(0,user))
 		playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 		to_chat(user, "You begin slicing \the [src].")
@@ -440,10 +440,10 @@
 	updatedesc()
 	update()
 
-/obj/structure/disposalpipe/tagger/attackby(var/obj/item/item, var/mob/user)
-	if(!istype(item, /obj/item/destTagger))
+/obj/structure/disposalpipe/tagger/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/destTagger))
 		return ..()
-	var/obj/item/destTagger/tagger = item
+	var/obj/item/destTagger/tagger = used_item
 	if(tagger.current_tag)// Tag set
 		sort_tag = tagger.current_tag
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 100, 1)
@@ -515,10 +515,10 @@
 	linked = null
 	return ..()
 
-/obj/structure/disposalpipe/diversion_junction/attackby(var/obj/item/item, var/mob/user)
-	if(!istype(item, /obj/item/disposal_switch_construct))
+/obj/structure/disposalpipe/diversion_junction/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/disposal_switch_construct))
 		return ..()
-	var/obj/item/disposal_switch_construct/switchcon = item
+	var/obj/item/disposal_switch_construct/switchcon = used_item
 	if(switchcon.id_tag)
 		id_tag = switchcon.id_tag
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 100, TRUE)
@@ -607,10 +607,10 @@
 	updatedesc()
 	updatename()
 
-/obj/structure/disposalpipe/sortjunction/attackby(var/obj/item/item, var/mob/user)
-	if(!istype(item, /obj/item/destTagger))
+/obj/structure/disposalpipe/sortjunction/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/destTagger))
 		return ..()
-	var/obj/item/destTagger/tagger = item
+	var/obj/item/destTagger/tagger = used_item
 	if(tagger.current_tag)// Tag set
 		sort_type = tagger.current_tag
 		playsound(src.loc, 'sound/machines/twobeep.ogg', 100, TRUE)

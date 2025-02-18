@@ -59,10 +59,10 @@
 		return 1
 	return 0
 
-/obj/item/implanter/attackby(obj/item/I, mob/user)
-	if(!imp && istype(I, /obj/item/implant) && user.try_unequip(I,src))
-		to_chat(usr, SPAN_NOTICE("You slide \the [I] into \the [src]."))
-		imp = I
+/obj/item/implanter/attackby(obj/item/used_item, mob/user)
+	if(!imp && istype(used_item, /obj/item/implant) && user.try_unequip(used_item,src))
+		to_chat(usr, SPAN_NOTICE("You slide \the [used_item] into \the [src]."))
+		imp = used_item
 		update_icon()
 		return TRUE
 	return ..()

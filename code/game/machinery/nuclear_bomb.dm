@@ -44,8 +44,8 @@ var/global/bomb_set
 			addtimer(CALLBACK(src, PROC_REF(explode)), 0)
 		SSnano.update_uis(src)
 
-/obj/machinery/nuclearbomb/attackby(obj/item/O, mob/user, params)
-	if(IS_SCREWDRIVER(O))
+/obj/machinery/nuclearbomb/attackby(obj/item/used_item, mob/user, params)
+	if(IS_SCREWDRIVER(used_item))
 		add_fingerprint(user)
 		if(auth)
 			if(panel_open == 0)
@@ -69,28 +69,28 @@ var/global/bomb_set
 			flick("lock", src)
 		return TRUE
 
-	if(panel_open && (IS_MULTITOOL(O) || IS_WIRECUTTER(O)))
+	if(panel_open && (IS_MULTITOOL(used_item) || IS_WIRECUTTER(used_item)))
 		return attack_hand_with_interaction_checks(user)
 
 	if(extended)
-		if(istype(O, /obj/item/disk/nuclear))
-			if(!user.try_unequip(O, src))
+		if(istype(used_item, /obj/item/disk/nuclear))
+			if(!user.try_unequip(used_item, src))
 				return TRUE
-			auth = O
+			auth = used_item
 			add_fingerprint(user)
 			return attack_hand_with_interaction_checks(user)
 
 	if(anchored)
 		switch(removal_stage)
 			if(0)
-				if(IS_WELDER(O))
-					var/obj/item/weldingtool/welder = O
+				if(IS_WELDER(used_item))
+					var/obj/item/weldingtool/welder = used_item
 					if(!welder.isOn()) return TRUE
 					if(welder.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 						return TRUE
 
-					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [O]...")
+					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [used_item]...")
 
 					if(do_after(user, 4 SECONDS, src))
 						if(QDELETED(src) || QDELETED(user) || !welder.weld(5, user)) return TRUE
@@ -99,8 +99,8 @@ var/global/bomb_set
 				return TRUE
 
 			if(1)
-				if(IS_CROWBAR(O))
-					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [O]...")
+				if(IS_CROWBAR(used_item))
+					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [used_item]...")
 
 					if(do_after(user, 1.5 SECONDS, src))
 						if(QDELETED(src) || QDELETED(user)) return TRUE
@@ -109,14 +109,14 @@ var/global/bomb_set
 				return TRUE
 
 			if(2)
-				if(IS_WELDER(O))
-					var/obj/item/weldingtool/welder = O
+				if(IS_WELDER(used_item))
+					var/obj/item/weldingtool/welder = used_item
 					if(!welder.isOn()) return TRUE
 					if (welder.get_fuel() < 5) // uses up 5 fuel.
 						to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 						return TRUE
 
-					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
+					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [used_item]...")
 
 					if(do_after(user, 4 SECONDS, src))
 						if(QDELETED(src) || QDELETED(user) || !welder.weld(5, user)) return TRUE
@@ -125,7 +125,7 @@ var/global/bomb_set
 				return TRUE
 
 			if(3)
-				if(IS_WRENCH(O))
+				if(IS_WRENCH(used_item))
 					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
 					if(do_after(user, 5 SECONDS, src))
 						if(QDELETED(src) || QDELETED(user)) return TRUE
@@ -134,7 +134,7 @@ var/global/bomb_set
 				return TRUE
 
 			if(4)
-				if(IS_CROWBAR(O))
+				if(IS_CROWBAR(used_item))
 					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
 					if(do_after(user, 8 SECONDS, src))
 						if(QDELETED(src) || QDELETED(user)) return TRUE
@@ -230,11 +230,11 @@ var/global/bomb_set
 			yes_code = 0
 			auth = null
 		else
-			var/obj/item/I = user.get_active_held_item()
-			if(istype(I, /obj/item/disk/nuclear))
-				if(!user.try_unequip(I, src))
+			var/obj/item/used_item = user.get_active_held_item()
+			if(istype(used_item, /obj/item/disk/nuclear))
+				if(!user.try_unequip(used_item, src))
 					return TOPIC_HANDLED
-				auth = I
+				auth = used_item
 	if(is_auth(user))
 		if(href_list["type"])
 			. = TOPIC_REFRESH
@@ -475,7 +475,7 @@ var/global/bomb_set
 	for(var/obj/machinery/self_destruct/ch in get_area(src))
 		inserters += ch
 
-/obj/machinery/nuclearbomb/station/attackby(obj/item/O, mob/user)
+/obj/machinery/nuclearbomb/station/attackby(obj/item/used_item, mob/user)
 	return TRUE // cannot be moved
 
 /obj/machinery/nuclearbomb/station/OnTopic(mob/user, href_list, datum/topic_state/state)

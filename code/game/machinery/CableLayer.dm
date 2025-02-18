@@ -26,17 +26,17 @@
 	user.visible_message("\The [user] [!on?"dea":"a"]ctivates \the [src].", "You switch [src] [on? "on" : "off"]")
 	return TRUE
 
-/obj/machinery/cablelayer/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/stack/cable_coil))
+/obj/machinery/cablelayer/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/stack/cable_coil))
 
-		var/result = load_cable(O)
+		var/result = load_cable(used_item)
 		if(!result)
 			to_chat(user, "<span class='warning'>\The [src]'s cable reel is full.</span>")
 		else
 			to_chat(user, "You load [result] lengths of cable into [src].")
 		return TRUE
 
-	if(IS_WIRECUTTER(O))
+	if(IS_WIRECUTTER(used_item))
 		if(cable && cable.amount)
 			var/m = round(input(user,"Please specify the length of cable to cut","Cut cable",min(cable.amount,30)) as num, 1)
 			m = min(m, cable.amount)

@@ -97,12 +97,13 @@
 
 /* Assembly by a roboticist */
 // TODO: Make this slapcrafting or remove tvcamera/tvassembly entirely
-/obj/item/robot_parts/head/attackby(var/obj/item/assembly/S, mob/user)
-	if (!istype(S, /obj/item/assembly/infra))
+/obj/item/robot_parts/head/attackby(obj/item/used_item, mob/user)
+	var/obj/item/assembly/infra/assembly = used_item
+	if(!istype(assembly))
 		return ..()
-	var/obj/item/TVAssembly/A = new(user)
-	qdel(S)
-	user.put_in_hands(A)
+	var/obj/item/TVAssembly/tv_assembly = new(user)
+	qdel(assembly)
+	user.put_in_hands(tv_assembly)
 	to_chat(user, "<span class='notice'>You add the infrared sensor to the robot head.</span>")
 	qdel(src)
 	return TRUE

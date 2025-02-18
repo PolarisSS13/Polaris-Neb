@@ -94,10 +94,10 @@
 
 	os.unmount_storage(mount_name)
 
-/obj/item/stock_parts/computer/drive_slot/attackby(obj/item/stock_parts/computer/hard_drive/portable/I, mob/user)
-	if(!istype(I))
+/obj/item/stock_parts/computer/drive_slot/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/stock_parts/computer/hard_drive/portable))
 		return ..()
-	insert_drive(I, user)
+	insert_drive(used_item, user)
 	return TRUE
 
 /obj/item/stock_parts/computer/drive_slot/Destroy()

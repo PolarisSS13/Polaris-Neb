@@ -12,12 +12,12 @@
 
 	var/list/fallen = list()
 
-/obj/structure/memorial/attackby(var/obj/D, var/mob/user)
-	if(istype(D, /obj/item/clothing/dog_tags))
-		var/obj/item/clothing/dog_tags/T = D
-		to_chat(user, "<span class='warning'>You add \the [T.owner_name]'s \the [T] to \the [src].</span>")
-		fallen += "[T.owner_rank] [T.owner_name] | [T.owner_branch]"
-		qdel(T)
+/obj/structure/memorial/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/clothing/dog_tags))
+		var/obj/item/clothing/dog_tags/dogtags = used_item
+		to_chat(user, "<span class='warning'>You add \the [dogtags.owner_name]'s [dogtags.name] to \the [src].</span>")
+		fallen += "[dogtags.owner_rank] [dogtags.owner_name] | [dogtags.owner_branch]"
+		qdel(dogtags)
 		return TRUE
 	return ..()
 

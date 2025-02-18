@@ -6,26 +6,26 @@
 /decl/machine_construction/pipe/state_is_valid(obj/machinery/machine)
 	return TRUE
 
-/decl/machine_construction/pipe/proc/deconstruct_transition(obj/item/I, mob/user, obj/machinery/machine)
-	if(IS_WRENCH(I))
+/decl/machine_construction/pipe/proc/deconstruct_transition(obj/item/used_item, mob/user, obj/machinery/machine)
+	if(IS_WRENCH(used_item))
 		TRANSFER_STATE(/decl/machine_construction/default/deconstructed)
 		playsound(get_turf(machine), 'sound/items/Ratchet.ogg', 50, 1)
 		machine.visible_message(SPAN_NOTICE("\The [user] unfastens \the [machine]."))
 		machine.dismantle()
 
-/decl/machine_construction/pipe/attackby(obj/item/I, mob/user, obj/machinery/machine)
+/decl/machine_construction/pipe/attackby(obj/item/used_item, mob/user, obj/machinery/machine)
 	if((. = ..()))
 		return
-	return deconstruct_transition(I, user, machine)
+	return deconstruct_transition(used_item, user, machine)
 
 /decl/machine_construction/pipe/mechanics_info()
 	. = list()
 	. += "Use a wrench to deconstruct the machine"
 
 // Same, but uses different tool.
-/decl/machine_construction/pipe/welder/deconstruct_transition(obj/item/I, mob/user, obj/machinery/machine)
-	if(IS_WELDER(I))
-		var/obj/item/weldingtool/welder = I
+/decl/machine_construction/pipe/welder/deconstruct_transition(obj/item/used_item, mob/user, obj/machinery/machine)
+	if(IS_WELDER(used_item))
+		var/obj/item/weldingtool/welder = used_item
 		if(!welder.isOn())
 			return FALSE
 		if(!welder.weld(0,user))

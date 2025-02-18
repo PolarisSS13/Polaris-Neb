@@ -53,10 +53,10 @@
 	if(base_desc)
 		desc = "[base_desc] [desc]"
 
-/obj/item/clothing/gloves/ring/attackby(var/obj/item/tool, var/mob/user)
-	if(can_inscribe && tool.is_sharp() && user.check_intent(I_FLAG_HELP))
+/obj/item/clothing/gloves/ring/attackby(var/obj/item/used_item, var/mob/user)
+	if(can_inscribe && used_item.is_sharp() && user.check_intent(I_FLAG_HELP))
 		var/new_inscription = sanitize(input("Enter an inscription to engrave.", "Inscription") as null|text)
-		if(user.stat || !user.incapacitated() || !user.Adjacent(src) || tool.loc != user)
+		if(user.stat || !user.incapacitated() || !user.Adjacent(src) || used_item.loc != user)
 			return TRUE
 		if(!new_inscription)
 			return TRUE

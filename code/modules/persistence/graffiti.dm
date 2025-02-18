@@ -37,18 +37,18 @@
 	if(processed_message)
 		. += "It reads \"[processed_message]\"."
 
-/obj/effect/decal/writing/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_WELDER(thing) && thing.do_tool_interaction(TOOL_WELDER, user, src, 3 SECONDS))
+/obj/effect/decal/writing/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_WELDER(used_item) && used_item.do_tool_interaction(TOOL_WELDER, user, src, 3 SECONDS))
 		playsound(src, 'sound/items/Welder2.ogg', 50, TRUE)
 		user.visible_message(SPAN_NOTICE("\The [user] clears away some graffiti."))
 		qdel(src)
 		return TRUE
-	else if(thing.is_sharp() && !user.check_intent(I_FLAG_HELP)) //Check intent so you don't go insane trying to unscrew a light fixture over a graffiti
+	else if(used_item.is_sharp() && !user.check_intent(I_FLAG_HELP)) //Check intent so you don't go insane trying to unscrew a light fixture over a graffiti
 		if(jobban_isbanned(user, "Graffiti"))
 			to_chat(user, SPAN_WARNING("You are banned from leaving persistent information across rounds."))
 			return TRUE
 		var/turf/T = get_turf(src)
 		if(T)
-			T.try_graffiti(user, thing)
+			T.try_graffiti(user, used_item)
 			return TRUE
 	return ..()

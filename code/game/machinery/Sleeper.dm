@@ -303,17 +303,17 @@
 		updateUsrDialog()
 		go_out()
 
-/obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/chems/chem_disp_cartridge))
-		add_reagent_canister(user, I)
+/obj/machinery/sleeper/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/chems/chem_disp_cartridge))
+		add_reagent_canister(user, used_item)
 		return TRUE
-	if(istype(I, /obj/item/chems/glass))
+	if(istype(used_item, /obj/item/chems/glass))
 		add_fingerprint(user)
 		if(!beaker)
-			if(!user.try_unequip(I, src))
+			if(!user.try_unequip(used_item, src))
 				return TRUE
-			beaker = I
-			user.visible_message(SPAN_NOTICE("\The [user] adds \a [I] to \the [src]."), SPAN_NOTICE("You add \a [I] to \the [src]."))
+			beaker = used_item
+			user.visible_message(SPAN_NOTICE("\The [user] adds \a [used_item] to \the [src]."), SPAN_NOTICE("You add \a [used_item] to \the [src]."))
 		else
 			to_chat(user, SPAN_WARNING("\The [src] has a beaker already."))
 		return TRUE

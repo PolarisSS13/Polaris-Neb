@@ -65,9 +65,9 @@
 					var/decl/material/R = GET_DECL(stype)
 					. += SPAN_NOTICE("[SOLID_VOLUME(B.reagents, stype)] units of [R.get_reagent_name(B.reagents, MAT_PHASE_SOLID)]")
 
-/obj/item/gun/projectile/dartgun/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/chems/glass))
-		add_beaker(I, user)
+/obj/item/gun/projectile/dartgun/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/glass))
+		add_beaker(used_item, user)
 		return TRUE
 	return ..()
 

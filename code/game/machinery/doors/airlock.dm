@@ -716,13 +716,13 @@ About the new airlock wires panel:
 			src.unlock(1) //force it
 		return TRUE
 
-/obj/machinery/door/airlock/attackby(var/obj/item/C, var/mob/user)
+/obj/machinery/door/airlock/attackby(var/obj/item/used_item, var/mob/user)
 	// Brace is considered installed on the airlock, so interacting with it is protected from electrification.
-	if(brace && (istype(C.GetIdCard(), /obj/item/card/id/) || istype(C, /obj/item/crowbar/brace_jack)))
-		return brace.attackby(C, user)
+	if(brace && (istype(used_item.GetIdCard(), /obj/item/card/id/) || istype(used_item, /obj/item/crowbar/brace_jack)))
+		return brace.attackby(used_item, user)
 
-	if(!brace && istype(C, /obj/item/airlock_brace))
-		var/obj/item/airlock_brace/A = C
+	if(!brace && istype(used_item, /obj/item/airlock_brace))
+		var/obj/item/airlock_brace/A = used_item
 		if(!density)
 			to_chat(user, SPAN_WARNING("You must close \the [src] before installing \the [A]!"))
 			return TRUE
@@ -742,17 +742,17 @@ About the new airlock wires panel:
 			if(src.shock(user, 75))
 				return TRUE
 
-	if(bash(C, user))
+	if(bash(used_item, user))
 		return TRUE
 
 	if (!repairing && (reason_broken & MACHINE_BROKEN_GENERIC) && src.locked) //bolted and broken
-		. = cut_bolts(C, user)
+		. = cut_bolts(used_item, user)
 		if(!.)
 			. = ..()
 		return
 
-	if(!repairing && IS_WELDER(C) && !operating && density)
-		var/obj/item/weldingtool/welder = C
+	if(!repairing && IS_WELDER(used_item) && !operating && density)
+		var/obj/item/weldingtool/welder = used_item
 		if(!welder.weld(0,user))
 			to_chat(user, SPAN_NOTICE("Your [welder.name] doesn't have enough fuel."))
 			return TRUE
@@ -769,11 +769,11 @@ About the new airlock wires panel:
 			to_chat(user, SPAN_NOTICE("You must remain still to complete this task."))
 			return TRUE
 
-	else if(IS_WIRECUTTER(C) || IS_MULTITOOL(C) || istype(C, /obj/item/assembly/signaler))
+	else if(IS_WIRECUTTER(used_item) || IS_MULTITOOL(used_item) || istype(used_item, /obj/item/assembly/signaler))
 		return wires.Interact(user)
 
-	else if(IS_CROWBAR(C))
-		if(density && !can_open(TRUE) && component_attackby(C, user))
+	else if(IS_CROWBAR(used_item))
+		if(density && !can_open(TRUE) && component_attackby(used_item, user))
 			return TRUE
 		else if(!repairing)
 			// Add some minor damage as evidence of forcing.
@@ -792,8 +792,8 @@ About the new airlock wires panel:
 					close(1)
 			return TRUE
 
-	if(istype(C, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.check_intent(I_FLAG_HARM)))
-		var/obj/item/bladed/axe/fire/F = C
+	if(istype(used_item, /obj/item/bladed/axe/fire) && !arePowerSystemsOn() && !(user.check_intent(I_FLAG_HARM)))
+		var/obj/item/bladed/axe/fire/F = used_item
 		if(F.is_held_twohanded(user))
 			if(locked)
 				to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
@@ -805,16 +805,15 @@ About the new airlock wires panel:
 						close(1)
 		else
 			if(user.can_twohand_item(F))
-				to_chat(user, SPAN_WARNING("You need to be holding \the [C] in both hands to do that!"))
+				to_chat(user, SPAN_WARNING("You need to be holding \the [used_item] in both hands to do that!"))
 			else
-				to_chat(user, SPAN_WARNING("You are too small to lever \the [src] open with \the [C]!"))
+				to_chat(user, SPAN_WARNING("You are too small to lever \the [src] open with \the [used_item]!"))
 		return TRUE
 
 
 	else if((stat & (BROKEN|NOPOWER)) && isanimal(user))
 		var/mob/living/simple_animal/A = user
-		var/obj/item/I = A.get_natural_weapon()
-		if(I?.expend_attack_force(user) >= 10)
+		if(used_item?.expend_attack_force(user) >= 10)
 			if(density)
 				visible_message(SPAN_DANGER("\The [A] forces \the [src] open!"))
 				open(1)

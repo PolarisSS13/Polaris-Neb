@@ -145,13 +145,13 @@ var/global/list/card_decks = list()
 		. += "<br>There [cards.len == 1 ? "is" : "are"] still <b>[cards.len] card\s</b>."
 	. += SPAN_NOTICE("You can deal cards at a table by clicking on it with grab intent.")
 
-/obj/item/deck/attackby(obj/O, mob/user)
-	if(istype(O,/obj/item/hand))
-		var/obj/item/hand/H = O
+/obj/item/deck/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item,/obj/item/hand))
+		var/obj/item/hand/H = used_item
 		for(var/datum/playingcard/P in H.cards)
 			cards += P
 
-		qdel(O)
+		qdel(used_item)
 		to_chat(user, "You place your cards on the bottom of \the [src].")
 		return TRUE
 	return ..()
@@ -227,10 +227,10 @@ var/global/list/card_decks = list()
 
 	H.throw_at(get_step(target, ismob(target) ? target.dir : target), 10, 1,user)
 
-/obj/item/hand/attackby(obj/item/O, mob/user)
+/obj/item/hand/attackby(obj/item/used_item, mob/user)
 
-	if(istype(O,/obj/item/hand))
-		var/obj/item/hand/H = O
+	if(istype(used_item,/obj/item/hand))
+		var/obj/item/hand/H = used_item
 		for(var/datum/playingcard/P in cards)
 			H.cards += P
 		H.concealed = src.concealed
@@ -239,7 +239,7 @@ var/global/list/card_decks = list()
 		H.name = "hand of [(H.cards.len)] card\s"
 		return TRUE
 
-	if(length(cards) == 1 && IS_PEN(O))
+	if(length(cards) == 1 && IS_PEN(used_item))
 		var/datum/playingcard/P = cards[1]
 		if(lowertext(P.name) != "blank card")
 			to_chat(user, SPAN_WARNING("You cannot write on that card."))

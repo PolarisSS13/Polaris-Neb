@@ -48,7 +48,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 	return FALSE
 
-/atom/movable/attackby(used_item, mob/user)
+/atom/movable/attackby(obj/item/used_item, mob/user)
 	. = ..()
 	if(!.)
 		return bash(used_item,user)

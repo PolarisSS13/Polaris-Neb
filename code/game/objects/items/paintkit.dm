@@ -38,10 +38,10 @@
 	desc = "A kit for modifying a voidsuit."
 	uses = 2
 
-/obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O,/obj/item/kit/suit))
-		var/obj/item/kit/suit/kit = O
+	if(istype(used_item,/obj/item/kit/suit))
+		var/obj/item/kit/suit/kit = used_item
 		to_chat(user, SPAN_NOTICE("You set about modifying \the [src] into \a [kit.new_name] void helmet."))
 		SetName("[kit.new_name] void helmet")
 		desc = kit.new_desc
@@ -53,10 +53,10 @@
 
 	return ..()
 
-/obj/item/clothing/suit/space/void/attackby(var/obj/item/O, var/mob/user)
+/obj/item/clothing/suit/space/void/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O, /obj/item/kit/suit))
-		var/obj/item/kit/suit/kit = O
+	if(istype(used_item, /obj/item/kit/suit))
+		var/obj/item/kit/suit/kit = used_item
 		to_chat(user, SPAN_NOTICE("You set about modifying \the [src] into \a [kit.new_name] voidsuit."))
 		SetName("[kit.new_name] voidsuit")
 		desc = kit.new_desc

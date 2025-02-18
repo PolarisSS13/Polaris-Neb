@@ -23,10 +23,10 @@
 	charging = null
 	. = ..()
 
-/obj/machinery/recharger/attackby(obj/item/G, mob/user)
+/obj/machinery/recharger/attackby(obj/item/used_item, mob/user)
 	var/allowed = 0
 	for (var/allowed_type in allowed_devices)
-		if (istype(G, allowed_type)) allowed = 1
+		if (istype(used_item, allowed_type)) allowed = 1
 
 	if(allowed)
 		. = TRUE
@@ -35,24 +35,24 @@
 			return
 		// Checks to make sure the recharger is powered.
 		if(stat & NOPOWER)
-			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert \the [G]!</span>")
+			to_chat(user, "<span class='warning'>\The [src] blinks red as you try to insert \the [used_item]!</span>")
 			return
-		if (istype(G, /obj/item/gun/energy/))
-			var/obj/item/gun/energy/E = G
+		if (istype(used_item, /obj/item/gun/energy/))
+			var/obj/item/gun/energy/E = used_item
 			if(E.self_recharge)
 				to_chat(user, "<span class='notice'>You can't find a charging port on \the [E].</span>")
 				return
-		if(!G.get_cell())
+		if(!used_item.get_cell())
 			to_chat(user, "This device does not have a battery installed.")
 			return
 
-		if(user.try_unequip(G))
-			G.forceMove(src)
-			charging = G
+		if(user.try_unequip(used_item))
+			used_item.forceMove(src)
+			charging = used_item
 			update_icon()
 		return
 
-	if(portable && IS_WRENCH(G) && !panel_open)
+	if(portable && IS_WRENCH(used_item) && !panel_open)
 		. = TRUE
 		if(charging)
 			to_chat(user, "<span class='warning'>Remove [charging] first!</span>")

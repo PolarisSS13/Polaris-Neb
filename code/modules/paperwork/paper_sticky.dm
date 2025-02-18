@@ -43,9 +43,9 @@
 	if(top?.info)
 		icon_state = "[icon_state]_writing"
 
-/obj/item/sticky_pad/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_PEN(thing) || istype(thing, /obj/item/stamp))
-		. = top?.attackby(thing, user)
+/obj/item/sticky_pad/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_PEN(used_item) || istype(used_item, /obj/item/stamp))
+		. = top?.attackby(used_item, user)
 		update_icon()
 		return .
 	return ..()

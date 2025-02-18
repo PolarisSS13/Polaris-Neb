@@ -41,18 +41,18 @@ var/global/list/navbeacons = list()
 	else
 		icon_state = "[state]"
 
-/obj/machinery/navbeacon/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/navbeacon/attackby(var/obj/item/used_item, var/mob/user)
 	var/turf/T = loc
 	if(!T.is_plating())
 		return TRUE // prevent intraction when T-scanner revealed
 
-	if(IS_SCREWDRIVER(I))
+	if(IS_SCREWDRIVER(used_item))
 		open = !open
 		user.visible_message("\The [user] [open ? "opens" : "closes"] cover of \the [src].", "You [open ? "open" : "close"] cover of \the [src].")
 		update_icon()
 		return TRUE
 
-	else if(I.GetIdCard())
+	else if(used_item.GetIdCard())
 		if(open)
 			if (src.allowed(user))
 				src.locked = !src.locked

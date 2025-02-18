@@ -254,18 +254,18 @@ var/global/list/machine_path_to_circuit_type
 // Hook to get updates.
 /obj/machinery/proc/component_stat_change(var/obj/item/stock_parts/part, old_stat, flag)
 
-/obj/machinery/attackby(obj/item/I, mob/user)
-	if((. = component_attackby(I, user)))
+/obj/machinery/attackby(obj/item/used_item, mob/user)
+	if((. = component_attackby(used_item, user)))
 		return
 	return ..()
 
-/obj/machinery/proc/component_attackby(obj/item/I, mob/user)
+/obj/machinery/proc/component_attackby(obj/item/used_item, mob/user)
 	for(var/obj/item/stock_parts/part in component_parts)
 		if(!components_are_accessible(part.type))
 			continue
-		if((. = part.attackby(I, user)))
+		if((. = part.attackby(used_item, user)))
 			return
-	return construct_state?.attackby(I, user, src)
+	return construct_state?.attackby(used_item, user, src)
 
 /obj/machinery/proc/component_attack_hand(mob/user)
 	for(var/obj/item/stock_parts/part in component_parts)

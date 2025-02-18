@@ -64,30 +64,30 @@
 	to_chat(user, SPAN_NOTICE("Slicing lattice joints..."))
 	physically_destroyed()
 
-/obj/structure/lattice/attackby(obj/item/C, mob/user)
-	if (istype(C, /obj/item/stack/tile))
+/obj/structure/lattice/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/stack/tile))
 		var/turf/T = get_turf(src)
-		T.attackby(C, user) //BubbleWrap - hand this off to the underlying turf instead
+		T.attackby(used_item, user) //BubbleWrap - hand this off to the underlying turf instead
 		return TRUE
-	if(IS_WELDER(C))
-		var/obj/item/weldingtool/welder = C
+	if(IS_WELDER(used_item))
+		var/obj/item/weldingtool/welder = used_item
 		if(welder.weld(0, user))
 			deconstruct(user)
 		return TRUE
-	if(istype(C, /obj/item/gun/energy/plasmacutter))
-		var/obj/item/gun/energy/plasmacutter/cutter = C
+	if(istype(used_item, /obj/item/gun/energy/plasmacutter))
+		var/obj/item/gun/energy/plasmacutter/cutter = used_item
 		if(!cutter.slice(user))
 			return TRUE
 		deconstruct(user)
 		return TRUE
-	if (istype(C, /obj/item/stack/material/rods))
+	if (istype(used_item, /obj/item/stack/material/rods))
 
 		var/ladder = (locate(/obj/structure/ladder) in loc)
 		if(ladder)
 			to_chat(user, SPAN_WARNING("\The [ladder] is in the way."))
 			return TRUE
 
-		var/obj/item/stack/material/rods/rods = C
+		var/obj/item/stack/material/rods/rods = used_item
 		var/turf/my_turf = get_turf(src)
 		if(my_turf?.get_supporting_platform())
 			to_chat(user, SPAN_WARNING("There is already a platform here."))

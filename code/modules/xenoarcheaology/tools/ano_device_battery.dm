@@ -60,15 +60,15 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/item/anodevice/attackby(var/obj/I, var/mob/user)
-	if(!istype(I, /obj/item/anobattery))
+/obj/item/anodevice/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/anobattery))
 		return ..()
 	if(inserted_battery)
 		return TRUE
-	if(!user.try_unequip(I, src))
+	if(!user.try_unequip(used_item, src))
 		return TRUE
-	to_chat(user, SPAN_NOTICE("You insert \the [I] into \the [src]."))
-	inserted_battery = I
+	to_chat(user, SPAN_NOTICE("You insert \the [used_item] into \the [src]."))
+	inserted_battery = used_item
 	update_icon()
 	return TRUE
 

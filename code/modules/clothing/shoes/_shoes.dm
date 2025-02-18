@@ -58,11 +58,11 @@
 	try_remove_cuffs(user)
 	..()
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/user)
-	if (istype(I, /obj/item/handcuffs))
-		add_cuffs(I, user)
+/obj/item/clothing/shoes/attackby(var/obj/item/used_item, var/mob/user)
+	if (istype(used_item, /obj/item/handcuffs))
+		add_cuffs(used_item, user)
 		return TRUE
-	. = add_hidden(I, user)
+	. = add_hidden(used_item, user)
 	if(!.)
 		. = ..()
 
@@ -109,8 +109,8 @@
 	verbs -= /obj/item/clothing/shoes/proc/try_remove_cuffs
 	attached_cuffs = null
 
-/obj/item/clothing/shoes/proc/add_hidden(var/obj/item/I, var/mob/user)
-	if (!(I.item_flags & ITEM_FLAG_CAN_HIDE_IN_SHOES)) // fail silently
+/obj/item/clothing/shoes/proc/add_hidden(var/obj/item/used_item, var/mob/user)
+	if (!(used_item.item_flags & ITEM_FLAG_CAN_HIDE_IN_SHOES)) // fail silently
 		return FALSE
 	if (!can_add_hidden_item)
 		to_chat(user, SPAN_WARNING("\The [src] can't hold anything."))
@@ -118,15 +118,15 @@
 	if (hidden_item)
 		to_chat(user, SPAN_WARNING("\The [src] already holds \an [hidden_item]."))
 		return TRUE
-	if (I.w_class > hidden_item_max_w_class)
-		to_chat(user, SPAN_WARNING("\The [I] is too large to fit in \the [src]."))
+	if (used_item.w_class > hidden_item_max_w_class)
+		to_chat(user, SPAN_WARNING("\The [used_item] is too large to fit in \the [src]."))
 		return TRUE
 	if (do_after(user, 1 SECONDS))
-		if(!user.try_unequip(I, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		user.visible_message(SPAN_ITALIC("\The [user] shoves \the [I] into \the [src]."), range = 1)
+		user.visible_message(SPAN_ITALIC("\The [user] shoves \the [used_item] into \the [src]."), range = 1)
 		verbs |= /obj/item/clothing/shoes/proc/remove_hidden
-		hidden_item = I
+		hidden_item = used_item
 		return TRUE
 
 /obj/item/clothing/shoes/proc/remove_hidden(var/mob/user)

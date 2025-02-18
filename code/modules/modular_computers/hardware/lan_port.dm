@@ -57,13 +57,13 @@
 /obj/item/stock_parts/computer/lan_port/proc/check_terminal_block(var/turf/T)
 	return locate(/obj/structure/network_cable) in T
 
-/obj/item/stock_parts/computer/lan_port/attackby(obj/item/I, mob/user)
+/obj/item/stock_parts/computer/lan_port/attackby(obj/item/used_item, mob/user)
 	var/obj/machinery/parent = loc
 	if(!istype(parent))
 		return ..()
 
 	// Interactions inside machine only
-	if (istype(I, /obj/item/stack/net_cable_coil) && !terminal)
+	if (istype(used_item, /obj/item/stack/net_cable_coil) && !terminal)
 		var/turf/T = get_turf(parent)
 		if(check_terminal_block(T))
 			to_chat(user, SPAN_WARNING("There's already a network cable there!"))
@@ -72,7 +72,7 @@
 			to_chat(user, SPAN_WARNING("You must remove the floor plating beneath \the [parent] first."))
 			return TRUE
 
-		var/obj/item/stack/net_cable_coil/C = I
+		var/obj/item/stack/net_cable_coil/C = used_item
 		if(!C.can_use(5))
 			to_chat(user, SPAN_WARNING("You need five lengths of network cable for \the [parent]."))
 			return TRUE
@@ -83,7 +83,7 @@
 				user.visible_message(SPAN_NOTICE("\The [user] has added cables to \the [parent]!"), "You add cables to \the [parent].")
 				set_terminal()
 		return TRUE
-	if(IS_WIRECUTTER(I) && terminal)
+	if(IS_WIRECUTTER(used_item) && terminal)
 		var/turf/T = get_turf(parent)
 		if(istype(T) && !T.is_plating())
 			to_chat(user, SPAN_WARNING("You must remove the floor plating beneath \the [parent] first."))

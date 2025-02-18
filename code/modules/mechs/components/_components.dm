@@ -96,9 +96,9 @@
 		qdel(RC)
 		update_components()
 
-/obj/item/mech_component/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/mech_component/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(IS_SCREWDRIVER(thing))
+	if(IS_SCREWDRIVER(used_item))
 		if(contents.len)
 			//Filter non movables
 			var/list/valid_contents = list()
@@ -118,15 +118,15 @@
 			to_chat(user, SPAN_WARNING("There is nothing to remove."))
 		return TRUE
 
-	if(IS_WELDER(thing))
-		repair_brute_generic(thing, user)
+	if(IS_WELDER(used_item))
+		repair_brute_generic(used_item, user)
 		return TRUE
 
-	if(IS_COIL(thing))
-		repair_burn_generic(thing, user)
+	if(IS_COIL(used_item))
+		repair_burn_generic(used_item, user)
 		return TRUE
 
-	if(istype(thing, /obj/item/robotanalyzer))
+	if(istype(used_item, /obj/item/robotanalyzer))
 		to_chat(user, SPAN_NOTICE("Diagnostic Report for \the [src]:"))
 		return_diagnostics(user)
 		return TRUE

@@ -149,8 +149,8 @@
 
 	return adjusted_reagents
 
-/obj/machinery/material_processing/extractor/attackby(obj/item/I, mob/user)
-	if(IS_WRENCH(I) && !panel_open)
+/obj/machinery/material_processing/extractor/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item) && !panel_open)
 		var/datum/extension/atmospherics_connection/connection = get_extension(src, /datum/extension/atmospherics_connection)
 		if(connection.disconnect())
 			to_chat(user, SPAN_NOTICE("You disconnect \the [src] from the port."))
@@ -165,13 +165,13 @@
 					to_chat(user, SPAN_WARNING("\The [src] failed to connect to the port."))
 					return TRUE
 
-	if(istype(I, /obj/item/chems/glass))
+	if(istype(used_item, /obj/item/chems/glass))
 		if(isnull(output_container))
-			if(!user.try_unequip(I, src))
+			if(!user.try_unequip(used_item, src))
 				return TRUE
-			output_container = I
+			output_container = used_item
 			events_repository.register(/decl/observ/destroyed, output_container, src, TYPE_PROC_REF(/obj/machinery/material_processing/extractor, remove_container))
-			user.visible_message(SPAN_NOTICE("\The [user] places \a [I] in \the [src]."), SPAN_NOTICE("You place \a [I] in \the [src]."))
+			user.visible_message(SPAN_NOTICE("\The [user] places \a [used_item] in \the [src]."), SPAN_NOTICE("You place \a [used_item] in \the [src]."))
 			return TRUE
 
 		to_chat(user, SPAN_WARNING("\The [src] already has an output container!"))

@@ -4,14 +4,14 @@
 	var/datum/seed/seed_type // Keeps track of what our seed is
 	var/list/obj/item/seeds/seeds = list() // Tracks actual objects contained in the pile
 
-/datum/seed_pile/New(var/obj/item/seeds/O)
-	name = O.name
+/datum/seed_pile/New(var/obj/item/seeds/seeds)
+	name = seeds.name
 	amount = 1
-	seed_type = O.seed
-	seeds += O
+	seed_type = seeds.seed
+	seeds += seeds
 
-/datum/seed_pile/proc/matches(var/obj/item/seeds/O)
-	if (O.seed == seed_type)
+/datum/seed_pile/proc/matches(var/obj/item/seeds/seeds)
+	if (seeds.seed == seed_type)
 		return 1
 	return 0
 
@@ -45,8 +45,7 @@
 		if(isnull(amount))
 			amount = 1
 		for (var/i = 1 to amount)
-			var/O = new typepath
-			add(O)
+			add(new typepath)
 
 /obj/machinery/seed_storage/Destroy()
 	QDEL_NULL_LIST(piles)
@@ -295,15 +294,15 @@
 
 	switch(task)
 		if ("vend")
-			var/obj/O = pick(our_pile.seeds)
-			if (O)
+			var/obj/seeds = pick(our_pile.seeds)
+			if (seeds)
 				--our_pile.amount
-				our_pile.seeds -= O
+				our_pile.seeds -= seeds
 				if (our_pile.amount <= 0 || our_pile.seeds.len <= 0)
 					piles -= our_pile
 					qdel(our_pile)
 				flick("[initial(icon_state)]-vend", src)
-				O.dropInto(loc)
+				seeds.dropInto(loc)
 			. = TOPIC_REFRESH
 		if ("purge")
 			QDEL_LIST(our_pile.seeds)
@@ -313,45 +312,45 @@
 		piles -= our_pile
 		QDEL_NULL(our_pile)
 
-/obj/machinery/seed_storage/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/seed_storage/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O, /obj/item/seeds))
-		add(O)
-		user.visible_message(SPAN_NOTICE("\The [user] puts \the [O] into \the [src]."))
+	if(istype(used_item, /obj/item/seeds))
+		add(used_item)
+		user.visible_message(SPAN_NOTICE("\The [user] puts \the [used_item] into \the [src]."))
 		return TRUE
 
-	if(istype(O, /obj/item/plants) && O.storage)
+	if(istype(used_item, /obj/item/plants) && used_item.storage)
 		var/loaded = 0
 		for(var/obj/item/seeds/G in storage.get_contents())
 			++loaded
-			O.storage.remove_from_storage(user, G, src, TRUE)
+			used_item.storage.remove_from_storage(user, G, src, TRUE)
 			add(G, 1)
-		O.storage.finish_bulk_removal()
+		used_item.storage.finish_bulk_removal()
 		if (loaded)
-			user.visible_message(SPAN_NOTICE("\The [user] puts the seeds from \the [O] into \the [src]."))
+			user.visible_message(SPAN_NOTICE("\The [user] puts the seeds from \the [used_item] into \the [src]."))
 		else
-			to_chat(user, SPAN_WARNING("There are no seeds in \the [O]."))
+			to_chat(user, SPAN_WARNING("There are no seeds in \the [used_item]."))
 		return TRUE
 
 	return ..()
 
-/obj/machinery/seed_storage/proc/add(var/obj/item/seeds/O, bypass_removal = 0)
+/obj/machinery/seed_storage/proc/add(var/obj/item/seeds/seeds, bypass_removal = 0)
 	if(!bypass_removal)
-		if (ismob(O.loc))
-			var/mob/user = O.loc
-			if(!user.try_unequip(O, src))
+		if (ismob(seeds.loc))
+			var/mob/user = seeds.loc
+			if(!user.try_unequip(seeds, src))
 				return
-		else if(isobj(O.loc))
-			O.loc?.storage?.remove_from_storage(null, O, src)
+		else if(isobj(seeds.loc))
+			seeds.loc?.storage?.remove_from_storage(null, seeds, src)
 
-	O.forceMove(src)
+	seeds.forceMove(src)
 
 	for (var/datum/seed_pile/N in piles)
-		if (N.matches(O))
+		if (N.matches(seeds))
 			++N.amount
-			N.seeds += (O)
+			N.seeds += (seeds)
 			return
 
-	piles += new /datum/seed_pile(O)
+	piles += new /datum/seed_pile(seeds)
 	flick("[initial(icon_state)]-vend", src)
 	return

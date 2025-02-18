@@ -56,16 +56,16 @@
 	events_repository.register(/decl/observ/destroyed, new_artifact, src, TYPE_PROC_REF(/obj/machinery/artifact_harvester, clear_artifact))
 	cur_artifact = new_artifact
 
-/obj/machinery/artifact_harvester/attackby(var/obj/I, var/mob/user)
-	if(!istype(I, /obj/item/anobattery))
+/obj/machinery/artifact_harvester/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/anobattery))
 		return ..()
 	if(inserted_battery)
 		to_chat(user, SPAN_WARNING("There is already a battery in [src]."))
 		return TRUE
-	if(!user.try_unequip(I, src))
+	if(!user.try_unequip(used_item, src))
 		return TRUE
-	to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
-	inserted_battery = I
+	to_chat(user, SPAN_NOTICE("You insert [used_item] into [src]."))
+	inserted_battery = used_item
 	updateDialog()
 	return TRUE
 

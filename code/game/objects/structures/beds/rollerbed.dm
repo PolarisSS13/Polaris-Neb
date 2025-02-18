@@ -34,12 +34,12 @@
 			iv.pixel_y = 6
 		add_overlay(iv)
 
-/obj/structure/bed/roller/attackby(obj/item/I, mob/user)
-	if(iv_stand && !beaker && istype(I, /obj/item/chems))
-		if(!user.try_unequip(I, src))
+/obj/structure/bed/roller/attackby(obj/item/used_item, mob/user)
+	if(iv_stand && !beaker && istype(used_item, /obj/item/chems))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		to_chat(user, "You attach \the [I] to \the [src].")
-		beaker = I
+		to_chat(user, "You attach \the [used_item] to \the [src].")
+		beaker = used_item
 		queue_icon_update()
 		return TRUE
 	return ..()

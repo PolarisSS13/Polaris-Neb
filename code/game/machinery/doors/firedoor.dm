@@ -217,12 +217,12 @@
 				nextstate = FIREDOOR_CLOSED
 				close()
 
-/obj/machinery/door/firedoor/attackby(obj/item/C, mob/user)
-	add_fingerprint(user, 0, C)
+/obj/machinery/door/firedoor/attackby(obj/item/used_item, mob/user)
+	add_fingerprint(user, 0, used_item)
 	if(operating)
 		return TRUE //Already doing something.
-	if(IS_WELDER(C) && !repairing)
-		var/obj/item/weldingtool/welder = C
+	if(IS_WELDER(used_item) && !repairing)
+		var/obj/item/weldingtool/welder = used_item
 		if(welder.weld(0, user))
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			if(do_after(user, 2 SECONDS, src))
@@ -237,33 +237,33 @@
 				to_chat(user, SPAN_WARNING("You must remain still to complete this task."))
 		return TRUE
 
-	if(blocked && IS_CROWBAR(C))
-		user.visible_message("<span class='danger'>\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!</span>",\
+	if(blocked && IS_CROWBAR(used_item))
+		user.visible_message("<span class='danger'>\The [user] pries at \the [src] with \a [used_item], but \the [src] is welded in place!</span>",\
 		"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
 		"You hear someone struggle and metal straining.")
 		return TRUE
 
-	if(!blocked && (IS_CROWBAR(C) || istype(C,/obj/item/bladed/axe/fire)))
+	if(!blocked && (IS_CROWBAR(used_item) || istype(used_item,/obj/item/bladed/axe/fire)))
 		if(operating)
 			return ..()
 
-		if(istype(C,/obj/item/bladed/axe/fire))
-			var/obj/item/bladed/axe/fire/F = C
+		if(istype(used_item,/obj/item/bladed/axe/fire))
+			var/obj/item/bladed/axe/fire/F = used_item
 			if(!F.is_held_twohanded())
 				return ..()
 
-		user.visible_message("<span class='danger'>\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-				"You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!",\
+		user.visible_message("<span class='danger'>\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [used_item]!</span>",\
+				"You start forcing \the [src] [density ? "open" : "closed"] with \the [used_item]!",\
 				"You hear metal strain.")
 		if(do_after(user, 3 SECONDS, src))
-			if(IS_CROWBAR(C))
+			if(IS_CROWBAR(used_item))
 				if(stat & (BROKEN|NOPOWER) || !density)
-					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-					"You force \the [src] [density ? "open" : "closed"] with \the [C]!",\
+					user.visible_message("<span class='danger'>\The [user] forces \the [src] [density ? "open" : "closed"] with \a [used_item]!</span>",\
+					"You force \the [src] [density ? "open" : "closed"] with \the [used_item]!",\
 					"You hear metal strain, and a door [density ? "open" : "close"].")
 				else
-					user.visible_message("<span class='danger'>\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!</span>",\
-						"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
+					user.visible_message("<span class='danger'>\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [used_item]!</span>",\
+						"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [used_item]!",\
 						"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
 				open(1)
@@ -377,10 +377,10 @@
 		ATMOS_CANPASS_TURF(airblock, neighbour, myturf)
 		if(airblock & AIR_BLOCKED)
 			continue
-		for(var/obj/O in myturf)
-			if(istype(O, /obj/machinery/door))
+		for(var/obj/thing in myturf)
+			if(istype(thing, /obj/machinery/door))
 				continue
-			ATMOS_CANPASS_MOVABLE(airblock, O, neighbour)
+			ATMOS_CANPASS_MOVABLE(airblock, thing, neighbour)
 			. |= airblock
 		if(. & AIR_BLOCKED)
 			continue

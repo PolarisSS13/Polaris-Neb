@@ -108,8 +108,8 @@
 	tiny.pixel_x = -WORLD_ICON_SIZE * (photo_size-1)/2 - 3
 	tiny.pixel_y = -WORLD_ICON_SIZE * (photo_size-1)/2 + 3
 
-/obj/item/photo/attackby(obj/item/P, mob/user)
-	if(IS_PEN(P))
+/obj/item/photo/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
 		if(!CanPhysicallyInteractWith(user, src))
 			to_chat(user, SPAN_WARNING("You can't interact with this!"))
 			return TRUE
@@ -260,18 +260,18 @@
 
 	to_chat(user, SPAN_WARNING("There is no cartridge in \the [src] to eject!"))
 
-/obj/item/camera/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/camera_film))
+/obj/item/camera/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/camera_film))
 		if(film)
 			//Skilled people don't have to remove the film first!
 			if(user.get_skill_value(SKILL_DEVICES) >= SKILL_EXPERT)
 				if(user.do_skilled(1 SECONDS, SKILL_DEVICES, src))
 					user.visible_message(
-						SPAN_NOTICE("In a swift flick of the finger, [user] ejects \the [film], and slides in \the [I]!"),
-						SPAN_NOTICE("From habit you instinctively pop the old [film] from \the [src] and insert a new [I] deftly!"))
-					user.try_unequip(I, src)
+						SPAN_NOTICE("In a swift flick of the finger, [user] ejects \the [film], and slides in \the [used_item]!"),
+						SPAN_NOTICE("From habit you instinctively pop the old [film] from \the [src] and insert a new [used_item] deftly!"))
+					user.try_unequip(used_item, src)
 					user.put_in_active_hand(film)
-					film = I
+					film = used_item
 					return TRUE
 				return TRUE
 			//Unskilled losers have to remove it first
@@ -281,14 +281,14 @@
 			if(user.do_skilled(1 SECONDS, SKILL_DEVICES, src))
 				if(user.get_skill_value(SKILL_DEVICES) >= SKILL_EXPERT)
 					user.visible_message(
-						SPAN_NOTICE("[user] swiftly slides \the [I] into \the [src]!"),
-						SPAN_NOTICE("You insert \a [I] swiftly into \the [src]!"))
+						SPAN_NOTICE("[user] swiftly slides \the [used_item] into \the [src]!"),
+						SPAN_NOTICE("You insert \a [used_item] swiftly into \the [src]!"))
 				else
 					user.visible_message(
-						SPAN_NOTICE("[user] inserts \a [I] into his [src]."),
-						SPAN_NOTICE("You insert \the [I] into \the [src]."))
-				user.try_unequip(I, src)
-				film = I
+						SPAN_NOTICE("[user] inserts \a [used_item] into his [src]."),
+						SPAN_NOTICE("You insert \the [used_item] into \the [src]."))
+				user.try_unequip(used_item, src)
+				film = used_item
 				return TRUE
 			return TRUE
 	return ..()

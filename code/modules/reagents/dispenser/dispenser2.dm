@@ -86,12 +86,12 @@
 	cartridges -= label
 	SSnano.update_uis(src)
 
-/obj/machinery/chemical_dispenser/attackby(obj/item/hit_with, mob/user)
-	if(istype(hit_with, /obj/item/chems/chem_disp_cartridge))
-		add_cartridge(hit_with, user)
+/obj/machinery/chemical_dispenser/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/chem_disp_cartridge))
+		add_cartridge(used_item, user)
 		return TRUE
 
-	if(IS_CROWBAR(hit_with) && !panel_open && length(cartridges))
+	if(IS_CROWBAR(used_item) && !panel_open && length(cartridges))
 		var/label = input(user, "Which cartridge would you like to remove?", "Chemical Dispenser") as null|anything in cartridges
 		if(!label) return TRUE
 		var/obj/item/chems/chem_disp_cartridge/C = remove_cartridge(label)
@@ -100,12 +100,12 @@
 			C.dropInto(loc)
 			return TRUE
 
-	if(is_type_in_list(hit_with, acceptable_containers))
+	if(is_type_in_list(used_item, acceptable_containers))
 		if(container)
 			to_chat(user, SPAN_WARNING("There is already \a [container] on \the [src]!"))
 			return TRUE
 
-		var/obj/item/chems/new_container = hit_with
+		var/obj/item/chems/new_container = used_item
 
 		if(!accept_drinking && (istype(new_container,/obj/item/chems/condiment) || istype(new_container,/obj/item/chems/drinks)))
 			to_chat(user, SPAN_WARNING("This machine only accepts beakers!"))

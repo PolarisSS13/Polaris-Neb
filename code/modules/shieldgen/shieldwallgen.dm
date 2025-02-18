@@ -287,10 +287,10 @@
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/shieldwall/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/shieldwall/attackby(var/obj/item/used_item, var/mob/user)
 	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-	G.storedpower -= I.expend_attack_force(user)*2500
-	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
+	G.storedpower -= used_item.expend_attack_force(user)*2500
+	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [used_item]!</span>")
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/weapons/smash.ogg', 75, 1)

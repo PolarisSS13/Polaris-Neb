@@ -21,10 +21,10 @@
 	. = ..()
 	machine_id = "[station_name()] Acc. DB #[num_financial_terminals++]"
 
-/obj/machinery/computer/account_database/attackby(obj/O, mob/user)
-	if(istype(O, /obj/item/card/id) && !held_card)
-		if(user.try_unequip(O, src))
-			held_card = O
+/obj/machinery/computer/account_database/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/card/id) && !held_card)
+		if(user.try_unequip(used_item, src))
+			held_card = used_item
 			SSnano.update_uis(src)
 		return TRUE
 	return ..()

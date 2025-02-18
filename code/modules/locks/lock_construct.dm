@@ -19,17 +19,17 @@
 		else
 			. += SPAN_NOTICE("\The [src] is blank. Use a key on the lock to pair the two items.")
 
-/obj/item/lock_construct/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/key))
-		var/obj/item/key/K = I
+/obj/item/lock_construct/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/key))
+		var/obj/item/key/K = used_item
 		if(!K.key_data)
-			to_chat(user, SPAN_NOTICE("You fashion \the [I] to unlock \the [src]."))
+			to_chat(user, SPAN_NOTICE("You fashion \the [used_item] to unlock \the [src]."))
 			K.key_data = lock_data
 		else
-			to_chat(user, SPAN_WARNING("\The [I] already unlocks something..."))
+			to_chat(user, SPAN_WARNING("\The [used_item] already unlocks something..."))
 		return TRUE
-	if(istype(I,/obj/item/lock_construct))
-		var/obj/item/lock_construct/L = I
+	if(istype(used_item,/obj/item/lock_construct))
+		var/obj/item/lock_construct/L = used_item
 		src.lock_data = L.lock_data
 		to_chat(user, SPAN_NOTICE("You copy the lock from \the [L] to \the [src], making them identical."))
 		return TRUE

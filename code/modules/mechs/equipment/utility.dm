@@ -423,9 +423,9 @@
 	DH.forceMove(src)
 	drill_head = DH
 
-/obj/item/mech_equipment/drill/attackby(obj/item/I, mob/user)
-	if (istype(I, /obj/item/drill_head))
-		attach_head(I, user)
+/obj/item/mech_equipment/drill/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/drill_head))
+		attach_head(used_item, user)
 		return TRUE
 	. = ..()
 

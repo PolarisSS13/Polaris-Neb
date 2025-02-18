@@ -82,10 +82,10 @@
 		loc.verbs |= /obj/item/stock_parts/computer/charge_stick_slot/proc/verb_eject_stick
 	return TRUE
 
-/obj/item/stock_parts/computer/charge_stick_slot/attackby(obj/item/charge_stick/I, mob/user)
-	if(!istype(I))
+/obj/item/stock_parts/computer/charge_stick_slot/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/charge_stick))
 		return ..()
-	insert_stick(I, user)
+	insert_stick(used_item, user)
 	return TRUE
 
 /obj/item/stock_parts/computer/charge_stick_slot/broadcaster // read only

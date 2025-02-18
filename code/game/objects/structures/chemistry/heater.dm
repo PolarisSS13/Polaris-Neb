@@ -75,18 +75,18 @@
 	if(ismob(new_loc))
 		visible_message(SPAN_NOTICE("\The [new_loc] removes \the [am] from \the [src]."))
 
-/obj/structure/fire_source/heater/attackby(obj/item/thing, mob/user)
+/obj/structure/fire_source/heater/attackby(obj/item/used_item, mob/user)
 
-	if(istype(thing, /obj/item/chems/glass) && ATOM_IS_OPEN_CONTAINER(thing))
+	if(istype(used_item, /obj/item/chems/glass) && ATOM_IS_OPEN_CONTAINER(used_item))
 		if(retort && vessel)
 			to_chat(user, SPAN_WARNING("\The [src] is already holding \a [retort] and \a [vessel]."))
 			return TRUE
-		if(user.try_unequip(thing, src))
+		if(user.try_unequip(used_item, src))
 			if(!retort)
-				set_retort(thing)
+				set_retort(used_item)
 				visible_message(SPAN_NOTICE("\The [user] places \the [retort] onto \the [src]."))
 			else if(!vessel)
-				set_vessel(thing)
+				set_vessel(used_item)
 				visible_message(SPAN_NOTICE("\The [user] places \the [vessel] under \the [src]."))
 		return TRUE
 

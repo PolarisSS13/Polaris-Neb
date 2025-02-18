@@ -244,14 +244,14 @@ var/global/chicken_count = 0
 	if(.)
 		global.chicken_count -= 1
 
-/mob/living/simple_animal/fowl/chicken/attackby(var/obj/item/O, var/mob/user)
-	if(!istype(O, /obj/item/food))
+/mob/living/simple_animal/fowl/chicken/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/food))
 		return ..()
-	var/obj/item/food/G = O //feedin' dem chickens
+	var/obj/item/food/G = used_item //feedin' dem chickens
 	if(findtext(G.get_grown_tag(), "wheat")) // includes chopped, crushed, dried etc.
 		if(!stat && eggsleft < 4)
-			user.visible_message(SPAN_NOTICE("[user] feeds \the [O] to \the [src]! It clucks happily."), SPAN_NOTICE("You feed \the [O] to \the [src]! It clucks happily."), SPAN_NOTICE("You hear clucking."))
-			qdel(O)
+			user.visible_message(SPAN_NOTICE("[user] feeds \the [used_item] to \the [src]! It clucks happily."), SPAN_NOTICE("You feed \the [used_item] to \the [src]! It clucks happily."), SPAN_NOTICE("You hear clucking."))
+			qdel(used_item)
 			eggsleft += rand(1, 2)
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] doesn't seem hungry!"))

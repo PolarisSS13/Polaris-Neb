@@ -170,11 +170,11 @@
 	physically_destroyed()
 	return TRUE
 
-/obj/structure/foamedmetal/attackby(var/obj/item/I, var/mob/user)
-	if(prob(I.expend_attack_force(user) * 20 - metal * 25))
+/obj/structure/foamedmetal/attackby(var/obj/item/used_item, var/mob/user)
+	if(prob(used_item.expend_attack_force(user) * 20 - metal * 25))
 		user.visible_message(
 			SPAN_WARNING("\The [user] smashes through the foamed metal."),
-			SPAN_NOTICE("You smash through the foamed metal with \the [I].")
+			SPAN_NOTICE("You smash through the foamed metal with \the [used_item].")
 		)
 		physically_destroyed()
 	else

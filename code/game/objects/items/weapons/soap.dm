@@ -111,13 +111,13 @@
 		return TRUE
 	return ..()
 
-/obj/item/soap/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/key))
+/obj/item/soap/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/key))
 		if(key_data)
 			to_chat(user, SPAN_WARNING("\The [src] already has a key imprint."))
 		else
-			to_chat(user, SPAN_NOTICE("You imprint \the [I] into \the [src]."))
-			var/obj/item/key/K = I
+			to_chat(user, SPAN_NOTICE("You imprint \the [used_item] into \the [src]."))
+			var/obj/item/key/K = used_item
 			key_data = K.key_data
 			update_icon()
 		return TRUE

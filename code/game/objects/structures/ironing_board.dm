@@ -24,14 +24,14 @@
 
 	. = ..()
 
-/obj/structure/bed/roller/ironingboard/proc/remove_item(var/obj/item/I)
-	if(I == cloth)
+/obj/structure/bed/roller/ironingboard/proc/remove_item(var/obj/item/used_item)
+	if(used_item == cloth)
 		cloth = null
-	else if(I == holding)
+	else if(used_item == holding)
 		holding = null
 
 	update_icon()
-	events_repository.unregister(/decl/observ/destroyed, I, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
+	events_repository.unregister(/decl/observ/destroyed, used_item, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
 
 // make a screeching noise to drive people mad
 /obj/structure/bed/roller/ironingboard/Move()
@@ -60,14 +60,14 @@
 	if(cloth)
 		add_overlay(image(cloth.icon, cloth.icon_state))
 
-/obj/structure/bed/roller/ironingboard/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/bed/roller/ironingboard/attackby(var/obj/item/used_item, var/mob/user)
 	if(!density)
-		if(istype(I,/obj/item/clothing) || istype(I,/obj/item/ironingiron))
+		if(istype(used_item,/obj/item/clothing) || istype(used_item,/obj/item/ironingiron))
 			to_chat(user, "<span class='notice'>[src] isn't deployed!</span>")
 			return TRUE
 		return ..()
 
-	if(istype(I,/obj/item/clothing))
+	if(istype(used_item,/obj/item/clothing))
 		if(cloth)
 			to_chat(user, "<span class='notice'>[cloth] is already on the ironing table!</span>")
 			return TRUE
@@ -75,13 +75,13 @@
 			to_chat(user, "<span class='notice'>[buckled_mob] is already on the ironing table!</span>")
 			return TRUE
 
-		if(user.try_unequip(I, src))
-			cloth = I
-			events_repository.register(/decl/observ/destroyed, I, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
+		if(user.try_unequip(used_item, src))
+			cloth = used_item
+			events_repository.register(/decl/observ/destroyed, used_item, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
 			update_icon()
 		return TRUE
-	else if(istype(I,/obj/item/ironingiron))
-		var/obj/item/ironingiron/iron = I
+	else if(istype(used_item,/obj/item/ironingiron))
+		var/obj/item/ironingiron/iron = used_item
 
 		// anti-wrinkle "massage"
 		if(buckled_mob && ishuman(buckled_mob))
@@ -100,9 +100,9 @@
 			return TRUE
 
 		if(!cloth)
-			if(!holding && !iron.enabled && user.try_unequip(I, src))
+			if(!holding && !iron.enabled && user.try_unequip(used_item, src))
 				holding = iron
-				events_repository.register(/decl/observ/destroyed, I, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
+				events_repository.register(/decl/observ/destroyed, used_item, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
 				update_icon()
 				return TRUE
 			to_chat(user, "<span class='notice'>There isn't anything on the ironing board.</span>")

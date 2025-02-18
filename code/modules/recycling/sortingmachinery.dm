@@ -79,8 +79,8 @@
 	update_icon()
 	return
 
-/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
-	if(IS_SCREWDRIVER(I))
+/obj/machinery/disposal/deliveryChute/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		if(c_mode==0)
 			c_mode=1
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, TRUE)
@@ -91,8 +91,8 @@
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, TRUE)
 			to_chat(user, "You attach the screws around the power connection.")
 			return TRUE
-	else if(IS_WELDER(I) && c_mode==1)
-		var/obj/item/weldingtool/welder = I
+	else if(IS_WELDER(used_item) && c_mode==1)
+		var/obj/item/weldingtool/welder = used_item
 		if(!welder.weld(1,user)) // 'you need more welding fuel' messages are already handled
 			return TRUE
 		to_chat(user, "You start slicing the floorweld off the delivery chute.")

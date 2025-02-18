@@ -48,35 +48,35 @@
 /turf/open/is_open()
 	return TRUE
 
-/turf/open/attackby(obj/item/C, mob/user)
+/turf/open/attackby(obj/item/used_item, mob/user)
 
-	if(istype(C, /obj/item/stack/material/rods))
+	if(istype(used_item, /obj/item/stack/material/rods))
 		var/ladder = (locate(/obj/structure/ladder) in src)
 		if(ladder)
 			to_chat(user, SPAN_WARNING("\The [ladder] is in the way."))
 			return TRUE
 		var/obj/structure/lattice/lattice = locate(/obj/structure/lattice, src)
 		if(lattice)
-			return lattice.attackby(C, user)
-		var/obj/item/stack/material/rods/rods = C
+			return lattice.attackby(used_item, user)
+		var/obj/item/stack/material/rods/rods = used_item
 		if (rods.use(1))
 			to_chat(user, SPAN_NOTICE("You lay down the support lattice."))
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			new /obj/structure/lattice(src, rods.material.type)
 		return TRUE
 
-	if (istype(C, /obj/item/stack/tile))
-		var/obj/item/stack/tile/tile = C
+	if (istype(used_item, /obj/item/stack/tile))
+		var/obj/item/stack/tile/tile = used_item
 		tile.try_build_turf(user, src)
 		return TRUE
 
 	//To lay cable.
-	if(IS_COIL(C) && try_build_cable(C, user))
+	if(IS_COIL(used_item) && try_build_cable(used_item, user))
 		return TRUE
 
 	for(var/atom/movable/M in below)
 		if(M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
-			return M.attackby(C, user)
+			return M.attackby(used_item, user)
 
 	return FALSE
 

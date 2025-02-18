@@ -59,20 +59,20 @@
 		return TRUE
 	return ..()
 
-/obj/structure/banner_frame/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/banner))
+/obj/structure/banner_frame/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/banner))
 		if(banner)
 			to_chat(user, SPAN_WARNING("There is already a banner hung on \the [src]."))
 			return TRUE
 
-		var/obj/item/banner/other_banner = O
+		var/obj/item/banner/other_banner = used_item
 		if(other_banner.banner_type != accepts_banner_type)
-			to_chat(user, SPAN_WARNING("\The [src] is not suitable for hanging \the [O]."))
+			to_chat(user, SPAN_WARNING("\The [src] is not suitable for hanging \the [used_item]."))
 			return TRUE
 
-		if(user.try_unequip(O, src))
-			user.visible_message(SPAN_NOTICE("\The [user] hangs \the [O] from \the [src]."), SPAN_NOTICE("You hang \the [O] from \the [src]."), SPAN_NOTICE("You hear the rustling of fabric."))
-			set_banner(O)
+		if(user.try_unequip(used_item, src))
+			user.visible_message(SPAN_NOTICE("\The [user] hangs \the [used_item] from \the [src]."), SPAN_NOTICE("You hang \the [used_item] from \the [src]."), SPAN_NOTICE("You hear the rustling of fabric."))
+			set_banner(used_item)
 		return TRUE
 	return ..()
 

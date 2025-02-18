@@ -72,23 +72,23 @@
 	add_fingerprint(user)
 	return TRUE
 
-/obj/item/paper_bin/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/paper))
+/obj/item/paper_bin/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/paper))
 		if(amount >= max_amount)
 			to_chat(user, SPAN_WARNING("\The [src] is full!"))
 			return TRUE
-		if(!user.try_unequip(I, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		add_paper(I)
-		to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
+		add_paper(used_item)
+		to_chat(user, SPAN_NOTICE("You put [used_item] in [src]."))
 		return TRUE
-	else if(istype(I, /obj/item/paper_bundle))
+	else if(istype(used_item, /obj/item/paper_bundle))
 		if(amount >= max_amount)
 			to_chat(user, SPAN_WARNING("\The [src] is full!"))
 			return TRUE
-		var/obj/item/paper_bundle/B = I
+		var/obj/item/paper_bundle/B = used_item
 		var/was_there_a_photo = FALSE
-		for(var/obj/item/bundleitem in I) //loop through items in bundle
+		for(var/obj/item/bundleitem in used_item) //loop through items in bundle
 			if(istype(bundleitem, /obj/item/paper)) //if item is paper, add into the bin
 				LAZYREMOVE(B.pages, bundleitem)
 				add_paper(bundleitem)
@@ -96,7 +96,7 @@
 				was_there_a_photo = TRUE
 				bundleitem.dropInto(user.loc)
 				bundleitem.reset_plane_and_layer()
-		to_chat(user, SPAN_NOTICE("You loosen \the [I] and add its papers into \the [src]."))
+		to_chat(user, SPAN_NOTICE("You loosen \the [used_item] and add its papers into \the [src]."))
 		B.reevaluate_existence()
 		if(was_there_a_photo)
 			to_chat(user, SPAN_NOTICE("The photo cannot go into \the [src]."))

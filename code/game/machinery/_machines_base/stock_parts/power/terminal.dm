@@ -115,13 +115,13 @@
 			to_chat(user, "<span class='notice'>There is already a terminal here.</span>")
 			return TRUE
 
-/obj/item/stock_parts/power/terminal/attackby(obj/item/I, mob/user)
+/obj/item/stock_parts/power/terminal/attackby(obj/item/used_item, mob/user)
 	var/obj/machinery/machine = loc
 	if(!istype(machine))
 		return ..()
 
 	// Interactions inside machine only
-	if (istype(I, /obj/item/stack/cable_coil) && !terminal)
+	if (istype(used_item, /obj/item/stack/cable_coil) && !terminal)
 		var/turf/T = get_step(machine, terminal_dir)
 		if(terminal_dir && user.loc != T)
 			return FALSE // Wrong terminal handler.
@@ -131,7 +131,7 @@
 		if(istype(T) && !T.is_plating())
 			to_chat(user, "<span class='warning'>You must remove the floor plating in front of \the [machine] first.</span>")
 			return TRUE
-		var/obj/item/stack/cable_coil/C = I
+		var/obj/item/stack/cable_coil/C = used_item
 		if(!C.can_use(10))
 			to_chat(user, "<span class='warning'>You need ten lengths of cable for \the [machine].</span>")
 			return TRUE

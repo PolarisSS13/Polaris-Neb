@@ -221,9 +221,9 @@
 
 	return FALSE
 
-/obj/structure/meat_hook/attackby(var/obj/item/thing, var/mob/user)
+/obj/structure/meat_hook/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(!IS_KNIFE(thing))
+	if(!IS_KNIFE(used_item))
 		return ..()
 
 	if(!occupant)
@@ -237,22 +237,22 @@
 	busy = TRUE
 	if(occupant_state == CARCASS_FRESH)
 		if(occupant.currently_has_skin())
-			do_butchery_step(user, thing, CARCASS_SKINNED, "skinning")
+			do_butchery_step(user, used_item, CARCASS_SKINNED, "skinning")
 		else
 			set_carcass_state(CARCASS_SKINNED, apply_damage = FALSE)
 	if(occupant_state == CARCASS_SKINNED)
 		if(occupant.currently_has_innards())
-			do_butchery_step(user, thing, CARCASS_GUTTED,  "gutting")
+			do_butchery_step(user, used_item, CARCASS_GUTTED,  "gutting")
 		else
 			set_carcass_state(CARCASS_GUTTED, apply_damage = FALSE)
 	if(occupant_state == CARCASS_GUTTED)
 		if(occupant.currently_has_bones())
-			do_butchery_step(user, thing, CARCASS_JOINTED, "deboning")
+			do_butchery_step(user, used_item, CARCASS_JOINTED, "deboning")
 		else
 			set_carcass_state(CARCASS_JOINTED, apply_damage = FALSE)
 	if(occupant_state == CARCASS_JOINTED)
 		if(occupant.currently_has_meat())
-			do_butchery_step(user, thing, CARCASS_EMPTY,   "butchering")
+			do_butchery_step(user, used_item, CARCASS_EMPTY,   "butchering")
 		else
 			set_carcass_state(CARCASS_EMPTY, apply_damage = FALSE)
 	busy = FALSE

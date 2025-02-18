@@ -291,9 +291,8 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-
-/obj/machinery/lapvend/attackby(obj/item/held_item as obj, mob/user as mob)
-	if(state == STATE_PAYMENT && process_payment(held_item))
+/obj/machinery/lapvend/attackby(obj/item/used_item, mob/user)
+	if(state == STATE_PAYMENT && process_payment(used_item))
 		fabricate_and_recalc_price(TRUE)
 		flick("world-vend", src)
 		if((devtype == DEVICE_TYPE_LAPTOP) && fabricated_laptop)

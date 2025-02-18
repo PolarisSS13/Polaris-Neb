@@ -112,9 +112,9 @@
 		else
 			. += SPAN_WARNING("It looks like it's been tampered with, but you're not sure to what extent.")
 
-/obj/machinery/ftl_shunt/core/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/stack/telecrystal))
-		var/obj/item/stack/telecrystal/TC = O
+/obj/machinery/ftl_shunt/core/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/stack/telecrystal))
+		var/obj/item/stack/telecrystal/TC = used_item
 
 		if(TC.amount < 10)
 			to_chat(user, SPAN_WARNING("You don't have enough telecrystals to sabotage [src]."))
@@ -238,11 +238,11 @@
 	return FTL_START_CONFIRMED
 
 /obj/machinery/ftl_shunt/core/proc/calculate_jump_requirements()
-	var/obj/effect/overmap/visitable/O = global.overmap_sectors[num2text(z)]
-	if(O)
+	var/obj/effect/overmap/visitable/site = global.overmap_sectors[num2text(z)]
+	if(site)
 		var/shunt_distance
 		var/vessel_mass = ftl_computer.linked.get_vessel_mass()
-		var/shunt_turf = locate(shunt_x, shunt_y, O.z)
+		var/shunt_turf = locate(shunt_x, shunt_y, site.z)
 		shunt_distance = get_dist(get_turf(ftl_computer.linked), shunt_turf)
 		required_fuel_joules = (vessel_mass * JOULES_PER_TON) * shunt_distance
 		required_charge = required_fuel_joules * REQUIRED_CHARGE_MULTIPLIER
@@ -275,9 +275,9 @@
 		cancel_shunt()
 		return //If for some reason we don't have fuel now, just return.
 
-	var/obj/effect/overmap/visitable/O = global.overmap_sectors[num2text(z)]
-	if(O)
-		var/destination = locate(shunt_x, shunt_y, O.z)
+	var/obj/effect/overmap/visitable/site = global.overmap_sectors[num2text(z)]
+	if(site)
+		var/destination = locate(shunt_x, shunt_y, site.z)
 		var/jumpdist = get_dist(get_turf(ftl_computer.linked), destination)
 		var/obj/effect/portal/wormhole/wormhole = new(destination) //Generate a wormhole effect on overmap to give some indication that something is about to happen.
 		QDEL_IN(wormhole, 6 SECONDS)
@@ -584,13 +584,13 @@
 	master = null
 	QDEL_NULL(fuel)
 
-/obj/machinery/ftl_shunt/fuel_port/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/fuel_assembly) && !fuel)
+/obj/machinery/ftl_shunt/fuel_port/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/fuel_assembly) && !fuel)
 		if(!do_after(user, 2 SECONDS, src) || fuel)
 			return TRUE
-		if(!user || !user.try_unequip(O, src))
+		if(!user || !user.try_unequip(used_item, src))
 			return TRUE
-		fuel = O
+		fuel = used_item
 		max_fuel = get_fuel_joules(TRUE)
 		update_icon()
 		return TRUE

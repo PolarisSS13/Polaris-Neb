@@ -131,14 +131,14 @@
 		M.update_equipment_overlay(slot_wear_mask_str, redraw_mob = FALSE)
 		M.update_inhand_overlays()
 
-/obj/item/clothing/mask/smokable/ecig/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/chems/ecig_cartridge))
+/obj/item/clothing/mask/smokable/ecig/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/chems/ecig_cartridge))
 		if (ec_cartridge)//can't add second one
 			to_chat(user, SPAN_NOTICE("A cartridge has already been installed."))
-		else if(user.try_unequip(I, src))//fits in new one
-			ec_cartridge = I
+		else if(user.try_unequip(used_item, src))//fits in new one
+			ec_cartridge = used_item
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You insert \the [I] into \the [src]."))
+			to_chat(user, SPAN_NOTICE("You insert \the [used_item] into \the [src]."))
 		return TRUE
 	return ..()
 

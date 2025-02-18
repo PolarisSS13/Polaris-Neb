@@ -164,9 +164,9 @@
 			_state = "[base_state]_broken"
 
 	if(istype(lightbulb, /obj/item/light))
-		var/image/I = image(icon, _state)
-		I.color = get_mode_color()
-		add_overlay(I)
+		var/image/overlay_image = image(icon, _state)
+		overlay_image.color = get_mode_color()
+		add_overlay(overlay_image)
 
 	if(on)
 		compile_overlays() // force a compile so that we update prior to the light being set
@@ -591,10 +591,10 @@
 
 // attack bulb/tube with object
 // if a syringe, can inject flammable liquids to make it explode
-/obj/item/light/attackby(var/obj/item/I, var/mob/user)
+/obj/item/light/attackby(var/obj/item/used_item, var/mob/user)
 	..()
-	if(istype(I, /obj/item/chems/syringe) && I.reagents?.total_volume)
-		var/obj/item/chems/syringe/S = I
+	if(istype(used_item, /obj/item/chems/syringe) && used_item.reagents?.total_volume)
+		var/obj/item/chems/syringe/S = used_item
 		to_chat(user, "You inject the solution into \the [src].")
 		for(var/rtype in S.reagents?.reagent_volumes)
 			var/decl/material/R = GET_DECL(rtype)
