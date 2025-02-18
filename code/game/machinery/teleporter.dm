@@ -55,7 +55,7 @@
 		return ..()
 
 	var/obj/L = null
-	for(var/obj/abstract/landmark/sloc in global.landmarks_list)
+	for(var/obj/abstract/landmark/sloc in global.all_landmarks)
 		if(sloc.name != C.data || (locate(/mob/living) in sloc.loc))
 			continue
 		L = sloc

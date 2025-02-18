@@ -136,7 +136,7 @@ var/global/ascii_reset = "[ascii_esc]\[0m"
 /datum/unit_test/proc/get_safe_turf()
 	check_cleanup = TRUE
 	if(!safe_landmark)
-		for(var/landmark in global.landmarks_list)
+		for(var/landmark in global.all_landmarks)
 			if(istype(landmark, /obj/abstract/landmark/test/safe_turf))
 				safe_landmark = landmark
 				break
@@ -145,7 +145,7 @@ var/global/ascii_reset = "[ascii_esc]\[0m"
 /datum/unit_test/proc/get_space_turf()
 	check_cleanup = TRUE
 	if(!space_landmark)
-		for(var/landmark in global.landmarks_list)
+		for(var/landmark in global.all_landmarks)
 			if(istype(landmark, /obj/abstract/landmark/test/space_turf))
 				space_landmark = landmark
 				break

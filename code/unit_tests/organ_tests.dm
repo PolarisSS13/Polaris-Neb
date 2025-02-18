@@ -116,10 +116,15 @@
 
 /datum/unit_test/bodytype_organ_creation/start_test()
 	var/failcount = 0
-	var/list/bodytype_pairings = get_bodytype_species_pairs()
-	for(var/decl/bodytype/bodytype in bodytype_pairings)
-		var/decl/species/species = bodytype_pairings[bodytype]
-		var/mob/living/human/test_subject = new(null, species.name, null, bodytype)
+	var/datum/mob_snapshot/dummy_appearance = new
+	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
+		if(!bodytype.bodytype_flag) // no equip flag, currently, implies no organs. todo: a better way to exclude simple animal bodytypes here
+			continue
+		var/decl/species/species = bodytype.get_user_species_for_validation()
+		ASSERT(species)
+		dummy_appearance.root_species  = species
+		dummy_appearance.root_bodytype = bodytype
+		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
 
 		var/fail = 0
 		fail |= !check_internal_organs(test_subject, bodytype)
@@ -127,6 +132,7 @@
 		fail |= !check_organ_parents(test_subject, bodytype)
 
 		if(fail) failcount++
+	QDEL_NULL(dummy_appearance)
 
 	if(failcount)
 		fail("[failcount] bodytypes were created with invalid organ configuration.")
@@ -249,10 +255,15 @@
 
 /datum/unit_test/bodytype_organ_lists_update/start_test()
 	var/failcount = 0
-	var/list/bodytype_pairings = get_bodytype_species_pairs()
-	for(var/decl/bodytype/bodytype in bodytype_pairings)
-		var/decl/species/species = bodytype_pairings[bodytype]
-		var/mob/living/human/test_subject = new(null, species.name, null, bodytype)
+	var/datum/mob_snapshot/dummy_appearance = new
+	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
+		if(!bodytype.bodytype_flag) // no equip flag, currently, implies no organs. todo: a better way to exclude simple animal bodytypes here
+			continue
+		var/decl/species/species = bodytype.get_user_species_for_validation()
+		ASSERT(species)
+		dummy_appearance.root_species  = species
+		dummy_appearance.root_bodytype = bodytype
+		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
 
 		for(var/O in test_subject.get_internal_organs())
 			if(!test_internal_organ(test_subject, O))
@@ -261,6 +272,7 @@
 		for(var/O in test_subject.get_external_organs())
 			if(!test_external_organ(test_subject, O))
 				failcount++
+	QDEL_NULL(dummy_appearance)
 
 	if(failcount)
 		fail("[failcount] organs failed to be removed and replaced correctly.")

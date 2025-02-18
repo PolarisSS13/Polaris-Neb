@@ -3,6 +3,15 @@
 	status_flags = GODMODE|CANPUSH
 	virtual_mob = null
 
+/proc/get_mannequin(var/ckey)
+	var/static/list/mob/living/human/dummy/mannequin/mannequins = list()
+	if(SSatoms.atom_init_stage < INITIALIZATION_INNEW_REGULAR)
+		return
+	. = mannequins[ckey]
+	if(!.)
+		. = new /mob/living/human/dummy/mannequin()
+		mannequins[ckey] = .
+
 /mob/living/human/dummy/mannequin/Initialize(mapload, species_name, datum/mob_snapshot/supplied_appearance)
 	. = ..()
 	STOP_PROCESSING(SSmobs, src)

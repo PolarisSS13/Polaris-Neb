@@ -445,7 +445,7 @@
 
 /datum/job/proc/get_roundstart_spawnpoint()
 	var/list/loc_list = list()
-	for(var/obj/abstract/landmark/start/sloc in global.landmarks_list)
+	for(var/obj/abstract/landmark/start/sloc in global.all_landmarks)
 		if(sloc.name != title)	continue
 		if(locate(/mob/living) in sloc.loc)	continue
 		loc_list += sloc

@@ -110,6 +110,9 @@
 /datum/category_item/player_setup_item/physical/body/sanitize_character()
 
 	var/decl/species/mob_species = get_species_by_key(pref.species)
+	if(!mob_species || (mob_species.spawn_flags & SPECIES_IS_RESTRICTED))
+		pref.species = global.using_map.default_species
+		mob_species = get_species_by_key(pref.species)
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	if(mob_bodytype.appearance_flags & HAS_SKIN_COLOR)
 		pref.skin_colour = pref.skin_colour || mob_bodytype.base_color     || COLOR_BLACK
@@ -121,9 +124,6 @@
 		pref.eye_colour  = mob_bodytype.base_eye_color || COLOR_BLACK
 
 	pref.blood_type = sanitize_text(pref.blood_type, initial(pref.blood_type))
-
-	if(!pref.species || !(pref.species in get_playable_species()))
-		pref.species = global.using_map.default_species
 
 	if(!pref.blood_type || !(pref.blood_type in mob_species.blood_types))
 		pref.blood_type = pickweight(mob_species.blood_types)

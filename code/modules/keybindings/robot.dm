@@ -1,4 +1,5 @@
 /datum/keybinding/robot
+	abstract_type = /datum/keybinding/robot
 	category = CATEGORY_ROBOT
 
 /datum/keybinding/robot/can_use(client/user)

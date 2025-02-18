@@ -573,7 +573,7 @@ SUBSYSTEM_DEF(jobs)
 	return positions_by_department[dept] || list()
 
 /datum/controller/subsystem/jobs/proc/spawn_empty_ai()
-	for(var/obj/abstract/landmark/start/S in global.landmarks_list)
+	for(var/obj/abstract/landmark/start/S in global.all_landmarks)
 		if(S.name != "AI")
 			continue
 		if(locate(/mob/living) in S.loc)
