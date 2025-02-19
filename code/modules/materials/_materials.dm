@@ -743,8 +743,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 			O.visible_message(SPAN_NOTICE("The solution dissolves the ink on the paper."), range = 1)
 		else if(istype(O, /obj/item/book) && amount >= FLUID_PUDDLE)
 			var/obj/item/book/affectedbook = O
-			if(affectedbook.can_dissolve_text)
-				affectedbook.dat = null
+			if(affectedbook.clear_text())
 				O.visible_message(SPAN_NOTICE("The solution dissolves the ink on the book."), range = 1)
 			else
 				O.visible_message(SPAN_WARNING("The solution does nothing. Whatever this is, it isn't normal ink."), range = 1)
