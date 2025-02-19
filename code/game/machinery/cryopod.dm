@@ -248,7 +248,7 @@
 /obj/machinery/cryopod/lifepod/Process()
 	if(SSevac.evacuation_controller && SSevac.evacuation_controller.state >= EVAC_LAUNCHING)
 		if(occupant && !launched)
-			launch()
+			INVOKE_ASYNC(src, PROC_REF(launch))
 	..()
 
 /obj/machinery/cryopod/Destroy()
