@@ -57,6 +57,8 @@
 
 /proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
 	. = B.hard_delete_time - A.hard_delete_time
+	if (!. && B.qdels && A.qdels) // sort by time per call
+		. = (B.destroy_time / B.qdels) - (A.destroy_time / A.qdels)
 	if (!.)
 		. = B.destroy_time - A.destroy_time
 	if (!.)

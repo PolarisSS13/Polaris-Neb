@@ -511,6 +511,8 @@
 		. += "<li>qdel() Count: [I.qdels]</li>"
 		if(I.early_destroy)
 			. += "<li>Early destroy count: [I.early_destroy]</li>"
+		if(I.qdels)
+			. += "<li>Average Destroy() Cost: [I.destroy_time / I.qdels]ms/call</li>"
 		. += "<li>Destroy() Cost: [I.destroy_time]ms</li>"
 		if(I.hard_deletes)
 			. += "<li>Total Hard Deletes [I.hard_deletes]</li>"
