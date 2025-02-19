@@ -156,7 +156,7 @@
 
 	show_feed_message_end(user, target, consumption_method)
 	if(consumption_method == EATING_METHOD_DRINK && target?.has_personal_goal(/datum/goal/achievement/specific_object/drink))
-		for(var/reagent in reagents.reagent_volumes)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 			target.update_personal_goal(/datum/goal/achievement/specific_object/drink, reagent)
 	handle_consumed(user, target, consumption_method)
 

@@ -246,6 +246,9 @@
 #define DATA_BLOOD_DOSE_CHEM  /decl/reagent_data_field/blood_dose_chem
 #define DATA_BLOOD_HAS_OXY    /decl/reagent_data_field/blood_has_oxy
 
+// Misc general data.
+#define DATA_COOLDOWN_TIME    /decl/reagent_data_field/cooldown_time
+
 //Used by show_message() and emotes
 #define VISIBLE_MESSAGE 1
 #define AUDIBLE_MESSAGE 2

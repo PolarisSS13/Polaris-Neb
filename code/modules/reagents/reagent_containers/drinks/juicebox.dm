@@ -118,8 +118,8 @@
 
 /obj/item/chems/drinks/juicebox/sensible_random/populate_reagents()
 	var/list/chosen_reagents = juice_it()
-	var/decl/material/J = GET_DECL(chosen_reagents[1])
-	var/decl/material/K = GET_DECL(chosen_reagents[2])
+	var/decl/material/J = chosen_reagents[1]
+	var/decl/material/K = chosen_reagents[2]
 	var/splash = pick("teasing", "splash", "hint", "measure", "nip", "slug", "depth", "dash", "sensation", "surge", "squirt", "spritz", "efflux", "gush", "swell")
 	desc = "[J.liquid_name]; [J.lore_text] This one comes with \an [splash] of [K.liquid_name] in a neat box."
 	name = "\improper [J.liquid_name] and [K.liquid_name] juicebox"

@@ -59,8 +59,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot accept any more chemical canisters."))
 		return FALSE
 	if(!emagged)
-		for(var/rid in canister.reagents?.reagent_volumes)
-			var/decl/material/reagent = GET_DECL(rid)
+		for(var/decl/material/reagent as anything in canister.reagents?.reagent_volumes)
 			for(var/banned_type in banned_chem_types)
 				if(istype(reagent, banned_type))
 					to_chat(user, SPAN_WARNING("Automatic safety checking indicates the presence of a prohibited substance in this canister."))

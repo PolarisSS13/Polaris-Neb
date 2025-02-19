@@ -133,7 +133,7 @@
 // TODO: There's not currently a way to check this, which might be a little annoying for forensics.
 // But this is just a stopgap to stop Skrell from literally leaking blood everywhere they go.
 /decl/material/liquid/mucus/skrell/get_reagent_color(datum/reagents/holder)
-	var/list/goo_data = REAGENT_DATA(holder, type)
+	var/list/goo_data = REAGENT_DATA(holder, src)
 	return goo_data?[DATA_BLOOD_COLOR] || ..()
 
 /obj/effect/decal/cleanable/blood/tracks/footprints/skrellprints

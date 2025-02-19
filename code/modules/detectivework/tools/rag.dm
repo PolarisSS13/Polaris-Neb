@@ -185,9 +185,8 @@
 	var/total_volume = 0
 	if(reagents)
 		total_volume += reagents.total_volume
-		for(var/rtype in reagents.reagent_volumes)
-			var/decl/material/R = GET_DECL(rtype)
-			total_fuel += REAGENT_VOLUME(reagents, rtype) * R.accelerant_value
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+			total_fuel += REAGENT_VOLUME(reagents, reagent) * reagent.accelerant_value
 	. = (total_fuel >= 2 && total_fuel >= total_volume*0.5)
 
 /obj/item/chems/rag/ignite_fire()

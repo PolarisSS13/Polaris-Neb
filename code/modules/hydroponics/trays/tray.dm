@@ -236,37 +236,37 @@
 
 	reagents.trans_to_obj(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
 
-	for(var/R in temp_chem_holder.reagents.reagent_volumes)
+	for(var/decl/material/reagent as anything in temp_chem_holder.reagents.reagent_volumes)
 
-		var/reagent_total = REAGENT_VOLUME(temp_chem_holder.reagents, R)
+		var/reagent_total = REAGENT_VOLUME(temp_chem_holder.reagents, reagent)
 
 		if(seed && !dead)
 			//Handle some general level adjustments.
-			if(toxic_reagents[R])
-				toxins += toxic_reagents[R]         * reagent_total
-			if(weedkiller_reagents[R])
-				weedlevel += weedkiller_reagents[R] * reagent_total
-			if(pestkiller_reagents[R])
-				pestlevel += pestkiller_reagents[R] * reagent_total
+			if(toxic_reagents[reagent.type])
+				toxins += toxic_reagents[reagent.type]         * reagent_total
+			if(weedkiller_reagents[reagent.type])
+				weedlevel += weedkiller_reagents[reagent.type] * reagent_total
+			if(pestkiller_reagents[reagent.type])
+				pestlevel += pestkiller_reagents[reagent.type] * reagent_total
 
 			// Beneficial reagents have a few impacts along with health buffs.
-			if(beneficial_reagents[R])
-				plant_health += beneficial_reagents[R][1] * reagent_total
-				yield_mod += beneficial_reagents[R][2]    * reagent_total
-				mutation_mod += beneficial_reagents[R][3] * reagent_total
+			if(beneficial_reagents[reagent.type])
+				plant_health += beneficial_reagents[reagent.type][1] * reagent_total
+				yield_mod += beneficial_reagents[reagent.type][2]    * reagent_total
+				mutation_mod += beneficial_reagents[reagent.type][3] * reagent_total
 
 			// Mutagen is distinct from the previous types and mostly has a chance of proccing a mutation.
-			if(mutagenic_reagents[R])
-				mutation_level += reagent_total*mutagenic_reagents[R]+mutation_mod
+			if(mutagenic_reagents[reagent.type])
+				mutation_level += reagent_total*mutagenic_reagents[reagent.type]+mutation_mod
 
 		// Handle nutrient refilling.
-		if(nutrient_reagents[R])
-			nutrilevel += nutrient_reagents[R]  * reagent_total
+		if(nutrient_reagents[reagent.type])
+			nutrilevel += nutrient_reagents[reagent.type]  * reagent_total
 
 		// Handle water and water refilling.
 		var/water_added = 0
-		if(water_reagents[R])
-			var/water_input = water_reagents[R] * reagent_total
+		if(water_reagents[reagent.type])
+			var/water_input = water_reagents[reagent.type] * reagent_total
 			water_added += water_input
 			waterlevel += water_input
 

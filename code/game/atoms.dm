@@ -426,7 +426,7 @@
 /atom/proc/get_contained_matter()
 	if(length(reagents?.reagent_volumes))
 		LAZYINITLIST(.)
-		for(var/reagent in reagents.reagent_volumes)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 			.[reagent] += floor(REAGENT_VOLUME(reagents, reagent) / REAGENT_UNITS_PER_MATERIAL_UNIT)
 	for(var/atom/contained_obj as anything in get_contained_external_atoms()) // machines handle component parts separately
 		. = MERGE_ASSOCS_WITH_NUM_VALUES(., contained_obj.get_contained_matter())
@@ -483,8 +483,7 @@
 */
 /atom/proc/try_detonate_reagents(var/severity = 3)
 	if(reagents)
-		for(var/r_type in reagents.reagent_volumes)
-			var/decl/material/reagent = GET_DECL(r_type)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 			reagent.explosion_act(src, severity)
 
 /**

@@ -100,11 +100,10 @@
 	var/datum/reagents/inhaled = target.get_inhaled_reagents()
 	if(inhaled && inhaled.total_volume)
 		var/unknown = 0
-		for(var/rtype in inhaled.reagent_volumes)
-			var/decl/material/R = GET_DECL(rtype)
-			if(R.scannable)
+		for(var/decl/material/reagent as anything in inhaled.reagent_volumes)
+			if(reagent.scannable)
 				print_reagent_default_message = FALSE
-				. += "<span class='scan_notice'>[capitalize(R.gas_name)] found in subject's breath.</span>"
+				. += "<span class='scan_notice'>[capitalize(reagent.gas_name)] found in subject's breath.</span>"
 			else
 				++unknown
 		if(unknown)

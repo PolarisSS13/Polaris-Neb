@@ -81,12 +81,10 @@
 	if(LAZYLEN(grown_reagents?.reagent_volumes))
 		dat += "<h2>Reagent Data</h2>"
 		dat += "<br>This sample contains: "
-		for(var/ltype in grown_reagents.liquid_volumes)
-			var/decl/material/R = GET_DECL(ltype)
-			dat += "<br>- [R.get_reagent_name(grown_reagents, MAT_PHASE_LIQUID)], [LIQUID_VOLUME(grown_reagents, ltype)] unit(s)"
-		for(var/stype in grown_reagents.solid_volumes)
-			var/decl/material/R = GET_DECL(stype)
-			dat += "<br>- [R.get_reagent_name(grown_reagents, MAT_PHASE_SOLID)], [SOLID_VOLUME(grown_reagents, stype)] unit(s)"
+		for(var/decl/material/reagent as anything in grown_reagents.liquid_volumes)
+			dat += "<br>- [reagent.get_reagent_name(grown_reagents, MAT_PHASE_LIQUID)], [LIQUID_VOLUME(grown_reagents, reagent)] unit(s)"
+		for(var/decl/material/reagent as anything in grown_reagents.solid_volumes)
+			dat += "<br>- [reagent.get_reagent_name(grown_reagents, MAT_PHASE_SOLID)], [SOLID_VOLUME(grown_reagents, reagent)] unit(s)"
 
 	dat += "<h2>Other Data</h2>"
 	if(length(extended_trait_data))

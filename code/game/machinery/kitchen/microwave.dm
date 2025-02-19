@@ -179,9 +179,8 @@
 	for(var/obj/used_item in get_contained_external_atoms())
 		data["cooking_items"][used_item.name]++
 	data["cooking_reagents"] = list()
-	for(var/material_type in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(material_type)
-		data["cooking_reagents"][mat.name] = reagents.reagent_volumes[material_type]
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		data["cooking_reagents"][reagent.name] = reagents.reagent_volumes[reagent]
 	data["on"] = !!operating
 	data["broken"] = broken > 0
 	data["dirty"] = dirty >= 100
@@ -366,23 +365,22 @@
 		to_chat(user, SPAN_NOTICE("You remove [thing] from [src]."))
 	SSnano.update_uis(src)
 
-/obj/machinery/microwave/proc/eject_reagent(var/mob/user, var/material_type)
-	if(!reagents.reagent_volumes[material_type])
+/obj/machinery/microwave/proc/eject_reagent(var/mob/user, var/decl/material/reagent)
+	if(!reagents.reagent_volumes[reagent])
 		SSnano.update_uis(src)
 		return // should not happen, must be a UI glitch or href hacking
 	var/obj/item/chems/held_container = user.get_active_held_item()
-	var/decl/material/M = GET_DECL(material_type)
 	if(istype(held_container))
-		var/amount_to_move = min(REAGENTS_FREE_SPACE(held_container.reagents), REAGENT_VOLUME(reagents, material_type))
+		var/amount_to_move = min(REAGENTS_FREE_SPACE(held_container.reagents), REAGENT_VOLUME(reagents, reagent))
 		if(amount_to_move <= 0)
 			to_chat(user, SPAN_WARNING("[held_container] is full!"))
 			return
-		to_chat(user, SPAN_NOTICE("You empty [amount_to_move] units of [M.name] into [held_container]."))
-		reagents.trans_type_to(held_container, material_type, amount_to_move)
+		to_chat(user, SPAN_NOTICE("You empty [amount_to_move] units of [reagent.name] into [held_container]."))
+		reagents.trans_type_to(held_container, reagent, amount_to_move)
 	else
-		to_chat(user, SPAN_NOTICE("You try to dump out the [M.name], but it gets all over [src] because you have nothing to put it in."))
+		to_chat(user, SPAN_NOTICE("You try to dump out the [reagent.name], but it gets all over [src] because you have nothing to put it in."))
 		dirty++
-		reagents.clear_reagent(material_type)
+		reagents.clear_reagent(reagent)
 	SSnano.update_uis(src)
 
 /obj/machinery/microwave/on_update_icon()
@@ -433,11 +431,9 @@
 			return TOPIC_REFRESH
 
 		if ("ejectreagent")
-			var/decl/material/mat
-			for(var/material_type in reagents.reagent_volumes)
-				mat = GET_DECL(material_type)
-				if(mat.name == href_list["target"])
-					eject_reagent(user, material_type)
+			for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+				if(reagent.name == href_list["target"])
+					eject_reagent(user, reagent)
 					break
 			return TOPIC_REFRESH
 

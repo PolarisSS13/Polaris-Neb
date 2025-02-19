@@ -48,8 +48,8 @@
 				my_chems[chem] = my_chems[chem] + other_chems[chem]
 
 /decl/material/liquid/blood/touch_turf(var/turf/touching_turf, var/amount, var/datum/reagents/holder)
-	var/data = REAGENT_DATA(holder, type)
-	if(!istype(touching_turf) || REAGENT_VOLUME(holder, type) < 3)
+	var/data = REAGENT_DATA(holder, src)
+	if(!istype(touching_turf) || REAGENT_VOLUME(holder, src) < 3)
 		return
 	var/weakref/donor = LAZYACCESS(data, DATA_BLOOD_DONOR)
 	blood_splatter(touching_turf, donor?.resolve() || holder.my_atom, 1)
@@ -58,21 +58,21 @@
 	. = ..()
 	if(M.has_trait(/decl/trait/metabolically_inert))
 		return
-	if(LAZYACCESS(M.chem_doses, type) > 5)
+	if(CHEM_DOSE(M, src) > 5)
 		M.take_damage(removed, TOX)
-	if(LAZYACCESS(M.chem_doses, type) > 15)
+	if(CHEM_DOSE(M, src) > 15)
 		M.take_damage(removed, TOX)
 
 /decl/material/liquid/blood/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	if(ishuman(M))
-		var/volume = REAGENT_VOLUME(holder, type)
+		var/volume = REAGENT_VOLUME(holder, src)
 		var/mob/living/human/H = M
 		H.inject_blood(volume, holder)
 		holder.remove_reagent(type, volume)
 	. = ..()
 
 /decl/material/liquid/blood/get_reagent_color(datum/reagents/holder)
-	var/list/blood_data = REAGENT_DATA(holder, type)
+	var/list/blood_data = REAGENT_DATA(holder, src)
 	return blood_data?[DATA_BLOOD_COLOR] || ..()
 
 /decl/material/liquid/coagulated_blood

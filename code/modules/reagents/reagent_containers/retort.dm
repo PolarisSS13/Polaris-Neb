@@ -19,9 +19,8 @@
 
 /obj/item/chems/glass/retort/update_overlays()
 	if(reagents?.total_volume && (!material || material.opacity < 1))
-		for(var/reagent in reagents.reagent_volumes)
-			var/decl/material/mat = GET_DECL(reagent)
-			if(!isnull(mat.boiling_point) && temperature >= mat.boiling_point)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+			if(!isnull(reagent.boiling_point) && temperature >= reagent.boiling_point)
 				add_overlay(overlay_image(icon, "[icon_state]-fill-boil", reagents.get_color(), (RESET_ALPHA|RESET_COLOR)))
 				return
 		add_overlay(overlay_image(icon, "[icon_state]-fill", reagents.get_color(), (RESET_ALPHA|RESET_COLOR)))

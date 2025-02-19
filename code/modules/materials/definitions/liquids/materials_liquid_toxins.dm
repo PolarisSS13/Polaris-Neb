@@ -88,7 +88,7 @@
 /decl/material/liquid/venom/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	if(M.has_trait(/decl/trait/metabolically_inert))
 		return
-	if(prob(REAGENT_VOLUME(holder, type)*2))
+	if(prob(REAGENT_VOLUME(holder, src)*2))
 		SET_STATUS_MAX(M, STAT_CONFUSE, 3)
 	..()
 
@@ -163,7 +163,7 @@
 	M.take_damage(3 * removed, OXY)
 	SET_STATUS_MAX(M, STAT_WEAK, 10)
 	SET_STATUS_MAX(M, STAT_SILENCE, 10)
-	if(LAZYACCESS(M.chem_doses, type) <= removed) //half-assed attempt to make timeofdeath update only at the onset
+	if(CHEM_DOSE(M, src) <= removed) //half-assed attempt to make timeofdeath update only at the onset
 		M.timeofdeath = world.time
 	M.add_chemical_effect(CE_NOPULSE, 1)
 
@@ -243,7 +243,7 @@
 /decl/material/liquid/hair_remover/affect_touch(var/mob/M, var/removed, var/datum/reagents/holder)
 	. = ..()
 	M.lose_hair()
-	holder.remove_reagent(type, REAGENT_VOLUME(holder, type))
+	holder.remove_reagent(type, REAGENT_VOLUME(holder, src))
 	return TRUE
 
 /decl/material/liquid/zombie
@@ -270,7 +270,7 @@
 	..()
 	if (ishuman(M))
 		var/mob/living/human/H = M
-		var/true_dose = LAZYACCESS(H.chem_doses, type) + REAGENT_VOLUME(holder, type)
+		var/true_dose = CHEM_DOSE(H, src) + REAGENT_VOLUME(holder, src)
 		if (true_dose >= amount_to_zombify)
 			H.zombify()
 		else if (true_dose > 1 && prob(20))

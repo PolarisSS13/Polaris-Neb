@@ -30,8 +30,8 @@
 	if(!(. = ..()) || !reagents)
 		return
 
-	for(var/mtype in reagents.reagent_volumes)
-		show_materials |= mtype
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		show_materials |= reagent.type
 
 /obj/machinery/material_processing/smeltery/ProcessAtomTemperature()
 	if(use_power)
