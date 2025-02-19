@@ -62,10 +62,6 @@
 	var/list/global_listeners = list()        // Associative list of instances that listen to all events of this type (as opposed to events belonging to a specific source) and the proc to call.
 	VAR_PROTECTED/flags                       // See _defines.dm for available flags and what they do
 
-/decl/observ/Initialize()
-	. = ..()
-	global.all_observable_events += src
-
 /datum
 	/// Associative list of observ type -> associative list of listeners -> an instance/list of procs to call on the listener when the event is raised.
 	var/list/list/list/event_listeners

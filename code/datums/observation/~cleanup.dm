@@ -1,3 +1,5 @@
+/// This variable is used only for sanity checks during unit tests. It contains a list of all datums with global event registrations.
+var/global/list/_all_global_event_listeners = list()
 /datum
 	/// Tracks how many event registrations are listening to us. Used in cleanup to prevent dangling references.
 	var/event_source_count = 0
@@ -30,11 +32,19 @@
 	. = ..()
 	if(.)
 		listener.global_listen_count += 1
+// This variable is used only for sanity checks during unit tests.
+#ifdef UNIT_TEST
+		global._all_global_event_listeners += listener
+#endif
 
 /decl/observ/unregister_global(var/datum/listener, var/proc_call)
 	. = ..()
 	if(.)
 		listener.global_listen_count -= .
+#ifdef UNIT_TEST
+		if(!listener.global_listen_count)
+			global._all_global_event_listeners -= listener
+#endif
 
 /proc/cleanup_global_listener(listener, listen_count)
 	var/events_removed
