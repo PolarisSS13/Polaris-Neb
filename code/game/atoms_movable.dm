@@ -185,8 +185,8 @@
 	. = TRUE
 
 	// observ
-	if(!loc)
-		RAISE_EVENT(/decl/observ/moved, src, origin, null)
+	if(!loc && event_listeners?[/decl/observ/moved])
+		raise_event_non_global(/decl/observ/moved, origin, null)
 
 	// freelook
 	if(simulated && opacity)
@@ -237,8 +237,8 @@
 			else
 				unbuckle_mob()
 
-		if(!loc)
-			RAISE_EVENT(/decl/observ/moved, src, old_loc, null)
+		if(!loc && event_listeners?[/decl/observ/moved])
+			raise_event_non_global(/decl/observ/moved, old_loc, null)
 
 		// freelook
 		if(simulated && opacity)

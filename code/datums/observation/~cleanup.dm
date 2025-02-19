@@ -38,8 +38,7 @@
 
 /proc/cleanup_global_listener(listener, listen_count)
 	var/events_removed
-	for(var/entry in global.all_observable_events)
-		var/decl/observ/event = entry
+	for(var/decl/observ/event in decls_repository.get_decls_of_subtype_unassociated(/decl/observ))
 		if((events_removed = event.unregister_global(listener)))
 			log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still globally registered to an event.")
 			listen_count -= events_removed
@@ -48,13 +47,14 @@
 	if(listen_count > 0)
 		CRASH("Failed to clean up all global listener entries!")
 
+// This might actually be fast enough now that there's no point in logging it?
 /proc/cleanup_source_listeners(datum/event_source, source_listener_count)
 	event_source.event_source_count = 0
 	var/events_removed
-	for(var/entry in global.all_observable_events)
-		var/decl/observ/event = entry
-		var/list/list/proc_owners = event.event_sources[event_source]
+	for(var/event_type in event_source.event_listeners)
+		var/list/list/proc_owners = event_source.event_listeners[event_type]
 		if(proc_owners)
+			var/decl/observ/event = GET_DECL(event_type)
 			for(var/proc_owner in proc_owners)
 				var/list/callbacks_cached = proc_owners[proc_owner]?.Copy()
 				if((events_removed = event.unregister(event_source, proc_owner)))
@@ -68,16 +68,16 @@
 /proc/cleanup_event_listener(datum/listener, listener_count)
 	listener.event_listen_count = 0
 	var/events_removed
-	for(var/entry in global.all_observable_events)
-		var/decl/observ/event = entry
-		for(var/event_source in event.event_sources)
-			if(isnull(event.event_sources[event_source]))
-				log_debug("[event] ([event.type]) - [log_info_line(event_source)] had null listeners list!")
-			var/list/callbacks_cached = event.event_sources[event_source]?[listener]?.Copy()
-			if((events_removed = event.unregister(event_source, listener)))
-				log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still listening to [log_info_line(event_source)]. Callbacks: [json_encode(callbacks_cached)]")
-				listener_count -= events_removed
-				if(!listener_count)
-					return
+	for(var/event_type in listener._listening_to)
+		var/list/listened_sources = listener._listening_to[event_type]
+		if(listened_sources)
+			for(var/datum/event_source in listened_sources)
+				var/list/callbacks_cached = event_source.event_listeners[event_type]?[listener]?.Copy()
+				var/decl/observ/event = GET_DECL(event_type)
+				if((events_removed = event.unregister(event_source, listener)))
+					log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still listening to [log_info_line(event_source)]. Callbacks: [json_encode(callbacks_cached)]")
+					listener_count -= events_removed
+					if(!listener_count)
+						return
 	if(listener_count > 0)
 		CRASH("Failed to clean up all listener entries!")

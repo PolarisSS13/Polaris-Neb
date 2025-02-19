@@ -121,8 +121,8 @@
 	if(tell_universe)
 		global.universe.OnTurfChange(changed_turf)
 
-	if(changed_turf.density != old_density)
-		RAISE_EVENT(/decl/observ/density_set, changed_turf, old_density, changed_turf.density)
+	if(changed_turf.density != old_density && changed_turf.event_listeners?[/decl/observ/density_set])
+		changed_turf.raise_event_non_global(/decl/observ/density_set, old_density, changed_turf.density)
 
 	// lighting stuff
 
