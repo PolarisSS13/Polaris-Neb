@@ -33,8 +33,12 @@
 			if(!product)
 				continue
 			category_name = "mix recipe"
-			lore_text = initial(product.desc)
-			var/product_name = (ispath(product, /atom/movable) && TYPE_IS_SPAWNABLE(product)) ? atom_info_repository.get_name_for(product) : initial(product.name)
+			var/product_name = initial(product.name)
+			if(ispath(product, /atom/movable) && TYPE_IS_SPAWNABLE(product))
+				product_name = atom_info_repository.get_name_for(product)
+				lore_text = atom_info_repository.get_description_for(product)
+			else
+				lore_text = initial(product.desc)
 			mechanics_text = "This recipe produces \a [product_name].<br>It should be performed in a mixing bowl or beaker, and requires the following ingredients:"
 		else
 			var/decl/material/product = GET_DECL(food.result)
@@ -111,6 +115,7 @@
 		var/lore_text = recipe.lore_text
 		if(ispath(recipe_product, /atom/movable) && TYPE_IS_SPAWNABLE(recipe_product))
 			product_name = atom_info_repository.get_name_for(recipe_product)
+			lore_text ||= atom_info_repository.get_description_for(recipe_product)
 		else if(ispath(recipe.result, /decl/material))
 			var/decl/material/result_reagent = GET_DECL(recipe.result)
 			product_name = result_reagent.use_name
@@ -118,10 +123,9 @@
 			lore_text ||= result_reagent.lore_text
 		else // some things can't be spawned by the atom info repository because they need extra args we can't pass
 			product_name = initial(recipe_product.name)
+			lore_text ||= initial(recipe_product.desc)
 		product_link ||= "\a [product_name]"
 		mechanics_text += "<br>This recipe takes [ceil(recipe.cooking_time/(1 SECOND))] second\s to cook in [english_list(cooking_methods, and_text = " or ")] and creates [product_link]."
-		if(!lore_text)
-			lore_text = initial(recipe_product.desc)
 
 		var/recipe_name = recipe.display_name || sanitize(product_name)
 		guide_html += "<h3>[capitalize(recipe_name)]</h3>Cook [english_list(ingredients)] for [ceil(recipe.cooking_time/(1 SECOND))] second\s."

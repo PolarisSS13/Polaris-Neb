@@ -9,7 +9,7 @@
 		if(mat.hidden_from_codex)
 			continue
 
-		var/new_lore_text = initial(mat.lore_text)
+		var/new_lore_text = mat.lore_text
 		if(mat.taste_description)
 			if(new_lore_text)
 				new_lore_text = "[new_lore_text]<br><br>"
