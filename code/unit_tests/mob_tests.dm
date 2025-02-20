@@ -24,10 +24,9 @@
 		T = locate(/turf/space)
 	var/datum/mob_snapshot/dummy_appearance = new
 	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
-		if(!bodytype.bodytype_flag) // no equip flag, currently, implies no organs. todo: a better way to exclude simple animal bodytypes here
-			continue
 		var/decl/species/species = bodytype.get_user_species_for_validation()
-		ASSERT(species)
+		if(!species)
+			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
 		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)

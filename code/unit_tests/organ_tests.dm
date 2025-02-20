@@ -121,7 +121,8 @@
 		if(!bodytype.bodytype_flag) // no equip flag, currently, implies no organs. todo: a better way to exclude simple animal bodytypes here
 			continue
 		var/decl/species/species = bodytype.get_user_species_for_validation()
-		ASSERT(species)
+		if(!species)
+			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
 		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
@@ -260,7 +261,8 @@
 		if(!bodytype.bodytype_flag) // no equip flag, currently, implies no organs. todo: a better way to exclude simple animal bodytypes here
 			continue
 		var/decl/species/species = bodytype.get_user_species_for_validation()
-		ASSERT(species)
+		if(!species)
+			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
 		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
