@@ -975,7 +975,7 @@
 //Human mob specific init code. Meant to be used only on init.
 /mob/living/human/proc/setup_human(species_name, datum/mob_snapshot/supplied_appearance)
 	if(supplied_appearance)
-		species_name = supplied_appearance.root_species
+		species_name = supplied_appearance.root_species.name
 	else if(!species_name)
 		species_name = global.using_map.default_species //Humans cannot exist without a species!
 
