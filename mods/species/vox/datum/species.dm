@@ -20,6 +20,7 @@
 	transfusion_fail_reagent = /decl/material/gas/ammonia
 
 /decl/species/vox
+	uid = "species_vox"
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
 	base_external_prosthetics_model = /decl/bodytype/prosthetic/vox/crap

@@ -5,6 +5,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 /decl/species
 	abstract_type = /decl/species
+	decl_flags = DECL_FLAG_MANDATORY_UID
 
 	// Descriptors and strings.
 	var/name

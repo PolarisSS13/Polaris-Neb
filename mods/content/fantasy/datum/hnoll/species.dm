@@ -12,6 +12,7 @@
 	)
 
 /decl/species/hnoll
+	uid                 = "species_hnoll"
 	name                = SPECIES_HNOLL
 	name_plural         = "Hnoll"
 	description         = "The hnoll are thickly-furred, powerfully built bipeds with a notable resemblance to the steppe \

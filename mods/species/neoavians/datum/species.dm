@@ -16,6 +16,7 @@
 	meat_type = /obj/item/food/butchery/meat/chicken
 
 /decl/species/neoavian
+	uid = "species_avian"
 	name = SPECIES_AVIAN
 	name_plural = "Neo-Avians"
 	description = "Avian species, largely crows, magpies and other corvids, were among the first sophonts uplifted to aid in colonizing Mars. \

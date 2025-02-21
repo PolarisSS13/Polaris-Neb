@@ -1,4 +1,5 @@
 /decl/species/monkey
+	uid = "species_monkey"
 	name = SPECIES_MONKEY
 	name_plural = "Monkeys"
 	description = "Ook."

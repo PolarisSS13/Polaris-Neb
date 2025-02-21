@@ -1,4 +1,5 @@
 /decl/species/grafadreka
+	uid = "species_grafadreka"
 	name = SPECIES_GRAFADREKA
 	name_plural = SPECIES_GRAFADREKA
 	description = "The reclusive grafadreka (Icelandic, lit. 'digging dragon'), also known as the snow drake, is a large reptillian pack predator similar in size and morphology to old Earth hyenas. \

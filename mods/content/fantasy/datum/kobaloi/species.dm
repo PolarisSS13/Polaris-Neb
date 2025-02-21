@@ -1,4 +1,5 @@
 /decl/species/kobaloi
+	uid                 = "species_kobaloi"
 	name                = SPECIES_KOBALOI
 	name_plural         = SPECIES_KOBALOI
 	spawn_flags         = SPECIES_CAN_JOIN

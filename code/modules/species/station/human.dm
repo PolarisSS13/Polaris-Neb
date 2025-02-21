@@ -1,4 +1,5 @@
 /decl/species/human
+	uid = "species_human"
 	name = SPECIES_HUMAN
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY

@@ -24,7 +24,7 @@
 	splatter_colour = "#660066"
 
 /decl/species/mantid
-
+	uid =                    "species_mantid_alate"
 	name =                   SPECIES_MANTID_ALATE
 	name_plural =            "Kharmaan Alates"
 	show_ssd =               "quiescent"
@@ -91,6 +91,7 @@
 	return
 
 /decl/species/mantid/gyne
+	uid =         "species_mantid_gyne"
 
 	name =        SPECIES_MANTID_GYNE
 	name_plural = "Kharmaan Gynes"

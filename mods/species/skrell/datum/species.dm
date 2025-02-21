@@ -4,6 +4,7 @@
 	bone_material = /decl/material/solid/organic/bone/cartilage
 
 /decl/species/skrell
+	uid = "species_skrell"
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 
