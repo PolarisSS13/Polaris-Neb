@@ -29,7 +29,7 @@
 			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
-		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
+		var/mob/living/human/test_subject = new(T, species.name, dummy_appearance)
 		if(test_subject.need_breathe())
 			test_subject.apply_effect(20, STUN, 0)
 			var/obj/item/organ/internal/lungs/L = test_subject.get_organ(test_subject.get_bodytype().breathing_organ, /obj/item/organ/internal/lungs)

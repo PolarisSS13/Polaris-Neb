@@ -123,8 +123,11 @@
 		QDEL_NULL(organ_appearance)
 		organ_appearance = supplied_appearance.Clone()
 	blood_DNA = list(organ_appearance.unique_enzymes = organ_appearance.blood_type)
-	set_species(organ_appearance.root_species?.name || global.using_map.default_species)
-	if(organ_appearance.root_bodytype)
+	if(species != organ_appearance.root_species)
+		if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
+			bodytype = organ_appearance.root_bodytype // this lets us take advantage of set_bodytype being called in set_species
+		set_species(organ_appearance.root_species?.name || global.using_map.default_species)
+	else if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
 		set_bodytype(organ_appearance.root_bodytype)
 
 /obj/item/organ/proc/set_bodytype(decl/bodytype/new_bodytype, override_material = null, apply_to_internal_organs = TRUE)
