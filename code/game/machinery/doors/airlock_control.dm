@@ -181,8 +181,8 @@
 
 /obj/machinery/airlock_sensor/set_id_tag(var/new_id_tag)
 	. = ..()
-	for(var/obj/item/stock_parts/radio/R in get_all_components_of_type(/obj/item/stock_parts/radio))
-		R.set_id_tag(id_tag)
+	for(var/obj/item/stock_parts/radio/radio in get_all_components_of_type(/obj/item/stock_parts/radio))
+		radio.set_id_tag(id_tag)
 
 /decl/public_access/public_variable/airlock_pressure
 	expected_type = /obj/machinery/airlock_sensor
@@ -331,8 +331,8 @@
 
 /obj/machinery/button/access/set_id_tag(var/new_id_tag)
 	. = ..()
-	for(var/obj/item/stock_parts/radio/R in get_all_components_of_type(/obj/item/stock_parts/radio))
-		R.set_id_tag(id_tag)
+	for(var/obj/item/stock_parts/radio/radio in get_all_components_of_type(/obj/item/stock_parts/radio))
+		radio.set_id_tag(id_tag)
 
 //
 // Button Part Presets

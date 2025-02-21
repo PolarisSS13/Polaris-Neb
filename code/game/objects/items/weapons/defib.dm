@@ -365,8 +365,8 @@
 	H.resuscitate()
 	var/obj/item/organ/internal/cell/potato = H.get_organ(BP_CELL, /obj/item/organ/internal/cell)
 	if(potato && potato.cell)
-		var/obj/item/cell/C = potato.cell
-		C.give(chargecost)
+		var/obj/item/cell/cell = potato.cell
+		cell.give(chargecost)
 
 	ADJ_STATUS(H, STAT_ASLEEP, -60)
 	log_and_message_admins("used \a [src] to revive [key_name(H)].")
@@ -471,14 +471,14 @@
 	cooldowntime = (3 SECONDS)
 
 /obj/item/shockpaddles/robot/check_charge(var/charge_amt)
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return (R.cell && R.cell.check_charge(charge_amt))
+	if(isrobot(loc))
+		var/mob/living/silicon/robot/robot = loc
+		return robot.cell?.check_charge(charge_amt)
 
 /obj/item/shockpaddles/robot/checked_use(var/charge_amt)
-	if(isrobot(src.loc))
-		var/mob/living/silicon/robot/R = src.loc
-		return (R.cell && R.cell.checked_use(charge_amt))
+	if(isrobot(loc))
+		var/mob/living/silicon/robot/robot = loc
+		return robot.cell?.checked_use(charge_amt)
 
 /obj/item/shockpaddles/rig
 	name = "mounted defibrillator"
@@ -490,19 +490,19 @@
 	wielded = 1
 
 /obj/item/shockpaddles/rig/check_charge(var/charge_amt)
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		return (module.holder && module.holder.cell && module.holder.cell.check_charge(charge_amt))
 
 /obj/item/shockpaddles/rig/checked_use(var/charge_amt)
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		return (module.holder && module.holder.cell && module.holder.cell.checked_use(charge_amt))
 
 /obj/item/shockpaddles/rig/set_cooldown(var/delay)
 	..()
-	if(istype(src.loc, /obj/item/rig_module/device/defib))
-		var/obj/item/rig_module/device/defib/module = src.loc
+	if(istype(loc, /obj/item/rig_module/device/defib))
+		var/obj/item/rig_module/device/defib/module = loc
 		module.next_use = world.time + delay
 /*
 	Shockpaddles that are linked to a base unit

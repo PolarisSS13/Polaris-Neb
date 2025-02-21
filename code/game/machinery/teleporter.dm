@@ -83,10 +83,10 @@
 	var/list/areaindex = list()
 
 	. = TRUE
-	for(var/obj/item/radio/beacon/R in global.radio_beacons)
-		if(!R.functioning)
+	for(var/obj/item/radio/beacon/radio in global.radio_beacons)
+		if(!radio.functioning)
 			continue
-		var/turf/T = get_turf(R)
+		var/turf/T = get_turf(radio)
 		if (!T)
 			continue
 		if(!isPlayerLevel(T.z))
@@ -96,7 +96,7 @@
 			tmpname = "[tmpname] ([++areaindex[tmpname]])"
 		else
 			areaindex[tmpname] = 1
-		L[tmpname] = R
+		L[tmpname] = radio
 
 	for (var/obj/item/implant/tracking/I in global.tracking_implants)
 		if (!I.implanted || !ismob(I.loc))

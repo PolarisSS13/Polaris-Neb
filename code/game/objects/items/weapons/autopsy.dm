@@ -35,9 +35,8 @@
 			return
 
 		add_autopsy_data(S)
-		for(var/T in M.chem_doses)
-			var/decl/material/R = T
-			chemtraces |= initial(R.name)
+		for(var/decl/material/dose as anything in M.chem_doses)
+			chemtraces |= initial(dose.name)
 
 	else if(istype(A, /obj/item/organ/external))
 		set_target(A, user)

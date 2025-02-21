@@ -120,8 +120,8 @@
 			product_records.Add(product)
 
 /obj/machinery/vending/Destroy()
-	for(var/datum/stored_items/vending_products/R in product_records)
-		qdel(R)
+	for(var/datum/stored_items/vending_products/product_record in product_records)
+		qdel(product_record)
 	product_records = null
 	return ..()
 
@@ -196,9 +196,9 @@
 	SSnano.update_uis(src)
 
 /obj/machinery/vending/proc/attempt_to_stock(var/obj/item/I, var/mob/user)
-	for(var/datum/stored_items/vending_products/R in product_records)
-		if(I.type == R.item_path)
-			stock(I, R, user)
+	for(var/datum/stored_items/vending_products/product_record in product_records)
+		if(I.type == product_record.item_path)
+			stock(I, product_record, user)
 			return 1
 
 /**
@@ -309,20 +309,20 @@
 
 	if (href_list["vend"] && !currently_vending)
 		var/key = text2num(href_list["vend"])
-		var/datum/stored_items/vending_products/R = LAZYACCESS(product_records, key)
-		if(!R)
+		var/datum/stored_items/vending_products/product_record = LAZYACCESS(product_records, key)
+		if(!product_record)
 			return TOPIC_REFRESH
 
 		// This should not happen unless the request from NanoUI was bad
-		if(!(R.category & categories))
+		if(!(product_record.category & categories))
 			return TOPIC_REFRESH
 
-		if(R.price <= 0)
-			vend(R, user)
+		if(product_record.price <= 0)
+			vend(product_record, user)
 		else if(issilicon(user)) //If the item is not free, provide feedback if a synth is trying to buy something.
 			to_chat(user, SPAN_DANGER("Artificial unit recognized.  Artificial units cannot complete this transaction.  Purchase canceled."))
 		else
-			currently_vending = R
+			currently_vending = product_record
 			if(!vendor_account || vendor_account.suspended)
 				status_message = "This machine is currently unable to process payments due to problems with the associated account."
 				status_error = 1
@@ -344,7 +344,7 @@
 		return list()
 	return ..()
 
-/obj/machinery/vending/proc/vend(var/datum/stored_items/vending_products/R, mob/user)
+/obj/machinery/vending/proc/vend(var/datum/stored_items/vending_products/product_record, mob/user)
 	if(!vend_ready)
 		return
 	if((!allowed(user)) && !emagged && scan_id)	//For SECURE VENDING MACHINES YEAH
@@ -365,7 +365,7 @@
 	var/vend_state = "[icon_state]-vend"
 	if (check_state_in_icon(vend_state, icon)) //Show the vending animation if needed
 		flick(vend_state, src)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/vending, finish_vending), R), vend_delay)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/machinery/vending, finish_vending), product_record), vend_delay)
 
 /obj/machinery/vending/proc/do_vending_reply()
 	set waitfor = FALSE
@@ -394,13 +394,13 @@
  * Add item to the machine
  *
  * Checks if item is vendable in this machine should be performed before
- * calling. W is the item being inserted, R is the associated vending_product entry.
+ * calling. W is the item being inserted, product_record is the associated vending_product entry.
  */
-/obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_items/vending_products/R, var/mob/user)
+/obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_items/vending_products/product_record, var/mob/user)
 	if(!user.try_unequip(W))
 		return
 
-	if(R.add_product(W))
+	if(product_record.add_product(W))
 		to_chat(user, SPAN_NOTICE("You insert \the [W] in the product receptor."))
 		SSnano.update_uis(src)
 		return 1
@@ -456,9 +456,9 @@
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/machinery/vending/proc/malfunction()
 	set waitfor = FALSE
-	for(var/datum/stored_items/vending_products/R in product_records)
-		while(R.get_amount()>0)
-			R.get_product(loc)
+	for(var/datum/stored_items/vending_products/product_record in product_records)
+		while(product_record.get_amount()>0)
+			product_record.get_product(loc)
 		break
 	set_broken(TRUE)
 
@@ -469,8 +469,8 @@
 	if(!target)
 		return 0
 
-	for(var/datum/stored_items/vending_products/R in shuffle(product_records))
-		throw_item = R.get_product(loc)
+	for(var/datum/stored_items/vending_products/product_record in shuffle(product_records))
+		throw_item = product_record.get_product(loc)
 		if(!QDELETED(throw_item))
 			break
 	if(QDELETED(throw_item))

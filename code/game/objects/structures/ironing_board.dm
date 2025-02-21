@@ -81,7 +81,7 @@
 			update_icon()
 		return TRUE
 	else if(istype(I,/obj/item/ironingiron))
-		var/obj/item/ironingiron/R = I
+		var/obj/item/ironingiron/iron = I
 
 		// anti-wrinkle "massage"
 		if(buckled_mob && ishuman(buckled_mob))
@@ -100,8 +100,8 @@
 			return TRUE
 
 		if(!cloth)
-			if(!holding && !R.enabled && user.try_unequip(I, src))
-				holding = R
+			if(!holding && !iron.enabled && user.try_unequip(I, src))
+				holding = iron
 				events_repository.register(/decl/observ/destroyed, I, src, TYPE_PROC_REF(/obj/structure/bed/roller/ironingboard, remove_item))
 				update_icon()
 				return TRUE

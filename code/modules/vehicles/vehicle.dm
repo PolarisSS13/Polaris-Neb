@@ -234,16 +234,16 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/user)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/cell, var/mob/living/user)
 	if(cell)
 		return
-	if(!istype(C))
+	if(!istype(cell))
 		return
-	if(!user.try_unequip(C, src))
+	if(!user.try_unequip(cell, src))
 		return
-	cell = C
+	cell = cell
 	powercheck()
-	to_chat(user, "<span class='notice'>You install [C] in [src].</span>")
+	to_chat(user, "<span class='notice'>You install [cell] in [src].</span>")
 
 /obj/vehicle/proc/remove_cell(var/mob/living/user)
 	if(!cell)
@@ -261,34 +261,34 @@
 // the vehicle load() definition before
 // calling this parent proc.
 //-------------------------------------------
-/obj/vehicle/proc/load(var/atom/movable/C)
+/obj/vehicle/proc/load(var/atom/movable/loading)
 	//This loads objects onto the vehicle so they can still be interacted with.
 	//Define allowed items for loading in specific vehicle definitions.
-	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
+	if(!isturf(loading.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
 		return 0
-	if(load || C.anchored)
+	if(load || loading.anchored)
 		return 0
 
 	// if a create/closet, close before loading
-	var/obj/structure/closet/crate = C
+	var/obj/structure/closet/crate = loading
 	if(istype(crate) && crate.opened && !crate.close())
 		return 0
 
-	C.forceMove(loc)
-	C.set_dir(dir)
-	C.anchored = TRUE
+	loading.forceMove(loc)
+	loading.set_dir(dir)
+	loading.anchored = TRUE
 
-	load = C
+	load = loading
 
 	if(load_item_visible)
-		C.plane = plane
-		C.layer = VEHICLE_LOAD_LAYER		//so it sits above the vehicle
+		loading.plane = plane
+		loading.layer = VEHICLE_LOAD_LAYER		//so it sits above the vehicle
 
-	if(ismob(C))
-		buckle_mob(C)
+	if(ismob(loading))
+		buckle_mob(loading)
 	else if(load_item_visible)
-		C.pixel_x += load_offset_x
-		C.pixel_y += load_offset_y
+		loading.pixel_x += load_offset_x
+		loading.pixel_y += load_offset_y
 
 	return 1
 

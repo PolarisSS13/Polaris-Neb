@@ -158,11 +158,11 @@ var/global/repository/follow/follow_repository = new()
 	followed_type = /mob/living/silicon/robot
 
 /datum/follow_holder/robot/show_entry()
-	var/mob/living/silicon/robot/R = followed_instance
-	return ..() && R.braintype
+	var/mob/living/silicon/robot/robot = followed_instance
+	return ..() && robot.braintype
 
-/datum/follow_holder/robot/get_suffix(var/mob/living/silicon/robot/R)
-	suffix = "\[[R.braintype]\][R.module ? " \[[R.module.name]\]" : ""]"
+/datum/follow_holder/robot/get_suffix(var/mob/living/silicon/robot/robot)
+	suffix = "\[[robot.braintype]\][robot.module ? " \[[robot.module.name]\]" : ""]"
 	return ..()
 
 /datum/follow_holder/human

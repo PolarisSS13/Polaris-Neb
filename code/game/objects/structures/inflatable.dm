@@ -19,11 +19,11 @@
 		return
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
 	user.visible_message(SPAN_NOTICE("[user] inflates \the [src]."), SPAN_NOTICE("You inflate \the [src]."))
-	var/obj/structure/inflatable/R = new deploy_path(user.loc)
-	transfer_fingerprints_to(R)
-	R.add_fingerprint(user)
+	var/obj/structure/inflatable/debris = new deploy_path(user.loc)
+	transfer_fingerprints_to(debris)
+	debris.add_fingerprint(user)
 	if(inflatable_health)
-		R.current_health = inflatable_health
+		debris.current_health = inflatable_health
 	qdel(src)
 
 /obj/item/inflatable/door
@@ -160,17 +160,16 @@
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
-		var/obj/item/inflatable/torn/R = new(loc)
-		src.transfer_fingerprints_to(R)
+		transfer_fingerprints_to(new /obj/item/inflatable/torn(loc))
 		qdel(src)
 	else
 		if(!undeploy_path)
 			return
 		visible_message("\The [src] slowly deflates.")
 		spawn(50)
-			var/obj/item/inflatable/R = new undeploy_path(src.loc)
-			src.transfer_fingerprints_to(R)
-			R.inflatable_health = current_health
+			var/obj/item/inflatable/door_item = new undeploy_path(src.loc)
+			src.transfer_fingerprints_to(door_item)
+			door_item.inflatable_health = current_health
 			qdel(src)
 
 /obj/structure/inflatable/verb/hand_deflate()
@@ -270,15 +269,15 @@
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
 		visible_message("[src] rapidly deflates!")
-		var/obj/item/inflatable/door/torn/R = new /obj/item/inflatable/door/torn(loc)
-		src.transfer_fingerprints_to(R)
+		transfer_fingerprints_to(new /obj/item/inflatable/door/torn(loc))
 		qdel(src)
 	else
 		visible_message("[src] slowly deflates.")
 		spawn(50)
-			var/obj/item/inflatable/door/R = new /obj/item/inflatable/door(loc)
-			src.transfer_fingerprints_to(R)
-			qdel(src)
+			if(!QDELETED(src))
+				if(loc)
+					transfer_fingerprints_to(new /obj/item/inflatable/door(loc))
+				qdel(src)
 
 /obj/item/inflatable/torn
 	name = "torn inflatable wall"

@@ -119,15 +119,8 @@
 	return ..()
 
 /obj/item/lightreplacer/attack_self(mob/user)
-	/* // This would probably be a bit OP. If you want it though, uncomment the code.
-	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.emagged)
-			src.Emag()
-			to_chat(usr, "You shortcircuit \the [src].")
-			return
-	*/
 	to_chat(usr, "It has [uses] lights remaining.")
+	return TRUE
 
 /obj/item/lightreplacer/on_update_icon()
 	. = ..()

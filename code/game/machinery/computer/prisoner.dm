@@ -78,5 +78,5 @@
 		if(!warning) return TOPIC_HANDLED
 		var/obj/item/implant/I = locate(href_list["warn"])
 		if(I?.imp_in)
-			var/mob/living/R = I.imp_in
-			to_chat(R, "<span class='notice'>You hear a voice in your head saying: '[warning]'</span>")
+			var/mob/living/victim = I.imp_in
+			to_chat(victim, "<span class='notice'>You hear a voice in your head saying: '[warning]'</span>")

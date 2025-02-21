@@ -173,8 +173,8 @@
 		remembered_info += "<b>Your account pin is:</b> [account.remote_access_pin]<br>"
 		remembered_info += "<b>Your account funds are:</b> [account.format_value_by_currency(account.money)]<br>"
 		if(account.transaction_log.len)
-			var/datum/transaction/T = account.transaction_log[1]
-			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.get_source_name()]<br>"
+			var/datum/transaction/transaction = account.transaction_log[1]
+			remembered_info += "<b>Your account was created:</b> [transaction.time], [transaction.date] at [transaction.get_source_name()]<br>"
 		if(cash_on_hand > 0)
 			var/decl/currency/cur = GET_DECL(global.using_map.default_currency)
 			remembered_info += "<b>Your cash on hand is:</b> [cur.format_value(cash_on_hand)]<br>"
@@ -356,22 +356,21 @@
 
 //Returns human-readable list of branches this job allows.
 /datum/job/proc/get_branches()
-	var/list/res = list()
-	for(var/T in allowed_branches)
-		var/datum/mil_branch/B = mil_branches.get_branch_by_type(T)
-		res += B.name
-	return english_list(res)
+	. = list()
+	for(var/branch in allowed_branches)
+		var/datum/mil_branch/branch_datum = mil_branches.get_branch_by_type(branch)
+		. += branch_datum.name
+	return english_list(.)
 
 //Same as above but ranks
 /datum/job/proc/get_ranks(branch)
-	var/list/res = list()
-	var/datum/mil_branch/B = mil_branches.get_branch(branch)
-	for(var/T in allowed_ranks)
-		var/datum/mil_rank/R = T
-		if(B && !(initial(R.name) in B.ranks))
+	. = list()
+	var/datum/mil_branch/branch_datum = mil_branches.get_branch(branch)
+	for(var/datum/mil_rank/rank as anything in allowed_ranks)
+		if(branch_datum && !(initial(rank.name) in branch_datum.ranks))
 			continue
-		res |= initial(R.name)
-	return english_list(res)
+		. |= initial(rank.name)
+	return english_list(.)
 
 /datum/job/proc/get_description_blurb()
 	return description

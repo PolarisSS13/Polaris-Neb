@@ -45,9 +45,9 @@
 	return "[round(power_supply.charge / charge_cost)]/[max_shots]"
 
 /obj/item/gun/energy/get_hardpoint_status_value()
-	var/obj/item/cell/C = get_cell()
-	if(istype(C))
-		return C.charge/C.maxcharge
+	var/obj/item/cell/cell = get_cell()
+	if(istype(cell))
+		return cell.charge/cell.maxcharge
 	return null
 
 /obj/item/mech_equipment/shields
@@ -312,8 +312,8 @@
 	playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
 	var/flash_time = (rand(flash_min,flash_max) - 1)
 
-	var/obj/item/cell/C = owner.get_cell()
-	C.use(active_power_use * CELLRATE)
+	var/obj/item/cell/cell = owner.get_cell()
+	cell.use(active_power_use * CELLRATE)
 
 	for (var/mob/living/O in oviewers(flash_range, owner))
 		if(istype(O))
@@ -360,8 +360,8 @@
 			playsound(src.loc, 'sound/weapons/flash.ogg', 100, 1)
 			var/flash_time = (rand(flash_min,flash_max))
 
-			var/obj/item/cell/C = owner.get_cell()
-			C.use(active_power_use * CELLRATE)
+			var/obj/item/cell/cell = owner.get_cell()
+			cell.use(active_power_use * CELLRATE)
 
 			var/protection = O.eyecheck()
 			if(protection >= FLASH_PROTECTION_MAJOR)

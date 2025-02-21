@@ -586,10 +586,10 @@
 	//If the item is part of a cyborg module, equip it
 	if(!isrobot(user))
 		return
-	var/mob/living/silicon/robot/R = user
-	R.activate_module(src)
-	if(R.hud_used)
-		R.hud_used.update_robot_modules_display()
+	var/mob/living/silicon/robot/robot = user
+	robot.activate_module(src)
+	if(robot.hud_used)
+		robot.hud_used.update_robot_modules_display()
 
 /obj/item/proc/try_slapcrafting(obj/item/W, mob/user)
 	if(SSfabrication.try_craft_with(src, W, user))

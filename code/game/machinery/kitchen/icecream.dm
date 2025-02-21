@@ -101,14 +101,14 @@
 	dat += "<br>"
 	dat += "<b>VAT CONTENT</b><br>"
 	for(var/liquid_type in reagents?.liquid_volumes)
-		var/decl/material/R = GET_DECL(liquid_type)
-		dat += "[R.get_reagent_name(reagents, MAT_PHASE_LIQUID)]: [LIQUID_VOLUME(reagents, liquid_type)]"
-		dat += "<A href='byond://?src=\ref[src];disposeI=\ref[R]'>Purge</A><BR>"
+		var/decl/material/reagent = GET_DECL(liquid_type)
+		dat += "[reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)]: [LIQUID_VOLUME(reagents, liquid_type)]"
+		dat += "<A href='byond://?src=\ref[src];disposeI=\ref[reagent]'>Purge</A><BR>"
 
 	for(var/solid_type in reagents?.solid_volumes)
-		var/decl/material/R = GET_DECL(solid_type)
-		dat += "[R.get_reagent_name(reagents, MAT_PHASE_SOLID)]: [SOLID_VOLUME(reagents, solid_type)]"
-		dat += "<A href='byond://?src=\ref[src];disposeI=\ref[R]'>Purge</A><BR>"
+		var/decl/material/reagent = GET_DECL(solid_type)
+		dat += "[reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)]: [SOLID_VOLUME(reagents, solid_type)]"
+		dat += "<A href='byond://?src=\ref[src];disposeI=\ref[reagent]'>Purge</A><BR>"
 
 	dat += "<a href='byond://?src=\ref[src];refresh=1'>Refresh</a> <a href='byond://?src=\ref[src];close=1'>Close</a>"
 
@@ -139,14 +139,14 @@
 		return ..()
 
 /obj/machinery/icecream_vat/proc/make(var/mob/user, var/make_type, var/amount)
-	for(var/R in get_ingredient_list(make_type))
-		if(reagents.has_reagent(R, amount))
+	for(var/reagent in get_ingredient_list(make_type))
+		if(reagents.has_reagent(reagent, amount))
 			continue
 		amount = 0
 		break
 	if(amount)
-		for(var/R in get_ingredient_list(make_type))
-			remove_from_reagents(R, amount)
+		for(var/reagent in get_ingredient_list(make_type))
+			remove_from_reagents(reagent, amount)
 		product_types[make_type] += amount
 		var/flavour = get_flavour_name(make_type)
 		if(make_type > 6)
@@ -188,9 +188,9 @@
 		. = TOPIC_REFRESH
 
 	else if(href_list["disposeI"])
-		var/decl/material/R = locate(href_list["disposeI"])
-		if(R)
-			reagents.clear_reagent(R.type)
+		var/decl/material/reagent = locate(href_list["disposeI"])
+		if(reagent)
+			reagents.clear_reagent(reagent.type)
 		. = TOPIC_REFRESH
 
 	if(href_list["refresh"])

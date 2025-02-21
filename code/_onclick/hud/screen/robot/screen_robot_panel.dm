@@ -5,5 +5,5 @@
 
 /obj/screen/robot/panel/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		R.installed_modules()
+		var/mob/living/silicon/robot/robot = user
+		robot.installed_modules()

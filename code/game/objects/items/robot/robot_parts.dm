@@ -22,12 +22,12 @@
 		if(!ispath(model, /decl/bodytype/prosthetic))
 			model = /decl/bodytype/prosthetic/basic_human
 		model_info = model
-		var/decl/bodytype/prosthetic/R = GET_DECL(model)
-		if(R)
-			SetName("[R.name] [initial(name)]")
-			desc = "[R.desc]"
-			if(icon_state in icon_states(R.icon_base))
-				icon = R.icon_base
+		var/decl/bodytype/prosthetic/robot_model = GET_DECL(model)
+		if(robot_model)
+			SetName("[robot_model.name] [initial(name)]")
+			desc = "[robot_model.desc]"
+			if(icon_state in icon_states(robot_model.icon_base))
+				icon = robot_model.icon_base
 	else
 		SetDefaultName()
 

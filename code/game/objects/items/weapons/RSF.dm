@@ -67,8 +67,8 @@ RSF
 	if(!proximity) return
 
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.stat || !R.cell || R.cell.charge <= 0)
+		var/mob/living/silicon/robot/robot = user
+		if(robot.stat || !robot.cell || robot.cell.charge <= 0)
 			return
 	else
 		if(stored_matter <= 0)
@@ -106,9 +106,9 @@ RSF
 	product.dropInto(A.loc)
 
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.cell)
-			R.cell.use(used_energy)
+		var/mob/living/silicon/robot/robot = user
+		if(robot.cell)
+			robot.cell.use(used_energy)
 	else
 		stored_matter--
 		to_chat(user, "The RSF now holds [stored_matter]/30 fabrication-units.")

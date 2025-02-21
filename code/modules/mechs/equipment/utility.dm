@@ -305,9 +305,9 @@
 						log_and_message_admins("used [src] to throw [locked] at [target].", user, owner.loc)
 						locked = null
 
-						var/obj/item/cell/C = owner.get_cell()
-						if(istype(C))
-							C.use(active_power_use * CELLRATE)
+						var/obj/item/cell/cell = owner.get_cell()
+						if(istype(cell))
+							cell.use(active_power_use * CELLRATE)
 
 					else
 						locked = null
@@ -326,9 +326,9 @@
 
 
 				log_and_message_admins("used [src]'s area throw on [target].", user, owner.loc)
-				var/obj/item/cell/C = owner.get_cell()
-				if(istype(C))
-					C.use(active_power_use * CELLRATE * 2) //bit more expensive to throw all
+				var/obj/item/cell/cell = owner.get_cell()
+				if(istype(cell))
+					cell.use(active_power_use * CELLRATE * 2) //bit more expensive to throw all
 
 
 

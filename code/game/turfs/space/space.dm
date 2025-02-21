@@ -98,11 +98,11 @@
 		var/obj/structure/lattice/L = locate(/obj/structure/lattice, src)
 		if(L)
 			return L.attackby(C, user)
-		var/obj/item/stack/material/rods/R = C
-		if (R.use(1))
+		var/obj/item/stack/material/rods/rods = C
+		if (rods.use(1))
 			to_chat(user, "<span class='notice'>Constructing support lattice ...</span>")
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			new /obj/structure/lattice(src, R.material.type)
+			new /obj/structure/lattice(src, rods.material.type)
 			return TRUE
 
 	if (istype(C, /obj/item/stack/tile/floor))

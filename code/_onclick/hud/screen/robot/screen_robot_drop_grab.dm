@@ -8,8 +8,8 @@
 
 /obj/screen/robot/drop_grab/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		R.drop_item()
+		var/mob/living/silicon/robot/robot = user
+		robot.drop_item()
 		update_icon()
 
 /obj/screen/robot/drop_grab/on_update_icon()

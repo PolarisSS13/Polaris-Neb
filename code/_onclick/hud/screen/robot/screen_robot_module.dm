@@ -13,5 +13,5 @@
 
 /obj/screen/robot/module/select/handle_click(mob/user, params)
 	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		R.pick_module()
+		var/mob/living/silicon/robot/robot = user
+		robot.pick_module()
