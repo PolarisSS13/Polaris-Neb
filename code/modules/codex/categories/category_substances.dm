@@ -67,7 +67,10 @@
 			var/chems = list()
 			for(var/chemical in mat.dissolves_into)
 				var/decl/material/material = GET_DECL(chemical)
-				chems += "<span codexlink='[material.codex_name || material.name] (substance)'>[material.name]</span> ([mat.dissolves_into[chemical]*100]%)"
+				var/material_link = "<span codexlink='[material.codex_name || material.name] (substance)'>[material.name]</span>"
+				if(material.hidden_from_codex)
+					material_link = material.name
+				chems += "[material_link] ([mat.dissolves_into[chemical]*100]%)"
 			var/solvent_needed
 			if(mat.dissolves_in <= MAT_SOLVENT_NONE)
 				solvent_needed = "any liquid"
