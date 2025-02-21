@@ -7,7 +7,6 @@
 	cosmetics_icon          = 'mods/species/unathi/icons/cosmetics.dmi'
 	blood_overlays          = 'icons/mob/human_races/species/human/blood_overlays.dmi'
 	bandages_icon           = 'icons/mob/bandage.dmi'
-	limb_icon_intensity     = 0.7
 	health_hud_intensity    = 2
 	associated_gender       = FEMALE
 	onmob_state_modifiers   = list((slot_w_uniform_str) = "f")
