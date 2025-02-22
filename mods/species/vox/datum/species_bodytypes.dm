@@ -147,6 +147,7 @@
 /decl/bodytype/vox/stanchion
 	name                = "stanchion voxform"
 	bodytype_category   = BODYTYPE_VOX_LARGE
+	// TODO: should the extra big guys really have the same bodytype equip flags as the little guys?
 	blood_overlays      = 'mods/species/vox/icons/body/stanchion/blood_overlays.dmi'
 	damage_overlays     = 'mods/species/vox/icons/body/stanchion/damage_overlays.dmi'
 	icon_base           = 'mods/species/vox/icons/body/stanchion/body.dmi'

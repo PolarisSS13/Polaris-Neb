@@ -25,7 +25,7 @@
 
 /decl/species/mantid
 	uid =                    "species_mantid_alate"
-	name =                   SPECIES_MANTID_ALATE
+	name =                   "Kharmaan Alate"
 	name_plural =            "Kharmaan Alates"
 	show_ssd =               "quiescent"
 	hidden_from_codex =      TRUE
@@ -92,8 +92,7 @@
 
 /decl/species/mantid/gyne
 	uid =         "species_mantid_gyne"
-
-	name =        SPECIES_MANTID_GYNE
+	name =        "Kharmaan Gyne"
 	name_plural = "Kharmaan Gynes"
 
 	available_bodytypes = list(/decl/bodytype/crystalline/mantid/gyne)

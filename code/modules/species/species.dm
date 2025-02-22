@@ -303,7 +303,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 		var/decl/sprite_accessory/accessory = GET_DECL(accessory_type)
 		// If this accessory is species restricted, add us to the list.
 		if(accessory.species_allowed)
-			accessory.species_allowed |= name
+			accessory.species_allowed |= uid
 		if(!isnull(accessory.body_flags_allowed))
 			for(var/decl/bodytype/bodytype in available_bodytypes)
 				accessory.body_flags_allowed |= bodytype.body_flags
@@ -320,7 +320,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	for(var/accessory_type in disallow_specific_sprite_accessories)
 		var/decl/sprite_accessory/accessory = GET_DECL(accessory_type)
 		if(accessory.species_allowed)
-			accessory.species_allowed -= name
+			accessory.species_allowed -= uid
 		if(!isnull(accessory.body_flags_allowed))
 			for(var/decl/bodytype/bodytype in available_bodytypes)
 				accessory.body_flags_allowed &= ~bodytype.body_flags
@@ -386,9 +386,9 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 		var/decl/trait/trait = GET_DECL(trait_type)
 		if(!trait.validate_level(trait_level))
 			. += "invalid levels for species trait [trait_type]"
-		if(name in trait.blocked_species)
+		if(uid in trait.blocked_species)
 			. += "trait [trait.name] prevents this species from taking it"
-		if(trait.permitted_species && !(name in trait.permitted_species))
+		if(trait.permitted_species && !(uid in trait.permitted_species))
 			. += "trait [trait.name] does not permit this species to take it"
 
 	if(!length(blood_types))
@@ -707,10 +707,10 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 		// TODO: generate an icon based on all available bodytypes.
 
-		var/mob/living/human/dummy/mannequin/mannequin = get_mannequin("#species_[ckey(name)]")
+		var/mob/living/human/dummy/mannequin/mannequin = get_mannequin("#species_[ckey(uid)]")
 		if(mannequin)
 
-			mannequin.change_species(name) // handles species/bodytype init
+			mannequin.change_species(uid) // handles species/bodytype init
 			default_bodytype.customize_preview_mannequin(mannequin) // handles body colors/styles setup
 			customize_preview_mannequin(mannequin) // handles 'cultural' things like default outfit
 
@@ -724,7 +724,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 			preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)
 			preview_icon_width = preview_icon.Width()
 			preview_icon_height = preview_icon.Height()
-			preview_icon_path = "species_preview_[ckey(name)].png"
+			preview_icon_path = "species_preview_[ckey(uid)].png"
 
 	return preview_icon
 

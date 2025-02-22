@@ -63,7 +63,7 @@
 		else
 			M.randomize_skin_color()
 
-	var/decl/species/species_decl = get_species_by_key(species_choice)
+	var/decl/species/species_decl = decls_repository.get_decl_by_id(species_choice)
 	var/decl/bodytype/root_bodytype = M.get_bodytype()
 	var/update_hair = FALSE
 	if((spawn_flags & CORPSE_SPAWNER_RANDOM_HAIR_COLOR))

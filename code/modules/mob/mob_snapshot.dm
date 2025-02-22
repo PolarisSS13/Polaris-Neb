@@ -23,7 +23,7 @@
 	unique_enzymes = donor?.get_unique_enzymes()
 	fingerprint    = donor?.get_full_print(ignore_blockers = TRUE)
 
-	root_species   = donor?.get_species()  || get_species_by_key(global.using_map.default_species)
+	root_species   = donor?.get_species()  || decls_repository.get_decl_by_id(global.using_map.default_species)
 	root_bodytype  = donor?.get_bodytype() || root_species.default_bodytype
 
 	for(var/obj/item/organ/external/limb in donor?.get_external_organs())
@@ -61,9 +61,9 @@
 
 	if(istype(root_species) && root_species != target.get_species())
 		if(istype(root_bodytype))
-			target.set_species(root_species.name, root_bodytype)
+			target.set_species(root_species.uid, root_bodytype)
 		else
-			target.set_species(root_species.name)
+			target.set_species(root_species.uid)
 	else if(istype(root_bodytype) && target.get_bodytype() != root_bodytype)
 		target.set_bodytype(root_bodytype)
 

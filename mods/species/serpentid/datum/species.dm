@@ -20,7 +20,7 @@
 
 /decl/species/serpentid
 	uid = "species_serpentid"
-	name = SPECIES_SERPENTID
+	name = "Serpentid"
 	name_plural = "Serpentids"
 	spawn_flags = SPECIES_IS_RESTRICTED
 

@@ -103,8 +103,7 @@
 		uniform.add_fingerprint(user)
 
 	// They're SSD, so permanently asleep.
-	var/show_ssd = get_species_name()
-	if(show_ssd && ssd_check())
+	if(ssd_check() && get_species()?.get_ssd(src))
 		user.visible_message(
 			SPAN_NOTICE("\The [user] shakes \the [src] trying to wake [pronouns.him] up!"),
 			SPAN_NOTICE("You shake \the [src], but they do not respond...")

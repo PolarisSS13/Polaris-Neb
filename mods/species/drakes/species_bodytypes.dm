@@ -262,7 +262,7 @@
 	icon            = 'mods/species/drakes/icons/markings.dmi'
 	icon_state      = "spines"
 	uid             = "acc_marking_drake_spines"
-	species_allowed = list(SPECIES_GRAFADREKA)
+	species_allowed = list(/decl/species/grafadreka::uid)
 	color_blend     = ICON_MULTIPLY
 	body_parts      = list(
 		BP_CHEST,

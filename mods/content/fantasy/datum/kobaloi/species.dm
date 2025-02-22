@@ -1,7 +1,7 @@
 /decl/species/kobaloi
 	uid                 = "species_kobaloi"
-	name                = SPECIES_KOBALOI
-	name_plural         = SPECIES_KOBALOI
+	name                = "Kobaloi"
+	name_plural         = "Kobaloi"
 	spawn_flags         = SPECIES_CAN_JOIN
 	preview_outfit      = null
 	description         = "Kobaloi are small, scaled and furred creatures that usually dwell in the quiet places of the world, \

@@ -11,7 +11,7 @@
 
 /decl/species/golem
 	uid = "species_golem"
-	name = SPECIES_GOLEM
+	name = "Golem"
 	name_plural = "Golems"
 	hidden_from_codex = TRUE
 

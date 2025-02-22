@@ -185,7 +185,7 @@
 
 /obj/item/organ/internal/voxstack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	var/user_vox = user.get_species_name() == SPECIES_VOX // TODO use bodytype flags instead so subspecies are included
+	var/user_vox = istype(user.get_species(), /decl/species/vox)
 	if (istype(backup))
 		var/owner_viable = find_dead_player(stored_ckey, TRUE)
 		if (user_vox)

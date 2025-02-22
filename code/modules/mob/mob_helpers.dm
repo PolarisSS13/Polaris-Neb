@@ -352,7 +352,7 @@ var/global/list/global/organ_rel_size = list(
 		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/energy_blade) || istype(belt, /obj/item/baton))
 			threatcount += 2
 
-		if(get_species_name() != global.using_map.default_species)
+		if(get_species()?.uid != global.using_map.default_species)
 			threatcount += 2
 
 	if(check_records || check_arrest)

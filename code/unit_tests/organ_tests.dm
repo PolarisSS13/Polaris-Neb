@@ -123,7 +123,7 @@
 			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
-		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
+		var/mob/living/human/test_subject = new(null, species.uid, dummy_appearance)
 
 		var/fail = 0
 		fail |= !check_internal_organs(test_subject, bodytype)
@@ -260,7 +260,7 @@
 			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
-		var/mob/living/human/test_subject = new(null, species.name, dummy_appearance)
+		var/mob/living/human/test_subject = new(null, species.uid, dummy_appearance)
 
 		for(var/O in test_subject.get_internal_organs())
 			if(!test_internal_organ(test_subject, O))

@@ -5,8 +5,8 @@
 
 /decl/species/skrell
 	uid = "species_skrell"
-	name = SPECIES_SKRELL
-	name_plural = SPECIES_SKRELL
+	name = "Skrell"
+	name_plural = "Skrell"
 
 	available_bodytypes = list(
 		/decl/bodytype/skrell

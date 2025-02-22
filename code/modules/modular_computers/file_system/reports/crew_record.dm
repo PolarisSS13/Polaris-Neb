@@ -61,7 +61,8 @@ var/global/arrest_security_status =  "Arrest"
 	set_gender(gender_term)
 	set_age(crewmember?.get_age() || 30)
 	set_status(global.default_physical_status)
-	set_species_name(crewmember ? crewmember.get_species_name() : global.using_map.default_species)
+	var/decl/species/default_species = decls_repository.get_decl_by_id(global.using_map.default_species)
+	set_species_name(crewmember ? crewmember.get_species_name() : default_species.name)
 	set_branch(crewmember ? (crewmember.char_branch && crewmember.char_branch.name) : "None")
 	set_rank(crewmember ? (crewmember.char_rank && crewmember.char_rank.name) : "None")
 

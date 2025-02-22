@@ -41,7 +41,7 @@
 		/obj/item/rig_module/maneuvering_jets
 		)
 	req_access = list(access_ascent)
-	var/mantid_caste = SPECIES_MANTID_ALATE
+	var/mantid_caste = /decl/species/mantid::uid
 
 // Renamed blade.
 /obj/item/rig_module/mounted/energy_blade/mantid
@@ -209,7 +209,7 @@
 		ARMOR_BIO = ARMOR_BIO_SHIELDED,
 		ARMOR_RAD = ARMOR_RAD_SHIELDED
 	)
-	mantid_caste = SPECIES_MANTID_GYNE
+	mantid_caste = /decl/species/mantid/gyne::uid
 	initial_modules = list(
 		/obj/item/rig_module/vision/thermal,
 		/obj/item/rig_module/ai_container,
@@ -231,7 +231,7 @@
 	if(!. || slot != slot_back_str || !mantid_caste)
 		return
 	var/decl/species/my_species = user?.get_species()
-	if(my_species?.get_root_species_name(user) != mantid_caste)
+	if(my_species?.uid != mantid_caste)
 		to_chat(user, SPAN_WARNING("Your species cannot wear \the [src]."))
 		return FALSE
 

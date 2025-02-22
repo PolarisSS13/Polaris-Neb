@@ -235,13 +235,13 @@
 		to_chat(feedback, "<span class='boldannounce'>Wrong rank for [title]. Valid ranks in [prefs.branches[title]] are: [get_ranks(prefs.branches[title])].</span>")
 		return TRUE
 
-	var/decl/species/S = get_species_by_key(prefs.species)
+	var/decl/species/S = prefs.get_species_decl()
 	if(!is_species_allowed(S))
 		to_chat(feedback, "<span class='boldannounce'>Restricted species, [S], for [title].</span>")
 		return TRUE
 
-	if(LAZYACCESS(minimum_character_age, S.get_root_species_name()) && (prefs.get_character_age() < minimum_character_age[S.get_root_species_name()]))
-		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age[S.get_root_species_name()]].</span>")
+	if(LAZYACCESS(minimum_character_age, S.uid) && (prefs.get_character_age() < minimum_character_age[S.uid]))
+		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age[S.uid]].</span>")
 		return TRUE
 
 	if(!S.check_background(src, prefs))
@@ -379,17 +379,17 @@
 	if(!SSjobs.job_icons[title])
 		var/mob/living/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 		if(mannequin)
-			var/decl/species/mannequin_species = get_species_by_key(global.using_map.default_species)
+			var/decl/species/mannequin_species = decls_repository.get_decl_by_id(global.using_map.default_species)
 			if(!is_species_allowed(mannequin_species))
 				// Don't just default to the first species allowed, pick one at random.
 				for(var/other_species in shuffle(get_playable_species()))
-					var/decl/species/other_species_decl = get_species_by_key(other_species)
+					var/decl/species/other_species_decl = decls_repository.get_decl_by_id(other_species)
 					if(is_species_allowed(other_species_decl))
 						mannequin_species = other_species_decl
 						break
 			if(!is_species_allowed(mannequin_species))
 				PRINT_STACK_TRACE("No allowed species allowed for job [title] ([type]), falling back to default!")
-			mannequin.change_species(mannequin_species.name)
+			mannequin.change_species(mannequin_species.uid)
 			dress_mannequin(mannequin)
 			mannequin.set_dir(SOUTH)
 			var/icon/preview_icon = getFlatIcon(mannequin)
@@ -411,7 +411,7 @@
 		reasons["Your branch of service does not allow it."] = TRUE
 	else if(!isnull(allowed_ranks) && (!caller.prefs.ranks[title] || !is_rank_allowed(caller.prefs.branches[title], caller.prefs.ranks[title])))
 		reasons["Your rank choice does not allow it."] = TRUE
-	var/decl/species/S = get_species_by_key(caller.prefs.species)
+	var/decl/species/S = caller.prefs.get_species_decl()
 	if(S)
 		if(!is_species_allowed(S))
 			reasons["Your species choice does not allow it."] = TRUE

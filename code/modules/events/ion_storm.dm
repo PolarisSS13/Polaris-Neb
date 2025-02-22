@@ -142,14 +142,10 @@
 		return pick(players)
 	return default_if_none
 
-/datum/event/ionstorm/proc/get_random_species_name(var/default_if_none)
-	if(!default_if_none)
-		default_if_none = global.using_map.default_species
-	. = length(global.all_species) ? pick(global.all_species) : default_if_none
-	if(.)
-		var/decl/species/species = all_species[.]
-		if(species)
-			. = species.name_plural
+/datum/event/ionstorm/proc/get_random_species_name()
+	var/list/decl/species/all_species = decls_repository.get_decls_of_subtype_unassociated(/decl/species)
+	var/decl/species/species = pick(all_species) // this should never fail.
+	return species.name_plural
 
 /datum/event/ionstorm/proc/get_random_language(var/mob/living/silicon/S)
 	var/list/languages = S.speech_synthesizer_langs.Copy()

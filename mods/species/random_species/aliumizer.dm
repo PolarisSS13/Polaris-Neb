@@ -13,19 +13,19 @@
 	var/decl/species/species = user.get_species()
 	if(!species)
 		return TRUE
-	if(species.name == SPECIES_ALIEN)
-		to_chat(user, SPAN_WARNING("You're already a [SPECIES_ALIEN]."))
+	if(species.uid == /decl/species/alium::uid)
+		to_chat(user, SPAN_WARNING("You're already an alien."))
 		return TRUE
 	if(alert("Are you sure you want to be an alien?", "Mom Look I'm An Alien!", "Yes", "No") == "No")
-		to_chat(user, SPAN_NOTICE("<b>You are now a [SPECIES_ALIEN]!</b>"))
+		to_chat(user, SPAN_NOTICE("<b>You are now an alien!</b>"))
 		return TRUE
-	if(species.name == SPECIES_ALIEN) //no spamming it to get free implants
+	if(species.uid == /decl/species/alium::uid) //no spamming it to get free implants
 		return TRUE
 	to_chat(user, "You're now an alien humanoid of some undiscovered species. Make up what lore you want, no one knows a thing about your species! You can check info about your traits with Check Species Info verb in IC tab.")
 	to_chat(user, "You can't speak any other languages by default. You can use translator implant that spawns on top of this monolith - it will give you knowledge of any language if you hear it enough times.")
 	var/mob/living/human/H = user
 	new /obj/item/implanter/translator(get_turf(src))
-	H.change_species(SPECIES_ALIEN)
+	H.change_species(/decl/species/alium::uid)
 	var/decl/background_detail/background = H.get_background_datum_by_flag(BACKGROUND_FLAG_NAMING)
 	H.fully_replace_character_name(background.get_random_name(H, H.gender))
 	H.rename_self("Humanoid Alien", 1)

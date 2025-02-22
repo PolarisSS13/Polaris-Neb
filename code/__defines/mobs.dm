@@ -270,9 +270,6 @@
 #define CORPSE_CAN_REENTER             BITFLAG(0)
 #define CORPSE_CAN_RESPAWN             BITFLAG(1)
 
-#define SPECIES_HUMAN            "Human"
-#define SPECIES_MONKEY           "Monkey"
-
 #define SURGERY_CLOSED 0
 #define SURGERY_OPEN 1
 #define SURGERY_RETRACTED 2

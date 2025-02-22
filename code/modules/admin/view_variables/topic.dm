@@ -332,7 +332,7 @@
 			to_chat(usr, SPAN_WARNING("This can only be done to instances of type /mob/living/human"))
 			return
 
-		var/new_species = input("Please choose a new species.","Species",null) as null|anything in get_all_species()
+		var/decl/species/new_species = input("Please choose a new species.","Species",null) as null|anything in decls_repository.get_decls_of_subtype_unassociated(/decl/species)
 
 		if(!victim)
 			to_chat(usr, SPAN_WARNING("Mob doesn't exist anymore"))
@@ -341,7 +341,7 @@
 		if(!new_species)
 			return
 
-		if(victim.change_species(new_species))
+		if(victim.change_species(new_species.uid))
 			to_chat(usr, SPAN_NOTICE("Set species of \the [victim] to [victim.species]."))
 		else
 			to_chat(usr, SPAN_WARNING("Failed! Something went wrong."))

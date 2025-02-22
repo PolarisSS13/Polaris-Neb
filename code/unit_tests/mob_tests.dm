@@ -29,7 +29,7 @@
 			continue
 		dummy_appearance.root_species  = species
 		dummy_appearance.root_bodytype = bodytype
-		var/mob/living/human/test_subject = new(T, species.name, dummy_appearance)
+		var/mob/living/human/test_subject = new(T, species.uid, dummy_appearance)
 		if(test_subject.need_breathe())
 			test_subject.apply_effect(20, STUN, 0)
 			var/obj/item/organ/internal/lungs/L = test_subject.get_organ(test_subject.get_bodytype().breathing_organ, /obj/item/organ/internal/lungs)
@@ -71,7 +71,7 @@
 		test_result["msg"] = "Unable to find a location to create test mob"
 		return test_result
 
-	var/mob/living/human/H = new mobtype(mobloc, SPECIES_HUMAN) // force human for testing
+	var/mob/living/human/H = new mobtype(mobloc, global.using_map.default_species) // force default species for testing
 
 	H.mind_initialize("TestKey[rand(0,10000)]")
 
@@ -282,8 +282,8 @@
 
 /datum/unit_test/mob_nullspace/start_test()
 	// Simply create one of each species type in nullspace
-	for(var/species_name in get_all_species())
-		var/test_subject = new/mob/living/human(null, species_name)
+	for(var/decl/species/species as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
+		var/test_subject = new/mob/living/human(null, species.uid)
 		test_subjects += test_subject
 	return TRUE
 
@@ -303,13 +303,24 @@
 
 /datum/unit_test/mob_organ_size/start_test()
 	var/failed = FALSE
-	for(var/species_name in get_all_species())
-		var/mob/living/human/H = new(null, species_name)
-		for(var/obj/item/organ/external/E in H.get_external_organs())
-			for(var/obj/item/organ/internal/I in E.internal_organs)
-				if(I.w_class > E.cavity_max_w_class)
-					failed = TRUE
-					log_bad("Internal organ [I] inside external organ [E] on species [species_name] was too large to fit.")
+	var/datum/mob_snapshot/dummy_appearance = new
+	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
+		var/decl/species/species = bodytype.get_user_species_for_validation()
+		if(!species)
+			continue
+		dummy_appearance.root_species  = species
+		dummy_appearance.root_bodytype = bodytype
+		var/mob/living/human/test_subject = new(null, species.uid, dummy_appearance)
+		for(var/obj/item/organ/internal/organ in test_subject.get_internal_organs())
+			var/obj/item/organ/external/parent = GET_EXTERNAL_ORGAN(test_subject, organ.parent_organ)
+			if(!parent)
+				failed = TRUE
+				log_bad("Internal organ [organ] inside mob of species [species.type] lacked a parent organ (expected [organ.parent_organ])!")
+				continue
+			if(organ.w_class > parent.cavity_max_w_class)
+				failed = TRUE
+				log_bad("Internal organ [organ] inside external organ [parent] on species [species.type] was too large to fit.")
+	QDEL_NULL(dummy_appearance)
 	if(failed)
 		fail("A mob had an internal organ too large for its external organ.")
 	else

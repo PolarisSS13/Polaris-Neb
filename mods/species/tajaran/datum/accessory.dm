@@ -2,7 +2,7 @@
 /decl/sprite_accessory/hair/taj
 	name = "Tajaran Rattail"
 	icon_state = "hair_rattail"
-	species_allowed = list(SPECIES_TAJARAN)
+	species_allowed = list(/decl/species/tajaran::uid)
 	icon = 'mods/species/tajaran/icons/hair.dmi'
 	color_blend = ICON_MULTIPLY
 	uid = "acc_hair_taj_rattail"
@@ -135,7 +135,7 @@
 /decl/sprite_accessory/facial_hair/taj
 	name = "Tajaran Sideburns"
 	icon_state = "facial_sideburns"
-	species_allowed = list(SPECIES_TAJARAN)
+	species_allowed = list(/decl/species/tajaran::uid)
 	icon = 'mods/species/tajaran/icons/facial.dmi'
 	color_blend = ICON_MULTIPLY
 	uid = "acc_fhair_taj_sideburns"
@@ -169,7 +169,7 @@
 	name = "Tajaran Nose"
 	icon_state = "nose"
 	icon = 'mods/species/tajaran/icons/markings.dmi'
-	species_allowed = list(SPECIES_TAJARAN)
+	species_allowed = list(/decl/species/tajaran::uid)
 	body_parts = list(BP_HEAD)
 	color_blend = ICON_MULTIPLY
 	uid = "acc_marking_taj_nose"

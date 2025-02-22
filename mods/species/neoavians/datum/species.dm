@@ -17,7 +17,7 @@
 
 /decl/species/neoavian
 	uid = "species_avian"
-	name = SPECIES_AVIAN
+	name = "Neo-Avian"
 	name_plural = "Neo-Avians"
 	description = "Avian species, largely crows, magpies and other corvids, were among the first sophonts uplifted to aid in colonizing Mars. \
 	These days they are more commonly found pursuing their own careers and goals on the fringes of human space or around their adopted homeworld \

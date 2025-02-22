@@ -21,8 +21,8 @@
 
 /decl/species/vox
 	uid = "species_vox"
-	name = SPECIES_VOX
-	name_plural = SPECIES_VOX
+	name = "Vox"
+	name_plural = "Vox"
 	base_external_prosthetics_model = /decl/bodytype/prosthetic/vox/crap
 
 	default_emotes = list(

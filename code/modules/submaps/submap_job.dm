@@ -79,9 +79,9 @@
 	return TRUE
 
 /datum/job/submap/is_restricted(var/datum/preferences/prefs, var/feedback)
-	var/decl/species/S = get_species_by_key(prefs.species)
-	if(LAZYACCESS(minimum_character_age, S.get_root_species_name()) && (prefs.get_character_age() < minimum_character_age[S.get_root_species_name()]))
-		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age[S.get_root_species_name()]].</span>")
+	var/decl/species/S = prefs.get_species_decl()
+	if(LAZYACCESS(minimum_character_age, S.uid) && (prefs.get_character_age() < minimum_character_age[S.uid]))
+		to_chat(feedback, "<span class='boldannounce'>Not old enough. Minimum character age is [minimum_character_age[S.uid]].</span>")
 		return TRUE
 	if(LAZYLEN(whitelisted_species) && !(prefs.species in whitelisted_species))
 		to_chat(feedback, "<span class='boldannounce'>Your current species, [prefs.species], is not permitted as [title] on \a [owner.archetype.name].</span>")

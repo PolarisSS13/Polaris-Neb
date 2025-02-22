@@ -12,7 +12,7 @@
 
 /decl/species/adherent
 	uid = "species_adherent"
-	name = SPECIES_ADHERENT
+	name = "Adherent"
 	name_plural = "Adherents"
 	base_external_prosthetics_model = null
 

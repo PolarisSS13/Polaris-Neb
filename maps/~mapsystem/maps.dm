@@ -136,7 +136,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 
 	var/list/station_departments = list()//Gets filled automatically depending on jobs allowed
 
-	var/default_species = SPECIES_HUMAN
+	var/default_species = /decl/species/human::uid
 
 	// Can this map be voted for by players?
 	var/votable = TRUE
@@ -564,7 +564,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	if(!length(SSmapping.contact_levels))
 		log_error("[name] has no contact levels!")
 		. = FALSE
-	var/decl/species/default_species_decl = get_species_by_key(default_species)
+	var/decl/species/default_species_decl = decls_repository.get_decl_by_id(default_species)
 	if(default_species_decl.species_flags & SPECIES_IS_RESTRICTED)
 		log_error("[name]'s default species [default_species_decl.type] is set to restricted!")
 	if(default_species_decl.species_flags & SPECIES_IS_WHITELISTED)
