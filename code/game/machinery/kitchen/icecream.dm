@@ -116,24 +116,24 @@
 	popup.set_content(dat)
 	popup.open()
 
-/obj/machinery/icecream_vat/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/food/icecream))
-		var/obj/item/food/icecream/I = O
-		if(!I.ice_creamed)
+/obj/machinery/icecream_vat/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/food/icecream))
+		var/obj/item/food/icecream/icecream = used_item
+		if(!icecream.ice_creamed)
 			if(product_types[dispense_flavour] > 0)
-				src.visible_message("[html_icon(src)] <span class='info'>[user] scoops delicious [flavour_name] icecream into [I].</span>")
+				src.visible_message("[html_icon(src)] <span class='info'>[user] scoops delicious [flavour_name] icecream into [icecream].</span>")
 				product_types[dispense_flavour] -= 1
-				I.add_ice_cream(flavour_name)
+				icecream.add_ice_cream(flavour_name)
 			//	if(beaker)
-			//		beaker.reagents.trans_to(I, 10)
-				if(I.reagents.total_volume < 10)
-					I.add_to_reagents(/decl/material/liquid/nutriment/sugar, 10 - I.reagents.total_volume)
+			//		beaker.reagents.trans_to(icecream, 10)
+				if(icecream.reagents.total_volume < 10)
+					icecream.add_to_reagents(/decl/material/liquid/nutriment/sugar, 10 - icecream.reagents.total_volume)
 			else
 				to_chat(user, "<span class='warning'>There is not enough icecream left!</span>")
 		else
-			to_chat(user, "<span class='notice'>[O] already has icecream in it.</span>")
+			to_chat(user, "<span class='notice'>[used_item] already has icecream in it.</span>")
 		return TRUE
-	else if(ATOM_IS_OPEN_CONTAINER(O))
+	else if(ATOM_IS_OPEN_CONTAINER(used_item))
 		return TRUE
 	else
 		return ..()
@@ -172,10 +172,10 @@
 		var/cone_name = get_flavour_name(dispense_cone)
 		if(product_types[dispense_cone] >= 1)
 			product_types[dispense_cone] -= 1
-			var/obj/item/food/icecream/I = new(src.loc)
-			I.cone_type = cone_name
-			I.icon_state = "icecream_cone_[cone_name]"
-			I.desc = "Delicious [cone_name] cone, but no ice cream."
+			var/obj/item/food/icecream/icecream = new(src.loc)
+			icecream.cone_type = cone_name
+			icecream.icon_state = "icecream_cone_[cone_name]"
+			icecream.desc = "Delicious [cone_name] cone, but no ice cream."
 			src.visible_message("<span class='info'>[user] dispenses a crunchy [cone_name] cone from [src].</span>")
 		else
 			to_chat(user, "<span class='warning'>There are no [cone_name] cones left!</span>")

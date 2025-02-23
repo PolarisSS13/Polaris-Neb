@@ -106,16 +106,16 @@
 	can_hold = list(/obj/item)
 	expected_type = /obj/structure/reagent_dispensers/compost_bin
 
-/datum/storage/hopper/industrial/compost/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params = null)
+/datum/storage/hopper/industrial/compost/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
 	. = ..()
 	if(!.)
 		return
-	if(istype(W, /obj/item/food/worm) && istype(holder, /obj/structure/reagent_dispensers/compost_bin))
+	if(istype(inserting, /obj/item/food/worm) && istype(holder, /obj/structure/reagent_dispensers/compost_bin))
 		var/worms = 0
 		for(var/obj/item/food/worm/worm in get_contents())
 			worms++
 		return worms < COMPOST_MAX_WORMS
-	return W.is_compostable()
+	return inserting.is_compostable()
 
 /datum/storage/hopper/mortar
 	max_w_class = ITEM_SIZE_NORMAL * 2

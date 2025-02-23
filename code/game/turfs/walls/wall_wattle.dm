@@ -21,16 +21,16 @@
 	return list("", "paint") // paint should always be available because of plastering!
 
 // Daubing with clay or soil
-/turf/wall/wattle/attackby(obj/item/W, mob/user, click_params)
+/turf/wall/wattle/attackby(obj/item/used_item, mob/user, click_params)
 	if(isnull(daubing_material))
 		var/static/list/daub_materials = list( // Does not include subtypes.
 			/decl/material/solid/soil = TRUE,
 			/decl/material/solid/clay = TRUE
 		)
-		if(istype(W, /obj/item/stack/material) && daub_materials[W.material?.type])
+		if(istype(used_item, /obj/item/stack/material) && daub_materials[used_item.material?.type])
 			if(!user.check_dexterity(DEXTERITY_WIELD_ITEM))
 				return TRUE
-			var/obj/item/stack/material/stack = W
+			var/obj/item/stack/material/stack = used_item
 			var/sheets_to_use = stack.matter_units_to_sheets(matter_to_daub)
 			if(stack.can_use(sheets_to_use) && user.do_skilled(1 SECOND, daubing_skill, target = src) && stack.can_use(sheets_to_use))
 				to_chat(user, SPAN_NOTICE("You daub \the [src] with \the [stack]."))

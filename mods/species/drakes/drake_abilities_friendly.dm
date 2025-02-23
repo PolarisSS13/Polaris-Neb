@@ -95,10 +95,10 @@ var/global/list/_wounds_being_tended_by_drakes = list()
 				var/datum/reagents/bloodstream = friend.get_injected_reagents()
 				if(bloodstream)
 					bloodstream.add_reagent(/decl/material/liquid/sifsap, rand(1,2))
-			for (var/datum/wound/W in E.wounds)
-				W.clamped = TRUE // use this rather than bandaged to avoid message weirdness
-				W.salve()
-				W.disinfect()
+			for (var/datum/wound/wound in E.wounds)
+				wound.clamped = TRUE // use this rather than bandaged to avoid message weirdness
+				wound.salve()
+				wound.disinfect()
 	// Everyone else is just poisoned.
 	else if(!friend.has_trait(/decl/trait/sivian_biochemistry))
 		friend.take_damage(rand(1,2), TOX)

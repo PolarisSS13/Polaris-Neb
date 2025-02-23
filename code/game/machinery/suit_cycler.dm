@@ -195,33 +195,33 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/suit_cycler/attackby(obj/item/I, mob/user)
+/obj/machinery/suit_cycler/attackby(obj/item/used_item, mob/user)
 
 	if(electrified != 0 && shock(user, 100))
 		return TRUE
 
 	//Hacking init.
-	if(IS_MULTITOOL(I) || IS_WIRECUTTER(I))
+	if(IS_MULTITOOL(used_item) || IS_WIRECUTTER(used_item))
 		if(panel_open)
 			physical_attack_hand(user)
 		return TRUE
 
-	if(istype(I, /obj/item/clothing/shoes/magboots))
+	if(istype(used_item, /obj/item/clothing/shoes/magboots))
 		if(locked)
 			to_chat(user, SPAN_WARNING("The suit cycler is locked."))
 			return TRUE
 		if(boots)
 			to_chat(user, SPAN_WARNING("The cycler already contains some boots."))
 			return TRUE
-		if(!user.try_unequip(I, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		to_chat(user, "You fit \the [I] into the suit cycler.")
-		set_boots(I)
+		to_chat(user, "You fit \the [used_item] into the suit cycler.")
+		set_boots(used_item)
 		update_icon()
 		updateUsrDialog()
 		return TRUE
 
-	if(istype(I,/obj/item/clothing/head/helmet/space) && !istype(I, /obj/item/clothing/head/helmet/space/rig))
+	if(istype(used_item,/obj/item/clothing/head/helmet/space) && !istype(used_item, /obj/item/clothing/head/helmet/space/rig))
 
 		if(locked)
 			to_chat(user, SPAN_WARNING("The suit cycler is locked."))
@@ -231,14 +231,14 @@
 			to_chat(user, SPAN_WARNING("The cycler already contains a helmet."))
 			return TRUE
 
-		if(user.try_unequip(I, src))
-			to_chat(user, "You fit \the [I] into the suit cycler.")
-			set_helmet(I)
+		if(user.try_unequip(used_item, src))
+			to_chat(user, "You fit \the [used_item] into the suit cycler.")
+			set_helmet(used_item)
 			update_icon()
 			updateUsrDialog()
 		return TRUE
 
-	if(istype(I,/obj/item/clothing/suit/space/void))
+	if(istype(used_item,/obj/item/clothing/suit/space/void))
 
 		if(locked)
 			to_chat(user, SPAN_WARNING("The suit cycler is locked."))
@@ -248,9 +248,9 @@
 			to_chat(user, SPAN_WARNING("The cycler already contains a voidsuit."))
 			return TRUE
 
-		if(user.try_unequip(I, src))
-			to_chat(user, "You fit \the [I] into the suit cycler.")
-			set_suit(I)
+		if(user.try_unequip(used_item, src))
+			to_chat(user, "You fit \the [used_item] into the suit cycler.")
+			set_suit(used_item)
 			update_icon()
 			updateUsrDialog()
 		return TRUE

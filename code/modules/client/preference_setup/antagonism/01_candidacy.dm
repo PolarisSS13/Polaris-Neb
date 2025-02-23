@@ -10,9 +10,9 @@
 	pref.be_special_role =     R.read("be_special")
 	pref.may_be_special_role = R.read("may_be_special")
 
-/datum/category_item/player_setup_item/antagonism/candidacy/save_character(datum/pref_record_writer/W)
-	W.write("be_special",     pref.be_special_role)
-	W.write("may_be_special", pref.may_be_special_role)
+/datum/category_item/player_setup_item/antagonism/candidacy/save_character(datum/pref_record_writer/writer)
+	writer.write("be_special",     pref.be_special_role)
+	writer.write("may_be_special", pref.may_be_special_role)
 
 /datum/category_item/player_setup_item/antagonism/candidacy/sanitize_character()
 	if(!istype(pref.be_special_role))

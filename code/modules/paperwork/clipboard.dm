@@ -66,21 +66,21 @@
 		add_overlay(overlay_image(icon, "clipboard_pen", stored_pen.color, RESET_COLOR))
 	add_overlay(overlay_image(icon, "clipboard_over", flags=RESET_COLOR))
 
-/obj/item/clipboard/attackby(obj/item/W, mob/user)
+/obj/item/clipboard/attackby(obj/item/used_item, mob/user)
 	var/obj/item/top_paper = top_paper()
-	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
-		if(!user.try_unequip(W, src))
+	if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		push_paper(W)
-		to_chat(user, SPAN_NOTICE("You clip the [W] onto \the [src]."))
+		push_paper(used_item)
+		to_chat(user, SPAN_NOTICE("You clip the [used_item] onto \the [src]."))
 		return TRUE
 
-	else if(top_paper?.attackby(W, user))
+	else if(top_paper?.attackby(used_item, user))
 		updateUsrDialog()
 		update_icon()
 		return TRUE
 
-	else if(IS_PEN(W) && add_pen(W, user)) //If we don't have any paper, and hit it with a pen, try slotting it in
+	else if(IS_PEN(used_item) && add_pen(used_item, user)) //If we don't have any paper, and hit it with a pen, try slotting it in
 		return TRUE
 
 	return ..()

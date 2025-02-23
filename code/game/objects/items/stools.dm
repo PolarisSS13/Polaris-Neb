@@ -96,8 +96,8 @@
 	padding_extension?.remove_padding(do_icon_update = FALSE)
 	qdel(src)
 
-/obj/item/stool/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/item/stool/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		dismantle()
 		return TRUE

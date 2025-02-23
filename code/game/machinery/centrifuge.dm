@@ -11,9 +11,9 @@
 		return FALSE
 	return TRUE
 
-/datum/storage/hopper/industrial/centrifuge/can_be_inserted(obj/item/W, mob/user, stop_messages, click_params)
+/datum/storage/hopper/industrial/centrifuge/can_be_inserted(obj/item/inserting, mob/user, stop_messages, click_params)
 	. = ..()
-	if(. && !should_ingest(user, W))
+	if(. && !should_ingest(user, inserting))
 		return FALSE
 
 /obj/machinery/centrifuge

@@ -106,11 +106,11 @@
 /obj/item/flamethrower/isflamesource()
 	return lit
 
-/obj/item/flamethrower/attackby(obj/item/W, mob/user)
+/obj/item/flamethrower/attackby(obj/item/used_item, mob/user)
 	if(user.incapacitated())
 		return TRUE
 
-	if(IS_WRENCH(W) && !secured)//Taking this apart
+	if(IS_WRENCH(used_item) && !secured)//Taking this apart
 		var/turf/T = get_turf(src)
 		if(welding_tool)
 			welding_tool.dropInto(T)
@@ -128,14 +128,14 @@
 		qdel(src)
 		return TRUE
 
-	if(IS_SCREWDRIVER(W) && igniter && !lit)
+	if(IS_SCREWDRIVER(used_item) && igniter && !lit)
 		secured = !secured
 		to_chat(user, SPAN_NOTICE("\The [igniter] is now [secured ? "secured" : "unsecured"]!"))
 		update_icon()
 		return TRUE
 
-	if(isigniter(W))
-		var/obj/item/assembly/igniter/I = W
+	if(isigniter(used_item))
+		var/obj/item/assembly/igniter/I = used_item
 		if(I.secured)
 			to_chat(user, SPAN_WARNING("\The [I] is not ready to attach yet! Use a screwdriver on it first."))
 			return TRUE
@@ -149,23 +149,23 @@
 		update_icon()
 		return TRUE
 
-	if(istype(W, /obj/item/tank))
+	if(istype(used_item, /obj/item/tank))
 		if(tank)
 			to_chat(user, SPAN_WARNING("There appears to already be a tank loaded in \the [src]!"))
 			return TRUE
 
-		user.drop_from_inventory(W, src)
-		tank = W
+		user.drop_from_inventory(used_item, src)
+		tank = used_item
 		update_icon()
 		return TRUE
 
-	if(istype(W, /obj/item/scanner/gas))
-		var/obj/item/scanner/gas/A = W
+	if(istype(used_item, /obj/item/scanner/gas))
+		var/obj/item/scanner/gas/A = used_item
 		A.analyze_gases(src, user)
 		return TRUE
 
 
-	if(W.isflamesource()) // you can light it with external input, even without an igniter
+	if(used_item.isflamesource()) // you can light it with external input, even without an igniter
 		attempt_lighting(user, TRUE)
 		update_icon()
 		return TRUE

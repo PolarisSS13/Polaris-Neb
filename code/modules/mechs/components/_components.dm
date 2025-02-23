@@ -96,9 +96,9 @@
 		qdel(RC)
 		update_components()
 
-/obj/item/mech_component/attackby(var/obj/item/thing, var/mob/user)
+/obj/item/mech_component/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(IS_SCREWDRIVER(thing))
+	if(IS_SCREWDRIVER(used_item))
 		if(contents.len)
 			//Filter non movables
 			var/list/valid_contents = list()
@@ -118,15 +118,15 @@
 			to_chat(user, SPAN_WARNING("There is nothing to remove."))
 		return TRUE
 
-	if(IS_WELDER(thing))
-		repair_brute_generic(thing, user)
+	if(IS_WELDER(used_item))
+		repair_brute_generic(used_item, user)
 		return TRUE
 
-	if(IS_COIL(thing))
-		repair_burn_generic(thing, user)
+	if(IS_COIL(used_item))
+		repair_burn_generic(used_item, user)
 		return TRUE
 
-	if(istype(thing, /obj/item/robotanalyzer))
+	if(istype(used_item, /obj/item/robotanalyzer))
 		to_chat(user, SPAN_NOTICE("Diagnostic Report for \the [src]:"))
 		return_diagnostics(user)
 		return TRUE
@@ -136,16 +136,16 @@
 /obj/item/mech_component/proc/update_components()
 	return
 
-/obj/item/mech_component/proc/repair_brute_generic(var/obj/item/weldingtool/WT, var/mob/user)
-	if(!istype(WT))
+/obj/item/mech_component/proc/repair_brute_generic(var/obj/item/weldingtool/welder, var/mob/user)
+	if(!istype(welder))
 		return
 	if(!brute_damage)
 		to_chat(user, SPAN_NOTICE("You inspect \the [src] but find nothing to weld."))
 		return
-	if(!WT.isOn())
-		to_chat(user, SPAN_WARNING("Turn \the [WT] on, first."))
+	if(!welder.isOn())
+		to_chat(user, SPAN_WARNING("Turn \the [welder] on, first."))
 		return
-	if(WT.weld((SKILL_MAX + 1) - user.get_skill_value(SKILL_CONSTRUCTION), user))
+	if(welder.weld((SKILL_MAX + 1) - user.get_skill_value(SKILL_CONSTRUCTION), user))
 		user.visible_message(
 			SPAN_NOTICE("\The [user] begins welding the damage on \the [src]..."),
 			SPAN_NOTICE("You begin welding the damage on \the [src]...")

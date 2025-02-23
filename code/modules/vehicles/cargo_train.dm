@@ -67,17 +67,17 @@
 
 	return ..()
 
-/obj/vehicle/train/cargo/trolley/attackby(obj/item/W, mob/user)
-	if(open && IS_WIRECUTTER(W))
+/obj/vehicle/train/cargo/trolley/attackby(obj/item/used_item, mob/user)
+	if(open && IS_WIRECUTTER(used_item))
 		passenger_allowed = !passenger_allowed
 		user.visible_message("<span class='notice'>[user] [passenger_allowed ? "cuts" : "mends"] a cable in [src].</span>","<span class='notice'>You [passenger_allowed ? "cut" : "mend"] the load limiter cable.</span>")
 		return TRUE
 	return ..()
 
-/obj/vehicle/train/cargo/engine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/key/cargo_train))
-		if(!key && user.try_unequip(W, src))
-			key = W
+/obj/vehicle/train/cargo/engine/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/key/cargo_train))
+		if(!key && user.try_unequip(used_item, src))
+			key = used_item
 			verbs += /obj/vehicle/train/cargo/engine/verb/remove_key
 		return TRUE
 	return ..()

@@ -227,9 +227,9 @@
 	if(material)
 		SetName("[initial(name)] [material.solid_name]")
 
-/obj/item/shreddedp/attackby(var/obj/item/W, var/mob/user)
-	if(W.isflamesource())
-		burnpaper(W, user)
+/obj/item/shreddedp/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.isflamesource())
+		burnpaper(used_item, user)
 		return TRUE
 	return ..()
 

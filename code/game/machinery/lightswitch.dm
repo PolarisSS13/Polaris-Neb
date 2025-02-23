@@ -82,10 +82,10 @@
 		set_state(!on)
 		return TRUE
 
-/obj/machinery/light_switch/attackby(obj/item/I, mob/user)
+/obj/machinery/light_switch/attackby(obj/item/used_item, mob/user)
 	. = ..()
 	if(!.)
-		to_chat(user, SPAN_NOTICE("You flick \the [src] with \the [I]."))
+		to_chat(user, SPAN_NOTICE("You flick \the [src] with \the [used_item]."))
 		interface_interact(user)
 		return TRUE
 

@@ -33,23 +33,23 @@
 	cost_per_move = 200	// W
 	var/obj/item/cell/cell
 
-/obj/item/engine/electric/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I,/obj/item/cell))
+/obj/item/engine/electric/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item,/obj/item/cell))
 		if(cell)
 			to_chat(user, "<span class='warning'>There is already a cell in \the [src].</span>")
 		else
-			cell = I
-			user.drop_from_inventory(I)
-			I.forceMove(src)
+			cell = used_item
+			user.drop_from_inventory(used_item)
+			used_item.forceMove(src)
 		return TRUE
-	else if(IS_CROWBAR(I))
+	else if(IS_CROWBAR(used_item))
 		if(cell)
-			to_chat(user, "You pry out \the [cell] with \the [I].")
+			to_chat(user, "You pry out \the [cell] with \the [used_item].")
 			cell.dropInto(loc)
 			cell = null
 			return TRUE
 		if(!user.check_intent(I_FLAG_HARM))
-			to_chat(user, SPAN_WARNING("There is no cell in \the [src] to remove with \the [I]!"))
+			to_chat(user, SPAN_WARNING("There is no cell in \the [src] to remove with \the [used_item]!"))
 			return TRUE
 	return ..()
 
@@ -92,8 +92,8 @@
 	temp_reagents_holder.create_reagents(15)
 	temp_reagents_holder.atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 
-/obj/item/engine/thermal/attackby(var/obj/item/I, var/mob/user)
-	if(I.standard_pour_into(user, src))
+/obj/item/engine/thermal/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.standard_pour_into(user, src))
 		return TRUE
 	return ..()
 

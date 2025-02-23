@@ -98,9 +98,9 @@
 // Sort of a placeholder for proper tailoring.
 #define RAG_COUNT(X) ceil((LAZYACCESS(X.matter, /decl/material/solid/organic/cloth) * 0.65) / SHEET_MATERIAL_AMOUNT)
 
-/obj/item/clothing/attackby(obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/used_item, mob/user)
 	var/rags = RAG_COUNT(src)
-	if(istype(material) && material.default_solid_form && rags && (I.is_sharp() || I.has_edge()) && user.check_intent(I_FLAG_HARM))
+	if(istype(material) && material.default_solid_form && rags && (used_item.is_sharp() || used_item.has_edge()) && user.check_intent(I_FLAG_HARM))
 		if(length(accessories))
 			to_chat(user, SPAN_WARNING("You should remove the accessories attached to \the [src] first."))
 			return TRUE
@@ -109,9 +109,9 @@
 			to_chat(user, SPAN_WARNING("You must either be holding \the [src], or [it] must be on the ground, before you can shred [it]."))
 			return TRUE
 		playsound(loc, 'sound/weapons/cablecuff.ogg', 30, 1)
-		user.visible_message(SPAN_DANGER("\The [user] begins ripping apart \the [src] with \the [I]."))
+		user.visible_message(SPAN_DANGER("\The [user] begins ripping apart \the [src] with \the [used_item]."))
 		if(do_after(user, 5 SECONDS, src))
-			user.visible_message(SPAN_DANGER("\The [user] tears \the [src] apart with \the [I]."))
+			user.visible_message(SPAN_DANGER("\The [user] tears \the [src] apart with \the [used_item]."))
 			material.create_object(get_turf(src), rags)
 			if(loc == user)
 				user.drop_from_inventory(src)
@@ -219,14 +219,14 @@
 
 	// Clothing does not generally align with each other's world icons, so we just use the mob overlay in this case.
 	if(should_use_combined_accessory_appearance())
-		var/image/I = get_mob_overlay(ismob(loc) ? loc : null, get_fallback_slot())
-		if(I?.icon) // Null or invisible overlay, we don't want to make our clothing invisible just because it has an accessory.
-			I.plane = plane
-			I.layer = layer
-			I.color = color
-			I.alpha = alpha
-			I.name  = name
-			appearance = I
+		var/image/overlay_image = get_mob_overlay(ismob(loc) ? loc : null, get_fallback_slot())
+		if(overlay_image?.icon) // Null or invisible overlay, we don't want to make our clothing invisible just because it has an accessory.
+			overlay_image.plane = plane
+			overlay_image.layer = layer
+			overlay_image.color = color
+			overlay_image.alpha = alpha
+			overlay_image.name  = name
+			appearance = overlay_image
 			set_dir(SOUTH)
 			update_clothing_icon()
 			return

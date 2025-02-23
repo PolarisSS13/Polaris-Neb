@@ -238,18 +238,18 @@
 	updateinfolinks()
 	update_icon()
 
-/obj/item/paper/proc/get_signature(var/obj/item/pen/P, mob/user)
-	if(P && IS_PEN(P))
+/obj/item/paper/proc/get_signature(var/obj/item/pen/pen, mob/user)
+	if(pen && IS_PEN(pen))
 		var/decl/tool_archetype/pen/parch = GET_DECL(TOOL_PEN)
-		return parch.get_signature(user, P)
+		return parch.get_signature(user, pen)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/paper/proc/parsepencode(t, obj/item/pen/P, mob/user, iscrayon, isfancy)
+/obj/item/paper/proc/parsepencode(t, obj/item/pen/pen, mob/user, iscrayon, isfancy)
 	if(length(t) == 0)
 		return ""
 
 	if(findtext(t, "\[sign\]"))
-		t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[get_signature(P, user)]</i></font>")
+		t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[get_signature(pen, user)]</i></font>")
 
 	if(iscrayon) // If it is a crayon, and he still tries to use these, make them empty!
 		t = replacetext(t, "\[*\]", "")
@@ -264,7 +264,7 @@
 		t = replacetext(t, "\[cell\]", "")
 		t = replacetext(t, "\[logo\]", "")
 
-	var/pen_color = P? P.get_tool_property(TOOL_PEN, TOOL_PROP_COLOR) : "black"
+	var/pen_color = pen ? pen.get_tool_property(TOOL_PEN, TOOL_PROP_COLOR) : "black"
 	if(iscrayon)
 		t = "<font face=\"[crayonfont]\" color=[pen_color]><b>[t]</b></font>"
 	else if(isfancy)
@@ -285,19 +285,19 @@
 
 	return t
 
-/obj/item/paper/proc/burnpaper(obj/item/P, mob/user)
+/obj/item/paper/proc/burnpaper(obj/item/paper, mob/user)
 	var/class = "warning"
 
-	if(P.isflamesource() && !user.restrained())
-		if(istype(P, /obj/item/flame/fuelled/lighter/zippo))
+	if(paper.isflamesource() && !user.restrained())
+		if(istype(paper, /obj/item/flame/fuelled/lighter/zippo))
 			class = "rose"
 
 		var/decl/pronouns/pronouns = user.get_pronouns()
-		user.visible_message("<span class='[class]'>[user] holds \the [P] up to \the [src], it looks like [pronouns.he] [pronouns.is] trying to burn it!</span>", \
-		"<span class='[class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
+		user.visible_message("<span class='[class]'>[user] holds \the [paper] up to \the [src], it looks like [pronouns.he] [pronouns.is] trying to burn it!</span>", \
+		"<span class='[class]'>You hold \the [paper] up to \the [src], burning it slowly.</span>")
 
 		spawn(20)
-			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.isflamesource())
+			if(get_dist(src, user) < 2 && user.get_active_held_item() == paper && paper.isflamesource())
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
@@ -305,7 +305,7 @@
 				qdel(src)
 
 			else
-				to_chat(user, SPAN_WARNING("You must hold \the [P] steady to burn \the [src]."))
+				to_chat(user, SPAN_WARNING("You must hold \the [paper] steady to burn \the [src]."))
 
 /obj/item/paper/CouldNotUseTopic(mob/user)
 	to_chat(user, SPAN_WARNING("You can't reach!"))
@@ -378,43 +378,43 @@
 
 	return ..()
 
-/obj/item/paper/attackby(obj/item/P, mob/user)
-	if(istype(P, /obj/item/stack/tape_roll/duct_tape))
-		var/obj/item/stack/tape_roll/duct_tape/tape = P
+/obj/item/paper/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/tape_roll/duct_tape))
+		var/obj/item/stack/tape_roll/duct_tape/tape = used_item
 		return tape.stick(src, user)
 
-	else if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
-		var/obj/item/paper_bundle/B = try_bundle_with(P, user)
+	else if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo))
+		var/obj/item/paper_bundle/B = try_bundle_with(used_item, user)
 		if(!B)
 			return TRUE
 		user.put_in_hands(B)
-		to_chat(user, SPAN_NOTICE("You clip \the [P] and \the [name] together."))
+		to_chat(user, SPAN_NOTICE("You clip \the [used_item] and \the [name] together."))
 		return TRUE
 
-	else if(IS_PEN(P))
+	else if(IS_PEN(used_item))
 		if(is_crumpled)
 			to_chat(user, SPAN_WARNING("\The [src] is too crumpled to write on."))
 			return TRUE
 
-		var/obj/item/pen/robopen/RP = P
+		var/obj/item/pen/robopen/RP = used_item
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
 		else
 			interact(user, readonly = FALSE)
 		return TRUE
 
-	else if(P.get_tool_quality(TOOL_STAMP))
-		apply_custom_stamp(P.icon, "with \the [P]")
+	else if(used_item.get_tool_quality(TOOL_STAMP))
+		apply_custom_stamp(used_item.icon, "with \the [used_item]")
 		playsound(src, 'sound/effects/stamp.ogg', 50, TRUE)
-		to_chat(user, SPAN_NOTICE("You stamp the paper with your [P.name]."))
+		to_chat(user, SPAN_NOTICE("You stamp the paper with your [used_item.name]."))
 		return TRUE
 
-	else if(P.isflamesource())
-		burnpaper(P, user)
+	else if(used_item.isflamesource())
+		burnpaper(used_item, user)
 		return TRUE
 
-	else if(istype(P, /obj/item/paper_bundle))
-		var/obj/item/paper_bundle/B = P
+	else if(istype(used_item, /obj/item/paper_bundle))
+		var/obj/item/paper_bundle/B = used_item
 		B.merge(src, user)
 		return TRUE
 	return ..()
@@ -450,8 +450,8 @@
 
 /obj/item/paper/proc/can_bundle_with(var/obj/item/other)
 	if(istype(other, /obj/item/paper))
-		var/obj/item/paper/P = other
-		return can_bundle() && P.can_bundle()
+		var/obj/item/paper/paper = other
+		return can_bundle() && paper.can_bundle()
 	else if(istype(other, /obj/item/photo))
 		return can_bundle()
 	else if(istype(other, /obj/item/paper_bundle))

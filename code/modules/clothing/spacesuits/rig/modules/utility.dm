@@ -379,21 +379,21 @@
 	)
 	var/obj/item/tank/jetpack/rig/jets
 
-/obj/item/rig_module/maneuvering_jets/attackby(obj/item/W, mob/user)
-	if(W.do_tool_interaction(TOOL_WRENCH, user, src, 1, "removing the propellant tank", "removing the propellant tank"))
+/obj/item/rig_module/maneuvering_jets/attackby(obj/item/used_item, mob/user)
+	if(used_item.do_tool_interaction(TOOL_WRENCH, user, src, 1, "removing the propellant tank", "removing the propellant tank"))
 		jets.forceMove(get_turf(user))
 		user.put_in_hands(jets)
 		jets = null
 		return TRUE
 
-	if(istype(W, /obj/item/tank/jetpack/rig))
+	if(istype(used_item, /obj/item/tank/jetpack/rig))
 		if(jets)
 			to_chat(user, SPAN_WARNING("There's already a propellant tank inside of \the [src]!"))
 			return TRUE
-		if(user.try_unequip(W))
-			to_chat(user, SPAN_NOTICE("You insert \the [W] into [src]."))
-			W.forceMove(src)
-			jets = W
+		if(user.try_unequip(used_item))
+			to_chat(user, SPAN_NOTICE("You insert \the [used_item] into [src]."))
+			used_item.forceMove(src)
+			jets = used_item
 			return TRUE
 	. = ..()
 

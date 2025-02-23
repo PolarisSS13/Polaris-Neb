@@ -591,10 +591,10 @@
 	if(robot.hud_used)
 		robot.hud_used.update_robot_modules_display()
 
-/obj/item/proc/try_slapcrafting(obj/item/W, mob/user)
-	if(SSfabrication.try_craft_with(src, W, user))
+/obj/item/proc/try_slapcrafting(obj/item/used_item, mob/user)
+	if(SSfabrication.try_craft_with(src, used_item, user))
 		return TRUE
-	if(SSfabrication.try_craft_with(W, src, user))
+	if(SSfabrication.try_craft_with(used_item, src, user))
 		return TRUE
 	return FALSE
 

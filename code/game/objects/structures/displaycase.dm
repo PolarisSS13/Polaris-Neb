@@ -92,9 +92,9 @@
 	for(var/atom/movable/AM in contents)
 		underlays += AM.appearance
 
-/obj/structure/displaycase/attackby(obj/item/W, mob/user)
+/obj/structure/displaycase/attackby(obj/item/used_item, mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	var/obj/item/card/id/id = W.GetIdCard()
+	var/obj/item/card/id/id = used_item.GetIdCard()
 	if(istype(id))
 		if(allowed(user))
 			locked = !locked
@@ -103,13 +103,13 @@
 			to_chat(user, "\The [src]'s card reader denies you access.")
 		return TRUE
 
-	if(isitem(W) && (!locked || destroyed))
-		if(!W.simulated || W.anchored)
+	if(isitem(used_item) && (!locked || destroyed))
+		if(!used_item.simulated || used_item.anchored)
 			return FALSE
 
-		if(user.try_unequip(W, src))
-			W.pixel_x = 0
-			W.pixel_y = -7
+		if(user.try_unequip(used_item, src))
+			used_item.pixel_x = 0
+			used_item.pixel_y = -7
 			update_icon()
 		return TRUE
 	. = ..()

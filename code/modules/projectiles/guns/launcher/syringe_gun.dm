@@ -24,11 +24,11 @@
 		MA.plane = FLOAT_PLANE
 		underlays += MA
 
-/obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/chems/syringe))
-		if(!user.try_unequip(I, src))
+/obj/item/syringe_cartridge/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/syringe))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		syringe = I
+		syringe = used_item
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
 		set_sharp(TRUE)
 		name = "syringe dart"
@@ -128,9 +128,9 @@
 	)
 	return TRUE
 
-/obj/item/gun/launcher/syringe/attackby(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/syringe_cartridge))
-		var/obj/item/syringe_cartridge/C = A
+/obj/item/gun/launcher/syringe/attackby(var/obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/syringe_cartridge))
+		var/obj/item/syringe_cartridge/C = used_item
 		if(darts.len >= max_darts)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return TRUE

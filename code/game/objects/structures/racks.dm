@@ -35,10 +35,10 @@
 		return DEXTERITY_HOLD_ITEM
 	return ..()
 
-/obj/structure/rack/attackby(obj/item/O, mob/user, click_params)
+/obj/structure/rack/attackby(obj/item/used_item, mob/user, click_params)
 	. = ..()
-	if(!. && !isrobot(user) && O.loc == user && user.try_unequip(O, loc))
-		auto_align(O, click_params)
+	if(!. && !isrobot(user) && used_item.loc == user && user.try_unequip(used_item, loc))
+		auto_align(used_item, click_params)
 		return TRUE
 
 /obj/structure/rack/holorack/dismantle_structure(mob/user)

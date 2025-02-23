@@ -38,13 +38,12 @@
 /obj/item/spy_bug/attack_self(mob/user)
 	radio.attack_self(user)
 
-/obj/item/spy_bug/attackby(obj/W, mob/user)
-	if(istype(W, /obj/item/spy_monitor))
-		var/obj/item/spy_monitor/SM = W
+/obj/item/spy_bug/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/spy_monitor))
+		var/obj/item/spy_monitor/SM = used_item
 		SM.pair(src, user)
 		return TRUE
-	else
-		return ..()
+	return ..()
 
 /obj/item/spy_bug/hear_talk(mob/M, var/msg, verb, decl/language/speaking)
 	radio.hear_talk(M, msg, speaking)
@@ -88,12 +87,11 @@
 	radio.attack_self(user)
 	view_cameras(user)
 
-/obj/item/spy_monitor/attackby(obj/W, mob/user)
-	if(istype(W, /obj/item/spy_bug))
-		pair(W, user)
+/obj/item/spy_monitor/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/spy_bug))
+		pair(used_item, user)
 		return TRUE
-	else
-		return ..()
+	return ..()
 
 /obj/item/spy_monitor/proc/pair(var/obj/item/spy_bug/SB, var/mob/living/user)
 	to_chat(user, SPAN_NOTICE("\The [SB] has been paired with \the [src]."))

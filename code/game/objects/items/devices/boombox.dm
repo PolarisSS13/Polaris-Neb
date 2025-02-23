@@ -91,22 +91,22 @@
 		change_volume(volume - 10)
 		return TOPIC_HANDLED
 
-/obj/item/boombox/attackby(var/obj/item/W, var/mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/item/boombox/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		if(!panel)
-			user.visible_message(SPAN_NOTICE("\The [user] re-attaches \the [src]'s front panel with \the [W]."), SPAN_NOTICE("You re-attach \the [src]'s front panel."))
+			user.visible_message(SPAN_NOTICE("\The [user] re-attaches \the [src]'s front panel with \the [used_item]."), SPAN_NOTICE("You re-attach \the [src]'s front panel."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 			panel = TRUE
 			return TRUE
 		if(!broken)
-			AdjustFrequency(W, user)
+			AdjustFrequency(used_item, user)
 			return TRUE
 		else if(panel)
-			user.visible_message(SPAN_NOTICE("\The [user] unhinges \the [src]'s front panel with \the [W]."), SPAN_NOTICE("You unhinge \the [src]'s front panel."))
+			user.visible_message(SPAN_NOTICE("\The [user] unhinges \the [src]'s front panel with \the [used_item]."), SPAN_NOTICE("You unhinge \the [src]'s front panel."))
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 			panel = FALSE
-	if(istype(W,/obj/item/stack/nanopaste))
-		var/obj/item/stack/S = W
+	if(istype(used_item,/obj/item/stack/nanopaste))
+		var/obj/item/stack/S = used_item
 		if(broken && !panel)
 			if(S.use(1))
 				user.visible_message(SPAN_NOTICE("\The [user] pours some of \the [S] onto \the [src]."), SPAN_NOTICE("You pour some of \the [S] over \the [src]'s internals and watch as it retraces and resolders paths."))
@@ -116,7 +116,7 @@
 	else
 		. = ..()
 
-/obj/item/boombox/proc/AdjustFrequency(var/obj/item/W, var/mob/user)
+/obj/item/boombox/proc/AdjustFrequency(var/obj/item/used_item, var/mob/user)
 	var/const/MIN_FREQUENCY = 0.5
 	var/const/MAX_FREQUENCY = 1.5
 
@@ -137,7 +137,7 @@
 		return FALSE
 	if(!MayAdjust(user))
 		return FALSE
-	if(W != user.get_active_held_item())
+	if(used_item != user.get_active_held_item())
 		return FALSE
 
 	if(!CanPhysicallyInteract(user))

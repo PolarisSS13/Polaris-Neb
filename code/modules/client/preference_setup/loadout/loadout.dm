@@ -21,9 +21,9 @@
 	pref.gear_list = R.read("gear_list")
 	pref.gear_slot = R.read("gear_slot")
 
-/datum/category_item/player_setup_item/loadout/save_character(datum/pref_record_writer/W)
-	W.write("gear_list", pref.gear_list)
-	W.write("gear_slot", pref.gear_slot)
+/datum/category_item/player_setup_item/loadout/save_character(datum/pref_record_writer/writer)
+	writer.write("gear_list", pref.gear_list)
+	writer.write("gear_slot", pref.gear_slot)
 
 /datum/category_item/player_setup_item/loadout/proc/skill_check(var/list/jobs, var/list/skills_required)
 	for(var/datum/job/J in jobs)

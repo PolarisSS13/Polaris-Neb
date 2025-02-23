@@ -46,19 +46,19 @@
 		. += "The current mode is '[work_mode]'."
 		. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
-/obj/item/rcd/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/rcd_ammo))
-		var/obj/item/rcd_ammo/cartridge = W
+/obj/item/rcd/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/rcd_ammo))
+		var/obj/item/rcd_ammo/cartridge = used_item
 		if((stored_matter + cartridge.remaining) > max_stored_matter)
 			to_chat(user, "<span class='notice'>The RCD can't hold that many additional matter-units.</span>")
 			return TRUE
 		stored_matter += cartridge.remaining
-		qdel(W)
+		qdel(used_item)
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>The RCD now holds [stored_matter]/[max_stored_matter] matter-units.</span>")
 		update_icon()
 		return TRUE
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		crafting = !crafting
 		if(!crafting)
 			to_chat(user, SPAN_NOTICE("You reassemble the RCD."))

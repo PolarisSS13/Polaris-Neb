@@ -101,9 +101,9 @@
 		to_chat(user, SPAN_NOTICE("The reagents inside \the [src] are already secured."))
 	return TRUE
 
-/obj/item/chems/inhaler/attackby(obj/item/tool, mob/user)
-	if(IS_SCREWDRIVER(tool) && !ATOM_IS_OPEN_CONTAINER(src))
-		to_chat(user, SPAN_NOTICE("Using \the [tool], you unsecure the inhaler's lid.")) // it locks shut after being secured
+/obj/item/chems/inhaler/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item) && !ATOM_IS_OPEN_CONTAINER(src))
+		to_chat(user, SPAN_NOTICE("Using \the [used_item], you unsecure the inhaler's lid.")) // it locks shut after being secured
 		atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 		update_icon()
 		return TRUE

@@ -38,33 +38,33 @@
 /obj/machinery/chem_master/proc/get_remaining_volume()
 	return clamp(reagent_limit - reagents.total_volume, 0, reagent_limit)
 
-/obj/machinery/chem_master/attackby(var/obj/item/B, var/mob/user)
+/obj/machinery/chem_master/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(B, /obj/item/chems/glass))
+	if(istype(used_item, /obj/item/chems/glass))
 
 		if(beaker)
 			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
 			return TRUE
-		if(!user.try_unequip(B, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		beaker = B
+		beaker = used_item
 		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
 		icon_state = "mixer1"
 		return TRUE
 
-	if(istype(B, /obj/item/chems))
+	if(istype(used_item, /obj/item/chems))
 		to_chat(user, SPAN_WARNING("\The [src] will only accept beakers."))
 		return TRUE
 
-	if(istype(B, /obj/item/pill_bottle))
+	if(istype(used_item, /obj/item/pill_bottle))
 
 		if(loaded_pill_bottle)
 			to_chat(user, SPAN_WARNING("A pill bottle is already loaded into the machine."))
 			return TRUE
-		if(!user.try_unequip(B, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		loaded_pill_bottle = B
+		loaded_pill_bottle = used_item
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		updateUsrDialog()
 		return TRUE

@@ -82,17 +82,17 @@
 		if(reagents?.maximum_volume)
 			. += "It may contain up to [reagents.maximum_volume] unit\s of fluid."
 
-/obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/attackby(obj/item/used_item, mob/user)
 
 	// We do this here to avoid putting the vessel straight into storage.
 	// This is usually handled by afterattack on /chems.
-	if(storage && ATOM_IS_OPEN_CONTAINER(W) && user.check_intent(I_FLAG_HELP))
-		if(W.standard_dispenser_refill(user, src))
+	if(storage && ATOM_IS_OPEN_CONTAINER(used_item) && user.check_intent(I_FLAG_HELP))
+		if(used_item.standard_dispenser_refill(user, src))
 			return TRUE
-		if(W.standard_pour_into(user, src))
+		if(used_item.standard_pour_into(user, src))
 			return TRUE
 
-	if(wrenchable && IS_WRENCH(W))
+	if(wrenchable && IS_WRENCH(used_item))
 		unwrenched = !unwrenched
 		visible_message(SPAN_NOTICE("\The [user] wrenches \the [src]'s tap [unwrenched ? "open" : "shut"]."))
 		if(unwrenched)
@@ -145,11 +145,11 @@
 	name   = "firefighting water reserve"
 	volume = 50000
 
-/obj/structure/reagent_dispensers/watertank/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/watertank/attackby(obj/item/used_item, mob/user)
 	//FIXME: Maybe this should be handled differently? Since it can essentially make the tank unusable.
-	if((istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm)) && user.try_unequip(W))
-		to_chat(user, "You add \the [W] arm to \the [src].")
-		qdel(W)
+	if((istype(used_item, /obj/item/robot_parts/l_arm) || istype(used_item, /obj/item/robot_parts/r_arm)) && user.try_unequip(used_item))
+		to_chat(user, "You add \the [used_item] arm to \the [src].")
+		qdel(used_item)
 		new /obj/item/farmbot_arm_assembly(loc, src)
 		return TRUE
 	. = ..()
@@ -283,14 +283,14 @@
 		to_chat(user, "\The [src]'s cup dispenser is empty.")
 	return TRUE
 
-/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/used_item, mob/user)
 	//Allow refilling with a box
-	if(cups < max_cups && W?.storage)
-		for(var/obj/item/chems/drinks/C in W.storage.get_contents())
+	if(cups < max_cups && used_item?.storage)
+		for(var/obj/item/chems/drinks/C in used_item.storage.get_contents())
 			if(cups >= max_cups)
 				break
 			if(istype(C, cup_type))
-				W.storage.remove_from_storage(user, C, src)
+				used_item.storage.remove_from_storage(user, C, src)
 				qdel(C)
 				cups++
 		return TRUE

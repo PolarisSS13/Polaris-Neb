@@ -203,8 +203,8 @@
 		CF.set_dir(field_dir)
 
 
-/obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/machinery/shieldwallgen/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		if(active)
 			to_chat(user, "Turn off the field generator first.")
 			return TRUE
@@ -218,7 +218,7 @@
 		src.anchored = FALSE
 		return TRUE
 
-	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer))
+	if(istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer))
 		if (src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
@@ -287,10 +287,10 @@
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/shieldwall/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/shieldwall/attackby(var/obj/item/used_item, var/mob/user)
 	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-	G.storedpower -= I.expend_attack_force(user)*2500
-	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
+	G.storedpower -= used_item.expend_attack_force(user)*2500
+	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [used_item]!</span>")
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/weapons/smash.ogg', 75, 1)

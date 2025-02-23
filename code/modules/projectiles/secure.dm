@@ -26,11 +26,11 @@
 	if(distance <= 0 && is_secure_gun())
 		. += "The registration screen shows, \"" + (registered_owner ? "[registered_owner]" : "unregistered") + "\"."
 
-/obj/item/gun/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/card/id) && is_secure_gun())
+/obj/item/gun/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/card/id) && is_secure_gun())
 		user.visible_message("[user] swipes an ID through \the [src].", range = 3)
 		if(!registered_owner)
-			var/obj/item/card/id/id = W
+			var/obj/item/card/id/id = used_item
 			global.registered_weapons += src
 			verbs += /obj/item/gun/proc/reset_registration
 			registered_owner = id.registered_name

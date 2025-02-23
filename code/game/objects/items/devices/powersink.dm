@@ -67,8 +67,8 @@
 		STOP_PROCESSING_POWER_OBJECT(src)
 	. = ..()
 
-/obj/item/powersink/attackby(var/obj/item/I, var/mob/user)
-	if(IS_SCREWDRIVER(I))
+/obj/item/powersink/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		if(mode == DISCONNECTED)
 			var/turf/T = loc
 			if(isturf(T) && !!T.is_plating())

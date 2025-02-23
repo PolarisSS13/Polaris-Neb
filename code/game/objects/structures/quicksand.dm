@@ -79,8 +79,8 @@
 	exposed = 1
 	update_icon()
 
-/obj/effect/quicksand/attackby(obj/item/W, mob/user)
-	if(!exposed && W.expend_attack_force(user))
+/obj/effect/quicksand/attackby(obj/item/used_item, mob/user)
+	if(!exposed && used_item.expend_attack_force(user))
 		expose()
 		return TRUE
 	else

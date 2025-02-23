@@ -141,26 +141,26 @@
 		if(!inserted_cylinder)
 			. += "There is no piston cylinder inserted into \the [src]."
 
-/obj/machinery/atmospherics/binary/stirling/attackby(var/obj/item/W, var/mob/user)
-	if((istype(W, /obj/item/tank/stirling)))
+/obj/machinery/atmospherics/binary/stirling/attackby(var/obj/item/used_item, var/mob/user)
+	if((istype(used_item, /obj/item/tank/stirling)))
 		if(inserted_cylinder)
 			return TRUE
-		if(!user.try_unequip(W, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You insert \the [W] into \the [src]."))
-		inserted_cylinder = W
+		to_chat(user, SPAN_NOTICE("You insert \the [used_item] into \the [src]."))
+		inserted_cylinder = used_item
 		update_icon()
 		return TRUE
 
 	if(!panel_open)
-		if(IS_CROWBAR(W) && inserted_cylinder)
+		if(IS_CROWBAR(used_item) && inserted_cylinder)
 			inserted_cylinder.dropInto(get_turf(src))
 			to_chat(user, SPAN_NOTICE("You remove \the [inserted_cylinder] from \the [src]."))
 			inserted_cylinder = null
 			stop_engine()
 			return TRUE
 
-		if(IS_WRENCH(W))
+		if(IS_WRENCH(used_item))
 			var/target_frequency = input(user, "Enter the cycle frequency you would like \the [src] to operate at ([MAX_FREQUENCY/4] - [MAX_FREQUENCY] Hz)", "Stirling Frequency", cycle_frequency) as num | null
 			if(!CanPhysicallyInteract(user) || !target_frequency)
 				return TRUE

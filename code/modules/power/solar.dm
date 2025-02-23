@@ -73,8 +73,8 @@ var/global/list/solars_list = list()
 
 
 
-/obj/machinery/power/solar/attackby(obj/item/W, mob/user)
-	if(IS_CROWBAR(W))
+/obj/machinery/power/solar/attackby(obj/item/used_item, mob/user)
+	if(IS_CROWBAR(used_item))
 		playsound(loc, 'sound/machines/click.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] begins to take the glass off the solar panel.</span>")
 		if(do_after(user, 50,src))
@@ -86,9 +86,9 @@ var/global/list/solars_list = list()
 			user.visible_message("<span class='notice'>[user] takes the glass off the solar panel.</span>")
 			qdel(src)
 		return TRUE
-	else if (W)
+	else if (used_item)
 		add_fingerprint(user)
-		current_health -= W.expend_attack_force(user)
+		current_health -= used_item.expend_attack_force(user)
 		healthcheck()
 	return ..()
 
@@ -240,8 +240,8 @@ var/global/list/solars_list = list()
 		glass_type = null
 		glass_reinforced = null
 
-/obj/item/solar_assembly/attackby(var/obj/item/W, var/mob/user)
-	if(IS_WRENCH(W))
+/obj/item/solar_assembly/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_WRENCH(used_item))
 		if(!anchored && isturf(loc))
 			anchored = TRUE
 			default_pixel_x = 0
@@ -256,8 +256,8 @@ var/global/list/solars_list = list()
 			user.visible_message("<span class='notice'>[user] unwrenches the solar assembly from its place.</span>")
 			playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
 			return TRUE
-	else if(istype(W, /obj/item/stack/material) && W.get_material_type() == /decl/material/solid/glass)
-		var/obj/item/stack/material/S = W
+	else if(istype(used_item, /obj/item/stack/material) && used_item.get_material_type() == /decl/material/solid/glass)
+		var/obj/item/stack/material/S = used_item
 		if(!S.use(2))
 			to_chat(user, "<span class='warning'>You need two sheets of glass to put them into a solar panel.</span>")
 			return TRUE
@@ -270,12 +270,12 @@ var/global/list/solars_list = list()
 		else
 			new /obj/machinery/power/solar(get_turf(src), src)
 		return TRUE
-	if(!tracker && istype(W, /obj/item/tracker_electronics))
+	if(!tracker && istype(used_item, /obj/item/tracker_electronics))
 		tracker = TRUE
-		qdel(W)
+		qdel(used_item)
 		user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 		return TRUE
-	else if(IS_CROWBAR(W))
+	else if(IS_CROWBAR(used_item))
 		new /obj/item/tracker_electronics(loc)
 		tracker = 0
 		user.visible_message("<span class='notice'>[user] takes out the electronics from the solar assembly.</span>")

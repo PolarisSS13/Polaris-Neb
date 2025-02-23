@@ -35,8 +35,8 @@
 	else
 		. += "It has a blank space for a signature."
 
-/obj/item/card/union/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_PEN(thing))
+/obj/item/card/union/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_PEN(used_item))
 		if(signed_by)
 			to_chat(user, SPAN_WARNING("\The [src] has already been signed."))
 		else
@@ -63,9 +63,9 @@
 	. = ..()
 	add_overlay(overlay_image(icon, "[icon_state]-color", detail_color))
 
-/obj/item/card/data/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/integrated_electronics/detailer))
-		var/obj/item/integrated_electronics/detailer/D = I
+/obj/item/card/data/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/integrated_electronics/detailer))
+		var/obj/item/integrated_electronics/detailer/D = used_item
 		detail_color = D.detail_color
 		update_icon()
 	return ..()

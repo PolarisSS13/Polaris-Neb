@@ -10,20 +10,20 @@
 	use_to_pickup = 1
 	use_sound = 'sound/effects/storage/pillbottle.ogg'
 
-/datum/storage/pillbottle/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/pillbottle/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
 	if(. && istype(holder, /obj/item/pill_bottle/foil_pack))
 		var/obj/item/pill_bottle/foil_pack/pop = holder
 		if(pop.pop_sound)
 			playsound(get_turf(pop), pop.pop_sound, 50)
 
-/datum/storage/pillbottle/foil/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params = null)
+/datum/storage/pillbottle/foil/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
 	return FALSE
 
-/datum/storage/pillbottle/foil/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/pillbottle/foil/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
-	if(. && W.loc != holder && istype(W, /obj/item/pill_bottle/foil_pack))
+	if(. && removing.loc != holder && istype(removing, /obj/item/pill_bottle/foil_pack))
 		var/obj/item/pill_bottle/foil_pack/pop = holder
 		if(pop.pill_positions)
-			pop.pill_positions -= W
+			pop.pill_positions -= removing
 			pop.update_icon()

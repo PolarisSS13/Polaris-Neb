@@ -456,22 +456,22 @@
 		if(panel_open)
 			. += SPAN_WARNING("A panel on the back of \the [src] is hanging open.")
 
-/obj/item/radio/attackby(obj/item/W, mob/user)
+/obj/item/radio/attackby(obj/item/used_item, mob/user)
 	user.set_machine(src)
 
-	if(istype(W, /obj/item/encryptionkey))
+	if(istype(used_item, /obj/item/encryptionkey))
 		if(!encryption_key_capacity)
 			to_chat(user, SPAN_WARNING("\The [src] cannot accept an encryption key."))
 			return TRUE
 		if(length(encryption_keys) >= encryption_key_capacity)
 			to_chat(user, SPAN_WARNING("\The [src] cannot fit any more encryption keys."))
 			return TRUE
-		if(user.try_unequip(W, src))
-			LAZYADD(encryption_keys, W)
+		if(user.try_unequip(used_item, src))
+			LAZYADD(encryption_keys, used_item)
 			channels = null
 			return TRUE
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		if(length(encryption_keys))
 			var/obj/item/encryptionkey/ekey = pick(encryption_keys)
 			ekey.dropInto(loc)

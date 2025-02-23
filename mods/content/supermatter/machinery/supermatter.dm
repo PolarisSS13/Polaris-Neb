@@ -624,27 +624,27 @@ var/global/list/supermatter_delam_accent_sounds = list(
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/power/supermatter/attackby(obj/item/W, mob/user)
+/obj/machinery/power/supermatter/attackby(obj/item/used_item, mob/user)
 
-	if(istype(W, /obj/item/stack/tape_roll/duct_tape))
-		var/obj/item/stack/tape_roll/duct_tape/T = W
+	if(istype(used_item, /obj/item/stack/tape_roll/duct_tape))
+		var/obj/item/stack/tape_roll/duct_tape/T = used_item
 		if(!T.can_use(20))
 			to_chat(user, SPAN_WARNING("You need at least 20 [T.plural_name] to repair \the [src]."))
 			return TRUE
 		T.use(20)
 		playsound(src, 'sound/effects/tape.ogg', 100, TRUE)
-		to_chat(user, SPAN_NOTICE("You begin to repair some of the damage to \the [src] with \the [W]."))
+		to_chat(user, SPAN_NOTICE("You begin to repair some of the damage to \the [src] with \the [used_item]."))
 		damage = max(damage -10, 0)
 		return TRUE // be nice, the extra duct tape if you have 21 or more doesn't turn to ash and irradiate you.
 
-	if(!QDELETED(W))
-		user.visible_message(SPAN_WARNING("\The [user] touches \the [src] with \a [W] as silence fills the room..."),\
-			SPAN_DANGER("You touch \the [W] to \the [src] when everything suddenly goes quiet."),\
+	if(!QDELETED(used_item))
+		user.visible_message(SPAN_WARNING("\The [user] touches \the [src] with \a [used_item] as silence fills the room..."),\
+			SPAN_DANGER("You touch \the [used_item] to \the [src] when everything suddenly goes quiet."),\
 			SPAN_WARNING("Everything suddenly goes silent."))
 
-		to_chat(user, SPAN_NOTICE("\The [W] flashes into dust as you flinch away from \the [src]."))
-		user.drop_from_inventory(W)
-		Consume(user, W, TRUE)
+		to_chat(user, SPAN_NOTICE("\The [used_item] flashes into dust as you flinch away from \the [src]."))
+		user.drop_from_inventory(used_item)
+		Consume(user, used_item, TRUE)
 	user.apply_damage(150, IRRADIATE, damage_flags = DAM_DISPERSED)
 	return TRUE
 

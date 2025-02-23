@@ -85,8 +85,8 @@
 	busy = 0
 	return TRUE
 
-/obj/machinery/power/breakerbox/attackby(var/obj/item/W, var/mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/power/breakerbox/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
 		if(!CanPhysicallyInteract(user))
 			return TRUE

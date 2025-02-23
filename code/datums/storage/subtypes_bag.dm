@@ -3,19 +3,19 @@
 	allow_quick_empty = 1
 	use_to_pickup = 1
 
-/datum/storage/bag/handle_item_insertion(mob/user, obj/item/W, prevent_warning, skip_update, click_params)
+/datum/storage/bag/handle_item_insertion(mob/user, obj/item/inserting, prevent_warning, skip_update, click_params)
 	. = ..()
 	if(. && istype(holder, /obj/item/bag))
 		var/obj/item/bag/bag = holder
 		bag.update_w_class()
 
-/datum/storage/bag/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/bag/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
 	if(. && istype(holder, /obj/item/bag))
 		var/obj/item/bag/bag = holder
 		bag.update_w_class()
 
-/datum/storage/bag/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params = null)
+/datum/storage/bag/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
 	var/mob/living/human/H = ishuman(user) ? user : null // if we're human, then we need to check if bag in a pocket
 	if(holder.loc?.storage || H?.is_in_pocket(holder))
 		if(!stop_messages)
@@ -41,9 +41,9 @@
 	max_w_class = ITEM_SIZE_HUGE
 	can_hold = list(/obj/item/coin, /obj/item/cash)
 
-/datum/storage/bag/cash/infinite/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/bag/cash/infinite/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
-	if(. && istype(W,/obj/item/cash)) //only matters if its spacecash.
+	if(. && istype(removing, /obj/item/cash)) //only matters if its spacecash.
 		handle_item_insertion(null, new /obj/item/cash/c1000, TRUE)
 
 /datum/storage/bag/quantum

@@ -155,8 +155,8 @@
 	atmosphere = A.Clone()
 
 ///Resets the given weather state to our planet replacing the old one, and trigger updates. Can be a type path or instance.
-/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/W)
-	initial_weather_state = W
+/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/weather)
+	initial_weather_state = weather
 	if(!(topmost_level_id in SSmapping.levels_by_id))
 		return //It's entire possible the levels weren't initialized yet, so don't bother.
 	//Tells all our levels exposed to the sky to force change the weather.

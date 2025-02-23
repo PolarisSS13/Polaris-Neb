@@ -342,18 +342,19 @@
 		else
 			continue
 
-	for(var/obj/W in T)
+	// TODO: Jesus Christ, use matter or the procs the decompiler nades use.
+	for(var/obj/thing in T)
 		//Different classes of items give different commodities.
-		if(istype(W,/obj/item/trash/cigbutt))
+		if(istype(thing,/obj/item/trash/cigbutt))
 			if(plastic)
 				plastic.add_charge(500)
-		else if(istype(W,/obj/effect/spider/spiderling))
+		else if(istype(thing,/obj/effect/spider/spiderling))
 			if(wood)
 				wood.add_charge(2000)
 			if(plastic)
 				plastic.add_charge(2000)
-		else if(istype(W,/obj/item/light))
-			var/obj/item/light/L = W
+		else if(istype(thing,/obj/item/light))
+			var/obj/item/light/L = thing
 			if(L.status >= 2)
 				if(metal)
 					metal.add_charge(250)
@@ -361,42 +362,42 @@
 					glass.add_charge(250)
 			else
 				continue
-		else if(istype(W,/obj/item/remains/robot))
+		else if(istype(thing,/obj/item/remains/robot))
 			if(metal)
 				metal.add_charge(2000)
 			if(plastic)
 				plastic.add_charge(2000)
 			if(glass)
 				glass.add_charge(1000)
-		else if(istype(W,/obj/item/trash))
+		else if(istype(thing,/obj/item/trash))
 			if(metal)
 				metal.add_charge(1000)
 			if(plastic)
 				plastic.add_charge(3000)
-		else if(istype(W,/obj/effect/decal/cleanable/blood/gibs/robot))
+		else if(istype(thing,/obj/effect/decal/cleanable/blood/gibs/robot))
 			if(metal)
 				metal.add_charge(2000)
 			if(glass)
 				glass.add_charge(2000)
-		else if(istype(W,/obj/item/ammo_casing))
+		else if(istype(thing,/obj/item/ammo_casing))
 			if(metal)
 				metal.add_charge(1000)
-		else if(istype(W,/obj/item/shard/shrapnel))
+		else if(istype(thing,/obj/item/shard/shrapnel))
 			if(metal)
 				metal.add_charge(1000)
-		else if(istype(W,/obj/item/shard))
+		else if(istype(thing,/obj/item/shard))
 			if(glass)
 				glass.add_charge(1000)
-		else if(istype(W,/obj/item/food/grown))
+		else if(istype(thing,/obj/item/food/grown))
 			if(wood)
 				wood.add_charge(4000)
-		else if(istype(W,/obj/item/pipe))
+		else if(istype(thing,/obj/item/pipe))
 			// This allows drones and engiborgs to clear pipe assemblies from floors.
 			pass()
 		else
 			continue
 
-		qdel(W)
+		qdel(thing)
 		grabbed_something = 1
 
 	if(grabbed_something)

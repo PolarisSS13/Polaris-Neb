@@ -68,8 +68,8 @@
 		to_chat(user, SPAN_NOTICE("You have finished mopping!"))
 	return TRUE
 
-/obj/effect/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/mop) || istype(I, /obj/item/soap))
+/obj/effect/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/mop) || istype(used_item, /obj/item/soap))
 		return FALSE
 	return ..()
 

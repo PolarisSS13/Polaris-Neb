@@ -9,10 +9,10 @@
 /datum/storage/sheets/robot
 	capacity = 500 //Borgs get more because >specialization
 
-/datum/storage/sheets/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params = null)
-	if(!istype(W,/obj/item/stack/material))
+/datum/storage/sheets/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
+	if(!istype(inserting,/obj/item/stack/material))
 		if(!stop_messages)
-			to_chat(user, "\The [holder] does not accept [W].")
+			to_chat(user, "\The [holder] does not accept [inserting].")
 		return FALSE
 	var/current = 0
 	for(var/obj/item/stack/material/S in get_contents())
@@ -24,8 +24,8 @@
 	return TRUE
 
 // Modified handle_item_insertion.  Would prefer not to, but...
-/datum/storage/sheets/handle_item_insertion(mob/user, obj/item/W, prevent_warning, skip_update, click_params)
-	var/obj/item/stack/material/S = W
+/datum/storage/sheets/handle_item_insertion(mob/user, obj/item/inserting, prevent_warning, skip_update, click_params)
+	var/obj/item/stack/material/S = inserting
 	if(!istype(S))
 		return FALSE
 	var/amount
@@ -71,8 +71,8 @@
 		atom_holder.update_icon()
 
 // Instead of removing
-/datum/storage/sheets/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
-	var/obj/item/stack/material/S = W
+/datum/storage/sheets/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
+	var/obj/item/stack/material/S = removing
 	if(!istype(S))
 		return FALSE
 

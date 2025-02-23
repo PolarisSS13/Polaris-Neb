@@ -26,12 +26,12 @@
 	_cleaned = TRUE
 	name_modifier = "cleaned"
 
-/obj/item/stack/material/skin/attackby(obj/item/W, mob/user)
-	if(IS_KNIFE(W) && !_cleaned)
+/obj/item/stack/material/skin/attackby(obj/item/used_item, mob/user)
+	if(IS_KNIFE(used_item) && !_cleaned)
 		var/cleaned_sheets = 0
-		while(W.do_tool_interaction(TOOL_KNIFE, user, src, 2 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE))
+		while(used_item.do_tool_interaction(TOOL_KNIFE, user, src, 2 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE))
 
-			if(QDELETED(src) || _cleaned || get_amount() <= 0 || QDELETED(user) || (loc != user && !user.Adjacent(src)) || QDELETED(W) || user.get_active_held_item() != W)
+			if(QDELETED(src) || _cleaned || get_amount() <= 0 || QDELETED(user) || (loc != user && !user.Adjacent(src)) || QDELETED(used_item) || user.get_active_held_item() != used_item)
 				break
 
 			var/sheets = min(5, get_amount())

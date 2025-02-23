@@ -71,8 +71,8 @@ Buildable meters
 /obj/item/pipe/attack_self(mob/user)
 	return rotate(user)
 
-/obj/item/pipe/attackby(var/obj/item/W, var/mob/user)
-	if(!IS_WRENCH(W))
+/obj/item/pipe/attackby(var/obj/item/used_item, var/mob/user)
+	if(!IS_WRENCH(used_item))
 		return ..()
 	if (!isturf(loc))
 		return 1
@@ -117,8 +117,8 @@ Buildable meters
 	. = ..()
 	set_extension(src, /datum/extension/parts_stash)
 
-/obj/item/machine_chassis/attackby(var/obj/item/W, var/mob/user)
-	if(!IS_WRENCH(W))
+/obj/item/machine_chassis/attackby(var/obj/item/used_item, var/mob/user)
+	if(!IS_WRENCH(used_item))
 		return ..()
 	var/obj/machinery/machine = new build_type(get_turf(src), dir, TRUE)
 	var/datum/extension/parts_stash/stash = get_extension(src, /datum/extension/parts_stash)

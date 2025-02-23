@@ -91,8 +91,8 @@
 /mob/living/bot/try_awaken(mob/user)
 	return FALSE
 
-/mob/living/bot/attackby(var/obj/item/O, var/mob/user)
-	if(O.GetIdCard())
+/mob/living/bot/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.GetIdCard())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked
 			to_chat(user, "<span class='notice'>Controls are now [locked ? "locked." : "unlocked."]</span>")
@@ -102,7 +102,7 @@
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return TRUE
-	else if(IS_SCREWDRIVER(O))
+	else if(IS_SCREWDRIVER(used_item))
 		if(!locked)
 			open = !open
 			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
@@ -110,7 +110,7 @@
 		else
 			to_chat(user, "<span class='notice'>You need to unlock the controls first.</span>")
 		return TRUE
-	else if(IS_WELDER(O))
+	else if(IS_WELDER(used_item))
 		if(current_health < get_max_health())
 			if(open)
 				heal_overall_damage(10)

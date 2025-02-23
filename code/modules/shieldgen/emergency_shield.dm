@@ -42,20 +42,20 @@
 
 // Circumvent base machinery attackby
 // TODO: MAKE SHIELDS NOT MACHINERY???
-/obj/machinery/shield/attackby(obj/item/I, mob/user)
-	return bash(I, user)
+/obj/machinery/shield/attackby(obj/item/used_item, mob/user)
+	return bash(used_item, user)
 
-/obj/machinery/shield/bash(obj/item/W, mob/user)
+/obj/machinery/shield/bash(obj/item/used_item, mob/user)
 	if(isliving(user) && user.check_intent(I_FLAG_HELP))
 		return FALSE
-	if(!W.user_can_attack_with(user))
+	if(!used_item.user_can_attack_with(user))
 		return FALSE
-	if(W.item_flags & ITEM_FLAG_NO_BLUDGEON)
+	if(used_item.item_flags & ITEM_FLAG_NO_BLUDGEON)
 		return FALSE
 	//Calculate damage
-	switch(W.atom_damage_type)
+	switch(used_item.atom_damage_type)
 		if(BRUTE, BURN)
-			current_health -= W.expend_attack_force(user)
+			current_health -= used_item.expend_attack_force(user)
 		else
 			return FALSE
 
@@ -266,8 +266,8 @@
 		update_icon()
 		return 1
 
-/obj/machinery/shieldgen/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/machinery/shieldgen/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 100, 1)
 		if(is_open)
 			to_chat(user, "<span class='notice'>You close the panel.</span>")
@@ -276,8 +276,8 @@
 			to_chat(user, "<span class='notice'>You open the panel and expose the wiring.</span>")
 			is_open = 1
 		return TRUE
-	else if(IS_COIL(W) && malfunction && is_open)
-		var/obj/item/stack/cable_coil/coil = W
+	else if(IS_COIL(used_item) && malfunction && is_open)
+		var/obj/item/stack/cable_coil/coil = used_item
 		to_chat(user, "<span class='notice'>You begin to replace the wires.</span>")
 		if(!do_after(user, 3 SECONDS, src))
 			to_chat(user, SPAN_NOTICE("You stop repairing \the [src]."))
@@ -288,7 +288,7 @@
 			to_chat(user, "<span class='notice'>You repair \the [src]!</span>")
 			update_icon()
 		return TRUE
-	else if(IS_WRENCH(W))
+	else if(IS_WRENCH(used_item))
 		if(locked)
 			to_chat(user, "The bolts are covered, unlocking this would retract the covers.")
 			return TRUE
@@ -304,7 +304,7 @@
 			to_chat(user, "<span class='notice'>You secure \the [src] to the floor!</span>")
 			anchored = TRUE
 		return TRUE
-	else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/modular_computer/pda))
+	else if(istype(used_item, /obj/item/card/id) || istype(used_item, /obj/item/modular_computer/pda))
 		if(src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "The controls are now [src.locked ? "locked." : "unlocked."]")

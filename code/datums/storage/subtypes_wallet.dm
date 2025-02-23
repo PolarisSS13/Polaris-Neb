@@ -39,23 +39,23 @@
 		/obj/item/clothing/armor_attachment/tag,
 	)
 
-/datum/storage/wallet/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/wallet/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
 	if(. && istype(holder, /obj/item/wallet))
 		var/obj/item/wallet/wallet = holder
-		if(W == wallet.front_id)
+		if(removing == wallet.front_id)
 			wallet.front_id = null
 			wallet.SetName(initial(wallet.name))
 			wallet.update_icon()
-		if(W == wallet.front_stick)
+		if(removing == wallet.front_stick)
 			wallet.front_stick = null
 
-/datum/storage/wallet/handle_item_insertion(mob/user, obj/item/W, prevent_warning, skip_update, click_params)
+/datum/storage/wallet/handle_item_insertion(mob/user, obj/item/inserting, prevent_warning, skip_update, click_params)
 	. = ..()
 	if(. && istype(holder, /obj/item/wallet))
 		var/obj/item/wallet/wallet = holder
-		if(!wallet.front_id && istype(W, /obj/item/card/id))
-			wallet.front_id = W
+		if(!wallet.front_id && istype(inserting, /obj/item/card/id))
+			wallet.front_id = inserting
 			wallet.update_icon()
-		if(!wallet.front_stick && istype(W, /obj/item/charge_stick))
-			wallet.front_stick = W
+		if(!wallet.front_stick && istype(inserting, /obj/item/charge_stick))
+			wallet.front_stick = inserting

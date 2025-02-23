@@ -39,15 +39,15 @@
 	QDEL_NULL(artifact_find)
 	return ..()
 
-/obj/structure/boulder/attackby(var/obj/item/I, var/mob/user)
+/obj/structure/boulder/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(I, /obj/item/depth_scanner))
-		var/obj/item/depth_scanner/C = I
+	if(istype(used_item, /obj/item/depth_scanner))
+		var/obj/item/depth_scanner/C = used_item
 		C.scan_atom(user, src)
 		return TRUE
 
-	if(istype(I, /obj/item/measuring_tape))
-		var/obj/item/measuring_tape/P = I
+	if(istype(used_item, /obj/item/measuring_tape))
+		var/obj/item/measuring_tape/P = used_item
 		user.visible_message(
 			SPAN_NOTICE("\The [user] extends \the [P] towards \the [src]."),
 			SPAN_NOTICE("You extend \the [P] towards \the [src].")
@@ -56,8 +56,8 @@
 			to_chat(user, SPAN_NOTICE("\The [src] has been excavated to a depth of [src.excavation_level]cm."))
 		return TRUE
 
-	if(I.do_tool_interaction(TOOL_PICK, user, src, 3 SECONDS, set_cooldown = TRUE))
-		excavation_level += I.get_tool_property(TOOL_PICK, TOOL_PROP_EXCAVATION_DEPTH)
+	if(used_item.do_tool_interaction(TOOL_PICK, user, src, 3 SECONDS, set_cooldown = TRUE))
+		excavation_level += used_item.get_tool_property(TOOL_PICK, TOOL_PROP_EXCAVATION_DEPTH)
 		if(excavation_level > 200)
 			user.visible_message(
 				SPAN_DANGER("\The [src] suddenly crumbles away."),

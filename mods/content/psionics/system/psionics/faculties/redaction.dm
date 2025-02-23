@@ -99,16 +99,16 @@
 				E.undislocate(skip_pain = TRUE)
 				return TRUE
 
-		for(var/datum/wound/W in E.wounds)
-			if(W.bleeding())
-				if(redaction_rank >= PSI_RANK_MASTER || W.wound_damage() < 30)
+		for(var/datum/wound/wound in E.wounds)
+			if(wound.bleeding())
+				if(redaction_rank >= PSI_RANK_MASTER || wound.wound_damage() < 30)
 					to_chat(user, SPAN_NOTICE("You knit together severed veins and broken flesh, stemming the bleeding."))
-					W.bleed_timer = 0
-					W.clamped = TRUE
+					wound.bleed_timer = 0
+					wound.clamped = TRUE
 					E.status &= ~ORGAN_BLEEDING
 					return TRUE
 				else
-					to_chat(user, SPAN_NOTICE("This [W.desc] is beyond your power to heal."))
+					to_chat(user, SPAN_NOTICE("This [wound.desc] is beyond your power to heal."))
 
 		if(redaction_rank >= PSI_RANK_GRANDMASTER)
 			for(var/obj/item/organ/internal/organ in E.internal_organs)

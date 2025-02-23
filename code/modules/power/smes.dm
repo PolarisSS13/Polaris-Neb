@@ -220,10 +220,10 @@
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/power/smes/attackby(var/obj/item/W, var/mob/user)
-	if((. = component_attackby(W, user)))
+/obj/machinery/power/smes/attackby(var/obj/item/used_item, var/mob/user)
+	if((. = component_attackby(used_item, user)))
 		return
-	return bash(W, user)
+	return bash(used_item, user)
 
 /obj/machinery/power/smes/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
 	// this is the data which will be sent to the ui

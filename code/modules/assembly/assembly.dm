@@ -83,15 +83,15 @@
 		//Not sure what goes here quite yet send signal?
 	return 1
 
-/obj/item/assembly/attackby(obj/item/component, mob/user)
-	if(!user_can_attack_with(user) || !component.user_can_attack_with(user))
+/obj/item/assembly/attackby(obj/item/used_item, mob/user)
+	if(!user_can_attack_with(user) || !used_item.user_can_attack_with(user))
 		return TRUE
-	if(isassembly(component))
-		var/obj/item/assembly/assembly = component
+	if(isassembly(used_item))
+		var/obj/item/assembly/assembly = used_item
 		if(!assembly.secured && !secured)
 			attach_assembly(assembly, user)
 			return TRUE
-	if(IS_SCREWDRIVER(component))
+	if(IS_SCREWDRIVER(used_item))
 		if(toggle_secure())
 			to_chat(user, SPAN_NOTICE("\The [src] is ready!"))
 		else

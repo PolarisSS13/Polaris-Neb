@@ -57,8 +57,8 @@
 /obj/item/food/grown/dried_tobacco/fine
 	seed = "finetobacco"
 
-/obj/item/clothing/mask/smokable/cigarette/rolled/attackby(obj/item/I, mob/user)
-	if(!istype(I, /obj/item/cigarette_filter))
+/obj/item/clothing/mask/smokable/cigarette/rolled/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/cigarette_filter))
 		return ..()
 	if(filter)
 		to_chat(user, "<span class='warning'>[src] already has a filter!</span>")
@@ -66,12 +66,12 @@
 	if(lit)
 		to_chat(user, "<span class='warning'>[src] is lit already!</span>")
 		return TRUE
-	if(!user.try_unequip(I))
+	if(!user.try_unequip(used_item))
 		return TRUE
-	to_chat(user, "<span class='notice'>You stick [I] into \the [src]</span>")
+	to_chat(user, "<span class='notice'>You stick [used_item] into \the [src]</span>")
 	filter = 1
 	SetName("filtered [name]")
 	brand = "[brand] with a filter"
 	update_icon()
-	qdel(I)
+	qdel(used_item)
 	return TRUE

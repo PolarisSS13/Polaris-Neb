@@ -151,12 +151,12 @@
 		remove_vial(user)
 	return TRUE
 
-/obj/item/chems/hypospray/vial/attackby(obj/item/W, mob/user)
-	if(!istype(W, /obj/item/chems/glass/beaker/vial))
+/obj/item/chems/hypospray/vial/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/chems/glass/beaker/vial))
 		return ..()
 	if(!do_after(user, 1 SECOND, src))
 		return TRUE
-	insert_vial(W, user)
+	insert_vial(used_item, user)
 	return TRUE
 
 /obj/item/chems/hypospray/vial/afterattack(obj/target, mob/user, proximity) // hyposprays can be dumped into, why not out? uses standard_pour_into helper checks.

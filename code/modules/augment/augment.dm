@@ -22,8 +22,8 @@
 	update_parent_organ()
 	reagents?.clear_reagents() // Removing meat from the reagents list.
 
-/obj/item/organ/internal/augment/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W) && allowed_organs.len > 1)
+/obj/item/organ/internal/augment/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item) && allowed_organs.len > 1)
 		//Here we can adjust location for implants that allow multiple slots
 		organ_tag = input(user, "Adjust installation parameters") as null|anything in allowed_organs
 		update_parent_organ()

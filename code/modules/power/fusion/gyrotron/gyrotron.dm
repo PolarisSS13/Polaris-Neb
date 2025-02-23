@@ -57,8 +57,8 @@
 	else
 		icon_state = "emitter-off"
 
-/obj/machinery/emitter/gyrotron/attackby(var/obj/item/W, var/mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/emitter/gyrotron/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/datum/extension/local_network_member/fusion = get_extension(src, /datum/extension/local_network_member)
 		fusion.get_new_tag(user)
 		return TRUE

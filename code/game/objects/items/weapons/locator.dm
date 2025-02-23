@@ -51,11 +51,11 @@ Frequency:
 			if (sr)
 				src.temp += "<B>Located Beacons:</B><BR>"
 
-				for(var/obj/item/radio/beacon/W in global.radio_beacons)
-					if(!W.functioning)
+				for(var/obj/item/radio/beacon/radio in global.radio_beacons)
+					if(!radio.functioning)
 						continue
-					if (W.frequency == src.frequency)
-						var/turf/tr = get_turf(W)
+					if (radio.frequency == src.frequency)
+						var/turf/tr = get_turf(radio)
 						if (tr.z == sr.z && tr)
 							var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
 							if (direct < 5)
@@ -68,19 +68,19 @@ Frequency:
 										direct = "weak"
 									else
 										direct = "very weak"
-							src.temp += "[W.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
+							src.temp += "[radio.code]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>Extranneous Signals:</B><BR>"
-				for (var/obj/item/implant/tracking/W in global.tracking_implants)
-					if (!W.implanted || !(istype(W.loc,/obj/item/organ/external) || ismob(W.loc)))
+				for (var/obj/item/implant/tracking/implant in global.tracking_implants)
+					if (!implant.implanted || !(istype(implant.loc,/obj/item/organ/external) || ismob(implant.loc)))
 						continue
 					else
-						var/mob/M = W.loc
+						var/mob/M = implant.loc
 						if (M.stat == DEAD)
 							if (M.timeofdeath + 6000 < world.time)
 								continue
 
-					var/turf/tr = get_turf(W)
+					var/turf/tr = get_turf(implant)
 					if (tr.z == sr.z && tr)
 						var/direct = max(abs(tr.x - sr.x), abs(tr.y - sr.y))
 						if (direct < 20)
@@ -91,7 +91,7 @@ Frequency:
 									direct = "strong"
 								else
 									direct = "weak"
-							src.temp += "[W.id]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
+							src.temp += "[implant.id]-[dir2text(get_dir(sr, tr))]-[direct]<BR>"
 
 				src.temp += "<B>You are at \[[sr.x],[sr.y],[sr.z]\]</B> in orbital coordinates.<BR><BR><A href='byond://?src=\ref[src];refresh=1'>Refresh</A><BR>"
 			else

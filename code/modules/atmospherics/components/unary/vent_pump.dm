@@ -278,16 +278,16 @@
 	. = ..()
 	toggle_input_toggle()
 
-/obj/machinery/atmospherics/unary/vent_pump/attackby(obj/item/W, mob/user)
-	if(IS_WELDER(W))
+/obj/machinery/atmospherics/unary/vent_pump/attackby(obj/item/used_item, mob/user)
+	if(IS_WELDER(used_item))
 
-		var/obj/item/weldingtool/WT = W
+		var/obj/item/weldingtool/welder = used_item
 
-		if(!WT.isOn())
+		if(!welder.isOn())
 			to_chat(user, "<span class='notice'>The welding tool needs to be on to start this task.</span>")
 			return 1
 
-		if(!WT.weld(0,user))
+		if(!welder.weld(0,user))
 			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			return 1
 
@@ -301,7 +301,7 @@
 		if(!src)
 			return 1
 
-		if(!WT.isOn())
+		if(!welder.isOn())
 			to_chat(user, "<span class='notice'>The welding tool needs to be on to finish this task.</span>")
 			return 1
 
@@ -312,7 +312,7 @@
 			"<span class='notice'>You [welded ? "weld \the [src] shut" : "unweld \the [src]"].</span>", \
 			"You hear welding.")
 		return 1
-	if(IS_MULTITOOL(W))
+	if(IS_MULTITOOL(used_item))
 		var/datum/browser/written_digital/popup = new(user, "Vent Configuration Utility", "[src] Configuration Panel", 600, 200)
 		popup.set_content(jointext(get_console_data(),"<br>"))
 		popup.open()

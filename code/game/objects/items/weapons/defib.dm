@@ -69,23 +69,23 @@
 	return TRUE
 
 // TODO: This should really use the cell extension
-/obj/item/defibrillator/attackby(obj/item/W, mob/user, params)
-	if(W == paddles)
+/obj/item/defibrillator/attackby(obj/item/used_item, mob/user, params)
+	if(used_item == paddles)
 		reattach_paddles(user)
 		return TRUE
-	else if(istype(W, /obj/item/cell))
+	else if(istype(used_item, /obj/item/cell))
 		if(bcell)
 			to_chat(user, "<span class='notice'>\The [src] already has a cell.</span>")
 		else
-			if(!user.try_unequip(W))
+			if(!user.try_unequip(used_item))
 				return TRUE
-			W.forceMove(src)
-			bcell = W
+			used_item.forceMove(src)
+			bcell = used_item
 			to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 			update_icon()
 		return TRUE
 
-	else if(IS_SCREWDRIVER(W))
+	else if(IS_SCREWDRIVER(used_item))
 		if(bcell)
 			bcell.update_icon()
 			bcell.dropInto(loc)

@@ -423,9 +423,9 @@
 	DH.forceMove(src)
 	drill_head = DH
 
-/obj/item/mech_equipment/drill/attackby(obj/item/I, mob/user)
-	if (istype(I, /obj/item/drill_head))
-		attach_head(I, user)
+/obj/item/mech_equipment/drill/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/drill_head))
+		attach_head(used_item, user)
 		return TRUE
 	. = ..()
 
@@ -755,10 +755,10 @@
 	passive_power_use = 0
 	. = ..()
 
-/obj/item/mech_equipment/camera/attackby(obj/item/W, mob/user)
+/obj/item/mech_equipment/camera/attackby(obj/item/used_item, mob/user)
 	. = ..()
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
 		D.ui_interact(user)
 

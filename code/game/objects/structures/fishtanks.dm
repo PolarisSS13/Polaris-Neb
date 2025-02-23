@@ -70,10 +70,10 @@ var/global/list/fishtank_cache = list()
 	visible_message(SPAN_NOTICE("\The [user] taps on \the [src]."))
 	return TRUE
 
-/obj/structure/glass_tank/attackby(var/obj/item/W, var/mob/user)
-	if(W.get_attack_force(user) < 5 || !user.check_intent(I_FLAG_HARM))
+/obj/structure/glass_tank/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.get_attack_force(user) < 5 || !user.check_intent(I_FLAG_HARM))
 		attack_animation(user)
-		visible_message(SPAN_NOTICE("\The [user] taps \the [src] with \the [W]."))
+		visible_message(SPAN_NOTICE("\The [user] taps \the [src] with \the [used_item]."))
 	else
 		. = ..()
 

@@ -75,8 +75,8 @@
 		to_chat(user, "[html_icon(src)] <span class='warning'>[src] beeps: \"[response]\"</span>")
 		return 1
 
-/obj/machinery/atm/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/card/id))
+/obj/machinery/atm/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/card/id))
 		if(emagged > 0)
 			//prevent inserting id into an emagged ATM
 			to_chat(user, "[html_icon(src)] <span class='warning'>CARD READER ERROR. This system has been compromised!</span>")
@@ -85,7 +85,7 @@
 			to_chat(user, "You try to insert your card into [src], but nothing happens.")
 			return TRUE
 
-		var/obj/item/card/id/idcard = I
+		var/obj/item/card/id/idcard = used_item
 		if(!held_card)
 			if(!user.try_unequip(idcard, src))
 				return TRUE
@@ -96,30 +96,30 @@
 			return TRUE
 
 	else if(authenticated_account)
-		if(istype(I,/obj/item/cash))
-			var/obj/item/cash/dolla = I
+		if(istype(used_item,/obj/item/cash))
+			var/obj/item/cash/dolla = used_item
 
 			//deposit the cash
 			if(authenticated_account.deposit(dolla.absolute_worth, "Credit deposit", machine_id))
 				playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 50, 1)
 
-				to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+				to_chat(user, "<span class='info'>You insert [used_item] into [src].</span>")
 				attack_hand_with_interaction_checks(user)
-				qdel(I)
+				qdel(used_item)
 			return TRUE
 
-		if(istype(I,/obj/item/charge_stick))
-			var/obj/item/charge_stick/stick = I
-			var/datum/extension/lockable/lock = get_extension(I, /datum/extension/lockable)
+		if(istype(used_item,/obj/item/charge_stick))
+			var/obj/item/charge_stick/stick = used_item
+			var/datum/extension/lockable/lock = get_extension(used_item, /datum/extension/lockable)
 			if(lock.locked)
 				to_chat(user, SPAN_WARNING("Cannot transfer funds from a locked [stick.name]."))
 			else
 				if(authenticated_account.deposit(stick.loaded_worth, "Credit deposit", machine_id))
 					playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 50, 1)
 
-					to_chat(user, "<span class='info'>You insert [I] into [src].</span>")
+					to_chat(user, "<span class='info'>You insert [used_item] into [src].</span>")
 					attack_hand_with_interaction_checks(user)
-					qdel(I)
+					qdel(used_item)
 			return TRUE
 	return ..()
 
@@ -430,11 +430,11 @@
 					if(emagged > 0)
 						to_chat(user, "[html_icon(src)] <span class='warning'>The ATM card reader rejected your ID because this machine has been sabotaged!</span>")
 					else
-						var/obj/item/I = user.get_active_held_item()
-						if (istype(I, /obj/item/card/id))
-							if(!user.try_unequip(I, src))
+						var/obj/item/thing = user.get_active_held_item()
+						if (istype(thing, /obj/item/card/id))
+							if(!user.try_unequip(thing, src))
 								return
-							held_card = I
+							held_card = thing
 				else
 					release_held_id(user)
 			if("logout")
@@ -445,9 +445,9 @@
 
 /obj/machinery/atm/proc/scan_user(mob/living/human/human_user)
 	if(!authenticated_account)
-		var/obj/item/card/id/I = human_user.GetIdCard()
-		if(istype(I))
-			return I
+		var/obj/item/card/id/thing = human_user.GetIdCard()
+		if(istype(thing))
+			return thing
 
 // put the currently held id on the ground or in the hand of the user
 /obj/machinery/atm/proc/release_held_id(mob/living/human/human_user)

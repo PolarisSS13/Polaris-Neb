@@ -77,8 +77,8 @@
 		return TRUE
 	return ..()
 
-/obj/structure/fence/handle_repair(mob/user, obj/item/tool)
-	var/obj/item/stack/stack = tool
+/obj/structure/fence/handle_repair(mob/user, obj/item/used_item)
+	var/obj/item/stack/stack = used_item
 	if(hole_size > NO_HOLE && istype(stack))
 		to_chat(user, SPAN_NOTICE("You fit [stack.get_string_for_amount(1)] to damaged areas of \the [src]."))
 		stack.use(1)
@@ -88,8 +88,8 @@
 	return ..()
 
 
-/obj/structure/fence/attackby(obj/item/tool, mob/user)
-	if(IS_WIRECUTTER(tool))
+/obj/structure/fence/attackby(obj/item/used_item, mob/user)
+	if(IS_WIRECUTTER(used_item))
 		if(!cuttable)
 			to_chat(user, SPAN_WARNING("This section of the fence can't be cut."))
 			return TRUE
@@ -98,7 +98,7 @@
 			to_chat(user, SPAN_NOTICE("This fence has too much cut out of it already."))
 			return TRUE
 
-		if(tool.do_tool_interaction(TOOL_WIRECUTTERS, user, src, CUT_TIME, "cutting through", "cutting through", check_skill = FALSE) && current_stage == hole_size) // do_tool_interaction sleeps, so make sure it hasn't been cut more while we waited
+		if(used_item.do_tool_interaction(TOOL_WIRECUTTERS, user, src, CUT_TIME, "cutting through", "cutting through", check_skill = FALSE) && current_stage == hole_size) // do_tool_interaction sleeps, so make sure it hasn't been cut more while we waited
 			switch(++hole_size)
 				if(MEDIUM_HOLE)
 					user.visible_message(

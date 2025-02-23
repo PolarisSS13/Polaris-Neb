@@ -23,12 +23,12 @@ FLOOR SAFES
 
 // TODO: make this use a storage datum?
 /obj/structure/safe/Initialize()
-	for(var/obj/item/I in loc)
+	for(var/obj/item/thing in loc)
 		if(space >= maxspace)
 			break
-		if(I.w_class + space <= maxspace) //todo replace with internal storage or something
-			space += I.w_class
-			I.forceMove(src)
+		if(thing.w_class + space <= maxspace) //todo replace with internal storage or something
+			space += thing.w_class
+			thing.forceMove(src)
 	. = ..()
 	tumbler_1_pos = rand(0, 72)
 	tumbler_1_open = rand(0, 72)
@@ -134,21 +134,21 @@ FLOOR SAFES
 		return TOPIC_REFRESH
 
 
-/obj/structure/safe/attackby(obj/item/I, mob/user)
+/obj/structure/safe/attackby(obj/item/used_item, mob/user)
 	if(open)
-		if(I.w_class + space <= maxspace)
-			if(!user.try_unequip(I, src))
+		if(used_item.w_class + space <= maxspace)
+			if(!user.try_unequip(used_item, src))
 				return TRUE
-			space += I.w_class
-			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+			space += used_item.w_class
+			to_chat(user, "<span class='notice'>You put [used_item] in [src].</span>")
 			updateUsrDialog()
 			return TRUE
 		else
-			to_chat(user, "<span class='notice'>[I] won't fit in [src].</span>")
+			to_chat(user, "<span class='notice'>[used_item] won't fit in [src].</span>")
 			return TRUE
 	else
-		if(istype(I, /obj/item/clothing/neck/stethoscope))
-			to_chat(user, "Hold [I] in one of your hands while you manipulate the dial.")
+		if(istype(used_item, /obj/item/clothing/neck/stethoscope))
+			to_chat(user, "Hold [used_item] in one of your hands while you manipulate the dial.")
 			return TRUE
 		return FALSE
 

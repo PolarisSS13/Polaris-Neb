@@ -121,13 +121,13 @@ var/global/list/_test_storage_items = list()
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/datum/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = 0, click_params = null)
-	if(!istype(W)) return //Not an item
+/datum/storage/proc/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
+	if(!istype(inserting)) return //Not an item
 
-	if(user && !user.canUnEquip(W))
+	if(user && !user.canUnEquip(inserting))
 		return 0
 
-	if(!holder || holder.loc == W)
+	if(!holder || holder.loc == inserting)
 		return 0 //Means the item is already in the storage item
 
 	if(storage_slots != null && length(get_contents()) >= storage_slots)
@@ -135,51 +135,51 @@ var/global/list/_test_storage_items = list()
 			to_chat(user, SPAN_WARNING("\The [holder] is full, make some space."))
 		return 0 //Storage item is full
 
-	if(W.anchored)
+	if(inserting.anchored)
 		return 0
 
 	if(can_hold.len)
-		if(!is_type_in_list(W, can_hold))
-			if(!stop_messages && ! istype(W, /obj/item/hand_labeler))
-				to_chat(user, SPAN_WARNING("\The [holder] cannot hold \the [W]."))
+		if(!is_type_in_list(inserting, can_hold))
+			if(!stop_messages && ! istype(inserting, /obj/item/hand_labeler))
+				to_chat(user, SPAN_WARNING("\The [holder] cannot hold \the [inserting]."))
 			return 0
-		var/max_instances = can_hold[W.type]
-		if(max_instances && instances_of_type_in_list(W, get_contents()) >= max_instances)
-			if(!stop_messages && !istype(W, /obj/item/hand_labeler))
-				to_chat(user, SPAN_WARNING("\The [holder] has no more space specifically for \the [W]."))
+		var/max_instances = can_hold[inserting.type]
+		if(max_instances && instances_of_type_in_list(inserting, get_contents()) >= max_instances)
+			if(!stop_messages && !istype(inserting, /obj/item/hand_labeler))
+				to_chat(user, SPAN_WARNING("\The [holder] has no more space specifically for \the [inserting]."))
 			return 0
 
 	//If attempting to lable the storage item, silently fail to allow it
-	if(istype(W, /obj/item/hand_labeler) && !user?.check_intent(I_FLAG_HELP))
+	if(istype(inserting, /obj/item/hand_labeler) && !user?.check_intent(I_FLAG_HELP))
 		return FALSE
 	//Prevent package wrapper from being inserted by default
-	if(istype(W, /obj/item/stack/package_wrap) && !user?.check_intent(I_FLAG_HELP))
+	if(istype(inserting, /obj/item/stack/package_wrap) && !user?.check_intent(I_FLAG_HELP))
 		return FALSE
 
 	// Don't allow insertion of unsafed compressed matter implants
 	// Since they are sucking something up now, their afterattack will delete the storage
-	if(istype(W, /obj/item/implanter/compressed))
-		var/obj/item/implanter/compressed/impr = W
+	if(istype(inserting, /obj/item/implanter/compressed))
+		var/obj/item/implanter/compressed/impr = inserting
 		if(!impr.safe)
 			stop_messages = 1
 			return 0
 
-	if(cant_hold.len && is_type_in_list(W, cant_hold))
+	if(cant_hold.len && is_type_in_list(inserting, cant_hold))
 		if(!stop_messages)
-			to_chat(user, SPAN_WARNING("\The [holder] cannot hold \the [W]."))
+			to_chat(user, SPAN_WARNING("\The [holder] cannot hold \the [inserting]."))
 		return 0
 
-	if (max_w_class != null && W.w_class > max_w_class)
+	if (max_w_class != null && inserting.w_class > max_w_class)
 		if(!stop_messages)
-			to_chat(user, SPAN_WARNING("\The [W] is too big for \the [holder]."))
+			to_chat(user, SPAN_WARNING("\The [inserting] is too big for \the [holder]."))
 		return 0
 
-	if(W.obj_flags & OBJ_FLAG_NO_STORAGE)
+	if(inserting.obj_flags & OBJ_FLAG_NO_STORAGE)
 		if(!stop_messages)
-			to_chat(user, SPAN_WARNING("\The [W] cannot be placed in \the [holder]."))
+			to_chat(user, SPAN_WARNING("\The [inserting] cannot be placed in \the [holder]."))
 		return 0
 
-	var/total_storage_space = W.get_storage_cost() + storage_space_used() //Adds up the combined w_classes which will be in the storage item if the item is added to it.
+	var/total_storage_space = inserting.get_storage_cost() + storage_space_used() //Adds up the combined w_classes which will be in the storage item if the item is added to it.
 	if(total_storage_space > max_storage_space)
 		if(!stop_messages)
 			to_chat(user, SPAN_WARNING("\The [holder] is too full, make some space."))
@@ -190,35 +190,35 @@ var/global/list/_test_storage_items = list()
 //This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
 //The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
 //such as when picking up all the items on a tile with one click.
-/datum/storage/proc/handle_item_insertion(mob/user, obj/item/W, prevent_warning, skip_update, click_params)
-	if(!istype(W))
+/datum/storage/proc/handle_item_insertion(mob/user, obj/item/inserting, prevent_warning, skip_update, click_params)
+	if(!istype(inserting))
 		return FALSE
-	if(ismob(W.loc))
-		var/mob/M = W.loc
-		if(!M.try_unequip(W))
+	if(ismob(inserting.loc))
+		var/mob/M = inserting.loc
+		if(!M.try_unequip(inserting))
 			return FALSE
 
 	if(holder.reagents?.total_volume)
-		W.fluid_act(holder.reagents)
-		if(QDELETED(W))
+		inserting.fluid_act(holder.reagents)
+		if(QDELETED(inserting))
 			return FALSE
 
-	W.forceMove(holder)
-	W.on_enter_storage(src)
+	inserting.forceMove(holder)
+	inserting.on_enter_storage(src)
 	if(user)
 		holder.add_fingerprint(user)
 		if(!prevent_warning)
 			for(var/mob/M in viewers(user, null))
 				if (M == user)
-					to_chat(user, SPAN_NOTICE("You put \the [W] into [holder]."))
+					to_chat(user, SPAN_NOTICE("You put \the [inserting] into [holder]."))
 				else if (get_dist(holder, M) <= 1) //If someone is standing close enough, they can tell what it is...
-					M.show_message(SPAN_NOTICE("\The [user] puts [W] into [holder]."), VISIBLE_MESSAGE)
-				else if (W && W.w_class >= ITEM_SIZE_NORMAL) //Otherwise they can only see large or normal items from a distance...
-					M.show_message(SPAN_NOTICE("\The [user] puts [W] into [holder]."), VISIBLE_MESSAGE)
+					M.show_message(SPAN_NOTICE("\The [user] puts [inserting] into [holder]."), VISIBLE_MESSAGE)
+				else if (inserting && inserting.w_class >= ITEM_SIZE_NORMAL) //Otherwise they can only see large or normal items from a distance...
+					M.show_message(SPAN_NOTICE("\The [user] puts [inserting] into [holder]."), VISIBLE_MESSAGE)
 		// Run this regardless of update flag, as it impacts our remaining storage space.
 		consolidate_stacks()
 		if(!skip_update)
-			update_ui_after_item_insertion(W, click_params)
+			update_ui_after_item_insertion(inserting, click_params)
 	holder.storage_inserted()
 	if(!skip_update)
 		holder.update_icon()
@@ -258,34 +258,34 @@ var/global/list/_test_storage_items = list()
 	storage_ui?.on_post_remove()
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/datum/storage/proc/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
-	if(!istype(W))
+/datum/storage/proc/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
+	if(!istype(removing))
 		return FALSE
 	new_location = new_location || get_turf(holder)
-	storage_ui?.on_pre_remove(W)
+	storage_ui?.on_pre_remove(removing)
 	if(ismob(holder?.loc))
-		W.dropped(user)
+		removing.dropped(user)
 	if(ismob(new_location))
-		W.hud_layerise()
+		removing.hud_layerise()
 	else
-		W.reset_plane_and_layer()
-	W.forceMove(new_location)
+		removing.reset_plane_and_layer()
+	removing.forceMove(new_location)
 	if(!skip_update)
-		update_ui_after_item_removal(W)
-	if(W.maptext)
-		W.maptext = ""
-	W.on_exit_storage(src)
+		update_ui_after_item_removal(removing)
+	if(removing.maptext)
+		removing.maptext = ""
+	removing.on_exit_storage(src)
 	if(!skip_update && holder)
 		holder.update_icon()
 	return TRUE
 
 // Only do ui functions for now; the obj is responsible for anything else.
-/datum/storage/proc/on_item_pre_deletion(obj/item/W)
-	storage_ui?.on_pre_remove(W) // Supposed to be able to handle null user.
+/datum/storage/proc/on_item_pre_deletion(obj/item/deleting)
+	storage_ui?.on_pre_remove(deleting) // Supposed to be able to handle null user.
 
 // Only do ui functions for now; the obj is responsible for anything else.
-/datum/storage/proc/on_item_post_deletion(obj/item/W)
-	update_ui_after_item_removal(W)
+/datum/storage/proc/on_item_post_deletion(obj/item/deleting)
+	update_ui_after_item_removal(deleting)
 	holder?.queue_icon_update()
 
 //Run once after using remove_from_storage with skip_update = 1

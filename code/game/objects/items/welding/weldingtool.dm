@@ -137,27 +137,27 @@
 			to_chat(user, SPAN_NOTICE("The welder can now be attached and modified."))
 	return TRUE
 
-/obj/item/weldingtool/proc/attempt_modify(var/obj/item/W, var/mob/user)
-	if(!status && istype(W, /obj/item/stack/material/rods))
-		var/obj/item/stack/material/rods/R = W
+/obj/item/weldingtool/proc/attempt_modify(var/obj/item/used_item, var/mob/user)
+	if(!status && istype(used_item, /obj/item/stack/material/rods))
+		var/obj/item/stack/material/rods/R = used_item
 		R.use(1)
 		user.drop_from_inventory(src)
 		user.put_in_hands(new /obj/item/flamethrower(get_turf(src), src))
 		qdel(src)
 		return TRUE
 
-/obj/item/weldingtool/attackby(obj/item/W, mob/user)
+/obj/item/weldingtool/attackby(obj/item/used_item, mob/user)
 	if(welding)
 		to_chat(user, SPAN_WARNING("Stop welding first!"))
 		return TRUE
 
-	if (istype(W, /obj/item/chems/welder_tank))
-		return insert_tank(W, user)
+	if (istype(used_item, /obj/item/chems/welder_tank))
+		return insert_tank(used_item, user)
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		return toggle_unscrewed(user)
 
-	if(attempt_modify(W, user))
+	if(attempt_modify(used_item, user))
 		return TRUE
 
 	return ..()

@@ -49,22 +49,22 @@
 			return TRUE
 	return ..()
 
-/obj/item/clothing/attackby(var/obj/item/I, var/mob/user)
+/obj/item/clothing/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(I, /obj/item/clothing))
+	if(istype(used_item, /obj/item/clothing))
 
-		var/obj/item/clothing/accessory = I
+		var/obj/item/clothing/accessory = used_item
 		if(!isnull(accessory.accessory_slot))
 			if(can_attach_accessory(accessory, user))
 				if(user.try_unequip(accessory))
 					attach_accessory(user, accessory)
 			else
-				to_chat(user, SPAN_WARNING("You cannot attach \the [I] to \the [src]."))
+				to_chat(user, SPAN_WARNING("You cannot attach \the [used_item] to \the [src]."))
 			return TRUE
 
 	if(length(accessories))
 		for(var/obj/item/clothing/accessory in accessories)
-			accessory.attackby(I, user)
+			accessory.attackby(used_item, user)
 		return TRUE
 
 	. = ..()

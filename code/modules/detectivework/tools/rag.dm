@@ -45,16 +45,16 @@
 
 	return ..()
 
-/obj/item/chems/rag/attackby(obj/item/W, mob/user)
-	if(W.isflamesource())
+/obj/item/chems/rag/attackby(obj/item/used_item, mob/user)
+	if(used_item.isflamesource())
 		if(is_on_fire())
 			to_chat(user, SPAN_WARNING("\The [src] is already blazing merrily!"))
 			return TRUE
 		ignite_fire()
 		if(is_on_fire())
-			visible_message(SPAN_DANGER("\The [user] lights \the [src] with \the [W]."))
+			visible_message(SPAN_DANGER("\The [user] lights \the [src] with \the [used_item]."))
 		else
-			to_chat(user, SPAN_WARNING("You attempt to light \the [src] with \the [W], but it doesn't seem to be flammable."))
+			to_chat(user, SPAN_WARNING("You attempt to light \the [src] with \the [used_item], but it doesn't seem to be flammable."))
 		update_name()
 		return TRUE
 	return ..()

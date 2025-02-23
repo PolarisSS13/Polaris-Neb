@@ -80,10 +80,10 @@
 	return ..(user, allow_dump=1)
 
 //this is largely hacky and bad :(	-Pete
-/obj/item/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A, mob/user)
-	if(w_class > ITEM_SIZE_NORMAL && A.get_tool_quality(TOOL_SAW) > 0)
-		if(istype(A, /obj/item/gun/energy/plasmacutter))
-			var/obj/item/gun/energy/plasmacutter/cutter = A
+/obj/item/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/used_item, mob/user)
+	if(w_class > ITEM_SIZE_NORMAL && used_item.get_tool_quality(TOOL_SAW) > 0)
+		if(istype(used_item, /obj/item/gun/energy/plasmacutter))
+			var/obj/item/gun/energy/plasmacutter/cutter = used_item
 			if(!cutter.slice(user))
 				return ..()
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")

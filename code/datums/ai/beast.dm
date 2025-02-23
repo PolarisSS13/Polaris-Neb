@@ -41,8 +41,8 @@
 	if(!length(.))
 		if(LAZYLEN(prey))
 			. = list()
-			for(var/weakref/W in prey)
-				var/mob/M = W.resolve()
+			for(var/weakref/prey_ref in prey)
+				var/mob/M = prey_ref.resolve()
 				if(M)
 					. |= M
 		else if(body.get_nutrition() < body.get_max_nutrition() * 0.75) //time to look for some food

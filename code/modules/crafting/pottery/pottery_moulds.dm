@@ -57,7 +57,7 @@
 	else
 		QDEL_NULL(reagents)
 
-/obj/item/chems/mould/attackby(obj/item/W, mob/user)
+/obj/item/chems/mould/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
@@ -65,20 +65,20 @@
 	// This is kind of gross but getting /chems/attackby()
 	// standard_pour_into() to cooperate is a bit beyond me
 	// at the moment.
-	if(istype(W, /obj/item/chems/crucible))
+	if(istype(used_item, /obj/item/chems/crucible))
 
 		if(material?.hardness <= MAT_VALUE_MALLEABLE)
 			to_chat(user, SPAN_WARNING("\The [src] is currently too soft to be used as a mould."))
 			return TRUE
 
-		var/obj/item/chems/vessel = W
+		var/obj/item/chems/vessel = used_item
 		if(vessel.standard_pour_into(user, src))
 			return TRUE
 
-	if(try_crack_mold(user, W))
+	if(try_crack_mold(user, used_item))
 		return TRUE
 
-	if(try_take_impression(user, W))
+	if(try_take_impression(user, used_item))
 		return TRUE
 
 	return ..()

@@ -54,10 +54,10 @@
 	if(emagged && user.skill_check_multiple(list(SKILL_FORENSICS = SKILL_EXPERT, SKILL_COMPUTER = SKILL_EXPERT)))
 		. += SPAN_WARNING("On close inspection, there is something odd about the interface. You suspect it may have been tampered with.")
 
-/obj/item/stock_parts/access_lock/attackby(obj/item/W, mob/user)
+/obj/item/stock_parts/access_lock/attackby(obj/item/used_item, mob/user)
 	var/obj/machinery/machine = loc
 	if(!emagged && istype(machine))
-		var/obj/item/card/id/I = W.GetIdCard()
+		var/obj/item/card/id/I = used_item.GetIdCard()
 		if(I && check_access(I))
 			locked = !locked
 			visible_message(SPAN_NOTICE("\The [src] beeps and flashes green twice: it is now [locked ? "" : "un"]locked."))

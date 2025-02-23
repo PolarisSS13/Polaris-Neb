@@ -101,9 +101,9 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 			else
 				. += "\The [src] is assembled."
 
-/obj/structure/particle_accelerator/attackby(obj/item/W, mob/user)
-	if(has_extension(W, /datum/extension/tool))
-		if(process_tool_hit(W,user))
+/obj/structure/particle_accelerator/attackby(obj/item/used_item, mob/user)
+	if(has_extension(used_item, /datum/extension/tool))
+		if(process_tool_hit(used_item,user))
 			return TRUE
 	return ..()
 
@@ -241,9 +241,9 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 			else
 				. += "\The [src] is assembled."
 
-/obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user)
-	if(has_extension(W, /datum/extension/tool))
-		if(process_tool_hit(W,user))
+/obj/machinery/particle_accelerator/attackby(obj/item/used_item, mob/user)
+	if(has_extension(used_item, /datum/extension/tool))
+		if(process_tool_hit(used_item,user))
 			return TRUE
 	return ..()
 

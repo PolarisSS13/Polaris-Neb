@@ -135,10 +135,10 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/faxmachine/attackby(obj/item/I, mob/user)
+/obj/machinery/faxmachine/attackby(obj/item/used_item, mob/user)
 	if(istype(construct_state, /decl/machine_construction/default/panel_closed))
-		if(istype(I, /obj/item/paper) || istype(I, /obj/item/photo) || istype(I, /obj/item/paper_bundle))
-			insert_scanner_item(I, user)
+		if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo) || istype(used_item, /obj/item/paper_bundle))
+			insert_scanner_item(used_item, user)
 			return TRUE
 	. = ..()
 
@@ -263,9 +263,9 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 			to_chat(user, SPAN_WARNING("There's already a [scanner_item] in \the [src]!"))
 			return TOPIC_NOACTION
 		else
-			var/obj/item/I = user.get_active_held_item()
-			if(I)
-				insert_scanner_item(I, user)
+			var/obj/item/thing = user.get_active_held_item()
+			if(thing)
+				insert_scanner_item(thing, user)
 			else
 				to_chat(user, SPAN_WARNING("You're not holding anything!"))
 				return TOPIC_NOACTION
@@ -349,19 +349,19 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 		return
 	return D
 
-/obj/machinery/faxmachine/proc/insert_scanner_item(var/obj/item/I, var/mob/user)
+/obj/machinery/faxmachine/proc/insert_scanner_item(var/obj/item/thing, var/mob/user)
 	if(!QDELETED(scanner_item))
 		if(user)
 			to_chat(user, SPAN_WARNING("\The [src] already has something being scanned!"))
 		return FALSE
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You place \the [I] into \the [src]'s scanner."))
-		if(!user.try_unequip(I, src))
+		to_chat(user, SPAN_NOTICE("You place \the [thing] into \the [src]'s scanner."))
+		if(!user.try_unequip(thing, src))
 			return FALSE
 	else
-		I.dropInto(src)
-	scanner_item = I
+		thing.dropInto(src)
+	scanner_item = thing
 	update_ui()
 	return TRUE
 

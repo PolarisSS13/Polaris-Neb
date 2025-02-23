@@ -172,24 +172,24 @@
 				to_chat(M, SPAN_NOTICE("Your [name] goes out."))
 		qdel(src)
 
-/obj/item/clothing/mask/smokable/attackby(var/obj/item/W, var/mob/user)
-	if(W.isflamesource() || W.get_heat() >= T100C)
+/obj/item/clothing/mask/smokable/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.isflamesource() || used_item.get_heat() >= T100C)
 		var/text = matchmes
-		if(istype(W, /obj/item/flame/match))
+		if(istype(used_item, /obj/item/flame/match))
 			text = matchmes
-		else if(istype(W, /obj/item/flame/fuelled/lighter/zippo))
+		else if(istype(used_item, /obj/item/flame/fuelled/lighter/zippo))
 			text = zippomes
-		else if(istype(W, /obj/item/flame/fuelled/lighter))
+		else if(istype(used_item, /obj/item/flame/fuelled/lighter))
 			text = lightermes
-		else if(IS_WELDER(W))
+		else if(IS_WELDER(used_item))
 			text = weldermes
-		else if(istype(W, /obj/item/assembly/igniter))
+		else if(istype(used_item, /obj/item/assembly/igniter))
 			text = ignitermes
 		else
 			text = genericmes
 		text = replacetext(text, "USER", "[user]")
 		text = replacetext(text, "NAME", "[name]")
-		text = replacetext(text, "FLAME", "[W.name]")
+		text = replacetext(text, "FLAME", "[used_item.name]")
 		light(text)
 		return TRUE
 	return ..()
@@ -357,11 +357,11 @@
 	desc = "A wooden mouthpiece from a cigar. Smells rather bad."
 	material = /decl/material/solid/organic/wood/oak
 
-/obj/item/clothing/mask/smokable/cigarette/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/energy_blade/sword))
-		var/obj/item/energy_blade/sword/S = W
+/obj/item/clothing/mask/smokable/cigarette/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/energy_blade/sword))
+		var/obj/item/energy_blade/sword/S = used_item
 		if(S.active)
-			light(SPAN_WARNING("[user] swings their [W], barely missing their nose. They light their [name] in the process."))
+			light(SPAN_WARNING("[user] swings their [used_item], barely missing their nose. They light their [name] in the process."))
 			return TRUE
 	return ..()
 
@@ -539,11 +539,11 @@
 		reagents.clear_reagents()
 		SetName("empty [initial(name)]")
 
-/obj/item/clothing/mask/smokable/pipe/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/energy_blade/sword)) // Can't light a pipe with an esword
+/obj/item/clothing/mask/smokable/pipe/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/energy_blade/sword)) // Can't light a pipe with an esword
 		return TRUE
-	if (istype(W, /obj/item/food/grown))
-		var/obj/item/food/grown/grown = W
+	if (istype(used_item, /obj/item/food/grown))
+		var/obj/item/food/grown/grown = used_item
 		if (!grown.dry)
 			to_chat(user, SPAN_NOTICE("\The [grown] must be dried before you stuff it into \the [src]."))
 			return TRUE

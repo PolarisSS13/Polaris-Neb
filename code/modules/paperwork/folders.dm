@@ -35,16 +35,16 @@
 	if(has_paper_overlay && length(contents))
 		add_overlay("folder_paper")
 
-/obj/item/folder/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo) || istype(W, /obj/item/paper_bundle))
-		if(!user.try_unequip(W, src))
+/obj/item/folder/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo) || istype(used_item, /obj/item/paper_bundle))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You put the [W] into \the [src]."))
+		to_chat(user, SPAN_NOTICE("You put the [used_item] into \the [src]."))
 		updateUsrDialog()
 		update_icon()
 		return TRUE
 
-	else if(IS_PEN(W))
+	else if(IS_PEN(used_item))
 		updateUsrDialog()
 		var/n_name = sanitize_safe(input(user, "What would you like to label the folder?", "Folder Labelling", null)  as text, MAX_NAME_LEN)
 		if(!CanPhysicallyInteractWith(user, src))
@@ -119,7 +119,7 @@
 	else
 		..()
 
-/obj/item/folder/envelope/attackby(obj/item/W, mob/user)
+/obj/item/folder/envelope/attackby(obj/item/used_item, mob/user)
 	if(sealed)
 		sealcheck(user)
 		return TRUE

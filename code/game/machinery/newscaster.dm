@@ -882,8 +882,8 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 		src.attack_self(src.loc)
 
 
-/obj/item/newspaper/attackby(obj/item/W, mob/user)
-	if(IS_PEN(W))
+/obj/item/newspaper/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
 		if(src.scribble_page == src.curr_page)
 			to_chat(user, SPAN_WARNING("There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?"))
 			return TRUE
@@ -893,7 +893,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 		if(!CanPhysicallyInteractWith(user, src))
 			to_chat(user, SPAN_WARNING("You must stay close to \the [src]!"))
 			return TRUE
-		if(W.do_tool_interaction(TOOL_PEN, user, src, 0, fuel_expenditure = 1) && !QDELETED(src)) //Make it instant, since handle_writing_literacy does the waiting
+		if(used_item.do_tool_interaction(TOOL_PEN, user, src, 0, fuel_expenditure = 1) && !QDELETED(src)) //Make it instant, since handle_writing_literacy does the waiting
 			s = sanitize(s)
 			s = user.handle_writing_literacy(user, s)
 			src.scribble_page = src.curr_page

@@ -62,9 +62,9 @@
 		else
 			. += SPAN_WARNING("\The [src] has no sealant loaded.")
 
-/obj/item/gun/launcher/sealant/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/sealant_tank) && user.try_unequip(W, src))
-		loaded_tank = W
+/obj/item/gun/launcher/sealant/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/sealant_tank) && user.try_unequip(used_item, src))
+		loaded_tank = used_item
 		to_chat(user, SPAN_NOTICE("You slot \the [loaded_tank] into \the [src]."))
 		update_icon()
 		return TRUE

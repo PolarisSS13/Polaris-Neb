@@ -144,9 +144,9 @@
 	if(!(. = ..()) && isitem(dropping) && istype(user) && user.check_intent(I_FLAG_HELP) && CanPhysicallyInteract(user))
 		return attempt_to_stock(dropping, user)
 
-/obj/machinery/vending/attackby(obj/item/W, mob/user)
+/obj/machinery/vending/attackby(obj/item/used_item, mob/user)
 
-	var/obj/item/charge_stick/CS = W.GetChargeStick()
+	var/obj/item/charge_stick/CS = used_item.GetChargeStick()
 	if (currently_vending && vendor_account && !vendor_account.suspended)
 
 		if(!vend_ready)
@@ -159,8 +159,8 @@
 		if (CS)
 			paid = pay_with_charge_card(CS)
 			handled = 1
-		else if (istype(W, /obj/item/cash))
-			var/obj/item/cash/C = W
+		else if (istype(used_item, /obj/item/cash))
+			var/obj/item/cash/C = used_item
 			paid = pay_with_cash(C)
 			handled = 1
 
@@ -171,23 +171,23 @@
 			SSnano.update_uis(src)
 			return TRUE // don't smack that machine with your $2
 
-	if (istype(W, /obj/item/cash))
+	if (istype(used_item, /obj/item/cash))
 		attack_hand_with_interaction_checks(user)
 		return TRUE
 
-	if(IS_MULTITOOL(W) || IS_WIRECUTTER(W))
+	if(IS_MULTITOOL(used_item) || IS_WIRECUTTER(used_item))
 		if(panel_open)
 			attack_hand_with_interaction_checks(user)
 			return TRUE
 
-	if((. = component_attackby(W, user)))
+	if((. = component_attackby(used_item, user)))
 		return
 
-	if((user.check_intent(I_FLAG_HELP)) && attempt_to_stock(W, user))
+	if((user.check_intent(I_FLAG_HELP)) && attempt_to_stock(used_item, user))
 		return TRUE
 
-	if((obj_flags & OBJ_FLAG_ANCHORABLE) && (IS_WRENCH(W) || IS_HAMMER(W)))
-		wrench_floor_bolts(user, null, W)
+	if((obj_flags & OBJ_FLAG_ANCHORABLE) && (IS_WRENCH(used_item) || IS_HAMMER(used_item)))
+		wrench_floor_bolts(user, null, used_item)
 		power_change()
 		return
 
@@ -394,14 +394,14 @@
  * Add item to the machine
  *
  * Checks if item is vendable in this machine should be performed before
- * calling. W is the item being inserted, product_record is the associated vending_product entry.
+ * calling. used_item is the item being inserted, product_record is the associated vending_product entry.
  */
-/obj/machinery/vending/proc/stock(obj/item/W, var/datum/stored_items/vending_products/product_record, var/mob/user)
-	if(!user.try_unequip(W))
+/obj/machinery/vending/proc/stock(obj/item/used_item, var/datum/stored_items/vending_products/product_record, var/mob/user)
+	if(!user.try_unequip(used_item))
 		return
 
-	if(product_record.add_product(W))
-		to_chat(user, SPAN_NOTICE("You insert \the [W] in the product receptor."))
+	if(product_record.add_product(used_item))
+		to_chat(user, SPAN_NOTICE("You insert \the [used_item] in the product receptor."))
 		SSnano.update_uis(src)
 		return 1
 

@@ -49,8 +49,8 @@
 	desc = "Impact resistant server rack. You might be able to pry a disk out."
 	var/disk_looted
 
-/obj/structure/backup_server/attackby(obj/item/W, mob/user, var/click_params)
-	if(IS_CROWBAR(W))
+/obj/structure/backup_server/attackby(obj/item/used_item, mob/user, var/click_params)
+	if(IS_CROWBAR(used_item))
 		if(disk_looted)
 			to_chat(user, SPAN_WARNING("There's no disk in \the [src]."))
 		else

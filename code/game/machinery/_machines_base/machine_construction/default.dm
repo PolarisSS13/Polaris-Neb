@@ -5,7 +5,7 @@
 	var/up_state
 	var/down_state
 
-/decl/machine_construction/default/no_deconstruct/attackby(obj/item/I, mob/user, obj/machinery/machine)
+/decl/machine_construction/default/no_deconstruct/attackby(obj/item/used_item, mob/user, obj/machinery/machine)
 	. = FALSE
 
 /decl/machine_construction/default/panel_closed
@@ -21,18 +21,18 @@
 	if(!.)
 		try_change_state(machine, down_state)
 
-/decl/machine_construction/default/panel_closed/attackby(obj/item/I, mob/user, obj/machinery/machine)
+/decl/machine_construction/default/panel_closed/attackby(obj/item/used_item, mob/user, obj/machinery/machine)
 	if((. = ..()))
 		return
-	if(IS_SCREWDRIVER(I))
+	if(IS_SCREWDRIVER(used_item))
 		TRANSFER_STATE(down_state)
 		playsound(get_turf(machine), 'sound/items/Screwdriver.ogg', 50, 1)
 		machine.panel_open = TRUE
 		to_chat(user, SPAN_NOTICE("You open the maintenance hatch of \the [machine]."))
 		machine.update_icon()
 		return TRUE
-	if(istype(I, /obj/item/part_replacer))
-		var/obj/item/part_replacer/replacer = I
+	if(istype(used_item, /obj/item/part_replacer))
+		var/obj/item/part_replacer/replacer = used_item
 		if(replacer.remote_interaction)
 			machine.part_replacement(user, replacer)
 		for(var/line in machine.get_part_info_strings(user))
@@ -62,28 +62,28 @@
 	if(!.)
 		try_change_state(machine, up_state)
 
-/decl/machine_construction/default/panel_open/attackby(obj/item/I, mob/user, obj/machinery/machine)
+/decl/machine_construction/default/panel_open/attackby(obj/item/used_item, mob/user, obj/machinery/machine)
 	if((. = ..()))
 		return
-	if(IS_CROWBAR(I))
+	if(IS_CROWBAR(used_item))
 		TRANSFER_STATE(down_state)
 		playsound(get_turf(machine), 'sound/items/Crowbar.ogg', 50, 1)
 		machine.visible_message(SPAN_NOTICE("\The [user] deconstructs \the [machine]."))
 		machine.dismantle()
 		return
-	if(IS_SCREWDRIVER(I))
+	if(IS_SCREWDRIVER(used_item))
 		TRANSFER_STATE(up_state)
 		playsound(get_turf(machine), 'sound/items/Screwdriver.ogg', 50, 1)
 		machine.panel_open = FALSE
 		to_chat(user, SPAN_NOTICE("You close the maintenance hatch of \the [machine]."))
 		machine.update_icon()
 		return TRUE
-	if(istype(I, /obj/item/part_replacer))
-		return machine.part_replacement(user, I)
-	if(IS_WRENCH(I))
+	if(istype(used_item, /obj/item/part_replacer))
+		return machine.part_replacement(user, used_item)
+	if(IS_WRENCH(used_item))
 		return machine.part_removal(user)
-	if(istype(I))
-		return machine.part_insertion(user, I)
+	if(istype(used_item))
+		return machine.part_insertion(user, used_item)
 	return FALSE
 
 /decl/machine_construction/default/panel_open/mechanics_info()

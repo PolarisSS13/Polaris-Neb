@@ -96,10 +96,10 @@
 	. = ..()
 	launcher = new(src)
 
-/obj/item/gun/projectile/automatic/assault_rifle/grenade/attackby(obj/item/I, mob/user)
-	if(!istype(I, /obj/item/grenade))
+/obj/item/gun/projectile/automatic/assault_rifle/grenade/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/grenade))
 		return ..()
-	launcher.load(I, user)
+	launcher.load(used_item, user)
 	return TRUE
 
 /obj/item/gun/projectile/automatic/assault_rifle/grenade/attack_hand(mob/user)

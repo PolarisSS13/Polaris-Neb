@@ -28,14 +28,14 @@
 	to_chat(user, "<span class='warning'>A firewall prevents you from interfacing with this device!</span>")
 	return TRUE
 
-/obj/machinery/keycard_auth/attackby(obj/item/W, mob/user)
-	if(!istype(W,/obj/item/card/id))
+/obj/machinery/keycard_auth/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item,/obj/item/card/id))
 		return ..()
 	if(stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return TRUE
-	visible_message(SPAN_NOTICE("[user] swipes \the [W] through \the [src]."))
-	var/obj/item/card/id/ID = W
+	visible_message(SPAN_NOTICE("[user] swipes \the [used_item] through \the [src]."))
+	var/obj/item/card/id/ID = used_item
 	if(!(access_keycard_auth in ID.access)) // you get nothing!
 		return TRUE
 	if(active)

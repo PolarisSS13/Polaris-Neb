@@ -16,19 +16,19 @@
 	var/decl/recipe/last_recipe
 
 // TODO: ladle
-/obj/item/chems/cooking_vessel/attackby(obj/item/W, mob/user)
+/obj/item/chems/cooking_vessel/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	// Fill or take from the vessel.
-	if(W.reagents && ATOM_IS_OPEN_CONTAINER(W))
-		if(W.reagents.total_volume)
-			if(istype(W, /obj/item/chems))
-				var/obj/item/chems/vessel = W
+	if(used_item.reagents && ATOM_IS_OPEN_CONTAINER(used_item))
+		if(used_item.reagents.total_volume)
+			if(istype(used_item, /obj/item/chems))
+				var/obj/item/chems/vessel = used_item
 				if(vessel.standard_pour_into(user, src))
 					return TRUE
-		else if(standard_pour_into(user, W))
+		else if(standard_pour_into(user, used_item))
 			return TRUE
 
 	return ..()

@@ -22,13 +22,13 @@
 /obj/item/mech_component/propulsion/update_components()
 	motivator = locate() in src
 
-/obj/item/mech_component/propulsion/attackby(var/obj/item/thing, var/mob/user)
-	if(istype(thing,/obj/item/robot_parts/robot_component/actuator))
+/obj/item/mech_component/propulsion/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item,/obj/item/robot_parts/robot_component/actuator))
 		if(motivator)
 			to_chat(user, SPAN_WARNING("\The [src] already has an actuator installed."))
 			return TRUE
-		if(install_component(thing, user))
-			motivator = thing
+		if(install_component(used_item, user))
+			motivator = used_item
 			return TRUE
 		return FALSE
 	else

@@ -425,41 +425,41 @@
 		spark_at(src, 5, holder=src)
 	return 2
 
-/mob/living/silicon/robot/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/inducer) || istype(W, /obj/item/handcuffs))
+/mob/living/silicon/robot/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/inducer) || istype(used_item, /obj/item/handcuffs))
 		return TRUE
 
 	if(opened) // Are they trying to insert something?
 		for(var/V in components)
 			var/datum/robot_component/C = components[V]
-			if(!C.installed && C.accepts_component(W))
-				if(!user.try_unequip(W))
+			if(!C.installed && C.accepts_component(used_item))
+				if(!user.try_unequip(used_item))
 					return TRUE
 				C.installed = 1
-				C.wrapped = W
+				C.wrapped = used_item
 				C.install()
-				W.forceMove(null)
+				used_item.forceMove(null)
 
-				var/obj/item/robot_parts/robot_component/WC = W
+				var/obj/item/robot_parts/robot_component/WC = used_item
 				if(istype(WC))
 					C.brute_damage = WC.brute_damage
 					C.burn_damage = WC.burn_damage
 
-				to_chat(user, "<span class='notice'>You install the [W.name].</span>")
+				to_chat(user, "<span class='notice'>You install the [used_item.name].</span>")
 				return TRUE
 		// If the robot is having something inserted which will remain inside it, self-inserting must be handled before exiting to avoid logic errors. Use the handle_selfinsert proc.
-		if(try_stock_parts_install(W, user))
+		if(try_stock_parts_install(used_item, user))
 			return TRUE
 
-	if(IS_WELDER(W) && !user.check_intent(I_FLAG_HARM))
+	if(IS_WELDER(used_item) && !user.check_intent(I_FLAG_HARM))
 		if (src == user)
 			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
 			return TRUE
 		if (!get_damage(BRUTE))
 			to_chat(user, "Nothing to fix here!")
 			return TRUE
-		var/obj/item/weldingtool/WT = W
-		if (WT.weld(0))
+		var/obj/item/weldingtool/welder = used_item
+		if (welder.weld(0))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			heal_damage(BRUTE, 30)
 			add_fingerprint(user)
@@ -468,18 +468,18 @@
 			to_chat(user, "Need more welding fuel!")
 		return TRUE
 
-	else if(istype(W, /obj/item/stack/cable_coil) && (wiresexposed || isdrone(src)))
+	else if(istype(used_item, /obj/item/stack/cable_coil) && (wiresexposed || isdrone(src)))
 		if (!get_damage(BURN))
 			to_chat(user, "Nothing to fix here!")
 			return TRUE
-		var/obj/item/stack/cable_coil/coil = W
+		var/obj/item/stack/cable_coil/coil = used_item
 		if (coil.use(1))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			heal_damage(BURN, 30)
 			user.visible_message(SPAN_NOTICE("\The [user] has fixed some of the burnt wires on \the [src]!"))
 		return TRUE
 
-	else if(IS_CROWBAR(W) && !user.check_intent(I_FLAG_HARM))	// crowbar means open or close the cover - we all know what a crowbar is by now
+	else if(IS_CROWBAR(used_item) && !user.check_intent(I_FLAG_HARM))	// crowbar means open or close the cover - we all know what a crowbar is by now
 		if(opened)
 			if(cell)
 				user.visible_message(
@@ -543,50 +543,50 @@
 					opened = 1
 					update_icon()
 		return TRUE
-	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
+	else if (istype(used_item, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != ITEM_SIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < ITEM_SIZE_NORMAL? "small" : "large"] to fit here.")
-		else if(user.try_unequip(W, src))
-			cell = W
-			handle_selfinsert(W, user) //Just in case.
+		else if(used_item.w_class != ITEM_SIZE_NORMAL)
+			to_chat(user, "\The [used_item] is too [used_item.w_class < ITEM_SIZE_NORMAL? "small" : "large"] to fit here.")
+		else if(user.try_unequip(used_item, src))
+			cell = used_item
+			handle_selfinsert(used_item, user) //Just in case.
 			to_chat(user, "You insert the power cell.")
 			C.installed = 1
-			C.wrapped = W
+			C.wrapped = used_item
 			C.install()
 			// This means that removing and replacing a power cell will repair the mount.
 			C.brute_damage = 0
 			C.burn_damage = 0
 		return TRUE
-	else if(IS_WIRECUTTER(W) || IS_MULTITOOL(W))
+	else if(IS_WIRECUTTER(used_item) || IS_MULTITOOL(used_item))
 		if (wiresexposed)
 			wires.Interact(user)
 		else
 			to_chat(user, "You can't reach the wiring.")
 		return TRUE
-	else if(IS_SCREWDRIVER(W) && opened && !cell)	// haxing
+	else if(IS_SCREWDRIVER(used_item) && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"].")
 		update_icon()
 		return TRUE
-	else if(IS_SCREWDRIVER(W) && opened && cell)	// radio
+	else if(IS_SCREWDRIVER(used_item) && opened && cell)	// radio
 		if(silicon_radio)
-			silicon_radio.attackby(W,user)//Push it to the radio to let it handle everything
+			silicon_radio.attackby(used_item,user)//Push it to the radio to let it handle everything
 		else
 			to_chat(user, "Unable to locate a radio.")
 		update_icon()
 		return TRUE
-	else if(istype(W, /obj/item/encryptionkey/) && opened)
+	else if(istype(used_item, /obj/item/encryptionkey/) && opened)
 		if(silicon_radio)//sanityyyyyy
-			silicon_radio.attackby(W,user)//GTFO, you have your own procs
+			silicon_radio.attackby(used_item,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 		return TRUE
-	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer)||istype(W, /obj/item/card/robot))			// trying to unlock the interface with an ID card
+	else if (istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer)||istype(used_item, /obj/item/card/robot))			// trying to unlock the interface with an ID card
 		if(emagged)//still allow them to open the cover
 			to_chat(user, "The interface seems slightly damaged.")
 		if(opened)
@@ -599,8 +599,8 @@
 			else
 				to_chat(user, "<span class='warning'>Access denied.</span>")
 		return TRUE
-	else if(istype(W, /obj/item/borg/upgrade))
-		var/obj/item/borg/upgrade/U = W
+	else if(istype(used_item, /obj/item/borg/upgrade))
+		var/obj/item/borg/upgrade/U = used_item
 		if(!opened)
 			to_chat(user, "You must access [src]'s internals!")
 		else if(!src.module && U.require_module)
@@ -612,20 +612,20 @@
 				if(!user.try_unequip(U, src))
 					return TRUE
 				to_chat(user, "You apply the upgrade to [src]!")
-				handle_selfinsert(W, user)
+				handle_selfinsert(used_item, user)
 			else
 				to_chat(user, "Upgrade error!")
 		return TRUE
-	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && !user.check_intent(I_FLAG_HELP) && W.expend_attack_force(user))
+	if(!(istype(used_item, /obj/item/robotanalyzer) || istype(used_item, /obj/item/scanner/health)) && !user.check_intent(I_FLAG_HELP) && used_item.expend_attack_force(user))
 		spark_at(src, 5, holder=src)
 	return ..()
 
-/mob/living/silicon/robot/proc/handle_selfinsert(obj/item/W, mob/user)
+/mob/living/silicon/robot/proc/handle_selfinsert(obj/item/used_item, mob/user)
 	if ((user == src) && istype(get_active_held_item(),/obj/item/gripper))
 		var/obj/item/gripper/H = get_active_held_item()
-		if (W.loc == H) //if this triggers something has gone very wrong, and it's safest to abort
+		if (used_item.loc == H) //if this triggers something has gone very wrong, and it's safest to abort
 			return
-		else if (H.wrapped == W)
+		else if (H.wrapped == used_item)
 			H.wrapped = null
 
 /mob/living/silicon/robot/try_awaken(mob/user)
@@ -1041,12 +1041,12 @@
 	chassis.dismantled_from(src)
 	qdel(src)
 
-/mob/living/silicon/robot/try_stock_parts_install(obj/item/stock_parts/W, mob/user)
+/mob/living/silicon/robot/try_stock_parts_install(obj/item/stock_parts/used_item, mob/user)
 	if(!opened)
 		return
 	. = ..()
 	if(.)
-		handle_selfinsert(W, user)
+		handle_selfinsert(used_item, user)
 		recalculate_synth_capacities()
 
 /mob/living/silicon/robot/get_admin_job_string()

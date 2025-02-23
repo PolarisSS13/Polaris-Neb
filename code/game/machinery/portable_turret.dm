@@ -236,9 +236,9 @@ var/global/list/turret_icons
 	. = ..()
 
 // TODO: remove these or refactor to use construct states
-/obj/machinery/porta_turret/attackby(obj/item/I, mob/user)
+/obj/machinery/porta_turret/attackby(obj/item/used_item, mob/user)
 	if(stat & BROKEN)
-		if(IS_CROWBAR(I))
+		if(IS_CROWBAR(used_item))
 			//If the turret is destroyed, you can remove it with a crowbar to
 			//try and salvage its components
 			to_chat(user, "<span class='notice'>You begin prying the metal coverings off.</span>")
@@ -251,7 +251,7 @@ var/global/list/turret_icons
 			return TRUE
 		return FALSE
 
-	else if(IS_WRENCH(I))
+	else if(IS_WRENCH(used_item))
 		if(enabled || raised)
 			to_chat(user, "<span class='warning'>You cannot unsecure an active turret!</span>")
 			return TRUE
@@ -277,7 +277,7 @@ var/global/list/turret_icons
 		wrenching = 0
 		return TRUE
 
-	else if(istype(I, /obj/item/card/id)||istype(I, /obj/item/modular_computer))
+	else if(istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer))
 		//Behavior lock/unlock mangement
 		if(allowed(user))
 			locked = !locked
@@ -289,9 +289,9 @@ var/global/list/turret_icons
 
 	else
 		//if the turret was attacked with the intention of harming it:
-		var/force = I.expend_attack_force(user) * 0.5
+		var/force = used_item.expend_attack_force(user) * 0.5
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		take_damage(force, I.atom_damage_type)
+		take_damage(force, used_item.atom_damage_type)
 		if(force > 1) //if the force of impact dealt at least 1 damage, the turret gets pissed off
 			if(!attacked && !emagged)
 				attacked = 1

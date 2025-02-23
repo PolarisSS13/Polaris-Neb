@@ -125,9 +125,9 @@
 	if(distance <= 2)
 		. += details.get_examine_string()
 
-/obj/item/sign/diploma/attackby(obj/item/pen/W, mob/user)
-	if(IS_PEN(W))
-		sign_diploma(W, user)
+/obj/item/sign/diploma/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
+		sign_diploma(used_item, user)
 		return TRUE
 	return ..()
 

@@ -116,8 +116,8 @@
 		return
 	return !add_material(dropping, user)
 
-/obj/machinery/fuel_compressor/attackby(var/obj/item/thing, var/mob/user)
-	return add_material(thing, user) || ..()
+/obj/machinery/fuel_compressor/attackby(var/obj/item/used_item, var/mob/user)
+	return add_material(used_item, user) || ..()
 
 /obj/machinery/fuel_compressor/proc/add_material(var/obj/item/thing, var/mob/user)
 	if(istype(thing) && thing.reagents && thing.reagents.total_volume && ATOM_IS_OPEN_CONTAINER(thing))

@@ -176,10 +176,10 @@
 		return TRUE
 	return ..()
 
-/obj/item/parcel/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/destTagger))
+/obj/item/parcel/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/destTagger))
 		user.setClickCooldown(attack_cooldown)
-		var/obj/item/destTagger/O = W
+		var/obj/item/destTagger/O = used_item
 		if(length(O.current_tag))
 			to_chat(user, SPAN_NOTICE("You have labeled the destination as '[O.current_tag]'."))
 			attach_destination_tag(O, user)
@@ -187,15 +187,15 @@
 			to_chat(user, SPAN_WARNING("You need to set a destination tag first!"))
 		return TRUE
 
-	else if(IS_PEN(W))
+	else if(IS_PEN(used_item))
 		var/old_note = attached_note
 		var/new_note = sanitize(input(user, "What note would you like to add to \the [src]?", "Add Note", attached_note))
-		if((new_note != old_note) && user.Adjacent(src) && W.do_tool_interaction(TOOL_PEN, user, src, 2 SECONDS) && user.Adjacent(src))
+		if((new_note != old_note) && user.Adjacent(src) && used_item.do_tool_interaction(TOOL_PEN, user, src, 2 SECONDS) && user.Adjacent(src))
 			attached_note = new_note
 			update_icon()
 		return TRUE
 
-	else if(W.is_sharp() && user.check_intent(I_FLAG_HELP))
+	else if(used_item.is_sharp() && user.check_intent(I_FLAG_HELP))
 		//You can alternative cut the wrapper off with a sharp item
 		unwrap(user)
 		return TRUE

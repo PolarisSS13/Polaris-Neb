@@ -58,9 +58,9 @@
 	to_chat(user, "<span class='warning'>The cryptographic lock on this disk is far too complex. Your sequencer can't break the code.</span>")
 	return 0
 
-/obj/item/disk/secret_project/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/card/id))
-		var/obj/item/card/id/ID = W
+/obj/item/disk/secret_project/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item,/obj/item/card/id))
+		var/obj/item/card/id/ID = used_item
 		if(check_access(ID))
 			locked = !locked
 			to_chat(user, "<span class='notice'>You swipe your card and [locked ? "lock":"unlock"] the disk.</span>")

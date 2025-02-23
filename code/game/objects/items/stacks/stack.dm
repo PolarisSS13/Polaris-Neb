@@ -448,9 +448,9 @@
 				src.interact(usr)
 	return TRUE
 
-/obj/item/stack/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/stack) && can_merge_stacks(W))
-		var/obj/item/stack/S = W
+/obj/item/stack/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/stack) && can_merge_stacks(used_item))
+		var/obj/item/stack/S = used_item
 		. = src.transfer_to(S)
 
 		spawn(0) //give the stacks a chance to delete themselves if necessary

@@ -80,9 +80,9 @@
 		if(prob(40))
 			G.dismantle_structure()
 		return
-	var/obj/structure/window/W = locate() in T
-	if(W)
-		W.shatter()
+	var/obj/structure/window/used_item = locate() in T
+	if(used_item)
+		used_item.shatter()
 		return
 	var/obj/structure/grille/GR = locate() in T
 	if(GR)
@@ -161,11 +161,11 @@
 			take_damage((Proj.damage / laser_damage_divisor) / fire_damage_divisor, Proj.atom_damage_type)
 	return 0
 
-/obj/effect/blob/attackby(var/obj/item/W, var/mob/user)
+/obj/effect/blob/attackby(var/obj/item/used_item, var/mob/user)
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	user.do_attack_animation(src)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
-	if(IS_WIRECUTTER(W))
+	if(IS_WIRECUTTER(used_item))
 		if(prob(user.skill_fail_chance(SKILL_SCIENCE, 90, SKILL_EXPERT)))
 			to_chat(user, SPAN_WARNING("You fail to collect a sample from \the [src]."))
 			return TRUE
@@ -180,15 +180,15 @@
 				return TRUE
 
 	var/damage = 0
-	switch(W.atom_damage_type)
+	switch(used_item.atom_damage_type)
 		if(BURN)
-			damage = (W.expend_attack_force(user) / fire_damage_divisor)
-			if(IS_WELDER(W))
+			damage = (used_item.expend_attack_force(user) / fire_damage_divisor)
+			if(IS_WELDER(used_item))
 				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
 		if(BRUTE)
-			damage = (W.expend_attack_force(user) / brute_damage_divisor)
+			damage = (used_item.expend_attack_force(user) / brute_damage_divisor)
 
-	take_damage(damage, W.atom_damage_type)
+	take_damage(damage, used_item.atom_damage_type)
 	return TRUE
 
 /obj/effect/blob/core

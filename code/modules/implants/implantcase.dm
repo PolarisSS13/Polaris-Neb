@@ -40,10 +40,10 @@
 		icon_state = "implantcase-0"
 
 // TODO: the name stuff here probably doesn't work, this needs an update_name override
-/obj/item/implantcase/attackby(obj/item/I, mob/user)
-	if (IS_PEN(I))
+/obj/item/implantcase/attackby(obj/item/used_item, mob/user)
+	if (IS_PEN(used_item))
 		var/t = input(user, "What would you like the label to be?", src.name, null)
-		if (user.get_active_held_item() != I)
+		if (user.get_active_held_item() != used_item)
 			return TRUE
 		if((!in_range(src, usr) && loc != user))
 			return TRUE
@@ -55,10 +55,10 @@
 			SetName(initial(name))
 			desc = "A case containing an implant."
 		return TRUE
-	else if(istype(I, /obj/item/chems/syringe) && istype(imp,/obj/item/implant/chem))
-		return imp.attackby(I,user)
-	else if (istype(I, /obj/item/implanter))
-		var/obj/item/implanter/M = I
+	else if(istype(used_item, /obj/item/chems/syringe) && istype(imp,/obj/item/implant/chem))
+		return imp.attackby(used_item,user)
+	else if (istype(used_item, /obj/item/implanter))
+		var/obj/item/implanter/M = used_item
 		if (M.imp && !imp && !M.imp.implanted)
 			M.imp.forceMove(src)
 			imp = M.imp
@@ -71,9 +71,9 @@
 		update_icon()
 		M.update_icon()
 		return TRUE
-	else if (istype(I, /obj/item/implant) && user.try_unequip(I, src))
-		to_chat(usr, "<span class='notice'>You slide \the [I] into \the [src].</span>")
-		imp = I
+	else if (istype(used_item, /obj/item/implant) && user.try_unequip(used_item, src))
+		to_chat(usr, "<span class='notice'>You slide \the [used_item] into \the [src].</span>")
+		imp = used_item
 		update_description()
 		update_icon()
 		return TRUE

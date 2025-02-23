@@ -152,16 +152,16 @@
 	var/plant_type = "pumpkin"
 
 // Duplicated from growns for now. TODO: move sliceability down to other objects like clay.
-/obj/item/clothing/head/pumpkinhead/attackby(obj/item/W, mob/user)
-	if(IS_KNIFE(W) && !user.check_intent(I_FLAG_HARM))
+/obj/item/clothing/head/pumpkinhead/attackby(obj/item/used_item, mob/user)
+	if(IS_KNIFE(used_item) && !user.check_intent(I_FLAG_HARM))
 		var/datum/seed/plant = SSplants.seeds[plant_type]
 		if(!plant)
 			return ..()
 		var/slice_amount = plant.slice_amount
-		if(W.w_class > ITEM_SIZE_NORMAL || !user.skill_check(SKILL_COOKING, SKILL_BASIC))
+		if(used_item.w_class > ITEM_SIZE_NORMAL || !user.skill_check(SKILL_COOKING, SKILL_BASIC))
 			user.visible_message(
-				SPAN_NOTICE("\The [user] crudely slices \the [src] with \the [W]!"),
-				SPAN_NOTICE("You crudely slice \the [src] with your [W.name]!")
+				SPAN_NOTICE("\The [user] crudely slices \the [src] with \the [used_item]!"),
+				SPAN_NOTICE("You crudely slice \the [src] with your [used_item.name]!")
 			)
 			slice_amount = rand(1, max(1, round(slice_amount*0.5)))
 		else

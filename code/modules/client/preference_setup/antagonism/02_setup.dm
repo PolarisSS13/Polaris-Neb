@@ -24,14 +24,14 @@
 			if(uplink_source)
 				pref.uplink_sources += uplink_source
 
-/datum/category_item/player_setup_item/antagonism/basic/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/antagonism/basic/save_character(datum/pref_record_writer/writer)
 	var/uplink_order = list()
 	for(var/entry in pref.uplink_sources)
 		var/decl/uplink_source/UL = entry
 		uplink_order += UL.name
 
-	W.write("uplink_sources", uplink_order)
-	W.write("exploit_record", pref.exploit_record)
+	writer.write("uplink_sources", uplink_order)
+	writer.write("exploit_record", pref.exploit_record)
 
 /datum/category_item/player_setup_item/antagonism/basic/sanitize_character()
 	if(!istype(pref.uplink_sources))

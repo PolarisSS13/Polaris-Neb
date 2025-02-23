@@ -152,10 +152,10 @@
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	qdel(src)
 
-/obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)
-	if((IS_WRENCH(W) || IS_HAMMER(W)) && !panel_open)
+/obj/machinery/media/jukebox/attackby(obj/item/used_item, mob/user)
+	if((IS_WRENCH(used_item) || IS_HAMMER(used_item)) && !panel_open)
 		add_fingerprint(user)
-		wrench_floor_bolts(user, 0, W)
+		wrench_floor_bolts(user, 0, used_item)
 		power_change()
 		return TRUE
 	return ..()

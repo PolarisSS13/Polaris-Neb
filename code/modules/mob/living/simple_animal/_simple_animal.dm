@@ -348,11 +348,11 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
 
-/mob/living/simple_animal/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O, /obj/item/stack/medical))
+	if(istype(used_item, /obj/item/stack/medical))
 		if(stat != DEAD)
-			var/obj/item/stack/medical/MED = O
+			var/obj/item/stack/medical/MED = used_item
 			if(!MED.animal_heal)
 				to_chat(user, SPAN_WARNING("\The [MED] won't help \the [src] at all!"))
 			else if(current_health < get_max_health() && MED.can_use(1))

@@ -73,15 +73,15 @@
 	reset_color()
 	set_overlays(plant.get_appearance(dead = dead, growth_stage = growth_stage, can_harvest = !!harvestable))
 
-/obj/structure/flora/plant/attackby(obj/item/O, mob/user)
+/obj/structure/flora/plant/attackby(obj/item/used_item, mob/user)
 
-	if(IS_SHOVEL(O) || IS_HATCHET(O))
-		user.visible_message(SPAN_NOTICE("\The [user] uproots \the [src] with \the [O]!"))
+	if(IS_SHOVEL(used_item) || IS_HATCHET(used_item))
+		user.visible_message(SPAN_NOTICE("\The [user] uproots \the [src] with \the [used_item]!"))
 		physically_destroyed()
 		return TRUE
 
 	// Hydrotray boilerplate for taking samples.
-	if(O.has_edge() && O.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
+	if(used_item.has_edge() && used_item.w_class < ITEM_SIZE_NORMAL && !user.check_intent(I_FLAG_HARM))
 		if(sampled)
 			to_chat(user, SPAN_WARNING("There's no bits that can be used for a sampling left."))
 			return TRUE

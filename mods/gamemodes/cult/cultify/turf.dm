@@ -51,10 +51,10 @@
 	cult.remove_cultiness(CULTINESS_PER_TURF)
 	. = ..()
 
-/turf/wall/cult/can_join_with(var/turf/wall/W)
-	if(material && W.material && material.icon_base == W.material.icon_base)
+/turf/wall/cult/can_join_with(var/turf/wall/wall)
+	if(material && wall.material && material.icon_base == wall.material.icon_base)
 		return FALSE
-	else if(istype(W, /turf/wall))
+	else if(istype(wall, /turf/wall))
 		return TRUE
 	return FALSE
 

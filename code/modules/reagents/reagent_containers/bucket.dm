@@ -28,16 +28,16 @@
 /obj/item/chems/glass/bucket/get_utensil_food_type()
 	return null
 
-/obj/item/chems/glass/bucket/attackby(var/obj/D, mob/user)
-	if(istype(D, /obj/item/mop))
+/obj/item/chems/glass/bucket/attackby(var/obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/mop))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_WARNING("\The [src] is empty!"))
-		else if(REAGENTS_FREE_SPACE(D.reagents) >= 5)
-			reagents.trans_to_obj(D, 5)
-			to_chat(user, SPAN_NOTICE("You wet \the [D] in \the [src]."))
+		else if(REAGENTS_FREE_SPACE(used_item.reagents) >= 5)
+			reagents.trans_to_obj(used_item, 5)
+			to_chat(user, SPAN_NOTICE("You wet \the [used_item] in \the [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("\The [D] is saturated."))
+			to_chat(user, SPAN_WARNING("\The [used_item] is saturated."))
 		return TRUE
 	return ..()
 

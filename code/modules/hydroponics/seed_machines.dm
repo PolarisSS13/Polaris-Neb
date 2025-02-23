@@ -66,33 +66,33 @@
 			visible_message("[html_icon(src)] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 
-/obj/machinery/botany/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/seeds))
+/obj/machinery/botany/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item,/obj/item/seeds))
 		if(seed)
 			to_chat(user, "There is already a seed loaded.")
 			return TRUE
-		var/obj/item/seeds/S = W
+		var/obj/item/seeds/S = used_item
 		if(S.seed && S.seed.get_trait(TRAIT_IMMUTABLE) > 0)
 			to_chat(user, "That seed is not compatible with our genetics technology.")
-		else if(user.try_unequip(W, src))
-			seed = W
-			to_chat(user, "You load [W] into [src].")
+		else if(user.try_unequip(used_item, src))
+			seed = used_item
+			to_chat(user, "You load [used_item] into [src].")
 		return TRUE
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		open = !open
 		to_chat(user, "<span class='notice'>You [open ? "open" : "close"] the maintenance panel.</span>")
 		return TRUE
 
-	if(open && IS_CROWBAR(W))
+	if(open && IS_CROWBAR(used_item))
 		dismantle()
 		return TRUE
 
-	if(istype(W,/obj/item/disk/botany))
+	if(istype(used_item,/obj/item/disk/botany))
 		if(loaded_disk)
 			to_chat(user, "There is already a data disk loaded.")
 			return TRUE
-		var/obj/item/disk/botany/B = W
+		var/obj/item/disk/botany/B = used_item
 		if(B.genes && B.genes.len)
 			if(!disk_needs_genes)
 				to_chat(user, "That disk already has gene data loaded.")
@@ -101,10 +101,10 @@
 			if(disk_needs_genes)
 				to_chat(user, "That disk does not have any gene data loaded.")
 				return TRUE
-		if(!user.try_unequip(W, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		loaded_disk = W
-		to_chat(user, "You load [W] into [src].")
+		loaded_disk = used_item
+		to_chat(user, "You load [used_item] into [src].")
 		return TRUE
 	return ..()
 

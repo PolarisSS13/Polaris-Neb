@@ -251,8 +251,8 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/door/proc/handle_repair(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/material) && I.get_material_type() == src.get_material_type())
+/obj/machinery/door/proc/handle_repair(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/material) && used_item.get_material_type() == src.get_material_type())
 		if(reason_broken & MACHINE_BROKEN_GENERIC)
 			to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 			return TRUE
@@ -268,7 +268,7 @@
 		var/amount_needed = (current_max_health - current_health) / DOOR_REPAIR_AMOUNT
 		amount_needed = ceil(amount_needed)
 
-		var/obj/item/stack/stack = I
+		var/obj/item/stack/stack = used_item
 		var/transfer
 		if (repairing)
 			transfer = stack.transfer_to(repairing, amount_needed - repairing.amount)
@@ -286,12 +286,12 @@
 
 		return TRUE
 
-	if(repairing && IS_WELDER(I))
+	if(repairing && IS_WELDER(used_item))
 		if(!density)
 			to_chat(user, "<span class='warning'>\The [src] must be closed before you can repair it.</span>")
 			return TRUE
 
-		var/obj/item/weldingtool/welder = I
+		var/obj/item/weldingtool/welder = used_item
 		if(welder.weld(0,user))
 			to_chat(user, "<span class='notice'>You start to fix dents and weld \the [repairing] into place.</span>")
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
@@ -303,15 +303,15 @@
 				repairing = null
 		return TRUE
 
-	if(repairing && IS_CROWBAR(I))
+	if(repairing && IS_CROWBAR(used_item))
 		to_chat(user, "<span class='notice'>You remove \the [repairing].</span>")
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 100, 1)
 		repairing.dropInto(user.loc)
 		repairing = null
 		return TRUE
 
-/obj/machinery/door/attackby(obj/item/I, mob/user)
-	. = handle_repair(I, user)
+/obj/machinery/door/attackby(obj/item/used_item, mob/user)
+	. = handle_repair(used_item, user)
 	if(.)
 		return
 	return ..()
@@ -537,17 +537,17 @@
 		if( istype(T, /turf/wall))
 			success = 1
 			if(propagate)
-				for(var/turf/wall/W in RANGE_TURFS(T, 1))
-					W.wall_connections = null
-					W.other_connections = null
-					W.queue_icon_update()
+				for(var/turf/wall/wall in RANGE_TURFS(T, 1))
+					wall.wall_connections = null
+					wall.other_connections = null
+					wall.queue_icon_update()
 
 		else if(istype(T, /turf/unsimulated/wall))
 			success = 1
 		else
-			for(var/obj/O in T)
+			for(var/obj/blend_obj in T)
 				for(var/blend_type in get_blend_objects())
-					if( istype(O, blend_type))
+					if( istype(blend_obj, blend_type))
 						success = 1
 
 					if(success)

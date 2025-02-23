@@ -89,8 +89,8 @@
 		var/datum/extension/forensic_evidence/forensics = get_or_create_extension(A, /datum/extension/forensic_evidence)
 		forensics.add_from_atom(/datum/forensics/gunshot_residue, src)
 
-/obj/item/ammo_casing/attackby(obj/item/W, mob/user)
-	if(!IS_SCREWDRIVER(W))
+/obj/item/ammo_casing/attackby(obj/item/used_item, mob/user)
+	if(!IS_SCREWDRIVER(used_item))
 		return ..()
 	if(!BB)
 		to_chat(user, "<span class='notice'>There is no bullet in the casing to inscribe anything into.</span>")
@@ -198,10 +198,10 @@
 		SetName("[name] ([english_list(labels, and_text = ", ")])")
 	update_icon()
 
-/obj/item/ammo_magazine/attackby(obj/item/W, mob/user)
-	if(!istype(W, /obj/item/ammo_casing))
+/obj/item/ammo_magazine/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/ammo_casing))
 		return ..()
-	var/obj/item/ammo_casing/C = W
+	var/obj/item/ammo_casing/C = used_item
 	if(C.caliber != caliber)
 		to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
 		return TRUE

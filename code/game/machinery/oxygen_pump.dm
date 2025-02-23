@@ -135,8 +135,8 @@
 		return
 	return 1
 
-/obj/machinery/oxygen_pump/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/machinery/oxygen_pump/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		stat ^= MAINT
 		user.visible_message(SPAN_NOTICE("\The [user] [stat & MAINT ? "opens" : "closes"] \the [src]."), SPAN_NOTICE("You [stat & MAINT ? "open" : "close"] \the [src]."))
 		if(stat & MAINT)
@@ -144,17 +144,17 @@
 		if(!stat)
 			icon_state = icon_state_closed
 		return TRUE
-	if(istype(W, /obj/item/tank) && (stat & MAINT))
+	if(istype(used_item, /obj/item/tank) && (stat & MAINT))
 		if(tank)
 			to_chat(user, SPAN_WARNING("\The [src] already has a tank installed!"))
 			return TRUE
-		if(!user.try_unequip(W, src))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		tank = W
+		tank = used_item
 		user.visible_message(SPAN_NOTICE("\The [user] installs \the [tank] into \the [src]."), SPAN_NOTICE("You install \the [tank] into \the [src]."))
 		src.add_fingerprint(user)
 		return TRUE
-	if(istype(W, /obj/item/tank) && !stat)
+	if(istype(used_item, /obj/item/tank) && !stat)
 		to_chat(user, SPAN_WARNING("Please open the maintenance hatch first."))
 		return TRUE
 	return FALSE // TODO: should this be a parent call? do we want this to be (de)constructable?

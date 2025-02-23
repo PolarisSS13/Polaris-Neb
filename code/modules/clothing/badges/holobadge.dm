@@ -40,10 +40,10 @@
 		to_chat(user, "<span class='danger'>You crack the holobadge security checks.</span>")
 		return 1
 
-/obj/item/clothing/badge/holo/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, /obj/item/card/id) || istype(O, /obj/item/modular_computer))
+/obj/item/clothing/badge/holo/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/card/id) || istype(used_item, /obj/item/modular_computer))
 
-		var/obj/item/card/id/id_card = O.GetIdCard()
+		var/obj/item/card/id/id_card = used_item.GetIdCard()
 
 		if(!id_card)
 			return TRUE

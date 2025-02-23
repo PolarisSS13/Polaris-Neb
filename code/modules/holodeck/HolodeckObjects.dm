@@ -9,7 +9,7 @@
 /turf/floor/holofloor/get_lumcount(var/minlum = 0, var/maxlum = 1)
 	return 0.8
 
-/turf/floor/holofloor/attackby(obj/item/W, mob/user)
+/turf/floor/holofloor/attackby(obj/item/used_item, mob/user)
 	return TRUE
 	// HOLOFLOOR DOES NOT GIVE A FUCK
 
@@ -132,11 +132,11 @@
 	dir           = NORTHEAST
 	icon_state    = "rwindow_full"
 
-/obj/structure/window/reinforced/holowindow/attackby(obj/item/weapon, mob/user)
-	if(IS_SCREWDRIVER(weapon) || IS_CROWBAR(weapon) || IS_WRENCH(weapon))
+/obj/structure/window/reinforced/holowindow/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item) || IS_CROWBAR(used_item) || IS_WRENCH(used_item))
 		to_chat(user, SPAN_NOTICE("It's a holowindow, you can't dismantle it!"))
 		return TRUE
-	return bash(weapon, user)
+	return bash(used_item, user)
 
 /obj/structure/window/reinforced/holowindow/shatter(var/display_message = 1)
 	playsound(src, "shatter", 70, 1)
@@ -148,16 +148,16 @@
 // This subtype is deleted when a ready button in the same area is pressed.
 /obj/structure/window/reinforced/holowindow/disappearing
 
-/obj/machinery/door/window/holowindoor/attackby(obj/item/I, mob/user)
+/obj/machinery/door/window/holowindoor/attackby(obj/item/used_item, mob/user)
 
 	if (src.operating == 1)
 		return TRUE
 
-	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
+	if(src.density && istype(used_item, /obj/item) && !istype(used_item, /obj/item/card))
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-		visible_message("<span class='danger'>\The [src] was hit by \the [I].</span>")
-		if(I.atom_damage_type == BRUTE || I.atom_damage_type == BURN)
-			take_damage(I.expend_attack_force(user))
+		visible_message("<span class='danger'>\The [src] was hit by \the [used_item].</span>")
+		if(used_item.atom_damage_type == BRUTE || used_item.atom_damage_type == BURN)
+			take_damage(used_item.expend_attack_force(user))
 		return TRUE
 
 	src.add_fingerprint(user)
@@ -261,14 +261,14 @@
 
 /obj/structure/holohoop/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if (istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		var/obj/item/thing = mover
+		if(istype(thing, /obj/item/projectile))
 			return
 		if(prob(50))
-			I.dropInto(loc)
-			visible_message("<span class='notice'>Swish! \the [I] lands in \the [src].</span>", range = 3)
+			thing.dropInto(loc)
+			visible_message("<span class='notice'>Swish! \the [thing] lands in \the [src].</span>", range = 3)
 		else
-			visible_message("<span class='warning'>\The [I] bounces off of \the [src]'s rim!</span>", range = 3)
+			visible_message("<span class='warning'>\The [thing] bounces off of \the [src]'s rim!</span>", range = 3)
 		return 0
 	else
 		return ..(mover, target, height, air_group)
@@ -290,12 +290,12 @@
 
 /obj/structure/holonet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if (istype(mover,/obj/item) && mover.throwing)
-		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		var/obj/item/thing = mover
+		if(istype(thing, /obj/item/projectile))
 			return
 		if(prob(10))
-			I.dropInto(loc)
-			visible_message("<span class='notice'>Swish! \the [I] gets caught in \the [src].</span>", range = 3)
+			thing.dropInto(loc)
+			visible_message("<span class='notice'>Swish! \the [thing] gets caught in \the [src].</span>", range = 3)
 			return 0
 		else
 			return 1
@@ -320,7 +320,7 @@
 	to_chat(user, "The AI is not to interact with these devices!")
 	return
 
-/obj/machinery/readybutton/attackby(obj/item/W, mob/user)
+/obj/machinery/readybutton/attackby(obj/item/used_item, mob/user)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 	return TRUE
 
@@ -359,8 +359,8 @@
 
 	eventstarted = 1
 
-	for(var/obj/structure/window/reinforced/holowindow/disappearing/W in currentarea)
-		qdel(W)
+	for(var/obj/structure/window/reinforced/holowindow/disappearing/window in currentarea)
+		qdel(window)
 
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")

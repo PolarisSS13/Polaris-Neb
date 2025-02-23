@@ -9,8 +9,8 @@
 	footstep_type = /decl/footsteps/plating
 	is_outside    = OUTSIDE_AREA
 
-/turf/floor/fixed/attackby(var/obj/item/C, var/mob/user)
-	if(istype(C, /obj/item/stack) && !IS_COIL(C))
+/turf/floor/fixed/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/stack) && !IS_COIL(used_item))
 		return TRUE
 	return ..()
 
@@ -29,8 +29,8 @@
 	icon          = 'icons/turf/flooring/alium.dmi'
 	icon_state    = "jaggy"
 
-/turf/floor/fixed/alium/attackby(var/obj/item/C, var/mob/user)
-	if(IS_CROWBAR(C))
+/turf/floor/fixed/alium/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_CROWBAR(used_item))
 		to_chat(user, "<span class='notice'>There aren't any openings big enough to pry it away...</span>")
 		return TRUE
 	return ..()

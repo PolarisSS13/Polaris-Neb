@@ -300,9 +300,9 @@
 		return SPAN_WARNING("You cannot do this while \the [src] is running!")
 	return ..()
 
-/obj/machinery/port_gen/pacman/attackby(var/obj/item/O, var/mob/user)
-	if(istype(O, sheet_path) && (isnull(sheet_material) || sheet_material == O.get_material_type()))
-		var/obj/item/stack/addstack = O
+/obj/machinery/port_gen/pacman/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, sheet_path) && (isnull(sheet_material) || sheet_material == used_item.get_material_type()))
+		var/obj/item/stack/addstack = used_item
 		var/amount = min((max_sheets - sheets), addstack.amount)
 		if(amount < 1)
 			to_chat(user, "<span class='notice'>\The [src] is full!</span>")
@@ -312,7 +312,7 @@
 		addstack.use(amount)
 		updateUsrDialog()
 		return TRUE
-	if(IS_WRENCH(O) && !active)
+	if(IS_WRENCH(used_item) && !active)
 		if(!anchored)
 			to_chat(user, "<span class='notice'>You secure \the [src] to the floor.</span>")
 		else
@@ -321,7 +321,7 @@
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		anchored = !anchored
 		return TRUE
-	return component_attackby(O, user)
+	return component_attackby(used_item, user)
 
 /obj/machinery/port_gen/pacman/dismantle()
 	while (sheets > 0)
@@ -485,9 +485,9 @@
 	if(power_output > max_safe_output)
 		icon_state = "potatodanger"
 
-/obj/machinery/port_gen/pacman/super/potato/attackby(var/obj/item/hit_with, var/mob/user)
-	if(istype(hit_with, /obj/item/chems))
-		var/obj/item/chems/chem_container = hit_with
+/obj/machinery/port_gen/pacman/super/potato/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/chems))
+		var/obj/item/chems/chem_container = used_item
 		var/old_vodka_amount = REAGENT_VOLUME(reagents, /decl/material/liquid/alcohol/vodka)
 		if(chem_container.standard_pour_into(src,user))
 			if(REAGENT_VOLUME(reagents, /decl/material/liquid/alcohol/vodka) > old_vodka_amount) // yay, booze!

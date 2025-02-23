@@ -41,12 +41,12 @@
 				break
 	. = tracking_linked_server
 
-/obj/machinery/computer/message_monitor/attackby(obj/item/O, mob/user)
+/obj/machinery/computer/message_monitor/attackby(obj/item/used_item, mob/user)
 	if(stat & (NOPOWER|BROKEN))
 		return ..()
 	if(!istype(user))
 		return TRUE
-	if(IS_SCREWDRIVER(O) && emagged)
+	if(IS_SCREWDRIVER(used_item) && emagged)
 		//Stops people from just unscrewing the monitor and putting it back to get the console working again.
 		to_chat(user, "<span class='warning'>It is too hot to mess with!</span>")
 		return TRUE

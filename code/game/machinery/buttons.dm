@@ -40,8 +40,8 @@
 	. = ..()
 	update_icon()
 
-/obj/machinery/button/attackby(obj/item/W, mob/user)
-	if(!(. = component_attackby(W, user)))
+/obj/machinery/button/attackby(obj/item/used_item, mob/user)
+	if(!(. = component_attackby(used_item, user)))
 		return attack_hand_with_interaction_checks(user)
 
 /obj/machinery/button/interface_interact(user)

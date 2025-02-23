@@ -1,8 +1,8 @@
 /mob/living/human/proc/monkeyize()
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in get_contained_external_atoms())
-		drop_from_inventory(W)
+	for(var/obj/item/thing in get_contained_external_atoms())
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	set_status_condition(STAT_STUN, 1)
@@ -26,8 +26,8 @@
 		gib()
 		return
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	change_species(species.primitive_form)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
@@ -53,8 +53,8 @@
 		return
 	for(var/t in get_external_organs())
 		qdel(t)
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
 	set_invisibility(INVISIBILITY_ABSTRACT)
@@ -106,8 +106,8 @@
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
 	QDEL_NULL_LIST(worn_underwear)
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
@@ -141,8 +141,8 @@
 /mob/living/human/proc/corgize()
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
@@ -169,8 +169,8 @@
 
 	if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)

@@ -8,9 +8,9 @@
 	density = TRUE
 	var/static/list/amount_of_underwear_by_id_card
 
-/obj/structure/undies_wardrobe/attackby(var/obj/item/item, var/mob/user)
-	if(istype(item, /obj/item/underwear))
-		var/obj/item/underwear/underwear = item
+/obj/structure/undies_wardrobe/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/underwear))
+		var/obj/item/underwear/underwear = used_item
 		if(!user.try_unequip(underwear))
 			return TRUE
 		qdel(underwear)

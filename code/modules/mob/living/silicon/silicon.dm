@@ -363,15 +363,15 @@
 		return os.get_network()
 
 
-/mob/living/silicon/proc/try_stock_parts_install(obj/item/stock_parts/W, mob/user)
-	if(istype(W) && user.try_unequip(W))
-		W.forceMove(src)
-		stock_parts += W
-		to_chat(user, "<span class='notice'>You install the [W.name].</span>")
+/mob/living/silicon/proc/try_stock_parts_install(obj/item/stock_parts/used_item, mob/user)
+	if(istype(used_item) && user.try_unequip(used_item))
+		used_item.forceMove(src)
+		stock_parts += used_item
+		to_chat(user, "<span class='notice'>You install the [used_item.name].</span>")
 		return TRUE
 
-/mob/living/silicon/proc/try_stock_parts_removal(obj/item/W, mob/user)
-	if(!IS_CROWBAR(W) || user.check_intent(I_FLAG_HARM))
+/mob/living/silicon/proc/try_stock_parts_removal(obj/item/used_item, mob/user)
+	if(!IS_CROWBAR(used_item) || user.check_intent(I_FLAG_HARM))
 		return
 	if(!length(stock_parts))
 		to_chat(user, SPAN_WARNING("There are no parts in \the [src] left to remove."))

@@ -16,8 +16,8 @@
 		for(var/key in cost)
 			.[key] += cost[key]
 
-/obj/item/frame/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/item/frame/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		for(var/key in matter)
 			SSmaterials.create_object(key, get_turf(src), round(matter[key]/SHEET_MATERIAL_AMOUNT))
 		qdel(src)
@@ -278,10 +278,10 @@
 		return TRUE
 	master_controller_id_tag = null
 
-/obj/item/frame/button/airlock_controller/attackby(obj/item/W, mob/user)
-	if(!istype(W, /obj/item/stock_parts/circuitboard))
+/obj/item/frame/button/airlock_controller/attackby(obj/item/used_item, mob/user)
+	if(!istype(used_item, /obj/item/stock_parts/circuitboard))
 		return ..()
-	var/obj/item/stock_parts/circuitboard/board = W
+	var/obj/item/stock_parts/circuitboard/board = used_item
 	var/obj/machinery/M
 	if(ispath(board.build_path, /obj/machinery/embedded_controller/radio))
 		build_machine_type = board.build_path
@@ -291,7 +291,7 @@
 		. = TRUE
 	if(.)
 		M = build_machine_type
-		to_chat(user, SPAN_NOTICE("You setup \the [src]'s software to work as a '[initial(M.name)]', using \the [W]."))
+		to_chat(user, SPAN_NOTICE("You setup \the [src]'s software to work as a '[initial(M.name)]', using \the [used_item]."))
 		return TRUE
 	return FALSE
 
@@ -305,8 +305,8 @@
 	to_chat(user, SPAN_WARNING("First, use a multitool on the kit to properly setup the controller's software!"))
 
 //Let them also hit it with a circuitboard if they so wish. But multitool is better when you don't want to print one for nothing.
-/obj/item/frame/button/airlock_controller/kit/attackby(obj/item/W, mob/user)
-	if(!IS_MULTITOOL(W))
+/obj/item/frame/button/airlock_controller/kit/attackby(obj/item/used_item, mob/user)
+	if(!IS_MULTITOOL(used_item))
 		return ..()
 	//Handle kit configuration
 	var/obj/machinery/M = /obj/machinery/dummy_airlock_controller

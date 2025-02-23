@@ -41,8 +41,8 @@
 	if(!drop_type)
 		drop_type = pick(supply_drop_random_loot_types())
 
-/obj/structure/supply_beacon/attackby(var/obj/item/W, var/mob/user)
-	if(!activated && IS_WRENCH(W))
+/obj/structure/supply_beacon/attackby(var/obj/item/used_item, var/mob/user)
+	if(!activated && IS_WRENCH(used_item))
 		anchored = !anchored
 		user.visible_message(SPAN_NOTICE("\The [user] [anchored ? "secures" : "unsecures"] \the [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)

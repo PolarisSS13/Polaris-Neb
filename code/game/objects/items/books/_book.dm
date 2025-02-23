@@ -84,9 +84,9 @@
 	else
 		to_chat(user, SPAN_WARNING("This book is completely blank!"))
 
-/obj/item/book/attackby(obj/item/W, mob/user)
+/obj/item/book/attackby(obj/item/used_item, mob/user)
 
-	if(IS_PEN(W))
+	if(IS_PEN(used_item))
 		if(unique)
 			to_chat(user, SPAN_WARNING("These pages don't seem to take the ink well. Looks like you can't modify it."))
 			return TRUE
@@ -113,7 +113,7 @@
 					if(content)
 						last_modified_ckey = user.ckey
 						pencode_dat = content
-						dat = formatpencode(usr, content, W)
+						dat = formatpencode(usr, content, used_item)
 
 			if("Author")
 				var/newauthor = sanitize(input(usr, "Write the author's name:"))
@@ -126,7 +126,7 @@
 						author = newauthor
 		return TRUE
 
-	if((IS_KNIFE(W) || IS_WIRECUTTER(W)) && user.check_intent(I_FLAG_HARM) && try_carve(user, W))
+	if((IS_KNIFE(used_item) || IS_WIRECUTTER(used_item)) && user.check_intent(I_FLAG_HARM) && try_carve(user, used_item))
 		return TRUE
 
 	return ..()

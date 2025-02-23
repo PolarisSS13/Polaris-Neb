@@ -137,14 +137,14 @@
 	current_health = clamp(current_health + 3, 0, get_max_health())
 	taped = TRUE
 
-/obj/structure/inflatable/attackby(obj/item/W, mob/user)
+/obj/structure/inflatable/attackby(obj/item/used_item, mob/user)
 
-	if((W.atom_damage_type == BRUTE || W.atom_damage_type == BURN) && (W.can_puncture() || W.expend_attack_force(user) > 10))
-		visible_message(SPAN_DANGER("\The [user] pierces \the [src] with \the [W]!"))
+	if((used_item.atom_damage_type == BRUTE || used_item.atom_damage_type == BURN) && (used_item.can_puncture() || used_item.expend_attack_force(user) > 10))
+		visible_message(SPAN_DANGER("\The [user] pierces \the [src] with \the [used_item]!"))
 		deflate(TRUE)
 		return TRUE
 
-	if(!istype(W, /obj/item/inflatable_dispenser))
+	if(!istype(used_item, /obj/item/inflatable_dispenser))
 		return ..()
 
 	return FALSE

@@ -48,10 +48,10 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 	return FALSE
 
-/atom/movable/attackby(obj/item/W, mob/user)
+/atom/movable/attackby(obj/item/used_item, mob/user)
 	. = ..()
 	if(!.)
-		return bash(W,user)
+		return bash(used_item,user)
 
 // Return TRUE if further actions (afterattack, etc) should be prevented, FALSE if they can proceed.
 /atom/movable/proc/bash(obj/item/weapon, mob/user)

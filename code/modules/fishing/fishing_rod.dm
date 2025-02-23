@@ -231,12 +231,12 @@
 
 	return ..()
 
-/obj/item/fishing_rod/attackby(obj/item/W, mob/user)
+/obj/item/fishing_rod/attackby(obj/item/used_item, mob/user)
 
-	if(load_line(user, W))
+	if(load_line(user, used_item))
 		return TRUE
 
-	if(istype(W, /obj/item/food))
+	if(istype(used_item, /obj/item/food))
 
 		if(bait)
 			to_chat(user, SPAN_WARNING("\The [src] already has \a [bait] on the hook."))
@@ -246,9 +246,9 @@
 			to_chat(user, SPAN_WARNING("\The [src] needs a line before you can bait it."))
 			return TRUE
 
-		if(user.try_unequip(W, src))
-			bait = W
-			to_chat(user, SPAN_NOTICE("You thread \the [W] onto \the [src]'s hook."))
+		if(user.try_unequip(used_item, src))
+			bait = used_item
+			to_chat(user, SPAN_NOTICE("You thread \the [used_item] onto \the [src]'s hook."))
 			update_icon()
 
 		return TRUE

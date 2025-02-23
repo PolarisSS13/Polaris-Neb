@@ -45,17 +45,17 @@
 	if(!closed)
 		. += "The lid is open."
 
-/obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
-	if(IS_CROWBAR(I))
+/obj/machinery/beehive/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_CROWBAR(used_item))
 		closed = !closed
 		user.visible_message("<span class='notice'>\The [user] [closed ? "closes" : "opens"] \the [src].</span>", "<span class='notice'>You [closed ? "close" : "open"] \the [src].</span>")
 		update_icon()
 		return TRUE
-	else if(IS_WRENCH(I))
+	else if(IS_WRENCH(used_item))
 		anchored = !anchored
 		user.visible_message("<span class='notice'>\The [user] [anchored ? "wrenches" : "unwrenches"] \the [src].</span>", "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 		return TRUE
-	else if(istype(I, /obj/item/bee_smoker))
+	else if(istype(used_item, /obj/item/bee_smoker))
 		if(closed)
 			to_chat(user, "<span class='notice'>You need to open \the [src] with a crowbar before smoking the bees.</span>")
 			return TRUE
@@ -63,24 +63,24 @@
 		smoked = 30
 		update_icon()
 		return TRUE
-	else if(istype(I, /obj/item/hive_frame/crafted))
+	else if(istype(used_item, /obj/item/hive_frame/crafted))
 		if(closed)
-			to_chat(user, "<span class='notice'>You need to open \the [src] with a crowbar before inserting \the [I].</span>")
+			to_chat(user, "<span class='notice'>You need to open \the [src] with a crowbar before inserting \the [used_item].</span>")
 			return TRUE
 		if(frames >= maxFrames)
 			to_chat(user, "<span class='notice'>There is no place for an another frame.</span>")
 			return TRUE
-		var/obj/item/hive_frame/crafted/H = I
+		var/obj/item/hive_frame/crafted/H = used_item
 		if(H.reagents?.total_volume)
-			to_chat(user, "<span class='notice'>\The [I] is full with beeswax and honey, empty it in the extractor first.</span>")
+			to_chat(user, "<span class='notice'>\The [used_item] is full with beeswax and honey, empty it in the extractor first.</span>")
 			return TRUE
 		++frames
-		user.visible_message("<span class='notice'>\The [user] loads \the [I] into \the [src].</span>", "<span class='notice'>You load \the [I] into \the [src].</span>")
+		user.visible_message("<span class='notice'>\The [user] loads \the [used_item] into \the [src].</span>", "<span class='notice'>You load \the [used_item] into \the [src].</span>")
 		update_icon()
-		qdel(I)
+		qdel(used_item)
 		return TRUE
-	else if(istype(I, /obj/item/bee_pack))
-		var/obj/item/bee_pack/B = I
+	else if(istype(used_item, /obj/item/bee_pack))
+		var/obj/item/bee_pack/B = used_item
 		if(B.full && bee_count)
 			to_chat(user, "<span class='notice'>\The [src] already has bees inside.</span>")
 			return TRUE
@@ -94,16 +94,16 @@
 			to_chat(user, "<span class='notice'>You need to open \the [src] with a crowbar before moving the bees.</span>")
 			return TRUE
 		if(B.full)
-			user.visible_message("<span class='notice'>\The [user] puts the queen and the bees from \the [I] into \the [src].</span>", "<span class='notice'>You put the queen and the bees from \the [I] into \the [src].</span>")
+			user.visible_message("<span class='notice'>\The [user] puts the queen and the bees from \the [used_item] into \the [src].</span>", "<span class='notice'>You put the queen and the bees from \the [used_item] into \the [src].</span>")
 			bee_count = 20
 			B.empty()
 		else
-			user.visible_message("<span class='notice'>\The [user] puts bees and larvae from \the [src] into \the [I].</span>", "<span class='notice'>You put bees and larvae from \the [src] into \the [I].</span>")
+			user.visible_message("<span class='notice'>\The [user] puts bees and larvae from \the [src] into \the [used_item].</span>", "<span class='notice'>You put bees and larvae from \the [src] into \the [used_item].</span>")
 			bee_count /= 2
 			B.fill()
 		update_icon()
 		return TRUE
-	else if(istype(I, /obj/item/scanner/plant))
+	else if(istype(used_item, /obj/item/scanner/plant))
 		to_chat(user, "<span class='notice'>Scan result of \the [src]...</span>")
 		to_chat(user, "Beehive is [bee_count ? "[round(bee_count)]% full" : "empty"].[bee_count > 90 ? " Colony is ready to split." : ""]")
 		if(frames)
@@ -115,7 +115,7 @@
 		if(smoked)
 			to_chat(user, "The hive is smoked.")
 		return TRUE
-	else if(IS_SCREWDRIVER(I))
+	else if(IS_SCREWDRIVER(used_item))
 		if(bee_count)
 			to_chat(user, "<span class='notice'>You can't dismantle \the [src] with these bees inside.</span>")
 			return TRUE

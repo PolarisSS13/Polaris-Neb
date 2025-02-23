@@ -30,10 +30,10 @@
 			return 0
 	return base_block_chance
 
-/obj/item/shield/riot/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/baton))
+/obj/item/shield/riot/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/baton))
 		if(cooldown < world.time - 25)
-			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
+			user.visible_message("<span class='warning'>[user] bashes [src] with [used_item]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
 			cooldown = world.time
 		return TRUE

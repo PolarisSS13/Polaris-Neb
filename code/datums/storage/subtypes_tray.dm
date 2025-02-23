@@ -4,11 +4,11 @@
 	allow_quick_gather = 1
 	use_sound = null
 
-/datum/storage/tray/remove_from_storage(mob/user, obj/item/W, atom/new_location, skip_update)
+/datum/storage/tray/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
 	. = ..()
-	W.vis_flags = initial(W.vis_flags)
-	W.appearance_flags = initial(W.appearance_flags)
-	W.update_icon() // in case it updates vis_flags
+	removing.vis_flags = initial(removing.vis_flags)
+	removing.appearance_flags = initial(removing.appearance_flags)
+	removing.update_icon() // in case it updates vis_flags
 
 /datum/storage/tray/gather_all(var/turf/T, var/mob/user)
 	..()

@@ -175,22 +175,22 @@ meteor_act
 	animate_receive_damage(src)
 	return 1
 
-/mob/living/human/proc/attack_bloody(obj/item/W, mob/attacker, var/effective_force, var/hit_zone)
-	if(W.atom_damage_type != BRUTE)
+/mob/living/human/proc/attack_bloody(obj/item/used_item, mob/attacker, var/effective_force, var/hit_zone)
+	if(used_item.atom_damage_type != BRUTE)
 		return
 
 	if(!should_have_organ(BP_HEART))
 		return
 
 	//make non-sharp low-force weapons less likely to be bloodied
-	if(W.is_sharp() || prob(effective_force*4))
-		if(!(W.atom_flags & ATOM_FLAG_NO_BLOOD))
-			W.add_blood(src)
+	if(used_item.is_sharp() || prob(effective_force*4))
+		if(!(used_item.atom_flags & ATOM_FLAG_NO_BLOOD))
+			used_item.add_blood(src)
 	else
 		return //if the weapon itself didn't get bloodied than it makes little sense for the target to be bloodied either
 
 	//getting the weapon bloodied is easier than getting the target covered in blood, so run prob() again
-	if(prob(33 + W.is_sharp() * 10))
+	if(prob(33 + used_item.is_sharp() * 10))
 		var/turf/location = loc
 		if(istype(location) && location.simulated)
 			location.add_blood(src)
@@ -234,10 +234,10 @@ meteor_act
 				C.add_blood(src)
 				C.update_clothing_icon()
 
-/mob/living/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/W, var/effective_force, var/dislocate_mult, var/blocked)
+/mob/living/human/proc/attack_joint(var/obj/item/organ/external/organ, var/obj/item/used_item, var/effective_force, var/dislocate_mult, var/blocked)
 	if(!organ || organ.is_dislocated() || !(organ.limb_flags & ORGAN_FLAG_CAN_DISLOCATE) || blocked >= 100)
 		return 0
-	if(W.atom_damage_type != BRUTE)
+	if(used_item.atom_damage_type != BRUTE)
 		return 0
 
 	//want the dislocation chance to be such that the limb is expected to dislocate after dealing a fraction of the damage needed to break the limb

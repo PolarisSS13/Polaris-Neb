@@ -40,14 +40,14 @@ var/global/list/chem_implants = list()
 	reagents.trans_to_mob(R, amount, CHEM_INJECT)
 	to_chat(R, "<span class='notice'>You hear a faint *beep*.</span>")
 
-/obj/item/implant/chem/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/chems/syringe))
+/obj/item/implant/chem/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/syringe))
 		if(reagents.total_volume >= reagents.maximum_volume)
 			to_chat(user, "<span class='warning'>\The [src] is full.</span>")
 		else
 			if(do_after(user,5,src))
-				I.reagents.trans_to_obj(src, 5)
-				to_chat(user, "<span class='notice'>You inject 5 units of the solution. The syringe now contains [I.reagents.total_volume] units.</span>")
+				used_item.reagents.trans_to_obj(src, 5)
+				to_chat(user, "<span class='notice'>You inject 5 units of the solution. The syringe now contains [used_item.reagents.total_volume] units.</span>")
 		return TRUE
 	else
 		return ..()

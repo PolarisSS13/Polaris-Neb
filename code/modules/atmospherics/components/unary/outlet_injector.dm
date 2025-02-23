@@ -127,8 +127,8 @@
 /obj/machinery/atmospherics/unary/outlet_injector/hide(var/i)
 	update_icon()
 
-/obj/machinery/atmospherics/unary/outlet_injector/attackby(var/obj/item/O, var/mob/user)
-	if(IS_MULTITOOL(O))
+/obj/machinery/atmospherics/unary/outlet_injector/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/datum/browser/written_digital/popup = new (user, "Vent Configuration Utility", "[src] Configuration Panel", 600, 200)
 		popup.set_content(jointext(get_console_data(),"<br>"))
 		popup.open()
