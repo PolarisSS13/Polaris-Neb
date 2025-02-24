@@ -284,11 +284,13 @@
 */
 /atom/proc/examined_by(mob/user, distance, infix, suffix)
 	var/list/examine_lines
+	// to_chat(user, "<blockquote>") // these don't work in BYOND's native output panel. If we switch to browser output instead, you can readd this
 	for(var/add_lines in list(get_examine_header(user, distance, infix, suffix), get_examine_strings(user, distance, infix, suffix), get_examine_hints(user, distance, infix, suffix)))
 		if(islist(add_lines) && LAZYLEN(add_lines))
 			LAZYADD(examine_lines, add_lines)
 	if(LAZYLEN(examine_lines))
 		to_chat(user, jointext(examine_lines, "<br/>"))
+	// to_chat(user, "</blockquote>") // see above
 	RAISE_EVENT(/decl/observ/atom_examined, src, user, distance)
 	return TRUE
 

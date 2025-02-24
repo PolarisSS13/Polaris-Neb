@@ -1,24 +1,25 @@
-/mob/living/human/get_examined_short_description(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
-	var/msg = list("<span class='info'>*---------*<br/>[user == src ? "You are" : "This is"] <EM>[name]</EM>")
+/mob/living/human/get_examine_header(mob/user, distance, infix, suffix, hideflags)
+	SHOULD_CALL_PARENT(FALSE)
+	. = list("<span class='info'>*---------*<br/>[user == src ? "You are" : "This is"] <EM>[name]</EM>")
 	if(!(hideflags & HIDEJUMPSUIT) || !(hideflags & HIDEFACE))
 		var/species_name = "\improper "
 		if(isSynthetic() && species.cyborg_noun)
 			species_name += "[species.cyborg_noun] [species.get_root_species_name(src)]"
 		else
 			species_name += "[species.name]"
-		msg += ", <b><font color='[species.get_species_flesh_color(src)]'>\a [species_name]!</font></b>[(user.can_use_codex() && SScodex.get_codex_entry(get_codex_value(user))) ?  SPAN_NOTICE(" \[<a href='byond://?src=\ref[SScodex];show_examined_info=\ref[src];show_to=\ref[user]'>?</a>\]") : ""]"
+		. += ", <b><font color='[species.get_species_flesh_color(src)]'>\a [species_name]!</font></b>[(user.can_use_codex() && SScodex.get_codex_entry(get_codex_value(user))) ?  SPAN_NOTICE(" \[<a href='byond://?src=\ref[SScodex];show_examined_info=\ref[src];show_to=\ref[user]'>?</a>\]") : ""]"
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)
-		msg += "<br>[extra_species_text]"
+		. += "<br>[extra_species_text]"
 	var/show_descs = show_descriptors_to(user)
 	if(show_descs)
-		msg += "<br><span class='info'>[jointext(show_descs, "<br>")]</span>"
+		. += "<br><span class='info'>[jointext(show_descs, "<br>")]</span>"
 	var/print_flavour = print_flavor_text()
 	if(print_flavour)
-		msg += "<br/>*---------*"
-		msg += "<br/>[print_flavour]"
-	msg += "<br/>*---------*"
-	return list(jointext(msg, null))
+		. += "<br/>*---------*"
+		. += "<br/>[print_flavour]"
+	. += "<br/>*---------*"
+	. = list(jointext(., null))
 
 /mob/living/human/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
 
