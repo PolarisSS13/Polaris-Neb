@@ -32,9 +32,9 @@
 
 /obj/item/chems/borghypo/Initialize()
 	. = ..()
-	for(var/decl/material/reagent as anything in reagent_ids)
-		reagent_volumes[reagent] = volume
-		reagent_names += initial(reagent.name)
+	for(var/decl/material/reagent in decls_repository.get_decls_unassociated(reagent_ids))
+		reagent_volumes[reagent.type] = volume
+		reagent_names += reagent.use_name // TODO: should we even bother precaching this? all of this code sucks anyway
 	START_PROCESSING(SSobj, src)
 
 /obj/item/chems/borghypo/Destroy()
@@ -101,16 +101,16 @@
 		if(index > 0 && index <= reagent_ids.len)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = index
-			var/decl/material/reagent = reagent_ids[mode]
-			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(reagent.name)]'.</span>")
+			var/decl/material/reagent = GET_DECL(reagent_ids[mode])
+			to_chat(user, SPAN_NOTICE("Synthesizer is now producing '[reagent.use_name]'."))
 		return TOPIC_REFRESH
 
 /obj/item/chems/borghypo/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 2)
 		return
-	var/decl/material/reagent = reagent_ids[mode]
-	. += SPAN_NOTICE("It is currently producing [initial(reagent.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
+	var/decl/material/reagent = GET_DECL(reagent_ids[mode])
+	. += SPAN_NOTICE("It is currently producing [reagent.use_name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
 
 /obj/item/chems/borghypo/service
 	name = "cyborg drink synthesizer"

@@ -1,3 +1,6 @@
+/datum/category_item/player_setup_item/background
+	abstract_type = /datum/category_item/player_setup_item/background
+
 /datum/category_item/player_setup_item/background/species
 	name = "Species"
 	sort_order = 1

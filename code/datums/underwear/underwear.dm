@@ -1,6 +1,7 @@
 /****************************
 * Category Collection Setup *
 ****************************/
+var/global/datum/category_collection/underwear/underwear = new()
 /datum/category_collection/underwear
 	category_group_type = /datum/category_group/underwear
 
@@ -8,6 +9,9 @@
 * Categories *
 *************/
 // Lower sort order is applied as icons first
+/datum/category_group/underwear
+	abstract_type = /datum/category_group/underwear
+
 /datum/category_group/underwear/top
 	name = "Underwear, top"
 	sort_order = 1

@@ -43,7 +43,7 @@
 			return TRUE
 
 		if(cloth.get_amount() < cloth_cost)
-			to_chat(user, SPAN_WARNING("You need at least [cloth_cost] unit\s of material to create \a [initial(product_type.name)]."))
+			to_chat(user, SPAN_WARNING("You need at least [cloth_cost] unit\s of material to create \a [atom_info_repository.get_name_for(product_type)]."))
 			return TRUE
 
 		// Ugly way to check for dried grass vs regular grass.

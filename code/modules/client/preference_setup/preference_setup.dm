@@ -1,5 +1,8 @@
 var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 
+/datum/category_group/player_setup_category
+	abstract_type = /datum/category_group/player_setup_category
+
 /datum/category_group/player_setup_category/background_preferences
 	name = "Background"
 	sort_order = 1 // must go first because species
@@ -181,6 +184,7 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 * Category Item Setup *
 **********************/
 /datum/category_item/player_setup_item
+	abstract_type = /datum/category_item/player_setup_item
 	var/sort_order = 0
 	var/datum/preferences/pref
 

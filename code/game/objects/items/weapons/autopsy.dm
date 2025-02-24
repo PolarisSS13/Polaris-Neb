@@ -35,8 +35,8 @@
 			return
 
 		add_autopsy_data(S)
-		for(var/decl/material/dose as anything in M.chem_doses)
-			chemtraces |= initial(dose.name)
+		for(var/decl/material/dose in decls_repository.get_decls_unassociated(M.chem_doses))
+			chemtraces |= dose.use_name
 
 	else if(istype(A, /obj/item/organ/external))
 		set_target(A, user)
@@ -65,11 +65,11 @@
 	if(timeofdeath)
 		scan_data += "<b>Time of death:</b> [worldtime2stationtime(timeofdeath)]<br>"
 
-	var/n = 1
+	var/weapon_count = 1
 	for(var/weapon in weapon_data)
 		var/list/organs = weapon_data[weapon]["organs"]
 		var/datum/autopsy_data/data = weapon_data[weapon]["data"]
-		scan_data += "<b>Weapon #[n++]:</b> [data.weapon]"
+		scan_data += "<b>Weapon #[weapon_count++]:</b> [data.weapon]"
 		if(data.hits)
 			var/damage_desc
 			switch(data.damage)

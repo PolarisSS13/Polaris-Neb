@@ -244,11 +244,11 @@
 	if(H.reagents.total_volume)
 		var/unknown = 0
 		var/reagentdata[0]
-		for(var/A in H.reagents.reagent_volumes)
-			var/decl/material/R = GET_DECL(A)
-			if(R.scannable)
+		for(var/rtype in H.reagents.reagent_volumes)
+			var/decl/material/injected_reagent = GET_DECL(rtype)
+			if(injected_reagent.scannable)
 				print_reagent_default_message = FALSE
-				reagentdata[A] = "<span class='scan_notice'>[round(REAGENT_VOLUME(H.reagents, A), 1)]u [R.use_name]</span>"
+				reagentdata[rtype] = "<span class='scan_notice'>[round(REAGENT_VOLUME(H.reagents, rtype), 1)]u [injected_reagent.use_name]</span>"
 			else
 				unknown++
 		if(reagentdata.len)
@@ -264,11 +264,11 @@
 	if(touching_reagents && touching_reagents.total_volume)
 		var/unknown = 0
 		var/reagentdata[0]
-		for(var/A in touching_reagents.reagent_volumes)
-			var/decl/material/R = GET_DECL(A)
-			if(R.scannable)
+		for(var/rtype in touching_reagents.reagent_volumes)
+			var/decl/material/touched_reagent = GET_DECL(rtype)
+			if(touched_reagent.scannable)
 				print_reagent_default_message = FALSE
-				reagentdata[R.type] = "<span class='scan_notice'>[round(REAGENT_VOLUME(H.reagents, R.type), 1)]u [R.name]</span>"
+				reagentdata[rtype] = "<span class='scan_notice'>[round(REAGENT_VOLUME(H.reagents, rtype), 1)]u [touched_reagent.use_name]</span>"
 			else
 				unknown++
 		if(reagentdata.len)
@@ -284,10 +284,10 @@
 	if(ingested && ingested.total_volume)
 		var/unknown = 0
 		for(var/rtype in ingested.reagent_volumes)
-			var/decl/material/R = GET_DECL(rtype)
-			if(R.scannable)
+			var/decl/material/ingested_reagent = GET_DECL(rtype)
+			if(ingested_reagent.scannable)
 				print_reagent_default_message = FALSE
-				. += "<span class='scan_notice'>[capitalize(R.use_name)] found in subject's stomach.</span>"
+				. += "<span class='scan_notice'>[capitalize(ingested_reagent.use_name)] found in subject's stomach.</span>"
 			else
 				++unknown
 		if(unknown)
@@ -298,10 +298,10 @@
 	if(inhaled && inhaled.total_volume)
 		var/unknown = 0
 		for(var/rtype in inhaled.reagent_volumes)
-			var/decl/material/R = GET_DECL(rtype)
-			if(R.scannable)
+			var/decl/material/inhaled_reagent = GET_DECL(rtype)
+			if(inhaled_reagent.scannable)
 				print_reagent_default_message = FALSE
-				. += "<span class='scan_notice'>[capitalize(R.use_name)] found in subject's lungs.</span>"
+				. += "<span class='scan_notice'>[capitalize(inhaled_reagent.use_name)] found in subject's lungs.</span>"
 			else
 				++unknown
 		if(unknown)
@@ -310,10 +310,10 @@
 
 	if(length(H.chem_doses))
 		var/list/chemtraces = list()
-		for(var/T in H.chem_doses)
-			var/decl/material/R = T
-			if(initial(R.scannable))
-				chemtraces += "[initial(R.name)] ([LAZYACCESS(H.chem_doses, T)])"
+		for(var/dose_type in H.chem_doses)
+			var/decl/material/dose_material = GET_DECL(dose_type)
+			if(dose_material.scannable)
+				chemtraces += "[dose_material.use_name] ([LAZYACCESS(H.chem_doses, dose_type)])"
 		if(chemtraces.len)
 			. += "<span class='scan_notice'>Metabolism products of [english_list(chemtraces)] found in subject's system.</span>"
 
