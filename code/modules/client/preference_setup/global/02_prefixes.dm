@@ -100,8 +100,8 @@
 						continue
 					var/prefix_key = pref.prefix_keys_by_type[prefix_type]
 					if(prefix_key == new_key)
-						var/decl/prefix/pi = GET_DECL(prefix_type)
-						pref.prefix_keys_by_type[pi.type] = pi.default_key
+						var/decl/prefix/prefix = GET_DECL(prefix_type)
+						pref.prefix_keys_by_type[prefix.type] = prefix.default_key
 				// Then we reset any and all duplicates
 				reset_duplicate_keys()
 				// Then, if the new key was reset it means it matched a default key.

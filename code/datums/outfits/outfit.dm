@@ -205,17 +205,17 @@
 		wearer.put_in_hands(new hand(wearer))
 
 	if((outfit_flags & OUTFIT_HAS_BACKPACK) && !(OUTFIT_ADJUSTMENT_SKIP_BACKPACK & equip_adjustments))
-		var/decl/backpack_outfit/bo
+		var/decl/backpack_outfit/backpack_option
 		var/metadata
 
 		if(wearer.backpack_setup)
-			bo = wearer.backpack_setup.backpack
+			backpack_option = wearer.backpack_setup.backpack
 			metadata = wearer.backpack_setup.metadata
 		else
-			bo = get_default_outfit_backpack()
+			backpack_option = get_default_outfit_backpack()
 
-		var/override_type = backpack_overrides[bo.type]
-		var/backpack = bo.spawn_backpack(wearer, metadata, override_type)
+		var/override_type = backpack_overrides[backpack_option.type]
+		var/backpack = backpack_option.spawn_backpack(wearer, metadata, override_type)
 
 		if(backpack)
 			if(back)

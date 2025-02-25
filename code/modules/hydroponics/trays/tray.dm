@@ -194,7 +194,7 @@
 		if(istype(Proj, /obj/item/projectile/energy/floramut/gene))
 			var/obj/item/projectile/energy/floramut/gene/G = Proj
 			if(seed)
-				set_seed(seed.diverge_mutate_gene(G.gene, get_turf(loc)), reset_values = FALSE)	//get_turf just in case it's not in a turf.
+				set_seed(seed.diverge_mutate_gene(G.gene, src), reset_values = FALSE)
 		else
 			mutate(1)
 			return
@@ -354,7 +354,7 @@
 	// harvested yet and it's safe to assume it's restricted to this tray.
 	if(!isnull(SSplants.seeds[seed.name]))
 		set_seed(seed.diverge(), reset_values = FALSE)
-	seed.mutate(severity,get_turf(src))
+	seed.mutate(severity, src)
 
 	return
 

@@ -447,16 +447,16 @@
 	var/list/pub_vars = get_public_variables()
 
 	for(var/path in pub_methods)
-		var/decl/public_access/pub = pub_methods[path]
-		var/alias = pub.name
+		var/decl/public_access/pub_method = pub_methods[path]
+		var/alias = pub_method.name
 		alias = replacetext(alias, " ", "_")
-		LAZYSET(command_and_call, alias, pub)
+		LAZYSET(command_and_call, alias, pub_method)
 
 	for(var/path in pub_vars)
-		var/decl/public_access/pub = pub_vars[path]
-		var/alias = pub.name
+		var/decl/public_access/pub_var = pub_vars[path]
+		var/alias = pub_var.name
 		alias = replacetext(alias, " ", "_")
-		LAZYSET(command_and_write, alias, pub)
+		LAZYSET(command_and_write, alias, pub_var)
 
 /**Returns the outward facing URI for this network device.*/
 /datum/extension/network_device/proc/get_network_URI()

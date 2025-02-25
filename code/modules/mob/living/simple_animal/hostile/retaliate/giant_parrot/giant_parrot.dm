@@ -32,12 +32,12 @@
 
 /mob/living/simple_animal/hostile/parrot/space/Initialize()
 	. = ..()
-	var/decl/parrot_subspecies/ps = get_parrot_species()
-	if(ps)
-		icon_set = ps.icon_set
-		butchery_data = ps.butchery_data
+	var/decl/parrot_subspecies/parrot_species = get_parrot_species()
+	if(parrot_species)
+		icon_set = parrot_species.icon_set
+		butchery_data = parrot_species.butchery_data
 		if(get_subspecies_name)
-			SetName(ps.name)
+			SetName(parrot_species.name)
 	set_scale(2)
 	update_icon()
 

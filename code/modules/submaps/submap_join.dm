@@ -78,8 +78,8 @@
 			job.apply_fingerprints(character)
 			var/list/spawn_in_storage = SSjobs.equip_custom_loadout(character, job)
 			if(spawn_in_storage)
-				for(var/decl/loadout_option/G in spawn_in_storage)
-					G.spawn_in_storage_or_drop(user_human, user_human.client.prefs.Gear()[G.uid])
+				for(var/decl/loadout_option/gear in spawn_in_storage)
+					gear.spawn_in_storage_or_drop(user_human, user_human.client.prefs.Gear()[gear.uid])
 			SScustomitems.equip_custom_items(user_human)
 
 		character.job = job.title
@@ -97,12 +97,12 @@
 		if(istype(ojob) && ojob.info)
 			to_chat(character, ojob.info)
 
-		if(user_human && user_human.has_genetic_condition(GENE_COND_NEARSIGHTED))
+		if(user_human && user_human.has_genetic_condition(GENE_COND_NEARSIGHTED)) // is this even necessary with the new aspects system?
 			var/equipped = user_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/prescription(user_human), slot_glasses_str)
 			if(equipped)
-				var/obj/item/clothing/glasses/G = user_human.get_equipped_item(slot_glasses_str)
-				if(istype(G))
-					G.prescription = 7
+				var/obj/item/clothing/glasses/glasses = user_human.get_equipped_item(slot_glasses_str)
+				if(istype(glasses))
+					glasses.prescription = 7
 
 		BITSET(character.hud_updateflag, ID_HUD)
 		BITSET(character.hud_updateflag, IMPLOYAL_HUD)
