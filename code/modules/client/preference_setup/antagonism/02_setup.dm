@@ -27,8 +27,8 @@
 /datum/category_item/player_setup_item/antagonism/basic/save_character(datum/pref_record_writer/writer)
 	var/uplink_order = list()
 	for(var/entry in pref.uplink_sources)
-		var/decl/uplink_source/uplink = entry
-		uplink_order += uplink.name
+		var/decl/uplink_source/uplink_source = entry
+		uplink_order += uplink_source.name
 
 	writer.write("uplink_sources", uplink_order)
 	writer.write("exploit_record", pref.exploit_record)

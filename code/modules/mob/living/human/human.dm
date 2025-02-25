@@ -975,12 +975,13 @@
 //Human mob specific init code. Meant to be used only on init.
 /mob/living/human/proc/setup_human(species_name, datum/mob_snapshot/supplied_appearance)
 	if(supplied_appearance)
-		species_name = supplied_appearance.root_species
+		species_name = supplied_appearance.root_species.name
 	else if(!species_name)
 		species_name = global.using_map.default_species //Humans cannot exist without a species!
 
 	set_species(species_name, supplied_appearance?.root_bodytype)
 	var/decl/bodytype/root_bodytype = get_bodytype() // root bodytype is set in set_species
+	ASSERT((!supplied_appearance?.root_bodytype) || (root_bodytype == supplied_appearance.root_bodytype))
 	if(!get_skin_colour())
 		set_skin_colour(root_bodytype.base_color, skip_update = TRUE)
 	if(!get_eye_colour())

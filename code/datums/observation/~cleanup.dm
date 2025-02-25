@@ -47,7 +47,7 @@ var/global/list/_all_global_event_listeners = list()
 #endif
 
 /proc/cleanup_global_listener(datum/listener)
-	for(var/decl/observ/event in decls_repository.get_decls_of_subtype_unassociated(/decl/observ))
+	for(var/decl/observ/event as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/observ))
 		if(event.unregister_global(listener))
 			log_debug("[event] ([event.type]) - [log_info_line(listener)] was deleted while still globally registered to an event.")
 			if(!listener.global_listen_count)

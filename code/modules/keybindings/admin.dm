@@ -1,4 +1,5 @@
 /datum/keybinding/admin
+	abstract_type = /datum/keybinding/admin
 	category = CATEGORY_ADMIN
 
 /datum/keybinding/admin/can_use(client/user)

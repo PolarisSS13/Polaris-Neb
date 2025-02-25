@@ -26,7 +26,7 @@
 	LAZYCLEARLIST(datums_of_interest)
 
 /datum/unit_test/observation/proc/sanity_check_events(var/phase)
-	for(var/decl/observ/event in decls_repository.get_decls_of_subtype_unassociated(/decl/observ))
+	for(var/decl/observ/event as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/observ))
 		var/null_count = 0
 		for(var/null_candidate in event.global_listeners)
 			if(isnull(event.global_listeners[null_candidate]))

@@ -22,16 +22,22 @@
 
 	if(!isspaceturf(T))	//If the above isn't a space turf then we force it to find one will most likely pick 1,1,1
 		T = locate(/turf/space)
-	var/list/bodytype_pairings = get_bodytype_species_pairs()
-	for(var/decl/bodytype/bodytype in bodytype_pairings)
-		var/decl/species/species = bodytype_pairings[bodytype]
-		var/mob/living/human/test_subject = new(null, species.name, null, bodytype)
+	var/datum/mob_snapshot/dummy_appearance = new
+	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
+		var/decl/species/species = bodytype.get_user_species_for_validation()
+		if(!species)
+			continue
+		dummy_appearance.root_species  = species
+		dummy_appearance.root_bodytype = bodytype
+		var/mob/living/human/test_subject = new(T, species.name, dummy_appearance)
 		if(test_subject.need_breathe())
 			test_subject.apply_effect(20, STUN, 0)
 			var/obj/item/organ/internal/lungs/L = test_subject.get_organ(test_subject.get_bodytype().breathing_organ, /obj/item/organ/internal/lungs)
 			if(L)
 				L.last_successful_breath = -INFINITY
 			test_subjects["[bodytype.type]"] = list(test_subject, damage_check(test_subject, OXY))
+	QDEL_NULL(dummy_appearance)
+
 	return 1
 
 /datum/unit_test/human_breath/check_result()

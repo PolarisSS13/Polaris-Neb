@@ -39,8 +39,8 @@
 		if(!condition.is_heritable)
 			LAZYREMOVE(genetic_conditions, condition)
 
-/datum/mob_snapshot/Clone()
-	var/datum/mob_snapshot/clone = ..()
+/datum/mob_snapshot/PopulateClone(datum/mob_snapshot/clone)
+	clone = ..()
 	if(clone)
 		clone.real_name          = real_name
 		clone.eye_color          = eye_color
@@ -59,13 +59,12 @@
 // Replaces UpdateAppearance().
 /datum/mob_snapshot/proc/apply_appearance_to(mob/living/target)
 
-	if(istype(root_species))
+	if(istype(root_species) && root_species != target.get_species())
 		if(istype(root_bodytype))
 			target.set_species(root_species.name, root_bodytype)
 		else
 			target.set_species(root_species.name)
-
-	else if(istype(root_bodytype))
+	else if(istype(root_bodytype) && target.get_bodytype() != root_bodytype)
 		target.set_bodytype(root_bodytype)
 
 	target.set_fingerprint(fingerprint)

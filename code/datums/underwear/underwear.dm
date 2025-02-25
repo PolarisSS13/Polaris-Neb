@@ -1,6 +1,8 @@
 /****************************
 * Category Collection Setup *
 ****************************/
+// TODO: replace underwear category stuff with decls or something? unlike player_setup_collection they're all singletons
+// i hate to say it but the way this works may actually be perfect for /decl/hierarchy
 var/global/datum/category_collection/underwear/underwear = new()
 /datum/category_collection/underwear
 	category_group_type = /datum/category_group/underwear

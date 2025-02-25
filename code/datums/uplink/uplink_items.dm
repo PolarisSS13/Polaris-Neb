@@ -1,11 +1,10 @@
-var/global/datum/uplink/uplink = new()
-
-/datum/uplink
+/decl/uplink
 	var/list/items_assoc
 	var/list/datum/uplink_item/items
 	var/list/datum/uplink_category/categories
 
-/datum/uplink/New()
+/decl/uplink/Initialize()
+	. = ..()
 	items_assoc = list()
 	items = init_subtypes(/datum/uplink_item)
 	categories = init_subtypes(/datum/uplink_category)
