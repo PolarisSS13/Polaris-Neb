@@ -216,7 +216,8 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(density != new_density)
 		density = !!new_density
-		RAISE_EVENT(/decl/observ/density_set, src, !density, density)
+		if(event_listeners?[/decl/observ/density_set])
+			raise_event_non_global(/decl/observ/density_set, !density, density)
 
 /**
 	Handle a projectile `P` hitting this atom
@@ -376,7 +377,8 @@
 			if(L.light_angle)
 				L.source_atom.update_light()
 
-	RAISE_EVENT(/decl/observ/dir_set, src, old_dir, new_dir)
+	if(event_listeners?[/decl/observ/dir_set])
+		raise_event_non_global(/decl/observ/dir_set, old_dir, new_dir)
 
 
 /// Set the icon to `new_icon`
@@ -404,7 +406,8 @@
 /atom/proc/update_icon()
 	SHOULD_CALL_PARENT(TRUE)
 	on_update_icon()
-	RAISE_EVENT(/decl/observ/updated_icon, src)
+	if(event_listeners?[/decl/observ/updated_icon])
+		raise_event_non_global(/decl/observ/updated_icon)
 
 /**
 	Update this atom's icon.

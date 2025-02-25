@@ -41,6 +41,13 @@
 	if(SSpersistence.is_tracking(src, /decl/persistence_handler/book))
 		. = QDEL_HINT_LETMELIVE
 
+/// Clears the text written in the book. Used for acetone removing ink. Returns TRUE if successful, FALSE if it can't be dissolved.
+/obj/item/book/proc/clear_text()
+	if(can_dissolve_text)
+		dat = null
+		return TRUE
+	return FALSE
+
 /obj/item/book/on_update_icon()
 	. = ..()
 	icon_state = get_world_inventory_state()
@@ -77,12 +84,16 @@
 
 	if(dat)
 		user.visible_message("\The [user] opens a book titled \"[title]\" and begins reading intently.")
-		var/processed_dat = user.handle_reading_literacy(user, dat)
-		if(processed_dat)
-			show_browser(user, processed_dat, "window=book;size=1000x550")
-			onclose(user, "book")
+		show_text_to(user)
 	else
 		to_chat(user, SPAN_WARNING("This book is completely blank!"))
+
+/// Reader is the mob doing the reading, whose skill will be used for skillchecks. User is the mob who is holding the book, and do_afters will use them.
+/obj/item/book/proc/show_text_to(mob/reader, mob/user)
+	var/processed_dat = reader.handle_reading_literacy(reader, dat)
+	if(processed_dat)
+		show_browser(reader, processed_dat, "window=book;size=1000x550")
+		onclose(reader, "book")
 
 /obj/item/book/attackby(obj/item/used_item, mob/user)
 
@@ -148,9 +159,7 @@
 			SPAN_NOTICE("\The [user] opens up a book and shows it to \the [target].")
 		)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //to prevent spam
-		var/processed_dat = target.handle_reading_literacy(user, "<i>Author: [author].</i><br><br>" + "[dat]")
-		if(processed_dat)
-			show_browser(target, processed_dat, "window=book;size=1000x550")
+		show_text_to(target)
 		return TRUE
 	return ..()
 

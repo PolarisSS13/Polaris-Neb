@@ -71,6 +71,8 @@
 	var/old_affecting_heat_sources = affecting_heat_sources
 	var/old_height =           get_physical_height()
 	var/old_alpha_mask_state = get_movable_alpha_mask_state(null)
+	var/old_event_listeners =  event_listeners
+	var/old_listening_to =     _listening_to
 
 	var/old_ambience =         ambient_light
 	var/old_ambience_mult =    ambient_light_multiplier
@@ -98,6 +100,9 @@
 	var/turf/changed_turf = .
 	changed_turf.above =            old_above     // Multiz ref tracking.
 	changed_turf.prev_type =        old_prev_type // Shuttle transition turf tracking.
+	// Set our observation bookkeeping lists back.
+	changed_turf.event_listeners =  old_event_listeners
+	changed_turf._listening_to =    old_listening_to
 
 	changed_turf.affecting_heat_sources = old_affecting_heat_sources
 
@@ -121,8 +126,8 @@
 	if(tell_universe)
 		global.universe.OnTurfChange(changed_turf)
 
-	if(changed_turf.density != old_density)
-		RAISE_EVENT(/decl/observ/density_set, changed_turf, old_density, changed_turf.density)
+	if(changed_turf.density != old_density && changed_turf.event_listeners?[/decl/observ/density_set])
+		changed_turf.raise_event_non_global(/decl/observ/density_set, old_density, changed_turf.density)
 
 	// lighting stuff
 

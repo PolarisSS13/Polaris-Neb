@@ -947,9 +947,9 @@ default behaviour is:
 			if(user != src)
 				to_chat(user, SPAN_NOTICE("\The [src] scans the writing..."))
 		if(skill_check(SKILL_LITERACY, SKILL_BASIC))
-			if(skip_delays || do_after(src, 1 SECOND, user))
+			if(skip_delays || do_mob(user, src, 1 SECOND))
 				. = stars(text_content, 85)
-		else if(skip_delays || do_after(src, 3 SECONDS, user))
+		else if(skip_delays || do_mob(user, src, 3 SECONDS))
 			. = ..()
 
 /mob/living/handle_writing_literacy(var/mob/user, var/text_content, var/skip_delays)
