@@ -10,12 +10,6 @@
 		. |= thing.flags_inv
 	return . & EQUIPMENT_VISIBILITY_FLAGS
 
-/mob/proc/get_examined_short_description(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
-	. = list()
-	. += "[html_icon(src)] That's \a [src][infix]. [suffix]"
-	if(desc)
-		. += desc
-
 /mob/proc/get_examined_worn_held_items(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
 	. = list()
 	var/slot_datums = get_inventory_slots()
@@ -36,6 +30,10 @@
 /mob/proc/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
 	return
 
+// We add a default parameter here for hidden inventory flags.
+/mob/get_examine_header(mob/user, distance, infix, suffix, hideflags)
+	return ..(user, distance, infix, suffix)
+
 /mob/get_examine_strings(mob/user, distance, infix, suffix)
 
 	SHOULD_CALL_PARENT(FALSE)
@@ -49,8 +47,9 @@
 
 	// Show our equipment, held items, desc, etc.
 	var/decl/pronouns/pronouns = get_visible_pronouns(hideflags)
-	// to_chat(user, "<blockquote>") // these don't work in BYOND's native output panel. If we switch to browser output instead, you can readd this
-	. += get_examined_short_description(user, distance, infix, suffix, hideflags, pronouns)
-	. += get_examined_worn_held_items(user, distance, infix, suffix, hideflags, pronouns)
-	. += get_other_examine_strings(user, distance, infix, suffix, hideflags, pronouns)
-	// to_chat(user, "</blockquote>") // see above
+	var/list/examine_items = get_examined_worn_held_items(user, distance, infix, suffix, hideflags, pronouns)
+	if(length(examine_items))
+		. += examine_items
+	var/list/other_items = get_other_examine_strings(user, distance, infix, suffix, hideflags, pronouns)
+	if(length(other_items))
+		. += other_items
