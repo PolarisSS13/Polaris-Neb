@@ -1465,7 +1465,7 @@
 	if(get_equipped_item(slot_handcuffed_str) || buckled)
 		return FALSE
 	for(var/decl/natural_attack/attack as anything in get_mob_natural_attacks())
-		if(attack.is_usable(src) && attack.shredding)
+		if(attack.attack_is_usable(src) && attack.shredding)
 			return TRUE
 	return FALSE
 

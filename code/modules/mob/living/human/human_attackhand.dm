@@ -3,11 +3,12 @@
 		hit_zone = get_target_zone()
 	var/list/available_attacks = get_mob_natural_attacks()
 	var/decl/natural_attack/use_attack = default_attack
-	if(!use_attack || !use_attack.is_usable(src, target, hit_zone) || !(use_attack.type in available_attacks))
+	if(!use_attack || !use_attack.attack_is_usable(src, target, hit_zone) || !(use_attack in available_attacks))
+		var/alert_non_default_attack = use_attack?.name
 		use_attack = null
 		var/list/other_attacks = list()
 		for(var/decl/natural_attack/u_attack as anything in available_attacks)
-			if(!u_attack.is_usable(src, target, hit_zone))
+			if(!u_attack.attack_is_usable(src, target, hit_zone))
 				continue
 			if(u_attack.is_starting_default)
 				use_attack = u_attack
@@ -15,6 +16,9 @@
 			other_attacks += u_attack
 		if(!use_attack && length(other_attacks))
 			use_attack = pick(other_attacks)
+		if(use_attack && alert_non_default_attack)
+			to_chat(src, SPAN_WARNING("You cannot [alert_non_default_attack] \the [target] currently, so you switch attacks."))
+
 	. = use_attack?.resolve_to_soft_variant(src)
 
 /obj/item/organ/external/proc/get_natural_attacks()
