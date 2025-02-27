@@ -182,13 +182,6 @@
 	icon_state = "coffeecup_pawn"
 	base_name = "pawn cup"
 
-/obj/item/chems/drinks/glass2/coffeecup/britcup
-	name = "british coffee cup"
-	desc = "A coffee cup with the British flag emblazoned on it."
-	base_icon = "coffeecup_brit"
-	icon_state = "coffeecup_brit"
-	base_name = "british cup"
-
 /obj/item/chems/drinks/glass2/coffeecup/tall
 	name = "tall coffee cup"
 	desc = "An unreasonably tall coffee cup, for when you really need to wake up in the morning."
