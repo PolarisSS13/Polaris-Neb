@@ -48,7 +48,7 @@
 	name = "hive frame"
 	desc = "A wooden frame for insect hives that the workers will fill with products like honey."
 	icon = 'mods/content/beekeeping/icons/frame.dmi'
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 
 // TEMP until beewrite redoes hives.

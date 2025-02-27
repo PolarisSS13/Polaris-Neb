@@ -3,7 +3,7 @@
 	desc = "Contains everything you need to build a beehive."
 	icon = 'mods/content/beekeeping/icons/apiary_bees_etc.dmi'
 	icon_state = "apiary"
-	material = /decl/material/solid/organic/wood
+	material = /decl/material/solid/organic/wood/oak
 
 /obj/item/beehive_assembly/attack_self(var/mob/user)
 	to_chat(user, "<span class='notice'>You start assembling \the [src]...</span>")
