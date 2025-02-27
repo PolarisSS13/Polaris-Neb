@@ -175,13 +175,6 @@
 	icon_state = "coffeecup_metal"
 	material = /decl/material/solid/metal/stainlesssteel
 
-/obj/item/chems/drinks/glass2/coffeecup/STC
-	name = "\improper ICCG coffee cup"
-	desc = "A coffee cup adorned with the flag of the Gilgamesh Colonial Confederation, for when you need some espionage charges to go with your morning coffee."
-	base_icon = "coffeecup_STC"
-	icon_state = "coffeecup_STC"
-	base_name = "\improper ICCG cup"
-
 /obj/item/chems/drinks/glass2/coffeecup/pawn
 	name = "pawn coffee cup"
 	desc = "A black coffee cup adorned with the image of a red chess pawn."
