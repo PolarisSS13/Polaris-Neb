@@ -1118,7 +1118,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	for(var/equipped_slot in get_associated_equipment_slots())
 		wearer.update_equipment_overlay(equipped_slot, FALSE)
 	if(do_update_icon)
-		wearer.update_icon()
+		wearer.lazy_update_icon()
 	return TRUE
 
 /obj/item/proc/reconsider_client_screen_presence(var/client/client, var/slot)

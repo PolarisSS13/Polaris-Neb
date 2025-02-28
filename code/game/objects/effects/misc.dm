@@ -30,12 +30,12 @@
 	if(istype(wall))
 		wall.paint_color = color
 		wall.stripe_color = color
-		wall.update_icon()
+		wall.lazy_update_icon()
 	var/obj/structure/wall_frame/WF = locate() in loc
 	if(WF)
 		WF.paint_color = color
 		WF.stripe_color = color
-		WF.update_icon()
+		WF.lazy_update_icon()
 	qdel(src)
 
 /obj/effect/paint/pink

@@ -412,6 +412,16 @@
 		raise_event_non_global(/decl/observ/updated_icon)
 
 /**
+ * Update this atom's icon.
+ * If prior to SSicon_update's first flush, queues.
+ * Otherwise, updates instantly.
+ */
+/atom/proc/lazy_update_icon()
+	if(SSicon_update.init_state != SS_INITSTATE_NONE)
+		return update_icon()
+	queue_icon_update()
+
+/**
 	Update this atom's icon.
 
 	Usually queue_icon_update() or update_icon() should be used instead.

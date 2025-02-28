@@ -250,8 +250,8 @@
 		qdel(print)
 
 	if(!skip_update)
-		update_icon()
+		lazy_update_icon()
 		for(var/dir in global.alldirs)
 			var/turf/neighbor = get_step_resolving_mimic(src, dir)
 			if(istype(neighbor))
-				neighbor.update_icon()
+				neighbor.lazy_update_icon()
