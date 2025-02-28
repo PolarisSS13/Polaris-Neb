@@ -13,9 +13,10 @@
 	sleep(10)
 	var/current_time = world.timeofday
 
-	var/list/steps = sortTim(decls_repository.get_decls_of_subtype_unassociated(/decl/atmos_grief_fix_step), /proc/cmp_decl_sort_value_asc)
+	var/list/steps = decls_repository.get_decls_of_subtype_unassociated(/decl/atmos_grief_fix_step)
+	steps = sortTim(steps.Copy(), /proc/cmp_decl_sort_value_asc)
 	var/step_count = length(steps)
-	for(var/step_index in 1 to length(step_count))
+	for(var/step_index in 1 to step_count)
 		var/decl/atmos_grief_fix_step/fix_step = steps[step_index]
 		to_chat(usr, "\[[step_index]/[step_count]\] - [fix_step.name].")
 		fix_step.act()
