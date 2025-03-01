@@ -64,16 +64,11 @@
 	if(ismob(mob))
 		var/mob/M = mob
 		M.swap_hand()
-	if(isrobot(mob))
-		var/mob/living/silicon/robot/robot = mob
-		robot.cycle_modules()
-	return
 
 /client/verb/attack_self()
 	set hidden = 1
 	if(mob)
 		mob.mode()
-	return
 
 /client/verb/toggle_throw_mode_verb()
 	set hidden = TRUE

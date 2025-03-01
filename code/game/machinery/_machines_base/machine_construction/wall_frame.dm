@@ -192,7 +192,7 @@
 		if(board.build_path != (machine.base_type || machine.type))
 			to_chat(user, SPAN_WARNING("This circuitboard does not fit inside \the [machine]!"))
 			return TRUE
-		if(!user.canUnEquip(board))
+		if(!user.can_unequip_item(board))
 			return TRUE
 		machine.set_broken(TRUE, MACHINE_BROKEN_CONSTRUCT)
 		TRANSFER_STATE(diconnected_state)

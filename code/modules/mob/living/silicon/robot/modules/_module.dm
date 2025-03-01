@@ -1,9 +1,25 @@
+/datum/storage/robot_module
+	storage_slots = 24
+	// No real limits since mobs generally won't be able to freely interact with this storage.
+	max_w_class = ITEM_SIZE_GARGANTUAN
+
+/datum/storage/robot_module/can_be_inserted(obj/item/W, mob/user, stop_messages, click_params)
+	var/mob/living/silicon/robot/robot = user
+	return istype(robot) && (W in robot.module?.equipment)
+
+/obj/item/robot_module/get_stored_inventory()
+	. = ..()
+	var/mob/living/silicon/robot/robot = loc
+	if(LAZYLEN(.) && emag && (!istype(robot) || !robot.emagged))
+		LAZYREMOVE(., emag)
+
 /obj/item/robot_module
 	name = "robot module"
 	icon = 'icons/obj/modules/module_standard.dmi'
 	icon_state = ICON_STATE_WORLD
 	obj_flags = OBJ_FLAG_CONDUCTIBLE | OBJ_FLAG_NO_STORAGE
 	is_spawnable_type = FALSE
+	storage = /datum/storage/robot_module
 
 	var/associated_department
 	var/hide_on_manifest = 0
@@ -13,7 +29,7 @@
 		/decl/language/human/common = TRUE,
 		/decl/language/legal = TRUE,
 		/decl/language/sign = FALSE
-		)
+	)
 	var/list/module_sprites = list()
 	var/can_be_pushed = 1
 	// Equivalent to shoes with ITEM_FLAG_NOSLIP
@@ -42,12 +58,19 @@
 	var/list/skills = list() // Skills that this module grants. Other skills will remain at minimum levels.
 	var/list/software = list() // Apps to preinstall on robot's inbiult computer
 
-/obj/item/robot_module/Initialize()
+/obj/item/robot_module/Initialize(ml, material_key, reference_only = FALSE)
 
 	. = ..()
+	if(reference_only)
+		return
 
 	var/mob/living/silicon/robot/robot = loc
 	if(!istype(robot))
+		// Clear refs to avoid attempting to qdel a type in module Destroy().
+		equipment = null
+		synths    = null
+		emag      = null
+		jetpack   = null
 		return INITIALIZE_HINT_QDEL
 
 	robot.module = src
@@ -84,8 +107,7 @@
 	equipment = created_equipment
 
 /obj/item/robot_module/proc/finalize_equipment()
-	for(var/obj/item/I in equipment)
-		I.canremove = FALSE
+	return
 
 /obj/item/robot_module/proc/build_synths()
 	var/list/created_synths = list()
@@ -136,10 +158,10 @@
 	QDEL_NULL_LIST(synths)
 	QDEL_NULL(emag)
 	QDEL_NULL(jetpack)
+	. = ..()
 	var/mob/living/silicon/robot/robot = loc
 	if(istype(robot) && robot.module == src)
 		robot.module = null
-	. = ..()
 
 /obj/item/robot_module/emp_act(severity)
 	if(equipment)

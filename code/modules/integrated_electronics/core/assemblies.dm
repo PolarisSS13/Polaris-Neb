@@ -405,7 +405,7 @@
 
 /obj/item/electronic_assembly/attackby(obj/item/used_item, mob/user)
 	if(istype(used_item, /obj/item/integrated_circuit))
-		if(!user.canUnEquip(used_item))
+		if(!user.can_unequip_item(used_item))
 			return FALSE
 		if(try_add_component(used_item, user))
 			return TRUE

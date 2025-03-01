@@ -34,20 +34,8 @@
 	var/dismantle_type = /obj/item/robot_parts/robot_suit
 	/// If icon selection has been completed yet
 	var/icon_selected = TRUE
-	/// Hud stuff
-	var/obj/screen/robot/module/one/inv1
-	var/obj/screen/robot/module/two/inv2
-	var/obj/screen/robot/module/three/inv3
 
-	/// Used to determine whether they have the module menu shown or not
-	var/shown_robot_modules = 0
-	var/obj/screen/robot/modules_background/robot_modules_background
-	/// 3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
-	var/obj/item/module_active
-	var/obj/item/module_state_1
-	var/obj/item/module_state_2
-	var/obj/item/module_state_3
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = /obj/item/cell/high
 	var/cell_emp_mult = 2.5
@@ -89,6 +77,10 @@
 
 /mob/living/silicon/robot/Initialize()
 
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/one)
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/two)
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/three)
+
 	reset_hud_overlays()
 
 	. = ..()
@@ -99,7 +91,6 @@
 
 	wires = new(src)
 
-	robot_modules_background = new(null, src)
 	ident = random_id(/mob/living/silicon/robot, 1, 999)
 
 	updatename(modtype)
@@ -195,9 +186,7 @@
 
 /mob/living/silicon/robot/proc/reset_module(var/suppress_alert = null)
 	// Clear hands and module icon.
-	uneq_all()
-	if(shown_robot_modules)
-		hud_used.toggle_show_robot_modules()
+	drop_held_items()
 	modtype = initial(modtype)
 	refresh_hud_element(HUD_ROBOT_MODULE)
 	// If the robot had a module and this wasn't an uncertified change, let the AI know.
@@ -205,6 +194,7 @@
 		if (!suppress_alert)
 			notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
 		// Delete the module.
+		module.storage?.close(src)
 		module.Reset(src)
 		QDEL_NULL(module)
 	updatename("Default")
@@ -688,48 +678,8 @@
 		else
 			add_overlay(image(panel_icon, "ov-openpanel -c"))
 
-	if(module_active && istype(module_active, /obj/item/borg/combat/shield))
+	if(istype(get_active_held_item(), /obj/item/borg/combat/shield))
 		add_overlay("[icon_state]-shield")
-
-/mob/living/silicon/robot/proc/installed_modules()
-	if(weapon_lock)
-		to_chat(src, "<span class='warning'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</span>")
-		return
-
-	if(!module)
-		pick_module()
-		return
-	var/dat = "<HEAD><TITLE>Modules</TITLE></HEAD><BODY>\n"
-	dat += {"
-	<B>Activated Modules</B>
-	<BR>
-	Module 1: [module_state_1 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_1]'>[module_state_1]<A>" : "No Module"]<BR>
-	Module 2: [module_state_2 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_2]'>[module_state_2]<A>" : "No Module"]<BR>
-	Module 3: [module_state_3 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_3]'>[module_state_3]<A>" : "No Module"]<BR>
-	<BR>
-	<B>Installed Modules</B><BR><BR>"}
-
-
-	for (var/obj in module.equipment)
-		if (!obj)
-			dat += text("<B>Resource depleted</B><BR>")
-		else if(activated(obj))
-			dat += text("[obj]: <B>Activated</B><BR>")
-		else
-			dat += text("[obj]: <A HREF='byond://?src=\ref[src];act=\ref[obj]'>Activate</A><BR>")
-	if (emagged && module.emag)
-		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
-		else
-			dat += text("[module.emag]: <A HREF='byond://?src=\ref[src];act=\ref[module.emag]'>Activate</A><BR>")
-/*
-		if(activated(obj))
-			dat += text("[obj]: \[<B>Activated</B> | <A HREF='byond://?src=\ref[src];deact=\ref[obj]'>Deactivate</A>\]<BR>")
-		else
-			dat += text("[obj]: \[<A HREF='byond://?src=\ref[src];act=\ref[obj]'>Activate</A> | <B>Deactivated</B>\]<BR>")
-*/
-	show_browser(src, dat, "window=robotmod")
-
 
 /mob/living/silicon/robot/OnSelfTopic(href_list)
 	if (href_list["showalerts"])
@@ -742,61 +692,6 @@
 			O.attack_self(src)
 		return TOPIC_HANDLED
 
-	if (href_list["act"])
-		var/obj/item/O = locate(href_list["act"])
-		if (!istype(O))
-			return TOPIC_HANDLED
-
-		if(!((O in module.equipment) || (O == src.module.emag)))
-			return TOPIC_HANDLED
-
-		if(activated(O))
-			to_chat(src, "Already activated.")
-			return TOPIC_HANDLED
-		if(!module_state_1)
-			module_state_1 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_1,/obj/item/borg/sight))
-				sight_mode |= module_state_1:sight_mode
-		else if(!module_state_2)
-			module_state_2 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_2,/obj/item/borg/sight))
-				sight_mode |= module_state_2:sight_mode
-		else if(!module_state_3)
-			module_state_3 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_3,/obj/item/borg/sight))
-				sight_mode |= module_state_3:sight_mode
-		else
-			to_chat(src, "You need to disable a module first!")
-		installed_modules()
-		return TOPIC_HANDLED
-
-	if (href_list["deact"])
-		var/obj/item/O = locate(href_list["deact"])
-		if(activated(O))
-			if(module_state_1 == O)
-				module_state_1 = null
-				O.forceMove(null)
-			else if(module_state_2 == O)
-				module_state_2 = null
-				O.forceMove(null)
-			else if(module_state_3 == O)
-				module_state_3 = null
-				O.forceMove(null)
-			else
-				to_chat(src, "Module isn't activated.")
-		else
-			to_chat(src, "Module isn't activated.")
-		installed_modules()
-		return TOPIC_HANDLED
 	return ..()
 
 /mob/living/silicon/robot/proc/radio_menu()
@@ -805,7 +700,7 @@
 /mob/living/silicon/robot/Move(a, b, flag)
 	. = ..()
 	if(. && module && isturf(loc))
-		var/obj/item/ore/orebag = locate() in list(module_state_1, module_state_2, module_state_3)
+		var/obj/item/ore/orebag = locate() in get_held_items()
 		if(orebag)
 			loc.attackby(orebag, src)
 		module.handle_turf(loc, src)

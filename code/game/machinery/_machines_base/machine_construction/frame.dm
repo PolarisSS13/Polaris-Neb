@@ -89,7 +89,7 @@
 	if(istype(used_item, /obj/item/stock_parts/circuitboard))
 		var/obj/item/stock_parts/circuitboard/circuit = used_item
 		if(circuit.board_type == machine.expected_machine_type)
-			if(user.canUnEquip(used_item))
+			if(user.can_unequip_item(used_item))
 				TRANSFER_STATE(/decl/machine_construction/frame/awaiting_parts)
 				user.try_unequip(used_item, machine)
 				playsound(machine.loc, 'sound/items/Deconstruct.ogg', 50, 1)

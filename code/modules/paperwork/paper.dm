@@ -427,10 +427,10 @@
 
 	var/obj/item/paper_bundle/B = new(loc)
 	if(user)
-		if(!user.canUnEquip(src))
+		if(!user.can_unequip_item(src))
 			to_chat(user, SPAN_WARNING("You can't unequip \the [src]!"))
 			return
-		if(!user.canUnEquip(other))
+		if(!user.can_unequip_item(other))
 			to_chat(user, SPAN_WARNING("You can't unequip \the [other]!"))
 			return
 		user.try_unequip(src, B)

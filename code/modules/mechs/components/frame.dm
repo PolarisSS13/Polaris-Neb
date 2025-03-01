@@ -301,7 +301,7 @@
 		return 0
 	if(user)
 		visible_message(SPAN_NOTICE("\The [user] begins installing \the [thing] into \the [src]."))
-		if(!user.canUnEquip(thing) || !user.do_skilled(3 SECONDS, SKILL_DEVICES, src) || user.get_active_held_item() != thing)
+		if(!user.can_unequip_item(thing) || !user.do_skilled(3 SECONDS, SKILL_DEVICES, src) || user.get_active_held_item() != thing)
 			return
 		if(!user.try_unequip(thing))
 			return

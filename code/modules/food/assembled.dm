@@ -64,7 +64,7 @@
 		create_type = names[create_type]
 
 	// TODO: move reagents/matter into produced food object.
-	if(ispath(create_type) && user.canUnEquip(src))
+	if(ispath(create_type) && user.can_unequip_item(src))
 		var/obj/item/food/result
 		if(ispath(create_type, /obj/item/food))
 

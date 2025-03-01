@@ -88,13 +88,8 @@
 
 /obj/structure/boulder/Bumped(AM)
 	. = ..()
-	if(ishuman(AM))
-		var/mob/living/human/H = AM
-		for(var/obj/item/P in H.get_inactive_held_items())
-			if(IS_PICK(P))
-				attackby(P, H)
-				return
-	else if(isrobot(AM))
-		var/mob/living/silicon/robot/robot = AM
-		if(IS_PICK(robot.module_active))
-			attackby(robot.module_active,robot)
+	if(isliving(AM))
+		var/mob/living/user = AM
+		var/obj/item/equipped_item = user.get_active_held_item()
+		if(istype(equipped_item) && IS_PICK(equipped_item))
+			attackby(equipped_item, user)

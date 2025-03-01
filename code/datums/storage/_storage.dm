@@ -90,11 +90,6 @@ var/global/list/_test_storage_items = list()
 		play_open_sound()
 		holder?.queue_icon_update()
 	play_use_sound()
-	if (isrobot(user) && user.hud_used)
-		var/mob/living/silicon/robot/robot = user
-		if(robot.shown_robot_modules) //The robot's inventory is open, need to close it first.
-			robot.hud_used.toggle_show_robot_modules()
-
 	prepare_ui()
 	if(storage_ui)
 		storage_ui.on_open(user)
@@ -124,7 +119,7 @@ var/global/list/_test_storage_items = list()
 /datum/storage/proc/can_be_inserted(obj/item/inserting, mob/user, stop_messages = 0, click_params = null)
 	if(!istype(inserting)) return //Not an item
 
-	if(user && !user.canUnEquip(inserting))
+	if(user && !user.can_unequip_item(inserting))
 		return 0
 
 	if(!holder || holder.loc == inserting)

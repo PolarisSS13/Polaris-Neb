@@ -1,4 +1,5 @@
 /datum/hud/robot
+	offset_hands_vertically = FALSE
 	gun_mode_toggle_type    = /obj/screen/gun/mode
 	omit_hud_elements       = list(
 		/decl/hud_element/health,
@@ -23,7 +24,6 @@
 		/decl/hud_element/module_selection,
 		/decl/hud_element/robot_inventory,
 		/decl/hud_element/robot_radio,
-		/decl/hud_element/robot_panel,
 		/decl/hud_element/robot_store,
 		/decl/hud_element/robot_drop_grab
 	)
@@ -45,14 +45,11 @@
 	elem_is_auxilliary = FALSE
 
 /decl/hud_element/module_selection
-	elem_type = /obj/screen/robot/module/select
+	elem_type = /obj/screen/robot/module
 	elem_is_auxilliary = FALSE
 
 /decl/hud_element/robot_radio
 	elem_type = /obj/screen/robot/radio
-
-/decl/hud_element/robot_panel
-	elem_type = /obj/screen/robot/panel
 
 /decl/hud_element/robot_store
 	elem_type = /obj/screen/robot/store
