@@ -95,7 +95,7 @@ var/global/list/alien_whitelist = list()
 			return FALSE
 		if(!get_config_value(/decl/config/toggle/use_alien_whitelist) || !(S.spawn_flags & SPECIES_IS_WHITELISTED))
 			return TRUE
-		return whitelist_lookup(S.uid, M.ckey)
+		return whitelist_lookup(S.uid, M.ckey) || whitelist_lookup(S.name, M.ckey)
 
 	// Check for arbitrary text whitelisting.
 	return istext(species) ? whitelist_lookup(species, M.ckey) : FALSE
