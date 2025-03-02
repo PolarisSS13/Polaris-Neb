@@ -1,5 +1,0 @@
-author: MistakeNot4892
-changes:
-  - {tweak: 'Old browser-based module selection for robots has been removed, use the
-      INV button to open storage like you would a belt/backpack.'}
-delete-after: true
