@@ -24,7 +24,7 @@
 			if(slime_ai.current_target) // don't bother resolving it, we're just clearing it
 				slime_ai.current_target = null
 			slime_victim.set_feeding_on()
-		if(LAZYACCESS(victim.chem_doses, type) == removed)
+		if(CHEM_DOSE(victim, src) == removed)
 			var/reagent_name = get_reagent_name(holder) // mostly to check masked name, but handles phase too
 			victim.visible_message( \
 				SPAN_DANGER("\The [slime_victim]'s flesh sizzles where \the [reagent_name] touches it!"), \

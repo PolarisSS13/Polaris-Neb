@@ -98,9 +98,8 @@
 
 		// Handle some post-metabolism reagent processing for generally inedible foods.
 		if(ingested.total_volume > 0)
-			for(var/rtype in ingested.reagent_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				var/inedible_nutriment_amount = gains_nutriment_from_inedible_reagents[R]
+			for(var/decl/material/reagent as anything in ingested.reagent_volumes)
+				var/inedible_nutriment_amount = gains_nutriment_from_inedible_reagents[reagent.type]
 				if(inedible_nutriment_amount > 0)
 					owner.adjust_nutrition(inedible_nutriment_amount)
 

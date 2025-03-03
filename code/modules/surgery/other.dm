@@ -248,7 +248,7 @@
 		return FALSE
 
 	// Check if we have sterilizing reagents and -only- sterilizing reagents.
-	for(var/reagent in container.reagents.reagent_volumes)
+	for(var/decl/material/reagent as anything in container.reagents.reagent_volumes)
 		if(!(reagent in sterilizing_reagents))
 			return FALSE
 		. = TRUE

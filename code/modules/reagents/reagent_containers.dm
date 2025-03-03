@@ -176,11 +176,10 @@
 
 	// Vaporize anything over its boiling point.
 	var/update_reagents = FALSE
-	for(var/reagent in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(reagent)
-		if(mat.can_boil_to_gas && !isnull(mat.boiling_point) && temperature >= mat.boiling_point)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(reagent.can_boil_to_gas && !isnull(reagent.boiling_point) && temperature >= reagent.boiling_point)
 			// TODO: reduce atom temperature?
-			var/removing = min(mat.boil_evaporation_per_run, reagents.reagent_volumes[reagent])
+			var/removing = min(reagent.boil_evaporation_per_run, reagents.reagent_volumes[reagent])
 			reagents.remove_reagent(reagent, removing, defer_update = TRUE, removed_phases = MAT_PHASE_LIQUID)
 			update_reagents = TRUE
 			loc.take_vaporized_reagent(reagent, removing)

@@ -174,15 +174,14 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 				remains.update_primary_material()
 
 	// Digest reagents.
-	for(var/mat in reagents.reagent_volumes)
-		if(ispath(mat, /decl/material/liquid/fertilizer))
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(istype(reagent, /decl/material/liquid/fertilizer))
 			continue
-		var/decl/material/material_data = GET_DECL(mat)
-		if(!material_data.compost_value)
+		if(!reagent.compost_value)
 			continue
-		var/clamped_worm_drink_amount = min(round(worm_eat_amount * REAGENT_UNITS_PER_MATERIAL_UNIT), reagents.reagent_volumes[mat])
-		reagents.add_reagent(/decl/material/liquid/fertilizer/compost, max(1, round(clamped_worm_drink_amount * material_data.compost_value)))
-		reagents.remove_reagent(mat, clamped_worm_drink_amount)
+		var/clamped_worm_drink_amount = min(round(worm_eat_amount * REAGENT_UNITS_PER_MATERIAL_UNIT), reagents.reagent_volumes[reagent])
+		reagents.add_reagent(/decl/material/liquid/fertilizer/compost, max(1, round(clamped_worm_drink_amount * reagent.compost_value)))
+		reagents.remove_reagent(reagent, clamped_worm_drink_amount)
 		break
 
 	// Grow more worms.

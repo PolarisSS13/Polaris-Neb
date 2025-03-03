@@ -310,8 +310,8 @@
 
 	// If they're injured, we're using a beaker, and they don't have on of the chems in the beaker
 	if(reagent_glass && use_beaker && ((patient.get_damage(BRUTE) >= heal_threshold) || (patient.get_damage(TOX) >= heal_threshold) || (patient.get_damage(TOX) >= heal_threshold) || (patient.get_damage(OXY) >= (heal_threshold + 15))))
-		for(var/R in reagent_glass.reagents.reagent_volumes)
-			if(!patient.reagents.has_reagent(R))
+		for(var/decl/material/reagent as anything in reagent_glass.reagents.reagent_volumes)
+			if(!patient.reagents.has_reagent(reagent))
 				return 1
 			continue
 

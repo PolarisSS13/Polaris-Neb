@@ -103,10 +103,9 @@
 	reagents.trans_to_holder(combustion_chamber, min(reagents.total_volume, 15))
 	var/multiplier = 0
 	var/actually_flammable = FALSE
-	for(var/rtype in combustion_chamber.reagent_volumes)
+	for(var/decl/material/reagent as anything in temp_reagents_holder.reagents.reagent_volumes)
 		var/new_multiplier = 1
-		var/reagent_volume = combustion_chamber.reagent_volumes[rtype]
-		var/decl/material/reagent = GET_DECL(rtype)
+		var/reagent_volume = combustion_chamber.reagent_volumes[reagent]
 		if(reagent.accelerant_value < FUEL_VALUE_NONE) // suppresses fires rather than starts them
 			// this means that FUEL_VALUE_SUPPRESSANT is on par with water in the old code
 			new_multiplier = -(FUEL_VALUE_SUPPRESSANT + reagent.accelerant_value) / 2 * 0.4
@@ -114,7 +113,7 @@
 			// averaging these means that FUEL_VALUE_ACCELERANT is 1x, hydrazine is 1.25x, and exotic matter is 1.5x
 			new_multiplier = (FUEL_VALUE_ACCELERANT + reagent.accelerant_value) / 2
 			actually_flammable = TRUE
-		if(ispath(rtype, /decl/material/liquid/nutriment/sugar) && REAGENT_VOLUME(reagents, rtype) > 1)
+		if(ispath(reagent, /decl/material/liquid/nutriment/sugar) && REAGENT_VOLUME(reagents, reagent) > 1)
 			broken = TRUE
 			explosion(get_turf(src),-1,0,2,3,0)
 			return 0

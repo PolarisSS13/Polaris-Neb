@@ -215,9 +215,8 @@
 
 
 /obj/item/food/proc/add_allergen_flags(new_flags)
-	for(var/reagent in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(reagent)
-		var/list/newdata = mat.mix_data(reagents, list(DATA_INGREDIENT_FLAGS = new_flags))
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		var/list/newdata = reagent.mix_data(reagents, list(DATA_INGREDIENT_FLAGS = new_flags))
 		if(newdata)
 			LAZYSET(reagents.reagent_data, reagent, newdata)
 

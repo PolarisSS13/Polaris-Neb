@@ -248,9 +248,9 @@
 /obj/item/organ/proc/handle_ailment(var/datum/ailment/ailment)
 	if(ailment.treated_by_reagent_type)
 		for(var/datum/reagents/source as anything in owner.get_metabolizing_reagent_holders())
-			for(var/reagent_type in source.reagent_volumes)
-				if(ailment.treated_by_medication(reagent_type, source.reagent_volumes[reagent_type]))
-					ailment.was_treated_by_medication(source, reagent_type)
+			for(var/decl/material/reagent as anything in source.reagent_volumes)
+				if(ailment.treated_by_medication(reagent.type, source.reagent_volumes[reagent]))
+					ailment.was_treated_by_medication(source, reagent.type)
 					return
 	if(ailment.treated_by_chem_effect && owner.has_chemical_effect(ailment.treated_by_chem_effect, ailment.treated_by_chem_effect_strength))
 		ailment.was_treated_by_chem_effect()

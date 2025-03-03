@@ -133,16 +133,14 @@
 
 	var/removing = (4 * removed * antitoxin_strength)
 	var/datum/reagents/ingested = M.get_ingested_reagents()
-	for(var/R in ingested?.reagent_volumes)
-		var/decl/material/chem = GET_DECL(R)
-		if((remove_generic && chem.toxicity) || (R in remove_toxins))
-			ingested.remove_reagent(R, removing)
+	for(var/decl/material/reagent as anything in ingested?.reagent_volumes)
+		if((remove_generic && reagent.toxicity) || (reagent.type in remove_toxins))
+			ingested.remove_reagent(reagent, removing)
 			return
 
-	for(var/R in M.reagents?.reagent_volumes)
-		var/decl/material/chem = GET_DECL(R)
-		if((remove_generic && chem.toxicity) || (R in remove_toxins))
-			M.remove_from_reagents(R, removing)
+	for(var/decl/material/reagent as anything in M.reagents?.reagent_volumes)
+		if((remove_generic && reagent.toxicity) || (reagent.type in remove_toxins))
+			M.remove_from_reagents(reagent, removing)
 			return
 
 /decl/material/liquid/immunobooster
@@ -159,7 +157,7 @@
 
 /decl/material/liquid/immunobooster/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
-	if(REAGENT_VOLUME(holder, type) >= REAGENTS_OVERDOSE)
+	if(REAGENT_VOLUME(holder, src) >= REAGENTS_OVERDOSE)
 		return
 	var/immunity_to_add = clamp((M.immunity_norm / 2) - M.get_immunity(), 0, removed)
 	if(immunity_to_add > 0)
@@ -183,19 +181,25 @@
 	allergen_flags = ALLERGEN_STIMULANT
 
 /decl/material/liquid/stimulants/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
+	var/volume = REAGENT_VOLUME(holder, src)
 	. = ..()
-	if(volume <= 0.1 && LAZYACCESS(M.chem_doses, type) >= 0.5 && world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
-		LAZYSET(holder.reagent_data, type, world.time)
+	var/update_data = FALSE
+	var/list/data = REAGENT_DATA(holder, src)
+	if(volume <= 0.1 && CHEM_DOSE(M, src) >= 0.5 && world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 5 MINUTES)
+		update_data = TRUE
 		to_chat(M, "<span class='warning'>You lose focus...</span>")
 	else
 		ADJ_STATUS(M, STAT_DROWSY, -5)
 		ADJ_STATUS(M, STAT_PARA, -1)
 		ADJ_STATUS(M, STAT_STUN, -1)
 		ADJ_STATUS(M, STAT_WEAK, -1)
-		if(world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
-			LAZYSET(holder.reagent_data, type, world.time)
+		if(world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 5 MINUTES)
+			update_data = TRUE
 			to_chat(M, "<span class='notice'>Your mind feels focused and undivided.</span>")
+
+	if(update_data)
+		LAZYSET(data, DATA_COOLDOWN_TIME, world.time)
+		LAZYSET(holder.reagent_data, type, data)
 
 /decl/material/liquid/antidepressants
 	name = "antidepressants"
@@ -209,17 +213,24 @@
 	uid = "chem_antidepressants"
 
 /decl/material/liquid/antidepressants/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
+	var/volume = REAGENT_VOLUME(holder, src)
 	. = ..()
-	if(volume <= 0.1 && LAZYACCESS(M.chem_doses, type) >= 0.5 && world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
-		LAZYSET(holder.reagent_data, type, world.time)
+
+	var/update_data = FALSE
+	var/list/data = REAGENT_DATA(holder, src)
+	if(volume <= 0.1 && CHEM_DOSE(M, src) >= 0.5 && world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 5 MINUTES)
+		update_data = TRUE
 		to_chat(M, "<span class='warning'>Your mind feels a little less stable...</span>")
 	else
 		M.add_chemical_effect(CE_MIND, 1)
 		M.adjust_hallucination(-10)
-		if(world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
-			LAZYSET(holder.reagent_data, type, world.time)
+		if(world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 5 MINUTES)
+			update_data = TRUE
 			to_chat(M, "<span class='notice'>Your mind feels stable... a little stable.</span>")
+
+	if(update_data)
+		LAZYSET(data, DATA_COOLDOWN_TIME, world.time)
+		LAZYSET(holder.reagent_data, type, data)
 
 /decl/material/liquid/antibiotics
 	name = "antibiotics"
@@ -262,7 +273,7 @@
 /decl/material/liquid/retrovirals/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
 	M.heal_damage(CLONE, 20 * removed)
-	if(LAZYACCESS(M.chem_doses, type) > 10)
+	if(CHEM_DOSE(M, src) > 10)
 		ADJ_STATUS(M, STAT_DIZZY, 5)
 		ADJ_STATUS(M, STAT_JITTER, 5)
 	M.reset_genetic_conditions()
@@ -279,8 +290,8 @@
 	uid = "chem_adrenaline"
 
 /decl/material/liquid/adrenaline/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
-	var/dose = LAZYACCESS(M.chem_doses, type)
+	var/volume = REAGENT_VOLUME(holder, src)
+	var/dose = CHEM_DOSE(M, src)
 	. = ..()
 	if(dose < 0.2)	//not that effective after initial rush
 		M.add_chemical_effect(CE_PAINKILLER, min(30*volume, 80))
@@ -378,9 +389,9 @@
 
 /decl/material/liquid/clotting_agent/affect_blood(mob/living/M, removed, datum/reagents/holder)
 	SET_STATUS_MAX(M, STAT_BLURRY, 30)
-	M.add_chemical_effect(CE_BLOCKAGE, (15 + REAGENT_VOLUME(holder, type))/100)
+	M.add_chemical_effect(CE_BLOCKAGE, (15 + REAGENT_VOLUME(holder, src))/100)
 	for(var/obj/item/organ/external/limb in M.get_external_organs())
-		if(!(limb.status & (ORGAN_ARTERY_CUT|ORGAN_BLEEDING)) || !prob(2 + REAGENT_VOLUME(holder, type)))
+		if(!(limb.status & (ORGAN_ARTERY_CUT|ORGAN_BLEEDING)) || !prob(2 + REAGENT_VOLUME(holder, src)))
 			continue
 		if(limb.status & ORGAN_ARTERY_CUT)
 			limb.status &= ~ORGAN_ARTERY_CUT
@@ -419,22 +430,22 @@
 /decl/material/liquid/detoxifier/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
 	var/charges = removed * DETOXIFIER_EFFECTIVENESS
-	var/dosecharges = LAZYACCESS(M.chem_doses, type) * DETOXIFIER_DOSE_EFFECTIVENESS
+	var/dosecharges = CHEM_DOSE(M, src) * DETOXIFIER_DOSE_EFFECTIVENESS
 	for(var/datum/reagents/container as anything in M.get_metabolizing_reagent_holders())
-		for(var/reagent_type in container.reagent_volumes)
-			var/decl/material/liquid/painkillers/painkiller = GET_DECL(reagent_type)
+		for(var/decl/material/reagent as anything in container.reagent_volumes)
+			var/decl/material/liquid/painkillers/painkiller = reagent
 			if(!istype(painkiller) || !painkiller.narcotic)
 				continue
-			var/amount = min(charges, REAGENT_VOLUME(container, reagent_type))
+			var/amount = min(charges, REAGENT_VOLUME(container, reagent))
 			if(amount)
 				charges -= amount
-				container.remove_reagent(reagent_type, amount)
-			var/dose_amount = min(dosecharges, LAZYACCESS(M.chem_doses, reagent_type))
+				container.remove_reagent(reagent, amount)
+			var/dose_amount = min(dosecharges, CHEM_DOSE(M, reagent))
 			if(dose_amount)
-				var/dose = LAZYACCESS(M.chem_doses, reagent_type) - dose_amount
-				LAZYSET(M.chem_doses, reagent_type, dose)
-				if(M.chem_doses[reagent_type] <= 0)
-					LAZYREMOVE(M.chem_doses, reagent_type)
+				var/dose = CHEM_DOSE(M, reagent) - dose_amount
+				LAZYSET(M._chem_doses, reagent, dose)
+				if(CHEM_DOSE(M, reagent) <= 0)
+					LAZYREMOVE(M._chem_doses, reagent)
 				dosecharges -= dose_amount
 			if(charges <= 0 && dosecharges <= 0)
 				break

@@ -115,14 +115,14 @@
 	fresh_coolant = 0
 	coolant_purity = 0
 	var/num_reagent_types = 0
-	for(var/rtype in reagents.reagent_volumes)
-		var/cur_purity = coolant_reagents_purity[rtype]
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		var/cur_purity = coolant_reagents_purity[reagent.type]
 		if(!cur_purity)
 			cur_purity = 0.1
 		else if(cur_purity > 1)
 			cur_purity = 1
-		total_purity += cur_purity * REAGENT_VOLUME(reagents, rtype)
-		fresh_coolant += REAGENT_VOLUME(reagents, rtype)
+		total_purity += cur_purity * REAGENT_VOLUME(reagents, reagent)
+		fresh_coolant += REAGENT_VOLUME(reagents, reagent)
 		num_reagent_types += 1
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant

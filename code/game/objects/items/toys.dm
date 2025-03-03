@@ -66,10 +66,9 @@
 		return
 	w_class = (reagents?.total_volume > 0)? ITEM_SIZE_SMALL : ITEM_SIZE_TINY
 	//#TODO: Maybe acids should handle eating their own containers themselves?
-	for(var/reagent in reagents?.reagent_volumes)
-		var/decl/material/M = GET_DECL(reagent)
-		if(M.solvent_power >= MAT_SOLVENT_STRONG)
-			visible_message(SPAN_DANGER("\The [M] chews through \the [src]!"))
+	for(var/decl/material/reagent as anything in reagents?.reagent_volumes)
+		if(reagent.solvent_power >= MAT_SOLVENT_STRONG)
+			visible_message(SPAN_DANGER("\The [reagent] chews through \the [src]!"))
 			physically_destroyed()
 
 /obj/item/chems/water_balloon/throw_impact(atom/hit_atom, datum/thrownthing/TT)

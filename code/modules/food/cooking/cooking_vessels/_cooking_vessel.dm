@@ -74,18 +74,15 @@
 		. += "\the [thing]"
 
 	if(reagents?.total_volume)
-		for(var/solid_type in reagents.solid_volumes)
-			var/decl/material/reagent = GET_DECL(solid_type)
-			var/reagent_name = reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)
-			. += "[reagents.solid_volumes[solid_type]]u of [reagent_name]"
+		for(var/decl/material/reagent as anything in reagents.solid_volumes)
+			. += "[reagents.solid_volumes[reagent]]u of [reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)]"
 
-		for(var/liquid_type in reagents.liquid_volumes)
-			var/decl/material/reagent = GET_DECL(liquid_type)
+		for(var/decl/material/reagent as anything in reagents.liquid_volumes)
 			var/reagent_name = reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)
 			if(!isnull(reagent.boiling_point) && temperature >= reagent.boiling_point && reagent.soup_hot_desc)
-				. += "[reagents.liquid_volumes[liquid_type]]u of [reagent.soup_hot_desc] [reagent_name]"
+				. += "[reagents.liquid_volumes[reagent]]u of [reagent.soup_hot_desc] [reagent_name]"
 			else
-				. += "[reagents.liquid_volumes[liquid_type]]u of [reagent_name]"
+				. += "[reagents.liquid_volumes[reagent]]u of [reagent_name]"
 
 /obj/item/chems/cooking_vessel/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()

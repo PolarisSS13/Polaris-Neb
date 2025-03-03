@@ -184,7 +184,7 @@
 
 /decl/material/solid/potash/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
-	var/volume = REAGENT_VOLUME(holder, type)
+	var/volume = REAGENT_VOLUME(holder, src)
 	if(volume > 3)
 		M.add_chemical_effect(CE_PULSE, 1)
 	if(volume > 10)

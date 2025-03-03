@@ -1207,10 +1207,9 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 		var/decl/material/bait_mat = GET_DECL(mat)
 		if(bait_mat.fishing_bait_value)
 			. += MATERIAL_UNITS_TO_REAGENTS_UNITS(matter[mat]) * bait_mat.fishing_bait_value * BAIT_VALUE_CONSTANT
-	for(var/mat in reagents?.reagent_volumes)
-		var/decl/material/bait_mat = GET_DECL(mat)
-		if(bait_mat.fishing_bait_value)
-			. += reagents.reagent_volumes[mat] * bait_mat.fishing_bait_value * BAIT_VALUE_CONSTANT
+	for(var/decl/material/reagent as anything in reagents?.reagent_volumes)
+		if(reagent.fishing_bait_value)
+			. += reagents.reagent_volumes[reagent] * reagent.fishing_bait_value * BAIT_VALUE_CONSTANT
 #undef BAIT_VALUE_CONSTANT
 
 /obj/item/proc/get_storage_cost()
@@ -1289,8 +1288,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	if(!reagents_state || !check_state_in_icon(reagents_state, icon))
 		return
 	var/image/reagent_overlay = overlay_image(icon, reagents_state, reagents.get_color(), RESET_COLOR | RESET_ALPHA)
-	for(var/reagent_type in reagents.reagent_volumes)
-		var/decl/material/reagent = GET_DECL(reagent_type)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 		if(!reagent.reagent_overlay)
 			continue
 		var/modified_reagent_overlay = state_prefix ? "[state_prefix]_[reagent.reagent_overlay]" : reagent.reagent_overlay

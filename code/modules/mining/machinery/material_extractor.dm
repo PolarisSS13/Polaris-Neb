@@ -97,8 +97,8 @@
 		return
 
 	var/adjusted_reagents = FALSE
-	for(var/mtype in reagents.reagent_volumes)
-		adjusted_reagents = max(adjusted_reagents, process_non_liquid(mtype))
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		adjusted_reagents = max(adjusted_reagents, process_non_liquid(reagent))
 
 	if(adjusted_reagents)
 		if(gas_contents)
@@ -108,7 +108,7 @@
 /obj/machinery/material_processing/extractor/proc/process_non_liquid(var/mtype)
 	var/adjusted_reagents = FALSE
 	var/flashed_warning = FALSE
-	var/decl/material/mat = GET_DECL(mtype)
+	var/decl/material/mat = RESOLVE_TO_DECL(mtype)
 	// TODO: Change this to ambient/tank pressure when phase changes are properly implemented.
 	switch(mat.phase_at_temperature(temperature, ONE_ATMOSPHERE))
 		if(MAT_PHASE_GAS)
@@ -239,14 +239,11 @@
 
 	data["reagents"] = list()
 	var/index = 0
-	for(var/mtype in reagents.reagent_volumes)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 		index += 1
-		var/decl/material/mat = GET_DECL(mtype)
-
 		// TODO: Must be revised once state changes are in. Reagent names might be a litle odd in the meantime.
-		var/is_liquid = mat.phase_at_temperature(temperature, ONE_ATMOSPHERE) == MAT_PHASE_LIQUID
-
-		data["reagents"] += list(list("label" = "[mat.liquid_name] ([reagents.reagent_volumes[mtype]] U)", "index" = index, "liquid" = is_liquid))
+		var/is_liquid = reagent.phase_at_temperature(temperature, ONE_ATMOSPHERE) == MAT_PHASE_LIQUID
+		data["reagents"] += list(list("label" = "[reagent.liquid_name] ([reagents.reagent_volumes[reagent]] U)", "index" = index, "liquid" = is_liquid))
 
 	data["full"] = reagents.total_volume >= max_liquid
 	data["gas_pressure"] = gas_contents?.return_pressure()

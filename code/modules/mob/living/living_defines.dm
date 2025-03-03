@@ -46,7 +46,7 @@
 	var/jumping = FALSE
 
 	var/list/chem_effects
-	var/list/chem_doses
+	var/list/_chem_doses
 	var/last_pain_message
 	var/next_pain_time = 0
 

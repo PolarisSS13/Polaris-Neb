@@ -35,8 +35,8 @@
 			return
 
 		add_autopsy_data(S)
-		for(var/decl/material/dose in decls_repository.get_decls_unassociated(M.chem_doses))
-			chemtraces |= dose.use_name
+		for(var/decl/material/reagent as anything in M._chem_doses)
+			chemtraces |= reagent.use_name
 
 	else if(istype(A, /obj/item/organ/external))
 		set_target(A, user)

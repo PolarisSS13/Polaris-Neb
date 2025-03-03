@@ -366,13 +366,12 @@
 		var/do_steam = FALSE
 		var/list/waste = list()
 
-		for(var/rtype in reagents?.reagent_volumes)
+		for(var/decl/material/reagent as anything in reagents?.reagent_volumes)
 
-			var/decl/material/reagent = GET_DECL(rtype)
 			if(reagent.accelerant_value <= FUEL_VALUE_SUPPRESSANT && !isnull(reagent.boiling_point) && reagent.boiling_point < get_effective_burn_temperature())
 				do_steam = TRUE
 
-			var/volume = NONUNIT_CEILING(REAGENT_VOLUME(reagents, rtype) / REAGENT_UNITS_PER_GAS_MOLE, 0.1)
+			var/volume = NONUNIT_CEILING(REAGENT_VOLUME(reagents, reagent) / REAGENT_UNITS_PER_GAS_MOLE, 0.1)
 			var/list/waste_products = burn_material(reagent, volume)
 			if(!isnull(waste_products))
 				for(var/product in waste_products)

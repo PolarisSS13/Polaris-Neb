@@ -25,9 +25,8 @@
 
 /obj/item/stack/medical/bandage/proc/get_poultice_requirement_string()
 	. = list()
-	for(var/reagent in poultice_reagent_requirements)
-		var/decl/material/reagent_decl = GET_DECL(reagent)
-		. += "[poultice_reagent_requirements[reagent]] unit\s of [reagent_decl.liquid_name]"
+	for(var/decl/material/reagent as anything in poultice_reagent_requirements)
+		. += "[poultice_reagent_requirements[reagent.type]] unit\s of [reagent.liquid_name]"
 	. = english_list(.)
 
 /obj/item/stack/medical/bandage/get_examine_strings(mob/user, distance, infix, suffix)

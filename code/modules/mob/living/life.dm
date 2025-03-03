@@ -234,21 +234,20 @@
 
 	// Update chem dosage.
 	// TODO: refactor chem dosage above isSynthetic() and GODMODE checks.
-	if(length(chem_doses))
-		for(var/T in chem_doses)
+	if(length(_chem_doses))
+		for(var/decl/material/reagent as anything in _chem_doses)
 
 			var/still_processing_reagent = FALSE
 			for(var/datum/reagents/holder as anything in metabolizing_holders)
-				if(holder.has_reagent(T))
+				if(holder.has_reagent(reagent))
 					still_processing_reagent = TRUE
 					break
 			if(still_processing_reagent)
 				continue
-			var/decl/material/R = GET_DECL(T)
-			var/dose = LAZYACCESS(chem_doses, T) - R.metabolism*2
-			LAZYSET(chem_doses, T, dose)
-			if(LAZYACCESS(chem_doses, T) <= 0)
-				LAZYREMOVE(chem_doses, T)
+			var/dose = CHEM_DOSE(src, reagent) - reagent.metabolism*2
+			LAZYSET(_chem_doses, reagent, dose)
+			if(CHEM_DOSE(src, reagent) <= 0)
+				LAZYREMOVE(_chem_doses, reagent)
 	if(apply_chemical_effects())
 		update_health()
 

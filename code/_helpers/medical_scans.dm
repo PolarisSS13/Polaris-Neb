@@ -43,19 +43,17 @@
 	.["reagents"] = list()
 
 	if(reagents?.total_volume)
-		for(var/liquid_type in reagents.liquid_volumes)
-			var/decl/material/reagent = GET_DECL(liquid_type)
-			var/list/reagent_data  = list()
-			reagent_data["name"]= reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)
-			reagent_data["quantity"] = round(REAGENT_VOLUME(reagents, reagent.type),1)
+		for(var/decl/material/reagent as anything in reagents.liquid_volumes)
+			var/list/reagent_data = list()
+			reagent_data["name"]      = reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)
+			reagent_data["quantity"]  = round(REAGENT_VOLUME(reagents, reagent),1)
 			reagent_data["scannable"] = reagent.scannable
 			.["reagents"] += list(reagent_data)
 
-		for(var/solid_type in reagents.solid_volumes)
-			var/decl/material/reagent = GET_DECL(solid_type)
-			var/list/reagent_data  = list()
-			reagent_data["name"]= reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)
-			reagent_data["quantity"] = round(REAGENT_VOLUME(reagents, reagent.type),1)
+		for(var/decl/material/reagent as anything in reagents.solid_volumes)
+			var/list/reagent_data = list()
+			reagent_data["name"]      = reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)
+			reagent_data["quantity"]  = round(REAGENT_VOLUME(reagents, reagent),1)
 			reagent_data["scannable"] = reagent.scannable
 			.["reagents"] += list(reagent_data)
 

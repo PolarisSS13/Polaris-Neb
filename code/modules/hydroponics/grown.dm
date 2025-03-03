@@ -138,19 +138,18 @@
 
 		var/list/descriptors = list()
 
-		for(var/rtype in reagents.reagent_volumes)
-			var/decl/material/chem = GET_DECL(rtype)
-			if(chem.fruit_descriptor)
-				descriptors |= chem.fruit_descriptor
-			if(chem.reflectiveness >= MAT_VALUE_SHINY)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+			if(reagent.fruit_descriptor)
+				descriptors |= reagent.fruit_descriptor
+			if(reagent.reflectiveness >= MAT_VALUE_SHINY)
 				descriptors |= "shiny"
-			if(chem.slipperiness >= 10)
+			if(reagent.slipperiness >= 10)
 				descriptors |= "slippery"
-			if(chem.toxicity >= 3)
+			if(reagent.toxicity >= 3)
 				descriptors |= "poisonous"
-			if(chem.radioactivity)
+			if(reagent.radioactivity)
 				descriptors |= "radioactive"
-			if(chem.solvent_power >= MAT_SOLVENT_STRONG)
+			if(reagent.solvent_power >= MAT_SOLVENT_STRONG)
 				descriptors |= "acidic"
 
 		if(seed.get_trait(TRAIT_JUICY))

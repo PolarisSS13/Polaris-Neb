@@ -57,10 +57,10 @@
 		if(istype(random))
 			return random.get_scan_data(user)
 
-	for(var/reagent_type in reagents.reagent_volumes)
-		if(!ispath(reagent_type, /decl/material/liquid/blood))
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(!istype(reagent, /decl/material/liquid/blood))
 			return SPAN_WARNING("The sample was contaminated! Please insert another sample.")
-		var/data = REAGENT_DATA(reagents, reagent_type)
+		var/data = REAGENT_DATA(reagents, reagent)
 		if(islist(data))
 			blood_traces = data[DATA_BLOOD_TRACE_CHEM]
 			blood_doses = data[DATA_BLOOD_DOSE_CHEM]

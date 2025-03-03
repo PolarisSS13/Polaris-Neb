@@ -71,12 +71,10 @@
 				. += "Its refilling cap is closed."
 		. += SPAN_NOTICE("It contains:")
 		if(LAZYLEN(reagents?.reagent_volumes))
-			for(var/rtype in reagents.liquid_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				. += SPAN_NOTICE("[LIQUID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_LIQUID)].")
-			for(var/rtype in reagents.solid_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				. += SPAN_NOTICE("[SOLID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_SOLID)].")
+			for(var/decl/material/reagent as anything in reagents.liquid_volumes)
+				. += SPAN_NOTICE("[LIQUID_VOLUME(reagents, reagent)] unit\s of [reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)].")
+			for(var/decl/material/reagent as anything in reagents.solid_volumes)
+				. += SPAN_NOTICE("[SOLID_VOLUME(reagents, reagent)] unit\s of [reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)].")
 		else
 			. += SPAN_NOTICE("Nothing.")
 		if(reagents?.maximum_volume)
