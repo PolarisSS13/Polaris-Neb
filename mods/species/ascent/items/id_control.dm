@@ -8,7 +8,7 @@
 
 /obj/item/card/id/ascent/GetAccess()
 	var/mob/living/human/H = loc
-	if(istype(H) && !(H.species.name in ALL_ASCENT_SPECIES))
+	if(istype(H) && !istype(H.get_species(), /decl/species/mantid))
 		. = list()
 	else
 		. = ..()

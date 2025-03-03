@@ -1,5 +1,6 @@
 /decl/species/human/tritonian
-	name = SPECIES_TRITONIAN
+	uid = "species_tritonian"
+	name = "Tritonian"
 	name_plural = "Tritonians"
 	description = "A human-derived genotype designed for colonizing aquatic worlds."
 

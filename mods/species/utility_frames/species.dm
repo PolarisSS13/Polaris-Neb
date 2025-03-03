@@ -10,7 +10,8 @@
 	)
 
 /decl/species/utility_frame
-	name =                  SPECIES_FRAME
+	uid =                   "species_frame"
+	name =                  "Utility Frame"
 	name_plural =           "Utility Frames"
 	description =           "Simple AI-driven robots are used for many menial or repetitive tasks in human space."
 	cyborg_noun = null

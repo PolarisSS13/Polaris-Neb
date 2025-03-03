@@ -67,7 +67,7 @@
 	return list(
 		"real_name" = loaded_dna.real_name,
 		"UE"        = loaded_dna.unique_enzymes,
-		"species"   = loaded_dna.root_species.name,
+		"species"   = loaded_dna.root_species.uid,
 		"btype"     = loaded_dna.blood_type,
 	)
 

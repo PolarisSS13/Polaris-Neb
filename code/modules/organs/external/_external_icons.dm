@@ -127,7 +127,7 @@ var/global/list/organ_icon_cache = list()
 
 /obj/item/organ/external/proc/get_icon_cache_key_components()
 
-	. = list("[icon_state]_[species.name]_[get_organ_appearance_bodytype()?.uid || "BAD_BODYTYPE"]_[render_alpha]_[icon]")
+	. = list("[icon_state]_[species.uid]_[get_organ_appearance_bodytype()?.uid || "BAD_BODYTYPE"]_[render_alpha]_[icon]")
 
 	// Skeletons don't care about most icon appearance stuff.
 	if(limb_flags & ORGAN_FLAG_SKELETAL)

@@ -95,7 +95,7 @@ var/global/default_gyne
 	if(!current_health || maturity != 100 || hatched || hatching)
 		return
 
-	var/mob/living/simple_animal/alien/kharmaan/new_nymph = new(src, SPECIES_MANTID_NYMPH) // Spawn in the egg.
+	var/mob/living/simple_animal/alien/kharmaan/new_nymph = new(src) // Spawn in the egg.
 	new_nymph.lastarea = get_area(src)
 	new_nymph.key = C.ckey
 	new_nymph.real_name = "[random_id(/decl/species/mantid, 10000, 99999)] [lineage]"

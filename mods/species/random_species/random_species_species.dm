@@ -1,5 +1,6 @@
 /decl/species/alium
-	name = SPECIES_ALIEN
+	uid = "species_random_alien"
+	name = "Humanoid"
 	name_plural = "Humanoids"
 	description = "Some alien humanoid species, unknown to humanity. How exciting."
 	rarity_value = 5

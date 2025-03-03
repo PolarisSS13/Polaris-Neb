@@ -23,7 +23,7 @@
 	var/datum/gas_mixture/environment = owner.loc?.return_air()
 	if(!environment)
 		return
-	var/decl/species/species = get_species_by_key(global.using_map.default_species)
+	var/decl/species/species = decls_repository.get_decl_by_id(global.using_map.default_species)
 	if(!species.breath_type || environment.gas[species.breath_type] > species.breath_pressure)
 		for(var/gas in species.poison_types)
 			if(environment.gas[gas])

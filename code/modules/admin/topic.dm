@@ -233,6 +233,8 @@
 				delmob = TRUE
 
 		var/transform_key = replacetext(href_list["simplemake"], "_", " ")
+		// Nothing ever seems to pass species to any simplemake href links...
+		// TODO: Remove subspecies argument if it actually is defunct?
 		if(M.try_rudimentary_transform(transform_key, delmob, href_list["species"]))
 			log_and_message_admins("has used rudimentary transformation on [key_name_admin(M)]. Transforming to [transform_key]; deletemob=[delmob]")
 

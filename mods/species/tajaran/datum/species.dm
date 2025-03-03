@@ -12,7 +12,8 @@
 	)
 
 /decl/species/tajaran
-	name = SPECIES_TAJARAN
+	uid = "species_tajaran"
+	name = "Tajara"
 	name_plural = "Tajaran"
 	base_external_prosthetics_model = null
 

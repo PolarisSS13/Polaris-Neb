@@ -16,8 +16,9 @@
 	skin_material = /decl/material/solid/organic/skin/lizard
 
 /decl/species/unathi
-	name = SPECIES_UNATHI
-	name_plural = SPECIES_UNATHI
+	uid = "species_unathi"
+	name = "Unathi"
+	name_plural = "Unathi"
 	butchery_data = /decl/butchery_data/humanoid/unathi
 
 	available_bodytypes = list(
