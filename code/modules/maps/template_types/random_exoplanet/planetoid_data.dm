@@ -132,7 +132,7 @@
 	//Always keep the overmap marker in sync if we have one set already
 	try_update_overmap_marker()
 
-// ** Bunch of overridables below **
+// ** Bunch of overrideables below **
 
 ///Sets the name of the planetoid, and causes updates to happen to anything linked to us.
 /datum/planetoid_data/proc/SetName(var/newname)
@@ -155,8 +155,8 @@
 	atmosphere = A.Clone()
 
 ///Resets the given weather state to our planet replacing the old one, and trigger updates. Can be a type path or instance.
-/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/W)
-	initial_weather_state = W
+/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/weather)
+	initial_weather_state = weather
 	if(!(topmost_level_id in SSmapping.levels_by_id))
 		return //It's entire possible the levels weren't initialized yet, so don't bother.
 	//Tells all our levels exposed to the sky to force change the weather.

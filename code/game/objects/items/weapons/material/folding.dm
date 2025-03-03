@@ -58,11 +58,11 @@
 	valid_handle_colors = list(WOOD_COLOR_GENERIC, WOOD_COLOR_RICH, WOOD_COLOR_BLACK, WOOD_COLOR_CHOCOLATE, WOOD_COLOR_PALE)
 
 /obj/item/knife/folding/wood/get_striking_material(mob/user, atom/target)
-	. = open ? ..() : GET_DECL(/decl/material/solid/organic/wood) // todo: different handle colors -> different material
+	. = open ? ..() : GET_DECL(/decl/material/solid/organic/wood/oak) // todo: different handle colors -> different material
 
 /obj/item/knife/folding/tacticool
 	name = "folding knife"
-	desc = "A small folding knife with a polymer handle and a blackened steel blade. These are typically marketed for self defense purposes."
+	desc = "A small folding knife with a polymer handle and a blackened steel blade. These are typically marketed for self-defense purposes."
 	icon = 'icons/obj/items/weapon/knives/folding/tacticool.dmi'
 	valid_handle_colors = list("#0f0f2a", "#2a0f0f", "#0f2a0f", COLOR_GRAY20, COLOR_DARK_GUNMETAL)
 

@@ -35,9 +35,9 @@
 //		src.sd_SetLuminosity(0)
 
 //Don't want to render prison breaks impossible
-/obj/machinery/flasher/attackby(obj/item/W, mob/user)
-	if(IS_WIRECUTTER(W))
-		add_fingerprint(user, 0, W)
+/obj/machinery/flasher/attackby(obj/item/used_item, mob/user)
+	if(IS_WIRECUTTER(used_item))
+		add_fingerprint(user, 0, used_item)
 		src.disable = !src.disable
 		if (src.disable)
 			user.visible_message("<span class='warning'>[user] has disconnected \the [src]'s flashbulb!</span>", "<span class='warning'>You disconnect \the [src]'s flashbulb!</span>")
@@ -66,28 +66,28 @@
 	src.last_flash = world.time
 	use_power_oneoff(1500)
 
-	for (var/mob/living/O in viewers(src, null))
-		if (get_dist(src, O) > src.range)
+	for (var/mob/living/viewer in viewers(src, null))
+		if (get_dist(src, viewer) > src.range)
 			continue
 
 		var/flash_time = strength
-		if(isliving(O))
-			if(O.eyecheck() > FLASH_PROTECTION_NONE)
+		if(isliving(viewer))
+			if(viewer.eyecheck() > FLASH_PROTECTION_NONE)
 				continue
-			if(ishuman(O))
-				var/mob/living/human/H = O
+			if(ishuman(viewer))
+				var/mob/living/human/H = viewer
 				flash_time = round(H.get_flash_mod() * flash_time)
 				if(flash_time <= 0)
 					return
 				var/vision_organ_tag = H.get_vision_organ_tag()
 				if(vision_organ_tag)
-					var/obj/item/organ/internal/E = GET_INTERNAL_ORGAN(H, vision_organ_tag)
-					if(E && E.is_bruised() && prob(E.damage + 50))
+					var/obj/item/organ/internal/organ = GET_INTERNAL_ORGAN(H, vision_organ_tag)
+					if(organ && organ.is_bruised() && prob(organ.get_organ_damage() + 50))
 						H.flash_eyes()
-						E.damage += rand(1, 5)
+						organ.adjust_organ_damage(rand(1, 5))
 
-		if(!O.is_blind())
-			do_flash(O, flash_time)
+		if(!viewer.is_blind())
+			do_flash(viewer, flash_time)
 
 /obj/machinery/flasher/proc/do_flash(var/mob/living/victim, var/flash_time)
 	victim.flash_eyes()
@@ -123,8 +123,8 @@
 		if(!MOVING_DELIBERATELY(M))
 			flash()
 
-/obj/machinery/flasher/portable/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/machinery/flasher/portable/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		add_fingerprint(user)
 		src.anchored = !src.anchored
 

@@ -4,8 +4,8 @@
 	if((Z && !(appearance_flags & Z)) || !random_##Y.len){\
 		return;\
 	}\
-	var/decl/color_generator/CG = GET_DECL(pickweight(random_##Y));\
-	return CG && CG.generate_random_colour();\
+	var/decl/color_generator/color_gen = GET_DECL(pickweight(random_##Y));\
+	return color_gen?.generate_random_colour();\
 }
 
 #define SETUP_RANDOM_COLOR_SETTER(X, Y)\

@@ -82,7 +82,7 @@
 	if(!pref.bgstate || !(pref.bgstate in global.using_map.char_preview_bgstate_options))
 		pref.bgstate = global.using_map.char_preview_bgstate_options[1]
 
-/datum/category_item/player_setup_item/physical/body/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/physical/body/save_character(datum/pref_record_writer/writer)
 
 	var/decl/species/mob_species = get_species_by_key(pref.species)
 	var/list/save_accessories = list()
@@ -99,17 +99,20 @@
 				serialize_metadata[metadata.uid] = pref.sprite_accessories[acc_cat][acc][metadata_type]
 			save_accessories[accessory_category.uid][accessory.uid] = serialize_metadata
 
-	W.write("sprite_accessories",     save_accessories)
-	W.write("skin_tone",              pref.skin_tone)
-	W.write("skin_colour",            pref.skin_colour)
-	W.write("eye_colour",             pref.eye_colour)
-	W.write("b_type",                 pref.blood_type)
-	W.write("appearance_descriptors", pref.appearance_descriptors)
-	W.write("bgstate",                pref.bgstate)
+	writer.write("sprite_accessories",     save_accessories)
+	writer.write("skin_tone",              pref.skin_tone)
+	writer.write("skin_colour",            pref.skin_colour)
+	writer.write("eye_colour",             pref.eye_colour)
+	writer.write("b_type",                 pref.blood_type)
+	writer.write("appearance_descriptors", pref.appearance_descriptors)
+	writer.write("bgstate",                pref.bgstate)
 
 /datum/category_item/player_setup_item/physical/body/sanitize_character()
 
 	var/decl/species/mob_species = get_species_by_key(pref.species)
+	if(!mob_species || (mob_species.spawn_flags & SPECIES_IS_RESTRICTED))
+		pref.species = global.using_map.default_species
+		mob_species = get_species_by_key(pref.species)
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	if(mob_bodytype.appearance_flags & HAS_SKIN_COLOR)
 		pref.skin_colour = pref.skin_colour || mob_bodytype.base_color     || COLOR_BLACK
@@ -121,9 +124,6 @@
 		pref.eye_colour  = mob_bodytype.base_eye_color || COLOR_BLACK
 
 	pref.blood_type = sanitize_text(pref.blood_type, initial(pref.blood_type))
-
-	if(!pref.species || !(pref.species in get_playable_species()))
-		pref.species = global.using_map.default_species
 
 	if(!pref.blood_type || !(pref.blood_type in mob_species.blood_types))
 		pref.blood_type = pickweight(mob_species.blood_types)
@@ -261,8 +261,8 @@
 				var/list/accessory_metadata = length(current_accessories) ? current_accessories[current_accessory] : accessory_decl.get_default_accessory_metadata()
 				var/list/metadata_strings = list()
 				for(var/metadata_type in accessory_decl.accessory_metadata_types)
-					var/decl/sprite_accessory_metadata/sam = GET_DECL(metadata_type)
-					metadata_strings += sam.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
+					var/decl/sprite_accessory_metadata/metadata = GET_DECL(metadata_type)
+					metadata_strings += metadata.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
 				var/acc_decl_ref = "\ref[accessory_decl]"
 				. += "<tr>"
 				. += "<td width = '100px'><b>[accessory_cat_decl.name]</b></td>"
@@ -284,8 +284,8 @@
 				var/list/accessory_metadata = current_accessories[accessory]
 				var/list/metadata_strings = list()
 				for(var/metadata_type in accessory_decl.accessory_metadata_types)
-					var/decl/sprite_accessory_metadata/sam = GET_DECL(metadata_type)
-					metadata_strings += sam.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
+					var/decl/sprite_accessory_metadata/metadata = GET_DECL(metadata_type)
+					metadata_strings += metadata.get_metadata_options_string(src, accessory_cat_decl, accessory_decl, LAZYACCESS(accessory_metadata, metadata_type))
 				var/acc_decl_ref = "\ref[accessory_decl]"
 				. += "<tr>"
 				. += "<td width = '100px'><a href='byond://?src=\ref[src];acc_cat_decl=[cat_decl_ref];acc_decl=[acc_decl_ref];acc_remove=1'>Remove</a></td>"

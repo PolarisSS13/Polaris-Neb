@@ -252,9 +252,9 @@
 	to_chat(user, SPAN_NOTICE("You cut the wiring and remove the polarization from \the [src]."))
 	return TRUE
 
-/obj/structure/window/attackby(obj/item/W, mob/user)
+/obj/structure/window/attackby(obj/item/used_item, mob/user)
 	// bespoke interactions not handled by the prior procs
-	if(IS_MULTITOOL(W))
+	if(IS_MULTITOOL(used_item))
 		if (!polarized)
 			to_chat(user, SPAN_WARNING("\The [src] is not polarized."))
 			return TRUE
@@ -264,13 +264,13 @@
 			toggle()
 		else
 			var/response = input(user, "New Window ID:", name, id) as null | text
-			if (isnull(response) || user.incapacitated() || !user.Adjacent(src) || user.get_active_held_item() != W)
+			if (isnull(response) || user.incapacitated() || !user.Adjacent(src) || user.get_active_held_item() != used_item)
 				return TRUE
 			id = sanitize_safe(response, MAX_NAME_LEN)
 			to_chat(user, SPAN_NOTICE("The new ID of \the [src] is [id]."))
 		return TRUE
-	else if(istype(W, /obj/item/gun/energy/plasmacutter) && anchored)
-		var/obj/item/gun/energy/plasmacutter/cutter = W
+	else if(istype(used_item, /obj/item/gun/energy/plasmacutter) && anchored)
+		var/obj/item/gun/energy/plasmacutter/cutter = used_item
 		if(!cutter.slice(user))
 			return TRUE // failed to finish or otherwise failed, prevent further interactions
 		playsound(src, 'sound/items/Welder.ogg', 80, 1)
@@ -279,7 +279,7 @@
 			visible_message(SPAN_WARNING("[user] has sliced through the window's frame!"))
 			playsound(src, 'sound/items/Welder.ogg', 80, 1)
 			set_anchored(FALSE)
-	if (istype(W, /obj/item/paint_sprayer))
+	if (istype(used_item, /obj/item/paint_sprayer))
 		return FALSE // allow afterattack to run
 	return ..() // handle generic interactions, bashing, etc
 
@@ -377,7 +377,7 @@
 /obj/structure/window/Move()
 	var/ini_dir = dir
 	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	set_dir(ini_dir)
 	update_nearby_tiles(need_rebuild=1)
 
@@ -387,24 +387,24 @@
 		return 1
 	return 0
 
-/obj/structure/window/examine(mob/user)
+/obj/structure/window/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	if(reinf_material)
-		to_chat(user, SPAN_NOTICE("It is reinforced with the [reinf_material.solid_name] lattice."))
+		. += SPAN_NOTICE("It is reinforced with the [reinf_material.solid_name] lattice.")
 	if (reinf_material)
 		switch (construction_state)
 			if (CONSTRUCTION_STATE_NO_FRAME)
-				to_chat(user, SPAN_WARNING("The window is not in the frame."))
+				. += SPAN_WARNING("The window is not in the frame.")
 			if (CONSTRUCTION_STATE_IN_FRAME)
-				to_chat(user, SPAN_WARNING("The window is pried into the frame but not yet fastened."))
+				. += SPAN_WARNING("The window is pried into the frame but not yet fastened.")
 			if (CONSTRUCTION_STATE_FASTENED)
-				to_chat(user, SPAN_NOTICE("The window is fastened to the frame."))
+				. += SPAN_NOTICE("The window is fastened to the frame.")
 	if (anchored)
-		to_chat(user, SPAN_NOTICE("It is fastened to \the [get_turf(src)]."))
+		. += SPAN_NOTICE("It is fastened to \the [get_turf(src)].")
 	else
-		to_chat(user, SPAN_WARNING("It is not fastened to anything."))
+		. += SPAN_WARNING("It is not fastened to anything.")
 	if (polarized)
-		to_chat(user, SPAN_NOTICE("It appears to be wired."))
+		. += SPAN_NOTICE("It appears to be wired.")
 
 /obj/structure/window/set_anchored(new_anchored)
 	if((. = ..()))
@@ -414,8 +414,8 @@
 //This proc is used to update the icons of nearby windows. It should not be confused with update_nearby_tiles(), which is an atmos proc!
 /obj/structure/window/proc/update_nearby_icons()
 	update_icon()
-	for(var/obj/structure/window/W in orange(src, 1))
-		W.update_icon()
+	for(var/obj/structure/window/window in orange(src, 1))
+		window.update_icon()
 
 // Visually connect with every type of window as long as it's full-tile.
 /obj/structure/window/can_visually_connect()
@@ -564,8 +564,8 @@
 	construct_state = /decl/machine_construction/wall_frame/panel_closed/simple
 	base_type = /obj/machinery/button/windowtint
 
-/obj/machinery/button/windowtint/attackby(obj/item/W, mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/button/windowtint/attackby(obj/item/used_item, mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/t = sanitize_safe(input(user, "Enter the ID for the button.", name, id_tag), MAX_NAME_LEN)
 		if(!CanPhysicallyInteract(user))
 			return TRUE
@@ -579,9 +579,9 @@
 /obj/machinery/button/windowtint/activate()
 	if(operating)
 		return
-	for(var/obj/structure/window/W in range(src,range))
-		if(W.polarized && (W.id == id_tag || !W.id))
-			W.toggle()
+	for(var/obj/structure/window/window in range(src,range))
+		if(window.polarized && (window.id == id_tag || !window.id))
+			window.toggle()
 	..()
 
 /obj/machinery/button/windowtint/power_change()

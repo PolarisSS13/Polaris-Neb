@@ -101,8 +101,8 @@
 	w_class = ITEM_SIZE_NORMAL
 
 /obj/item/tank/emergency/oxygen/double/red	//firefighting tank, fits on belt, back or suitslot
-	name = "self contained breathing apparatus"
-	desc = "A self contained breathing apparatus, well known as SCBA. Generally filled with oxygen."
+	name = "self-contained breathing apparatus"
+	desc = "A self-contained breathing apparatus, well known as SCBA. Generally filled with oxygen."
 	icon = 'icons/obj/items/tanks/tank_scuba.dmi'
 	slot_flags = SLOT_LOWER_BODY | SLOT_BACK
 

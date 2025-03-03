@@ -266,4 +266,4 @@
 		if(OS_NETWORK_ERROR)
 			return "Unable to connect to the network"
 
-	return "An unspecified error occured."
+	return "An unspecified error occurred."

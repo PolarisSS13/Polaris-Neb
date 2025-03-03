@@ -10,8 +10,8 @@
 	material = /decl/material/solid/metal/steel
 	origin_tech = @'{"materials":1,"magnets":1,"engineering":1,"programming":2}'
 
-/obj/item/organ/internal/augment/active/simple/circuit/attackby(obj/item/W, mob/user)
-	if(IS_CROWBAR(W))
+/obj/item/organ/internal/augment/active/simple/circuit/attackby(obj/item/used_item, mob/user)
+	if(IS_CROWBAR(used_item))
 		//Remove internal circuit
 		if(holding)
 			holding.canremove = 1
@@ -21,11 +21,11 @@
 			playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
 		else to_chat(user, SPAN_WARNING("The augment is empty!"))
 		return TRUE
-	if(istype(W, /obj/item/electronic_assembly/augment))
+	if(istype(used_item, /obj/item/electronic_assembly/augment))
 		if(holding)
 			to_chat(user, SPAN_WARNING("There's already an assembly in there."))
-		else if(user.try_unequip(W, src))
-			holding = W
+		else if(user.try_unequip(used_item, src))
+			holding = used_item
 			holding.canremove = 0
 			playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
 		return TRUE

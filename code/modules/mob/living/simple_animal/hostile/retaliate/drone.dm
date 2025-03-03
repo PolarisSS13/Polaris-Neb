@@ -1,38 +1,39 @@
 
 //malfunctioning combat drones
 /mob/living/simple_animal/hostile/malf_drone
-	name = "combat drone"
-	desc = "An automated combat drone armed with state of the art weaponry and shielding."
-	icon = 'icons/mob/simple_animal/drone_combat.dmi'
-	burst_projectile = 0
-	max_health = 300
-	move_intents = list(
+	name                = "combat drone"
+	desc                = "An automated combat drone armed with state of the art weaponry and shielding."
+	icon                = 'icons/mob/simple_animal/drone_combat.dmi'
+	burst_projectile    = 0
+	max_health          = 300
+	move_intents        = list(
 		/decl/move_intent/walk/animal_slow,
 		/decl/move_intent/run/animal_slow
 	)
-	projectiletype = /obj/item/projectile/beam/drone
-	projectilesound = 'sound/weapons/laser3.ogg'
-	gene_damage = -1
-	butchery_data = /decl/butchery_data/synthetic
-	bleed_colour = SYNTH_BLOOD_COLOR
+	projectiletype      = /obj/item/projectile/beam/drone
+	projectilesound     = 'sound/weapons/laser3.ogg'
+	gene_damage         = -1
+	butchery_data       = /decl/butchery_data/synthetic
+	bleed_colour        = SYNTH_BLOOD_COLOR
+	ai                  = /datum/mob_controller/aggressive/malf_drone
 	base_movement_delay = 2
-	ai = /datum/mob_controller/aggressive/malf_drone
 
 	//Drones aren't affected by atmos.
-	min_gas = null
-	max_gas = null
-	minbodytemp = 0
-	faction = "malf_drone"
+	min_gas        = null
+	max_gas        = null
+	minbodytemp    = 0
+	faction        = "malf_drone"
+	skip_spacemove = TRUE
 
-	var/has_loot = 1
 	var/datum/effect/effect/system/trail/ion_trail
+	var/has_loot       = 1
 	var/explode_chance = 1
-	var/disabled = 0
-	var/exploding = 0
+	var/disabled       = 0
+	var/exploding      = 0
 
 	var/static/list/debris = list(
-		/decl/material/solid/glass =          /obj/item/shard,
-		/decl/material/solid/metal/steel =    /obj/item/stack/material/rods,
+		/decl/material/solid/glass          = /obj/item/shard,
+		/decl/material/solid/metal/steel    = /obj/item/stack/material/rods,
 		/decl/material/solid/metal/plasteel = null
 	)
 
@@ -85,9 +86,6 @@
 /mob/living/simple_animal/hostile/malf_drone/Destroy()
 	QDEL_NULL(ion_trail)
 	return ..()
-
-/mob/living/simple_animal/hostile/malf_drone/Process_Spacemove()
-	return 1
 
 /mob/living/simple_animal/hostile/malf_drone/proc/Haywire()
 	var/datum/mob_controller/aggressive/malf_drone/drone_ai = ai
@@ -202,10 +200,6 @@
 	if(. && !gibbed)
 		physically_destroyed()
 
-/mob/living/simple_animal/hostile/malf_drone/Destroy()
-	QDEL_NULL(ion_trail)
-	return ..()
-
 /mob/living/simple_animal/hostile/malf_drone/physically_destroyed(skip_qdel)
 	//some random debris left behind
 	if(has_loot)
@@ -223,6 +217,7 @@
 		//spawn 1-4 boards of a random type
 		var/spawnees = 0
 		var/num_boards = rand(1,4)
+		//TODO: Make these use actual subtypes instead
 		var/list/options = list(1,2,4,8,16,32,64,128,256,512)
 		for(var/i=0, i<num_boards, i++)
 			var/chosen = pick(options)
@@ -231,44 +226,47 @@
 		if(spawnees & 1)
 			C = new(src.loc)
 			C.SetName("Drone CPU motherboard")
-			C.origin_tech = @'{"[TECH_DATA]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_DATA) = rand(3, 6)))
 		if(spawnees & 2)
 			C = new(src.loc)
 			C.SetName("Drone neural interface")
-			C.origin_tech = @'{"[TECH_BIO]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_BIO) = rand(3, 6)))
 		if(spawnees & 4)
 			C = new(src.loc)
 			C.SetName("Drone suspension processor")
-			C.origin_tech = @'{"[TECH_MAGNET]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_MAGNET) = rand(3, 6)))
 		if(spawnees & 8)
 			C = new(src.loc)
 			C.SetName("Drone shielding controller")
-			C.origin_tech = @'{"wormholes":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_WORMHOLES) = rand(3, 6)))
 		if(spawnees & 16)
 			C = new(src.loc)
 			C.SetName("Drone power capacitor")
-			C.origin_tech = @'{"[TECH_POWER]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_POWER) = rand(3, 6)))
 		if(spawnees & 32)
 			C = new(src.loc)
 			C.SetName("Drone hull reinforcer")
-			C.origin_tech = @'{"[TECH_MATERIAL]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_MATERIAL) = rand(3, 6)))
 		if(spawnees & 64)
 			C = new(src.loc)
 			C.SetName("Drone auto-repair system")
-			C.origin_tech = @'{"[TECH_ENGINEERING]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_ENGINEERING) = rand(3, 6)))
 		if(spawnees & 128)
 			C = new(src.loc)
 			C.SetName("Drone antigravity overcharge counter")
-			C.origin_tech = @'{"[TECH_EXOTIC_MATTER]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_EXOTIC_MATTER) = rand(3, 6)))
 		if(spawnees & 256)
 			C = new(src.loc)
 			C.SetName("Drone targetting circuitboard")
-			C.origin_tech = @'{"[TECH_COMBAT]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_COMBAT) = rand(3, 6)))
 		if(spawnees & 512)
 			C = new(src.loc)
 			C.SetName("Corrupted drone morality core")
-			C.origin_tech = @'{"[TECH_ESOTERIC]":[rand(3, 6)]}'
+			C.origin_tech = json_encode(list((TECH_ESOTERIC) = rand(3, 6)))
 	return ..()
+
+/mob/living/simple_animal/hostile/malf_drone/isSynthetic()
+	return TRUE
 
 /obj/item/projectile/beam/drone
 	damage = 15

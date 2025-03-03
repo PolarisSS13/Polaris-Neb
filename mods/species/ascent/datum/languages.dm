@@ -47,7 +47,7 @@
 /decl/language/mantid/nonvocal
 	key = "]"
 	name = "Ascent-Glow"
-	desc = "A complex visual language of bright bio-luminescent flashes, 'spoken' natively by the Kharmaani of the Ascent."
+	desc = "A complex visual language of bright bioluminescent flashes, 'spoken' natively by the Kharmaani of the Ascent."
 	colour = "alien"
 	speech_verb = "flashes"
 	ask_verb = "gleams"

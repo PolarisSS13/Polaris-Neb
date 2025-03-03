@@ -138,40 +138,48 @@
 		ui.set_auto_update(1)		// auto update every Master Controller tick
 
 
-/obj/machinery/atmospherics/binary/passive_gate/Topic(href,href_list)
-	if(..()) return 1
+/obj/machinery/atmospherics/binary/passive_gate/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 
 	if(href_list["toggle_valve"])
 		unlocked = !unlocked
+		. = TOPIC_REFRESH
 
-	if(href_list["regulate_mode"])
-		switch(href_list["regulate_mode"])
-			if ("off") regulate_mode = REGULATE_NONE
-			if ("input") regulate_mode = REGULATE_INPUT
-			if ("output") regulate_mode = REGULATE_OUTPUT
+	switch(href_list["regulate_mode"])
+		if ("off")
+			regulate_mode = REGULATE_NONE
+			. = TOPIC_REFRESH
+		if ("input")
+			regulate_mode = REGULATE_INPUT
+			. = TOPIC_REFRESH
+		if ("output")
+			regulate_mode = REGULATE_OUTPUT
+			. = TOPIC_REFRESH
 
 	switch(href_list["set_press"])
 		if ("min")
 			target_pressure = 0
+			. = TOPIC_REFRESH
 		if ("max")
 			target_pressure = max_pressure_setting
+			. = TOPIC_REFRESH
 		if ("set")
-			var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",src.target_pressure) as num
-			src.target_pressure = clamp(new_pressure, 0, max_pressure_setting)
+			var/new_pressure = input(user, "Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure Control",target_pressure) as num
+			target_pressure = clamp(new_pressure, 0, max_pressure_setting)
+			. = TOPIC_REFRESH
 
 	switch(href_list["set_flow_rate"])
 		if ("min")
 			set_flow_rate = 0
+			. = TOPIC_REFRESH
 		if ("max")
 			set_flow_rate = air1.volume
+			. = TOPIC_REFRESH
 		if ("set")
-			var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[air1.volume]kPa)","Flow Rate Control",src.set_flow_rate) as num
-			src.set_flow_rate = clamp(new_flow_rate, 0, air1.volume)
-
-	usr.set_machine(src)	//Is this even needed with NanoUI?
-	src.update_icon()
-	src.add_fingerprint(usr)
-	return
+			var/new_flow_rate = input(user, "Enter new flow rate limit (0-[air1.volume]kPa)","Flow Rate Control",set_flow_rate) as num
+			set_flow_rate = clamp(new_flow_rate, 0, air1.volume)
+			. = TOPIC_REFRESH
 
 /obj/machinery/atmospherics/binary/passive_gate/proc/toggle_unlocked()
 	unlocked = !unlocked

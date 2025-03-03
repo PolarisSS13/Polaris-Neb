@@ -45,7 +45,7 @@
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
 	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
-	affected.take_external_damage(5, used_weapon = tool)
+	affected.take_damage(5, inflicter = tool)
 	..()
 
 //////////////////////////////////////////////////////////////////
@@ -91,7 +91,7 @@
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
 	user.visible_message("<span class='warning'>[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>" , \
 	"<span class='warning'>Your hand slips, smearing [tool] in the incision in [target]'s [affected.name]!</span>")
-	affected.take_external_damage(5, used_weapon = tool)
+	affected.take_damage(5, inflicter = tool)
 	..()
 
 
@@ -248,7 +248,7 @@
 		return FALSE
 
 	// Check if we have sterilizing reagents and -only- sterilizing reagents.
-	for(var/reagent in container.reagents.reagent_volumes)
+	for(var/decl/material/reagent as anything in container.reagents.reagent_volumes)
 		if(!(reagent in sterilizing_reagents))
 			return FALSE
 		. = TRUE

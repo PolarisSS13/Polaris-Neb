@@ -9,9 +9,9 @@
 	var/planchette = "A"
 	var/lastuser = null
 
-/obj/item/spirit_board/examine(mob/user)
-	..()
-	to_chat(user, "The planchette is sitting at \"[planchette]\".")
+/obj/item/spirit_board/get_examine_strings(mob/user, distance, infix, suffix)
+	. = ..()
+	. += "The planchette is sitting at \"[planchette]\"."
 
 /obj/item/spirit_board/attack_hand(mob/user)
 	if(user.check_intent(I_FLAG_GRAB) || !user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))

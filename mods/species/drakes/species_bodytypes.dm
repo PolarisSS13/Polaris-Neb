@@ -317,7 +317,7 @@
 	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
 	return unarmed_attack
 
-/obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+/obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
 	set_extension(src, /datum/extension/tool, list(
@@ -337,7 +337,7 @@
 	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
 	return unarmed_attack
 
-/obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+/obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
 	set_extension(src, /datum/extension/tool, list(

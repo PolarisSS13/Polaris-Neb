@@ -1,6 +1,6 @@
 /obj/machinery/igniter
 	name = "igniter"
-	desc = "It's useful for igniting flammable items."
+	desc = "A device that ignites flammable items and gases nearby when activated."
 	icon = 'icons/obj/machines/igniter.dmi'
 	icon_state = "igniter1"
 	var/on = 0
@@ -119,8 +119,8 @@
 	else
 		icon_state = "[base_state]-p"
 
-/obj/machinery/sparker/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/machinery/sparker/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		add_fingerprint(user)
 		disable = !disable
 		if(disable)

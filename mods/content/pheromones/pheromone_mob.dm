@@ -21,7 +21,7 @@
 
 /obj/item/organ/internal/pheromone_gland
 	name = "pheromone gland"
-	desc = "A miscellenaous lump of flesh full of chemicals."
+	desc = "A miscellaneous lump of flesh full of chemicals."
 	icon_state = "stomach"
 	organ_tag = BP_PHEROMONE_GLAND
 	parent_organ = BP_CHEST

@@ -3,25 +3,25 @@
 	var/name = "gravitational singularity"
 	var/desc = "A gravitational singularity."
 	/// What is the effective physical size of this singularity?
-	var/footprint
+	var/footprint = 1
 	/// What is the numerical size of this singularity?
-	var/stage_size
+	var/stage_size = 0
 	/// What is the minimum singularity energy to reach this sage?
-	var/min_energy
+	var/min_energy = -(INFINITY)
 	/// What is the maximum singularity energy to stay at this sage?
-	var/max_energy
+	var/max_energy = 0
 	/// What icon should the singularity use at this stage?
 	var/icon
 	/// What icon_state should the singularity use at this stage?
 	var/icon_state
 	/// What x offset should the singularity use at this stage?
-	var/pixel_x
+	var/pixel_x = 0
 	/// What y offset should the singularity use at this stage?
-	var/pixel_y
+	var/pixel_y = 0
 	/// What is the pull range of a singularity at this stage?
-	var/grav_pull
+	var/grav_pull = 0
 	/// What is the feeding range of a singularity at this stage?
-	var/consume_range
+	var/consume_range = 0
 	/// If true, the singularity will lose energy in Process().
 	var/dissipates_over_time = TRUE
 	/// How many Process() ticks do we have between dissipations?
@@ -31,13 +31,13 @@
 	/// How much energy do we lose when we dissipate?
 	var/dissipation_energy_loss = 1
 	/// What is the percent chance of an event each tick?
-	var/event_chance
+	var/event_chance = 0
 	/// Do we force a specific event when we proc events?
 	var/decl/singularity_event/forced_event = null
 	/// Will we wander around?
-	var/wander
+	var/wander = FALSE
 	/// Can explosions destroy the singularity?
-	var/explosion_vulnerable
+	var/explosion_vulnerable = FALSE
 	/// What is the heavy range for the EM pulse event in this stage?
 	var/em_heavy_range = 8
 	/// What is the light range for the EM pulse event in this stage?
@@ -55,8 +55,10 @@
 		. += "negative consume_range"
 	if(grav_pull < 0)
 		. += "negative grav_pull"
-	if(grav_pull >= 0 && consume_range >= 0 && grav_pull < consume_range)
+	else if(consume_range >= 0 && grav_pull < consume_range)
 		. += "grav_pull is smaller than consume_range; consume_range will be truncated"
+	if(min_energy > max_energy)
+		. += "min_energy is larger than max_energy, stage will never be able to exist"
 
 /decl/singularity_stage/proc/handle_dissipation(obj/effect/singularity/source)
 	if(dissipates_over_time)

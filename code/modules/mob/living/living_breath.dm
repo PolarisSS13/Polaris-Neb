@@ -106,8 +106,7 @@
 			else
 				check_for_airtight_internals()
 	var/obj/item/tank/new_internals = get_internals()
-	if(internals && old_internals != new_internals)
-		internals.icon_state = "internal[!!new_internals]"
+	refresh_hud_element(HUD_INTERNALS)
 	if(istype(new_internals))
 		return new_internals.remove_air_volume(volume_needed)
 

@@ -104,7 +104,7 @@
 		if(!card)
 			card = new /obj/item/aicard(src)
 
-		// Terminal interaction only works with an inteliCarded AI.
+		// Terminal interaction only works with an intelliCarded AI.
 		if(!istype(card))
 			return 0
 
@@ -328,7 +328,7 @@
 /obj/item/rig_module/power_sink
 
 	name = "hardsuit power sink"
-	desc = "An heavy-duty power sink."
+	desc = "A heavy-duty power sink."
 	icon_state = "powersink"
 	toggleable = 1
 	activates_on_touch = 1

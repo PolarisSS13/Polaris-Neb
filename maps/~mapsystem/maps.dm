@@ -2,8 +2,8 @@ var/global/datum/map/using_map  = new USING_MAP_DATUM
 var/global/list/all_maps        = list()
 var/global/list/votable_maps    = list()
 
-var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
-var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
+var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, toggleable
+var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 
 /proc/initialise_map_list()
 	for(var/map_type in subtypesof(/datum/map))
@@ -570,6 +570,13 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 	if(!length(SSmapping.contact_levels))
 		log_error("[name] has no contact levels!")
 		. = FALSE
+	var/decl/species/default_species_decl = get_species_by_key(default_species)
+	if(default_species_decl.species_flags & SPECIES_IS_RESTRICTED)
+		log_error("[name]'s default species [default_species_decl.type] is set to restricted!")
+	if(default_species_decl.species_flags & SPECIES_IS_WHITELISTED)
+		log_error("[name]'s default species [default_species_decl.type] is set to whitelisted!")
+	if(default_species_decl.species_flags & SPECIES_CAN_JOIN)
+		log_error("[name]'s default species [default_species_decl.type] is not allowed to join the game!")
 
 /datum/map/proc/get_available_submap_archetypes()
 	return decls_repository.get_decls_of_subtype_unassociated(/decl/submap_archetype)

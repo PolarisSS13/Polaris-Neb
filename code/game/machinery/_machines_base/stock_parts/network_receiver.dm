@@ -1,4 +1,4 @@
-// A reciever that allows for non-network machines to have public vars and methods interacted with by networks
+// A receiver that allows for non-network machines to have public vars and methods interacted with by networks
 
 /obj/item/stock_parts/network_receiver
 	name = "network receiver"

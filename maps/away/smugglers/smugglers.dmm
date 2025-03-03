@@ -682,7 +682,7 @@
 /turf/floor/tiled,
 /area/smugglers/office)
 "bL" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -865,7 +865,7 @@
 /turf/floor/plating/airless,
 /area/smugglers/dorms)
 "cr" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light,
@@ -889,7 +889,7 @@
 /turf/floor/tiled,
 /area/smugglers/dorms)
 "cu" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light,

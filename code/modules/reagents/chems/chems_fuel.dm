@@ -38,7 +38,7 @@
 
 /decl/material/liquid/fuel/hydrazine
 	name = "hydrazine"
-	lore_text = "A toxic, colorless, flammable liquid with a strong ammonia-like odor, in hydrate form."
+	lore_text = "A toxic, colorless, flammable liquid with a strong ammonia-like odour, in hydrate form."
 	taste_description = "sweet tasting metal"
 	color = "#808080"
 	metabolism = REM * 0.2

@@ -43,7 +43,7 @@ var/global/list/limb_icon_cache = list()
 	if(eyes) eyes.update_colour()
 
 /obj/item/organ/external/head/on_remove_effects(mob/living/last_owner)
-	update_icon(1)
+	update_icon()
 	if(last_owner)
 		SetName("[last_owner.real_name]'s head")
 		addtimer(CALLBACK(last_owner, TYPE_PROC_REF(/mob, update_hair)), 1, TIMER_UNIQUE)
@@ -109,7 +109,7 @@ var/global/list/organ_icon_cache = list()
 	global.organ_icon_cache[_icon_cache_key] = ret
 	return ret
 
-/obj/item/organ/external/proc/get_mob_overlays()
+/obj/item/organ/external/proc/get_limb_mob_overlays()
 	for(var/accessory_category in _sprite_accessories)
 		var/list/draw_accessories = _sprite_accessories[accessory_category]
 		for(var/accessory in draw_accessories)
@@ -305,7 +305,7 @@ var/global/list/organ_icon_cache = list()
 		icon = mob_icon
 
 	// We may have some overlays of our own (hair, glowing eyes, layered markings)
-	var/list/additional_overlays = get_mob_overlays()
+	var/list/additional_overlays = get_limb_mob_overlays()
 	if(length(additional_overlays))
 		for(var/new_overlay in additional_overlays)
 			add_overlay(new_overlay)

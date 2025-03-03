@@ -17,8 +17,8 @@
 /obj/item/slime_extract/get_base_value()
 	. = ..() * Uses
 
-/obj/item/slime_extract/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/slime_extract_enhancer))
+/obj/item/slime_extract/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/slime_extract_enhancer))
 		if(enhanced == 1)
 			to_chat(user, "<span class='warning'> This extract has already been enhanced!</span>")
 			return ..()
@@ -28,7 +28,7 @@
 		to_chat(user, "You apply the enhancer. It now has triple the amount of uses.")
 		Uses = 3
 		enhanced = 1
-		qdel(O)
+		qdel(used_item)
 		return TRUE
 	. = ..()
 
@@ -61,7 +61,7 @@
 
 /obj/effect/golemrune
 	anchored = TRUE
-	desc = "a strange rune used to create golems. It glows when it can be activated."
+	desc = "A strange rune used to create golems. It glows when it can be activated."
 	name = "rune"
 	icon = 'icons/obj/rune.dmi'
 	icon_state = "golem"
@@ -73,10 +73,10 @@
 
 /obj/effect/golemrune/Process()
 	var/mob/observer/ghost/ghost
-	for(var/mob/observer/ghost/O in src.loc)
-		if(!O.client || (O.mind && O.mind.current && O.mind.current.stat != DEAD))
+	for(var/mob/observer/ghost/observer in src.loc)
+		if(!observer.client || (observer.mind && observer.mind.current && observer.mind.current.stat != DEAD))
 			continue
-		ghost = O
+		ghost = observer
 		break
 	if(ghost)
 		icon_state = "golem2"
@@ -86,12 +86,12 @@
 /obj/effect/golemrune/attack_hand(mob/user)
 	SHOULD_CALL_PARENT(FALSE)
 	var/mob/observer/ghost/ghost
-	for(var/mob/observer/ghost/O in src.loc)
-		if(!O.client)
+	for(var/mob/observer/ghost/observer in src.loc)
+		if(!observer.client)
 			continue
-		if(O.mind && O.mind.current && O.mind.current.stat != DEAD)
+		if(observer.mind && observer.mind.current && observer.mind.current.stat != DEAD)
 			continue
-		ghost = O
+		ghost = observer
 		break
 	if(!ghost)
 		to_chat(user, SPAN_WARNING("The rune fizzles uselessly."))

@@ -99,7 +99,7 @@
 				body.stop_automove()
 				return
 
-/mob/living/simple_animal/hostile/bear/attackby(var/obj/item/O, var/mob/user)
+/mob/living/simple_animal/hostile/bear/attackby(var/obj/item/used_item, var/mob/user)
 	if(istype(ai))
 		var/stance = ai.get_stance()
 		if(stance != STANCE_ATTACK && stance != STANCE_ATTACKING)

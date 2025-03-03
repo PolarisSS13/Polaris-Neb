@@ -142,7 +142,7 @@ var/global/list/escape_pods_by_name = list()
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod_berth/receive_user_command(command)
 	if (!armed)
-		return TRUE // Eat all commands.
+		return TOPIC_HANDLED // Eat all commands.
 	return ..(command)
 
 /datum/computer/file/embedded_program/docking/simple/escape_pod_berth/process()

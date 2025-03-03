@@ -27,15 +27,24 @@
 	var/colour = "body"                 // CSS style to use for strings in this language.
 	var/key = ""                        // Character used to speak in language
 	var/flags = 0                       // Various language flags.
-	var/list/syllables                  // Used when scrambling text for a non-speaker.
-	var/space_chance = 55               // Likelihood of getting a space in the random scramble string
-	var/machine_understands = 1         // Whether machines can parse and understand this language
-	var/shorthand = "???"               // Shorthand that shows up in chat for this language.
-	var/list/partial_understanding      // List of languages that can /somehwat/ understand it, format is: name = chance of understanding a word
-	var/hidden_from_codex               // If it should not show up in Codex
-	var/list/scramble_cache = list()    // Cached syllable strings for masking when heard by a non-speaker
-	var/list/speech_sounds              // List of sounds to randomly play.
-	var/allow_repeated_syllables = TRUE // Control for handling some of the random lang/name gen.
+	/// Syllable list when scrambling text for display to a non-speaker.
+	var/list/syllables
+	/// Likelihood of getting a space in the random scramble string
+	var/space_chance = 55
+	/// Whether machines can parse and understand this language
+	var/machine_understands = TRUE
+	/// Shorthand that shows up in chat for this language.
+	var/shorthand = "???"
+	/// List of languages that can /somehwat/ understand it, format is: typepath = chance of understanding a word
+	var/list/partial_understanding
+	/// If it should not show up in Codex
+	var/hidden_from_codex = FALSE
+	/// Cached syllable strings for masking when heard by a non-speaker
+	var/list/scramble_cache = list()
+	/// List of sounds to randomly play.
+	var/list/speech_sounds
+	/// Control for handling some of the random lang/name gen.
+	var/allow_repeated_syllables = TRUE
 
 /decl/language/proc/can_be_understood_by(var/mob/living/speaker, var/mob/living/listener)
 	if(flags & LANG_FLAG_INNATE)

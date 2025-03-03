@@ -53,14 +53,14 @@
 	if(M.client)
 		to_chat(M,"<span class='notice'>You feel oddly light, and somewhat disoriented as everything around you shimmers and warps ever so slightly.</span>")
 		M.overlay_fullscreen("wormhole", /obj/screen/fullscreen/wormhole_overlay)
-	M.set_status(STAT_CONFUSE, 20)
+	M.set_status_condition(STAT_CONFUSE, 20)
 	bluegoasts += new/obj/effect/bluegoast/(get_turf(M),M)
 
 /datum/universal_state/jump/proc/clear_duplicated(var/mob/living/M)
 	if(M.client)
 		to_chat(M,"<span class='notice'>You feel rooted in material world again.</span>")
 		M.clear_fullscreen("wormhole")
-	M.set_status(STAT_CONFUSE, 0)
+	M.set_status_condition(STAT_CONFUSE, 0)
 	for(var/mob/goast in global.ghost_mob_list)
 		goast.mouse_opacity = initial(goast.mouse_opacity)
 		goast.set_invisibility(initial(goast.invisibility))
@@ -114,9 +114,9 @@
 /obj/effect/bluegoast/proc/mirror_dir(var/atom/movable/am, var/old_dir, var/new_dir)
 	set_dir(global.reverse_dir[new_dir])
 
-/obj/effect/bluegoast/examine()
+/obj/effect/bluegoast/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	return daddy.examine(arglist(args))
+	return daddy.examined_by(user, distance, infix, suffix)
 
 /obj/effect/bluegoast/proc/blueswitch()
 	var/mob/living/human/H

@@ -1,4 +1,3 @@
-
 /obj/item/chems/glass/beaker
 	name = "beaker"
 	desc = "A beaker."
@@ -11,9 +10,12 @@
 	presentation_flags = PRESENTATION_FLAG_NAME
 	var/lid_color = COLOR_BEASTY_BROWN
 
-/obj/item/chems/glass/beaker/examine(mob/user, distance)
+/obj/item/chems/glass/beaker/get_lid_color()
+	return lid_color
+
+/obj/item/chems/glass/beaker/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, " It can hold up to [volume] units.")
+	. += "It can hold up to [volume] units."
 
 /obj/item/chems/glass/beaker/on_picked_up(mob/user)
 	. = ..()
@@ -27,9 +29,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/chems/glass/beaker/on_update_icon()
-	. = ..()
-	cut_overlays()
+/obj/item/chems/glass/beaker/update_overlays()
 
 	if(reagents?.total_volume)
 		var/image/filling = mutable_appearance(icon, "[icon_state]1", reagents.get_color())
@@ -53,8 +53,7 @@
 		shine.alpha = material.reflectiveness * 3
 		add_overlay(shine)
 
-	if (!ATOM_IS_OPEN_CONTAINER(src))
-		add_overlay(mutable_appearance(icon, "[icon_state]_lid", lid_color))
+	. = ..()
 
 	compile_overlays()
 
@@ -104,6 +103,9 @@
 	material = /decl/material/solid/metal/iron
 	obj_flags = OBJ_FLAG_HOLLOW | OBJ_FLAG_INSULATED_HANDLE
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME | MAT_FLAG_ALTERATION_DESC
+
+/obj/item/chems/glass/beaker/kettle/can_lid()
+	return FALSE
 
 /obj/item/chems/glass/beaker/noreact
 	name = "cryostasis beaker"
@@ -164,7 +166,7 @@
 	material_alteration = MAT_FLAG_ALTERATION_NONE
 	lid_color = COLOR_GRAY40
 
-/obj/item/chems/glass/beaker/insulated/get_thermal_mass_coefficient()
+/obj/item/chems/glass/beaker/insulated/get_thermal_mass_coefficient(delta)
 	return 0.1
 
 // Hack around reagent temp changes.

@@ -19,12 +19,12 @@
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/structure/grandfather_clock/examine(mob/user, distance, infix, suffix)
+/obj/structure/grandfather_clock/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	// TODO: check literacy?
 	if(isnull(last_time))
 		last_time = stationtime2text()
-	to_chat(user, SPAN_NOTICE("The face of \the [src] reads [last_time]."))
+	. += SPAN_NOTICE("The face of \the [src] reads [last_time].")
 
 // TODO: don't magically make the time update when swinging is restarted
 // TODO: alt interaction to interfere with the clock?

@@ -14,7 +14,7 @@
 	var/cleanable_scent
 	var/scent_type = /datum/extension/scent/custom
 	var/scent_intensity = /decl/scent_intensity/normal
-	var/scent_descriptor = SCENT_DESC_SMELL
+	var/scent_descriptor = "smell"
 	var/scent_range = 2
 
 /obj/effect/decal/cleanable/Initialize(var/ml, var/_age)

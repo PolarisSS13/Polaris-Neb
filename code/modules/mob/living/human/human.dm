@@ -37,7 +37,6 @@
 
 	LAZYCLEARLIST(smell_cooldown)
 
-	QDEL_NULL(attack_selector)
 	QDEL_NULL(vessel)
 	QDEL_NULL(touching)
 
@@ -130,13 +129,13 @@
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(I)
-			src.examinate(I)
+			src.examine_verb(I)
 			return TOPIC_HANDLED
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
 		if(M)
-			src.examinate(M)
+			src.examine_verb(M)
 			return TOPIC_HANDLED
 
 	return ..()
@@ -454,7 +453,7 @@
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."),       \
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."))
 		custom_pain(msg,40,affecting = organ)
-	organ.take_external_damage(rand(1,3) + O.w_class, DAM_EDGE, 0)
+	organ.take_damage(rand(1,3) + O.w_class, damage_flags = DAM_EDGE)
 
 /mob/proc/set_bodytype(var/decl/bodytype/new_bodytype)
 	return
@@ -497,7 +496,6 @@
 
 	//Handle old species transition
 	if(species)
-		species.remove_base_auras(src)
 		species.remove_inherent_verbs(src)
 
 	//Update our species
@@ -915,7 +913,7 @@
 	..()
 	if(should_have_organ(BP_STOMACH))
 		var/obj/item/organ/internal/stomach = GET_INTERNAL_ORGAN(src, BP_STOMACH)
-		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.damage)))
+		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.get_organ_damage())))
 			if(should_have_organ(BP_HEART))
 				vessel.trans_to_obj(vomit, 5)
 			else
@@ -977,12 +975,13 @@
 //Human mob specific init code. Meant to be used only on init.
 /mob/living/human/proc/setup_human(species_name, datum/mob_snapshot/supplied_appearance)
 	if(supplied_appearance)
-		species_name = supplied_appearance.root_species
+		species_name = supplied_appearance.root_species.name
 	else if(!species_name)
 		species_name = global.using_map.default_species //Humans cannot exist without a species!
 
 	set_species(species_name, supplied_appearance?.root_bodytype)
 	var/decl/bodytype/root_bodytype = get_bodytype() // root bodytype is set in set_species
+	ASSERT((!supplied_appearance?.root_bodytype) || (root_bodytype == supplied_appearance.root_bodytype))
 	if(!get_skin_colour())
 		set_skin_colour(root_bodytype.base_color, skip_update = TRUE)
 	if(!get_eye_colour())
@@ -1132,3 +1131,13 @@
 
 /mob/living/human/get_attack_telegraph_delay()
 	return client ? 0 : DEFAULT_ATTACK_COOLDOWN
+
+/mob/living/human/isSynthetic()
+	if(isnull(full_prosthetic))
+		robolimb_count = 0
+		var/list/limbs = get_external_organs()
+		for(var/obj/item/organ/external/E in limbs)
+			if(BP_IS_PROSTHETIC(E))
+				robolimb_count++
+		full_prosthetic = robolimb_count > 0 && (robolimb_count == LAZYLEN(limbs)) //If no organs, no way to tell
+	return full_prosthetic

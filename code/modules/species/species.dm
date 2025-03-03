@@ -178,9 +178,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	var/pass_flags = 0
 	var/breathing_sound = 'sound/voice/monkey.ogg'
 
-	var/list/base_auras
-
-	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
+	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job receives.
 
 	var/standing_jump_range = 2
 	var/list/maneuvers = list(/decl/maneuver/leap)
@@ -416,21 +414,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 /decl/species/proc/get_manual_dexterity(var/mob/living/human/H)
 	. = manual_dexterity
 
-/decl/species/proc/add_base_auras(var/mob/living/human/H)
-	if(base_auras)
-		for(var/type in base_auras)
-			H.add_aura(new type(H), skip_icon_update = TRUE)
-
-/decl/species/proc/remove_base_auras(var/mob/living/human/H)
-	if(base_auras)
-		var/list/bcopy = base_auras.Copy()
-		for(var/a in H.auras)
-			var/obj/aura/A = a
-			if(is_type_in_list(a, bcopy))
-				bcopy -= A.type
-				H.remove_aura(A)
-				qdel(A)
-
 /decl/species/proc/remove_inherent_verbs(var/mob/living/human/H)
 	if(inherent_verbs)
 		for(var/verb_path in inherent_verbs)
@@ -445,7 +428,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 /decl/species/proc/handle_post_spawn(var/mob/living/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
-	add_base_auras(H)
 	handle_movement_flags_setup(H)
 
 /decl/species/proc/handle_pre_spawn(var/mob/living/human/H)
@@ -612,7 +594,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 			return
 
 	var/randn = rand(1, 100) - skill_mod + state_mod
-	if(!(check_no_slip(target)) && randn <= 25)
+	if(!target.can_slip() && randn <= 25)
 		var/armor_check = 100 * target.get_blocked_ratio(affecting, BRUTE, damage = 20)
 		target.apply_effect(push_mod, WEAKEN, armor_check)
 		playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -672,8 +654,8 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 		if(31 to 45)	. = 4
 		else			. = 8
 
-/decl/species/proc/check_no_slip(var/mob/living/human/H)
-	if(can_overcome_gravity(H))
+/decl/species/proc/check_no_slip(mob/living/user, magboots_only)
+	if(can_overcome_gravity(user))
 		return TRUE
 	return (species_flags & SPECIES_FLAG_NO_SLIP)
 

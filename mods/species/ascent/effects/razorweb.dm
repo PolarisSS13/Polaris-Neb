@@ -78,16 +78,16 @@
 	qdel_self()
 	return TRUE
 
-/obj/effect/razorweb/attackby(var/obj/item/thing, var/mob/user)
+/obj/effect/razorweb/attackby(var/obj/item/used_item, var/mob/user)
 
 	var/destroy_self
-	if(thing.expend_attack_force(user))
-		visible_message(SPAN_DANGER("\The [user] breaks \the [src] with \the [thing]!"))
+	if(used_item.expend_attack_force(user))
+		visible_message(SPAN_DANGER("\The [user] breaks \the [src] with \the [used_item]!"))
 		destroy_self = TRUE
 
-	if(prob(15) && user.try_unequip(thing))
-		visible_message(SPAN_DANGER("\The [thing] is sliced apart!"))
-		qdel(thing)
+	if(prob(15) && user.try_unequip(used_item))
+		visible_message(SPAN_DANGER("\The [used_item] is sliced apart!"))
+		qdel(used_item)
 
 	if(destroy_self)
 		qdel(src)

@@ -35,6 +35,7 @@
 	solid_name = "snow"
 	gas_name = "steam"
 	adjective_name = "snow"
+	coated_adjective = "snowy"
 	color = COLOR_WHITE
 	codex_name = null
 	uid = "solid_snow"

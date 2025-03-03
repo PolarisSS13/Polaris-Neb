@@ -46,12 +46,12 @@
 		else		to_chat(src, "<span class='warning'>Error: Private-Message: Client not found. They may have lost connection, so please be patient!</span>")
 		return
 
-	var/recieve_pm_type = "Player"
+	var/receive_pm_type = "Player"
 	if(holder)
 		//mod PMs are maroon
 		//PMs sent from admins and mods display their rank
 		if(holder)
-			recieve_pm_type = holder.rank
+			receive_pm_type = holder.rank
 
 	else if(C && !C.holder)
 		to_chat(src, "<span class='warning'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</span>")
@@ -104,12 +104,12 @@
 	// We are sending this quite early because of a return in the popup code.
 	SSwebhooks.send(WEBHOOK_AHELP_SENT, list("name" = "Reply Sent ([ticket.id]) (Game ID: [game_id])", "body" = "**[sender_lite.key_name(FALSE, FALSE)]** to **[receiver_lite.key_name(FALSE, FALSE)]**: [msg]"))
 
-	var/recieve_message
+	var/receive_message
 
 	if(holder && !C.holder)
-		recieve_message = "<span class='pm'><span class='howto'><b>-- Click the [recieve_pm_type]'s name to reply --</b></span></span>\n"
+		receive_message = "<span class='pm'><span class='howto'><b>-- Click the [receive_pm_type]'s name to reply --</b></span></span>\n"
 		if(C.adminhelped)
-			to_chat(C, recieve_message)
+			to_chat(C, receive_message)
 			C.adminhelped = 0
 
 		//AdminPM popup for ApocStation and anybody else who wants to use it.
@@ -117,7 +117,7 @@
 			spawn(0)	//so we don't hold the caller proc up
 				var/sender = src
 				var/sendername = key
-				var/reply = sanitize(input(C, msg,"[recieve_pm_type] PM from [sendername]", "") as text|null)		//show message and await a reply
+				var/reply = sanitize(input(C, msg,"[receive_pm_type] PM from [sendername]", "") as text|null)		//show message and await a reply
 				if(C && reply)
 					if(sender)
 						C.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
@@ -134,7 +134,7 @@
 	sender_message += "</span></span>"
 	to_chat(src, sender_message)
 
-	var/receiver_message = "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[recieve_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>"
+	var/receiver_message = "<span class='pm'><span class='in'>" + create_text_tag("pm_in", "", C) + " <b>\[[receive_pm_type] PM\]</b> <span class='name'>[get_options_bar(src, C.holder ? 1 : 0, C.holder ? 1 : 0, 1)]</span>"
 	if(C.holder)
 		receiver_message += " (<a href='byond://?_src_=holder;take_ticket=\ref[ticket]'>[(ticket.status == TICKET_OPEN) ? "TAKE" : "JOIN"]</a>) (<a href='byond://?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>)"
 		receiver_message += ": <span class='message'>[generate_ahelp_key_words(C.mob, msg)]</span>"
@@ -145,7 +145,7 @@
 
 	window_flash(C)
 
-	//play the recieving admin the adminhelp sound (if they have them enabled)
+	//play the receiving admin the adminhelp sound (if they have them enabled)
 	//non-admins shouldn't be able to disable this
 	if(C.get_preference_value(/datum/client_preference/staff/play_adminhelp_ping) == PREF_HEAR)
 		sound_to(C, 'sound/effects/adminhelp.ogg')
