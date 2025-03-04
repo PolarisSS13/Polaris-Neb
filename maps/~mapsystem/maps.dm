@@ -196,6 +196,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	var/background_categories_generated = FALSE
 	var/list/_background_categories = list(
 		/decl/background_category/heritage,
+		/decl/background_category/citizenship,
 		/decl/background_category/homeworld,
 		/decl/background_category/faction,
 		/decl/background_category/religion
