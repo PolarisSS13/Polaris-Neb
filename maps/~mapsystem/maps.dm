@@ -142,17 +142,19 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	var/votable = TRUE
 
 	var/list/available_background_info = list(
-		/decl/background_category/homeworld = list(/decl/background_detail/location/other),
-		/decl/background_category/faction =   list(/decl/background_detail/faction/other),
-		/decl/background_category/heritage =   list(/decl/background_detail/heritage/other),
-		/decl/background_category/religion =  list(/decl/background_detail/religion/other)
+		/decl/background_category/homeworld   = list(/decl/background_detail/location/other),
+		/decl/background_category/citizenship = list(/decl/background_detail/citizenship/other),
+		/decl/background_category/faction     = list(/decl/background_detail/faction/other),
+		/decl/background_category/heritage    = list(/decl/background_detail/heritage/other),
+		/decl/background_category/religion    = list(/decl/background_detail/religion/other)
 	)
 
 	var/list/default_background_info = list(
-		/decl/background_category/homeworld = /decl/background_detail/location/other,
-		/decl/background_category/faction =   /decl/background_detail/faction/other,
-		/decl/background_category/heritage =   /decl/background_detail/heritage/other,
-		/decl/background_category/religion =  /decl/background_detail/religion/other
+		/decl/background_category/homeworld   = /decl/background_detail/location/other,
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
+		/decl/background_category/faction     = /decl/background_detail/faction/other,
+		/decl/background_category/heritage    = /decl/background_detail/heritage/other,
+		/decl/background_category/religion    = /decl/background_detail/religion/other
 	)
 
 	var/access_modify_region = list(
@@ -196,7 +198,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	var/background_categories_generated = FALSE
 	var/list/_background_categories = list(
 		/decl/background_category/heritage,
-		/decl/background_category/homeworld,
+		/decl/background_category/citizenship,
 		/decl/background_category/faction,
 		/decl/background_category/religion
 	)

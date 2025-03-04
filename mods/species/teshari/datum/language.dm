@@ -1,4 +1,4 @@
-/decl/language/neoavian
+/decl/language/teshari
 	name = "Schechi"
 	desc = "A trilling language spoken by the diminutive Teshari."
 	speech_verb = "chirps"
@@ -16,5 +16,5 @@
 			"ci", "ri", "mi", "si", "ni", "ti", "li", "shi", "schi", "i", "i"
 		)
 
-/decl/language/neoavian/get_random_name(gender)
+/decl/language/teshari/get_random_name(gender)
 	return ..(gender, 2, 4, 1.5)

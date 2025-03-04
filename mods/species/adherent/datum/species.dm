@@ -54,6 +54,9 @@
 	species_hud = /datum/hud_data/adherent
 
 	available_background_info = list(
+		/decl/background_category/citizenship = list(
+			/decl/background_detail/citizenship/other
+		),
 		/decl/background_category/heritage = list(
 			/decl/background_detail/heritage/adherent
 		),
@@ -66,7 +69,9 @@
 			/decl/background_detail/faction/adherent/loyalists,
 			/decl/background_detail/faction/adherent/separatists
 		),
-		/decl/background_category/religion =  list(/decl/background_detail/religion/other)
+		/decl/background_category/religion =  list(
+			/decl/background_detail/religion/other
+		)
 	)
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/snake

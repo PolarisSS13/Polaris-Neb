@@ -3,8 +3,7 @@
 
 /datum/unit_test/background/start_test()
 
-	var/list/all_background_tokens = global.using_map.get_background_categories()
-
+	var/list/all_background_tokens = decls_repository.get_decls_of_subtype(/decl/background_category)
 	var/fails = 0
 	for(var/species_name in get_all_species())
 		var/decl/species/species = get_species_by_key(species_name)
