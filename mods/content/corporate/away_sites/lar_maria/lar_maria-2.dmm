@@ -899,7 +899,7 @@
 /obj/structure/window/basic{
 	dir = 1
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -920,7 +920,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -1006,7 +1006,7 @@
 /turf/floor/plating,
 /area/lar_maria/atmos)
 "cY" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 1
 	},
 /turf/floor/laminate,
@@ -1021,7 +1021,7 @@
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "db" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/laminate,
@@ -1031,7 +1031,7 @@
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "de" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/laminate,
@@ -1062,7 +1062,7 @@
 /turf/floor/tiled,
 /area/lar_maria/library)
 "dj" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -1338,7 +1338,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -1358,7 +1358,7 @@
 /obj/structure/window/basic{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -1386,7 +1386,7 @@
 /turf/floor/tiled,
 /area/lar_maria/library)
 "ei" = (
-/obj/structure/bed/chair/comfy/beige,
+/obj/structure/chair/comfy/beige,
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "ej" = (
@@ -1394,7 +1394,7 @@
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "ek" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "el" = (
@@ -1414,7 +1414,7 @@
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "eo" = (
-/obj/structure/bed/chair/comfy/green,
+/obj/structure/chair/comfy/green,
 /turf/floor/laminate,
 /area/lar_maria/dorms)
 "ep" = (
@@ -1488,7 +1488,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "eD" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/abstract/landmark/corpse/lar_maria/virologist_female,
 /obj/effect/decal/cleanable/blood,
 /turf/floor/tiled,
@@ -1696,7 +1696,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "fo" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /turf/floor/tiled,
 /area/lar_maria/office)
 "fp" = (
@@ -1783,7 +1783,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -1794,7 +1794,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "fB" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/effect/decal/cleanable/blood,
 /turf/floor/tiled,
 /area/lar_maria/office)
@@ -2001,7 +2001,7 @@
 /turf/floor/tiled,
 /area/lar_maria/office)
 "gl" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -2188,7 +2188,7 @@
 /turf/floor/tiled,
 /area/lar_maria/mess_hall)
 "gQ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -2200,7 +2200,7 @@
 /turf/floor/tiled,
 /area/lar_maria/mess_hall)
 "gS" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -2255,7 +2255,7 @@
 /turf/floor/plating,
 /area/lar_maria/hallway)
 "hd" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -2303,7 +2303,7 @@
 /turf/floor/tiled,
 /area/lar_maria/mess_hall)
 "hj" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -2765,7 +2765,7 @@
 /turf/floor/tiled,
 /area/lar_maria/mess_hall)
 "iz" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/abstract/landmark/corpse/lar_maria/virologist,
@@ -3052,7 +3052,7 @@
 /turf/floor/plating,
 /area/space)
 "kb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -3061,7 +3061,7 @@
 /turf/floor/plating,
 /area/lar_maria/solar_control)
 "lb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light/small{

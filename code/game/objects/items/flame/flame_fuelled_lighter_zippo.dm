@@ -1,6 +1,6 @@
 /obj/item/flame/fuelled/lighter/zippo
 	name     = "zippo lighter"
-	desc     = "It's a zippo-styled lighter, using a replacable flint in a fetching steel case. It makes a clicking sound that everyone loves."
+	desc     = "It's a zippo-styled lighter, using a replaceable flint in a fetching steel case. It makes a clicking sound that everyone loves."
 	icon     = 'icons/obj/items/flame/zippo.dmi'
 	max_fuel = 10
 	material = /decl/material/solid/metal/stainlesssteel

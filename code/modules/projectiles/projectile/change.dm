@@ -22,12 +22,12 @@
 /obj/item/projectile/change/proc/apply_transformation(var/mob/M, var/choice)
 
 	if(choice == "robot")
-		var/mob/living/silicon/robot/R = new(get_turf(M))
-		R.set_gender(M.get_gender())
-		R.job = ASSIGNMENT_ROBOT
-		R.central_processor = new /obj/item/organ/internal/brain_interface(R)
-		transfer_key_from_mob_to_mob(M, R)
-		return R
+		var/mob/living/silicon/robot/robot = new(get_turf(M))
+		robot.set_gender(M.get_gender())
+		robot.job = ASSIGNMENT_ROBOT
+		robot.central_processor = new /obj/item/organ/internal/brain_interface(robot)
+		transfer_key_from_mob_to_mob(M, robot)
+		return robot
 
 	if(get_species_by_key(choice))
 		var/mob/living/human/H = M

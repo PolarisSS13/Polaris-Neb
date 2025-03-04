@@ -54,10 +54,10 @@
 		var/mob/living/silicon/robot/Robot = victim
 		QDEL_NULL(Robot.central_processor)
 	else
-		for(var/obj/item/W in victim)
-			victim.drop_from_inventory(W)
-			if(istype(W, /obj/item/implant))
-				qdel(W)
+		for(var/obj/item/thing in victim)
+			victim.drop_from_inventory(thing)
+			if(istype(thing, /obj/item/implant))
+				qdel(thing)
 
 	var/mob/living/new_mob = new /mob/living/simple_animal/corgi(AM.loc)
 	new_mob.set_intent(I_FLAG_HARM)

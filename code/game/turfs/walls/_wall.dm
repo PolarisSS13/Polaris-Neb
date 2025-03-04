@@ -103,10 +103,10 @@ var/global/list/wall_fullblend_objects = list(
 	. = ..()
 	var/turf/debris = locate(old_x, old_y, old_z)
 	if(debris)
-		for(var/turf/wall/W in RANGE_TURFS(debris, 1))
-			W.wall_connections = null
-			W.other_connections = null
-			W.queue_icon_update()
+		for(var/turf/wall/wall in RANGE_TURFS(debris, 1))
+			wall.wall_connections = null
+			wall.other_connections = null
+			wall.queue_icon_update()
 
 // Walls always hide the stuff below them.
 /turf/wall/levelupdate()
@@ -172,26 +172,24 @@ var/global/list/wall_fullblend_objects = list(
 	. = ..()
 
 //Appearance
-/turf/wall/examine(mob/user)
+/turf/wall/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
 	if(!isnull(shutter_state))
-		to_chat(user, SPAN_NOTICE("The shutter is [shutter_state ? "open" : "closed"]."))
-
+		. += SPAN_NOTICE("The shutter is [shutter_state ? "open" : "closed"].")
 	if(!damage)
-		to_chat(user, SPAN_NOTICE("It looks fully intact."))
+		. += SPAN_NOTICE("It looks fully intact.")
 	else
 		var/dam = damage / material.integrity
 		if(dam <= 0.3)
-			to_chat(user, SPAN_WARNING("It looks slightly damaged."))
+			. += SPAN_WARNING("It looks slightly damaged.")
 		else if(dam <= 0.6)
-			to_chat(user, SPAN_WARNING("It looks moderately damaged."))
+			. += SPAN_WARNING("It looks moderately damaged.")
 		else
-			to_chat(user, SPAN_DANGER("It looks heavily damaged."))
+			. += SPAN_DANGER("It looks heavily damaged.")
 	if(paint_color)
-		to_chat(user, get_paint_examine_message())
+		. += get_paint_examine_message()
 	if(locate(/obj/effect/overlay/wallrot) in src)
-		to_chat(user, SPAN_WARNING("There is fungus growing on [src]."))
+		. += SPAN_WARNING("There is fungus growing on [src].")
 
 /turf/wall/proc/get_paint_examine_message()
 	return SPAN_NOTICE("It has had <font color = '[paint_color]'>a coat of paint</font> applied.")
@@ -303,9 +301,9 @@ var/global/list/wall_fullblend_objects = list(
 
 /turf/wall/proc/burn(temperature)
 	if(!QDELETED(src) && istype(material) && material.combustion_effect(src, temperature, 0.7))
-		for(var/turf/wall/W in range(3,src))
-			if(W != src)
-				addtimer(CALLBACK(W, TYPE_PROC_REF(/turf/wall, burn), temperature/4), 2)
+		for(var/turf/wall/wall in range(3,src))
+			if(wall != src)
+				addtimer(CALLBACK(wall, TYPE_PROC_REF(/turf/wall, burn), temperature/4), 2)
 		physically_destroyed()
 
 /turf/wall/set_color(new_color)

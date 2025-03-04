@@ -7,8 +7,8 @@
 	build_type     = /obj/item/stack/material/sheet
 	build_material = /decl/material/solid/metal/steel
 	build_cost     = 1
-	build_time     = 30
-	can_paint      = 1
+	build_time     = 3 SECONDS
+	can_paint      = TRUE
 	force_material = /decl/material/solid/metal/steel
 	constructed    = TRUE
 	gender         = NEUTER
@@ -31,7 +31,7 @@
 	icon_base      = "bcircuit"
 	build_type     = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_REMOVE_WRENCH
-	can_paint      = 1
+	can_paint      = TRUE
 	can_engrave    = FALSE
 	turf_light_range = 2
 	turf_light_power = 3
@@ -44,7 +44,7 @@
 /decl/flooring/reinforced/circuit/red
 	icon_base        = "rcircuit"
 	flooring_flags   = TURF_ACID_IMMUNE
-	can_paint        = 0
+	can_paint        = FALSE
 	turf_light_power = 2
 	turf_light_color = COLOR_RED
 
@@ -54,7 +54,7 @@
 	icon           = 'icons/turf/flooring/shuttle.dmi'
 	build_type     = null
 	flooring_flags = TURF_ACID_IMMUNE | TURF_REMOVE_CROWBAR
-	can_paint      = 1
+	can_paint      = TRUE
 	can_engrave    = FALSE
 	gender         = NEUTER
 

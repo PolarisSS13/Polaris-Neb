@@ -30,7 +30,7 @@
 	return ..()
 
 /obj/item/food/butchery/meat/syntiflesh
-	desc = "A slab of flesh synthetized from reconstituted biomass or artificially grown from chemicals."
+	desc = "A slab of flesh synthesized from reconstituted biomass or artificially grown from chemicals."
 	meat_name = "synthetic"
 
 // Seperate definitions because some food likes to know if it's human.
@@ -60,7 +60,7 @@
 	butchery_data = /decl/butchery_data/animal/small/fowl
 
 /obj/item/food/butchery/meat/corgi
-	desc = "Tastes like... well you know..."
+	desc = "Tastes like... well, you know..."
 	butchery_data = /decl/butchery_data/animal/corgi
 
 /obj/item/food/butchery/meat/xeno

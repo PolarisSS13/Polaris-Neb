@@ -59,44 +59,38 @@
 	if(. && unwrenched)
 		leak()
 
-/obj/structure/reagent_dispensers/examine(mob/user, distance)
+/obj/structure/reagent_dispensers/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(unwrenched)
-		to_chat(user, SPAN_WARNING("Someone has wrenched open its tap - it's spilling everywhere!"))
-
+		. += SPAN_WARNING("Someone has wrenched open its tap - it's spilling everywhere!")
 	if(distance <= 2)
-
 		if(wrenchable)
 			if(ATOM_IS_OPEN_CONTAINER(src))
-				to_chat(user, "Its refilling cap is open.")
+				. += "Its refilling cap is open."
 			else
-				to_chat(user, "Its refilling cap is closed.")
-
-		to_chat(user, SPAN_NOTICE("It contains:"))
+				. += "Its refilling cap is closed."
+		. += SPAN_NOTICE("It contains:")
 		if(LAZYLEN(reagents?.reagent_volumes))
-			for(var/rtype in reagents.liquid_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				to_chat(user, SPAN_NOTICE("[LIQUID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_LIQUID)]."))
-			for(var/rtype in reagents.solid_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				to_chat(user, SPAN_NOTICE("[SOLID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_SOLID)]."))
+			for(var/decl/material/reagent as anything in reagents.liquid_volumes)
+				. += SPAN_NOTICE("[LIQUID_VOLUME(reagents, reagent)] unit\s of [reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)].")
+			for(var/decl/material/reagent as anything in reagents.solid_volumes)
+				. += SPAN_NOTICE("[SOLID_VOLUME(reagents, reagent)] unit\s of [reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)].")
 		else
-			to_chat(user, SPAN_NOTICE("Nothing."))
-
+			. += SPAN_NOTICE("Nothing.")
 		if(reagents?.maximum_volume)
-			to_chat(user, "It may contain up to [reagents.maximum_volume] unit\s of fluid.")
+			. += "It may contain up to [reagents.maximum_volume] unit\s of fluid."
 
-/obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/attackby(obj/item/used_item, mob/user)
 
 	// We do this here to avoid putting the vessel straight into storage.
 	// This is usually handled by afterattack on /chems.
-	if(storage && ATOM_IS_OPEN_CONTAINER(W) && user.check_intent(I_FLAG_HELP))
-		if(W.standard_dispenser_refill(user, src))
+	if(storage && ATOM_IS_OPEN_CONTAINER(used_item) && user.check_intent(I_FLAG_HELP))
+		if(used_item.standard_dispenser_refill(user, src))
 			return TRUE
-		if(W.standard_pour_into(user, src))
+		if(used_item.standard_pour_into(user, src))
 			return TRUE
 
-	if(wrenchable && IS_WRENCH(W))
+	if(wrenchable && IS_WRENCH(used_item))
 		unwrenched = !unwrenched
 		visible_message(SPAN_NOTICE("\The [user] wrenches \the [src]'s tap [unwrenched ? "open" : "shut"]."))
 		if(unwrenched)
@@ -149,11 +143,11 @@
 	name   = "firefighting water reserve"
 	volume = 50000
 
-/obj/structure/reagent_dispensers/watertank/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/watertank/attackby(obj/item/used_item, mob/user)
 	//FIXME: Maybe this should be handled differently? Since it can essentially make the tank unusable.
-	if((istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm)) && user.try_unequip(W))
-		to_chat(user, "You add \the [W] arm to \the [src].")
-		qdel(W)
+	if((istype(used_item, /obj/item/robot_parts/l_arm) || istype(used_item, /obj/item/robot_parts/r_arm)) && user.try_unequip(used_item))
+		to_chat(user, "You add \the [used_item] arm to \the [src].")
+		qdel(used_item)
 		new /obj/item/farmbot_arm_assembly(loc, src)
 		return TRUE
 	. = ..()
@@ -170,10 +164,10 @@
 /obj/structure/reagent_dispensers/fueltank/populate_reagents()
 	add_to_reagents(/decl/material/liquid/fuel, reagents.maximum_volume)
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user, distance)
+/obj/structure/reagent_dispensers/fueltank/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(rig && distance < 2)
-		to_chat(user, SPAN_WARNING("There is some kind of device rigged to the tank."))
+		. += SPAN_WARNING("There is some kind of device rigged to the tank.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand(var/mob/user)
 	if (!rig || !user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))
@@ -187,26 +181,28 @@
 	update_icon()
 	return TRUE
 
-/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/W, mob/user)
-	add_fingerprint(user)
-	if(istype(W,/obj/item/assembly_holder))
+/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/used_item, mob/user)
+
+	if(istype(used_item, /obj/item/assembly_holder))
 		if (rig)
 			to_chat(user, SPAN_WARNING("There is another device already in the way."))
 			return ..()
-		visible_message(SPAN_NOTICE("\The [user] begins rigging \the [W] to \the [src]."))
-		if(do_after(user, 20, src) && user.try_unequip(W, src))
-			visible_message(SPAN_NOTICE("\The [user] rigs \the [W] to \the [src]."))
-			var/obj/item/assembly_holder/H = W
+		visible_message(SPAN_NOTICE("\The [user] begins rigging \the [used_item] to \the [src]."))
+		if(do_after(user, 20, src) && user.try_unequip(used_item, src))
+			visible_message(SPAN_NOTICE("\The [user] rigs \the [used_item] to \the [src]."))
+			var/obj/item/assembly_holder/H = used_item
 			if (istype(H.a_left,/obj/item/assembly/igniter) || istype(H.a_right,/obj/item/assembly/igniter))
 				log_and_message_admins("rigged a fuel tank for explosion at [loc.loc.name].")
-			rig = W
+			rig = used_item
 			update_icon()
 		return TRUE
-	if(W.isflamesource())
-		log_and_message_admins("triggered a fuel tank explosion with \the [W].")
-		visible_message(SPAN_DANGER("\The [user] puts \the [W] to \the [src]!"))
+
+	if(used_item.isflamesource())
+		log_and_message_admins("triggered a fuel tank explosion with \the [used_item].")
+		visible_message(SPAN_DANGER("\The [user] puts \the [used_item] to \the [src]!"))
 		try_detonate_reagents()
 		return TRUE
+
 	. = ..()
 
 /obj/structure/reagent_dispensers/fueltank/on_update_icon()
@@ -285,14 +281,14 @@
 		to_chat(user, "\The [src]'s cup dispenser is empty.")
 	return TRUE
 
-/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/used_item, mob/user)
 	//Allow refilling with a box
-	if(cups < max_cups && W?.storage)
-		for(var/obj/item/chems/drinks/C in W.storage.get_contents())
+	if(cups < max_cups && used_item?.storage)
+		for(var/obj/item/chems/drinks/C in used_item.storage.get_contents())
 			if(cups >= max_cups)
 				break
 			if(istype(C, cup_type))
-				W.storage.remove_from_storage(user, C, src)
+				used_item.storage.remove_from_storage(user, C, src)
 				qdel(C)
 				cups++
 		return TRUE

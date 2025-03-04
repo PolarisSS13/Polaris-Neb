@@ -15,29 +15,31 @@
 	drop_sound = 'sound/foley/donk1.ogg'
 	pickup_sound = 'sound/foley/pickup2.ogg'
 
+/obj/item/chems/glass/bucket/proc/get_handle_overlay()
+	return overlay_image(icon, "[icon_state]-handle", COLOR_WHITE, RESET_COLOR)
+
+/obj/item/chems/glass/bucket/update_overlays()
+	add_overlay(get_handle_overlay())
+	. = ..()
+
 /obj/item/chems/glass/bucket/get_edible_material_amount(mob/eater)
 	return 0
 
 /obj/item/chems/glass/bucket/get_utensil_food_type()
 	return null
 
-/obj/item/chems/glass/bucket/attackby(var/obj/D, mob/user)
-	if(istype(D, /obj/item/mop))
+/obj/item/chems/glass/bucket/attackby(var/obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/mop))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_WARNING("\The [src] is empty!"))
-		else if(REAGENTS_FREE_SPACE(D.reagents) >= 5)
-			reagents.trans_to_obj(D, 5)
-			to_chat(user, SPAN_NOTICE("You wet \the [D] in \the [src]."))
+		else if(REAGENTS_FREE_SPACE(used_item.reagents) >= 5)
+			reagents.trans_to_obj(used_item, 5)
+			to_chat(user, SPAN_NOTICE("You wet \the [used_item] in \the [src]."))
 			playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		else
-			to_chat(user, SPAN_WARNING("\The [D] is saturated."))
+			to_chat(user, SPAN_WARNING("\The [used_item] is saturated."))
 		return TRUE
 	return ..()
-
-/obj/item/chems/glass/bucket/on_update_icon()
-	. = ..()
-	if (!ATOM_IS_OPEN_CONTAINER(src))
-		add_overlay("lid_[initial(icon_state)]")
 
 /obj/item/chems/glass/bucket/get_reagents_overlay(state_prefix)
 	if(!ATOM_IS_OPEN_CONTAINER(src))
@@ -70,9 +72,12 @@
 	overlay.add_overlay(overlay_image(icon, "[overlay.icon_state]_overlay", rivet_material.get_reagent_color(), RESET_COLOR | RESET_ALPHA))
 	return ..()
 
-/obj/item/chems/glass/bucket/wood/on_update_icon()
+/obj/item/chems/glass/bucket/wood/update_overlays()
 	. = ..()
 	add_overlay(overlay_image(icon, "[icon_state]_overlay", rivet_material.get_reagent_color(), RESET_COLOR | RESET_ALPHA))
+
+/obj/item/chems/glass/bucket/wood/get_handle_overlay()
+	return overlay_image(icon, "[icon_state]-handle", rivet_material.get_reagent_color(), RESET_COLOR | RESET_ALPHA)
 
 /obj/item/chems/glass/bucket/wood/can_lid()
 	return FALSE // todo: add lid sprite?

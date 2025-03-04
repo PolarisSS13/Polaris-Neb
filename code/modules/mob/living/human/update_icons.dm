@@ -340,7 +340,7 @@ Please contact me on #coderbus IRC. ~Carn x
 
 /mob/living/human/update_hair(var/update_icons=1)
 	var/obj/item/organ/external/head/head_organ = get_organ(BP_HEAD, /obj/item/organ/external/head)
-	var/list/new_accessories = head_organ?.get_mob_overlays()
+	var/list/new_accessories = head_organ?.get_limb_mob_overlays()
 	set_current_mob_overlay(HO_HAIR_LAYER, new_accessories, update_icons)
 
 /mob/living/human/proc/update_skin(var/update_icons=1)
@@ -356,5 +356,5 @@ Please contact me on #coderbus IRC. ~Carn x
 	set_current_mob_overlay(HO_CONDITION_LAYER, condition_overlays, update_icons)
 
 /mob/living/human/hud_reset(full_reset = FALSE)
-	if((. = ..()) && internals && internal)
-		internals.icon_state = "internal1"
+	if((. = ..()))
+		refresh_hud_element(HUD_INTERNALS)

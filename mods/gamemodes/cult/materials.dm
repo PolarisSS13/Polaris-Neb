@@ -4,7 +4,7 @@
 	icon_base = 'icons/turf/walls/cult.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_cult.dmi'
 	color = "#402821"
-	shard_type = SHARD_STONE_PIECE
+	shard_name = SHARD_STONE_PIECE
 	conductive = 0
 	construction_difficulty = MAT_VALUE_NORMAL_DIY
 	hidden_from_codex = TRUE

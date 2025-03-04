@@ -118,8 +118,8 @@
 		a_right.holder_movement()
 	return ..()
 
-/obj/item/assembly_holder/attackby(obj/item/W, mob/user)
-	if(IS_SCREWDRIVER(W))
+/obj/item/assembly_holder/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item))
 		if(!a_left || !a_right)
 			to_chat(user, "<span class='warning'>BUG:Assembly part missing, please report this!</span>")
 			return TRUE
@@ -168,13 +168,13 @@
 	if(a_left)
 		a_left.hear_talk(M,msg,verb,speaking)
 
-/obj/item/assembly_holder/examine(mob/user, distance)
+/obj/item/assembly_holder/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (distance <= 1 || src.loc == user)
 		if (src.secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
+			. += "\The [src] can be attached!"
 
 /obj/item/assembly_holder/on_update_icon()
 	. = ..()

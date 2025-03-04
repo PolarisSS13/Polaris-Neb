@@ -3,7 +3,7 @@
 	var/name
 	/// A string displayed when examining an atom that provides this handler as an alt interaction.
 	var/examine_desc
-	/// If set to TRUE, alt interactions will skip is_possible() before displaying in examine().
+	/// If set to TRUE, alt interactions will skip is_possible() before displaying in examined_by().
 	var/always_show_on_examine = FALSE
 	var/icon
 	var/icon_state

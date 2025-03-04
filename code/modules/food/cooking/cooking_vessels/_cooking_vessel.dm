@@ -16,19 +16,19 @@
 	var/decl/recipe/last_recipe
 
 // TODO: ladle
-/obj/item/chems/cooking_vessel/attackby(obj/item/W, mob/user)
+/obj/item/chems/cooking_vessel/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
 	// Fill or take from the vessel.
-	if(W.reagents && ATOM_IS_OPEN_CONTAINER(W))
-		if(W.reagents.total_volume)
-			if(istype(W, /obj/item/chems))
-				var/obj/item/chems/vessel = W
+	if(used_item.reagents && ATOM_IS_OPEN_CONTAINER(used_item))
+		if(used_item.reagents.total_volume)
+			if(istype(used_item, /obj/item/chems))
+				var/obj/item/chems/vessel = used_item
 				if(vessel.standard_pour_into(user, src))
 					return TRUE
-		else if(standard_pour_into(user, W))
+		else if(standard_pour_into(user, used_item))
 			return TRUE
 
 	return ..()
@@ -74,29 +74,26 @@
 		. += "\the [thing]"
 
 	if(reagents?.total_volume)
-		for(var/solid_type in reagents.solid_volumes)
-			var/decl/material/reagent = GET_DECL(solid_type)
-			var/reagent_name = reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)
-			. += "[reagents.solid_volumes[solid_type]]u of [reagent_name]"
+		for(var/decl/material/reagent as anything in reagents.solid_volumes)
+			. += "[reagents.solid_volumes[reagent]]u of [reagent.get_reagent_name(reagents, MAT_PHASE_SOLID)]"
 
-		for(var/liquid_type in reagents.liquid_volumes)
-			var/decl/material/reagent = GET_DECL(liquid_type)
+		for(var/decl/material/reagent as anything in reagents.liquid_volumes)
 			var/reagent_name = reagent.get_reagent_name(reagents, MAT_PHASE_LIQUID)
 			if(!isnull(reagent.boiling_point) && temperature >= reagent.boiling_point && reagent.soup_hot_desc)
-				. += "[reagents.liquid_volumes[liquid_type]]u of [reagent.soup_hot_desc] [reagent_name]"
+				. += "[reagents.liquid_volumes[reagent]]u of [reagent.soup_hot_desc] [reagent_name]"
 			else
-				. += "[reagents.liquid_volumes[liquid_type]]u of [reagent_name]"
+				. += "[reagents.liquid_volumes[reagent]]u of [reagent_name]"
 
-/obj/item/chems/cooking_vessel/examine(mob/user, distance)
+/obj/item/chems/cooking_vessel/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1)
 		var/list/contents_strings = get_cooking_contents_strings()
 		if(length(contents_strings))
-			to_chat(user, SPAN_NOTICE("\The [src] contains:"))
+			. += SPAN_NOTICE("\The [src] contains:")
 			for(var/content_string in contents_strings)
-				to_chat(user, SPAN_NOTICE("- [content_string]"))
+				. += SPAN_NOTICE("- [content_string]")
 		else
-			to_chat(user, SPAN_NOTICE("\The [src] is empty."))
+			. += SPAN_NOTICE("\The [src] is empty.")
 
 /obj/item/chems/cooking_vessel/Process()
 	var/decl/recipe/recipe = select_recipe(cooking_category, src, temperature)

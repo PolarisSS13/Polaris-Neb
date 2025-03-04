@@ -10,13 +10,16 @@
 	var/grinding = FALSE
 
 // todo: generalize to use TOOL_PESTLE
-/obj/item/chems/glass/mortar/attackby(obj/item/using_item, mob/living/user)
+/obj/item/chems/glass/mortar/attackby(obj/item/used_item, mob/living/user)
 	if((. = ..()))
 		return
-	return try_grind(using_item, user)
+	return try_grind(used_item, user)
 
-/obj/item/chems/glass/mortar/proc/try_grind(obj/item/using_item, mob/living/user)
-	if(!istype(using_item))
+/obj/item/chems/glass/mortar/can_lid()
+	return FALSE
+
+/obj/item/chems/glass/mortar/proc/try_grind(obj/item/used_item, mob/living/user)
+	if(!istype(used_item))
 		return FALSE
 	if(!CanPhysicallyInteract(user) || !user.check_dexterity(DEXTERITY_HOLD_ITEM))
 		return TRUE
@@ -25,13 +28,13 @@
 		return TRUE
 	var/list/contained_atoms = get_stored_inventory()
 	var/obj/item/crushing_item = LAZYACCESS(contained_atoms, 1)
-	var/decl/material/attacking_material = using_item.get_material()
+	var/decl/material/attacking_material = used_item.get_material()
 	var/decl/material/crushing_material = crushing_item?.get_material()
 	var/skill_factor = CLAMP01(1 + 0.3*(user.get_skill_value(SKILL_CHEMISTRY) - SKILL_EXPERT)/(SKILL_EXPERT - SKILL_MIN))
-	if(using_item.expend_attack_force(user) <= 0 || !attacking_material || !crushing_material)
+	if(used_item.expend_attack_force(user) <= 0 || !attacking_material || !crushing_material)
 		return TRUE
 	if(attacking_material.hardness <= crushing_material.hardness)
-		to_chat(user, SPAN_NOTICE("\The [using_item] is not hard enough to crush \the [crushing_item]."))
+		to_chat(user, SPAN_NOTICE("\The [used_item] is not hard enough to crush \the [crushing_item]."))
 		return TRUE
 	if(REAGENTS_FREE_SPACE(reagents) < crushing_item.reagents.total_volume)
 		to_chat(user, SPAN_WARNING("\The [src] is too full to grind \the [crushing_item], it'd spill everywhere!"))
@@ -44,7 +47,7 @@
 		if(user.get_stamina() < stamina_to_consume)
 			to_chat(user, SPAN_WARNING("You are too tired to crush \the [crushing_item], take a break!"))
 			return TRUE
-		to_chat(user, SPAN_NOTICE("You start grinding \the [crushing_item] with \the [using_item]."))
+		to_chat(user, SPAN_NOTICE("You start grinding \the [crushing_item] with \the [used_item]."))
 		grinding = TRUE
 		if(!do_after(user, stamina_to_consume SECONDS))
 			to_chat(user, SPAN_NOTICE("You stop grinding \the [crushing_item]."))
@@ -55,9 +58,9 @@
 			return TRUE // already been ground!
 		user.adjust_stamina(-stamina_to_consume)
 		crushing_item.reagents.trans_to(src, crushing_item.reagents.total_volume, skill_factor)
-		to_chat(user, SPAN_NOTICE("You finish grinding \the [crushing_item] with \the [using_item]."))
+		to_chat(user, SPAN_NOTICE("You finish grinding \the [crushing_item] with \the [used_item]."))
 	QDEL_NULL(crushing_item)
 	// If there's more to crush, try looping
 	if(length(get_stored_inventory()) > 0)
-		try_grind(using_item, user)
+		try_grind(used_item, user)
 	return TRUE

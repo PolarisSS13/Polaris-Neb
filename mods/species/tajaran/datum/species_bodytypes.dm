@@ -1,6 +1,6 @@
-/decl/bodytype/feline
-	name                 = "humanoid"
-	bodytype_category    = BODYTYPE_FELINE
+/decl/bodytype/tajaran
+	name                 = "felinoid"
+	bodytype_category    = BODYTYPE_TAJARA
 	limb_blend           = ICON_MULTIPLY
 	icon_template        = 'mods/species/tajaran/icons/template.dmi'
 	icon_base            = 'mods/species/tajaran/icons/body.dmi'
@@ -9,13 +9,14 @@
 	skeletal_icon        = 'mods/species/tajaran/icons/skeleton.dmi'
 	cosmetics_icon       = 'mods/species/tajaran/icons/cosmetics.dmi'
 	health_hud_intensity = 1.75
-	bodytype_flag        = BODY_FLAG_FELINE
+	bodytype_flag        = BODY_EQUIP_FLAG_HUMANOID
 	movement_slowdown    = -0.5
 	appearance_flags     = HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 	base_color           = "#ae7d32"
 	base_eye_color       = "#00aa00"
 	nail_noun            = "claws"
-	uid                  = "bodytype_feline"
+	uid                  = "bodytype_tajaran"
+	footprints_icon      = 'icons/mob/footprints/footprints_paw.dmi'
 
 	age_descriptor = /datum/appearance_descriptor/age/tajaran
 
@@ -32,6 +33,7 @@
 		BP_L_HAND = /obj/item/organ/external/hand/clawed,
 		BP_R_HAND = /obj/item/organ/external/hand/right/clawed
 	)
+
 	default_sprite_accessories = list(
 		SAC_HAIR     = list(/decl/sprite_accessory/hair/taj/lynx        = list(SAM_COLOR = "#46321c")),
 		SAC_MARKINGS = list(/decl/sprite_accessory/marking/tajaran/ears = list(SAM_COLOR = "#ae7d32"))
@@ -53,15 +55,30 @@
 		"Your overheated skin itches."
 	)
 
-/decl/bodytype/feline/Initialize()
+/decl/bodytype/tajaran/Initialize()
 	_equip_adjust = list(
-		(slot_glasses_str) =   list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
-		(slot_wear_mask_str) = list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2)),
-		(slot_head_str) =      list("[NORTH]" = list(0, 2), "[EAST]" = list(0, 2), "[SOUTH]" = list( 0, 2),  "[WEST]" = list(0, 2))
+		(slot_glasses_str) = list(
+			"[NORTH]" = list(0, 2),
+			"[EAST]"  = list(0, 2),
+			"[SOUTH]" = list( 0, 2),
+			"[WEST]"  = list(0, 2)
+		),
+		(slot_wear_mask_str) = list(
+			"[NORTH]" = list(0, 2),
+			"[EAST]"  = list(0, 2),
+			"[SOUTH]" = list( 0, 2),
+			"[WEST]"  = list(0, 2)
+		),
+		(slot_head_str) = list(
+			"[NORTH]" = list(0, 2),
+			"[EAST]"  = list(0, 2),
+			"[SOUTH]" = list( 0, 2),
+			"[WEST]"  = list(0, 2)
+		)
 	)
 	. = ..()
 
-/decl/bodytype/feline/get_default_grooming_results(obj/item/organ/external/limb, obj/item/grooming/tool)
+/decl/bodytype/tajaran/get_default_grooming_results(obj/item/organ/external/limb, obj/item/grooming/tool)
 	if(tool?.grooming_flags & GROOMABLE_BRUSH)
 		return list(
 			"success"    = GROOMING_RESULT_SUCCESS,

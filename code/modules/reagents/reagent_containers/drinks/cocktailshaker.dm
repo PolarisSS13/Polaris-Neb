@@ -1,6 +1,6 @@
 /obj/item/chems/drinks/shaker
 	name = "shaker"
-	desc = "A three piece Cobbler-style shaker. Used to mix, cool, and strain drinks."
+	desc = "A three-piece Cobbler-style shaker. Used to mix, cool, and strain drinks."
 	icon_state = "shaker"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = @"[5,10,15,25,30,60]" //Professional bartender should be able to transfer as much as needed

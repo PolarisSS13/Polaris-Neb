@@ -166,13 +166,13 @@
 		parts_amount = 1
 		update_icon()
 
-/obj/structure/grille/attackby(obj/item/W, mob/user)
-	if(IS_WIRECUTTER(W))
+/obj/structure/grille/attackby(obj/item/used_item, mob/user)
+	if(IS_WIRECUTTER(used_item))
 		if(!material.conductive || !shock(user, 100))
 			cut_grille()
 		return TRUE
 
-	if((IS_SCREWDRIVER(W)))
+	if((IS_SCREWDRIVER(used_item)))
 		var/turf/turf = loc
 		if(((istype(turf) && turf.simulated) || anchored))
 			if(!shock(user, 90))
@@ -187,8 +187,8 @@
 			return TRUE
 
 	//window placing
-	if(istype(W,/obj/item/stack/material))
-		var/obj/item/stack/material/ST = W
+	if(istype(used_item,/obj/item/stack/material))
+		var/obj/item/stack/material/ST = used_item
 		if(ST.material.opacity > 0.7)
 			return FALSE
 
@@ -204,15 +204,15 @@
 		place_window(user, loc, dir_to_set, ST)
 		return TRUE
 
-	if(!(W.obj_flags & OBJ_FLAG_CONDUCTIBLE) || !shock(user, 70))
+	if(!(used_item.obj_flags & OBJ_FLAG_CONDUCTIBLE) || !shock(user, 70))
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
-		switch(W.atom_damage_type)
+		switch(used_item.atom_damage_type)
 			if(BURN)
-				take_damage(W.expend_attack_force(user))
+				take_damage(used_item.expend_attack_force(user))
 			if(BRUTE)
-				take_damage(W.expend_attack_force(user) * 0.1)
+				take_damage(used_item.expend_attack_force(user) * 0.1)
 		return TRUE
 
 	return ..()

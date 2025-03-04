@@ -176,7 +176,7 @@
 		listening_effect.hear_speech(src, M, text, speaking)
 
 // VISIBLE effects
-/obj/item/examine(mob/user, distance)
+/obj/item/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!user)
 		return

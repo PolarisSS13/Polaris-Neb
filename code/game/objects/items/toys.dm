@@ -56,20 +56,19 @@
 		overlay.icon_state = "[overlay.icon_state]_empty"
 	. = ..()
 
-/obj/item/chems/water_balloon/examine(mob/user, distance, infix, suffix)
+/obj/item/chems/water_balloon/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	if(distance == 1)
-		to_chat(user, "It's [reagents?.total_volume > 0? "filled with liquid sloshing around" : "empty"].")
+	if(distance <= 1)
+		. += "It's [reagents?.total_volume > 0? "filled with liquid sloshing around" : "empty"]."
 
 /obj/item/chems/water_balloon/on_reagent_change()
 	if(!(. = ..()))
 		return
 	w_class = (reagents?.total_volume > 0)? ITEM_SIZE_SMALL : ITEM_SIZE_TINY
 	//#TODO: Maybe acids should handle eating their own containers themselves?
-	for(var/reagent in reagents?.reagent_volumes)
-		var/decl/material/M = GET_DECL(reagent)
-		if(M.solvent_power >= MAT_SOLVENT_STRONG)
-			visible_message(SPAN_DANGER("\The [M] chews through \the [src]!"))
+	for(var/decl/material/reagent as anything in reagents?.reagent_volumes)
+		if(reagent.solvent_power >= MAT_SOLVENT_STRONG)
+			visible_message(SPAN_DANGER("\The [reagent] chews through \the [src]!"))
 			physically_destroyed()
 
 /obj/item/chems/water_balloon/throw_impact(atom/hit_atom, datum/thrownthing/TT)
@@ -388,12 +387,12 @@
 
 /obj/item/toy/figure/geneticist
 	name = "Geneticist action figure"
-	desc = "A \"Space Life\" brand Geneticist action figure, which was recently dicontinued."
+	desc = "A \"Space Life\" brand Geneticist action figure, which was recently discontinued."
 	icon_state = "geneticist"
 
 /obj/item/toy/figure/hop
-	name = "Head of Personel action figure"
-	desc = "A \"Space Life\" brand Head of Personel action figure."
+	name = "Head of Personnel action figure"
+	desc = "A \"Space Life\" brand Head of Personnel action figure."
 	icon_state = "hop"
 
 /obj/item/toy/figure/hos
@@ -576,9 +575,7 @@
 //Office Desk Toys
 
 /obj/item/toy/desk
-	name = "desk toy master"
-	desc = "A object that does not exist. Parent Item"
-
+	abstract_type = /obj/item/toy/desk
 	var/on = 0
 	var/activation_sound = 'sound/effects/flashlight.ogg'
 
@@ -598,7 +595,7 @@
 
 /obj/item/toy/desk/newtoncradle
 	name = "\improper Newton's cradle"
-	desc = "A ancient 21th century super-weapon model demonstrating that Sir Isaac Newton is the deadliest sonuvabitch in space."
+	desc = "An ancient 21st century super-weapon model demonstrating that Sir Isaac Newton is the deadliest sonuvabitch in space."
 	icon_state = "newtoncradle"
 
 /obj/item/toy/desk/fan
@@ -613,7 +610,7 @@
 
 /obj/item/toy/desk/dippingbird
 	name = "dipping bird toy"
-	desc = "A ancient human bird idol, worshipped by clerks and desk jockeys."
+	desc = "An ancient human bird idol, worshipped by clerks and desk jockeys."
 	icon_state= "dippybird"
 
 // tg station ports
@@ -674,10 +671,10 @@
 	_base_attack_force = 1
 	var/rule_info
 
-/obj/item/toy/chess/examine(mob/user, distance, infix, suffix)
+/obj/item/toy/chess/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(rule_info)
-		to_chat(user, SPAN_NOTICE(rule_info))
+		. += SPAN_NOTICE(rule_info)
 
 /obj/item/toy/chess/pawn
 	name = "oversized white pawn"

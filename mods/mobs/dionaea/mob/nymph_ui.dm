@@ -1,30 +1,24 @@
-/* Commented out due to issues with interactions and combined intent flags.
-/obj/screen/intent/binary/diona
-	icon = 'mods/mobs/dionaea/icons/ui_intents.dmi'
-	screen_loc = DIONA_SCREEN_LOC_INTENT
-
-/decl/intent/harm/binary/diona
-	icon = 'mods/mobs/dionaea/icons/ui_intent_overlay.dmi'
-	uid = "intent_harm_binary_diona"
-
-/decl/intent/help/binary/diona
-	icon = 'mods/mobs/dionaea/icons/ui_intent_overlay.dmi'
-	uid = "intent_help_binary_diona"
-*/
-
 /decl/ui_style/diona
 	name = "Diona"
 	restricted = TRUE
 	uid  = "ui_style_diona"
 	override_icons = list(
-		UI_ICON_HEALTH      = 'mods/mobs/dionaea/icons/ui_health.dmi',
-		UI_ICON_HANDS       = 'mods/mobs/dionaea/icons/ui_hands.dmi',
-		UI_ICON_INTERACTION = 'mods/mobs/dionaea/icons/ui_interactions.dmi',
-		UI_ICON_INVENTORY   = 'mods/mobs/dionaea/icons/ui_inventory.dmi'
+		(HUD_HEALTH)    = 'mods/mobs/dionaea/icons/ui_health.dmi',
+		(HUD_HANDS)     = 'mods/mobs/dionaea/icons/ui_hands.dmi',
+		(HUD_RESIST)    = 'mods/mobs/dionaea/icons/ui_interactions_resist.dmi',
+		(HUD_THROW)     = 'mods/mobs/dionaea/icons/ui_interactions_throw.dmi',
+		(HUD_DROP)      = 'mods/mobs/dionaea/icons/ui_interactions_drop.dmi',
+		(HUD_MANEUVER)  = 'mods/mobs/dionaea/icons/ui_interactions_maneuver.dmi',
+		(HUD_INVENTORY) = 'mods/mobs/dionaea/icons/ui_inventory.dmi'
 	)
 
+/decl/hud_element/health/diona
+	elem_type = /obj/screen/health/diona
+	elem_reference_type = /decl/hud_element/health
+
 /datum/hud/diona_nymph
-//	action_intent_type = /obj/screen/intent/diona_nymph
+	omit_hud_elements = list(/decl/hud_element/health)
+	additional_hud_elements = list(/decl/hud_element/health/diona)
 
 /datum/hud/diona_nymph/get_ui_style_data()
 	return GET_DECL(/decl/ui_style/diona)
@@ -35,17 +29,7 @@
 /datum/hud/diona_nymph/get_ui_alpha()
 	return 255
 
-/datum/hud/diona_nymph/FinalizeInstantiation()
-	var/decl/ui_style/ui_style = get_ui_style_data()
-	var/ui_color = get_ui_color()
-	var/ui_alpha = get_ui_alpha()
-
-	mymob.healths = new /obj/screen/diona_health(null, mymob, ui_style, ui_color, ui_alpha, UI_ICON_HEALTH)
-	other = list()
-	adding = list(mymob.healths)
-	..()
-
-/obj/screen/diona_health
+/obj/screen/health/diona
 	icon_state = "health0"
 	name = "health"
 	screen_loc = DIONA_SCREEN_LOC_HEALTH

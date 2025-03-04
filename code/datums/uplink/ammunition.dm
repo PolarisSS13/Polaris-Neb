@@ -50,13 +50,13 @@
 
 /datum/uplink_item/item/ammo/shotgun_shells
 	name = "Ammobox of Shotgun Shells"
-	desc = "An ammobox with 2 sets of shell holders. Contains 8 buckshot shells total."
+	desc = "An ammo box with 2 sets of shell holders. Contains 8 buckshot shells total."
 	item_cost = 8
 	path = /obj/item/box/ammo/shotgunshells
 
 /datum/uplink_item/item/ammo/shotgun_slugs
 	name = "Ammobox of Shotgun Slugs"
-	desc = "An ammobox with 2 sets of shell holders. Contains 8 slugs total."
+	desc = "An ammo box with 2 sets of shell holders. Contains 8 slugs total."
 	item_cost = 8
 	path = /obj/item/box/ammo/shotgunammo
 

@@ -1,6 +1,6 @@
 /obj/structure/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon = 'icons/obj/structures/crematorium.dmi'
 	icon_state = "crematorium_closed"
 	density = TRUE

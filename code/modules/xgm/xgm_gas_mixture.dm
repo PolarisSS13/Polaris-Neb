@@ -13,7 +13,7 @@
 	var/group_multiplier = 1
 
 	//List of active tile overlays for this gas_mixture.  Updated by check_tile_graphic()
-	var/list/graphic = list()
+	var/list/graphic
 	//Cache of gas overlay objects
 	var/list/tile_overlay_cache
 	///The last cached color of the gas mixture
@@ -32,8 +32,6 @@
 		update_values()
 
 /datum/gas_mixture/proc/get_gas(gasid)
-	if(!gas.len)
-		return 0 //if the list is empty BYOND treats it as a non-associative list, which runtimes
 	return gas[gasid] * group_multiplier
 
 /datum/gas_mixture/proc/get_total_moles()
@@ -193,7 +191,7 @@
 	which is bit more realistic (natural log), and returns a fairly accurate entropy around room temperatures and pressures.
 */
 /datum/gas_mixture/proc/specific_entropy_gas(var/gasid)
-	if (!(gasid in gas) || gas[gasid] == 0)
+	if (!gas[gasid])
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
@@ -367,9 +365,10 @@
 //Two lists can be passed by reference if you need know specifically which graphics were added and removed.
 // Returns TRUE if the graphics list was mutated.
 /datum/gas_mixture/proc/check_tile_graphic(list/graphic_add = null, list/graphic_remove = null)
-	for(var/obj/effect/gas_overlay/O in graphic)
-		if(gas[O.material.type] <= O.material.gas_overlay_limit)
-			LAZYADD(graphic_remove, O)
+	if(LAZYLEN(graphic))
+		for(var/obj/effect/gas_overlay/O in graphic)
+			if(gas[O.material.type] <= O.material.gas_overlay_limit)
+				LAZYADD(graphic_remove, O)
 	for(var/g in gas)
 		//Overlay isn't applied for this gas, check if it's valid and needs to be added.
 		var/decl/material/mat = GET_DECL(g)
@@ -381,13 +380,13 @@
 				LAZYADD(graphic_add, tile_overlay)
 	. = FALSE
 	//Apply changes
-	if(graphic_add && graphic_add.len)
-		graphic |= graphic_add
+	if(LAZYLEN(graphic_add))
+		LAZYADD(graphic, graphic_add)
 		. = TRUE
-	if(graphic_remove && graphic_remove.len)
-		graphic -= graphic_remove
+	if(LAZYLEN(graphic_remove))
+		LAZYREMOVE(graphic, graphic_remove)
 		. = TRUE
-	if(graphic.len)
+	if(LAZYLEN(graphic))
 		var/pressure_mod = clamp(return_pressure() / ONE_ATMOSPHERE, 0, 2)
 		for(var/obj/effect/gas_overlay/O in graphic)
 			var/concentration_mod = clamp(gas[O.material.type] / total_moles, 0.1, 1)

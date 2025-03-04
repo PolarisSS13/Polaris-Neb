@@ -18,7 +18,7 @@ Thus, the two variables affect pump operation are set in New():
 	level = LEVEL_BELOW_PLATING
 
 	name = "gas pump"
-	desc = "A pump."
+	desc = "A pump that can pressurize gas and restrict flow to one direction."
 
 	var/target_pressure = ONE_ATMOSPHERE
 
@@ -141,27 +141,25 @@ Thus, the two variables affect pump operation are set in New():
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/atmospherics/binary/pump/Topic(href,href_list)
-	if((. = ..())) return
+/obj/machinery/atmospherics/binary/pump/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 
 	if(href_list["power"])
 		update_use_power(!use_power)
-		. = 1
+		. = TOPIC_REFRESH
 
 	switch(href_list["set_press"])
 		if ("min")
 			target_pressure = 0
-			. = 1
+			. = TOPIC_REFRESH
 		if ("max")
 			target_pressure = max_pressure_setting
-			. = 1
+			. = TOPIC_REFRESH
 		if ("set")
-			var/new_pressure = input(usr,"Enter new output pressure (0-[max_pressure_setting]kPa)","Pressure control",src.target_pressure) as num
-			src.target_pressure = clamp(new_pressure, 0, max_pressure_setting)
-			. = 1
-
-	if(.)
-		src.update_icon()
+			var/new_pressure = input(user, "Enter new output pressure (0-[max_pressure_setting]kPa)", "Pressure control", target_pressure) as num
+			target_pressure = clamp(new_pressure, 0, max_pressure_setting)
+			. = TOPIC_REFRESH
 
 /obj/machinery/atmospherics/binary/pump/cannot_transition_to(state_path, mob/user)
 	if(state_path == /decl/machine_construction/default/deconstructed)

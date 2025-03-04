@@ -58,10 +58,10 @@
 		if( istype(T, /turf/wall))
 			success = 1
 			if(propagate)
-				var/turf/wall/W = T
-				W.wall_connections = null
-				W.other_connections = null
-				W.queue_icon_update()
+				var/turf/wall/wall = T
+				wall.wall_connections = null
+				wall.other_connections = null
+				wall.queue_icon_update()
 		else
 			for(var/obj/O in T)
 				for(var/blend_type in get_blend_objects())

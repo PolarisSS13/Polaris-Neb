@@ -39,18 +39,18 @@
 	color = bcolor
 	desc = "A strange collection of symbols drawn in [blood]."
 
-/obj/effect/rune/examine(mob/user)
+/obj/effect/rune/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "This is \a [cultname] rune.")
+		. += "This is \a [cultname] rune."
 
-/obj/effect/rune/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/book/tome) && iscultist(user))
-		user.visible_message(SPAN_NOTICE("[user] rubs \the [src] with \the [I], and \the [src] is absorbed by it."), "You retrace your steps, carefully undoing the lines of \the [src].")
+/obj/effect/rune/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/book/tome) && iscultist(user))
+		user.visible_message(SPAN_NOTICE("[user] rubs \the [src] with \the [used_item], and \the [src] is absorbed by it."), "You retrace your steps, carefully undoing the lines of \the [src].")
 		qdel(src)
 		return TRUE
-	else if(istype(I, /obj/item/nullrod))
-		user.visible_message(SPAN_NOTICE("[user] hits \the [src] with \the [I], and it disappears, fizzling."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [I]."), "You hear a fizzle.")
+	else if(istype(used_item, /obj/item/nullrod))
+		user.visible_message(SPAN_NOTICE("[user] hits \the [src] with \the [used_item], and it disappears, fizzling."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [used_item]."), "You hear a fizzle.")
 		qdel(src)
 		return TRUE
 	return ..()
@@ -129,7 +129,7 @@
 	if(!cult.can_become_antag(target.mind, 1))
 		to_chat(target, SPAN_DANGER("Are you going insane?"))
 	else
-		to_chat(target, SPAN_OCCULT("Do you want to join the cult of Nar'Sie? You can choose to ignore offer... <a href='byond://?src=\ref[src];join=1'>Join the cult</a>."))
+		to_chat(target, SPAN_OCCULT("Do you want to join the cult of Nar'Sie? You can choose to ignore the offer... <a href='byond://?src=\ref[src];join=1'>Join the cult</a>."))
 
 	spamcheck = 1
 	spawn(40)
@@ -150,10 +150,10 @@
 						to_chat(target, SPAN_OCCULT("Your mind turns to ash as the burning flames engulf your very soul and images of an unspeakable horror begin to bombard the last remnants of mental resistance."))
 						target.take_overall_damage(0, 10)
 
-/obj/effect/rune/convert/Topic(href, href_list)
-	if(href_list["join"] && usr.loc == loc && !iscultist(usr))
+/obj/effect/rune/convert/OnTopic(mob/user, href_list)
+	if(href_list["join"] && user.loc == loc && !iscultist(user))
 		var/decl/special_role/cult = GET_DECL(/decl/special_role/cultist)
-		cult.add_antagonist(usr.mind, ignore_role = 1, do_not_equip = 1)
+		cult.add_antagonist(user.mind, ignore_role = 1, do_not_equip = 1)
 
 /obj/effect/rune/teleport
 	cultname = "teleport"
@@ -177,10 +177,10 @@
 			A.forceMove(T)
 	return ..()
 
-/obj/effect/rune/teleport/examine(mob/user)
+/obj/effect/rune/teleport/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "Its name is [destination].")
+		. += "Its name is [destination]."
 
 /obj/effect/rune/teleport/cast(var/mob/living/user)
 	if(user.loc == src)
@@ -214,16 +214,16 @@
 			return
 		destination = sanitize(input)
 
-/obj/effect/rune/teleport/Topic(href, href_list)
-	if(usr.loc != src)
+/obj/effect/rune/teleport/OnTopic(mob/user, href_list)
+	if(user.loc != src)
 		return
 	if(href_list["target"])
 		var/obj/effect/rune/teleport/targ = locate(href_list["target"])
 		if(istype(targ)) // Checks for null, too
-			usr.forceMove(targ)
-			targ.showOptions(usr)
+			user.forceMove(targ)
+			targ.showOptions(user)
 	else if(href_list["leave"])
-		leaveRune(usr)
+		leaveRune(user)
 
 /obj/effect/rune/teleport/proc/showOptions(var/mob/living/user)
 	var/list/t = list()
@@ -297,16 +297,16 @@
 		rune = null
 	return ..()
 
-/obj/effect/cultwall/examine(mob/user)
+/obj/effect/cultwall/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
 		var/current_max_health = get_max_health()
 		if(current_health == current_max_health)
-			to_chat(user, SPAN_NOTICE("It is fully intact."))
+			. += SPAN_NOTICE("It is fully intact.")
 		else if(current_health > current_max_health * 0.5)
-			to_chat(user, SPAN_WARNING("It is damaged."))
+			. += SPAN_WARNING("It is damaged.")
 		else
-			to_chat(user, SPAN_DANGER("It is about to dissipate."))
+			. += SPAN_DANGER("It is about to dissipate.")
 
 /obj/effect/cultwall/attack_hand(var/mob/user)
 	SHOULD_CALL_PARENT(FALSE)
@@ -317,15 +317,15 @@
 		to_chat(user, SPAN_NOTICE("You touch \the [src]. It feels wet and becomes harder the further you push your arm."))
 	return TRUE
 
-/obj/effect/cultwall/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/nullrod))
-		user.visible_message(SPAN_NOTICE("\The [user] touches \the [src] with \the [I], and it disappears."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [I]."))
+/obj/effect/cultwall/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/nullrod))
+		user.visible_message(SPAN_NOTICE("\The [user] touches \the [src] with \the [used_item], and it disappears."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [used_item]."))
 		qdel(src)
 		return TRUE
-	var/force = I.expend_attack_force(user)
+	var/force = used_item.expend_attack_force(user)
 	if(force)
-		user.visible_message(SPAN_NOTICE("\The [user] hits \the [src] with \the [I]."), SPAN_NOTICE("You hit \the [src] with \the [I]."))
-		take_damage(force, I.atom_damage_type)
+		user.visible_message(SPAN_NOTICE("\The [user] hits \the [src] with \the [used_item]."), SPAN_NOTICE("You hit \the [src] with \the [used_item]."))
+		take_damage(force, used_item.atom_damage_type)
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		user.do_attack_animation(src)
 	return TRUE
@@ -442,8 +442,8 @@
 		var/obj/item/backpack/cultpack/C = new /obj/item/backpack/cultpack(user)
 		user.equip_to_slot_or_del(C, slot_back_str)
 		if(C)
-			for(var/obj/item/I in O)
-				I.forceMove(C)
+			for(var/obj/item/thing in O)
+				thing.forceMove(C)
 	else if(!O)
 		var/obj/item/backpack/cultpack/C = new /obj/item/backpack/cultpack(user)
 		user.equip_to_slot_or_del(C, slot_back_str)
@@ -576,16 +576,16 @@
 	if(!charges)
 		return statuses
 	var/list/obj/item/organ/damaged = list()
-	for(var/obj/item/organ/I in user.internal_organs)
-		if(I.damage)
-			damaged += I
+	for(var/obj/item/organ/internal/organ in user.internal_organs)
+		if(organ.get_organ_damage())
+			damaged += organ
 	if(damaged.len)
 		statuses += "you feel pain inside for a moment that passes quickly"
 		while(charges && damaged.len)
-			var/obj/item/organ/fix = pick(damaged)
-			fix.damage = max(0, fix.damage - min(charges, 1))
+			var/obj/item/organ/internal/fix = pick(damaged)
+			fix.adjust_organ_damage(-(min(charges, 1)))
 			charges = max(charges - 1, 0)
-			if(fix.damage == 0)
+			if(fix.get_organ_damage() <= 0)
 				damaged -= fix
 	return statuses
 

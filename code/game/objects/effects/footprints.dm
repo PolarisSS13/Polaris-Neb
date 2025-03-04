@@ -48,7 +48,7 @@
 		return null
 	if(buckled || current_posture?.prone)
 		return 'icons/mob/footprints/footprints_trail.dmi'
-	if(istype(buckled, /obj/structure/bed/chair))
+	if(istype(buckled, /obj/structure/chair))
 		return 'icons/mob/footprints/footprints_wheelchair.dmi'
 	var/obj/item/clothing/shoes/shoes = get_equipped_item(slot_shoes_str)
 	if(istype(shoes) && shoes.footprint_icon)

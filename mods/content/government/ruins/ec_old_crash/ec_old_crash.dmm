@@ -1529,7 +1529,7 @@
 /turf/floor,
 /area/map_template/ecship/engineering)
 "dr" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},

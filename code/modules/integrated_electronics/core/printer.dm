@@ -46,59 +46,59 @@
 	assembly.creator = key_name(user)
 	cloning = FALSE
 
-/obj/item/integrated_circuit_printer/proc/recycle(obj/item/O, mob/user, obj/item/electronic_assembly/assembly)
-	if(!O.canremove) //in case we have an augment circuit
+/obj/item/integrated_circuit_printer/proc/recycle(obj/item/used_item, mob/user, obj/item/electronic_assembly/assembly)
+	if(!used_item.canremove) //in case we have an augment circuit
 		return
-	for(var/material in O.matter)
-		if(materials[material] + O.matter[material] > metal_max)
+	for(var/material in used_item.matter)
+		if(materials[material] + used_item.matter[material] > metal_max)
 			var/decl/material/material_datum = GET_DECL(material)
 			if(material_datum)
 				to_chat(user, "<span class='notice'>[src] can't hold any more [material_datum.name]!</span>")
 			return
-	for(var/material in O.matter)
-		materials[material] += O.matter[material]
+	for(var/material in used_item.matter)
+		materials[material] += used_item.matter[material]
 	if(assembly)
-		assembly.remove_component(O)
+		assembly.remove_component(used_item)
 	if(user)
-		to_chat(user, "<span class='notice'>You recycle [O]!</span>")
-	qdel(O)
+		to_chat(user, "<span class='notice'>You recycle [used_item]!</span>")
+	qdel(used_item)
 	return TRUE
 
-/obj/item/integrated_circuit_printer/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/stack/material))
-		var/obj/item/stack/material/M = O
-		var/amt = M.amount
-		if(amt * SHEET_MATERIAL_AMOUNT + materials[M.material.type] > metal_max)
-			amt = ceil((metal_max - materials[M.material.type]) / SHEET_MATERIAL_AMOUNT)
-		if(!M.use(amt))
+/obj/item/integrated_circuit_printer/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/material))
+		var/obj/item/stack/material/stack = used_item
+		var/amt = stack.amount
+		if(amt * SHEET_MATERIAL_AMOUNT + materials[stack.material.type] > metal_max)
+			amt = ceil((metal_max - materials[stack.material.type]) / SHEET_MATERIAL_AMOUNT)
+		if(!stack.use(amt))
 			return FALSE
-		materials[M.material.type] = min(metal_max, materials[M.material.type] + amt * SHEET_MATERIAL_AMOUNT)
-		to_chat(user, "<span class='warning'>You insert [M.material.solid_name] into \the [src].</span>")
+		materials[stack.material.type] = min(metal_max, materials[stack.material.type] + amt * SHEET_MATERIAL_AMOUNT)
+		to_chat(user, "<span class='warning'>You insert [stack.material.solid_name] into \the [src].</span>")
 		if(user)
 			attack_self(user) // We're really bad at refreshing the UI, so this is the best we've got.
 		return TRUE
-	if(istype(O, /obj/item/disk/integrated_circuit/upgrade/advanced))
+	if(istype(used_item, /obj/item/disk/integrated_circuit/upgrade/advanced))
 		if(upgraded)
 			to_chat(user, "<span class='warning'>[src] already has this upgrade. </span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You install [O] into [src]. </span>")
+		to_chat(user, "<span class='notice'>You install [used_item] into [src]. </span>")
 		upgraded = TRUE
 		if(user)
 			attack_self(user)
 		return TRUE
 
-	if(istype(O, /obj/item/disk/integrated_circuit/upgrade/clone))
+	if(istype(used_item, /obj/item/disk/integrated_circuit/upgrade/clone))
 		if(fast_clone)
 			to_chat(user, "<span class='warning'>[src] already has this upgrade. </span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You install [O] into [src]. Circuit cloning will now be instant. </span>")
+		to_chat(user, "<span class='notice'>You install [used_item] into [src]. Circuit cloning will now be instant. </span>")
 		fast_clone = TRUE
 		if(user)
 			attack_self(user)
 		return TRUE
 
-	if(istype(O, /obj/item/electronic_assembly))
-		var/obj/item/electronic_assembly/EA = O //microtransactions not included
+	if(istype(used_item, /obj/item/electronic_assembly))
+		var/obj/item/electronic_assembly/EA = used_item //microtransactions not included
 		if(EA.battery)
 			to_chat(user, "<span class='warning'>Remove [EA]'s power cell first!</span>")
 			return TRUE
@@ -127,8 +127,8 @@
 		else
 			return recycle(EA, user)
 
-	if(istype(O, /obj/item/integrated_circuit))
-		return recycle(O, user)
+	if(istype(used_item, /obj/item/integrated_circuit))
+		return recycle(used_item, user)
 
 	return ..()
 
@@ -191,16 +191,16 @@
 
 	var/list/current_list = SScircuit.circuit_fabricator_recipe_list[current_category]
 	for(var/path in current_list)
-		var/obj/O = path
+		var/obj/building = path
 		var/can_build = TRUE
 		if(ispath(path, /obj/item/integrated_circuit))
 			var/obj/item/integrated_circuit/IC = path
 			if((initial(IC.spawn_flags) & IC_SPAWN_RESEARCH) && (!(initial(IC.spawn_flags) & IC_SPAWN_DEFAULT)) && !upgraded)
 				can_build = FALSE
 		if(can_build)
-			HTML += "<A href='byond://?src=\ref[src];build=\ref[path]'>\[[initial(O.name)]\]</A>: [initial(O.desc)]<br>"
+			HTML += "<A href='byond://?src=\ref[src];build=\ref[path]'>\[[initial(building.name)]\]</A>: [initial(building.desc)]<br>"
 		else
-			HTML += "<s>\[[initial(O.name)]\]</s>: [initial(O.desc)]<br>"
+			HTML += "<s>\[[initial(building.name)]\]</s>: [initial(building.desc)]<br>"
 
 	popup.set_content(JOINTEXT(HTML))
 	popup.open()

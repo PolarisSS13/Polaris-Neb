@@ -22,16 +22,22 @@
 
 	if(!isspaceturf(T))	//If the above isn't a space turf then we force it to find one will most likely pick 1,1,1
 		T = locate(/turf/space)
-	var/list/bodytype_pairings = get_bodytype_species_pairs()
-	for(var/decl/bodytype/bodytype in bodytype_pairings)
-		var/decl/species/species = bodytype_pairings[bodytype]
-		var/mob/living/human/test_subject = new(null, species.name, null, bodytype)
+	var/datum/mob_snapshot/dummy_appearance = new
+	for(var/decl/bodytype/bodytype in decls_repository.get_decls_of_subtype_unassociated(/decl/bodytype))
+		var/decl/species/species = bodytype.get_user_species_for_validation()
+		if(!species)
+			continue
+		dummy_appearance.root_species  = species
+		dummy_appearance.root_bodytype = bodytype
+		var/mob/living/human/test_subject = new(T, species.name, dummy_appearance)
 		if(test_subject.need_breathe())
 			test_subject.apply_effect(20, STUN, 0)
 			var/obj/item/organ/internal/lungs/L = test_subject.get_organ(test_subject.get_bodytype().breathing_organ, /obj/item/organ/internal/lungs)
 			if(L)
 				L.last_successful_breath = -INFINITY
 			test_subjects["[bodytype.type]"] = list(test_subject, damage_check(test_subject, OXY))
+	QDEL_NULL(dummy_appearance)
+
 	return 1
 
 /datum/unit_test/human_breath/check_result()
@@ -65,7 +71,7 @@
 		test_result["msg"] = "Unable to find a location to create test mob"
 		return test_result
 
-	var/mob/living/human/H = new mobtype(mobloc)
+	var/mob/living/human/H = new mobtype(mobloc, SPECIES_HUMAN) // force human for testing
 
 	H.mind_initialize("TestKey[rand(0,10000)]")
 
@@ -319,13 +325,14 @@
 
 	var/list/failures = list()
 	for(var/moduletype in typesof(/obj/item/robot_module))
-		var/obj/item/robot_module/mod = new
+		var/obj/item/robot_module/mod = new(null, null, TRUE) // Reference copy only; have to do this to access lists.
 		for(var/sprite in mod.module_sprites)
 			var/check_icon = mod.module_sprites[sprite]
 			if(!check_state_in_icon("world", check_icon))
 				failures += "[moduletype] ([sprite]): [check_icon] missing world sprite"
 			if(!check_state_in_icon("world-eyes", check_icon))
 				failures += "[moduletype] ([sprite]): [check_icon] missing eyes sprite"
+		qdel(mod)
 
 	if(length(failures))
 		fail("Some robot modules had invalid or missing icon_states:\n[jointext(failures, "\n")]")

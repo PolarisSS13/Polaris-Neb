@@ -1,8 +1,7 @@
-#ifndef MODPACK_UNATHI
-#define MODPACK_UNATHI
+#ifndef MODPACK_SPECIES_UNATHI
+#define MODPACK_SPECIES_UNATHI
 // BEGIN_INCLUDE
-
-#include "unathi.dm"
+#include "_unathi.dm"
 #include "datum\autohiss.dm"
 #include "datum\blood.dm"
 #include "datum\citizenship.dm"
@@ -13,4 +12,4 @@
 #include "datum\sprite_accessory.dm"
 #include "organs\organs_internal.dm"
 // END_INCLUDE
-#endif // MODPACK_UNATHI
+#endif

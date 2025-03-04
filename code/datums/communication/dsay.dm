@@ -10,8 +10,9 @@
 	mute_setting = MUTE_DEADCHAT
 	show_preference_setting = /datum/client_preference/show_dsay
 
+// Changes the default speech_method kwarg.
 /decl/communication_channel/dsay/communicate(communicator, message, speech_method = /decl/dsay_communication/say)
-	..()
+	return ..()
 
 /decl/communication_channel/dsay/can_communicate(var/client/communicator, var/message, var/speech_method_type)
 	var/decl/dsay_communication/speech_method = GET_DECL(speech_method_type)

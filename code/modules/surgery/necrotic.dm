@@ -86,7 +86,7 @@
 		user.visible_message(
 			SPAN_DANGER("\The [user]'s hand slips, slicing into a healthy portion of \the [target]'s [affected.name] with \the [tool]!"),
 			SPAN_DANGER("Your hand slips, slicing into a healthy portion of [target]'s [affected.name] with \the [tool]!"))
-		affected.take_external_damage(10, 0, (DAM_SHARP|DAM_EDGE), used_weapon = tool)
+		affected.take_damage(10, damage_flags = (DAM_SHARP|DAM_EDGE), inflicter = tool)
 	..()
 
 //////////////////////////////////////////////////////////////////

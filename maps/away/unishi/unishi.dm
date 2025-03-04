@@ -2,6 +2,7 @@
 #include "unishi_jobs.dm"
 #include "../../../mods/content/xenobiology/_xenobiology.dme"
 #include "../../../mods/content/supermatter/_supermatter.dme"
+#include "../../../mods/content/beekeeping/_beekeeping.dme"
 
 /obj/abstract/submap_landmark/joinable_submap/unishi
 	name      = "SRV Verne"
@@ -30,7 +31,7 @@
 	name = "University Ship"
 	description = "CTI research ship."
 	suffixes = list("unishi/unishi-1.dmm", "unishi/unishi-2.dmm", "unishi/unishi-3.dmm")
-	cost = 2
+	cost = 1
 	area_usage_test_exempted_root_areas = list(/area/unishi)
 
 
@@ -92,7 +93,7 @@
 
 /obj/item/paper/prof2
 	name = "error log"
-	info = "<large> COMPUTER ID: 15131 <br> Attempting recovery of document directory. <br> Two files recovered <br> Printing file (1/2) <br> </large> Email to iodc@net <br> To whom it may concern, <br> I recieved your email today in regards to the research I am conducting. You have no legal right to question our research or attempt to block it. Per article 323, scientific research is protected information, that you have absolutely zero claim to. The compound is secret in composition, but I can fully promise you that it contains absolutely no phoron, and thus you have no claim whatsoever to it or the technologies used to make it. Your threats are laughable at best, and have been forwarded to CTI legal. Do not contact me aga!#!41asjw. <br> <large> Printing file (2/2) <br> </large> Email from fuckyou@12cmal <br> We have ways of making you comply. "
+	info = "<large> COMPUTER ID: 15131 <br> Attempting recovery of document directory. <br> Three files recovered <br> Printing file (1/2) <br> </large> Email to iodc@net <br> To whom it may concern, <br> I received your email today in regards to the research I am conducting. You have no legal right to question our research or attempt to block it. Per article 323, scientific research is protected information, that you have absolutely zero claim to. The compound is secret in composition, but I can fully promise you that it contains absolutely no proprietary molecules, and thus you have no claim whatsoever to it or the technologies to it. Your threats are laughable at best, and have been forwarded to CTI legal. Do not contact me aga!#!41asjw. <br> <large> Printing file (2/2) <br> </large> Email from fuckyou@12cmal <br> We have ways of making you comply. "
 
 /obj/machinery/computer/log_printer
 	name = "Computer"

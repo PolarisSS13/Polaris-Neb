@@ -15,7 +15,9 @@
 	return
 
 /mob/proc/get_organs()
-	for(var/organ in get_external_organs())
-		LAZYADD(., organ)
-	for(var/organ in get_internal_organs())
-		LAZYADD(., organ)
+	var/list/external_organs = get_external_organs()
+	if(external_organs)
+		LAZYADD(., external_organs)
+	var/list/internal_organs = get_internal_organs()
+	if(internal_organs)
+		LAZYADD(., internal_organs)

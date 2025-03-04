@@ -50,16 +50,23 @@
 	uid = "chem_nicotine"
 
 /decl/material/liquid/nicotine/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
+	var/volume = REAGENT_VOLUME(holder, src)
 	. = ..()
 	if(prob(volume*20))
 		M.add_chemical_effect(CE_PULSE, 1)
-	if(volume <= 0.02 && LAZYACCESS(M.chem_doses, type) >= 0.05 && world.time > REAGENT_DATA(holder, type) + 3 MINUTES)
-		LAZYSET(holder.reagent_data, type, world.time)
+
+	var/update_data = FALSE
+	var/list/data = REAGENT_DATA(holder, src)
+	if(volume <= 0.02 && CHEM_DOSE(M, src) >= 0.05 && world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 3 MINUTES)
+		update_data = TRUE
 		to_chat(M, "<span class='warning'>You feel antsy, your concentration wavers...</span>")
-	else if(world.time > REAGENT_DATA(holder, type) + 3 MINUTES)
-		LAZYSET(holder.reagent_data, type, world.time)
+	else if(world.time > LAZYACCESS(data, DATA_COOLDOWN_TIME) + 3 MINUTES)
+		update_data = TRUE
 		to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+
+	if(update_data)
+		LAZYSET(data, DATA_COOLDOWN_TIME, world.time)
+		LAZYSET(holder.reagent_data, type, data)
 
 /decl/material/liquid/nicotine/affect_overdose(mob/living/victim, total_dose)
 	..()
@@ -86,7 +93,7 @@
 
 	ADJ_STATUS(M, STAT_JITTER, -50)
 	var/threshold = 1
-	var/dose = LAZYACCESS(M.chem_doses, type) * sedative_strength
+	var/dose = CHEM_DOSE(M, src) * sedative_strength
 	if(dose < 0.5 * threshold)
 		if(dose == metabolism * 2 || prob(5))
 			M.emote(/decl/emote/audible/yawn)
@@ -166,7 +173,7 @@
 	if(M.has_trait(/decl/trait/metabolically_inert))
 		return
 	var/threshold = 1
-	var/dose = LAZYACCESS(M.chem_doses, type)
+	var/dose = CHEM_DOSE(M, src)
 	if(dose < 1 * threshold)
 		M.apply_effect(3, STUTTER)
 		ADJ_STATUS(M, STAT_DIZZY, 1)

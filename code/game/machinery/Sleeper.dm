@@ -42,6 +42,9 @@
 	add_reagent_canister(null, new /obj/item/chems/chem_disp_cartridge/antitoxins())
 	add_reagent_canister(null, new /obj/item/chems/chem_disp_cartridge/oxy_meds())
 
+/obj/machinery/sleeper/get_cryogenic_power()
+	return stasis
+
 /obj/machinery/sleeper/Destroy()
 	QDEL_NULL(beaker)
 	QDEL_NULL_LIST(loaded_canisters)
@@ -56,8 +59,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] cannot accept any more chemical canisters."))
 		return FALSE
 	if(!emagged)
-		for(var/rid in canister.reagents?.reagent_volumes)
-			var/decl/material/reagent = GET_DECL(rid)
+		for(var/decl/material/reagent as anything in canister.reagents?.reagent_volumes)
 			for(var/banned_type in banned_chem_types)
 				if(istype(reagent, banned_type))
 					to_chat(user, SPAN_WARNING("Automatic safety checking indicates the presence of a prohibited substance in this canister."))
@@ -106,21 +108,21 @@
 		beaker = new /obj/item/chems/glass/beaker/large(src)
 	update_icon()
 
-/obj/machinery/sleeper/examine(mob/user, distance)
+/obj/machinery/sleeper/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (distance <= 1)
 		if(beaker)
-			to_chat(user, SPAN_NOTICE("It is loaded with a beaker."))
+			. += SPAN_NOTICE("It is loaded with \a [beaker].")
 		if(occupant)
-			occupant.examine(arglist(args))
+			. += occupant.get_examine_strings(user, distance, infix, suffix)
 		if(emagged && user.skill_check(SKILL_MEDICAL, SKILL_EXPERT))
-			to_chat(user, SPAN_NOTICE("The chemical input system looks like it has been tampered with."))
+			. += SPAN_NOTICE("The chemical input system looks like it has been tampered with.")
 		if(length(loaded_canisters))
-			to_chat(user, SPAN_NOTICE("There are [length(loaded_canisters)] chemical canister\s loaded:"))
+			. += SPAN_NOTICE("There are [length(loaded_canisters)] chemical canister\s loaded:")
 			for(var/thing in loaded_canisters)
-				to_chat(user, SPAN_NOTICE("- \The [thing]"))
+				. += SPAN_NOTICE("- \The [thing]")
 		else
-			to_chat(user, SPAN_NOTICE("There are no chemical canisters loaded."))
+			. += SPAN_NOTICE("There are no chemical canisters loaded.")
 
 /obj/machinery/sleeper/proc/has_room_in_beaker()
 	return beaker && beaker.reagents.total_volume < beaker.reagents.maximum_volume
@@ -168,7 +170,7 @@
 			toggle_lavage()
 
 	if(isliving(occupant) && stasis > 1)
-		occupant.set_stasis(stasis)
+		occupant.add_mob_modifier(/decl/mob_modifier/stasis, 2 SECONDS, source = src)
 
 /obj/machinery/sleeper/on_update_icon()
 	cut_overlays()
@@ -300,17 +302,17 @@
 		updateUsrDialog()
 		go_out()
 
-/obj/machinery/sleeper/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/chems/chem_disp_cartridge))
-		add_reagent_canister(user, I)
+/obj/machinery/sleeper/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/chems/chem_disp_cartridge))
+		add_reagent_canister(user, used_item)
 		return TRUE
-	if(istype(I, /obj/item/chems/glass))
+	if(istype(used_item, /obj/item/chems/glass))
 		add_fingerprint(user)
 		if(!beaker)
-			if(!user.try_unequip(I, src))
+			if(!user.try_unequip(used_item, src))
 				return TRUE
-			beaker = I
-			user.visible_message(SPAN_NOTICE("\The [user] adds \a [I] to \the [src]."), SPAN_NOTICE("You add \a [I] to \the [src]."))
+			beaker = used_item
+			user.visible_message(SPAN_NOTICE("\The [user] adds \a [used_item] to \the [src]."), SPAN_NOTICE("You add \a [used_item] to \the [src]."))
 		else
 			to_chat(user, SPAN_WARNING("\The [src] has a beaker already."))
 		return TRUE

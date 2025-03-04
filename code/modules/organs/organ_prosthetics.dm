@@ -28,6 +28,7 @@
 // Note that this proc is checking if the organ can be attached -to-, not attached itself.
 /obj/item/organ/external/proc/can_attach_modular_limb_here(var/mob/living/human/user)
 	var/list/limb_data = user?.get_bodytype()?.has_limbs[organ_tag]
+	. = FALSE
 	if(islist(limb_data) && limb_data["has_children"] > 0)
 		. = (LAZYLEN(children) < limb_data["has_children"])
 
@@ -48,7 +49,7 @@
 
 // Checks if an organ (or the parent of one) is in a fit state for modular limb stuff to happen.
 /obj/item/organ/external/proc/check_modular_limb_damage(var/mob/living/human/user)
-	. =  damage >= min_broken_damage || (status & ORGAN_BROKEN) // can't use is_broken() as the limb has ORGAN_CUT_AWAY
+	. =  (brute_dam + burn_dam) >= min_broken_damage || (status & ORGAN_BROKEN) // can't use is_broken() as the limb has ORGAN_CUT_AWAY
 
 // Human mob procs:
 // Checks the organ list for limbs meeting a predicate. Way overengineered for such a limited use

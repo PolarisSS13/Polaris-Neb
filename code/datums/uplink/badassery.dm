@@ -11,7 +11,7 @@
 
 /datum/uplink_item/item/badassery/balloon/random
 	name = "For showing 'Whatevah~' (Useless Balloon)"
-	desc = "Randomly selects a ballon for you!"
+	desc = "Randomly selects a balloon for you!"
 	path = /obj/item/toy/balloon
 
 /datum/uplink_item/item/badassery/balloon/random/get_goods(var/obj/item/uplink/U, var/loc)

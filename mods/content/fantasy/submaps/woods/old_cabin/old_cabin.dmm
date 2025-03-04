@@ -67,7 +67,7 @@
 /area/fantasy/outside/point_of_interest/old_cabin)
 "H" = (
 /obj/structure/table/wood/ebony,
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /obj/item/food/grown/potato,
 /obj/item/food/grown/potato,
 /obj/item/food/grown/carrot,

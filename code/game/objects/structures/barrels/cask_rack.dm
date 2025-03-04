@@ -19,10 +19,10 @@
 			if(try_stack_barrel(stackable) && length(contents) >= max_stack)
 				return
 
-/obj/structure/cask_rack/examine(mob/user, distance, infix, suffix)
+/obj/structure/cask_rack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(length(contents))
-		to_chat(user, SPAN_NOTICE("It contains [english_list(contents)]."))
+		. += SPAN_NOTICE("It contains [english_list(contents)].")
 
 /obj/structure/cask_rack/handle_mouse_drop(atom/over, mob/user, params)
 	if(isturf(over) && user.Adjacent(over) && Adjacent(over) && try_unstack_barrel(target = over, user = user))

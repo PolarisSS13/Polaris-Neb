@@ -15,7 +15,7 @@
 	abstract_type = /datum/shuttle
 	var/multiz = 0	//how many multiz levels, starts at 0
 
-	var/ceiling_type = /turf/unsimulated/floor/shuttle_ceiling
+	var/ceiling_type = /turf/floor/shuttle_ceiling
 	var/force_ceiling_on_init = TRUE // Whether or not to force ceilings turfs to be created above on initialization.
 
 	var/sound_takeoff = 'sound/effects/shuttle_takeoff.ogg'
@@ -116,7 +116,7 @@
 		if (moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 
-		if(!fuel_check()) //fuel error (probably out of fuel) occured, so cancel the launch
+		if(!fuel_check()) //fuel error (probably out of fuel) occurred, so cancel the launch
 			var/datum/shuttle/autodock/S = src
 			if(istype(S))
 				S.cancel_launch(null)
@@ -138,7 +138,7 @@
 		if(moving_status == SHUTTLE_IDLE)
 			return	//someone cancelled the launch
 
-		if(!fuel_check()) //fuel error (probably out of fuel) occured, so cancel the launch
+		if(!fuel_check()) //fuel error (probably out of fuel) occurred, so cancel the launch
 			var/datum/shuttle/autodock/S = src
 			if(istype(S))
 				S.cancel_launch(null)
@@ -184,7 +184,7 @@
 	var/obj/effect/shuttle_landmark/old_location = current_location
 	RAISE_EVENT(/decl/observ/shuttle_pre_move, src, old_location, destination)
 	shuttle_moved(destination, translation, angle_offset)
-	RAISE_EVENT_REPEAT(/decl/observ/shuttle_moved, src, old_location, destination)
+	RAISE_EVENT(/decl/observ/shuttle_moved, src, old_location, destination)
 	if(istype(old_location))
 		old_location.shuttle_departed(src)
 	destination.shuttle_arrived(src)
@@ -208,7 +208,7 @@
 	var/obj/effect/shuttle_landmark/old_location = current_location
 	RAISE_EVENT(/decl/observ/shuttle_pre_move, src, old_location, destination)
 	shuttle_moved(destination, translation, angle_offset)
-	RAISE_EVENT_REPEAT(/decl/observ/shuttle_moved, src, old_location, destination)
+	RAISE_EVENT(/decl/observ/shuttle_moved, src, old_location, destination)
 	if(istype(old_location))
 		old_location.shuttle_departed(src)
 	destination.shuttle_arrived(src)

@@ -86,9 +86,12 @@
 	add_fingerprint(user)
 	return TRUE
 
-/obj/item/knife/folding/swiss/examine(mob/user)
+/obj/item/knife/folding/swiss/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, active_tool == SWISSKNF_CLOSED ? "It is closed." : "Its [lowertext(active_tool)] is folded out.")
+	if(active_tool == SWISSKNF_CLOSED)
+		. += "It is closed."
+	else
+		. += "Its [lowertext(active_tool)] is folded out."
 
 /obj/item/knife/folding/swiss/update_attack_force()
 	..()
@@ -150,7 +153,7 @@
 
 /obj/item/knife/folding/swiss/explorer
 	name = "explorer's combi-knife"
-	desc = "A small, purple, multi-purpose folding knife. This one adds a wood saw and pry bar."
+	desc = "A small, purple, multi-purpose folding knife. This one adds a wood saw and prybar."
 	handle_color = COLOR_PURPLE
 	tools = list(SWISSKNF_LBLADE, SWISSKNF_SBLADE, SWISSKNF_CLIFTER, SWISSKNF_COPENER, SWISSKNF_WBLADE, SWISSKNF_CROWBAR)
 

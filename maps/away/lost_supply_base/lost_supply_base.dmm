@@ -353,7 +353,7 @@
 /turf/floor/tiled/airless,
 /area/lost_supply_base/office)
 "aT" = (
-/obj/structure/bed/chair/comfy/captain,
+/obj/structure/chair/comfy/captain,
 /turf/floor/tiled/airless,
 /area/lost_supply_base/office)
 "aU" = (
@@ -1170,7 +1170,7 @@
 /turf/floor/tiled/airless,
 /area/lost_supply_base/common)
 "dy" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/airless,
@@ -1190,7 +1190,7 @@
 /area/lost_supply_base/common)
 "dB" = (
 /obj/item/utensil/fork,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/airless,
@@ -1249,16 +1249,16 @@
 /turf/floor/shuttle/blue,
 /area/space)
 "dT" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/random/handgun,
 /turf/floor/shuttle/blue,
 /area/space)
 "dU" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/shuttle/blue,
 /area/space)
 "dV" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/random/smokes,
 /turf/floor/shuttle/blue,
 /area/space)
@@ -1306,7 +1306,7 @@
 /turf/floor/tiled/airless,
 /area/lost_supply_base/common)
 "ef" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/airless,
@@ -1405,7 +1405,7 @@
 /turf/floor/shuttle/blue,
 /area/space)
 "ex" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/item/key,
@@ -1473,13 +1473,13 @@
 /turf/floor/shuttle/blue,
 /area/space)
 "eM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/shuttle/blue,
 /area/space)
 "eN" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/random/voidhelmet,

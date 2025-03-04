@@ -57,7 +57,7 @@
 					user.show_message(text("<span class='notice'>\t []: [][] - [] - [] - []</span>",	\
 					capitalize(org.name),					\
 					(org.installed == -1)	?	"<font color='red'><b>DESTROYED</b></font> "							:"",\
-					(org.electronics_damage > 0)	?	"<font color='#ffa500'>[org.electronics_damage]</font>"	:0,	\
+					(org.burn_damage > 0)	?	"<font color='#ffa500'>[org.burn_damage]</font>"	:0,	\
 					(org.brute_damage > 0)	?	"<font color='red'>[org.brute_damage]</font>"							:0,		\
 					(org.toggled)	?	"Toggled ON"	:	"<font color='red'>Toggled OFF</font>",\
 					(org.powered)	?	"Power ON"		:	"<font color='red'>Power OFF</font>"),1)
@@ -89,11 +89,11 @@
 			to_chat(user, "<hr>")
 			to_chat(user, SPAN_NOTICE("Internal prosthetics:"))
 			organ_found = null
-			for(var/obj/item/organ/O in H.get_internal_organs())
-				if(!BP_IS_PROSTHETIC(O))
+			for(var/obj/item/organ/internal/organ in H.get_internal_organs())
+				if(!BP_IS_PROSTHETIC(organ))
 					continue
 				organ_found = 1
-				to_chat(user, "[O.name]: [SPAN_RED(O.damage)]")
+				to_chat(user, "[organ.name]: [SPAN_RED(organ.get_organ_damage())]")
 			if(!organ_found)
 				to_chat(user, "No prosthetics located.")
 

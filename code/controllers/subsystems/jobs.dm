@@ -438,14 +438,14 @@ SUBSYSTEM_DEF(jobs)
 	var/list/spawn_in_storage = list()
 	if(H.client.prefs.Gear() && job.loadout_allowed)
 		for(var/thing in H.client.prefs.Gear())
-			var/decl/loadout_option/G = decls_repository.get_decl_by_id_or_var(thing, /decl/loadout_option)
-			if(!istype(G))
+			var/decl/loadout_option/gear = decls_repository.get_decl_by_id_or_var(thing, /decl/loadout_option)
+			if(!istype(gear))
 				continue
-			if(!G.is_permitted(H, job))
+			if(!gear.is_permitted(H, job))
 				to_chat(H, SPAN_WARNING("Your current species, job, branch, skills or whitelist status does not permit you to spawn with [thing]!"))
 				continue
-			if(!G.slot || !G.spawn_on_mob(H, H.client.prefs.Gear()[G.uid]))
-				spawn_in_storage.Add(G)
+			if(!gear.slot || !gear.spawn_on_mob(H, H.client.prefs.Gear()[gear.uid]))
+				spawn_in_storage.Add(gear)
 
 	// do accessories last so they don't attach to a suit that will be replaced
 	if(H.char_rank && H.char_rank.accessory)
@@ -503,7 +503,7 @@ SUBSYSTEM_DEF(jobs)
 			spawnpoint.after_join(H)
 
 		// Moving wheelchair if they have one
-		if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
+		if(H.buckled && istype(H.buckled, /obj/structure/chair/wheelchair))
 			H.buckled.forceMove(H.loc)
 			H.buckled.set_dir(H.dir)
 
@@ -537,8 +537,8 @@ SUBSYSTEM_DEF(jobs)
 		return other_mob
 
 	if(spawn_in_storage)
-		for(var/decl/loadout_option/G in spawn_in_storage)
-			G.spawn_in_storage_or_drop(H, H.client.prefs.Gear()[G.uid])
+		for(var/decl/loadout_option/gear in spawn_in_storage)
+			gear.spawn_in_storage_or_drop(H, H.client.prefs.Gear()[gear.uid])
 
 	var/article = job.total_positions == 1 ? "the" : "a"
 	to_chat(H, "<font size = 3><B>You are [article] [alt_title || job_title].</B></font>")
@@ -573,7 +573,7 @@ SUBSYSTEM_DEF(jobs)
 	return positions_by_department[dept] || list()
 
 /datum/controller/subsystem/jobs/proc/spawn_empty_ai()
-	for(var/obj/abstract/landmark/start/S in global.landmarks_list)
+	for(var/obj/abstract/landmark/start/S in global.all_landmarks)
 		if(S.name != "AI")
 			continue
 		if(locate(/mob/living) in S.loc)

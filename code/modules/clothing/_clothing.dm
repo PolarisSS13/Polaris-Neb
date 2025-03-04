@@ -71,7 +71,7 @@
 
 /obj/item/clothing/Destroy()
 	if(is_accessory())
-		on_removed()
+		on_accessory_removed()
 	return ..()
 
 /obj/item/clothing/get_fallback_slot(slot)
@@ -98,9 +98,9 @@
 // Sort of a placeholder for proper tailoring.
 #define RAG_COUNT(X) ceil((LAZYACCESS(X.matter, /decl/material/solid/organic/cloth) * 0.65) / SHEET_MATERIAL_AMOUNT)
 
-/obj/item/clothing/attackby(obj/item/I, mob/user)
+/obj/item/clothing/attackby(obj/item/used_item, mob/user)
 	var/rags = RAG_COUNT(src)
-	if(istype(material) && material.default_solid_form && rags && (I.is_sharp() || I.has_edge()) && user.check_intent(I_FLAG_HARM))
+	if(istype(material) && material.default_solid_form && rags && (used_item.is_sharp() || used_item.has_edge()) && user.check_intent(I_FLAG_HARM))
 		if(length(accessories))
 			to_chat(user, SPAN_WARNING("You should remove the accessories attached to \the [src] first."))
 			return TRUE
@@ -109,9 +109,9 @@
 			to_chat(user, SPAN_WARNING("You must either be holding \the [src], or [it] must be on the ground, before you can shred [it]."))
 			return TRUE
 		playsound(loc, 'sound/weapons/cablecuff.ogg', 30, 1)
-		user.visible_message(SPAN_DANGER("\The [user] begins ripping apart \the [src] with \the [I]."))
+		user.visible_message(SPAN_DANGER("\The [user] begins ripping apart \the [src] with \the [used_item]."))
 		if(do_after(user, 5 SECONDS, src))
-			user.visible_message(SPAN_DANGER("\The [user] tears \the [src] apart with \the [I]."))
+			user.visible_message(SPAN_DANGER("\The [user] tears \the [src] apart with \the [used_item]."))
 			material.create_object(get_turf(src), rags)
 			if(loc == user)
 				user.drop_from_inventory(src)
@@ -219,14 +219,14 @@
 
 	// Clothing does not generally align with each other's world icons, so we just use the mob overlay in this case.
 	if(should_use_combined_accessory_appearance())
-		var/image/I = get_mob_overlay(ismob(loc) ? loc : null, get_fallback_slot())
-		if(I?.icon) // Null or invisible overlay, we don't want to make our clothing invisible just because it has an accessory.
-			I.plane = plane
-			I.layer = layer
-			I.color = color
-			I.alpha = alpha
-			I.name  = name
-			appearance = I
+		var/image/overlay_image = get_mob_overlay(ismob(loc) ? loc : null, get_fallback_slot())
+		if(overlay_image?.icon) // Null or invisible overlay, we don't want to make our clothing invisible just because it has an accessory.
+			overlay_image.plane = plane
+			overlay_image.layer = layer
+			overlay_image.color = color
+			overlay_image.alpha = alpha
+			overlay_image.name  = name
+			appearance = overlay_image
 			set_dir(SOUTH)
 			update_clothing_icon()
 			return
@@ -285,7 +285,7 @@
 		update_wearer_vision()
 	return ..()
 
-/obj/item/clothing/proc/refit_for_bodytype(var/target_bodytype)
+/obj/item/clothing/proc/refit_for_bodytype(target_bodytype, skip_rename = FALSE)
 
 	bodytype_equip_flags = 0
 	decls_repository.get_decls_of_subtype(/decl/bodytype) // Make sure they're prefetched so the below list is populated
@@ -296,6 +296,9 @@
 	var/species_icon = LAZYACCESS(sprite_sheets, target_bodytype)
 	if(species_icon && (check_state_in_icon(ICON_STATE_INV, species_icon) || check_state_in_icon(ICON_STATE_WORLD, species_icon)))
 		icon = species_icon
+
+	if(!skip_rename)
+		SetName("refitted [initial(name)]")
 
 	if(last_icon != icon)
 		reconsider_single_icon()
@@ -321,43 +324,45 @@
 	if(LAZYLEN(accessories) > LAZYLEN(ties))
 		.+= ". <a href='byond://?src=\ref[src];list_ungabunga=1'>\[See accessories\]</a>"
 
-/obj/item/clothing/examine(mob/user)
+/obj/item/clothing/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/datum/extension/armor/ablative/armor_datum = get_extension(src, /datum/extension/armor/ablative)
 	if(istype(armor_datum) && LAZYLEN(armor_datum.get_visible_damage()))
-		to_chat(user, SPAN_WARNING("It has some <a href='byond://?src=\ref[src];list_armor_damage=1'>damage</a>."))
+		. += SPAN_WARNING("It has some <a href='byond://?src=\ref[src];list_armor_damage=1'>damage</a>.")
 
 	if(LAZYLEN(accessories))
-		to_chat(user, "It has the following attached: [counting_english_list(accessories)]")
+		. += "It has the following attached: [counting_english_list(accessories)]"
 
 	switch(ironed_state)
 		if(WRINKLES_WRINKLY)
-			to_chat(user, "<span class='bad'>It's wrinkly.</span>")
+			. += "<span class='bad'>It's wrinkly.</span>"
 		if(WRINKLES_NONE)
-			to_chat(user, "<span class='notice'>It's completely wrinkle-free!</span>")
-
-	var/rags = RAG_COUNT(src)
-	if(rags)
-		to_chat(user, SPAN_SUBTLE("With a sharp object, you could cut \the [src] up into [rags] section\s."))
+			. += "<span class='notice'>It's completely wrinkle-free!</span>"
 
 	var/obj/item/clothing/sensor/vitals/sensor = locate() in accessories
 	if(sensor)
 		switch(sensor.sensor_mode)
 			if(VITALS_SENSOR_OFF)
-				to_chat(user, "Its sensors appear to be disabled.")
+				. += "Its sensors appear to be disabled."
 			if(VITALS_SENSOR_BINARY)
-				to_chat(user, "Its binary life sensors appear to be enabled.")
+				. += "Its binary life sensors appear to be enabled."
 			if(VITALS_SENSOR_VITAL)
-				to_chat(user, "Its vital tracker appears to be enabled.")
+				. += "Its vital tracker appears to be enabled."
 			if(VITALS_SENSOR_TRACKING)
-				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
+				. += "Its vital tracker and tracking beacon appear to be enabled."
+
+/obj/item/clothing/get_examine_hints(mob/user, distance, infix, suffix)
+	. = ..()
+	var/rags = RAG_COUNT(src)
+	if(rags)
+		LAZYADD(., SPAN_SUBTLE("With a sharp object, you could cut \the [src] up into [rags] section\s."))
 
 	if(length(clothing_state_modifiers))
 		var/list/interactions = list()
 		for(var/modifier_type in clothing_state_modifiers)
 			var/decl/clothing_state_modifier/modifier = GET_DECL(modifier_type)
 			interactions += modifier.name
-		to_chat(user, SPAN_SUBTLE("Use alt-click to [english_list(interactions, and_text = " or ")]."))
+		LAZYADD(., SPAN_SUBTLE("Use alt-click to [english_list(interactions, and_text = " or ")]."))
 
 #undef RAG_COUNT
 

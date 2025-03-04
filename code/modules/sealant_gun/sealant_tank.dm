@@ -11,10 +11,10 @@
 	. = ..()
 	add_overlay("fill_[floor((foam_charges/max_foam_charges) * 5)]")
 
-/obj/item/sealant_tank/examine(mob/user, distance)
+/obj/item/sealant_tank/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user)
-		to_chat(user, SPAN_NOTICE("\The [src] has about [foam_charges] liter\s of sealant left."))
+		. += SPAN_NOTICE("\The [src] has about [foam_charges] liter\s of sealant left.")
 
 /obj/item/sealant_tank/Initialize(ml, material_key)
 	. = ..()

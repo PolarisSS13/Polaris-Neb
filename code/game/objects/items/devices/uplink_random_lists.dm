@@ -19,19 +19,20 @@
 
 /datum/uplink_random_selection/proc/get_random_item(var/telecrystals, obj/item/uplink/U, var/list/bought_items)
 	var/const/attempts = 50
+	var/decl/uplink/uplink = IMPLIED_DECL
 
 	for(var/i = 0; i < attempts; i++)
-		var/datum/uplink_random_item/RI = pick(items)
-		if(!prob(RI.keep_probability))
+		var/datum/uplink_random_item/random_item = pick(items)
+		if(!prob(random_item.keep_probability))
 			continue
-		var/datum/uplink_item/I = uplink.items_assoc[RI.uplink_item]
-		if(I.cost(telecrystals, U) > telecrystals)
+		var/datum/uplink_item/uplink_item = uplink.items_assoc[random_item.uplink_item]
+		if(uplink_item.cost(telecrystals, uplink) > telecrystals)
 			continue
-		if(bought_items && (I in bought_items) && !prob(RI.reselect_probability))
+		if(bought_items && (uplink_item in bought_items) && !prob(random_item.reselect_probability))
 			continue
-		if(U && !I.can_buy(U))
+		if(uplink && !uplink_item.can_buy(uplink))
 			continue
-		return I
+		return uplink_item
 	return uplink.items_assoc[/datum/uplink_item/item/stealthy_weapons/soap]
 
 var/global/list/uplink_random_selections_
@@ -121,16 +122,17 @@ var/global/list/uplink_random_selections_
 		var/new_thing = new/datum/uplink_random_item(uplink_item_type)
 		items += new_thing
 
-/datum/uplink_random_selection/blacklist/get_random_item(var/telecrystals, obj/item/uplink/U, var/list/bought_items)
+/datum/uplink_random_selection/blacklist/get_random_item(var/telecrystals, obj/item/uplink/uplink_access, var/list/bought_items)
 	var/const/attempts = 50
+	var/decl/uplink/uplink = IMPLIED_DECL
 	for(var/i = 0; i < attempts; i++)
-		var/datum/uplink_random_item/RI = pick(items)
-		if(!prob(RI.keep_probability))
+		var/datum/uplink_random_item/random_item = pick(items)
+		if(!prob(random_item.keep_probability))
 			continue
-		var/datum/uplink_item/I = uplink.items_assoc[RI.uplink_item]
-		if(I.cost(telecrystals, U) > telecrystals)
+		var/datum/uplink_item/uplink_item = uplink.items_assoc[random_item.uplink_item]
+		if(uplink_item.cost(telecrystals, uplink_access) > telecrystals)
 			continue
-		if(bought_items && (I in bought_items) && !prob(RI.reselect_probability))
+		if(bought_items && (uplink_item in bought_items) && !prob(random_item.reselect_probability))
 			continue
-		return I
+		return uplink_item
 	return uplink.items_assoc[/datum/uplink_item/item/stealthy_weapons/soap]

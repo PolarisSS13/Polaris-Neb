@@ -10,15 +10,15 @@
 	var/_cleaned = FALSE
 	var/work_skill = SKILL_CONSTRUCTION
 
-/obj/item/stack/material/skin/examine(mob/user, distance)
+/obj/item/stack/material/skin/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1 && user.skill_check(work_skill, SKILL_BASIC) && material?.tans_to)
 		if(_cleaned && drying_wetness)
-			to_chat(user, SPAN_NOTICE("\The [src] is ready for tanning on a drying rack or in a drying oven."))
+			. += SPAN_NOTICE("\The [src] is ready for tanning on a drying rack or in a drying oven.")
 		else if(!_cleaned)
-			to_chat(user, SPAN_NOTICE("\The [src] must be scraped clean with a knife or other sharp object before it can be tanned."))
+			. += SPAN_NOTICE("\The [src] must be scraped clean with a knife or other sharp object before it can be tanned.")
 		else if(!drying_wetness)
-			to_chat(user, SPAN_NOTICE("\The [src] must be soaked in water before it can be tanned."))
+			. += SPAN_NOTICE("\The [src] must be soaked in water before it can be tanned.")
 
 /obj/item/stack/material/skin/proc/set_cleaned()
 	if(_cleaned)
@@ -26,12 +26,12 @@
 	_cleaned = TRUE
 	name_modifier = "cleaned"
 
-/obj/item/stack/material/skin/attackby(obj/item/W, mob/user)
-	if(IS_KNIFE(W) && !_cleaned)
+/obj/item/stack/material/skin/attackby(obj/item/used_item, mob/user)
+	if(IS_KNIFE(used_item) && !_cleaned)
 		var/cleaned_sheets = 0
-		while(W.do_tool_interaction(TOOL_KNIFE, user, src, 2 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE))
+		while(used_item.do_tool_interaction(TOOL_KNIFE, user, src, 2 SECONDS, "scraping", "scraping", check_skill = work_skill, set_cooldown = TRUE))
 
-			if(QDELETED(src) || _cleaned || get_amount() <= 0 || QDELETED(user) || (loc != user && !user.Adjacent(src)) || QDELETED(W) || user.get_active_held_item() != W)
+			if(QDELETED(src) || _cleaned || get_amount() <= 0 || QDELETED(user) || (loc != user && !user.Adjacent(src)) || QDELETED(used_item) || user.get_active_held_item() != used_item)
 				break
 
 			var/sheets = min(5, get_amount())

@@ -92,37 +92,37 @@
 		return FALSE
 	. = ..()
 
-/obj/structure/girder/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/girder/attackby(var/obj/item/used_item, var/mob/user)
 	// Other methods of quickly destroying a girder.
-	if(W.is_special_cutting_tool(TRUE))
-		if(istype(W, /obj/item/gun/energy/plasmacutter))
-			var/obj/item/gun/energy/plasmacutter/cutter = W
+	if(used_item.is_special_cutting_tool(TRUE))
+		if(istype(used_item, /obj/item/gun/energy/plasmacutter))
+			var/obj/item/gun/energy/plasmacutter/cutter = used_item
 			if(!cutter.slice(user))
 				return TRUE
 		playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
-		visible_message(SPAN_NOTICE("\The [user] begins slicing apart \the [src] with \the [W]."))
+		visible_message(SPAN_NOTICE("\The [user] begins slicing apart \the [src] with \the [used_item]."))
 		if(do_after(user,reinf_material ? 40: 20,src))
-			visible_message(SPAN_NOTICE("\The [user] slices apart \the [src] with \the [W]."))
+			visible_message(SPAN_NOTICE("\The [user] slices apart \the [src] with \the [used_item]."))
 			dismantle_structure(user)
 		return TRUE
 
-	if(IS_PICK(W))
-		if(W.material?.hardness < material.hardness)
-			to_chat(user, SPAN_WARNING("\The [W] is not hard enough to excavate [material.solid_name]."))
-		else if(W.get_tool_quality(TOOL_PICK) < TOOL_QUALITY_GOOD)
-			to_chat(user, SPAN_WARNING("\The [W] is not capable of destroying \the [src]."))
-		else if(W.do_tool_interaction(TOOL_PICK, user, src, (reinf_material ? 6 : 4) SECONDS, set_cooldown = TRUE))
+	if(IS_PICK(used_item))
+		if(used_item.material?.hardness < material.hardness)
+			to_chat(user, SPAN_WARNING("\The [used_item] is not hard enough to excavate [material.solid_name]."))
+		else if(used_item.get_tool_quality(TOOL_PICK) < TOOL_QUALITY_GOOD)
+			to_chat(user, SPAN_WARNING("\The [used_item] is not capable of destroying \the [src]."))
+		else if(used_item.do_tool_interaction(TOOL_PICK, user, src, (reinf_material ? 6 : 4) SECONDS, set_cooldown = TRUE))
 			dismantle_structure(user)
 		return TRUE
 	// Reinforcing a girder, or turning it into a wall.
-	if(istype(W, /obj/item/stack/material))
+	if(istype(used_item, /obj/item/stack/material))
 		if(anchored)
-			return construct_wall(W, user)
+			return construct_wall(used_item, user)
 		else
 			if(reinf_material)
 				to_chat(user, SPAN_WARNING("\The [src] is already reinforced with [reinf_material.solid_name]."))
 			else
-				return reinforce_with_material(W, user)
+				return reinforce_with_material(used_item, user)
 		return TRUE
 	. = ..()
 

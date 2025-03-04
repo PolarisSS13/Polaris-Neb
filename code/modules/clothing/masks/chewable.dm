@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/chewable
+	abstract_type = /obj/item/clothing/mask/chewable
 	name = "chewable item master"
-	desc = "You're not sure what this is. You should probably ahelp it."
 	icon = 'icons/clothing/mask/chewables/lollipop.dmi'
 	body_parts_covered = 0
 	bodytype_equip_flags = null
@@ -55,7 +55,7 @@
 
 /obj/item/clothing/mask/chewable/tobacco
 	name = "wad"
-	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrups so it doesn't taste like a ash-tray when you stuff it into your face."
+	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrups so it doesn't taste like an ashtray when you stuff it into your face."
 	throw_speed = 0.5
 	icon = 'icons/clothing/mask/chewables/chew.dmi'
 	type_butt = /obj/item/trash/cigbutt/spitwad
@@ -89,14 +89,14 @@
 
 /obj/item/clothing/mask/chewable/tobacco/lenni
 	name = "chewing tobacco"
-	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrups so it tastes less like a ash-tray when you stuff it into your face."
+	desc = "A chewy wad of tobacco. Cut in long strands and treated with syrups so it tastes less like an ashtray when you stuff it into your face."
 
 /obj/item/clothing/mask/chewable/tobacco/lenni/populate_reagents()
 	add_to_reagents(/decl/material/solid/tobacco, 2)
 
 /obj/item/clothing/mask/chewable/tobacco/redlady
 	name = "chewing tobacco"
-	desc = "A chewy wad of fine tobacco. Cut in long strands and treated with syrups so it doesn't taste like a ash-tray when you stuff it into your face"
+	desc = "A chewy wad of fine tobacco. Cut in long strands and treated with syrups so it doesn't taste like an ashtray when you stuff it into your face"
 
 /obj/item/clothing/mask/chewable/tobacco/redlady/populate_reagents()
 	add_to_reagents(/decl/material/solid/tobacco/fine, 2)

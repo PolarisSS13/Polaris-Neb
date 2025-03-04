@@ -1,7 +1,7 @@
 #define DIONA_SCREEN_LOC_HELD   "RIGHT-8:16,BOTTOM:5"
 #define DIONA_SCREEN_LOC_HAT    "RIGHT-7:16,BOTTOM:5"
 #define DIONA_SCREEN_LOC_INTENT "RIGHT-2,BOTTOM:5"
-#define DIONA_SCREEN_LOC_HEALTH ui_alien_health
+#define DIONA_SCREEN_LOC_HEALTH "RIGHT-1:28,CENTER-1:13"
 
 /mob/living/simple_animal/alien/diona
 	name = "diona nymph"
@@ -24,7 +24,7 @@
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	holder_type = /obj/item/holder/diona
-	possession_candidate = 1
+	possession_candidate = TRUE
 	atom_flags = ATOM_FLAG_NO_CHEM_CHANGE
 	hud_used = /datum/hud/diona_nymph
 
@@ -75,18 +75,6 @@
 		heal_overall_damage(rads,rads)
 		heal_damage(OXY, rads, do_update_health = FALSE)
 		heal_damage(TOX, rads)
-
-/*
-/mob/living/simple_animal/alien/diona/get_default_intent()
-	return GET_DECL(/decl/intent/help/binary/diona)
-
-/mob/living/simple_animal/alien/diona/get_available_intents()
-	var/static/list/available_intents = list(
-		GET_DECL(/decl/intent/harm/binary/diona),
-		GET_DECL(/decl/intent/help/binary/diona)
-	)
-	return available_intents
-*/
 
 /decl/bodytype/diona
 	name = "nymph"

@@ -16,7 +16,7 @@
 	density             = FALSE
 
 /obj/structure/banner_frame/sign/random/Initialize(ml, _mat, _reinf_mat)
-	material = pick(typesof(/decl/material/solid/organic/wood))
+	material = pick(decls_repository.get_decls_of_subtype(/decl/material/solid/organic/wood))
 	..()
 	return INITIALIZE_HINT_LATELOAD
 

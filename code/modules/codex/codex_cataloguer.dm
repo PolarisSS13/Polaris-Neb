@@ -100,21 +100,21 @@
 		return TRUE
 	return ..()
 
-/obj/item/cataloguer/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/disk/survey))
+/obj/item/cataloguer/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/disk/survey))
 		if(loaded_disk)
 			to_chat(user, SPAN_WARNING("\The [src] already has a disk loaded."))
-		else if(user.try_unequip(W, src))
-			loaded_disk = W
+		else if(user.try_unequip(used_item, src))
+			loaded_disk = used_item
 			playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
-			to_chat(user, SPAN_NOTICE("You slot \the [W] into \the [src]."))
+			to_chat(user, SPAN_NOTICE("You slot \the [used_item] into \the [src]."))
 		return TRUE
 	return ..()
 
-/obj/item/cataloguer/examine(mob/user, distance, infix, suffix)
+/obj/item/cataloguer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loaded_disk)
-		to_chat(user, "It has \a [loaded_disk] slotted into the storage port. The display indicates it currently holds [loaded_disk.data] good explorer point\s.")
+		. += "It has \a [loaded_disk] slotted into the storage port. The display indicates it currently holds [loaded_disk.data] good explorer point\s."
 
 /obj/item/cataloguer/proc/stop_scan(var/interrupted = TRUE, var/mob/user, var/fade_out = 0)
 

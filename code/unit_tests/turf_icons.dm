@@ -188,9 +188,10 @@
 // Procs used for validation below.
 /turf/floor/validate_turf()
 	. = ..()
+
 	if(!istype(_base_flooring))
 		. += "null or invalid _base_flooring ([_base_flooring || "NULL"])"
-	if(_flooring && !istype(_flooring))
+	if(_flooring && !islist(_flooring) && !istype(_flooring, /decl/flooring))
 		. += "invalid post-init type for _flooring ([_flooring || "NULL"])"
 
 	var/decl/flooring/check_flooring = get_topmost_flooring()

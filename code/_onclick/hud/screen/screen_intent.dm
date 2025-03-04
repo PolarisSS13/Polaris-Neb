@@ -34,10 +34,11 @@
 	if(. && intent && parent)
 		parent.set_intent(intent)
 
-/obj/screen/intent_button/examine(mob/user, distance)
+/obj/screen/intent_button/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
 	if(desc)
 		to_chat(user, desc)
+	return TRUE
 
 /obj/screen/intent_button/on_update_icon()
 	. = ..()
@@ -47,6 +48,19 @@
 		desc = intent.desc
 		icon = intent.icon
 		icon_state = selected ? intent.icon_state : "[intent.icon_state]_off"
+
+/obj/screen/intent_button/MouseEntered(location, control, params)
+	if(intent && (intent.name || intent.desc))
+		openToolTip(user = usr, tip_src = src, params = params, content = intent.desc)
+	return ..()
+
+/obj/screen/intent_button/MouseDown()
+	closeToolTip(usr)
+	return ..()
+
+/obj/screen/intent_button/MouseExited()
+	closeToolTip(usr)
+	return ..()
 
 /obj/screen/intent
 	name                 = "intent"
@@ -67,7 +81,7 @@
 	verbs.Cut()
 
 /obj/screen/intent/Destroy()
-	QDEL_NULL(intent_selectors)
+	QDEL_NULL_LIST(intent_selectors)
 	vis_contents.Cut()
 	return ..()
 
@@ -98,20 +112,21 @@
 
 	var/decl/intent/owner_intent = owner.get_intent()
 	var/i = 1
-	var/list/all_intents = owner.get_available_intents()
+	var/list/unused_selectors = intent_selectors?.Copy()
+	var/list/all_intents = owner.get_available_intents(skip_update = TRUE)
 	for(var/decl/intent/intent as anything in all_intents)
 		var/obj/screen/intent_button/intent_button = get_intent_button(i)
 		if(intent == owner_intent)
 			intent_button.set_selected(intent)
 		else
 			intent_button.set_deselected(intent)
+		LAZYREMOVE(unused_selectors, intent_button)
 		i++
 		apply_intent_button_offset(intent_button, i, length(all_intents))
 		add_vis_contents(intent_button)
 
-	if(i < length(intent_selectors))
-		for(var/index = i+1 to length(intent_selectors))
-			remove_vis_contents(intent_selectors[index])
+	if(length(unused_selectors))
+		remove_vis_contents(unused_selectors)
 
 /obj/screen/intent/binary
 	intent_width     = 32

@@ -166,13 +166,12 @@
 	if(!length(reagents?.reagent_volumes) || !istype(air))
 		return
 	var/update_air = FALSE
-	for(var/rtype in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(rtype)
-		if(mat.gas_flags & XGM_GAS_FUEL)
-			var/moles = round(reagents.reagent_volumes[rtype] / REAGENT_UNITS_PER_GAS_MOLE)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(reagent.gas_flags & XGM_GAS_FUEL)
+			var/moles = round(reagents.reagent_volumes[reagent] / REAGENT_UNITS_PER_GAS_MOLE)
 			if(moles > 0)
-				air.adjust_gas(rtype, moles, FALSE)
-				remove_from_reagents(rtype, round(moles * REAGENT_UNITS_PER_GAS_MOLE))
+				air.adjust_gas(reagent.type, moles, FALSE)
+				remove_from_reagents(reagent, round(moles * REAGENT_UNITS_PER_GAS_MOLE))
 				update_air = TRUE
 	if(update_air)
 		air.update_values()
@@ -190,7 +189,7 @@
 	if(reagents?.total_volume > FLUID_QDEL_POINT)
 		ADD_ACTIVE_FLUID(src)
 		var/decl/material/primary_reagent = reagents.get_primary_reagent_decl()
-		if(primary_reagent && (REAGENT_VOLUME(reagents, primary_reagent.type) >= primary_reagent.slippery_amount))
+		if(primary_reagent && (REAGENT_VOLUME(reagents, primary_reagent) >= primary_reagent.slippery_amount))
 			last_slipperiness = primary_reagent.slipperiness
 		else
 			last_slipperiness = 0
@@ -217,10 +216,10 @@
 		solids = reagents
 	if(LAZYLEN(solids?.solid_volumes))
 		var/list/matter_list = list()
-		for(var/reagent_type in solids.solid_volumes)
-			var/reagent_amount = solids.solid_volumes[reagent_type]
-			matter_list[reagent_type] = round(reagent_amount/REAGENT_UNITS_PER_MATERIAL_UNIT)
-			solids.remove_reagent(reagent_type, reagent_amount, defer_update = TRUE, removed_phases = MAT_PHASE_SOLID)
+		for(var/decl/material/reagent as anything in solids.solid_volumes)
+			var/reagent_amount = solids.solid_volumes[reagent]
+			matter_list[reagent] = round(reagent_amount/REAGENT_UNITS_PER_MATERIAL_UNIT)
+			solids.remove_reagent(reagent, reagent_amount, defer_update = TRUE, removed_phases = MAT_PHASE_SOLID)
 
 		var/obj/item/debris/scraps/chemical/scraps = locate() in contents
 		if(!istype(scraps) || scraps.get_total_matter() >= MAX_SCRAP_MATTER)

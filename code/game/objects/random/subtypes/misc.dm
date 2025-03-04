@@ -226,7 +226,7 @@
 /obj/random/soap/spawn_choices()
 	var/static/list/spawnable_choices = list(
 		/obj/item/soap                         = 12,
-		/obj/item/chems/glass/rag              =  2,
+		/obj/item/chems/rag              =  2,
 		/obj/item/chems/spray/cleaner          =  2,
 		/obj/item/grenade/chem_grenade/cleaner =  1
 	)

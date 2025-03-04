@@ -110,7 +110,8 @@
 	var/init = call_ext(lib, "init")()
 	if("0" != init) CRASH("[lib] init error: [init]")
 
-/world/New()
+var/global/datum/profiler/_profiler = new
+/datum/profiler/New()
 	prof_init()
-	. = ..()
+	..()
 #endif

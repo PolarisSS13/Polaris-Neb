@@ -30,8 +30,8 @@
 	if(!(. = ..()) || !reagents)
 		return
 
-	for(var/mtype in reagents.reagent_volumes)
-		show_materials |= mtype
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		show_materials |= reagent.type
 
 /obj/machinery/material_processing/smeltery/ProcessAtomTemperature()
 	if(use_power)
@@ -96,8 +96,9 @@
 				SSmaterials.create_object(mtype, output_turf, samt)
 				remove_from_reagents(mtype, ramt)
 
-/obj/machinery/material_processing/smeltery/Topic(var/user, var/list/href_list)
-	. = ..()
+/obj/machinery/material_processing/smeltery/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 
 	if(href_list["toggle_alloying"])
 		if(atom_flags & ATOM_FLAG_NO_REACT)

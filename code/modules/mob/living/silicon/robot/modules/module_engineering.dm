@@ -19,7 +19,8 @@
 		"Landmate"           = 'icons/mob/robots/robot_engineer.dmi',
 		"Landmate - Treaded" = 'icons/mob/robots/robot_engineer_treaded.dmi'
 	)
-	no_slip = 1
+	has_nonslip_feet  = TRUE
+	has_magnetic_feet = TRUE
 	equipment = list(
 		/obj/item/flash,
 		/obj/item/borg/sight/meson,
@@ -106,7 +107,7 @@
 	var/obj/item/stack/material/cyborg/plasteel/PL = locate() in equipment
 	PL.synths = list(plasteel)
 
-/obj/item/robot_module/engineering/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/engineering/respawn_consumable(var/mob/living/silicon/robot/robot, var/amount)
 	var/obj/item/lightreplacer/LR = locate() in equipment
-	LR.Charge(R, amount)
+	LR.Charge(robot, amount)
 	..()

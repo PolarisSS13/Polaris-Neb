@@ -1,4 +1,6 @@
 /obj/screen/inventory
+	use_supplied_ui_color = TRUE
+	use_supplied_ui_alpha = TRUE
 	var/slot_id	//The indentifier for the slot. It has nothing to do with ID cards.
 	var/weakref/mouse_over_atom_ref
 

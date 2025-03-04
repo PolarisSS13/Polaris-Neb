@@ -47,7 +47,7 @@
 	icon = 'icons/clothing/rigs/rig_hacker.dmi'
 	req_access = list(access_hacked)
 	airtight = 0
-	seal_delay = 5 //not being vaccum-proof has an upside I guess
+	seal_delay = 5 //not being vacuum-proof has an upside I guess
 
 	helmet = /obj/item/clothing/head/lightrig/hacker
 	chest =  /obj/item/clothing/suit/lightrig/hacker
@@ -74,7 +74,7 @@
 	icon = 'icons/clothing/rigs/chests/chest_hacker.dmi'
 /obj/item/clothing/shoes/lightrig/hacker
 	siemens_coefficient = 0.2
-	item_flags = ITEM_FLAG_NOSLIP //All the other rigs have magboots anyways, hopefully gives the hacker suit something more going for it.
+	item_flags = ITEM_FLAG_NOSLIP | ITEM_FLAG_MAGNETISED //All the other rigs have magboots anyways, hopefully gives the hacker suit something more going for it.
 	icon = 'icons/clothing/rigs/boots/boots_hacker.dmi'
 /obj/item/clothing/gloves/lightrig/hacker
 	siemens_coefficient = 0

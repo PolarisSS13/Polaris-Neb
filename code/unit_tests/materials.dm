@@ -54,7 +54,8 @@
 						var/test_type = recipe.test_result_type || recipe.result_type
 						if(!test_type || ispath(test_type, /turf)) // Cannot exist without a loc and doesn't have matter, cannot assess here.
 							continue
-						var/atom/product = LAZYACCESS(recipe.spawn_result(null, null, 1, material, reinforced, null), 1)
+						var/list/results = recipe.spawn_result(null, null, 1, material, reinforced, null)
+						var/atom/product = LAZYACCESS(results, 1)
 						var/list/failed = list()
 						if(!product)
 							failed += "no product returned"

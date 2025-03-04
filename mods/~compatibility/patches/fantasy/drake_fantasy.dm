@@ -16,6 +16,6 @@
 	name = "drake spittle"
 	lore_text = "A complex chemical slurry brewed up in the gullet of meredrakes."
 
-/obj/aura/sifsap_salve
+/decl/mob_modifier/sifsap_salve
 	name = "Drakespittle Salve"
-	descriptor = "glowing spittle"
+	desc = "glowing spittle"

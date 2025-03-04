@@ -43,8 +43,8 @@
 	narcotic = TRUE
 
 /decl/material/liquid/painkillers/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
-	var/volume = REAGENT_VOLUME(holder, type)
-	var/dose = LAZYACCESS(M.chem_doses, type)
+	var/volume = REAGENT_VOLUME(holder, src)
+	var/dose = CHEM_DOSE(M, src)
 	. = ..()
 	var/effectiveness = 1
 	if(dose < effective_dose) //some ease-in ease-out for the effect
@@ -131,9 +131,9 @@
 	var/datum/reagents/ingested = M.get_ingested_reagents()
 	if(ingested)
 		var/list/pool = M.reagents.reagent_volumes | ingested.reagent_volumes
-		for(var/rtype in pool)
-			var/decl/material/liquid/alcohol/booze = GET_DECL(rtype)
-			if(!istype(booze) ||LAZYACCESS(M.chem_doses, rtype) < 2) //let them experience false security at first
+		for(var/reagent in pool)
+			var/decl/material/liquid/alcohol/booze = reagent
+			if(!istype(booze) ||CHEM_DOSE(M, reagent) < 2) //let them experience false security at first
 				continue
 			. = 1
 			if(booze.strength < 40) //liquor stuff hits harder

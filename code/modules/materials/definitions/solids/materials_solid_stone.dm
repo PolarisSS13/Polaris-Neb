@@ -2,7 +2,7 @@
 	name = null
 	abstract_type = /decl/material/solid/stone
 	color = "#d9c179"
-	shard_type = SHARD_STONE_PIECE
+	shard_name = SHARD_STONE_PIECE
 	weight = MAT_VALUE_HEAVY
 	hardness = MAT_VALUE_HARD - 5
 	reflectiveness = MAT_VALUE_MATTE

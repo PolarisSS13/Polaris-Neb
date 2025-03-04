@@ -41,8 +41,8 @@
 	if(!drop_type)
 		drop_type = pick(supply_drop_random_loot_types())
 
-/obj/structure/supply_beacon/attackby(var/obj/item/W, var/mob/user)
-	if(!activated && IS_WRENCH(W))
+/obj/structure/supply_beacon/attackby(var/obj/item/used_item, var/mob/user)
+	if(!activated && IS_WRENCH(used_item))
 		anchored = !anchored
 		user.visible_message(SPAN_NOTICE("\The [user] [anchored ? "secures" : "unsecures"] \the [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
@@ -101,7 +101,7 @@
 		target_drop_time = world.time + drop_delay
 	if(world.time >= target_drop_time)
 		deactivate(permanent = TRUE)
-		command_announcement.Announce("Nyx Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] recieved. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
+		command_announcement.Announce("Nyx Rapid Fabrication priority supply request #[rand(1000,9999)]-[rand(100,999)] received. Shipment dispatched via ballistic supply pod for immediate delivery. Have a nice day.", "Thank You For Your Patronage")
 		addtimer(CALLBACK(src, PROC_REF(drop_cargo)), rand(20 SECONDS, 30 SECONDS))
 
 /obj/structure/supply_beacon/proc/drop_cargo(var/drop_x, var/drop_y, var/drop_z)

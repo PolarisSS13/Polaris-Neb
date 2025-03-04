@@ -62,3 +62,6 @@
 
 /decl/reagent_data_field/blood_has_oxy
 	uid = "rdf_blood_has_oxy"
+
+/decl/reagent_data_field/cooldown_time
+	uid = "rdf_cooldown_time"

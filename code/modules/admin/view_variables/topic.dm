@@ -590,26 +590,6 @@
 		var/datum/called_proc = locate(href_list["call_proc"])
 		if(istype(called_proc) || istype(called_proc, /client)) // can call on clients too, not just datums
 			callproc_targetpicked(1, called_proc)
-	else if(href_list["addaura"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))	return
-		var/mob/living/victim = locate(href_list["addaura"])
-		if(!istype(victim))
-			return
-		var/choice = input("Please choose an aura to add", "Auras", null) as null|anything in typesof(/obj/aura)
-		if(!choice || !victim)
-			return
-		var/obj/new_aura = new choice(victim)
-		log_and_message_admins("added \the [new_aura] to \the [victim]")
-	else if(href_list["removeaura"])
-		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN))	return
-		var/mob/living/victim = locate(href_list["removeaura"])
-		if(!istype(victim))
-			return
-		var/choice = input("Please choose an aura to remove", "Auras", null) as null|anything in victim.auras
-		if(!choice || !victim)
-			return
-		log_and_message_admins("removed \the [choice] to \the [victim]")
-		qdel(choice)
 
 	else if(href_list["addstressor"])
 		if(!check_rights(R_DEBUG))
@@ -658,7 +638,7 @@
 			return
 		if(amt < 0)
 			amt += GET_STATUS(victim, selected_condition.type)
-		victim.set_status(selected_condition.type, amt)
+		victim.set_status_condition(selected_condition.type, amt)
 		log_and_message_admins("set [selected_condition.name] to [amt] on \the [victim].")
 
 	else if(href_list["setmaterial"])
@@ -704,6 +684,44 @@
 					log_and_message_admins("has removed [ability] from [key_name(target)].")
 				else
 					to_chat(usr, SPAN_WARNING("Failed to remove [ability] from [target]!"))
+
+	else if (href_list["add_mob_modifier"])
+		var/mob/living/target = locate(href_list["add_mob_modifier"])
+		if(!istype(target) || QDELETED(target))
+			to_chat(usr, SPAN_WARNING("Only /mob/living mobs can have mob modifiers."))
+		else
+			var/list/modifiers = list()
+			for(var/decl/mob_modifier/modifier in decls_repository.get_decls_of_type_unassociated(/decl/mob_modifier))
+				if(modifier.can_be_admin_granted)
+					modifiers += modifier
+			// Evil pyramid due to apparently not being able to return early in this Topic()
+			var/decl/mob_modifier/modifier = input(usr, "Which modifier do you wish to give?", "Add Mob Modifier") as null|anything in modifiers
+			if(istype(modifier) && !QDELETED(target))
+				var/duration = input(usr, "How long do you wish this modifier to last, in seconds? Enter -1 for a permanent modifier.", "Add Mob Modifier") as num|null
+				if(!isnull(duration))
+					if(duration != MOB_MODIFIER_INDEFINITE)
+						duration = max(0, duration SECONDS)
+					if(duration != 0 && !QDELETED(target))
+						if(target.add_mob_modifier(modifier, duration, source = target))
+							to_chat(usr, SPAN_NOTICE("Added [modifier] to [target] for [duration] second\s."))
+						else
+							to_chat(usr, SPAN_WARNING("Failed to add [modifier] to [target]."))
+
+	else if (href_list["remove_mob_modifier"])
+		var/mob/living/target = locate(href_list["remove_mob_modifier"])
+		if(!istype(target) && !QDELETED(target))
+			to_chat(usr, SPAN_WARNING("Only /mob/living mobs can have mob modifiers."))
+		else
+			var/list/modifiers = list()
+			for(var/decl/mob_modifier/modifier in target._mob_modifiers)
+				if(modifier.can_be_admin_granted)
+					modifiers += modifier
+			var/decl/mob_modifier/modifier = input(usr, "Which modifier do you wish to remove?", "Remove Mob Modifier") as null|anything in modifiers
+			if(istype(modifier))
+				if(target.remove_mob_modifier(modifier, source = target))
+					to_chat(usr, SPAN_NOTICE("Removed [modifier] from [target]."))
+				else
+					to_chat(usr, SPAN_WARNING("Failed to remove [modifier] from [target]."))
 
 	if(href_list["datumrefresh"])
 		var/datum/datum_to_refresh = locate(href_list["datumrefresh"])

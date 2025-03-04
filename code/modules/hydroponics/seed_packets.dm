@@ -83,10 +83,10 @@
 		SetName("sample of [seed.product_name] [seed.seed_noun]")
 		desc = "It's labelled as coming from \a [seed.display_name]."
 
-/obj/item/seeds/examine(mob/user)
+/obj/item/seeds/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(seed && !seed.roundstart)
-		to_chat(user, "It's tagged as variety #[seed.uid].")
+		. += "It's tagged as variety #[seed.uid]."
 
 /obj/item/seeds/extracted
 	name = "handful of seeds"

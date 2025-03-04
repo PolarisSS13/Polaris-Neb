@@ -37,14 +37,15 @@
 	update_icon()
 	return TRUE
 
-/obj/item/chems/glass/waterskin/on_update_icon() // TODO: filled/empty sprites
+// TODO: filled/empty sprites
+/obj/item/chems/glass/waterskin/update_overlays()
 	. = ..() // cuts overlays
 	var/image/stopper_overlay = get_stopper_overlay()
 	if(stopper_overlay)
 		add_overlay(stopper_overlay)
 
 /obj/item/chems/glass/waterskin/crafted
-	desc = "A long and rather unwieldly water-carrying vessel."
+	desc = "A long and rather unwieldy water-carrying vessel."
 	icon = 'icons/obj/items/waterskin_crafted.dmi'
 	material = /decl/material/solid/organic/leather
 	color = /decl/material/solid/organic/leather::color

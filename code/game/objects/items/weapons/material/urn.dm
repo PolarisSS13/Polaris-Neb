@@ -26,7 +26,7 @@
 			A.dropInto(loc)
 			user.visible_message("\The [user] pours \the [A] out from \the [src].", "You pour \the [A] out from \the [src].")
 
-/obj/item/urn/examine(mob/user)
+/obj/item/urn/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(contents.len)
-		to_chat(user, "\The [src] is full.")
+		. += "\The [src] is full."

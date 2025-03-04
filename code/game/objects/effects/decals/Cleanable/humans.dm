@@ -15,7 +15,7 @@
 	persistent = TRUE
 	appearance_flags = NO_CLIENT_COLOR
 	cleanable_scent = "blood"
-	scent_descriptor = SCENT_DESC_ODOR
+	scent_descriptor = "odour"
 
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/basecolor=COLOR_BLOOD_HUMAN // Color when wet.
@@ -113,8 +113,8 @@
 	if(!isliving(AM) || amount < 1)
 		return
 	var/mob/living/walker = AM
-	if(istype(walker.buckled, /obj/structure/bed/chair/wheelchair))
-		var/obj/structure/bed/chair/wheelchair/wheelchair = walker.buckled
+	if(istype(walker.buckled, /obj/structure/chair/wheelchair))
+		var/obj/structure/chair/wheelchair/wheelchair = walker.buckled
 		wheelchair.bloodiness = 4
 	else
 		walker.add_walking_contaminant(chemical, amount, (blood_data ? blood_data[pick(blood_data)] : null))
@@ -196,17 +196,17 @@
 /obj/effect/decal/cleanable/blood/writing/Initialize()
 	. = ..()
 	if(LAZYLEN(random_icon_states))
-		for(var/obj/effect/decal/cleanable/blood/writing/W in loc)
-			random_icon_states.Remove(W.icon_state)
+		for(var/obj/effect/decal/cleanable/blood/writing/writing in loc)
+			random_icon_states.Remove(writing.icon_state)
 		icon_state = pick(random_icon_states)
 	else
 		icon_state = "writing1"
 
-/obj/effect/decal/cleanable/blood/writing/examine(mob/user)
+/obj/effect/decal/cleanable/blood/writing/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/processed_message = user.handle_reading_literacy(user, message)
 	if(processed_message)
-		to_chat(user, "It reads: <font color='[basecolor]'>\"[message]\"</font>")
+		. += "It reads: <font color='[basecolor]'>\"[message]\"</font>"
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"

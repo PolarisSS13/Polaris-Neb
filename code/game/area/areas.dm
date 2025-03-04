@@ -4,7 +4,7 @@ var/global/list/areas = list()
 
 /area
 
-	level = null
+	level = 0
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
@@ -20,8 +20,10 @@ var/global/list/areas = list()
 	var/interior_ambient_light_modifier
 	// If set, will apply ambient light of this colour to turfs under a ceiling.
 
-	var/proper_name /// Automatically set by SetName and Initialize; cached result of strip_improper(name).
-	var/holomap_color	// Color of this area on the holomap. Must be a hex color (as string) or null.
+	/// Automatically set by SetName and Initialize; cached result of strip_improper(name).
+	var/tmp/proper_name
+	/// Color of this area on the holomap. Must be a hex color (as string) or null.
+	var/holomap_color
 
 	var/fire
 	var/party
@@ -422,7 +424,7 @@ var/global/list/mob/living/forced_ambiance_list = new
 	if(isspaceturf(get_turf(mob))) // Can't fall onto nothing.
 		return
 
-	if(mob.Check_Shoegrip())
+	if(!mob.can_slip(magboots_only = TRUE))
 		return
 
 	if(ishuman(mob))

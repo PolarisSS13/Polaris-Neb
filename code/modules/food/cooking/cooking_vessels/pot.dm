@@ -32,8 +32,7 @@
 
 		last_boil_temp = temperature
 		var/next_boil_status = FALSE
-		for(var/reagent_type in reagents?.reagent_volumes)
-			var/decl/material/reagent = GET_DECL(reagent_type)
+		for(var/decl/material/reagent as anything in reagents?.reagent_volumes)
 			if(!isnull(reagent.boiling_point) && temperature >= reagent.boiling_point)
 				next_boil_status = TRUE
 				break

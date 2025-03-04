@@ -10,7 +10,7 @@
 /obj/item/stack/tile
 	name = "tile"
 	singular_name = "tile"
-	desc = "A non-descript floor tile."
+	desc = "A nondescript floor tile."
 	randpixel = 7
 	w_class = ITEM_SIZE_NORMAL
 	max_amount = 100
@@ -21,7 +21,7 @@
 	item_flags = 0
 	obj_flags = 0
 	_base_attack_force = 1
-	var/replacement_turf_type = /turf/floor
+	var/replacement_turf_type = /turf/floor/plating
 
 /obj/item/stack/tile/proc/try_build_turf(var/mob/user, var/turf/target)
 
@@ -319,7 +319,7 @@
 /obj/item/stack/tile/roof
 	name = "roofing tile"
 	singular_name = "roofing tile"
-	desc = "A non-descript roofing tile."
+	desc = "A nondescript roofing tile."
 	matter_multiplier = 0.3
 	icon_state = "tile"
 	material = /decl/material/solid/metal/steel

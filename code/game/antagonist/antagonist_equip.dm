@@ -12,7 +12,7 @@
 	// This could use work.
 	if(flags & ANTAG_CLEAR_EQUIPMENT)
 		for(var/obj/item/thing in player.contents)
-			if(player.canUnEquip(thing))
+			if(player.can_unequip_item(thing))
 				qdel(thing)
 		//mainly for nonhuman antag compatibility. Should not effect item spawning.
 		player.species.equip_survival_gear(player)

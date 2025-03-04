@@ -150,7 +150,7 @@
 /turf/floor/tiled,
 /area/outpost/abandoned)
 "aK" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8;
 	icon_state = "officechair_dark"
 	},
@@ -158,7 +158,7 @@
 /turf/floor/tiled/white,
 /area/outpost/abandoned)
 "aL" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4;
 	icon_state = "officechair_dark"
 	},
@@ -332,7 +332,7 @@
 /turf/floor/tiled/white,
 /area/outpost/abandoned)
 "bs" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
@@ -778,7 +778,7 @@
 /turf/floor/carpet/blue,
 /area/outpost/abandoned)
 "cP" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -1061,12 +1061,12 @@
 /area/outpost/abandoned)
 "dK" = (
 /obj/abstract/landmark/mapped_fluid/fuel,
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "dL" = (
 /obj/abstract/landmark/mapped_fluid/fuel,
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light/small/emergency{
 	dir = 1;
 	icon_state = "bulb1"
@@ -1074,7 +1074,7 @@
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "dM" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "dN" = (
@@ -1746,7 +1746,7 @@
 /turf/floor/tiled/dark,
 /area/outpost/abandoned)
 "fV" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled/dark,
@@ -1780,7 +1780,7 @@
 /turf/wall/titanium,
 /area/outpost/abandoned)
 "ga" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/visible,
@@ -2126,7 +2126,7 @@
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "hb" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1;
 	icon_state = "warning"
@@ -2176,7 +2176,7 @@
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "hk" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -2190,7 +2190,7 @@
 /turf/floor/tiled/airless,
 /area/outpost/abandoned)
 "hm" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/airless,

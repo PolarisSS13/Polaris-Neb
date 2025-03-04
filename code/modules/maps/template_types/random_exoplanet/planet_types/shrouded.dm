@@ -4,7 +4,7 @@
 
 /obj/effect/overmap/visitable/sector/planetoid/exoplanet/shrouded
 	name          = "shrouded exoplanet"
-	desc          = "An exoplanet shrouded in a perpetual storm of bizzare, light absorbing particles."
+	desc          = "An exoplanet shrouded in a perpetual storm of bizarre, light-absorbing particles."
 	color         = "#783ca4"
 
 /obj/effect/overmap/visitable/sector/planetoid/exoplanet/shrouded/get_atmosphere_color()

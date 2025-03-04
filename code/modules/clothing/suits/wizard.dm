@@ -7,7 +7,7 @@
 
 /obj/item/clothing/suit/wizrobe/red
 	name = "red wizard robe"
-	desc = "A rather ratty  red robe."
+	desc = "A rather ratty red robe."
 	icon = 'icons/clothing/suits/wizard/red.dmi'
 
 /obj/item/clothing/suit/wizrobe/marisa

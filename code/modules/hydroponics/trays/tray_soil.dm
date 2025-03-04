@@ -91,13 +91,13 @@
 			break
 	return ..()
 
-/obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(istype(O, /obj/item/stack/material/brick))
+	if(istype(used_item, /obj/item/stack/material/brick))
 		if(reinforced_with)
 			to_chat(user, SPAN_WARNING("\The [src] has already been fenced with bricks."))
 			return TRUE
-		var/obj/item/stack/material/brick/bricks = O
+		var/obj/item/stack/material/brick/bricks = used_item
 		if(bricks.get_amount() < 4)
 			to_chat(user, SPAN_WARNING("You need at least four bricks to fence off \the [src]."))
 			return TRUE
@@ -111,13 +111,13 @@
 				neighbor.update_icon()
 		return TRUE
 
-	if(!seed && user.check_intent(I_FLAG_HARM) && (IS_SHOVEL(O) || IS_HOE(O)))
-		var/use_tool = O.get_tool_quality(TOOL_SHOVEL) > O.get_tool_quality(TOOL_HOE) ? TOOL_SHOVEL : TOOL_HOE
+	if(!seed && user.check_intent(I_FLAG_HARM) && (IS_SHOVEL(used_item) || IS_HOE(used_item)))
+		var/use_tool = used_item.get_tool_quality(TOOL_SHOVEL) > used_item.get_tool_quality(TOOL_HOE) ? TOOL_SHOVEL : TOOL_HOE
 		if(use_tool)
-			if(O.do_tool_interaction(use_tool, user, src, 3 SECONDS, "filling in", "filling in", check_skill = SKILL_BOTANY))
+			if(used_item.do_tool_interaction(use_tool, user, src, 3 SECONDS, "filling in", "filling in", check_skill = SKILL_BOTANY))
 				qdel(src)
 			return TRUE
-	if(istype(O, /obj/item/tank))
+	if(istype(used_item, /obj/item/tank))
 		return TRUE
 	return ..()
 

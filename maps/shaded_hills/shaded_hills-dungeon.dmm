@@ -26,7 +26,7 @@
 /area/shaded_hills/caves/dungeon/poi)
 "cp" = (
 /obj/structure/table/wood/ebony,
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "cM" = (
@@ -34,7 +34,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "dA" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/remains/human,
@@ -66,7 +66,7 @@
 /turf/floor/rock/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "fW" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/stack/medical/bandage/crafted/five,
@@ -86,7 +86,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "hz" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/basalt,
@@ -115,7 +115,7 @@
 /turf/floor/mud,
 /area/shaded_hills/caves/dungeon)
 "jU" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/food/grown/dried_tobacco/bad,
@@ -147,7 +147,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "kN" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/stack/material/bolt/mapped/cloth/five,
@@ -176,13 +176,13 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "nD" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "nE" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/bladed/folding,
@@ -213,7 +213,7 @@
 /area/shaded_hills/caves/dungeon/poi)
 "ob" = (
 /obj/structure/table/wood/ebony,
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "ok" = (
@@ -243,7 +243,7 @@
 /turf/floor/path/basalt,
 /area/shaded_hills/caves/dungeon/inn)
 "oW" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/herringbone/basalt,
@@ -336,13 +336,13 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "wa" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "wg" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/random/hostile/dungeon,
@@ -397,7 +397,7 @@
 /turf/floor/path/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "Bk" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/food/grown/dried_tobacco/bad,
@@ -406,7 +406,7 @@
 "BG" = (
 /obj/structure/table/wood/ebony,
 /obj/item/stack/material/thread/mapped/cotton/thirty,
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "Cu" = (
@@ -443,7 +443,7 @@
 /turf/floor/path/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "Eq" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/stack/material/bolt/mapped/cloth/five,
@@ -554,7 +554,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "ME" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/stack/medical/bandage/crafted/five,
@@ -609,7 +609,7 @@
 /turf/floor/path/herringbone/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "Rt" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/random/hostile/dungeon,
@@ -624,7 +624,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/caves/dungeon/poi)
 "SN" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/remains/human,

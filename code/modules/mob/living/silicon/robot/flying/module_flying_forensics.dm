@@ -36,7 +36,7 @@
 		SKILL_ANATOMY             = SKILL_ADEPT
 	)
 
-/obj/item/robot_module/flying/forensics/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/flying/forensics/respawn_consumable(var/mob/living/silicon/robot/robot, var/amount)
 	var/obj/item/chems/spray/luminol/luminol = locate() in equipment
 	if(!luminol)
 		luminol = new(src)

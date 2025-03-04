@@ -9,7 +9,7 @@
 
 /obj/item/blackout
 	name = "blackout pulser"
-	desc = "A complicated eletronic device of unknown purpose"
+	desc = "A complicated electronic device of unknown purpose."
 	icon = 'icons/obj/items/blackout.dmi'
 	icon_state = "device_blackout-off"
 	max_health = ITEM_HEALTH_NO_DAMAGE

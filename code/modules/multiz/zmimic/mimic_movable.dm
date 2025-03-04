@@ -49,7 +49,7 @@
 	mouse_opacity = FALSE
 	abstract_type = /atom/movable/openspace // unsure if this is valid, check with Lohi -- Yes, it's valid.
 
-/atom/movable/openspace/can_fall()
+/atom/movable/openspace/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
 	return FALSE
 
 // No blowing up abstract objects.
@@ -146,7 +146,7 @@
 
 	return ..()
 
-/atom/movable/openspace/mimic/attackby(obj/item/W, mob/user)
+/atom/movable/openspace/mimic/attackby(obj/item/used_item, mob/user)
 	to_chat(user, SPAN_NOTICE("\The [src] is too far away."))
 	return TRUE
 
@@ -155,9 +155,9 @@
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 	return TRUE
 
-/atom/movable/openspace/mimic/examine(...)
+/atom/movable/openspace/mimic/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = associated_atom.examine(arglist(args))	// just pass all the args to the copied atom
+	return associated_atom.examined_by(user, distance, infix, suffix)
 
 /atom/movable/openspace/mimic/forceMove(turf/dest)
 	var/atom/old_loc = loc
@@ -195,8 +195,8 @@
 	mouse_opacity = MOUSE_OPACITY_UNCLICKABLE
 	z_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
 
-/atom/movable/openspace/turf_proxy/attackby(obj/item/W, mob/user)
-	return loc.attackby(W, user)
+/atom/movable/openspace/turf_proxy/attackby(obj/item/used_item, mob/user)
+	return loc.attackby(used_item, user)
 
 /atom/movable/openspace/turf_proxy/attack_hand(mob/user as mob)
 	SHOULD_CALL_PARENT(FALSE)
@@ -205,9 +205,9 @@
 /atom/movable/openspace/turf_proxy/attack_generic(mob/user as mob)
 	loc.attack_generic(user)
 
-/atom/movable/openspace/turf_proxy/examine(mob/examiner)
+/atom/movable/openspace/turf_proxy/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = loc.examine(examiner)
+	return loc.examined_by(user, distance, infix, suffix)
 
 
 // -- TURF MIMIC --
@@ -223,8 +223,8 @@
 	ASSERT(isturf(loc))
 	delegate = loc:below
 
-/atom/movable/openspace/turf_mimic/attackby(obj/item/W, mob/user)
-	return loc.attackby(W, user)
+/atom/movable/openspace/turf_mimic/attackby(obj/item/used_item, mob/user)
+	return loc.attackby(used_item, user)
 
 /atom/movable/openspace/turf_mimic/attack_hand(mob/user as mob)
 	SHOULD_CALL_PARENT(FALSE)
@@ -234,6 +234,6 @@
 /atom/movable/openspace/turf_mimic/attack_generic(mob/user as mob)
 	to_chat(user, SPAN_NOTICE("You cannot reach \the [src] from here."))
 
-/atom/movable/openspace/turf_mimic/examine(mob/examiner)
+/atom/movable/openspace/turf_mimic/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = delegate.examine(examiner)
+	return delegate.examined_by(user, distance, infix, suffix)

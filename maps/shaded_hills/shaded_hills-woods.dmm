@@ -8,7 +8,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/outside/woods)
 "cN" = (
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "dp" = (

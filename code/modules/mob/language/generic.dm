@@ -4,7 +4,7 @@
 	desc = "Noises"
 	key = ""
 	flags = LANG_FLAG_RESTRICTED|LANG_FLAG_NONGLOBAL|LANG_FLAG_INNATE|LANG_FLAG_NO_TALK_MSG|LANG_FLAG_NO_STUTTER
-	hidden_from_codex = 1
+	hidden_from_codex = TRUE
 
 /decl/language/noise/format_message(message, verb)
 	return "<span class='message'><span class='[colour]'>[message]</span></span>"

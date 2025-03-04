@@ -7,3 +7,7 @@
 #ifdef MODPACK_ITEM_SHARPENING
 #include "fantasy/whetstone_fantasy.dm"
 #endif
+
+#ifdef MODPACK_BLACKSMITHY
+#include "fantasy/forging_fantasy.dm"
+#endif

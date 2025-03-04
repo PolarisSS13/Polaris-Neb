@@ -9,7 +9,7 @@
 
 /obj/machinery/power/sensor
 	name = "powernet sensor"
-	desc = "Small machine which transmits data about specific powernet."
+	desc = "A sensor that records and transmits data about its connected power network."
 	anchored = TRUE
 	density = FALSE
 	level = LEVEL_BELOW_PLATING

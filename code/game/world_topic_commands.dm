@@ -212,9 +212,9 @@
 		info["key"] = S.key
 
 		if(isrobot(S))
-			var/mob/living/silicon/robot/R = S
-			info["master"] = R.connected_ai?.name
-			info["sync"] = R.lawupdate
+			var/mob/living/silicon/robot/robot = S
+			info["master"] = robot.connected_ai?.name
+			info["sync"] = robot.lawupdate
 
 		if(!S.laws)
 			info["laws"] = null

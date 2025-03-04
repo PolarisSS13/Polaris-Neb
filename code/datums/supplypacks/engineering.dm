@@ -87,7 +87,7 @@
 	containername = "collector crate"
 	access = access_engine_equip
 
-/decl/hierarchy/supply_pack/engineering/PA
+/decl/hierarchy/supply_pack/engineering/particle_accelerator
 	name = "Equipment - Particle accelerator"
 	contains = list(/obj/structure/particle_accelerator/fuel_chamber,
 					/obj/machinery/particle_accelerator/control_box,

@@ -24,7 +24,6 @@
 	if(istype(ai))
 		QDEL_NULL(ai)
 	QDEL_NULL(lighting_master)
-	remove_screen_obj_references()
 	if(client)
 		for(var/atom/movable/AM in client.screen)
 			var/obj/screen/screenobj = AM
@@ -36,26 +35,6 @@
 	teleop = null
 	ghostize()
 	return ..()
-
-/mob/proc/remove_screen_obj_references()
-	QDEL_NULL_SCREEN(internals)
-	QDEL_NULL_SCREEN(oxygen)
-	QDEL_NULL_SCREEN(toxin)
-	QDEL_NULL_SCREEN(fire)
-	QDEL_NULL_SCREEN(bodytemp)
-	QDEL_NULL_SCREEN(healths)
-	QDEL_NULL_SCREEN(throw_icon)
-	QDEL_NULL_SCREEN(maneuver_icon)
-	QDEL_NULL_SCREEN(nutrition_icon)
-	QDEL_NULL_SCREEN(hydration_icon)
-	QDEL_NULL_SCREEN(pressure)
-	QDEL_NULL_SCREEN(pain)
-	QDEL_NULL_SCREEN(up_hint)
-	QDEL_NULL_SCREEN(item_use_icon)
-	QDEL_NULL_SCREEN(radio_use_icon)
-	QDEL_NULL_SCREEN(gun_move_icon)
-	QDEL_NULL_SCREEN(gun_setting_icon)
-	QDEL_NULL_SCREEN(zone_sel)
 
 /mob/Initialize()
 	if(ispath(skillset))
@@ -330,7 +309,10 @@
 		client.eye = loc
 
 /mob/proc/get_descriptive_slot_name(var/slot)
-	return global.descriptive_slot_names[slot] || slot
+	if(global.abstract_slot_names[slot]) // this is an abstract slot like "in backpack"
+		return global.abstract_slot_names[slot]
+	var/datum/inventory_slot/slot_datum = get_inventory_slot_datum(slot)
+	return slot_datum?.slot_name || slot
 
 /mob/proc/show_stripping_window(mob/user)
 
@@ -398,8 +380,8 @@
 /mob/proc/get_additional_stripping_options()
 	return
 
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716
+/mob/verb/examine_verb(atom/A as mob|obj|turf in view())
 	set name = "Examine"
 	set category = "IC"
 
@@ -439,8 +421,8 @@
 
 	RAISE_EVENT(/decl/observ/mob_examining, src, A)
 
-	if(!A.examine(src, distance))
-		PRINT_STACK_TRACE("Improper /examine() override: [log_info_line(A)]")
+	if(!A.examined_by(src, distance))
+		PRINT_STACK_TRACE("Improper /examined_by() override: [log_info_line(A)]")
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
@@ -780,7 +762,7 @@
 	usr.setClickCooldown(20)
 
 	if(usr.stat == UNCONSCIOUS)
-		to_chat(usr, "You are unconcious and cannot do that!")
+		to_chat(usr, "You are unconscious and cannot do that!")
 		return
 
 	if(usr.restrained())
@@ -890,7 +872,7 @@
 
 /mob/proc/toggle_throw_mode(force_set)
 	in_throw_mode = isnull(force_set) ? !in_throw_mode : force_set
-	throw_icon?.update_icon()
+	refresh_hud_element(HUD_THROW)
 
 /mob/proc/toggle_antag_pool()
 	set name = "Toggle Add-Antag Candidacy"
@@ -908,11 +890,9 @@
 			to_chat(usr, "The game is not currently looking for antags.")
 	else
 		to_chat(usr, "You must be observing or in the lobby to join the antag pool.")
+
 /mob/proc/is_invisible_to(var/mob/viewer)
 	return (!alpha || !mouse_opacity || viewer.see_invisible < invisibility)
-
-/client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_selector)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -950,10 +930,7 @@
 	toggle_zone_sel(list(BP_L_LEG,BP_L_FOOT))
 
 /client/proc/toggle_zone_sel(list/zones)
-	if(!check_has_body_select())
-		return
-	var/obj/screen/zone_selector/selector = mob.zone_sel
-	selector.set_selected_zone(next_in_list(mob.get_target_zone(), zones))
+	mob.set_target_zone(next_in_list(mob.get_target_zone(), zones))
 
 /mob/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
@@ -968,7 +945,7 @@
 	return gender
 
 /mob/try_fluid_push(volume, strength)
-	if(..() && !buckled && (current_posture.prone || !Check_Shoegrip()) && (strength >= mob_size * (current_posture.prone ? 5 : 10)))
+	if(..() && can_slip() && (strength >= mob_size * (current_posture.prone ? 5 : 10)))
 		if(!current_posture.prone)
 			SET_STATUS_MAX(src, STAT_WEAK, 1)
 			if(current_posture.prone && prob(10))
@@ -1251,12 +1228,16 @@
 	return
 
 /mob/proc/set_target_zone(new_zone)
-	if(zone_sel)
-		return zone_sel?.set_selected_zone(new_zone)
-	return FALSE
+	if(new_zone == selected_zone)
+		return
+	var/old_zone = selected_zone
+	selected_zone = new_zone
+	var/obj/screen/zone_selector/selector = get_hud_element(HUD_ZONE_SELECT)
+	if(selector)
+		selector.set_selected_zone(new_zone, old_zone)
 
 /mob/proc/get_target_zone()
-	return zone_sel?.selecting || BP_CHEST
+	return selected_zone
 
 /mob/proc/get_default_temperature_threshold(threshold)
 	switch(threshold)
@@ -1387,11 +1368,93 @@
 
 /// THIS DOES NOT RELATE TO HELD ITEM SLOTS. It is very specifically a functional BP_L_HAND or BP_R_HAND organ, not necessarily a gripper.
 /mob/proc/get_usable_hand_slot_organ()
-	var/obj/item/organ/external/paw = GET_EXTERNAL_ORGAN(src, BP_L_HAND)
-	if(!istype(paw) && !paw.is_usable())
-		paw = GET_EXTERNAL_ORGAN(src, BP_R_HAND)
-	if(istype(paw) && paw.is_usable())
-		return paw
+	var/static/list/hand_slots = list(BP_L_HAND, BP_R_HAND)
+	for(var/slot in shuffle(hand_slots))
+		var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(src, slot)
+		if(istype(hand) && hand.is_usable())
+			return hand
+
+/mob/proc/get_solid_footing()
+
+	if(!loc)
+		return src // this is a bit weird but we shouldn't slip in nullspace probably
+
+	// Check for dense turfs.
+	var/turf/my_turf = loc
+	if(!istype(my_turf))
+		return my_turf
+
+	if(my_turf.is_wall() || my_turf.is_floor())
+		return my_turf
+
+	// Check for catwalks and lattices.
+	var/atom/platform = my_turf.get_supporting_platform() || (locate(/obj/structure/lattice) in my_turf)
+	if(platform)
+		return platform
+
+	// Check for supportable nearby atoms.
+	for(var/turf/neighbor in RANGE_TURFS(my_turf, 1))
+		if(neighbor == my_turf)
+			continue
+		if(neighbor.contains_dense_objects(exceptions = src))
+			return neighbor
+		platform = neighbor.get_supporting_platform() || (locate(/obj/structure/lattice) in neighbor)
+		if(platform)
+			return platform
+
+	// Find something we are grabbing onto for support.
+	for(var/atom/movable/thing in range(1, my_turf))
+		if(thing == src || thing == inertia_ignore || !thing.simulated || thing == buckled)
+			continue
+		if(isturf(thing))
+			continue // We checked turfs when using magboots above.
+		else if(ismob(thing))
+			var/mob/victim = thing
+			if(victim.buckled)
+				continue
+		else if(thing.CanPass(src))
+			continue
+		if(thing.anchored)
+			return thing
+		var/is_being_grabbed = FALSE
+		for(var/obj/item/grab/grab in get_active_grabs())
+			if(thing == grab.affecting)
+				is_being_grabbed = TRUE
+				break
+		if(!is_being_grabbed)
+			. = thing
+
+/mob/proc/can_slip(magboots_only = FALSE)
+
+	// Are we immune to everything?
+	if(status_flags & GODMODE)
+		return FALSE
+
+	// Quick basic checks.
+	if(!simulated || !isturf(loc) || buckled || current_posture?.prone || throwing)
+		return FALSE
+
+	// Species flag/proc check.
+	if(get_species()?.check_no_slip(src, magboots_only))
+		return FALSE
+
+	// Check footwear.
+	if(!magboots_only && has_non_slip_footing())
+		return FALSE
+
+	if((has_gravity() || has_magnetised_footing()) && get_solid_footing())
+		return FALSE
+
+	// Slip!
+	return TRUE
+
+/mob/proc/has_non_slip_footing()
+	var/obj/item/shoes = get_equipped_item(slot_shoes_str)
+	return istype(shoes) && (shoes.item_flags & ITEM_FLAG_NOSLIP)
+
+/mob/proc/has_magnetised_footing()
+	var/obj/item/shoes = get_equipped_item(slot_shoes_str)
+	return istype(shoes) && (shoes.item_flags & ITEM_FLAG_MAGNETISED)
 
 // Called when using the shredding behavior.
 /mob/proc/can_shred(var/mob/living/human/H, var/ignore_intent, var/ignore_antag)
@@ -1402,7 +1465,7 @@
 	if(get_equipped_item(slot_handcuffed_str) || buckled)
 		return FALSE
 	for(var/decl/natural_attack/attack as anything in get_mob_natural_attacks())
-		if(attack.is_usable(src) && attack.shredding)
+		if(attack.attack_is_usable(src) && attack.shredding)
 			return TRUE
 	return FALSE
 
@@ -1413,3 +1476,11 @@
 		var/list/limb_unarmed_attacks = limb.get_natural_attacks()
 		if(istype(limb_unarmed_attacks, /decl/natural_attack) || (islist(limb_unarmed_attacks) && length(limb_unarmed_attacks)))
 			LAZYDISTINCTADD(., limb_unarmed_attacks)
+
+/mob/proc/isSynthetic()
+	return FALSE
+
+// Returns true if the mob is cloaked, otherwise false
+/mob/proc/is_cloaked()
+	return FALSE
+

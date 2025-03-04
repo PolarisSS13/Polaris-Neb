@@ -14,17 +14,17 @@
 /obj/item/rcd/mounted/get_hardpoint_maptext()
 	var/obj/item/mech_equipment/mounted_system/MS = loc
 	if(istype(MS) && MS.owner)
-		var/obj/item/cell/C = MS.owner.get_cell()
-		if(istype(C))
-			return "[round(C.charge)]/[round(C.maxcharge)]"
+		var/obj/item/cell/cell = MS.owner.get_cell()
+		if(istype(cell))
+			return "[round(cell.charge)]/[round(cell.maxcharge)]"
 	return null
 
 /obj/item/rcd/mounted/get_hardpoint_status_value()
 	var/obj/item/mech_equipment/mounted_system/MS = loc
 	if(istype(MS) && MS.owner)
-		var/obj/item/cell/C = MS.owner.get_cell()
-		if(istype(C))
-			return C.charge/C.maxcharge
+		var/obj/item/cell/cell = MS.owner.get_cell()
+		if(istype(cell))
+			return cell.charge/cell.maxcharge
 	return null
 
 /obj/item/chems/spray/extinguisher/mech

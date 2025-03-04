@@ -15,13 +15,13 @@
 		if(istype(lang_decl))
 			pref.alternate_languages |= lang_decl.type
 
-/datum/category_item/player_setup_item/background/languages/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/background/languages/save_character(datum/pref_record_writer/writer)
 	var/list/language_names = list()
 	for(var/lang in pref.alternate_languages)
 		var/decl/language/lang_decl = GET_DECL(lang)
 		if(istype(lang_decl))
 			language_names |= lang_decl.name
-	W.write("language", language_names)
+	writer.write("language", language_names)
 
 /datum/category_item/player_setup_item/background/languages/sanitize_character()
 	if(!islist(pref.alternate_languages))

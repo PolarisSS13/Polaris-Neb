@@ -150,9 +150,9 @@
 		if(!record.pinged)
 			addtimer(CALLBACK(record, PROC_REF(ping)), time_delay)
 
-/obj/machinery/computer/ship/sensors/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/computer/ship/sensors/attackby(var/obj/item/used_item, var/mob/user)
 	. = ..()
-	var/obj/item/multitool/P = I
+	var/obj/item/multitool/P = used_item
 	if(!istype(P))
 		return
 	var/obj/item/ship_tracker/tracker = P.get_buffer()

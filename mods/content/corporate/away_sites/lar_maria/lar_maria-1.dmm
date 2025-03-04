@@ -560,7 +560,7 @@
 /turf/floor/tiled/white,
 /area/lar_maria/vir_main)
 "bL" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/tiled/white,
@@ -571,7 +571,7 @@
 /turf/floor/tiled/white,
 /area/lar_maria/vir_main)
 "bN" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/tiled/white,
@@ -585,7 +585,7 @@
 /turf/floor/tiled,
 /area/lar_maria/cells)
 "bR" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -597,7 +597,7 @@
 /area/lar_maria/cells)
 "bT" = (
 /obj/machinery/light,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -969,7 +969,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -1527,13 +1527,13 @@
 /turf/floor/tiled,
 /area/lar_maria/sec_wing)
 "ev" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
 /area/lar_maria/sec_wing)
 "ew" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/abstract/landmark/corpse/lar_maria/zhp_guard,
@@ -1652,7 +1652,7 @@
 /turf/floor/tiled,
 /area/lar_maria/sec_wing)
 "eK" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -1762,7 +1762,7 @@
 /turf/floor/tiled/white,
 /area/lar_maria/vir_aux)
 "eZ" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/white,
 /area/lar_maria/vir_aux)
 "fa" = (
@@ -1782,7 +1782,7 @@
 /area/lar_maria/cells)
 "fd" = (
 /obj/machinery/light,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /mob/living/simple_animal/hostile/lar_maria/test_subject,
@@ -2376,7 +2376,7 @@
 /turf/floor/plating,
 /area/lar_maria/sec_wing)
 "gj" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/abstract/landmark/corpse/lar_maria/test_subject,
@@ -2680,7 +2680,7 @@
 /turf/floor/plating,
 /area/lar_maria/cells)
 "hb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -2789,7 +2789,7 @@
 /turf/floor/plating,
 /area/lar_maria/cells)
 "ht" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/lar_maria/vir_access)
 "hu" = (
@@ -2861,7 +2861,7 @@
 /turf/floor/tiled,
 /area/lar_maria/vir_access)
 "hF" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3050,7 +3050,7 @@
 /turf/floor/tiled,
 /area/lar_maria/vir_access)
 "hZ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3373,7 +3373,7 @@
 /turf/floor/tiled,
 /area/lar_maria/vir_access)
 "iK" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/item/gun/energy/taser,
@@ -3384,7 +3384,7 @@
 /turf/floor/tiled,
 /area/lar_maria/sec_wing)
 "iM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /mob/living/simple_animal/hostile/lar_maria/guard,

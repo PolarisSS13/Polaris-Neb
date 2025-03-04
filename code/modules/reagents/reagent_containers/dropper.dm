@@ -56,8 +56,8 @@
 			admin_attack_log(user, M, "Squirted their victim with \a [src] (Reagents: [contained])", "Were squirted with \a [src] (Reagents: [contained])", "used \a [src] (Reagents: [contained]) to squirt at")
 
 			var/spill_amt = M.incapacitated()? 0 : 30
-			trans += reagents.splash(target, reagents.total_volume/2, max_spill = spill_amt)
-			trans += reagents.trans_to_mob(target, reagents.total_volume/2, CHEM_INJECT) //I guess it gets into the bloodstream through the eyes or something
+			trans += reagents.splash(M, reagents.total_volume/2, max_spill = spill_amt)
+			trans += reagents.trans_to_mob(M, reagents.total_volume/2, CHEM_INJECT) //I guess it gets into the bloodstream through the eyes or something
 			user.visible_message(SPAN_DANGER("[user] squirts something into \the [target]'s eyes!"), SPAN_DANGER("You squirt [trans] unit\s into \the [target]'s eyes!"))
 			return
 		else

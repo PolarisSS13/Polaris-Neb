@@ -91,7 +91,7 @@
 	detonate()
 
 /obj/item/grenade/flashbang/clusterbang//Created by Polymorph, fixed by Sieve
-	desc = "Use of this weapon may constiute a war crime in your area, consult your local captain."
+	desc = "Use of this weapon may constitute a war crime in your area, consult your local captain."
 	name = "clusterbang"
 	icon = 'icons/obj/items/grenades/clusterbang.dmi'
 

@@ -52,12 +52,12 @@
 
 	appearance = new_appearance
 
-/obj/item/chems/drinks/juicebox/examine(mob/user, distance)
+/obj/item/chems/drinks/juicebox/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(atom_flags & ATOM_FLAG_OPEN_CONTAINER)
-		to_chat(user, SPAN_NOTICE("It has a straw stuck through the foil seal on top."))
+		. += SPAN_NOTICE("It has a straw stuck through the foil seal on top.")
 	else
-		to_chat(user, SPAN_NOTICE("It has a straw stuck to the side and the foil seal is intact."))
+		. += SPAN_NOTICE("It has a straw stuck to the side and the foil seal is intact.")
 
 /obj/item/chems/drinks/juicebox/open(mob/user)
 	playsound(loc,'sound/effects/bonebreak1.ogg', rand(10,50), 1)
@@ -118,8 +118,8 @@
 
 /obj/item/chems/drinks/juicebox/sensible_random/populate_reagents()
 	var/list/chosen_reagents = juice_it()
-	var/decl/material/J = GET_DECL(chosen_reagents[1])
-	var/decl/material/K = GET_DECL(chosen_reagents[2])
+	var/decl/material/J = chosen_reagents[1]
+	var/decl/material/K = chosen_reagents[2]
 	var/splash = pick("teasing", "splash", "hint", "measure", "nip", "slug", "depth", "dash", "sensation", "surge", "squirt", "spritz", "efflux", "gush", "swell")
 	desc = "[J.liquid_name]; [J.lore_text] This one comes with \an [splash] of [K.liquid_name] in a neat box."
 	name = "\improper [J.liquid_name] and [K.liquid_name] juicebox"

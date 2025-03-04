@@ -54,7 +54,7 @@
 	maxbodytemp = 323	//Above 50 Degrees Celsius
 	holder_type = /obj/item/holder
 	mob_size = MOB_SIZE_SMALL
-	possession_candidate = 1
+	possession_candidate = TRUE
 	pass_flags = PASS_FLAG_TABLE
 	butchery_data = /decl/butchery_data/animal/cat
 	base_animal_type = /mob/living/simple_animal/passive/cat

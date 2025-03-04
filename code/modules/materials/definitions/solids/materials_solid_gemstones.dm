@@ -3,7 +3,7 @@
 	cut_delay               = 60
 	color                   = COLOR_DIAMOND
 	opacity                 = 0.4
-	shard_type              = SHARD_SHARD
+	shard_name              = SHARD_SHARD
 	tableslam_noise         = 'sound/effects/Glasshit.ogg'
 	conductive              = 0
 	ore_icon_overlay        = "gems"

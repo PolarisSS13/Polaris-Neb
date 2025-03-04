@@ -66,7 +66,7 @@
 /decl/gemstone_cut/octagon
 	name                   = "octagon"
 	adjective              = "octagon-cut"
-	desc                   = "A octagon-cut gemstone."
+	desc                   = "An octagon-cut gemstone."
 	icon                   = 'icons/obj/items/gemstones/octagon.dmi'
 
 /decl/gemstone_cut/round

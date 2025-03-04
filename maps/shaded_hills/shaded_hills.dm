@@ -7,6 +7,7 @@
 	#include "../../mods/species/drakes/_drakes.dme" // include before _fantasy.dme so overrides work
 	#include "../../mods/content/item_sharpening/_item_sharpening.dme"
 	#include "../../mods/content/fantasy/_fantasy.dme"
+	#include "../../mods/content/blacksmithy/_blacksmithy.dme"
 
 	#include "areas/_areas.dm"
 	#include "areas/downlands.dm"

@@ -3,7 +3,7 @@
 /turf/space,
 /area/space)
 "ab" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/beige{
@@ -467,7 +467,7 @@
 /turf/floor/carpet/blue,
 /area/ship/trade/command/captain)
 "aW" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /turf/floor/carpet/blue,
 /area/ship/trade/command/captain)
 "aX" = (
@@ -575,7 +575,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -593,7 +593,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 8
 	},
 /turf/floor/tiled/steel_ridged,
@@ -1121,7 +1121,7 @@
 /turf/floor/tiled/steel_ridged,
 /area/ship/trade/dock)
 "cw" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -1265,7 +1265,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/bed/chair/wood,
+/obj/structure/chair/wood,
 /turf/floor/tiled,
 /area/ship/trade/crew/saloon)
 "da" = (
@@ -2009,7 +2009,7 @@
 	pixel_x = 3
 	},
 /obj/item/chems/condiment/enzyme,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/chems/cooking_vessel/pot,
 /turf/floor/tiled,
 /area/ship/trade/crew/kitchen)
@@ -2414,7 +2414,7 @@
 /turf/floor/tiled/freezer,
 /area/ship/trade/crew/wash)
 "fV" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/abstract/landmark/start{
 	name = "Head Doctor"
 	},
@@ -3216,7 +3216,7 @@
 /turf/floor/tiled/techfloor,
 /area/ship/trade/maintenance/engineering)
 "hW" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /obj/abstract/landmark/start{
 	name = "Head Engineer"
 	},
@@ -3690,7 +3690,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 6
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -3779,7 +3779,7 @@
 /turf/floor/reinforced/airmix,
 /area/ship/trade/maintenance/atmos)
 "jb" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/machinery/media/jukebox/old,
@@ -4670,7 +4670,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 6
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -4759,7 +4759,7 @@
 /obj/machinery/light,
 /obj/machinery/optable,
 /obj/item/chems/drinks/glass2/coffeecup/britcup,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /turf/floor/tiled/white,
 /area/ship/trade/crew/medbay)
 "op" = (
@@ -5047,7 +5047,7 @@
 /turf/wall/r_wall/hull,
 /area/ship/trade/maintenance/atmos)
 "rH" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/dark,
@@ -5074,7 +5074,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 9
 	},
-/obj/structure/bed/chair/shuttle/white{
+/obj/structure/chair/shuttle/white{
 	dir = 4
 	},
 /turf/floor/tiled/steel_ridged,
@@ -5672,7 +5672,7 @@
 /obj/random/clothing,
 /obj/random/clothing,
 /obj/random/clothing,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/firstaid/regular,
 /turf/floor/tiled/freezer,
 /area/ship/trade/crew/wash)
@@ -6641,7 +6641,7 @@
 /turf/floor/tiled/monotile,
 /area/ship/trade/command/hallway)
 "Jk" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "First Mate"
 	},
@@ -7090,7 +7090,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 9
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 4
 	},
 /obj/item/radio/intercom{
@@ -7234,7 +7234,7 @@
 	dir = 4;
 	id_tag = "tradeship_rescue_shuttle_pump"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/white{
@@ -7995,7 +7995,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 6
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,

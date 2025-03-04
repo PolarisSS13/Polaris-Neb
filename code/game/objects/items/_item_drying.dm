@@ -46,7 +46,7 @@
 /obj/item/proc/get_max_drying_wetness()
 	return initial(drying_wetness) || drying_wetness || 1
 
-// Returns a string used in drying rack examine().
+// Returns a string used in drying rack examined_by().
 /obj/item/proc/get_dryness_text(var/obj/rack)
 	var/moistness = drying_wetness / get_max_drying_wetness()
 	if(moistness > 0.65)

@@ -68,8 +68,8 @@
 		return
 	var/list/showing = owner.linked?.navigation_viewers || owner.viewers
 	if(length(showing))
-		for(var/weakref/W in showing)
-			var/mob/M = W.resolve()
+		for(var/weakref/viewer_ref in showing)
+			var/mob/M = viewer_ref.resolve()
 			if(istype(M) && M.client)
 				M.client.images |= images
 
@@ -78,8 +78,8 @@
 		return
 	var/list/showing = owner.linked?.navigation_viewers || owner.viewers
 	if(length(showing))
-		for(var/weakref/W in showing)
-			var/mob/M = W.resolve()
+		for(var/weakref/viewer_ref in showing)
+			var/mob/M = viewer_ref.resolve()
 			if(istype(M) && M.client)
 				M.client.images -= images
 

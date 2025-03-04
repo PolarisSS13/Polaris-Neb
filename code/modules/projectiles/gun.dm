@@ -418,12 +418,11 @@
 				for(var/obj/item/rig_module/stealth_field/S in rig.installed_modules)
 					S.deactivate()
 
-		if(space_recoil)
-			if(!user.check_space_footing())
-				var/old_dir = user.dir
-				user.inertia_ignore = projectile
-				step(user,get_dir(target,user))
-				user.set_dir(old_dir)
+		if(space_recoil && user.can_slip(magboots_only = TRUE))
+			var/old_dir = user.dir
+			user.inertia_ignore = projectile
+			step(user,get_dir(target,user))
+			user.set_dir(old_dir)
 
 	update_icon()
 
@@ -631,14 +630,14 @@
 		accuracy = initial(accuracy)
 		screen_shake = initial(screen_shake)
 
-/obj/item/gun/examine(mob/user)
+/obj/item/gun/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
 			var/datum/firemode/current_mode = firemodes[sel_mode]
-			to_chat(user, "The fire selector is set to [current_mode.name].")
+			. += "The fire selector is set to [current_mode.name]."
 	if(has_safety)
-		to_chat(user, "The safety is [safety() ? "on" : "off"].")
+		. += "The safety is [safety() ? "on" : "off"]."
 	last_safety_check = world.time
 
 /obj/item/gun/proc/try_switch_firemodes(mob/user)
@@ -707,14 +706,13 @@
 	last_handled = world.time
 
 /obj/item/gun/on_disarm_attempt(mob/target, mob/attacker)
-	var/list/turfs = list()
-	for(var/turf/T in view())
-		turfs += T
-	if(turfs.len)
+	var/list/turfs = view()
+	if(length(turfs))
 		var/turf/shoot_to = pick(turfs)
-		target.visible_message("<span class='danger'>\The [src] goes off during the struggle!</span>")
+		target.visible_message(SPAN_DANGER("\The [src] goes off during the struggle!"))
 		afterattack(shoot_to,target)
-		return 1
+		return TRUE
+	return FALSE
 
 /obj/item/gun/proc/can_autofire()
 	return (autofire_enabled && world.time >= next_fire_time)

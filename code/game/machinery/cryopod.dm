@@ -248,7 +248,7 @@
 /obj/machinery/cryopod/lifepod/Process()
 	if(SSevac.evacuation_controller && SSevac.evacuation_controller.state >= EVAC_LAUNCHING)
 		if(occupant && !launched)
-			launch()
+			INVOKE_ASYNC(src, PROC_REF(launch))
 	..()
 
 /obj/machinery/cryopod/Destroy()
@@ -294,16 +294,19 @@
 
 	return TRUE
 
-/obj/machinery/cryopod/examine(mob/user)
+/obj/machinery/cryopod/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (occupant && user.Adjacent(src))
-		occupant.examine(arglist(args))
+		. += occupant.get_examine_strings(user, distance, infix, suffix)
+
+/obj/machinery/cryopod/get_cryogenic_power()
+	return applies_stasis ? 1 : 0
 
 //Lifted from Unity stasis.dm and refactored.
 /obj/machinery/cryopod/Process()
 	if(occupant)
 		if(applies_stasis && (world.time > time_entered + 20 SECONDS))
-			occupant.set_stasis(2)
+			occupant.add_mob_modifier(/decl/mob_modifier/stasis, 2 SECONDS, source = src)
 
 		//Allow a ten minute gap between entering the pod and actually despawning.
 		// Only provide the gap if the occupant hasn't ghosted
@@ -417,8 +420,8 @@
 	var/list/items = get_contained_external_atoms()
 	if(occupant) items -= occupant
 
-	for(var/obj/item/W in items)
-		W.dropInto(loc)
+	for(var/obj/item/thing in items)
+		thing.dropInto(loc)
 
 	src.go_out()
 	add_fingerprint(usr)
@@ -520,14 +523,14 @@
 		to_chat(user, SPAN_NOTICE("The glass is already open."))
 	return TRUE
 
-/obj/structure/broken_cryo/attackby(obj/item/W, mob/user)
+/obj/structure/broken_cryo/attackby(obj/item/used_item, mob/user)
 	if (busy)
 		to_chat(user, SPAN_NOTICE("Someone else is attempting to open this."))
 		return TRUE
 	if (!closed)
 		to_chat(user, SPAN_NOTICE("The glass cover is already open."))
 		return TRUE
-	if (IS_CROWBAR(W))
+	if (IS_CROWBAR(used_item))
 		busy = 1
 		visible_message("[user] starts to pry the glass cover off of \the [src].")
 		if (!do_after(user, 50, src))

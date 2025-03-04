@@ -34,20 +34,8 @@
 	var/dismantle_type = /obj/item/robot_parts/robot_suit
 	/// If icon selection has been completed yet
 	var/icon_selected = TRUE
-	/// Hud stuff
-	var/obj/screen/robot_module/one/inv1
-	var/obj/screen/robot_module/two/inv2
-	var/obj/screen/robot_module/three/inv3
-	var/obj/screen/robot_drop_grab/ui_drop_grab
-	/// Used to determine whether they have the module menu shown or not
-	var/shown_robot_modules = 0
-	var/obj/screen/robot_modules_background/robot_modules_background
-	/// 3 Modules can be activated at any one time.
+
 	var/obj/item/robot_module/module = null
-	var/obj/item/module_active
-	var/obj/item/module_state_1
-	var/obj/item/module_state_2
-	var/obj/item/module_state_3
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = /obj/item/cell/high
 	var/cell_emp_mult = 2.5
@@ -89,6 +77,10 @@
 
 /mob/living/silicon/robot/Initialize()
 
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/one)
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/two)
+	add_held_item_slot(new /datum/inventory_slot/gripper/robot/three)
+
 	reset_hud_overlays()
 
 	. = ..()
@@ -99,7 +91,6 @@
 
 	wires = new(src)
 
-	robot_modules_background = new(null, src)
 	ident = random_id(/mob/living/silicon/robot, 1, 999)
 
 	updatename(modtype)
@@ -195,17 +186,15 @@
 
 /mob/living/silicon/robot/proc/reset_module(var/suppress_alert = null)
 	// Clear hands and module icon.
-	uneq_all()
-	if(shown_robot_modules)
-		hud_used.toggle_show_robot_modules()
+	drop_held_items()
 	modtype = initial(modtype)
-	if(hands)
-		hands.icon_state = initial(hands.icon_state)
+	refresh_hud_element(HUD_ROBOT_MODULE)
 	// If the robot had a module and this wasn't an uncertified change, let the AI know.
 	if(module)
 		if (!suppress_alert)
 			notify_ai(ROBOT_NOTIFICATION_MODULE_RESET, module.name)
 		// Delete the module.
+		module.storage?.close(src)
 		module.Reset(src)
 		QDEL_NULL(module)
 	updatename("Default")
@@ -236,9 +225,7 @@
 		return
 
 	new module_type(src)
-
-	if(hands)
-		hands.icon_state = lowertext(modtype)
+	refresh_hud_element(HUD_ROBOT_MODULE)
 	SSstatistics.add_field("cyborg_[lowertext(modtype)]",1)
 	updatename()
 	recalculate_synth_capacities()
@@ -314,7 +301,7 @@
 	var/dat = "<HEAD><TITLE>[src.name] Self-Diagnosis Report</TITLE></HEAD><BODY>\n"
 	for (var/V in components)
 		var/datum/robot_component/C = components[V]
-		dat += "<b>[C.name]</b><br><table><tr><td>Brute Damage:</td><td>[C.brute_damage]</td></tr><tr><td>Electronics Damage:</td><td>[C.electronics_damage]</td></tr><tr><td>Powered:</td><td>[(!C.idle_usage || C.is_powered()) ? "Yes" : "No"]</td></tr><tr><td>Toggled:</td><td>[ C.toggled ? "Yes" : "No"]</td></table><br>"
+		dat += "<b>[C.name]</b><br><table><tr><td>Brute Damage:</td><td>[C.brute_damage]</td></tr><tr><td>Electronics Damage:</td><td>[C.burn_damage]</td></tr><tr><td>Powered:</td><td>[(!C.idle_usage || C.is_powered()) ? "Yes" : "No"]</td></tr><tr><td>Toggled:</td><td>[ C.toggled ? "Yes" : "No"]</td></table><br>"
 
 	return dat
 
@@ -428,41 +415,41 @@
 		spark_at(src, 5, holder=src)
 	return 2
 
-/mob/living/silicon/robot/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/inducer) || istype(W, /obj/item/handcuffs))
+/mob/living/silicon/robot/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/inducer) || istype(used_item, /obj/item/handcuffs))
 		return TRUE
 
 	if(opened) // Are they trying to insert something?
 		for(var/V in components)
 			var/datum/robot_component/C = components[V]
-			if(!C.installed && C.accepts_component(W))
-				if(!user.try_unequip(W))
+			if(!C.installed && C.accepts_component(used_item))
+				if(!user.try_unequip(used_item))
 					return TRUE
 				C.installed = 1
-				C.wrapped = W
+				C.wrapped = used_item
 				C.install()
-				W.forceMove(null)
+				used_item.forceMove(null)
 
-				var/obj/item/robot_parts/robot_component/WC = W
+				var/obj/item/robot_parts/robot_component/WC = used_item
 				if(istype(WC))
 					C.brute_damage = WC.brute_damage
-					C.electronics_damage = WC.burn_damage
+					C.burn_damage = WC.burn_damage
 
-				to_chat(user, "<span class='notice'>You install the [W.name].</span>")
+				to_chat(user, "<span class='notice'>You install the [used_item.name].</span>")
 				return TRUE
 		// If the robot is having something inserted which will remain inside it, self-inserting must be handled before exiting to avoid logic errors. Use the handle_selfinsert proc.
-		if(try_stock_parts_install(W, user))
+		if(try_stock_parts_install(used_item, user))
 			return TRUE
 
-	if(IS_WELDER(W) && !user.check_intent(I_FLAG_HARM))
+	if(IS_WELDER(used_item) && !user.check_intent(I_FLAG_HARM))
 		if (src == user)
 			to_chat(user, "<span class='warning'>You lack the reach to be able to repair yourself.</span>")
 			return TRUE
 		if (!get_damage(BRUTE))
 			to_chat(user, "Nothing to fix here!")
 			return TRUE
-		var/obj/item/weldingtool/WT = W
-		if (WT.weld(0))
+		var/obj/item/weldingtool/welder = used_item
+		if (welder.weld(0))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			heal_damage(BRUTE, 30)
 			add_fingerprint(user)
@@ -471,18 +458,18 @@
 			to_chat(user, "Need more welding fuel!")
 		return TRUE
 
-	else if(istype(W, /obj/item/stack/cable_coil) && (wiresexposed || isdrone(src)))
+	else if(istype(used_item, /obj/item/stack/cable_coil) && (wiresexposed || isdrone(src)))
 		if (!get_damage(BURN))
 			to_chat(user, "Nothing to fix here!")
 			return TRUE
-		var/obj/item/stack/cable_coil/coil = W
+		var/obj/item/stack/cable_coil/coil = used_item
 		if (coil.use(1))
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 			heal_damage(BURN, 30)
 			user.visible_message(SPAN_NOTICE("\The [user] has fixed some of the burnt wires on \the [src]!"))
 		return TRUE
 
-	else if(IS_CROWBAR(W) && !user.check_intent(I_FLAG_HARM))	// crowbar means open or close the cover - we all know what a crowbar is by now
+	else if(IS_CROWBAR(used_item) && !user.check_intent(I_FLAG_HARM))	// crowbar means open or close the cover - we all know what a crowbar is by now
 		if(opened)
 			if(cell)
 				user.visible_message(
@@ -524,7 +511,7 @@
 					var/obj/item/robot_parts/robot_component/I = C.wrapped
 					if(istype(I))
 						I.set_bruteloss(C.brute_damage)
-						I.set_burnloss(C.electronics_damage)
+						I.set_burnloss(C.burn_damage)
 
 					removed_item = I
 					if(C.installed == 1)
@@ -546,50 +533,50 @@
 					opened = 1
 					update_icon()
 		return TRUE
-	else if (istype(W, /obj/item/cell) && opened)	// trying to put a cell inside
+	else if (istype(used_item, /obj/item/cell) && opened)	// trying to put a cell inside
 		var/datum/robot_component/C = components["power cell"]
 		if(wiresexposed)
 			to_chat(user, "Close the panel first.")
 		else if(cell)
 			to_chat(user, "There is a power cell already installed.")
-		else if(W.w_class != ITEM_SIZE_NORMAL)
-			to_chat(user, "\The [W] is too [W.w_class < ITEM_SIZE_NORMAL? "small" : "large"] to fit here.")
-		else if(user.try_unequip(W, src))
-			cell = W
-			handle_selfinsert(W, user) //Just in case.
+		else if(used_item.w_class != ITEM_SIZE_NORMAL)
+			to_chat(user, "\The [used_item] is too [used_item.w_class < ITEM_SIZE_NORMAL? "small" : "large"] to fit here.")
+		else if(user.try_unequip(used_item, src))
+			cell = used_item
+			handle_selfinsert(used_item, user) //Just in case.
 			to_chat(user, "You insert the power cell.")
 			C.installed = 1
-			C.wrapped = W
+			C.wrapped = used_item
 			C.install()
 			// This means that removing and replacing a power cell will repair the mount.
 			C.brute_damage = 0
-			C.electronics_damage = 0
+			C.burn_damage = 0
 		return TRUE
-	else if(IS_WIRECUTTER(W) || IS_MULTITOOL(W))
+	else if(IS_WIRECUTTER(used_item) || IS_MULTITOOL(used_item))
 		if (wiresexposed)
 			wires.Interact(user)
 		else
 			to_chat(user, "You can't reach the wiring.")
 		return TRUE
-	else if(IS_SCREWDRIVER(W) && opened && !cell)	// haxing
+	else if(IS_SCREWDRIVER(used_item) && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"].")
 		update_icon()
 		return TRUE
-	else if(IS_SCREWDRIVER(W) && opened && cell)	// radio
+	else if(IS_SCREWDRIVER(used_item) && opened && cell)	// radio
 		if(silicon_radio)
-			silicon_radio.attackby(W,user)//Push it to the radio to let it handle everything
+			silicon_radio.attackby(used_item,user)//Push it to the radio to let it handle everything
 		else
 			to_chat(user, "Unable to locate a radio.")
 		update_icon()
 		return TRUE
-	else if(istype(W, /obj/item/encryptionkey/) && opened)
+	else if(istype(used_item, /obj/item/encryptionkey/) && opened)
 		if(silicon_radio)//sanityyyyyy
-			silicon_radio.attackby(W,user)//GTFO, you have your own procs
+			silicon_radio.attackby(used_item,user)//GTFO, you have your own procs
 		else
 			to_chat(user, "Unable to locate a radio.")
 		return TRUE
-	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer)||istype(W, /obj/item/card/robot))			// trying to unlock the interface with an ID card
+	else if (istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer)||istype(used_item, /obj/item/card/robot))			// trying to unlock the interface with an ID card
 		if(emagged)//still allow them to open the cover
 			to_chat(user, "The interface seems slightly damaged.")
 		if(opened)
@@ -602,8 +589,8 @@
 			else
 				to_chat(user, "<span class='warning'>Access denied.</span>")
 		return TRUE
-	else if(istype(W, /obj/item/borg/upgrade))
-		var/obj/item/borg/upgrade/U = W
+	else if(istype(used_item, /obj/item/borg/upgrade))
+		var/obj/item/borg/upgrade/U = used_item
 		if(!opened)
 			to_chat(user, "You must access [src]'s internals!")
 		else if(!src.module && U.require_module)
@@ -615,22 +602,21 @@
 				if(!user.try_unequip(U, src))
 					return TRUE
 				to_chat(user, "You apply the upgrade to [src]!")
-				handle_selfinsert(W, user)
+				handle_selfinsert(used_item, user)
 			else
 				to_chat(user, "Upgrade error!")
 		return TRUE
-	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && !user.check_intent(I_FLAG_HELP) && W.expend_attack_force(user))
+	if(!(istype(used_item, /obj/item/robotanalyzer) || istype(used_item, /obj/item/scanner/health)) && !user.check_intent(I_FLAG_HELP) && used_item.expend_attack_force(user))
 		spark_at(src, 5, holder=src)
 	return ..()
 
-/mob/living/silicon/robot/proc/handle_selfinsert(obj/item/W, mob/user)
+/mob/living/silicon/robot/proc/handle_selfinsert(obj/item/used_item, mob/user)
 	if ((user == src) && istype(get_active_held_item(),/obj/item/gripper))
 		var/obj/item/gripper/H = get_active_held_item()
-		if (W.loc == H) //if this triggers something has gone very wrong, and it's safest to abort
+		if (used_item.loc == H) //if this triggers something has gone very wrong, and it's safest to abort
 			return
-		else if (H.wrapped == W)
+		else if (H.wrapped == used_item)
 			H.wrapped = null
-
 
 /mob/living/silicon/robot/try_awaken(mob/user)
 	return user?.attempt_hug(src)
@@ -692,48 +678,8 @@
 		else
 			add_overlay(image(panel_icon, "ov-openpanel -c"))
 
-	if(module_active && istype(module_active, /obj/item/borg/combat/shield))
+	if(istype(get_active_held_item(), /obj/item/borg/combat/shield))
 		add_overlay("[icon_state]-shield")
-
-/mob/living/silicon/robot/proc/installed_modules()
-	if(weapon_lock)
-		to_chat(src, "<span class='warning'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</span>")
-		return
-
-	if(!module)
-		pick_module()
-		return
-	var/dat = "<HEAD><TITLE>Modules</TITLE></HEAD><BODY>\n"
-	dat += {"
-	<B>Activated Modules</B>
-	<BR>
-	Module 1: [module_state_1 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_1]'>[module_state_1]<A>" : "No Module"]<BR>
-	Module 2: [module_state_2 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_2]'>[module_state_2]<A>" : "No Module"]<BR>
-	Module 3: [module_state_3 ? "<A HREF='byond://?src=\ref[src];mod=\ref[module_state_3]'>[module_state_3]<A>" : "No Module"]<BR>
-	<BR>
-	<B>Installed Modules</B><BR><BR>"}
-
-
-	for (var/obj in module.equipment)
-		if (!obj)
-			dat += text("<B>Resource depleted</B><BR>")
-		else if(activated(obj))
-			dat += text("[obj]: <B>Activated</B><BR>")
-		else
-			dat += text("[obj]: <A HREF='byond://?src=\ref[src];act=\ref[obj]'>Activate</A><BR>")
-	if (emagged && module.emag)
-		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
-		else
-			dat += text("[module.emag]: <A HREF='byond://?src=\ref[src];act=\ref[module.emag]'>Activate</A><BR>")
-/*
-		if(activated(obj))
-			dat += text("[obj]: \[<B>Activated</B> | <A HREF='byond://?src=\ref[src];deact=\ref[obj]'>Deactivate</A>\]<BR>")
-		else
-			dat += text("[obj]: \[<A HREF='byond://?src=\ref[src];act=\ref[obj]'>Activate</A> | <B>Deactivated</B>\]<BR>")
-*/
-	show_browser(src, dat, "window=robotmod")
-
 
 /mob/living/silicon/robot/OnSelfTopic(href_list)
 	if (href_list["showalerts"])
@@ -746,61 +692,6 @@
 			O.attack_self(src)
 		return TOPIC_HANDLED
 
-	if (href_list["act"])
-		var/obj/item/O = locate(href_list["act"])
-		if (!istype(O))
-			return TOPIC_HANDLED
-
-		if(!((O in module.equipment) || (O == src.module.emag)))
-			return TOPIC_HANDLED
-
-		if(activated(O))
-			to_chat(src, "Already activated.")
-			return TOPIC_HANDLED
-		if(!module_state_1)
-			module_state_1 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_1,/obj/item/borg/sight))
-				sight_mode |= module_state_1:sight_mode
-		else if(!module_state_2)
-			module_state_2 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_2,/obj/item/borg/sight))
-				sight_mode |= module_state_2:sight_mode
-		else if(!module_state_3)
-			module_state_3 = O
-			O.hud_layerise()
-			O.forceMove(src)
-			O.equipped_robot()
-			if(istype(module_state_3,/obj/item/borg/sight))
-				sight_mode |= module_state_3:sight_mode
-		else
-			to_chat(src, "You need to disable a module first!")
-		installed_modules()
-		return TOPIC_HANDLED
-
-	if (href_list["deact"])
-		var/obj/item/O = locate(href_list["deact"])
-		if(activated(O))
-			if(module_state_1 == O)
-				module_state_1 = null
-				O.forceMove(null)
-			else if(module_state_2 == O)
-				module_state_2 = null
-				O.forceMove(null)
-			else if(module_state_3 == O)
-				module_state_3 = null
-				O.forceMove(null)
-			else
-				to_chat(src, "Module isn't activated.")
-		else
-			to_chat(src, "Module isn't activated.")
-		installed_modules()
-		return TOPIC_HANDLED
 	return ..()
 
 /mob/living/silicon/robot/proc/radio_menu()
@@ -808,16 +699,11 @@
 
 /mob/living/silicon/robot/Move(a, b, flag)
 	. = ..()
-	if(.)
-
-		if(module && isturf(loc))
-			var/obj/item/ore/orebag = locate() in list(module_state_1, module_state_2, module_state_3)
-			if(orebag)
-				loc.attackby(orebag, src)
-			module.handle_turf(loc, src)
-
-		if(client)
-			up_hint.update_icon()
+	if(. && module && isturf(loc))
+		var/obj/item/ore/orebag = locate() in get_held_items()
+		if(orebag)
+			loc.attackby(orebag, src)
+		module.handle_turf(loc, src)
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
 	disconnect_from_ai()
@@ -834,11 +720,10 @@
 	set name = "Reset Identity Codes"
 	set desc = "Scrambles your security and identification codes and resets your current buffers. Unlocks you and but permanently severs you from your AI and the robotics console and will deactivate your camera system."
 
-	var/mob/living/silicon/robot/R = src
-
-	if(R)
-		R.UnlinkSelf()
-		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
+	var/mob/living/silicon/robot/robot = src
+	if(robot)
+		robot.UnlinkSelf()
+		to_chat(robot, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
 		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
@@ -1051,12 +936,12 @@
 	chassis.dismantled_from(src)
 	qdel(src)
 
-/mob/living/silicon/robot/try_stock_parts_install(obj/item/stock_parts/W, mob/user)
+/mob/living/silicon/robot/try_stock_parts_install(obj/item/stock_parts/used_item, mob/user)
 	if(!opened)
 		return
 	. = ..()
 	if(.)
-		handle_selfinsert(W, user)
+		handle_selfinsert(used_item, user)
 		recalculate_synth_capacities()
 
 /mob/living/silicon/robot/get_admin_job_string()

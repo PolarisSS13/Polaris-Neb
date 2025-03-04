@@ -1,6 +1,6 @@
 /obj/item/integrated_circuit/input/card_reader
 	name = "ID card reader" //To differentiate it from the data card reader
-	desc = "A circuit that can read the registred name, assignment, and PassKey string from an ID card."
+	desc = "A circuit that can read the registered name, assignment, and PassKey string from an ID card."
 	icon_state = "card_reader"
 
 	complexity = 4
@@ -43,7 +43,7 @@
 
 /obj/item/integrated_circuit/output/access_displayer
 	name = "access circuit"
-	desc = "broadcasts access for your assembly via a passkey."
+	desc = "A circuit that broadcasts access for your assembly via a passkey."
 	extended_desc = "Useful for moving drones through airlocks."
 
 	complexity = 4

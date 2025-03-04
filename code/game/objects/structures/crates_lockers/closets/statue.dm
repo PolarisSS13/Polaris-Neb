@@ -98,10 +98,10 @@
 		current_health -= 60 / severity
 		check_health()
 
-/obj/structure/closet/statue/attackby(obj/item/I, mob/user)
-	current_health -= I.expend_attack_force(user)
+/obj/structure/closet/statue/attackby(obj/item/used_item, mob/user)
+	current_health -= used_item.expend_attack_force(user)
 	user.do_attack_animation(src)
-	visible_message("<span class='danger'>[user] strikes [src] with [I].</span>")
+	visible_message("<span class='danger'>[user] strikes [src] with [used_item].</span>")
 	check_health()
 	return TRUE
 

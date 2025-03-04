@@ -13,7 +13,7 @@
 	abstract_type = /obj/item/chems/drinks/bottle
 
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
-	var/obj/item/chems/glass/rag/rag = null
+	var/obj/item/chems/rag/rag = null
 	var/rag_underlay = "rag"
 	var/stop_spin_bottle = FALSE //Gotta stop the rotation.
 
@@ -93,19 +93,19 @@
 	qdel(src)
 	return B
 
-/obj/item/chems/drinks/bottle/attackby(obj/item/W, mob/user)
+/obj/item/chems/drinks/bottle/attackby(obj/item/used_item, mob/user)
 	if(!rag)
-		if(istype(W, /obj/item/chems/glass/rag))
-			insert_rag(W, user)
+		if(istype(used_item, /obj/item/chems/rag))
+			insert_rag(used_item, user)
 			return TRUE
-	else if(W.isflamesource())
-		return rag.attackby(W, user)
+	else if(used_item.isflamesource())
+		return rag.attackby(used_item, user)
 	return ..()
 
 /obj/item/chems/drinks/bottle/attack_self(mob/user)
 	return rag ? remove_rag(user) : ..()
 
-/obj/item/chems/drinks/bottle/proc/insert_rag(obj/item/chems/glass/rag/R, mob/user)
+/obj/item/chems/drinks/bottle/proc/insert_rag(obj/item/chems/rag/R, mob/user)
 	if(material?.type != /decl/material/solid/glass)
 		to_chat(user, SPAN_WARNING("\The [src] isn't made of glass, you can't make a good Molotov with it."))
 		return TRUE
@@ -290,7 +290,7 @@
 
 /obj/item/chems/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space nightclubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = @'{"x":16,"y":6}'
 
@@ -346,7 +346,7 @@
 
 /obj/item/chems/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
-	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
 	icon_state = "cognacbottle"
 	center_of_mass = @'{"x":16,"y":6}'
 
@@ -409,7 +409,7 @@
 
 /obj/item/chems/drinks/bottle/cola
 	name = "\improper Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola... in space."
 	icon_state = "colabottle"
 	center_of_mass = @'{"x":16,"y":6}'
 

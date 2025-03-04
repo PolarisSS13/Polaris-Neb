@@ -51,7 +51,7 @@
 
 /datum/uplink_item/item/grenades/supermatters
 	name = "5x Supermatter Grenades"
-	desc = "These grenades contains a small supermatter shard which will delaminate upon activation and pull in nearby objects, irradiate lifeforms, and eventually explode."
+	desc = "These grenades contain a small supermatter shard which will delaminate upon activation and pull in nearby objects, irradiate lifeforms, and eventually explode."
 	item_cost = 60
 	antag_roles = list(/decl/special_role/mercenary)
 	path = /obj/item/box/supermatters

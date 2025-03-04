@@ -23,7 +23,7 @@
 	src.uses = uses
 	src.power_change()
 
-/obj/machinery/ai_slipper/attackby(obj/item/W, mob/user)
+/obj/machinery/ai_slipper/attackby(obj/item/used_item, mob/user)
 	if(stat & (NOPOWER|BROKEN))
 		return FALSE
 	if (issilicon(user))

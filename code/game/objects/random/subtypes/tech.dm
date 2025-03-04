@@ -15,8 +15,8 @@
 	return spawnable_choices
 
 /obj/random/powercell
-	name = "random powercell"
-	desc = "This is a random powercell."
+	name = "random power cell"
+	desc = "This is a random power cell."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "hcell"
 

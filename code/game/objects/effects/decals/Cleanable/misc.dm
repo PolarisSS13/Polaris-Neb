@@ -16,13 +16,13 @@
 	sweepable          = TRUE
 	burnable           = FALSE
 
-/obj/effect/decal/cleanable/ash/attackby(obj/item/I, mob/user)
-	if(ATOM_IS_OPEN_CONTAINER(I))
-		if(REAGENTS_FREE_SPACE(I.reagents) <= 0)
-			to_chat(user, SPAN_WARNING("\The [I] is full."))
+/obj/effect/decal/cleanable/ash/attackby(obj/item/used_item, mob/user)
+	if(ATOM_IS_OPEN_CONTAINER(used_item))
+		if(REAGENTS_FREE_SPACE(used_item.reagents) <= 0)
+			to_chat(user, SPAN_WARNING("\The [used_item] is full."))
 		else
-			I.add_to_reagents(/decl/material/solid/carbon/ashes, 20)
-			user.visible_message(SPAN_NOTICE("\The [user] carefully scoops \the [src] into \the [I]."))
+			used_item.add_to_reagents(/decl/material/solid/carbon/ashes, 20)
+			user.visible_message(SPAN_NOTICE("\The [user] carefully scoops \the [src] into \the [used_item]."))
 			qdel(src)
 		return TRUE
 	return ..()

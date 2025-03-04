@@ -27,7 +27,6 @@
 	var/meat_name                          // Taken from first owner.
 
 	// Damage vars.
-	var/damage = 0                         // Current damage to the organ
 	var/min_broken_damage = 30             // Damage before becoming broken
 	var/max_damage = 30                    // Damage cap, including scarring
 	var/absolute_max_damage = 0            // Lifetime damage cap, ignoring scarring.
@@ -57,13 +56,14 @@
 	return
 
 /obj/item/organ/proc/refresh_action_button()
-	return action
+	if(!QDELETED(src) && istype(action))
+		return action
 
 /obj/item/organ/attack_self(var/mob/user)
 	return (owner && loc == owner && owner == user)
 
 /obj/item/organ/proc/is_broken()
-	return (damage >= min_broken_damage || (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN) || (status & ORGAN_DEAD))
+	return (status & ORGAN_CUT_AWAY) || (status & ORGAN_BROKEN) || (status & ORGAN_DEAD)
 
 //Third argument may be a dna datum; if null will be set to holder's dna.
 /obj/item/organ/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance)
@@ -123,8 +123,11 @@
 		QDEL_NULL(organ_appearance)
 		organ_appearance = supplied_appearance.Clone()
 	blood_DNA = list(organ_appearance.unique_enzymes = organ_appearance.blood_type)
-	set_species(organ_appearance.root_species?.name || global.using_map.default_species)
-	if(organ_appearance.root_bodytype)
+	if(species != organ_appearance.root_species)
+		if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
+			bodytype = organ_appearance.root_bodytype // this lets us take advantage of set_bodytype being called in set_species
+		set_species(organ_appearance.root_species?.name || global.using_map.default_species)
+	else if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
 		set_bodytype(organ_appearance.root_bodytype)
 
 /obj/item/organ/proc/set_bodytype(decl/bodytype/new_bodytype, override_material = null, apply_to_internal_organs = TRUE)
@@ -196,7 +199,6 @@
 	reset_status()
 
 /obj/item/organ/proc/die()
-	damage = max_damage
 	status |= ORGAN_DEAD
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL_LIST(ailments)
@@ -226,7 +228,7 @@
 				blood_splatter(get_turf(src), src, 1)
 			remove_any_reagents(0.1)
 		if(get_config_value(/decl/config/toggle/health_organs_decay))
-			take_general_damage(rand(1,3))
+			take_damage(rand(1,3))
 		germ_level += rand(2,6)
 		if(germ_level >= INFECTION_LEVEL_TWO)
 			germ_level += rand(2,6)
@@ -243,16 +245,12 @@
 		for(var/datum/ailment/ailment in ailments)
 			handle_ailment(ailment)
 
-	//check if we've hit max_damage
-	if(damage >= max_damage)
-		die()
-
 /obj/item/organ/proc/handle_ailment(var/datum/ailment/ailment)
 	if(ailment.treated_by_reagent_type)
 		for(var/datum/reagents/source as anything in owner.get_metabolizing_reagent_holders())
-			for(var/reagent_type in source.reagent_volumes)
-				if(ailment.treated_by_medication(reagent_type, source.reagent_volumes[reagent_type]))
-					ailment.was_treated_by_medication(source, reagent_type)
+			for(var/decl/material/reagent as anything in source.reagent_volumes)
+				if(ailment.treated_by_medication(reagent.type, source.reagent_volumes[reagent]))
+					ailment.was_treated_by_medication(source, reagent.type)
 					return
 	if(ailment.treated_by_chem_effect && owner.has_chemical_effect(ailment.treated_by_chem_effect, ailment.treated_by_chem_effect_strength))
 		ailment.was_treated_by_chem_effect()
@@ -271,13 +269,17 @@
 			return TRUE
 	return FALSE
 
-/obj/item/organ/examine(mob/user)
-	. = ..(user)
-	show_decay_status(user)
+/obj/item/organ/get_examine_strings(mob/user, distance, infix, suffix)
+	. = ..()
+	var/decay_status = get_decay_status(user)
+	if(decay_status)
+		. += decay_status
 
-/obj/item/organ/proc/show_decay_status(mob/user)
+/obj/item/organ/proc/get_decay_status(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
 	if(status & ORGAN_DEAD)
-		to_chat(user, "<span class='notice'>The decay has set into \the [src].</span>")
+		. += SPAN_WARNING("Decay has set into \the [src].")
 
 // TODO: bodytemp rework that handles this with better respect to
 // individual organs vs. expected body temperature for other organs.
@@ -308,7 +310,7 @@
 			parent.germ_level++
 
 		if (prob(3))	//about once every 30 seconds
-			take_general_damage(1,silent=prob(30))
+			take_damage(1, silent =prob(30))
 
 /obj/item/organ/proc/handle_rejection()
 	// Process unsuitable transplants. TODO: consider some kind of
@@ -346,7 +348,6 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!owner)
 		PRINT_STACK_TRACE("rejuvenate() called on organ of type [type] with no owner.")
-	damage = 0
 	reset_status()
 	QDEL_NULL_LIST(ailments)
 	if(!ignore_organ_traits)
@@ -380,14 +381,13 @@
 		germ_level -= round(2 * antibiotics)
 	germ_level = max(0, germ_level)
 
-/obj/item/organ/proc/take_general_damage(var/amount, var/silent = FALSE)
-	CRASH("Not Implemented")
+// Bypass the atom damage system when inside an owner, as organs implement their own health handling etc.
+/obj/item/organ/take_damage(damage, damage_type = BRUTE, damage_flags, inflicter, armor_pen = 0, silent, do_update_health)
+	if(!owner)
+		return ..()
 
 /obj/item/organ/proc/heal_damage(amount)
-	if(can_recover())
-		damage = clamp(damage - round(amount, 0.1), 0, max_damage)
-		if(owner)
-			owner.update_health()
+	return
 
 /obj/item/organ/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 	if(BP_IS_PROSTHETIC(src) || !istype(target) || !istype(user) || (user != target && user.check_intent(I_FLAG_HELP)))
@@ -630,7 +630,7 @@ var/global/list/ailment_reference_cache = list()
 	STOP_PROCESSING(SSobj, src)
 	vital_to_owner = null
 
-//Since some types of organs completely ignore being detached, moved it to an overridable organ proc for external prosthetics
+//Since some types of organs completely ignore being detached, moved it to an overrideable organ proc for external prosthetics
 /obj/item/organ/proc/set_detached(var/is_detached)
 	if(is_detached)
 		status |= ORGAN_CUT_AWAY

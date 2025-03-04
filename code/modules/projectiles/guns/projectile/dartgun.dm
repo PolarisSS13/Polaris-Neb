@@ -52,24 +52,20 @@
 		fill_dart(dart)
 	return dart
 
-/obj/item/gun/projectile/dartgun/examine(mob/user)
+/obj/item/gun/projectile/dartgun/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (beakers.len)
-		to_chat(user, "<span class='notice'>\The [src] contains:</span>")
+		. += SPAN_NOTICE("\The [src] contains:")
 		for(var/obj/item/chems/glass/beaker/B in beakers)
 			if(B.reagents && LAZYLEN(B.reagents?.reagent_volumes))
-				for(var/ltype in B.reagents.liquid_volumes)
-					var/decl/material/R = GET_DECL(ltype)
-					to_chat(user, "<span class='notice'>[LIQUID_VOLUME(B.reagents, ltype)] units of [R.get_reagent_name(B.reagents, MAT_PHASE_LIQUID)]</span>")
+				for(var/decl/material/reagent as anything in B.reagents.liquid_volumes)
+					. += SPAN_NOTICE("[LIQUID_VOLUME(B.reagents, reagent)] units of [reagent.get_reagent_name(B.reagents, MAT_PHASE_LIQUID)]")
+				for(var/decl/material/reagent as anything in B.reagents.solid_volumes)
+					. += SPAN_NOTICE("[SOLID_VOLUME(B.reagents, reagent)] units of [reagent.get_reagent_name(B.reagents, MAT_PHASE_SOLID)]")
 
-				for(var/stype in B.reagents.solid_volumes)
-					var/decl/material/R = GET_DECL(stype)
-					to_chat(user, "<span class='notice'>[SOLID_VOLUME(B.reagents, stype)] units of [R.get_reagent_name(B.reagents, MAT_PHASE_SOLID)]</span>")
-
-
-/obj/item/gun/projectile/dartgun/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/chems/glass))
-		add_beaker(I, user)
+/obj/item/gun/projectile/dartgun/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/glass))
+		add_beaker(used_item, user)
 		return TRUE
 	return ..()
 
@@ -114,9 +110,8 @@
 
 			dat += "Beaker [i] contains: "
 			if(B.reagents && LAZYLEN(B.reagents.reagent_volumes))
-				for(var/rtype in B.reagents.reagent_volumes)
-					var/decl/material/R = GET_DECL(rtype)
-					dat += "<br>    [REAGENT_VOLUME(B.reagents, rtype)] units of [R.get_reagent_name(B.reagents)], "
+				for(var/decl/material/reagent as anything in B.reagents.reagent_volumes)
+					dat += "<br>    [REAGENT_VOLUME(B.reagents, reagent)] unit\s of [reagent.get_reagent_name(B.reagents)], "
 				if(B in mixing)
 					dat += "<A href='byond://?src=\ref[src];stop_mix=[i]'><font color='green'>Mixing</font></A> "
 				else

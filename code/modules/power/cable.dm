@@ -22,6 +22,8 @@ If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
 
+/// Tracks all cable instances, so that powernets don't have to look through the entire world all the time
+var/global/list/obj/structure/cable/all_cables = list()
 /obj/structure/cable
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
@@ -82,24 +84,36 @@ By design, d1 is the smallest direction and d2 is the highest
 	color = COLOR_SILVER
 	paint_color = COLOR_SILVER
 
+/obj/structure/cable/proc/canonize_cable_dirs()
+	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
+	var/dir_components = splittext(icon_state, "-")
+	if(length(dir_components) < 2)
+		CRASH("Cable segment updating dirs with invalid icon_state: [d1], [d2]")
+	d1 = text2num(dir_components[1])
+	d2 = text2num(dir_components[2])
+	if(!(d1 in global.cabledirs) || !(d2 in global.cabledirs))
+		CRASH("Cable segment updating dirs with invalid values: [d1], [d2]")
+
 /obj/structure/cable/Initialize(var/ml)
 	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
+	if(isnull(d1) || isnull(d2))
+		canonize_cable_dirs()
 	. = ..(ml)
 	var/turf/T = src.loc			// hide if turf is not intact
 	if(level == LEVEL_BELOW_PLATING && T)
 		hide(!T.is_plating())
-	global.cable_list += src //add it to the global cable list
+	global.all_cables += src //add it to the global cable list
 
 /obj/structure/cable/Destroy()     // called when a cable is deleted
 	if(powernet)
 		cut_cable_from_powernet()  // update the powernets
-	global.cable_list -= src              // remove it from global cable list
+	global.all_cables -= src              // remove it from global cable list
 	. = ..()                       // then go ahead and delete the cable
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
 	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+		user.examine_verb(src)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
 			to_chat(user, SPAN_WARNING("[get_wattage()] in power network."))
@@ -129,18 +143,10 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/structure/cable/on_update_icon()
 	..()
-	// It is really gross to do this here but the order of icon updates to init seems
-	// unreliable and I have now had to spend hours across two PRs chasing down
-	// cable node weirdness due to the way this was handled previously. NO MORE.
+	// this should be less necessary now but it might still be just in case a subtype calls update_icon() in Initialize prior to its parent call
+	// which... don't do that, but better safe than sorry.
 	if(isnull(d1) || isnull(d2))
-		var/dir_components = splittext(icon_state, "-")
-		if(length(dir_components) < 2)
-			CRASH("Cable segment updating dirs with invalid icon_state: [d1], [d2]")
-		d1 = text2num(dir_components[1])
-		d2 = text2num(dir_components[2])
-		if(!(d1 in global.cabledirs) || !(d2 in global.cabledirs))
-			CRASH("Cable segment updating dirs with invalid values: [d1], [d2]")
-
+		canonize_cable_dirs()
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 
@@ -509,7 +515,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	max_amount = MAXCOIL
 	color = COLOR_MAROON
 	paint_color = COLOR_MAROON
-	desc = "A coil of wiring, suitable for both delicate electronics and heavy duty power supply."
+	desc = "A coil of wiring, suitable for both delicate electronics and heavy-duty power supply."
 	singular_name = "length"
 	w_class = ITEM_SIZE_NORMAL
 	throw_speed = 2
@@ -610,18 +616,16 @@ By design, d1 is the smallest direction and d2 is the highest
 	else
 		w_class = ITEM_SIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user, distance)
+/obj/item/stack/cable_coil/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
-
 	if(get_amount() == 1)
-		to_chat(user, "\A [singular_name] of cable.")
+		. += "\A [singular_name] of cable."
 	else if(get_amount() == 2)
-		to_chat(user, "Two [plural_name] of cable.")
+		. += "Two [plural_name] of cable."
 	else
-		to_chat(user, "A coil of power cable. There are [get_amount()] [plural_name] of cable in the coil.")
-
+		. += "A coil of power cable. There are [get_amount()] [plural_name] of cable in the coil."
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
@@ -897,8 +901,8 @@ By design, d1 is the smallest direction and d2 is the highest
 		var/obj/item/rig_module/module = loc
 		return module.get_cell()
 	if(isrobot(loc))
-		var/mob/living/silicon/robot/R = loc
-		return R.get_cell()
+		var/mob/living/silicon/robot/robot = loc
+		return robot.get_cell()
 
 /obj/item/stack/cable_coil/fabricator/use(var/used)
 	var/obj/item/cell/cell = get_cell()

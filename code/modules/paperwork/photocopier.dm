@@ -243,9 +243,9 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/photocopier/attackby(obj/item/O, mob/user)
-	if(istype(construct_state, /decl/machine_construction/default/panel_closed) && (istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle)))
-		insert_item(O, user)
+/obj/machinery/photocopier/attackby(obj/item/used_item, mob/user)
+	if(istype(construct_state, /decl/machine_construction/default/panel_closed) && (istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo) || istype(used_item, /obj/item/paper_bundle)))
+		insert_item(used_item, user)
 		return TRUE
 	return..() //Components attackby will handle refilling with paper and toner
 

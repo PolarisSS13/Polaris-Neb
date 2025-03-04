@@ -22,4 +22,4 @@
 	icon                = 'icons/obj/items/storage/baskets/basket_large.dmi'
 	w_class             = ITEM_SIZE_GARGANTUAN
 	storage             = /datum/storage/basket/large
-	slowdown_general    = 1 // Large and unwieldly
+	slowdown_general    = 1 // Large and unwieldy

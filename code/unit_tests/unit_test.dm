@@ -136,7 +136,7 @@ var/global/ascii_reset = "[ascii_esc]\[0m"
 /datum/unit_test/proc/get_safe_turf()
 	check_cleanup = TRUE
 	if(!safe_landmark)
-		for(var/landmark in global.landmarks_list)
+		for(var/landmark in global.all_landmarks)
 			if(istype(landmark, /obj/abstract/landmark/test/safe_turf))
 				safe_landmark = landmark
 				break
@@ -145,7 +145,7 @@ var/global/ascii_reset = "[ascii_esc]\[0m"
 /datum/unit_test/proc/get_space_turf()
 	check_cleanup = TRUE
 	if(!space_landmark)
-		for(var/landmark in global.landmarks_list)
+		for(var/landmark in global.all_landmarks)
 			if(istype(landmark, /obj/abstract/landmark/test/space_turf))
 				space_landmark = landmark
 				break
@@ -211,8 +211,8 @@ var/global/ascii_reset = "[ascii_esc]\[0m"
 	if(!check_rights(R_DEBUG))
 		return
 
-	log_and_message_admins("has started the unit test '[initial(unit_test_type.name)]'")
 	var/datum/unit_test/test = new unit_test_type
+	log_and_message_admins("has started the unit test '[test.name]'")
 	var/end_unit_tests = world.time + MAX_UNIT_TEST_RUN_TIME
 	do_unit_test(test, end_unit_tests, FALSE)
 	if(test.async)

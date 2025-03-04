@@ -34,8 +34,8 @@
 				return
 
 		//second, spin a sticky spiderweb on this tile
-		var/obj/effect/spider/stickyweb/W = locate() in get_turf(body)
-		if(!W)
+		var/obj/effect/spider/stickyweb/web = locate() in get_turf(body)
+		if(!web)
 			set_activity(AI_ACTIVITY_BUILDING)
 			body.visible_message(SPAN_NOTICE("\The [body] begins to secrete a sticky substance."))
 			pause()

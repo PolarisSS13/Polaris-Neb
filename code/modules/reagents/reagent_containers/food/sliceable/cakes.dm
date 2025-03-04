@@ -17,7 +17,7 @@
 
 /obj/item/food/slice/carrotcake
 	name = "carrot cake slice"
-	desc = "Carrotty slice of carrot cake, carrots are good for your eyes! It's true! Probably!"
+	desc = "Carrot-y slice of carrot cake, carrots are good for your eyes! It's true! Probably!"
 	icon = 'icons/obj/food/baked/cakes/slices/carrot.dmi'
 	plate = /obj/item/plate
 	filling_color = "#ffd675"
@@ -77,7 +77,7 @@
 
 /obj/item/food/slice/cheesecake
 	name = "cheese cake slice"
-	desc = "Slice of pure cheestisfaction."
+	desc = "Slice of pure cheesatisfaction."
 	icon = 'icons/obj/food/baked/cakes/slices/cheese.dmi'
 	plate = /obj/item/plate
 	filling_color = "#faf7af"

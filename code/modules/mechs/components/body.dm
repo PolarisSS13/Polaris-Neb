@@ -82,12 +82,13 @@
 	storage_compartment = locate() in src
 
 /obj/item/mech_component/chassis/show_missing_parts(var/mob/user)
+	. = list()
 	if(!cell)
-		to_chat(user, SPAN_WARNING("It is missing a power cell."))
+		. += SPAN_WARNING("It is missing a power cell.")
 	if(!diagnostics)
-		to_chat(user, SPAN_WARNING("It is missing a diagnostics unit."))
+		. += SPAN_WARNING("It is missing a diagnostics unit.")
 	if(!m_armour)
-		to_chat(user, SPAN_WARNING("It is missing exosuit armour plating."))
+		. += SPAN_WARNING("It is missing exosuit armour plating.")
 
 /obj/item/mech_component/chassis/proc/update_air(var/take_from_supply)
 
@@ -137,29 +138,29 @@
 	cell = new /obj/item/cell/exosuit(src)
 	cell.charge = cell.maxcharge
 
-/obj/item/mech_component/chassis/attackby(var/obj/item/thing, var/mob/user)
-	if(istype(thing,/obj/item/robot_parts/robot_component/diagnosis_unit))
+/obj/item/mech_component/chassis/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item,/obj/item/robot_parts/robot_component/diagnosis_unit))
 		if(diagnostics)
 			to_chat(user, SPAN_WARNING("\The [src] already has a diagnostic system installed."))
 			return TRUE
-		if(install_component(thing, user))
-			diagnostics = thing
+		if(install_component(used_item, user))
+			diagnostics = used_item
 			return TRUE
 		return FALSE
-	else if(istype(thing, /obj/item/cell))
+	else if(istype(used_item, /obj/item/cell))
 		if(cell)
 			to_chat(user, SPAN_WARNING("\The [src] already has a cell installed."))
 			return TRUE
-		if(install_component(thing,user))
-			cell = thing
+		if(install_component(used_item,user))
+			cell = used_item
 			return TRUE
 		return FALSE
-	else if(istype(thing, /obj/item/robot_parts/robot_component/armour/exosuit))
+	else if(istype(used_item, /obj/item/robot_parts/robot_component/armour/exosuit))
 		if(m_armour)
 			to_chat(user, SPAN_WARNING("\The [src] already has armour installed."))
 			return TRUE
-		if(install_component(thing, user))
-			m_armour = thing
+		if(install_component(used_item, user))
+			m_armour = used_item
 			return TRUE
 		return FALSE
 	else

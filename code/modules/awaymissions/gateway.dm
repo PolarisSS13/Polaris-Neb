@@ -127,8 +127,8 @@
 		M.set_dir(SOUTH)
 		return
 
-/obj/machinery/gateway/centerstation/attackby(obj/item/W, mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/gateway/centerstation/attackby(obj/item/used_item, mob/user)
+	if(IS_MULTITOOL(used_item))
 		to_chat(user, "The gate is already calibrated, there is no work for you to do here.")
 		return TRUE
 	return FALSE
@@ -223,8 +223,8 @@
 	M.forceMove(get_step(stationgate.loc, SOUTH))
 	M.set_dir(SOUTH)
 
-/obj/machinery/gateway/centeraway/attackby(obj/item/W, mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/gateway/centeraway/attackby(obj/item/used_item, mob/user)
+	if(IS_MULTITOOL(used_item))
 		if(calibrated)
 			to_chat(user, "The gate is already calibrated, there is no work for you to do here.")
 			return TRUE

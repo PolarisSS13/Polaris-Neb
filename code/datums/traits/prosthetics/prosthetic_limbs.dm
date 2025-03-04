@@ -84,12 +84,12 @@
 			if(!bodytype?.is_robotic)
 				return FALSE
 		if(model)
-			var/decl/bodytype/prosthetic/R = GET_DECL(model)
-			if(!istype(R))
+			var/decl/bodytype/prosthetic/robot_model = GET_DECL(model)
+			if(!istype(robot_model))
 				return FALSE
 			var/decl/species/S = get_species_by_key(pref.species) || get_species_by_key(global.using_map.default_species)
 			var/decl/bodytype/B = S.get_bodytype_by_name(pref.bodytype)
-			if(!R.check_can_install(apply_to_limb, target_bodytype = (check_bodytype || B.bodytype_category)))
+			if(!robot_model.check_can_install(apply_to_limb, target_bodytype = (check_bodytype || B.bodytype_category)))
 				return FALSE
 			// If we're a duplicate of our parent due to get_base_model(), hide this one.
 			var/decl/trait/prosthetic_limb/parent_limb = parent

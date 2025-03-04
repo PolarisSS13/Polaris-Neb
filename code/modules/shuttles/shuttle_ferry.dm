@@ -63,4 +63,4 @@
 		if(initial(waypoint_offsite))
 			return "The offsite waypoint landmark (tag: [initial(waypoint_offsite)]) was not found."
 		else
-			return "A offsite waypoint was not properly set."
+			return "An offsite waypoint was not properly set."

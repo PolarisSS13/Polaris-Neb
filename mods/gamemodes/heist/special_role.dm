@@ -20,11 +20,11 @@
 	var/list/outfits_per_species
 
 /decl/special_role/raider/update_access(var/mob/living/player)
-	for(var/obj/item/wallet/W in player.contents)
-		for(var/obj/item/card/id/id in W.contents)
+	for(var/obj/item/wallet/wallet in player.contents)
+		for(var/obj/item/card/id/id in wallet.contents)
 			id.SetName("[player.real_name]'s Passport")
 			id.registered_name = player.real_name
-			W.SetName("[initial(W.name)] ([id.name])")
+			wallet.SetName("[initial(wallet.name)] ([id.name])")
 
 /decl/special_role/raider/create_global_objectives()
 

@@ -3,7 +3,7 @@
 // can also operate on non-loc area through "otherarea" var
 /obj/machinery/light_switch
 	name = "light switch"
-	desc = "It turns lights on and off. What are you, simple?"
+	desc = "It switches lights on and off, obviously."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "light0"
 	obj_flags = OBJ_FLAG_MOVES_UNSUPPORTED
@@ -59,10 +59,10 @@
 		set_light(2, 0.25, on ? "#82ff4c" : "#f86060")
 		z_flags |= ZMM_MANGLE_PLANES
 
-/obj/machinery/light_switch/examine(mob/user, distance)
+/obj/machinery/light_switch/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance)
-		to_chat(user, "A light switch. It is [on? "on" : "off"].")
+		. += "It is [on? "on" : "off"]."
 
 /obj/machinery/light_switch/proc/set_state(var/newstate)
 	if(on != newstate)
@@ -82,10 +82,10 @@
 		set_state(!on)
 		return TRUE
 
-/obj/machinery/light_switch/attackby(obj/item/I, mob/user)
+/obj/machinery/light_switch/attackby(obj/item/used_item, mob/user)
 	. = ..()
 	if(!.)
-		to_chat(user, SPAN_NOTICE("You flick \the [src] with \the [I]."))
+		to_chat(user, SPAN_NOTICE("You flick \the [src] with \the [used_item]."))
 		interface_interact(user)
 		return TRUE
 

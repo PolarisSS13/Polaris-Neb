@@ -38,10 +38,10 @@
 	. = ..()
 	. += "  <a href='byond://?src=\ref[src];look_at_me=1'>\[View\]</a>"
 
-/obj/item/clothing/badge/examine(user)
+/obj/item/clothing/badge/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(stored_name)
-		to_chat(user,"It reads: [stored_name], [badge_string].")
+		. += "It reads: [stored_name], [badge_string]."
 
 /obj/item/clothing/badge/attack_self(mob/user)
 

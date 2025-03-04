@@ -62,8 +62,8 @@
 
 /mob/living/get_view_variables_options()
 	return ..() + {"
-		<option value='?_src_=vars;addaura=\ref[src]'>Add Aura</option>
-		<option value='?_src_=vars;removeaura=\ref[src]'>Remove Aura</option>
+		<option value='?_src_=vars;add_mob_modifier=\ref[src]'>Add Modifier</option>
+		<option value='?_src_=vars;remove_mob_modifier=\ref[src]'>Remove Modifier</option>
 		<option value='?_src_=vars;addstressor=\ref[src]'>Add Stressor</option>
 		<option value='?_src_=vars;removestressor=\ref[src]'>Remove Stressor</option>
 		<option value='?_src_=vars;setstatuscond=\ref[src]'>Set Status Condition</option>

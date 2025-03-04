@@ -77,7 +77,7 @@
 
 /obj/item/clothing/costume/oldman
 	name = "old man's suit"
-	desc = "A classic suit for the older gentleman with built in back support."
+	desc = "A classic suit for the older gentleman with built-in back support."
 	icon = 'icons/clothing/costumes/uniform_lawyer_old.dmi'
 
 /obj/item/clothing/costume/lawyer

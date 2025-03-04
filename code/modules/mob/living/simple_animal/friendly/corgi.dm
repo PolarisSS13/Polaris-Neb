@@ -8,7 +8,7 @@
 	response_disarm = "bops"
 	see_in_dark = 5
 	mob_size = MOB_SIZE_SMALL
-	possession_candidate = 1
+	possession_candidate = TRUE
 	holder_type = /obj/item/holder/corgi
 	pass_flags = PASS_FLAG_TABLE
 	base_animal_type = /mob/living/simple_animal/corgi
@@ -126,9 +126,9 @@
 	if(prob(1))
 		dance()
 
-/mob/living/simple_animal/corgi/attackby(var/obj/item/O, var/mob/user)  //Marker -Agouri
-	if(istype(O, /obj/item/newspaper) && !stat)
-		visible_message(SPAN_NOTICE("\The [user] baps \the [src] on the nose with the rolled-up [O.name]!"))
+/mob/living/simple_animal/corgi/attackby(var/obj/item/used_item, var/mob/user)  //Marker -Agouri
+	if(istype(used_item, /obj/item/newspaper) && !stat)
+		visible_message(SPAN_NOTICE("\The [user] baps \the [src] on the nose with the rolled-up [used_item.name]!"))
 		var/datum/mob_controller/corgi/corgi_ai = ai
 		if(istype(corgi_ai))
 			corgi_ai.dance()

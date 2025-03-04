@@ -99,10 +99,10 @@
 	SetName("[(material.ore_name ? material.ore_name : "[material.name] chunk")][(amount > 1? " pile" : "")]")
 	desc = material.ore_desc ? material.ore_desc : "A lump of ore."
 
-/obj/item/stack/material/ore/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/stack/material) && !is_same(W))
+/obj/item/stack/material/ore/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/stack/material) && !is_same(used_item))
 		return FALSE //Don't reinforce
-	if(reinf_material && reinf_material.default_solid_form && IS_WELDER(W))
+	if(reinf_material && reinf_material.default_solid_form && IS_WELDER(used_item))
 		return FALSE //Don't melt stuff with welder
 	return ..()
 

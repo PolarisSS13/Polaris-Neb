@@ -22,10 +22,10 @@
 	update_icon()
 	return TRUE
 
-/obj/item/clothing/neck/necklace/examine(mob/user)
+/obj/item/clothing/neck/necklace/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(istype(pendant))
-		to_chat(user, "There is \a [pendant] attached.")
+		. += "There is \a [pendant] attached."
 
 /obj/item/clothing/neck/necklace/on_update_icon()
 	. = ..()

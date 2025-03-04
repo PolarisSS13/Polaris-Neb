@@ -9,10 +9,10 @@
 	matter = list(/decl/material/solid/organic/plastic = MATTER_AMOUNT_REINFORCEMENT)
 	var/obj/item/sample
 
-/obj/item/core_sampler/examine(mob/user, distance)
+/obj/item/core_sampler/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	if(distance <= 2)
-		to_chat(user, SPAN_NOTICE("This one is [sample ? "full" : "empty"]"))
+		. += SPAN_NOTICE("This one is [sample ? "full" : "empty"]")
 
 /obj/item/core_sampler/proc/sample_item(var/item_to_sample, var/mob/user)
 	var/datum/extension/geological_data/GD = get_extension(item_to_sample, /datum/extension/geological_data)

@@ -53,9 +53,9 @@
 	to_chat(user, SPAN_WARNING("This is ridiculous. You can not fit \the [grab.affecting] into \the [src]."))
 	return TRUE
 
-/obj/machinery/microwave/attackby(var/obj/item/O, var/mob/user)
+/obj/machinery/microwave/attackby(var/obj/item/used_item, var/mob/user)
 	if(broken > 0)
-		if(broken == 2 && IS_SCREWDRIVER(O)) // If it's broken and they're using a screwdriver
+		if(broken == 2 && IS_SCREWDRIVER(used_item)) // If it's broken and they're using a screwdriver
 			user.visible_message(
 				SPAN_NOTICE("\The [user] starts to fix part of [src]."),
 				SPAN_NOTICE("You start to fix part of [src].")
@@ -66,7 +66,7 @@
 					SPAN_NOTICE("You have fixed part of [src].")
 				)
 				broken = 1 // Fix it a bit
-		else if(broken == 1 && IS_WRENCH(O)) // If it's broken and they're doing the wrench
+		else if(broken == 1 && IS_WRENCH(used_item)) // If it's broken and they're doing the wrench
 			user.visible_message(
 				SPAN_NOTICE("\The [user] starts to fix part of [src]."),
 				SPAN_NOTICE("You start to fix part of [src].")
@@ -83,11 +83,11 @@
 		else
 			to_chat(user, SPAN_WARNING("It's broken!"))
 			return 1
-	else if((. = component_attackby(O, user)))
+	else if((. = component_attackby(used_item, user)))
 		dispose()
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
-		if(istype(O, /obj/item/chems/spray/cleaner) || istype(O, /obj/item/chems/glass/rag)) // If they're trying to clean it then let them
+		if(istype(used_item, /obj/item/chems/spray/cleaner) || istype(used_item, /obj/item/chems/rag)) // If they're trying to clean it then let them
 			user.visible_message(
 				SPAN_NOTICE("\The [user] starts to clean [src]."),
 				SPAN_NOTICE("You start to clean [src].")
@@ -104,11 +104,11 @@
 		else //Otherwise bad luck!!
 			to_chat(user, SPAN_WARNING("It's dirty!"))
 			return 1
-	else if(!istype(O, /obj/item/chems/glass/bowl) && (istype(O,/obj/item/chems/glass) || istype(O,/obj/item/chems/drinks) || istype(O,/obj/item/chems/condiment) ))
-		if (!O.reagents)
+	else if(!istype(used_item, /obj/item/chems/glass/bowl) && (istype(used_item,/obj/item/chems/glass) || istype(used_item,/obj/item/chems/drinks) || istype(used_item,/obj/item/chems/condiment) ))
+		if (!used_item.reagents)
 			return 1
 		return // transfer is handled in afterattack
-	else if(IS_WRENCH(O))
+	else if(IS_WRENCH(used_item))
 		user.visible_message(
 			SPAN_NOTICE("\The [user] begins [anchored ? "securing" : "unsecuring"] [src]."),
 			SPAN_NOTICE("You attempt to [anchored ? "secure" : "unsecure"] [src].")
@@ -121,32 +121,32 @@
 			)
 		else
 			to_chat(user, SPAN_NOTICE("You decide not to do that."))
-	else if(O.w_class <= ITEM_SIZE_LARGE) // this must be last
+	else if(used_item.w_class <= ITEM_SIZE_LARGE) // this must be last
 		if (LAZYLEN(get_contained_external_atoms()) >= max_n_of_items)
 			to_chat(user, SPAN_WARNING("This [src] is full of ingredients, you cannot put more."))
 			return 1
-		if(istype(O, /obj/item/stack)) // This is bad, but I can't think of how to change it
-			var/obj/item/stack/S = O
+		if(istype(used_item, /obj/item/stack)) // This is bad, but I can't think of how to change it
+			var/obj/item/stack/S = used_item
 			if(S.get_amount() > 1)
 				var/obj/item/stack/new_stack = S.split(1)
 				if(new_stack)
 					new_stack.forceMove(src)
 					user.visible_message(
 						SPAN_NOTICE("\The [user] has added \a [new_stack.singular_name] to \the [src]."),
-						SPAN_NOTICE("You add one of [O] to \the [src].")
+						SPAN_NOTICE("You add one of [used_item] to \the [src].")
 					)
 					SSnano.update_uis(src)
 				return
-		if (!user.try_unequip(O, src))
+		if (!user.try_unequip(used_item, src))
 			return
 		user.visible_message(
-			SPAN_NOTICE("\The [user] has added \the [O] to \the [src]."),
-			SPAN_NOTICE("You add \the [O] to \the [src].")
+			SPAN_NOTICE("\The [user] has added \the [used_item] to \the [src]."),
+			SPAN_NOTICE("You add \the [used_item] to \the [src].")
 		)
 		SSnano.update_uis(src)
 		return
 	else
-		to_chat(user, SPAN_WARNING("You have no idea what you can cook with \the [O]."))
+		to_chat(user, SPAN_WARNING("You have no idea what you can cook with \the [used_item]."))
 	SSnano.update_uis(src)
 
 /obj/machinery/microwave/components_are_accessible(path)
@@ -176,12 +176,11 @@
 	. = ..()
 	var/data = list()
 	data["cooking_items"] = list()
-	for(var/obj/O in get_contained_external_atoms())
-		data["cooking_items"][O.name]++
+	for(var/obj/used_item in get_contained_external_atoms())
+		data["cooking_items"][used_item.name]++
 	data["cooking_reagents"] = list()
-	for(var/material_type in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(material_type)
-		data["cooking_reagents"][mat.name] = reagents.reagent_volumes[material_type]
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		data["cooking_reagents"][reagent.name] = reagents.reagent_volumes[reagent]
 	data["on"] = !!operating
 	data["broken"] = broken > 0
 	data["dirty"] = dirty >= 100
@@ -278,8 +277,8 @@
 	SSnano.update_uis(src)
 
 /obj/machinery/microwave/proc/has_extra_item()
-	for(var/obj/O in get_contained_external_atoms())
-		if(!istype(O,/obj/item/food))
+	for(var/obj/thing in get_contained_external_atoms())
+		if(!istype(thing,/obj/item/food))
 			return TRUE
 	return FALSE
 
@@ -349,8 +348,8 @@
 	var/list/ingredients = get_contained_external_atoms()
 	if (!LAZYLEN(ingredients) && !reagents.total_volume)
 		return
-	for (var/obj/O in ingredients)
-		O.dropInto(loc)
+	for (var/obj/thing in ingredients)
+		thing.dropInto(loc)
 	if (reagents.total_volume)
 		dirty++
 	reagents.clear_reagents()
@@ -358,31 +357,30 @@
 		to_chat(user, SPAN_NOTICE("You empty [src]."))
 	SSnano.update_uis(src)
 
-/obj/machinery/microwave/proc/eject_item(var/mob/user, var/obj/O, var/message = TRUE)
-	if(!istype(O) || !length(get_contained_external_atoms()))
+/obj/machinery/microwave/proc/eject_item(var/mob/user, var/obj/thing, var/message = TRUE)
+	if(!istype(thing) || !length(get_contained_external_atoms()))
 		return
-	O.dropInto(loc)
+	thing.dropInto(loc)
 	if(user && message)
-		to_chat(user, SPAN_NOTICE("You remove [O] from [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [thing] from [src]."))
 	SSnano.update_uis(src)
 
-/obj/machinery/microwave/proc/eject_reagent(var/mob/user, var/material_type)
-	if(!reagents.reagent_volumes[material_type])
+/obj/machinery/microwave/proc/eject_reagent(var/mob/user, var/decl/material/reagent)
+	if(!reagents.reagent_volumes[reagent])
 		SSnano.update_uis(src)
 		return // should not happen, must be a UI glitch or href hacking
 	var/obj/item/chems/held_container = user.get_active_held_item()
-	var/decl/material/M = GET_DECL(material_type)
 	if(istype(held_container))
-		var/amount_to_move = min(REAGENTS_FREE_SPACE(held_container.reagents), REAGENT_VOLUME(reagents, material_type))
+		var/amount_to_move = min(REAGENTS_FREE_SPACE(held_container.reagents), REAGENT_VOLUME(reagents, reagent))
 		if(amount_to_move <= 0)
 			to_chat(user, SPAN_WARNING("[held_container] is full!"))
 			return
-		to_chat(user, SPAN_NOTICE("You empty [amount_to_move] units of [M.name] into [held_container]."))
-		reagents.trans_type_to(held_container, material_type, amount_to_move)
+		to_chat(user, SPAN_NOTICE("You empty [amount_to_move] units of [reagent.name] into [held_container]."))
+		reagents.trans_type_to(held_container, reagent, amount_to_move)
 	else
-		to_chat(user, SPAN_NOTICE("You try to dump out the [M.name], but it gets all over [src] because you have nothing to put it in."))
+		to_chat(user, SPAN_NOTICE("You try to dump out the [reagent.name], but it gets all over [src] because you have nothing to put it in."))
 		dirty++
-		reagents.clear_reagent(material_type)
+		reagents.clear_reagent(reagent)
 	SSnano.update_uis(src)
 
 /obj/machinery/microwave/on_update_icon()
@@ -403,11 +401,11 @@
 			M.death()
 			qdel(M)
 
-	for (var/obj/O in ingredients)
+	for (var/obj/thing in ingredients)
 		amount++
-		if (O.reagents && O.reagents.primary_reagent)
-			amount += REAGENT_VOLUME(O.reagents, O.reagents.primary_reagent)
-		qdel(O)
+		if (thing.reagents && thing.reagents.primary_reagent)
+			amount += REAGENT_VOLUME(thing.reagents, thing.reagents.primary_reagent)
+		qdel(thing)
 	reagents.clear_reagents()
 	SSnano.update_uis(src)
 	var/obj/item/food/badrecipe/ffuu = new(src)
@@ -426,18 +424,16 @@
 			return TOPIC_REFRESH
 
 		if ("ejectitem")
-			for(var/obj/O in get_contained_external_atoms())
-				if(strip_improper(O.name) == href_list["target"])
-					eject_item(user, O)
+			for(var/obj/thing in get_contained_external_atoms())
+				if(strip_improper(thing.name) == href_list["target"])
+					eject_item(user, thing)
 					break
 			return TOPIC_REFRESH
 
 		if ("ejectreagent")
-			var/decl/material/mat
-			for(var/material_type in reagents.reagent_volumes)
-				mat = GET_DECL(material_type)
-				if(mat.name == href_list["target"])
-					eject_reagent(user, material_type)
+			for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+				if(reagent.name == href_list["target"])
+					eject_reagent(user, reagent)
 					break
 			return TOPIC_REFRESH
 

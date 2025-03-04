@@ -29,7 +29,7 @@
 	tag = null
 	weakref = null // Clear this reference to ensure it's kept for as brief duration as possible.
 
-	if(istype(SSnano))
+	if(length(open_uis)) // inline the open ui check to avoid unnecessary proc call overhead
 		SSnano.close_uis(src)
 
 	if(active_timers)
@@ -50,10 +50,8 @@
 				qdel(extension)
 		extensions = null
 
-	var/decl/observ/destroyed/destroyed_event = GET_DECL(/decl/observ/destroyed)
-	// Typecheck is needed (rather than nullchecking) due to oddness with new() ordering during world creation.
-	if(istype(events_repository) && destroyed_event.event_sources[src])
-		RAISE_EVENT(/decl/observ/destroyed, src)
+	if(event_listeners?[/decl/observ/destroyed])
+		raise_event_non_global(/decl/observ/destroyed)
 
 	if (!isturf(src))	// Not great, but the 'correct' way to do it would add overhead for little benefit.
 		cleanup_events(src)

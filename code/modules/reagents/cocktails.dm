@@ -236,7 +236,7 @@
 
 /decl/cocktail/beepsky_smash
 	name = "Beepsky Smash"
-	description = "A cocktail originating with stationside security forces. Rumoured to take the edge off being stunned with your own baton."
+	description = "A cocktail originating with station-side security forces. Rumoured to take the edge off being stunned with your own baton."
 	ratios = list(
 		/decl/material/liquid/alcohol/whiskey =  2,
 		/decl/material/liquid/drink/juice/lime = 1,
@@ -560,7 +560,7 @@
 
 /decl/cocktail/rewriter
 	name = "Rewriter"
-	description = "A sickly concotion that college students and academics swear by for getting you through an all-nighter or six."
+	description = "A sickly concoction that college students and academics swear by for getting you through an all-nighter or six."
 	ratios = list(
 		/decl/material/liquid/drink/coffee =     1,
 		/decl/material/liquid/drink/citrussoda = 1

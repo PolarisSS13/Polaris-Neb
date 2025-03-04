@@ -82,11 +82,11 @@
 
 // attach a wire to a power machine - leads from the turf you are standing on
 //almost never called, overwritten by all power machines but terminal and generator
-/obj/machinery/power/attackby(obj/item/W, mob/user)
+/obj/machinery/power/attackby(obj/item/used_item, mob/user)
 	if((. = ..()))
 		return
-	if(IS_COIL(W))
-		var/obj/item/stack/cable_coil/coil = W
+	if(IS_COIL(used_item))
+		var/obj/item/stack/cable_coil/coil = used_item
 		var/turf/T = user.loc
 		if(!istype(T) || T.density || T.cannot_build_cable())
 			return

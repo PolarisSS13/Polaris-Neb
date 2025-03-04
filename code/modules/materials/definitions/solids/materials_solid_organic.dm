@@ -130,6 +130,7 @@
 	conductive              = FALSE
 	value                   = 0.25
 	default_solid_form      = /obj/item/stack/material/bolt
+	shard_name              = SHARD_NONE
 	shard_type              = /obj/item/shreddedp
 	exoplanet_rarity_plant  = MAT_RARITY_NOWHERE
 	exoplanet_rarity_gas    = MAT_RARITY_NOWHERE

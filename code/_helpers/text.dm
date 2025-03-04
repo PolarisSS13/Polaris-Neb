@@ -27,6 +27,10 @@
  * from text that will be sent to the browser.
  */
 #define strip_improper(input_text) replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
+var/global/regex/starts_uppercase_regex = regex(@"^[A-Z]")
+var/global/regex/starts_lowercase_regex = regex(@"^[a-z]")
+#define is_proper(input_text) ((findtext(input_text, "\proper") == 1) || findtext(input_text, starts_uppercase_regex))
+#define is_improper(input_text) ((findtext(input_text, "\improper") == 1 || findtext(input_text, starts_lowercase_regex)))
 
 //Used for preprocessing entered text
 //Added in an additional check to alert players if input is too long
@@ -84,7 +88,7 @@
 
 //Run sanitize(), but remove <, >, " first to prevent displaying them as &gt; &lt; &34; in some places after html_encode().
 //Best used for sanitize object names, window titles.
-//If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entites -
+//If you have a problem with sanitize() in chat, when quotes and >, < are displayed as html entities -
 //this is a problem of double-encode(when & becomes &amp;), use sanitize() with encode=0, but not the sanitize_safe()!
 /proc/sanitize_safe(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE, ascii_only = FALSE)
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra, ascii_only)
@@ -610,9 +614,9 @@
 
 // If char isn't part of the text the entire text is returned
 /proc/copytext_after_last(var/text, var/char)
-	var/regex/R = regex("(\[^[char]\]*)$")
-	R.Find(text)
-	return R.group[1]
+	var/regex/copytext_regex = regex("(\[^[char]\]*)$")
+	copytext_regex.Find(text)
+	return copytext_regex.group[1]
 
 /proc/sql_sanitize_text(var/text)
 	text = replacetext(text, "'", "''")

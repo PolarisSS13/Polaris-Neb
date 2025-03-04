@@ -4,7 +4,7 @@
 	forbidden_craft_stack_types = /obj/item/stack/material/ore
 
 /decl/stack_recipe/logs/travois
-	result_type                 = /obj/structure/bed/travois
+	result_type                 = /obj/structure/travois
 	difficulty                  = MAT_VALUE_EASY_DIY
 
 /decl/stack_recipe/turfs/wall/logs

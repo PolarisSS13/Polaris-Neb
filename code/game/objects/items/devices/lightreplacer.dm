@@ -57,10 +57,10 @@
 	var/emagged = 0
 	var/charge = 0
 
-/obj/item/lightreplacer/examine(mob/user, distance)
+/obj/item/lightreplacer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 2)
-		to_chat(user, "It has [uses] light\s remaining.")
+		. += "It has [uses] light\s remaining."
 
 /obj/item/lightreplacer/resolve_attackby(var/atom/A, mob/user)
 
@@ -91,9 +91,9 @@
 	. = ..()
 
 // TODO: Refactor this to check matter or maybe even just use the fabricator recipe for lights directly
-/obj/item/lightreplacer/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/material) && W.get_material_type() == /decl/material/solid/glass)
-		var/obj/item/stack/G = W
+/obj/item/lightreplacer/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/material) && used_item.get_material_type() == /decl/material/solid/glass)
+		var/obj/item/stack/G = used_item
 		if(uses >= max_uses)
 			to_chat(user, "<span class='warning'>\The [src] is full.</span>")
 		else if(G.use(1))
@@ -103,8 +103,8 @@
 			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights.</span>")
 		return TRUE
 
-	if(istype(W, /obj/item/light))
-		var/obj/item/light/L = W
+	if(istype(used_item, /obj/item/light))
+		var/obj/item/light/L = used_item
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				if(!user.try_unequip(L))
@@ -119,15 +119,8 @@
 	return ..()
 
 /obj/item/lightreplacer/attack_self(mob/user)
-	/* // This would probably be a bit OP. If you want it though, uncomment the code.
-	if(isrobot(user))
-		var/mob/living/silicon/robot/R = user
-		if(R.emagged)
-			src.Emag()
-			to_chat(usr, "You shortcircuit \the [src].")
-			return
-	*/
 	to_chat(usr, "It has [uses] lights remaining.")
+	return TRUE
 
 /obj/item/lightreplacer/on_update_icon()
 	. = ..()

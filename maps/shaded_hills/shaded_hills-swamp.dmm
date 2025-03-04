@@ -9,7 +9,7 @@
 /turf/floor/mud/water,
 /area/shaded_hills/outside/river/swamp)
 "cS" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /turf/floor/wood/rough/walnut,

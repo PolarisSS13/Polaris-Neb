@@ -128,7 +128,7 @@
 		desc = "[desc] It has been built with [english_list(component_descriptions)]."
 
 	// Create HUD.
-	InitializeHud()
+	initialize_hud()
 
 	// Build icon.
 	queue_icon_update()
@@ -179,26 +179,24 @@
 
 	. = ..()
 
-/mob/living/exosuit/show_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
+/mob/living/exosuit/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
 	. = ..()
 	if(LAZYLEN(pilots) && (!hatch_closed || body.pilot_coverage < 100 || body.transparent_cabin))
-		to_chat(user, "It is being piloted by [english_list(pilots, nothing_text = "nobody")].")
+		. += "It is being piloted by [english_list(pilots, nothing_text = "nobody")]."
 	if(body && LAZYLEN(body.pilot_positions))
-		to_chat(user, "It can seat [body.pilot_positions.len] pilot\s total.")
+		. += "It can seat [body.pilot_positions.len] pilot\s total."
 	if(hardpoints.len)
-		to_chat(user, "It has the following hardpoints:")
+		. += "It has the following hardpoints:"
 		for(var/hardpoint in hardpoints)
 			var/obj/item/I = hardpoints[hardpoint]
-			to_chat(user, "- [hardpoint]: [istype(I) ? "[I]" : "nothing"].")
+			. += "- [hardpoint]: [istype(I) ? "[I]" : "nothing"]."
 	else
-		to_chat(user, "It has no visible hardpoints.")
-
+		. += "It has no visible hardpoints."
 	for(var/obj/item/mech_component/thing in list(arms, legs, head, body))
 		if(!thing)
 			continue
-		var/damage_string = thing.get_damage_string()
-		to_chat(user, "Its [thing.name] [thing.gender == PLURAL ? "are" : "is"] [damage_string].")
-	to_chat(user, "It menaces with reinforcements of [material].")
+		. += "Its [thing.name] [thing.gender == PLURAL ? "are" : "is"] [thing.get_damage_string()]."
+	. += "It menaces with reinforcements of [material]."
 
 /mob/living/exosuit/return_air()
 	return (body && body.pilot_coverage >= 100 && hatch_closed && body.cockpit) ? body.cockpit : loc?.return_air()

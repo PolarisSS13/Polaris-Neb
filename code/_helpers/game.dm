@@ -171,8 +171,8 @@
 
 	return L
 
-// Returns a list of mobs and/or objects in range of R from source. Used in radio and say code.
-/proc/get_mobs_or_objects_in_view(var/R, var/atom/source, var/include_mobs = 1, var/include_objects = 1)
+// Returns a list of mobs and/or objects in range of get_range from source. Used in radio and say code.
+/proc/get_mobs_or_objects_in_view(var/get_range, var/atom/source, var/include_mobs = 1, var/include_objects = 1)
 
 	var/turf/T = get_turf(source)
 	var/list/hear = list()
@@ -180,7 +180,7 @@
 	if(!T)
 		return hear
 
-	var/list/range = hear(R, T)
+	var/list/range = hear(get_range, T)
 	for(var/I in range)
 		if(ismob(I))
 			hear |= recursive_content_check(I, hear, 3, 1, 0, include_mobs, include_objects)
@@ -223,7 +223,7 @@
 		if(Y1==Y2)
 			return 1 //Light cannot be blocked on same tile
 		else
-			var/s = SIMPLE_SIGN(Y2-Y1)
+			var/s = SIGN(Y2-Y1)
 			Y1+=s
 			while(Y1!=Y2)
 				T=locate(X1,Y1,Z)
@@ -233,8 +233,8 @@
 	else
 		var/m=(32*(Y2-Y1)+(PY2-PY1))/(32*(X2-X1)+(PX2-PX1))
 		var/b=(Y1+PY1/32-0.015625)-m*(X1+PX1/32-0.015625) //In tiles
-		var/signX = SIMPLE_SIGN(X2-X1)
-		var/signY = SIMPLE_SIGN(Y2-Y1)
+		var/signX = SIGN(X2-X1)
+		var/signY = SIGN(Y2-Y1)
 		if(X1<X2)
 			b+=m
 		while(X1!=X2 || Y1!=Y2)

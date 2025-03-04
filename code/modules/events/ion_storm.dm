@@ -37,8 +37,8 @@
 		if(!(S.z in affecting_z))
 			continue
 		if(isrobot(S))
-			var/mob/living/silicon/robot/R = S
-			if(R.connected_ai)
+			var/mob/living/silicon/robot/robot = S
+			if(robot.connected_ai)
 				continue
 		var/random_player = get_random_humanoid_player_name("The Captain")
 		var/list/laws = list(	"You must always lie.",

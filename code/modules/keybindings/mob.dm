@@ -1,4 +1,5 @@
 /datum/keybinding/mob
+	abstract_type = /datum/keybinding/mob
 	category = CATEGORY_MOB
 
 /datum/keybinding/mob/can_use(client/user)

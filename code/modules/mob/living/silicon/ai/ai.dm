@@ -549,12 +549,12 @@ var/global/list/custom_ai_icons_by_ckey_and_name = list()
 		camera_light_on = world.timeofday + 1 * 20 // Update the light every 2 seconds.
 
 
-/mob/living/silicon/ai/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/aicard))
-		var/obj/item/aicard/card = W
+/mob/living/silicon/ai/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/aicard))
+		var/obj/item/aicard/card = used_item
 		card.grab_ai(src, user)
 
-	else if(IS_WRENCH(W))
+	else if(IS_WRENCH(used_item))
 		if(anchored)
 			user.visible_message("<span class='notice'>\The [user] starts to unbolt \the [src] from the plating...</span>")
 			if(!do_after(user,40, src))
@@ -571,9 +571,9 @@ var/global/list/custom_ai_icons_by_ckey_and_name = list()
 			user.visible_message("<span class='notice'>\The [user] finishes fastening down \the [src]!</span>")
 			anchored = TRUE
 			return TRUE
-	if(try_stock_parts_install(W, user))
+	if(try_stock_parts_install(used_item, user))
 		return TRUE
-	if(try_stock_parts_removal(W, user))
+	if(try_stock_parts_removal(used_item, user))
 		return TRUE
 	return ..()
 

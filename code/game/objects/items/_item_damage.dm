@@ -116,8 +116,8 @@
 				self_message = SPAN_DANGER("You stab yourself in the eyes with \the [src]!"))
 
 		var/obj/item/organ/internal/eyes = GET_INTERNAL_ORGAN(H, BP_EYES)
-		eyes.damage += rand(3,4)
-		if(eyes.damage >= eyes.min_bruised_damage)
+		eyes.adjust_organ_damage(rand(3,4))
+		if(eyes.get_organ_damage() >= eyes.min_bruised_damage)
 			if(M.stat != DEAD)
 				if(!BP_IS_PROSTHETIC(eyes)) //robot eyes bleeding might be a bit silly
 					to_chat(M, SPAN_DANGER("Your eyes start to bleed profusely!"))
@@ -128,12 +128,11 @@
 				SET_STATUS_MAX(M, STAT_BLURRY, 10)
 				SET_STATUS_MAX(M, STAT_PARA, 1)
 				SET_STATUS_MAX(M, STAT_WEAK, 4)
-			if (eyes.damage >= eyes.min_broken_damage)
-				if(M.stat != DEAD)
-					to_chat(M, SPAN_WARNING("You go blind!"))
+			if (eyes.get_organ_damage() >= eyes.min_broken_damage && M.stat != DEAD)
+				to_chat(M, SPAN_WARNING("You go blind!"))
 
 		var/obj/item/organ/external/affecting = GET_EXTERNAL_ORGAN(H, eyes.parent_organ)
-		affecting.take_external_damage(7)
+		affecting.take_damage(7)
 	else
 		M.take_organ_damage(7)
 	SET_STATUS_MAX(M, STAT_BLURRY, rand(3,4))

@@ -1,6 +1,6 @@
 /obj/machinery/fabricator
 	name = "autolathe"
-	desc = "It produces common day to day items from a variety of materials."
+	desc = "It produces common day-to-day items from a variety of materials."
 	icon = 'icons/obj/machines/fabricators/autolathe.dmi'
 	icon_state = "autolathe"
 	density = TRUE
@@ -70,14 +70,14 @@
 	QDEL_NULL(sound_token)
 	. = ..()
 
-/obj/machinery/fabricator/examine(mob/user)
+/obj/machinery/fabricator/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(length(storage_capacity))
 		var/list/material_names = list()
 		for(var/thing in storage_capacity)
 			var/decl/material/mat = GET_DECL(thing)
 			material_names += "[storage_capacity[thing]] [mat.use_name]"
-		to_chat(user, SPAN_NOTICE("It can store [english_list(material_names)]."))
+		. += SPAN_NOTICE("It can store [english_list(material_names)].")
 
 /obj/machinery/fabricator/Initialize()
 

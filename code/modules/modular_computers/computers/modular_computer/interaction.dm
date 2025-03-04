@@ -103,16 +103,17 @@
 
 	return ..()
 
-/obj/item/modular_computer/examine(mob/user)
+/obj/item/modular_computer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/datum/extension/assembly/assembly = get_extension(src, /datum/extension/assembly)
 	if(assembly.enabled)
-		to_chat(user, "The time [stationtime2text()] is displayed in the corner of the screen.")
-
+		. += "The time [stationtime2text()] is displayed in the corner of the screen."
 	var/obj/item/stock_parts/computer/card_slot/card_slot = assembly.get_component(PART_CARD)
 	if(card_slot && card_slot.stored_card)
-		to_chat(user, "\The [card_slot.stored_card] is inserted into it.")
-	assembly.examine(user)
+		. += "\The [card_slot.stored_card] is inserted into it."
+	var/assembly_string = assembly.examine_assembly(user)
+	if(assembly_string)
+		. += assembly_string
 
 /obj/item/modular_computer/afterattack(atom/target, mob/user, proximity)
 	. = ..()

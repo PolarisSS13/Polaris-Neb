@@ -380,7 +380,7 @@
 
 
 // Parse the icon_state into a list of directions.
-// This means that mappers can use Dream Maker's built in
+// This means that mappers can use Dream Maker's built-in
 //  "Generate Instances from Icon-states" option to get all
 //  variations. Additionally, as a separate proc, sub-types
 //  can handle it more intelligently.

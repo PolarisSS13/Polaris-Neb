@@ -111,7 +111,7 @@
 	value = 3
 	icon_base = 'icons/turf/walls/stone.dmi'
 	table_icon_base = "stone"
-	shard_type = SHARD_SHARD
+	shard_name = SHARD_SHARD
 	hardness = MAT_VALUE_RIGID
 	flags = MAT_FLAG_FUSION_FUEL
 	construction_difficulty = MAT_VALUE_HARD_DIY

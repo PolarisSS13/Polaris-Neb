@@ -80,7 +80,7 @@
 	if(has_external_organs())
 		for(var/obj/item/organ/external/E in get_external_organs())
 			if(!(E.body_part & protected_limbs) && prob(20))
-				E.take_external_damage(burn = round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), used_weapon = "fire")
+				E.take_damage(round(species_heat_mod * log(10, (burn_temperature + 10)), 0.1), BURN, inflicter = "fire")
 	else // fallback for simplemobs
 		take_damage(round(species_heat_mod * log(10, (burn_temperature + 10))), 0.1, BURN, DAM_DISPERSED)
 

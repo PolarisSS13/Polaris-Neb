@@ -3,7 +3,7 @@
 	desc               = "A stretch of inlaid sections of flexible linoleum."
 	icon               = 'icons/turf/flooring/linoleum.dmi'
 	icon_base          = "lino"
-	can_paint          = 1
+	can_paint          = TRUE
 	build_type         = /obj/item/stack/tile/linoleum
 	flooring_flags     = TURF_REMOVE_SCREWDRIVER
 	footstep_type      = /decl/footsteps/tiles

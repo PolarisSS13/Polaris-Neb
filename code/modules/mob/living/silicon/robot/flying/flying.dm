@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/flying
-	desc = "A utility robot with an anti-gravity hover unit and a lightweight frame."
+	desc = "A utility robot with an antigravity hover unit and a lightweight frame."
 	icon = 'icons/mob/robots/flying/flying.dmi'
 	module_category = ROBOT_MODULE_TYPE_FLYING
 	dismantle_type = /obj/item/robot_parts/robot_suit/flyer
@@ -43,11 +43,11 @@
 	if(. && !gibbed)
 		stop_flying()
 
-/mob/living/silicon/robot/flying/Process_Spacemove()
-	return (pass_flags & PASS_FLAG_TABLE) || ..()
+/mob/living/silicon/robot/flying/is_space_movement_permitted(allow_movement = FALSE)
+	return (pass_flags & PASS_FLAG_TABLE) ? SPACE_MOVE_PERMITTED : ..()
 
-/mob/living/silicon/robot/flying/can_fall(var/anchor_bypass = FALSE, var/turf/location_override = loc)
-	return !Process_Spacemove()
+/mob/living/silicon/robot/flying/can_fall(anchor_bypass = FALSE, turf/location_override = loc)
+	return is_space_movement_permitted() == SPACE_MOVE_FORBIDDEN
 
 /mob/living/silicon/robot/flying/can_overcome_gravity()
-	return Process_Spacemove()
+	return is_space_movement_permitted() != SPACE_MOVE_FORBIDDEN

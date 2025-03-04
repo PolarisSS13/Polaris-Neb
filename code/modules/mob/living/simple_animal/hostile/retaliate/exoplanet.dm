@@ -89,7 +89,7 @@
 
 /mob/living/simple_animal/hostile/beast/shantak
 	name = "shantak"
-	desc = "A piglike creature with a bright iridiscent mane that sparkles as though lit by an inner light. Don't be fooled by its beauty though."
+	desc = "A piglike creature with a bright iridescent mane that sparkles as though lit by an inner light. Don't be fooled by its beauty though."
 	faction = "shantak"
 	icon = 'icons/mob/simple_animal/shantak.dmi'
 	move_intents = list(

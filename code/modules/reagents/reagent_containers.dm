@@ -137,15 +137,15 @@
 	if(user.get_target_zone() != BP_MOUTH) //in case it is ever used as a surgery tool
 		return ..()
 
-/obj/item/chems/examine(mob/user)
+/obj/item/chems/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!reagents)
 		return
 	if(hasHUD(user, HUD_SCIENCE))
 		var/prec = user.skill_fail_chance(SKILL_CHEMISTRY, 10)
-		to_chat(user, SPAN_NOTICE("\The [src] contains: [reagents.get_reagents(precision = prec)]."))
+		. += SPAN_NOTICE("\The [src] contains: [reagents.get_reagents(precision = prec)].")
 	else if((loc == user) && user.skill_check(SKILL_CHEMISTRY, SKILL_EXPERT))
-		to_chat(user, SPAN_NOTICE("Using your chemistry knowledge, you identify the following reagents in \the [src]: [reagents.get_reagents(!user.skill_check(SKILL_CHEMISTRY, SKILL_PROF), 5)]."))
+		. += SPAN_NOTICE("Using your chemistry knowledge, you identify the following reagents in \the [src]: [reagents.get_reagents(!user.skill_check(SKILL_CHEMISTRY, SKILL_PROF), 5)].")
 
 /obj/item/chems/shatter(consumed)
 	//Skip splashing if we are in nullspace, since splash isn't null guarded
@@ -176,11 +176,10 @@
 
 	// Vaporize anything over its boiling point.
 	var/update_reagents = FALSE
-	for(var/reagent in reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(reagent)
-		if(mat.can_boil_to_gas && !isnull(mat.boiling_point) && temperature >= mat.boiling_point)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(reagent.can_boil_to_gas && !isnull(reagent.boiling_point) && temperature >= reagent.boiling_point)
 			// TODO: reduce atom temperature?
-			var/removing = min(mat.boil_evaporation_per_run, reagents.reagent_volumes[reagent])
+			var/removing = min(reagent.boil_evaporation_per_run, reagents.reagent_volumes[reagent])
 			reagents.remove_reagent(reagent, removing, defer_update = TRUE, removed_phases = MAT_PHASE_LIQUID)
 			update_reagents = TRUE
 			loc.take_vaporized_reagent(reagent, removing)

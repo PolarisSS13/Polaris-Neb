@@ -50,42 +50,42 @@
 		update_neighboring_ramps(destroying_self = TRUE)
 	. = ..()
 
-/turf/wall/natural/attackby(obj/item/W, mob/user, click_params)
+/turf/wall/natural/attackby(obj/item/used_item, mob/user, click_params)
 
 	if(user.check_dexterity(DEXTERITY_COMPLEX_TOOLS) && !ramp_slope_direction)
 
-		if(istype(W, /obj/item/depth_scanner))
-			var/obj/item/depth_scanner/C = W
+		if(istype(used_item, /obj/item/depth_scanner))
+			var/obj/item/depth_scanner/C = used_item
 			C.scan_atom(user, src)
 			return TRUE
 
-		if (istype(W, /obj/item/measuring_tape))
-			var/obj/item/measuring_tape/P = W
+		if (istype(used_item, /obj/item/measuring_tape))
+			var/obj/item/measuring_tape/P = used_item
 			user.visible_message(SPAN_NOTICE("\The [user] extends [P] towards [src]."),SPAN_NOTICE("You extend [P] towards [src]."))
 			if(do_after(user,10, src))
 				to_chat(user, SPAN_NOTICE("\The [src] has been excavated to a depth of [excavation_level]cm."))
 			return TRUE
 
-		if(istype(W, /obj/item/tool/xeno))
-			return handle_xenoarch_tool_interaction(W, user)
+		if(istype(used_item, /obj/item/tool/xeno))
+			return handle_xenoarch_tool_interaction(used_item, user)
 
 	. = ..()
 
 // Drill out natural walls.
-/turf/wall/natural/handle_wall_tool_interactions(obj/item/W, mob/user)
-	if(IS_PICK(W) && !being_mined)
+/turf/wall/natural/handle_wall_tool_interactions(obj/item/used_item, mob/user)
+	if(IS_PICK(used_item) && !being_mined)
 		var/check_material_hardness
 		if(material)
 			check_material_hardness = material.hardness
 		if(reinf_material && (isnull(check_material_hardness) || check_material_hardness > reinf_material.hardness))
 			check_material_hardness = reinf_material.hardness
-		if(isnull(check_material_hardness) || W.material?.hardness < check_material_hardness)
-			to_chat(user, SPAN_WARNING("\The [W] is not hard enough to dig through \the [src]."))
+		if(isnull(check_material_hardness) || used_item.material?.hardness < check_material_hardness)
+			to_chat(user, SPAN_WARNING("\The [used_item] is not hard enough to dig through \the [src]."))
 			return TRUE
 		if(being_mined)
 			return TRUE
 		being_mined = TRUE
-		if(W.do_tool_interaction(TOOL_PICK, user, src, 2 SECONDS, suffix_message = destroy_artifacts(W, INFINITY)))
+		if(used_item.do_tool_interaction(TOOL_PICK, user, src, 2 SECONDS, suffix_message = destroy_artifacts(used_item, INFINITY)))
 			dismantle_turf()
 		if(istype(src, /turf/wall/natural)) // dismantle_turf() can change our type
 			being_mined = FALSE

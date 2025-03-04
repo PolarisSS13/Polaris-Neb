@@ -87,7 +87,7 @@
 /turf/floor/tiled/monotile,
 /area/map_template/oldpod)
 "ao" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -97,7 +97,7 @@
 /turf/floor/tiled/monotile,
 /area/map_template/oldpod)
 "ap" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/structure/window/reinforced{

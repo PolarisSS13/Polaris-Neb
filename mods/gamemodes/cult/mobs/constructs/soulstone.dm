@@ -37,30 +37,30 @@
 	QDEL_NULL(shade)
 	return ..()
 
-/obj/item/soulstone/examine(mob/user)
+/obj/item/soulstone/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(full == SOULSTONE_EMPTY)
-		to_chat(user, "The shard still flickers with a fraction of the full artifact's power, but it needs to be filled with the essence of someone's life before it can be used.")
+		. += "The shard still flickers with a fraction of the full artifact's power, but it needs to be filled with the essence of someone's life before it can be used."
 	if(full == SOULSTONE_ESSENCE)
-		to_chat(user,"The shard has gone transparent, a seeming window into a dimension of unspeakable horror.")
+		. += "The shard has gone transparent, a seeming window into a dimension of unspeakable horror."
 	if(full == SOULSTONE_CRACKED)
-		to_chat(user, "This one is cracked and useless.")
+		. += "This one is cracked and useless."
 
-/obj/item/soulstone/attackby(var/obj/item/I, var/mob/user)
-	if(is_evil && istype(I, /obj/item/nullrod))
+/obj/item/soulstone/attackby(var/obj/item/used_item, var/mob/user)
+	if(is_evil && istype(used_item, /obj/item/nullrod))
 		to_chat(user, SPAN_NOTICE("You cleanse \the [src] of taint, purging its shackles to its creator."))
 		is_evil = FALSE
 		return TRUE
-	else if(I.expend_attack_force(user) >= 5)
+	else if(used_item.expend_attack_force(user) >= 5)
 		if(full != SOULSTONE_CRACKED)
 			user.visible_message(
-				SPAN_WARNING("\The [user] hits \the [src] with \the [I], and it breaks.[shade.client ? " You hear a terrible scream!" : ""]"),
-				SPAN_WARNING("You hit \the [src] with \the [I], and it cracks.[shade.client ? " You hear a terrible scream!" : ""]"),
+				SPAN_WARNING("\The [user] hits \the [src] with \the [used_item], and it breaks.[shade.client ? " You hear a terrible scream!" : ""]"),
+				SPAN_WARNING("You hit \the [src] with \the [used_item], and it cracks.[shade.client ? " You hear a terrible scream!" : ""]"),
 				shade.client ? SPAN_NOTICE("You hear a scream.") : null)
 			playsound(loc, 'sound/effects/Glasshit.ogg', 75)
 			set_full(SOULSTONE_CRACKED)
 		else
-			user.visible_message(SPAN_DANGER("\The [user] shatters \the [src] with \the [I]!"))
+			user.visible_message(SPAN_DANGER("\The [user] shatters \the [src] with \the [used_item]!"))
 			shatter()
 		return TRUE
 	return ..()
@@ -144,15 +144,15 @@
 	icon_state = "construct-cult"
 	desc = "This eerie contraption looks like it would come alive if supplied with a missing ingredient."
 
-/obj/structure/constructshell/attackby(var/obj/item/I, var/mob/user)
-	if(!istype(I, /obj/item/soulstone))
+/obj/structure/constructshell/attackby(var/obj/item/used_item, var/mob/user)
+	if(!istype(used_item, /obj/item/soulstone))
 		return ..()
-	var/obj/item/soulstone/S = I
+	var/obj/item/soulstone/S = used_item
 	if(!S.shade.client)
-		to_chat(user, SPAN_NOTICE("\The [I] has essence, but no soul. Activate it in your hand to find a soul for it first."))
+		to_chat(user, SPAN_NOTICE("\The [used_item] has essence, but no soul. Activate it in your hand to find a soul for it first."))
 		return TRUE
 	if(S.shade.loc != S)
-		to_chat(user, SPAN_NOTICE("Recapture the shade back into \the [I] first."))
+		to_chat(user, SPAN_NOTICE("Recapture the shade back into \the [used_item] first."))
 		return TRUE
 	var/construct = alert(user, "Please choose which type of construct you wish to create.",,"Artificer", "Wraith", "Juggernaut")
 	var/ctype

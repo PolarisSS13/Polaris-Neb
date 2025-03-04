@@ -184,7 +184,7 @@
 /datum/unit_test/wire_dir_and_icon_stat/start_test()
 	var/list/bad_cables = list()
 
-	for(var/obj/structure/cable/C in global.cable_list)
+	for(var/obj/structure/cable/C in global.all_cables)
 		var/expected_icon_state = "[C.d1]-[C.d2]"
 		if(C.icon_state != expected_icon_state)
 			bad_cables |= C
@@ -411,7 +411,7 @@
 	var/safe_landmarks = 0
 	var/space_landmarks = 0
 
-	for(var/lm in global.landmarks_list)
+	for(var/lm in global.all_landmarks)
 		var/obj/abstract/landmark/landmark = lm
 		if(istype(landmark, /obj/abstract/landmark/test/safe_turf))
 			log_debug("Safe landmark found: [log_info_line(landmark)]")
@@ -706,7 +706,7 @@ var/global/_unit_test_sort_junctions = list()
 		exceptions_by_turf[T] += exception[4]
 	exceptions = exceptions_by_turf
 
-	for(var/obj/structure/cable/C in global.cable_list)
+	for(var/obj/structure/cable/C in global.all_cables)
 		if(!QDELETED(C) && !all_ends_connected(C))
 			failures++
 

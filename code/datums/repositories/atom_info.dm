@@ -5,14 +5,15 @@ var/global/repository/atom_info/atom_info_repository = new()
 	var/list/combined_worth_cache = list()
 	var/list/single_worth_cache =   list()
 	var/list/name_cache =           list()
+	var/list/description_cache =    list()
 	var/list/matter_mult_cache =    list()
 	var/list/origin_tech_cache =    list()
 
 /repository/atom_info/proc/create_key_for(var/path, var/material, var/amount)
 	. = "[path]"
-	if(material)
+	if(ispath(path, /obj) && material) // only objects take material as an arg
 		. = "[.]-[material]"
-	if(!isnull(amount))
+	if(ispath(path, /obj/item/stack) && !isnull(amount)) // similarly for stacks and amount
 		. = "[.]-[amount]"
 
 /repository/atom_info/proc/get_instance_of(var/path, var/material, var/amount)
@@ -37,6 +38,9 @@ var/global/repository/atom_info/atom_info_repository = new()
 	if(!name_cache[key])
 		instance = instance || get_instance_of(path, material, amount)
 		name_cache[key] = instance.name
+	if(!description_cache[key])
+		instance = instance || get_instance_of(path, material, amount)
+		description_cache[key] = instance.desc
 	if(!matter_mult_cache[key] && ispath(path, /obj))
 		var/obj/obj_instance = instance || get_instance_of(path, material, amount)
 		matter_mult_cache[key] = obj_instance.get_matter_amount_modifier()
@@ -66,6 +70,11 @@ var/global/repository/atom_info/atom_info_repository = new()
 	var/key = create_key_for(path, material, amount)
 	update_cached_info_for(path, material, amount, key)
 	. = name_cache[key]
+
+/repository/atom_info/proc/get_description_for(var/path, var/material, var/amount)
+	var/key = create_key_for(path, material, amount)
+	update_cached_info_for(path, material, amount, key)
+	. = description_cache[key]
 
 /repository/atom_info/proc/get_matter_multiplier_for(var/path, var/material, var/amount)
 	var/key = create_key_for(path, material, amount)

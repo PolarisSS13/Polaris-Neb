@@ -32,13 +32,13 @@ exactly 2 "/mob text paths" '"/mob'
 exactly 6 "/obj text paths" '"/obj'
 exactly 10 "/turf text paths" '"/turf'
 exactly 1 "world<< uses" 'world\s*<<'
-exactly 74 "'in world' uses" '\s+\bin world\b(?=\s*$|\s*//|\s*\))' -P
+exactly 75 "'in world' uses" '\s+\bin world\b(?=\s*$|\s*//|\s*\))' -P
 exactly 1 "world.log<< uses" 'world.log\s*<<'
 exactly 18 "<< uses" '(?<![<\\])<<(?!<)' -P
 exactly 1 "direct_output uses" '\bdirect_output\('
 exactly 3 ">> uses" '(?<![>\\])>>(?!>)' -P
 exactly 0 "incorrect indentations" '^( {4,})' -P
-exactly 23 "text2path uses" 'text2path'
+exactly 22 "text2path uses" 'text2path'
 exactly 4 "update_icon() overrides" '\/update_icon\(' -P
 exactly 0 "goto uses" '\bgoto\b'
 exactly 9 "atom/New uses" '^/(obj|atom|area|mob|turf).*/New\('
@@ -49,6 +49,7 @@ exactly 0 "global-marked member variables" '\t+/?var.*/global/' -P
 exactly 0 "static-marked globally scoped variables" '^/?var.*/static/.+' -P
 exactly 1 "direct usage of decls_repository.get_decl()" 'decls_repository\.get_decl\(' -P
 exactly 19 "direct loc set" '[^ ,(/]\bloc\s*=(?!=)' -P
+exactly 6  "pronoun macro use" '\\(he|she|him|her|his|hers|himself|herself|He|She|Him|Her|His|Hers|Himself|Herself)\b' -P
 exactly 0 "magic number mouse opacity set" 'mouse_opacity\s*=\s*[0-2]' -P
 exactly 0 "magic number density set" '\bdensity\s*=\s*[01]\b' -P
 exactly 0 "magic number anchored set" '\banchored\s*=\s*[01]\b' -P

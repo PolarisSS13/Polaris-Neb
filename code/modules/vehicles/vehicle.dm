@@ -29,7 +29,7 @@
 	var/move_delay = 1	//set this to limit the speed of the vehicle
 
 	var/obj/item/cell/cell
-	var/charge_use = 200 //W
+	var/charge_use = 200 // W
 
 	var/atom/movable/load		//all vehicles can take a load, since they should all be a least drivable
 	var/load_item_visible = 1	//set if the loaded item should be overlayed on the vehicle sprite
@@ -68,10 +68,10 @@
 	else
 		return 0
 
-/obj/vehicle/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/hand_labeler))
+/obj/vehicle/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/hand_labeler))
 		return FALSE // allow afterattack to run
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		if(!locked)
 			open = !open
 			update_icon()
@@ -79,13 +79,13 @@
 			return TRUE
 		to_chat(user, SPAN_WARNING("You can't [open ? "close" : "open"] the maintenance panel while \the [src] is locked!"))
 		return TRUE
-	else if(IS_CROWBAR(W) && cell && open)
+	else if(IS_CROWBAR(used_item) && cell && open)
 		remove_cell(user)
 		return TRUE
-	else if(istype(W, /obj/item/cell) && !cell && open)
-		insert_cell(W, user)
+	else if(istype(used_item, /obj/item/cell) && !cell && open)
+		insert_cell(used_item, user)
 		return TRUE
-	else if(IS_WELDER(W))
+	else if(IS_WELDER(used_item))
 		var/current_max_health = get_max_health()
 		if(current_health >= current_max_health)
 			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
@@ -93,9 +93,9 @@
 		if(!open)
 			to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
 			return TRUE
-		var/obj/item/weldingtool/welder = W
+		var/obj/item/weldingtool/welder = used_item
 		if(!welder.welding)
-			to_chat(user, "<span class='notice'>Unable to repair while [W] is off.</span>")
+			to_chat(user, "<span class='notice'>Unable to repair while [used_item] is off.</span>")
 			return TRUE
 		if(welder.weld(5, user))
 			current_health = min(current_max_health, current_health+10)
@@ -234,16 +234,16 @@
 		turn_on()
 		return
 
-/obj/vehicle/proc/insert_cell(var/obj/item/cell/C, var/mob/living/user)
+/obj/vehicle/proc/insert_cell(var/obj/item/cell/cell, var/mob/living/user)
 	if(cell)
 		return
-	if(!istype(C))
+	if(!istype(cell))
 		return
-	if(!user.try_unequip(C, src))
+	if(!user.try_unequip(cell, src))
 		return
-	cell = C
+	cell = cell
 	powercheck()
-	to_chat(user, "<span class='notice'>You install [C] in [src].</span>")
+	to_chat(user, "<span class='notice'>You install [cell] in [src].</span>")
 
 /obj/vehicle/proc/remove_cell(var/mob/living/user)
 	if(!cell)
@@ -261,34 +261,34 @@
 // the vehicle load() definition before
 // calling this parent proc.
 //-------------------------------------------
-/obj/vehicle/proc/load(var/atom/movable/C)
+/obj/vehicle/proc/load(var/atom/movable/loading)
 	//This loads objects onto the vehicle so they can still be interacted with.
 	//Define allowed items for loading in specific vehicle definitions.
-	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
+	if(!isturf(loading.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
 		return 0
-	if(load || C.anchored)
+	if(load || loading.anchored)
 		return 0
 
 	// if a create/closet, close before loading
-	var/obj/structure/closet/crate = C
+	var/obj/structure/closet/crate = loading
 	if(istype(crate) && crate.opened && !crate.close())
 		return 0
 
-	C.forceMove(loc)
-	C.set_dir(dir)
-	C.anchored = TRUE
+	loading.forceMove(loc)
+	loading.set_dir(dir)
+	loading.anchored = TRUE
 
-	load = C
+	load = loading
 
 	if(load_item_visible)
-		C.plane = plane
-		C.layer = VEHICLE_LOAD_LAYER		//so it sits above the vehicle
+		loading.plane = plane
+		loading.layer = VEHICLE_LOAD_LAYER		//so it sits above the vehicle
 
-	if(ismob(C))
-		buckle_mob(C)
+	if(ismob(loading))
+		buckle_mob(loading)
 	else if(load_item_visible)
-		C.pixel_x += load_offset_x
-		C.pixel_y += load_offset_y
+		loading.pixel_x += load_offset_x
+		loading.pixel_y += load_offset_y
 
 	return 1
 

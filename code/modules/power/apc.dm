@@ -6,7 +6,7 @@ var/global/list/all_apcs = list()
 // Requires a wire connection to a power network through a terminal
 // Generates a terminal based on the direction of the APC on spawn
 
-// There are three different power channels, lighting, equipment, and enviroment
+// There are three different power channels, lighting, equipment, and environment
 // Each may have one of the following states
 
 // Power channels set to Auto change when power levels rise or drop below a threshold
@@ -246,18 +246,18 @@ var/global/list/all_apcs = list()
 	if(term && (!functional_only || term.is_functional()))
 		return term.terminal
 
-/obj/machinery/power/apc/examine(mob/user, distance)
+/obj/machinery/power/apc/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		if(stat & BROKEN)
-			to_chat(user, "Looks broken.")
+			. += "Looks broken."
 			return
 		var/terminal = terminal()
-		to_chat(user, "\The [src] is [terminal ? "" : "not "]connected to external power.")
+		. += "\The [src] is [terminal ? "" : "not "]connected to external power."
 		if(!panel_open)
-			to_chat(user, "The cover is closed.")
+			. += "The cover is closed."
 		else
-			to_chat(user, "The cover is [cover_removed ? "removed" : "open"] and the power cell is [ get_cell(FALSE) ? "installed" : "missing"].")
+			. += "The cover is [cover_removed ? "removed" : "open"] and the power cell is [ get_cell(FALSE) ? "installed" : "missing"]."
 //  Broken/missing board should be shown by parent.
 
 // update the APC icon to show the three base states
@@ -438,8 +438,8 @@ var/global/list/all_apcs = list()
 	panel_open = TRUE
 	queue_icon_update()
 
-/obj/machinery/power/apc/attackby(obj/item/W, mob/user)
-	if (istype(construct_state, /decl/machine_construction/wall_frame/panel_closed/hackable/hacking) && (IS_MULTITOOL(W) || IS_WIRECUTTER(W) || istype(W, /obj/item/assembly/signaler)))
+/obj/machinery/power/apc/attackby(obj/item/used_item, mob/user)
+	if (istype(construct_state, /decl/machine_construction/wall_frame/panel_closed/hackable/hacking) && (IS_MULTITOOL(used_item) || IS_WIRECUTTER(used_item) || istype(used_item, /obj/item/assembly/signaler)))
 		wires.Interact(user)
 		return TRUE
 	return ..()

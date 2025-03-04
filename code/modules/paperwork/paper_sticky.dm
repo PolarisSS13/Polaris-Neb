@@ -43,17 +43,20 @@
 	if(top?.info)
 		icon_state = "[icon_state]_writing"
 
-/obj/item/sticky_pad/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_PEN(thing) || istype(thing, /obj/item/stamp))
-		. = top?.attackby(thing, user)
+/obj/item/sticky_pad/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_PEN(used_item) || istype(used_item, /obj/item/stamp))
+		. = top?.attackby(used_item, user)
 		update_icon()
 		return .
 	return ..()
 
-/obj/item/sticky_pad/examine(mob/user)
+/obj/item/sticky_pad/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It has [papers] sticky note\s left."))
-	to_chat(user, SPAN_NOTICE("You can click it on grab intent to pick it up."))
+	. += SPAN_NOTICE("It has [papers] sticky note\s left.")
+
+/obj/item/sticky_pad/get_examine_hints(mob/user, distance, infix, suffix)
+	. = ..()
+	LAZYADD(., SPAN_NOTICE("You can click it on grab intent to pick it up."))
 
 /obj/item/sticky_pad/dragged_onto(mob/user)
 	user.put_in_hands(top)

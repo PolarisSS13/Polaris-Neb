@@ -76,13 +76,13 @@
 		return TRUE
 	return FALSE
 
-/obj/item/stack/examine(mob/user, distance)
+/obj/item/stack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		if(!uses_charge)
-			to_chat(user, "There [src.amount == 1 ? "is" : "are"] [src.amount] [src.singular_name]\s in the stack.")
+		if(uses_charge)
+			. += "There is enough charge for [get_amount()]."
 		else
-			to_chat(user, "There is enough charge for [get_amount()].")
+			. += "There [src.amount == 1 ? "is" : "are"] [src.amount] [src.singular_name]\s in the stack."
 
 /obj/item/stack/on_update_icon()
 	. = ..()
@@ -448,9 +448,9 @@
 				src.interact(usr)
 	return TRUE
 
-/obj/item/stack/attackby(obj/item/W, mob/user)
-	if (istype(W, /obj/item/stack) && can_merge_stacks(W))
-		var/obj/item/stack/S = W
+/obj/item/stack/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/stack) && can_merge_stacks(used_item))
+		var/obj/item/stack/S = used_item
 		. = src.transfer_to(S)
 
 		spawn(0) //give the stacks a chance to delete themselves if necessary
@@ -473,6 +473,8 @@
 /// Returns the string describing an amount of the stack, i.e. "an ingot" vs "a flag"
 /obj/item/stack/proc/get_string_for_amount(amount)
 	if(amount == 1)
+		if(gender == PLURAL)
+			return "some [singular_name]"
 		return indefinite_article ? "[indefinite_article] [singular_name]" : ADD_ARTICLE(singular_name)
 	return "[amount] [plural_name]"
 

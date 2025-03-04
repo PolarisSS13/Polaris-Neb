@@ -3,11 +3,12 @@
 		hit_zone = get_target_zone()
 	var/list/available_attacks = get_mob_natural_attacks()
 	var/decl/natural_attack/use_attack = default_attack
-	if(!use_attack || !use_attack.is_usable(src, target, hit_zone) || !(use_attack.type in available_attacks))
+	if(!use_attack || !use_attack.attack_is_usable(src, target, hit_zone) || !(use_attack in available_attacks))
+		var/alert_non_default_attack = use_attack?.name
 		use_attack = null
 		var/list/other_attacks = list()
 		for(var/decl/natural_attack/u_attack as anything in available_attacks)
-			if(!u_attack.is_usable(src, target, hit_zone))
+			if(!u_attack.attack_is_usable(src, target, hit_zone))
 				continue
 			if(u_attack.is_starting_default)
 				use_attack = u_attack
@@ -15,6 +16,9 @@
 			other_attacks += u_attack
 		if(!use_attack && length(other_attacks))
 			use_attack = pick(other_attacks)
+		if(use_attack && alert_non_default_attack)
+			to_chat(src, SPAN_WARNING("You cannot [alert_non_default_attack] \the [target] currently, so you switch attacks."))
+
 	. = use_attack?.resolve_to_soft_variant(src)
 
 /obj/item/organ/external/proc/get_natural_attacks()
@@ -59,7 +63,7 @@
 				. += "irrecoverably damaged"
 			else
 				. += "grey and necrotic"
-		else if(damage >= max_damage && germ_level >= INFECTION_LEVEL_TWO)
+		else if((brute_dam + burn_dam) >= max_damage && germ_level >= INFECTION_LEVEL_TWO)
 			. += "likely beyond saving and decay has set in"
 
 	if(!is_usable() || is_dislocated()) // This one is special and has a different message for visible/pain modes.
@@ -232,7 +236,7 @@
 
 /mob/living/human/attack_hand(mob/user)
 
-	remove_cloaking_source(species)
+	remove_mob_modifier(/decl/mob_modifier/cloaked, source = species)
 	if(!user.check_intent(I_FLAG_GRAB))
 		for (var/obj/item/grab/grab as anything in user.get_active_grabs())
 			if(grab.assailant == user && grab.affecting == src && grab.resolve_openhand_attack())
@@ -409,7 +413,7 @@
 		var/image/radial_button = new
 		radial_button.name = capitalize(u_attack.name)
 		LAZYSET(choices, u_attack, radial_button)
-	var/decl/natural_attack/new_attack = show_radial_menu(src, (attack_selector || src), choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
+	var/decl/natural_attack/new_attack = show_radial_menu(src, src, choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
 	if(QDELETED(src) || !istype(new_attack) || !(new_attack in get_mob_natural_attacks()))
 		return
 	default_attack = new_attack
@@ -418,7 +422,7 @@
 		var/summary = default_attack.summarize()
 		if(summary)
 			to_chat(src, SPAN_NOTICE(summary))
-	attack_selector?.update_icon()
+	refresh_hud_element(HUD_ATTACK)
 
 /mob/living/human/UnarmedAttack(atom/A, proximity_flag)
 	// Hackfix for humans trying to attack someone without hands.

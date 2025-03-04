@@ -146,7 +146,7 @@
 
 /obj/item/clothing/mask/rubber/barros
 	name = "Amaya Barros mask"
-	desc = "Current Secretary-General of Sol Cental Government. Not that the real thing would visit this pigsty."
+	desc = "Current Secretary-General of Sol Central Government. Not that the real thing would visit this pigsty."
 	icon = 'icons/clothing/mask/barros.dmi'
 	visible_name = "Amaya Barros"
 

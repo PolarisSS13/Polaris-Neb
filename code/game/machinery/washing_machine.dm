@@ -9,14 +9,13 @@
 
 /obj/machinery/washing_machine
 	name = "washing machine"
-	desc = "A commerical washing machine used to wash clothing items and linens. It requires detergent for efficient washing."
+	desc = "A commercial washing machine used to wash clothing items and linens. It requires detergent for efficient washing."
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_00"
 	density = TRUE
 	anchored = TRUE
 	construct_state = /decl/machine_construction/default/panel_closed
 	uncreated_component_parts = null
-	stat_immune = NOSCREEN
 	obj_flags = OBJ_FLAG_ANCHORABLE
 	clicksound = "button"
 	clickvol = 40
@@ -62,9 +61,9 @@
 	create_reagents(100)
 	. = ..()
 
-/obj/machinery/washing_machine/examine(mob/user)
+/obj/machinery/washing_machine/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("The detergent port is [atom_flags & ATOM_FLAG_OPEN_CONTAINER ? "open" : "closed"]."))
+	. += SPAN_NOTICE("The detergent port is [atom_flags & ATOM_FLAG_OPEN_CONTAINER ? "open" : "closed"].")
 
 /obj/machinery/washing_machine/proc/wash()
 	if(operable())
@@ -93,20 +92,20 @@
 	state &= ~WASHER_STATE_RUNNING
 	update_use_power(POWER_USE_IDLE)
 
-/obj/machinery/washing_machine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/chems/pill/detergent))
+/obj/machinery/washing_machine/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/pill/detergent))
 		if(!(atom_flags & ATOM_FLAG_OPEN_CONTAINER))
 			to_chat(user, SPAN_WARNING("Open the detergent port first!"))
 			return TRUE
 		if(reagents.total_volume >= reagents.maximum_volume)
 			to_chat(user, SPAN_WARNING("The detergent port is full!"))
 			return TRUE
-		if(!user.try_unequip(W))
+		if(!user.try_unequip(used_item))
 			return TRUE
 		// Directly transfer to the holder to avoid touch reactions.
-		W.reagents?.trans_to_holder(reagents, W.reagents.total_volume)
-		to_chat(user, SPAN_NOTICE("You dissolve \the [W] in the detergent port."))
-		qdel(W)
+		used_item.reagents?.trans_to_holder(reagents, used_item.reagents.total_volume)
+		to_chat(user, SPAN_NOTICE("You dissolve \the [used_item] in the detergent port."))
+		qdel(used_item)
 		return TRUE
 
 	if(state & WASHER_STATE_RUNNING)
@@ -114,30 +113,30 @@
 		return TRUE
 
 	// If the detergent port is open and the item is an open container, assume we're trying to fill the detergent port.
-	if(!(state & WASHER_STATE_CLOSED) && !((atom_flags & W.atom_flags) & ATOM_FLAG_OPEN_CONTAINER))
+	if(!(state & WASHER_STATE_CLOSED) && !((atom_flags & used_item.atom_flags) & ATOM_FLAG_OPEN_CONTAINER))
 		var/list/wash_whitelist = get_wash_whitelist()
 		var/list/wash_blacklist = get_wash_blacklist()
 		var/list/washing_atoms = get_contained_external_atoms()
 		if(length(washing_atoms) < 5)
-			if(istype(W, /obj/item/holder)) // Mob holder
-				for(var/mob/living/doggy in W)
+			if(istype(used_item, /obj/item/holder)) // Mob holder
+				for(var/mob/living/doggy in used_item)
 					doggy.forceMove(src)
-				qdel(W)
+				qdel(used_item)
 				state |= WASHER_STATE_LOADED
 				update_icon()
 				return TRUE
 
 			// An empty whitelist implies all items can be washed.
-			else if((!length(wash_whitelist) || is_type_in_list(W, wash_whitelist)) && !is_type_in_list(W, wash_blacklist))
-				if(W.w_class > max_item_size)
-					to_chat(user, SPAN_WARNING("\The [W] is too large for \the [src]!"))
+			else if((!length(wash_whitelist) || is_type_in_list(used_item, wash_whitelist)) && !is_type_in_list(used_item, wash_blacklist))
+				if(used_item.w_class > max_item_size)
+					to_chat(user, SPAN_WARNING("\The [used_item] is too large for \the [src]!"))
 					return TRUE
-				if(!user.try_unequip(W, src))
+				if(!user.try_unequip(used_item, src))
 					return TRUE
 				state |= WASHER_STATE_LOADED
 				update_icon()
 			else
-				to_chat(user, SPAN_WARNING("You can't put \the [W] in \the [src]."))
+				to_chat(user, SPAN_WARNING("You can't put \the [used_item] in \the [src]."))
 				return TRUE
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] is full."))

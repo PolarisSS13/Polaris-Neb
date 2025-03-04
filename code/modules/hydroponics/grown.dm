@@ -15,13 +15,25 @@
 	var/seeds_extracted = FALSE
 	var/datum/seed/seed
 
-/obj/item/food/grown/examine(mob/user, distance)
+// This is sort of pointless while food is a valid input on the ChemMaster but maybe
+// in the future there will be some more interesting ways to process growns/food.
+/obj/item/food/grown/handle_centrifuge_process(obj/machinery/centrifuge/centrifuge)
+	if(!(. = ..()))
+		return
+	if(reagents?.total_volume)
+		reagents.trans_to_holder(centrifuge.loaded_beaker.reagents, reagents.total_volume)
+	for(var/obj/item/thing in contents)
+		thing.dropInto(centrifuge.loc)
+	for(var/atom/movable/thing in convert_matter_to_lumps())
+		thing.dropInto(centrifuge.loc)
+
+/obj/item/food/grown/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1 && seed && user.skill_check(work_skill, SKILL_BASIC))
 		if(seed.grown_is_seed)
-			to_chat(user, SPAN_NOTICE("\The [src] can be planted directly, without having to extract any seeds."))
+			. += SPAN_NOTICE("\The [src] can be planted directly, without having to extract any seeds.")
 		else if(!seeds_extracted && seed.min_seed_extracted)
-			to_chat(user, SPAN_NOTICE("With a knife, you could extract at least [seed.min_seed_extracted] seed\s."))
+			. += SPAN_NOTICE("With a knife, you could extract at least [seed.min_seed_extracted] seed\s.")
 
 /obj/item/food/grown/update_name()
 	if(!seed)
@@ -126,19 +138,18 @@
 
 		var/list/descriptors = list()
 
-		for(var/rtype in reagents.reagent_volumes)
-			var/decl/material/chem = GET_DECL(rtype)
-			if(chem.fruit_descriptor)
-				descriptors |= chem.fruit_descriptor
-			if(chem.reflectiveness >= MAT_VALUE_SHINY)
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+			if(reagent.fruit_descriptor)
+				descriptors |= reagent.fruit_descriptor
+			if(reagent.reflectiveness >= MAT_VALUE_SHINY)
 				descriptors |= "shiny"
-			if(chem.slipperiness >= 10)
+			if(reagent.slipperiness >= 10)
 				descriptors |= "slippery"
-			if(chem.toxicity >= 3)
+			if(reagent.toxicity >= 3)
 				descriptors |= "poisonous"
-			if(chem.radioactivity)
+			if(reagent.radioactivity)
 				descriptors |= "radioactive"
-			if(chem.solvent_power >= MAT_SOLVENT_STRONG)
+			if(reagent.solvent_power >= MAT_SOLVENT_STRONG)
 				descriptors |= "acidic"
 
 		if(seed.get_trait(TRAIT_JUICY))
@@ -183,11 +194,10 @@
 		return
 
 	var/mob/living/M = AM
-	if(M.buckled || MOVING_DELIBERATELY(M))
+	if(MOVING_DELIBERATELY(M))
 		return
 
-	var/obj/item/shoes = M.get_equipped_item(slot_shoes_str)
-	if(shoes && shoes.item_flags & ITEM_FLAG_NOSLIP)
+	if(!M.can_slip() || M.immune_to_floor_hazards())
 		return
 
 	to_chat(M, SPAN_DANGER("You slipped on \the [src]!"))
@@ -220,13 +230,13 @@ var/global/list/_wood_materials = list(
 	if(!seed?.show_slice_message_poor(user, tool, src))
 		..()
 
-/obj/item/food/grown/attackby(var/obj/item/W, var/mob/user)
+/obj/item/food/grown/attackby(var/obj/item/used_item, var/mob/user)
 
 	if(!seed || user.check_intent(I_FLAG_HARM))
 		return ..()
 
-	if(seed.get_trait(TRAIT_PRODUCES_POWER) && IS_COIL(W))
-		var/obj/item/stack/cable_coil/C = W
+	if(seed.get_trait(TRAIT_PRODUCES_POWER) && IS_COIL(used_item))
+		var/obj/item/stack/cable_coil/C = used_item
 		if(C.use(5))
 			//TODO: generalize this.
 			to_chat(user, SPAN_NOTICE("You add some cable to \the [src] and slide it inside the battery casing."))
@@ -237,15 +247,15 @@ var/global/list/_wood_materials = list(
 			pocell.charge = pocell.maxcharge
 		return TRUE
 
-	if(IS_KNIFE(W) && !seeds_extracted && !seed.grown_is_seed && seed.min_seed_extracted && user.skill_check(work_skill, SKILL_BASIC))
+	if(IS_KNIFE(used_item) && !seeds_extracted && !seed.grown_is_seed && seed.min_seed_extracted && user.skill_check(work_skill, SKILL_BASIC))
 		var/seed_result = max(1, rand(seed.min_seed_extracted, seed.max_seed_extracted))
-		visible_message(SPAN_NOTICE("\The [user] uses \the [W] to lever [seed_result] seed\s out of \the [src]."))
+		visible_message(SPAN_NOTICE("\The [user] uses \the [used_item] to lever [seed_result] seed\s out of \the [src]."))
 		for(var/i = 1 to seed_result)
 			new /obj/item/seeds/extracted(get_turf(user), material?.type, seed)
 		seeds_extracted = TRUE
 		return TRUE
 
-	if(IS_HATCHET(W) && seed.chems)
+	if(IS_HATCHET(used_item) && seed.chems)
 		for(var/wood_mat in global._wood_materials)
 			if(!isnull(seed.chems[wood_mat]))
 				user.visible_message(SPAN_NOTICE("\The [user] makes planks out of \the [src]."))
@@ -254,13 +264,13 @@ var/global/list/_wood_materials = list(
 				qdel(src)
 				return TRUE
 
-	if(istype(W, /obj/item/paper))
+	if(istype(used_item, /obj/item/paper))
 
 		if(!dry)
 			to_chat(user, SPAN_WARNING("You need to dry \the [src] first!"))
 			return TRUE
 
-		if(!user.try_unequip(W))
+		if(!user.try_unequip(used_item))
 			return TRUE
 
 		var/obj/item/clothing/mask/smokable/cigarette/rolled/R = new(get_turf(src))
@@ -271,11 +281,11 @@ var/global/list/_wood_materials = list(
 		else
 			R.create_reagents(R.chem_volume)
 
-		R.brand = "[src] handrolled in \the [W]."
+		R.brand = "[src] handrolled in \the [used_item]."
 		reagents.trans_to_holder(R.reagents, R.chem_volume)
-		to_chat(user, SPAN_NOTICE("You roll \the [src] into \the [W]."))
+		to_chat(user, SPAN_NOTICE("You roll \the [src] into \the [used_item]."))
 		user.put_in_active_hand(R)
-		qdel(W)
+		qdel(used_item)
 		qdel(src)
 		return TRUE
 
