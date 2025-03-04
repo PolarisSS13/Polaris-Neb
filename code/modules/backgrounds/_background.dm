@@ -59,7 +59,7 @@
 	return capitalize(pick(gender==FEMALE ? global.using_map.first_names_female : global.using_map.first_names_male)) + " " + capitalize(pick(global.using_map.last_names))
 
 /decl/background_detail/proc/sanitize_background_name(new_name)
-	return sanitize_name(new_name, allow_numbers = TRUE)
+	return sanitize_name(new_name)
 
 /decl/background_detail/proc/get_description(var/verbose = TRUE)
 	LAZYSET(., "details", jointext(get_text_details(), "<br>"))
