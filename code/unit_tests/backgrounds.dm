@@ -3,8 +3,7 @@
 
 /datum/unit_test/background/start_test()
 
-	var/list/all_background_tokens = global.using_map.get_background_categories()
-
+	var/list/all_background_categories = decls_repository.get_decls_of_subtype(/decl/background_category)
 	var/fails = 0
 	for(var/decl/species/species as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
 		if(!islist(species.default_background_info))
@@ -12,7 +11,7 @@
 			log_bad("Default background info for [species.type] is not a list.")
 		else
 			for(var/cat_type in species.default_background_info)
-				if(!(cat_type in all_background_tokens))
+				if(!(cat_type in all_background_categories))
 					fails++
 					log_bad("Default background info for [species.type] contains invalid tag '[cat_type]'.")
 				else
@@ -40,7 +39,7 @@
 			log_bad("Forced background info for [species.type] is not a list.")
 		else
 			for(var/cat_type in species.force_background_info)
-				if(!(cat_type in all_background_tokens))
+				if(!(cat_type in all_background_categories))
 					fails++
 					log_bad("Forced background info for [species.type] contains invalid tag '[cat_type]'.")
 				else
@@ -67,7 +66,7 @@
 			fails++
 			log_bad("Available background info for [species.type] is not a list.")
 		else
-			for(var/cat_type in all_background_tokens)
+			for(var/cat_type in all_background_categories)
 				if(!islist(species.available_background_info[cat_type]))
 					fails++
 					log_bad("Available background info for [species.type] tag '[cat_type]' is invalid type, must be a list.")

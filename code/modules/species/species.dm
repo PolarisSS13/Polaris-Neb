@@ -348,7 +348,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	else if(length(available_pronouns) && !default_pronouns)
 		default_pronouns = available_pronouns[1]
 
-	for(var/cat_type in global.using_map.get_background_categories())
+	for(var/cat_type in decls_repository.get_decls_of_subtype(/decl/background_category))
 
 		var/force_val = force_background_info[cat_type]
 		if(force_val)
