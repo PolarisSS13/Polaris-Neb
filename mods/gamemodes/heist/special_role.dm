@@ -55,5 +55,5 @@
 	return 1
 
 /decl/special_role/raider/equip_role(var/mob/living/human/player)
-	default_outfit = LAZYACCESS(outfits_per_species, player.species.name) || initial(default_outfit)
+	default_outfit = LAZYACCESS(outfits_per_species, player.species.uid) || initial(default_outfit)
 	. = ..()

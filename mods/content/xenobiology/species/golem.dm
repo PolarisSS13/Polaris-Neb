@@ -10,7 +10,8 @@
 	uid = "bodytype_crystalline_golem"
 
 /decl/species/golem
-	name = SPECIES_GOLEM
+	uid = "species_golem"
+	name = "Golem"
 	name_plural = "Golems"
 	hidden_from_codex = TRUE
 

@@ -14,10 +14,8 @@
 	var/list/incompatible_with_limbs = list(BP_L_HAND)
 	var/model
 
-/decl/trait/prosthetic_limb/proc/get_base_model(var/species_name)
-	if(!species_name)
-		return /decl/bodytype/prosthetic/basic_human
-	var/decl/species/species = species_name ? get_species_by_key(species_name) : global.using_map.default_species
+/decl/trait/prosthetic_limb/proc/get_base_model(var/species_uid)
+	var/decl/species/species = decls_repository.get_decl_by_id(species_uid || global.using_map.default_species)
 	return species?.base_external_prosthetics_model
 
 /decl/trait/prosthetic_limb/get_chargen_name(datum/preferences/pref)
@@ -87,7 +85,7 @@
 			var/decl/bodytype/prosthetic/robot_model = GET_DECL(model)
 			if(!istype(robot_model))
 				return FALSE
-			var/decl/species/S = get_species_by_key(pref.species) || get_species_by_key(global.using_map.default_species)
+			var/decl/species/S = pref.get_species_decl()
 			var/decl/bodytype/B = S.get_bodytype_by_name(pref.bodytype)
 			if(!robot_model.check_can_install(apply_to_limb, target_bodytype = (check_bodytype || B.bodytype_category)))
 				return FALSE
@@ -114,7 +112,7 @@
 
 	// Robotize the selected limb.
 	if(. && apply_to_limb)
-		var/use_model = model || get_base_model(holder.get_species_name())
+		var/use_model = model || get_base_model(holder.get_species()?.uid)
 		var/obj/item/organ/external/E = GET_EXTERNAL_ORGAN(holder, apply_to_limb)
 		if(!istype(E))
 			var/list/organ_data = holder.should_have_limb(apply_to_limb)

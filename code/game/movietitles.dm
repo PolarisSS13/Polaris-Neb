@@ -102,17 +102,16 @@ var/global/list/end_titles
 		if(H.timeofdeath < 5 MINUTES) //no prespawned corpses
 			continue
 		if(H.isMonkey() && findtext(H.real_name,"[lowertext(H.species.name)]"))
-			monkies[H.species.name] += 1
+			monkies[H.species] += 1
 		else if(H.real_name)
 			corpses += H.real_name
-	for(var/spec in monkies)
-		var/decl/species/S = get_species_by_key(spec)
-		corpses += "[monkies[spec]] [lowertext(monkies[spec] > 1 ? S.name_plural : S.name)]"
+	for(var/decl/species/monkey_species in monkies)
+		corpses += "[monkies[monkey_species]] [lowertext(monkies[monkey_species] > 1 ? monkey_species.name_plural : monkey_species.name)]"
 	if(corpses.len)
 		titles += "<center>BASED ON REAL EVENTS<br>In memory of [english_list(corpses)].</center>"
 
 	var/list/staff = list("PRODUCTION STAFF:")
-	var/list/staffjobs = list("Coffe Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
+	var/list/staffjobs = list("Coffee Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
 	var/list/goodboys = list()
 	for(var/client/C)
 		if(!C.holder)
@@ -120,7 +119,7 @@ var/global/list/end_titles
 		if(C.holder.rights & (R_DEBUG|R_ADMIN))
 			var/list/all_backgrounds = decls_repository.get_decls_of_subtype(/decl/background_detail/heritage)
 			var/decl/background_detail/cult = all_backgrounds[pick(all_backgrounds)]
-			staff += "[uppertext(pick(staffjobs))] - [cult.get_random_name(pick(MALE, FEMALE))] a.k.a. '[C.key]'"
+			staff += "[uppertext(pick(staffjobs))] - [cult.get_random_name(C.gender)] a.k.a. '[C.key]'"
 		else if(C.holder.rights & R_MOD)
 			goodboys += "[C.key]"
 

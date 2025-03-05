@@ -19,7 +19,8 @@
 	bone_type         = null
 
 /decl/species/serpentid
-	name = SPECIES_SERPENTID
+	uid = "species_serpentid"
+	name = "Serpentid"
 	name_plural = "Serpentids"
 	spawn_flags = SPECIES_IS_RESTRICTED
 

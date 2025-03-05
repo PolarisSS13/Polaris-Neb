@@ -1,5 +1,3 @@
-#define SPECIES_SKRELL "Skrell"
-
 /decl/modpack/skrell
 	name = "Skrell Species"
 	tabloid_headlines = list(
@@ -9,8 +7,8 @@
 
 /decl/modpack/skrell/pre_initialize()
 	..()
-	SSmodpacks.default_submap_whitelisted_species |= SPECIES_SKRELL
+	SSmodpacks.default_submap_whitelisted_species |= /decl/species/skrell::uid
 
-/mob/living/human/skrell/Initialize(mapload, species_name, datum/mob_snapshot/supplied_appearance)
-	species_name = SPECIES_SKRELL
+/mob/living/human/skrell/Initialize(mapload, species_uid, datum/mob_snapshot/supplied_appearance)
+	species_uid = /decl/species/skrell::uid
 	. = ..()

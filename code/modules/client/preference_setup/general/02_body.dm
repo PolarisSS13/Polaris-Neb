@@ -84,7 +84,7 @@
 
 /datum/category_item/player_setup_item/physical/body/save_character(datum/pref_record_writer/writer)
 
-	var/decl/species/mob_species = get_species_by_key(pref.species)
+	var/decl/species/mob_species = pref.get_species_decl()
 	var/list/save_accessories = list()
 	for(var/acc_cat in mob_species.available_accessory_categories)
 		if(!(acc_cat in pref.sprite_accessories))
@@ -109,10 +109,10 @@
 
 /datum/category_item/player_setup_item/physical/body/sanitize_character()
 
-	var/decl/species/mob_species = get_species_by_key(pref.species)
+	var/decl/species/mob_species = pref.get_species_decl()
 	if(!mob_species || (mob_species.spawn_flags & SPECIES_IS_RESTRICTED))
 		pref.species = global.using_map.default_species
-		mob_species = get_species_by_key(pref.species)
+		mob_species = pref.get_species_decl()
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	if(mob_bodytype.appearance_flags & HAS_SKIN_COLOR)
 		pref.skin_colour = pref.skin_colour || mob_bodytype.base_color     || COLOR_BLACK
@@ -186,7 +186,7 @@
 /datum/category_item/player_setup_item/physical/body/content(var/mob/user)
 	. = list()
 
-	var/decl/species/mob_species = get_species_by_key(pref.species)
+	var/decl/species/mob_species = pref.get_species_decl()
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	. += "Blood Type: <a href='byond://?src=\ref[src];blood_type=1'>[pref.blood_type]</a><br>"
 	. += "<a href='byond://?src=\ref[src];random=1'>Randomize Appearance</A><br>"
@@ -303,7 +303,7 @@
 
 /datum/category_item/player_setup_item/physical/body/OnTopic(var/href,var/list/href_list, var/mob/user)
 
-	var/decl/species/mob_species = get_species_by_key(pref.species)
+	var/decl/species/mob_species = pref.get_species_decl()
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	if(href_list["set_descriptor"])
 
@@ -327,7 +327,7 @@
 	else if(href_list["blood_type"])
 		var/new_b_type = input(user, "Choose your character's blood type:", CHARACTER_PREFERENCE_INPUT_TITLE) as null|anything in mob_species.blood_types
 		if(new_b_type && CanUseTopic(user))
-			mob_species = get_species_by_key(pref.species)
+			mob_species = pref.get_species_decl()
 			if(new_b_type in mob_species.blood_types)
 				pref.blood_type = new_b_type
 				return TOPIC_REFRESH
@@ -436,7 +436,7 @@
 		if(!(mob_bodytype.appearance_flags & HAS_EYE_COLOR))
 			return TOPIC_NOACTION
 		var/new_eyes = input(user, "Choose your character's eye colour:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.eye_colour) as color|null
-		mob_species = get_species_by_key(pref.species)
+		mob_species = pref.get_species_decl()
 		mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 		if(new_eyes && (mob_bodytype.appearance_flags & HAS_EYE_COLOR) && CanUseTopic(user))
 			pref.eye_colour = new_eyes
@@ -446,7 +446,7 @@
 		if(!(mob_bodytype.appearance_flags & HAS_A_SKIN_TONE))
 			return TOPIC_NOACTION
 		var/new_s_tone = input(user, "Choose your character's skin-tone. Lower numbers are lighter, higher are darker. Range: 1 to [mob_bodytype.max_skin_tone()]", CHARACTER_PREFERENCE_INPUT_TITLE, (-pref.skin_tone) + 35) as num|null
-		mob_species = get_species_by_key(pref.species)
+		mob_species = pref.get_species_decl()
 		mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 		if(new_s_tone && (mob_bodytype.appearance_flags & HAS_A_SKIN_TONE) && CanUseTopic(user))
 			pref.skin_tone = 35 - max(min(round(new_s_tone), mob_bodytype.max_skin_tone()), 1)
@@ -456,7 +456,7 @@
 		if(!(mob_bodytype.appearance_flags & HAS_SKIN_COLOR))
 			return TOPIC_NOACTION
 		var/new_skin = input(user, "Choose your character's skin colour: ", CHARACTER_PREFERENCE_INPUT_TITLE, pref.skin_colour) as color|null
-		mob_species = get_species_by_key(pref.species)
+		mob_species = pref.get_species_decl()
 		mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 		if(new_skin && (mob_bodytype.appearance_flags & HAS_SKIN_COLOR) && CanUseTopic(user))
 			pref.skin_colour = new_skin

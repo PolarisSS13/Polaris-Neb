@@ -4,7 +4,7 @@
 	if(!(hideflags & HIDEJUMPSUIT) || !(hideflags & HIDEFACE))
 		var/species_name = "\improper "
 		if(isSynthetic() && species.cyborg_noun)
-			species_name += "[species.cyborg_noun] [species.get_root_species_name(src)]"
+			species_name += "[species.cyborg_noun] [species.name]"
 		else
 			species_name += "[species.name]"
 		. += ", <b><font color='[species.get_species_flesh_color(src)]'>\a [species_name]!</font></b>[(user.can_use_codex() && SScodex.get_codex_entry(get_codex_value(user))) ?  SPAN_NOTICE(" \[<a href='byond://?src=\ref[SScodex];show_examined_info=\ref[src];show_to=\ref[user]'>?</a>\]") : ""]"

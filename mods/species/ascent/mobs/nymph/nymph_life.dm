@@ -41,7 +41,7 @@
 	visible_message("\icon[src] [src] begins to shimmy and shake out of its old skin.")
 	if(molt == 5)
 		if(do_after(src, 10 SECONDS, src, FALSE))
-			var/mob/living/human/H = new(get_turf(src), SPECIES_MANTID_ALATE)
+			var/mob/living/human/H = new(get_turf(src), /decl/species/mantid::uid)
 			H.set_gyne_lineage(get_gyne_lineage())
 			H.real_name = "[random_id(/decl/species/mantid, 10000, 99999)] [H.get_gyne_name()]"
 			H.nutrition = nutrition * 0.25 // Homgry after molt.

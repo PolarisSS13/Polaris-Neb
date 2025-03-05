@@ -96,7 +96,7 @@
 				else
 					permitted = TRUE
 
-				if(gear.whitelisted && !(mannequin.species.name in gear.whitelisted))
+				if(gear.whitelisted && !(mannequin.species.uid in gear.whitelisted))
 					permitted = FALSE
 
 				if(!permitted)

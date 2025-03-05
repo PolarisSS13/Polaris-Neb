@@ -135,7 +135,7 @@
 	if(owner)
 		LAZYREMOVE(owner.bad_external_organs, src)
 
-/obj/item/organ/external/set_species(specie_name)
+/obj/item/organ/external/set_species(species_uid)
 	_icon_cache_key = null
 	. = ..()
 	skin_blend = bodytype.limb_blend

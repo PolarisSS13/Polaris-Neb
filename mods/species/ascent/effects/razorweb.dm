@@ -32,8 +32,8 @@
 	var/image/gleam
 	var/image/web
 	var/static/species_immunity_list = list(
-		SPECIES_MANTID_ALATE   = TRUE,
-		SPECIES_MANTID_GYNE    = TRUE
+		/decl/species/mantid::uid      = TRUE,
+		/decl/species/mantid/gyne::uid = TRUE
 	)
 
 /obj/effect/razorweb/Destroy()
@@ -133,7 +133,7 @@
 	var/mob/living/human/H
 	if(ishuman(L))
 		H = L
-		if(species_immunity_list[H.species.name])
+		if(species_immunity_list[H.species.uid])
 			return
 
 	if(!silent)

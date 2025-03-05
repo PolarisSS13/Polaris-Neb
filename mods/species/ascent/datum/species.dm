@@ -24,8 +24,8 @@
 	splatter_colour = "#660066"
 
 /decl/species/mantid
-
-	name =                   SPECIES_MANTID_ALATE
+	uid =                    "species_mantid_alate"
+	name =                   "Kharmaan Alate"
 	name_plural =            "Kharmaan Alates"
 	show_ssd =               "quiescent"
 	hidden_from_codex =      TRUE
@@ -92,8 +92,8 @@
 	return
 
 /decl/species/mantid/gyne
-
-	name =        SPECIES_MANTID_GYNE
+	uid =         "species_mantid_gyne"
+	name =        "Kharmaan Gyne"
 	name_plural = "Kharmaan Gynes"
 
 	available_bodytypes = list(/decl/bodytype/crystalline/mantid/gyne)

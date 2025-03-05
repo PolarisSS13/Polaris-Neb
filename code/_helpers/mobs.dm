@@ -9,7 +9,7 @@
 
 /proc/random_name(gender, species)
 	if(species)
-		var/decl/species/current_species = get_species_by_key(species)
+		var/decl/species/current_species = decls_repository.get_decl_by_id(species)
 		if(current_species)
 			var/decl/background_detail/background = current_species.get_default_background_datum_by_flag(BACKGROUND_FLAG_NAMING)
 			if(background)

@@ -1,4 +1,3 @@
-#define SPECIES_UNATHI "Unathi"
 #define LANGUAGE_UNATHI "Sinta'unathi"
 
 /decl/modpack/unathi
@@ -11,8 +10,8 @@
 
 /decl/modpack/unathi/pre_initialize()
 	..()
-	SSmodpacks.default_submap_whitelisted_species |= SPECIES_UNATHI
+	SSmodpacks.default_submap_whitelisted_species |= /decl/species/unathi::uid
 
-/mob/living/human/unathi/Initialize(mapload, species_name, datum/mob_snapshot/supplied_appearance)
-	species_name = SPECIES_UNATHI
+/mob/living/human/unathi/Initialize(mapload, species_uid, datum/mob_snapshot/supplied_appearance)
+	species_uid = /decl/species/unathi::uid
 	. = ..()

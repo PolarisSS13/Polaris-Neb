@@ -1,6 +1,7 @@
 /decl/species/grafadreka
-	name = SPECIES_GRAFADREKA
-	name_plural = SPECIES_GRAFADREKA
+	uid = "species_grafadreka"
+	name = "Grafadreka"
+	name_plural = "Grafadreka"
 	description = "The reclusive grafadreka (Icelandic, lit. 'digging dragon'), also known as the snow drake, is a large reptillian pack predator similar in size and morphology to old Earth hyenas. \
 	They commonly dig shallow dens in dirt, snow or foliage, sometimes using them for concealment prior to an ambush. \
 	Biological cousins to the elusive kururak, they have heavy, low-slung bodies and powerful jaws suited to hunting land prey rather than fishing. \

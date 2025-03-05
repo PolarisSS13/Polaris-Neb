@@ -1,5 +1,5 @@
 #define GET_ALLOWED_VALUES(write_to, check_key) \
-	var/decl/species/S = get_species_by_key(pref.species); \
+	var/decl/species/S = pref.get_species_decl(); \
 	if(!S) { \
 		write_to = list(); \
 	} else if(S.force_background_info[check_key]) { \

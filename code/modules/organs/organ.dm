@@ -126,7 +126,7 @@
 	if(species != organ_appearance.root_species)
 		if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
 			bodytype = organ_appearance.root_bodytype // this lets us take advantage of set_bodytype being called in set_species
-		set_species(organ_appearance.root_species?.name || global.using_map.default_species)
+		set_species(organ_appearance.root_species?.uid || global.using_map.default_species)
 	else if(organ_appearance.root_bodytype && organ_appearance.root_bodytype != bodytype)
 		set_bodytype(organ_appearance.root_bodytype)
 
@@ -170,15 +170,15 @@
 	absolute_max_damage = floor(ndamage)
 	max_damage = absolute_max_damage
 
-/obj/item/organ/proc/set_species(specie_name)
+/obj/item/organ/proc/set_species(species_uid)
 	vital_to_owner = null // This generally indicates the owner mob is having species set, and this value may be invalidated.
-	if(istext(specie_name))
-		species = get_species_by_key(specie_name)
+	if(istext(species_uid))
+		species = decls_repository.get_decl_by_id(species_uid)
 	else
-		species = specie_name
+		species = species_uid
 	if(!species)
-		species = get_species_by_key(global.using_map.default_species)
-		PRINT_STACK_TRACE("Invalid species. Expected a valid species name as string, was: [log_info_line(specie_name)]")
+		species = decls_repository.get_decl_by_id(global.using_map.default_species)
+		PRINT_STACK_TRACE("Invalid species. Expected a valid species UID as string, was: [log_info_line(species_uid)]")
 
 	set_bodytype(bodytype || species.default_bodytype, override_material = material?.type)
 

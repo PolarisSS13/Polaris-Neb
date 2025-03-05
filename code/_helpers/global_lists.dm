@@ -61,25 +61,6 @@ var/global/list/keybindings_by_name = list() // Replace this with just decl look
 			for(var/bound_key in instance.hotkey_keys)
 				global.hotkey_keybinding_list_by_key[bound_key] += list(instance.name)
 
-// This is all placeholder procs for an eventual PR to change them to use decls.
-var/global/list/all_species
-/proc/build_species_lists()
-	if(global.all_species)
-		return
-	global.all_species = list()
-	for(var/decl/species/species in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
-		ASSERT(species.name) // all non-abstract species should have names
-		global.all_species[species.name] = species
-
-// TODO: Change species code to use decls instead of name keys. In that event, replace this with GET_DECL(species) I guess, or make it use UID instead of name?
-/proc/get_species_by_key(var/species_key)
-	build_species_lists()
-	. = global.all_species[species_key]
-// In the event of the above, this would be replaced with decls_repository.get_decls_of_subtype(/decl/species) or similar helpers.
-/proc/get_all_species()
-	build_species_lists()
-	. = global.all_species
-// In the event of the above, just make it add the typepath or UID instead of the name.
 /proc/get_playable_species()
 	var/static/list/_playable_species // A list of ALL playable species, whitelisted, latejoin or otherwise. (read: non-restricted)
 	if(!_playable_species)
@@ -87,5 +68,5 @@ var/global/list/all_species
 		for(var/decl/species/species in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
 			if(species.spawn_flags & SPECIES_IS_RESTRICTED)
 				continue
-			_playable_species += species.name
+			_playable_species += species.uid
 	return _playable_species

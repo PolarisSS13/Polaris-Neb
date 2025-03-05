@@ -38,7 +38,7 @@
 
 	// Markings used to be cleared outside of here, but it was always done before every call, so it was moved in here.
 	// remove invalid accessories for our new bodytype. don't clear the list directly as we did before, to preserve in the case of no default
-	var/decl/species/mob_species = get_species_by_key(pref.species)
+	var/decl/species/mob_species = pref.get_species_decl()
 	var/decl/bodytype/mob_bodytype = mob_species.get_bodytype_by_name(pref.bodytype) || mob_species.default_bodytype
 	for(var/acc_cat in pref.sprite_accessories)
 		if(!(acc_cat in mob_species.available_accessory_categories))
