@@ -5,6 +5,18 @@
 
 	var/list/all_background_categories = decls_repository.get_decls_of_subtype(/decl/background_category)
 	var/fails = 0
+#ifdef UNIT_TEST
+	var/list/check_flags = global.all_background_flags.Copy()
+	for(var/cat_type in all_background_categories)
+		var/decl/background_category/background_cat = all_background_categories[cat_type]
+		for(var/background_flag in check_flags)
+			if(background_cat.background_flags & check_flags[background_flag])
+				check_flags -= check_flags[background_flag]
+	if(length(check_flags))
+		fails++
+		log_bad("Set of map background categories missing background flags: [english_list(check_flags)]")
+#endif
+
 	for(var/decl/species/species as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
 		if(!islist(species.default_background_info))
 			fails++
