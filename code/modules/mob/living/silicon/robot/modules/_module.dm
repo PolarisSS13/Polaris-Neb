@@ -58,9 +58,16 @@
 	var/list/skills = list() // Skills that this module grants. Other skills will remain at minimum levels.
 	var/list/software = list() // Apps to preinstall on robot's inbiult computer
 
+// Override because storage is created very early.
+/obj/item/robot_module/New(loc, material_key, reference_only = FALSE)
+	if(reference_only)
+		storage = null
+	..(loc, material_key)
+
 /obj/item/robot_module/Initialize(ml, material_key, reference_only = FALSE)
 
 	. = ..()
+
 	if(reference_only)
 		return
 

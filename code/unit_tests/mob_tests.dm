@@ -325,7 +325,7 @@
 
 	var/list/failures = list()
 	for(var/moduletype in typesof(/obj/item/robot_module))
-		var/obj/item/robot_module/mod = new(null, null, TRUE) // Reference copy only; have to do this to access lists.
+		var/obj/item/robot_module/mod = new moduletype(reference_only = TRUE) // Reference copy only; have to do this to access lists.
 		for(var/sprite in mod.module_sprites)
 			var/check_icon = mod.module_sprites[sprite]
 			if(!check_state_in_icon("world", check_icon))
