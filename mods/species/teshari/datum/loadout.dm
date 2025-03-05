@@ -2,7 +2,7 @@
 	name = "Avian"
 
 /decl/loadout_option/teshari
-	whitelisted = list(SPECIES_AVIAN)
+	whitelisted = list(/decl/species/teshari::uid)
 	category = /decl/loadout_category/teshari
 	abstract_type = /decl/loadout_option/teshari
 

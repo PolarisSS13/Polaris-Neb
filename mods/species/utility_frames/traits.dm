@@ -1,6 +1,7 @@
 /decl/trait/build_references()
 	. = ..()
-	LAZYDISTINCTADD(blocked_species, /decl/species/utility_frame::uid, /decl/species/positronic::uid)
+	LAZYDISTINCTADD(blocked_species, /decl/species/utility_frame::uid)
+	LAZYDISTINCTADD(blocked_species, /decl/species/positronic::uid)
 
 /decl/trait/utility_frame
 	abstract_type = /decl/trait/utility_frame

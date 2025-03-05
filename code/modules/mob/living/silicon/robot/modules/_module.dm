@@ -160,11 +160,17 @@
 				for(var/state in cicon.ids_to_icons)
 					.[state] = cicon.ids_to_icons[state]
 
+// These lists and refs may be paths or types; do not use QDEL_NULL.
 /obj/item/robot_module/Destroy()
-	QDEL_NULL_LIST(equipment)
+	for(var/datum/thing in (equipment|synths))
+		qdel(thing)
+	equipment = null
+	synths = null
 	QDEL_NULL_LIST(synths)
-	QDEL_NULL(emag)
-	QDEL_NULL(jetpack)
+	if(istype(emag))
+		QDEL_NULL(emag)
+	if(istype(jetpack))
+		QDEL_NULL(jetpack)
 	. = ..()
 	var/mob/living/silicon/robot/robot = loc
 	if(istype(robot) && robot.module == src)

@@ -68,7 +68,7 @@
 	)
 
 /decl/species/positronic
-	name =                  SPECIES_POSITRONIC
+	name =                  "Positronic"
 	name_plural =           "Positronics"
 	description =           "Artificial people manufactured from enigmatic ancient technology, and raised among organic life and cultures."
 	cyborg_noun = null
@@ -85,6 +85,7 @@
 	body_temperature =      null
 	passive_temp_gain =     5  // stabilize at ~80 C in a 20 C environment.
 	blood_volume = 0
+	uid = "species_positronic"
 
 	preview_outfit = null
 

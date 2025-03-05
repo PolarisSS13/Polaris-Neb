@@ -142,16 +142,16 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	var/votable = TRUE
 
 	var/list/available_background_info = list(
-		/decl/background_category/homeworld   = list(/decl/background_detail/location/other),
 		/decl/background_category/citizenship = list(/decl/background_detail/citizenship/other),
+		/decl/background_category/homeworld   = list(/decl/background_detail/location/other),
 		/decl/background_category/faction     = list(/decl/background_detail/faction/other),
 		/decl/background_category/heritage    = list(/decl/background_detail/heritage/other),
 		/decl/background_category/religion    = list(/decl/background_detail/religion/other)
 	)
 
 	var/list/default_background_info = list(
-		/decl/background_category/homeworld   = /decl/background_detail/location/other,
 		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
+		/decl/background_category/homeworld   = /decl/background_detail/location/other,
 		/decl/background_category/faction     = /decl/background_detail/faction/other,
 		/decl/background_category/heritage    = /decl/background_detail/heritage/other,
 		/decl/background_category/religion    = /decl/background_detail/religion/other
@@ -196,6 +196,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 		"reinforced"
 	)
 	var/background_categories_generated = FALSE
+	// Hard defining this to avoid pulling in unimplemented citizenship decls for the time being.
 	var/list/_background_categories = list(
 		/decl/background_category/heritage,
 		/decl/background_category/citizenship,
@@ -214,6 +215,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 	if(!background_categories_generated)
 		if(isnull(_background_categories))
 			_background_categories = decls_repository.get_decls_of_type(/decl/background_category)
+			_background_categories = _background_categories?.Copy() || list() // Avoid mutating the cache.
 		else
 			for(var/cat_type in _background_categories)
 				_background_categories[cat_type] = GET_DECL(cat_type)

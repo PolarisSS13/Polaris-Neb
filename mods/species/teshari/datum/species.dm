@@ -16,7 +16,7 @@
 	meat_type = /obj/item/food/butchery/meat/chicken
 
 /decl/species/teshari
-	name = SPECIES_AVIAN
+	name        = "Teshari"
 	name_plural = "Teshari"
 	description = "A race of feathered raptors who developed alongside the Skrell, \
 	inhabiting the polar tundral regions outside of Skrell territory. \
@@ -25,6 +25,7 @@
 	They are only recently becoming known on human stations \
 	after reaching space with Skrell assistance."
 	base_external_prosthetics_model = null
+	uid = "species_teshari"
 
 	snow_slowdown_mod = -1
 
