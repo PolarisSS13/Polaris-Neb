@@ -161,10 +161,15 @@
 					.[state] = cicon.ids_to_icons[state]
 
 /obj/item/robot_module/Destroy()
-	QDEL_NULL_LIST(equipment)
+	for(var/datum/thing in (equipment|synths))
+		qdel(thing)
+	equipment = null
+	synths = null
 	QDEL_NULL_LIST(synths)
-	QDEL_NULL(emag)
-	QDEL_NULL(jetpack)
+	if(istype(emag))
+		QDEL_NULL(emag)
+	if(istype(jetpack))
+		QDEL_NULL(jetpack)
 	. = ..()
 	var/mob/living/silicon/robot/robot = loc
 	if(istype(robot) && robot.module == src)
