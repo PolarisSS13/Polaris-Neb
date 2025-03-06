@@ -1,7 +1,7 @@
 #ifndef MODPACK_POLARIS
 #define MODPACK_POLARIS
 // BEGIN_INCLUDE
-#include "datum\background.dm"
+#include "code\background.dm"
 #include "datum\citizenship.dm"
 #include "datum\cultures.dm"
 #include "datum\factions.dm"
