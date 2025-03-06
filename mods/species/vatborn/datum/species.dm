@@ -27,12 +27,13 @@
 		)
 
 
-	description = "A genetically modified type of human, Vatborn humans are cloned from a template and grown in special tubes. They look like pale \
-	but otherwise normal humans, but their bodies have a few internal changes. For one, they lack an appendix. On top of that, they are frequently \
-	hungry, as their metabolisms are faster than standard."
+	description = "With cloning on the forefront of human scientific advancement, cheap mass production \
+	of bodies is a very real and rather ethically grey industry. Vat-grown or Vatborn humans tend to be \
+	paler than baseline, with no appendix and fewer inherited genetic disabilities, but a more aggressive metabolism. \
+	Most vatborn are engineered to experience rapid maturation, reaching approximately sixteen years of growth in only five \
+	before slowing to normal growth rates."
 
 	preview_outfit = /decl/outfit/job/generic/assistant
-
 
 	toxins_mod = 1.1
 	metabolism_mod = 1.15
