@@ -41,6 +41,7 @@
 
 
 /decl/species/vatborn/Initialize()
+	default_bodytype = /decl/bodytype/human/vatborn //runtime prevention
 	. = ..()
 	LAZYINITLIST(available_background_info)
 
