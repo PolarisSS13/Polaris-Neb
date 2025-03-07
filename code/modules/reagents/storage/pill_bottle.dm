@@ -65,3 +65,31 @@
 	. = ..()
 	if(wrapper_color)
 		add_overlay(overlay_image(icon, "pillbottle_wrap", wrapper_color, RESET_COLOR))
+
+/obj/item/pill_bottle/proc/update_name_label()
+	if(!labeled_name)
+		name = base_name
+		desc = base_desc
+		return
+	else if(length(labeled_name) > 10)
+		var/short_label_name = copytext(labeled_name, 1, 11)
+		name = "[base_name] ([short_label_name]...)"
+	else
+		name = "[base_name] ([labeled_name])"
+	desc = "[base_desc] It is labeled \"[labeled_name]\"."
+
+/obj/item/pill_bottle/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
+		var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", labeled_name), MAX_NAME_LEN)
+		if(length(tmp_label) > 50)
+			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
+		else if(length(tmp_label) > 10)
+			to_chat(user, "<span class='notice'>You set the label.</span>")
+			labeled_name = tmp_label
+			update_name_label()
+		else
+			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			labeled_name = tmp_label
+			update_name_label()
+		return TRUE
+	return ..()
