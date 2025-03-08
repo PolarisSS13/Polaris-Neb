@@ -69,6 +69,69 @@
 	economic_power = 0.8
 	subversive_potential = 1.1
 
+//
+// Alpha Centauri locations
+/decl/background_detail/location/kishar
+	name = "Core World - Kishar, Alpha Centauri"
+	uid = "location_kishar"
+	description = "Kishar is the oldest extrasolar human planetary colony, located in Alpha Centauri. A planet\
+	covered in green-gray silicate dust and human arcologies, Kishar prides itself on self-sufficiency and is split into\
+	many different countries. The Kishari population is almost exclusively human and very bioconservative, and its \
+	ethnic makeup slants heavily towards Romani, Native Americans, Ainu, and other marginalized groups. Kishar is \
+	known for being a powerhouse of arts, entertainment, tourism, and the social sciences."
+	ruling_body = "Sol Confederate Government"
+	economic_power = 1.1
+	distance = 4.37
+
+/decl/background_detail/location/kishar
+	name = "Core World - Heaven, Alpha Centauri"
+	uid = "location_heaven"
+	description = "Heaven is the oldest human extrasolar colony, a 400-year-old orbital complex located in Alpha\
+	Centauri. It consists of two large cylindrical habitats, seven co-rotating rings around them, and dozens of smaller \
+	\"tin can\" habitats. Heavener society features great economic inequality. The twin cylinders of Valhalla and \
+	Elysium are the poorly-lit, poorly-maintained industrial hub of the colony, while the seven increasingly-wealthy \
+	rings have a much more white-collar focus. Heaven is primarily populated by humans, but Valhalla and Elysium\
+	feature sizable positronic and Tajaran minorities."
+	ruling_body = "Sol Confederate Government"
+	distance = 4.37
+
+//
+// Other star systems
+/decl/background_detail/location/nisp
+	name = "Core World - Nisp, Kess-Gendar"
+	uid = "location_nisp"
+	description = "Nisp is a garden world known for its vast scarlet jungles and ferocious wildlife. \
+	Boasting a significant tourism industry, the planet's eco-conservation movement has held strong since \
+	Nisp's first colonies were established amid the climate crises of Earth. Nisp is also home to one of \
+	the largest core system Skrellian populations, and was an early adopter of the Tradeband language, \
+	which remains the primary vernacular language in a large number of settlements. \
+	In order to defend colonies from notoriously aggressive wildlife - \
+	some large and persistent enough to pose a danger to buildings - Nisp boasts an unusually large ground-based military.
+	ruling_body = "Sol Confederate Government"
+	distance = 19.42
+
+/decl/background_detail/location/binma
+	name = "Core World - Binma, Tau Ceti"
+	uid = "location_binma"
+	description = "The first extrasolar garden world and a significant center of culture and finance, Binma in the Tau \
+	Ceti system is known for its insular dome-cities and massive public works projects dotting a biosphere mostly \
+	undisturbed since colonization. Binma's system-wide government, the UBC, represents more individual citizens \
+	than any other SolGov member state, giving it an outsided influence in the legislature tempered by the system's \
+	traditional isolationalism and the recent loss of public confidence in their massive stock exchange after an \
+	emergent drone attack in 2559."
+	ruling_body = "Sol Confederate Government"
+	economic_power = 1.1
+	distance = 11.91
+
+/decl/background_detail/location/other
+	name = "Core World - Other"
+	uid = "location_other"
+	description = "The Core Worlds are densely populated and heavily developed, most relying on imports from \
+	other Solar member states to fuel their economy. The culture of the Core heavily influences the rest of Solar \
+	society by way of media, painting the Core as glamorous, cosmopolitan... and largely biological human."
+	ruling_body = "Sol Confederate Government"
+	economic_power = 1.1
+	distance = "Varies"
 
 //
 // Vir locations
