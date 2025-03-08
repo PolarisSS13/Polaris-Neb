@@ -1,7 +1,7 @@
 //
 // Sol locations
 /decl/background_detail/location/earth
-	name = "Core World - Earth, Sol"
+	name = "Earth, Sol"
 	uid = "location_earth"
 	description = "The cradle of humanity, Earth has undergone something of a revitalization \
 	since the bulk of industry and resource extraction was relocated to the wider system and beyond. \
@@ -15,7 +15,7 @@
 	subversive_potential = 0.8
 
 /decl/background_detail/location/mars
-	name = "Core World - Mars, Sol"
+	name = "Mars, Sol"
 	uid = "location_mars"
 	description = "The most heavily populated world in Sol space, Mars is the industrial center of Sol, \
 	home to billions in great domed cities and billions more in various tin-can towns and underground warrens. \
@@ -27,7 +27,7 @@
 	ruling_body = "Sol Confederate Government"
 
 /decl/background_detail/location/luna
-	name = "Core World - Luna, Sol"
+	name = "Luna, Sol"
 	uid = "location_luna"
 	description = "Nearly the whole of Luna's habitat space is given over to the vast grinding bureaucracy \
 	of the Solar Confederate Government. As the capital of the confederation, the moon hosts a vast number of embassies, \
@@ -41,7 +41,7 @@
 	subversive_potential = 0.9
 
 /decl/background_detail/location/venus
-	name = "Core World - Venus, Sol"
+	name = "Venus, Sol"
 	uid = "location_venus"
 	description = "Despite its hellish atmosphere, Venus is considered the breadbasket of Sol. \
 	Aerostat habitats in the upper stratosphere keep vast bays of crops away from the misery of Venus' surface. \
@@ -54,7 +54,7 @@
 	subversive_potential = 0.8
 
 /decl/background_detail/location/titan
-	name = "Core World - Titan, Sol"
+	name = "Titan, Sol"
 	uid = "location_titan"
 	description = "The colony on Titan, chilly moon of Saturn, is entirely built around \
 	extracting the vast lakes of hydrocarbons present. Titanians frquently suffer from wanderlust, \
@@ -68,7 +68,7 @@
 // Core World - Callisto
 
 /decl/background_detail/location/pluto
-	name = "Core World - Pluto, Sol"
+	name = "Pluto, Sol"
 	uid = "location_pluto"
 	description = "Pluto is set apart from the wealth and comfort often made synonymous with the Sol system,\
 	seeming more like a rim-world than a planet at the heart of SolGov. It is home to the local cluster's largest \
@@ -85,7 +85,7 @@
 //
 // Alpha Centauri locations
 /decl/background_detail/location/kishar
-	name = "Core World - Kishar, Alpha Centauri"
+	name = "Kishar, Alpha Centauri"
 	uid = "location_kishar"
 	description = "Kishar is the oldest extrasolar human planetary colony, located in Alpha Centauri. A planet\
 	covered in green-gray silicate dust and human arcologies, Kishar prides itself on self-sufficiency and is split into\
@@ -101,7 +101,7 @@
 // Core World - Anshar
 
 /decl/background_detail/location/kishar
-	name = "Core World - Heaven, Alpha Centauri"
+	name = "Heaven, Alpha Centauri"
 	uid = "location_heaven"
 	description = "Heaven is the oldest human extrasolar colony, a 400-year-old orbital complex located in Alpha\
 	Centauri. It consists of two large cylindrical habitats, seven co-rotating rings around them, and dozens of smaller \
@@ -118,7 +118,7 @@
 //
 // Other star systems
 /decl/background_detail/location/nisp
-	name = "Core World - Nisp, Kess-Gendar"
+	name = "Nisp, Kess-Gendar"
 	uid = "location_nisp"
 	description = "Nisp is a garden world known for its vast scarlet jungles and ferocious wildlife. \
 	Boasting a significant tourism industry, the planet's eco-conservation movement has held strong since \
@@ -133,7 +133,7 @@
 	distance = "19.42 ly"
 
 /decl/background_detail/location/binma
-	name = "Core World - Binma, Tau Ceti"
+	name = "Binma, Tau Ceti"
 	uid = "location_binma"
 	description = "The first extrasolar garden world and a significant center of culture and finance, Binma in the Tau \
 	Ceti system is known for its insular dome-cities and massive public works projects dotting a biosphere mostly \
@@ -148,7 +148,7 @@
 	distance = "11.91 ly"
 
 /decl/background_detail/location/binma
-	name = "Core World - Altair"
+	name = "Altair"
 	uid = "location_binma"
 	description = "Home to the Solar Confederate Government's primary maximum security correctional facility for \
 	confederation-level criminals, and very little else. Residents of the system are invariably associated with \
@@ -161,15 +161,21 @@
 	local_government = "Corporate Municipal Governance under the Altair Correctional Agency" //feels very clumsy, but just 'corporate governance' is a little too nondescriptive?
 	distance = null //It's on the map, 2d-distancewise further than AC but closer than Kess-Gendar. lore people please advise.
 
-/decl/background_detail/location/other
-	name = "Core World - Other"
-	uid = "location_other"
+/decl/background_detail/location/coreworlds
+	name = "Core Worlds"
+	uid = "location_coreworlds"
 	description = "The Core Worlds are densely populated and heavily developed, most relying on imports from \
 	other Solar member states to fuel their economy. The culture of the Core heavily influences the rest of Solar \
 	society by way of media, painting the Core as glamorous, cosmopolitan... and largely biological human."
+	capital = "Luna"
 	ruling_body = "Sol Confederate Government"
 	economic_power = 1.1
-	distance = "Varies"
+	distance = null //not one location
+
+
+//
+// Golden Crescent
+//
 
 //
 // Vir locations
@@ -181,7 +187,9 @@
 	Though fiercely independent for a few centuries, \
 	today, Sif is united with Kara under the Vir Governmental Authority as \
 	a full SolGov member state, and acts as head of the Golden Crescent Alliance Bloc."
-	ruling_body = "Vir Governmental Authority"
+	capital = "New Reykjavik"
+	local_government = "Vir Governmental Authority"
+	ruling_body = "Golden Crescent Alliance Bloc"
 	distance = "67.4 ly"
 
 /decl/background_detail/location/kara
@@ -190,7 +198,66 @@
 	description = "A series of asteroid habitats orbitting the gas giant Kara in the Vir system.\
 	Originally populated by smugglers, pirates, and their descendants, \
 	an internal police action and the discovery of phoron opened the region to exploitation \
-	by corporations like NanoTrasen, whose mining and colony stations now dominate the ring."
-	ruling_body = "Vir Governmental Authority"
+	by corporations like NanoTrasen, whose mining and colony stations now dominate the ring. \
+	Kara's habitats, once independent, are now under the aegis of the Vir Governmental Authority -\
+	but still retain a significant degree of autonomy."
+	capital = "New Reykjavik, Sif"
+	local_government = "Vir Governmental Authority"
+	ruling_body = "Golden Crescent Regional Government"
 	distance = "67.4 ly"
 
+//
+// Other Crescent
+/decl/background_detail/location/oasis
+	name = "Oasis"
+	uid = "location_oasis"
+	description = "Oasis hosts a large complex of resorts on the uninhabitable but life-bearing surface of its lone planet, Mandrake. \
+	Once a cultural-breakaway \"model\" society structured around intensive Work (August-February) and Rest (March-July) Seasons, \
+	coinciding with the planet's year-long day, Gilthari Exports and several Near Kingdoms investors have exploited the traditional \"rest season\" \
+	into a year-round tourist pastiche extravaganza with particular focus on wealthy and skrellian clientele. \
+	Oasis is a core member of the Golden Crescent Alliance Bloc."
+	capital = null //none
+	local_government = "Oasis Resort Management Association"
+	ruling_body = "Golden Crescent Regional Government"
+	distance = "44 ly"
+
+/decl/background_detail/location/sdcu
+	name = "Saint Columbia Democratic Union, Saint Columbia"
+	uid = "location_sdcu"
+	description = "The habitats of the Saint Columbia system have three times seceded from SolGov; \
+	twice in the 23rd century and once just over a decade ago. \
+	The fiercely independent Saint Columbia Democratic Union has been under combined civilian-military control \
+	since the end of the Almach war ten years ago, and made to serve as SolGov's main border checkpoint \
+	for the Almach Protectorate. Opinions within the colony are now split between supporters of the \
+	charismatic leader of the new government, and pro-tech anti-war socialists loyal to the failed revolutions."
+	local_government = "Saint Columbia Democratic Union"
+	ruling_body = "Golden Crescent Regional Government"
+	economic_power = 0.8
+	subversive_potential = 1.2
+	distance = "49 ly"
+
+/decl/background_detail/location/iserlohnrepublic
+	name = "Iserlohn Republic, Saint Columbia"
+	uid = "location_iserlohnrepublic"
+	description = "During the seccesion of the Saint Columbia during the Almach War, \
+	the civilian population of the enormous Saint Columbia Fleet Base broke away from \
+	the system's government and declared themselves the independent Iserlohn Republic loyal to SolGov. \
+	Iserlohn's population is large for a fleet base but tiny for a state, \
+	and is composed primarily of the families of service personnel and those immediately involved in military industries. \
+	Iserlohners tend to be conservative, patriotic, and are predictably staunch supporters of the armed forces.
+	local_government = "Iserlohn Republic"
+	ruling_body = "Golden Crescent Regional Government"
+	economic_power = 0.9
+	subversive_potential = 0.9
+	distance = "49 ly"
+
+/decl/background_detail/location/goldencrescent
+	name = "Golden Crescent"
+	uid = "location_goldencrescent"
+	description = "The Golden Crescent is a cultural region containing Vir and many of its neighbors. \
+	Crescenti people are rugged and self-reliant, and the region has an eclectic and cosmopolitan culture from \
+	centuries of welcoming alien and positronic migrants and refugees. Many of the systems within the Golden Crescent \
+	seceded during the 23rd century before being absorbed back into SolGov, and they maintain a strong independent streak."
+	capital = "Vir"
+	ruling_body = "Golden Crescent Regional Government"
+	distance = null //not one location
