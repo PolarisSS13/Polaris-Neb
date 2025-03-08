@@ -159,7 +159,7 @@
 	The inmates of the Stack tend not to be from the system's own cultural background, with rare exception."
 	capital = "Becquerel Station"
 	local_government = "Corporate Municipal Governance under the Altair Correctional Agency" //feels very clumsy, but just 'corporate governance' is a little too nondescriptive?
-	distance = null //It's on the map, 2d-distancewise further than AC but closer than Kess-Gendar. lore people please advise.
+	distance = "16.73 ly"
 
 /decl/background_detail/location/coreworlds
 	name = "Core Worlds"
@@ -261,3 +261,98 @@
 	capital = "Vir"
 	ruling_body = "Golden Crescent Regional Government"
 	distance = null //not one location
+
+//
+// Sagittarius Heights
+//
+
+//
+// New Ohio
+/decl/background_detail/location/franklin
+	name = "Franklin, New Ohio"
+	uid = "location_franklin"
+	description = "The jewel of New Ohio and the gateway to the Sagittarius Heights, \
+	Franklin is known for three things: tourism, aquaculture, and hosting the Sagittarian branch offices of many a trans-stellar corporation. \
+	Even after the secession of the Five Arrows, the majority of traffic between the Heights and the core systems passes through New Ohio, \
+	and Franklin is a common stop for passengers who want to spend a bit of time on a garden world while they can. \
+	Franklin's cities are a cosmopolitan mix, with significant skrell and teshari populations, \
+	while its vast oceans are home to a number of sailors and mariners, recreational and professional."
+	ruling_body = "Sol Confederate Government"
+	distance = null //unknown
+	subversive_potential = 0.9
+
+
+/decl/background_detail/location/wright
+	name = "Wright, New Ohio"
+	uid = "location_wright"
+	description = "Formerly the industrial hub of New Ohio and a major exporter to the whole of the Sagittarius Heights, \
+	Wright has fallen on hard times in the post-Incursion world. With no money, far fewer trade partners, \
+	and many of its smaller stations still abandoned or in ruins, Wright is a shell of its former self. \
+	Wright is also dominated by a Ward-Takahashi voter farm, and its human population mainly consists of \
+	middle-management for what corporate concerns remain and personnel from the New Ohio Fleet Base. \
+	Many have left Wright in recent years looking for better fortunes, expecting them just about anywhere else in the galaxy."
+	
+	ruling_body = "Sol Confederate Government"
+	distance = null //unknown
+	economic_power = 0.7 //super space detroit. maybe it should be 0.8 or 0.75? I am overthinking it.
+	
+
+//
+// Five Arrows
+/decl/background_detail/location/sidhe
+	uid = "location_sidhe"
+	name = "Sidhe"
+	description = "Sidhe hosts an eclectic mix of humans, skrell, and positronics, co-existing in uneasy harmony for hundreds of years. \
+	Formerly controlled by the for-profit Daoine Institute, one of the largest technical schools in SolGov, \
+	using a Skrellian academic model of governance, the system has since seen a popular revolution and has seceded from SolGov. \
+	Today, Sidhe is seen as one of the Five Arrows' most militant supporters and as a case study in human-skrellian cultural integration."
+	local_government = "Sidhe Reconstruction Government"
+	ruling_body = "Five Arrows"
+	economic_power = 0.7
+	subversive_potential = 1.1
+
+/decl/background_detail/location/mahimahi
+	uid = "location_mahimahi"
+	name = "Mahi-Mahi, Mahi Mahi"  //dash space
+	description = "A planet split into two distinct spheres of power, Mahi-Mahi hosts an ongoing struggle between \
+	the dichotomous interests of its metropolitan centres and their surrounding rural populations. \
+	The cities, using their economic and political power from their bygone colonial era, curry favour with corporate and foreign interests, \
+	seeking investment for their research and cultural programmes. The rural townships and greenhouse compounds that dot the \
+	surrounding continents have continuously chafed under the control of their capitals, believing that the technology and \
+	cashflow that trickles out of the cities to be insufficient recompense for the dangerous environment and animal life that \
+	they contend with regularly.
+	local_government = "Mahi-Mahi Planetary Government"
+	ruling_body = "Five Arrows"
+
+
+//New Seoul goes here
+
+//Parvati goes here
+
+/decl/background_detail/location/kauqxum
+	uid = "location_kauqxum"
+	name = "Sagittarius Heights - Kauq'xum"
+	description = "Sandwiched between the prosperity of the Skrellian Interior and the human Sagittarius Heights, \
+	the border systems have enjoyed heavy commerce as goods and people come and go across the border. \
+	Kauq'xum is the most populated of the Skrellian border systems thanks to the garden world of Qarr'xetaq. \
+	The Skrell had already gotten well underway terraforming Qarr'xetaq from an arid savannah to their more \
+	preferred marshy biosphere when First Contact was made, but after Human-Skrell relations warmed, \
+	it became a model to which many human geo-engineering projects were later carried out."
+	ruling_body = "Five Arrows"
+
+
+/decl/background_detail/location/sagitheights
+	uid = "location_sagitheights"
+	name = "Sagittarius Heights"
+	description = "The Sagittarius Heights have long benefitted from extensive trade and cultural exchange with Skrellian business interests, \
+	and their position as some of the most wealthy and economically independent states in the human cultural sphere came to head when \
+	much of the region split from SolGov to form the Five Arrows. Sagittarian culture is perhaps most typified by its blending of Solar and \
+	Skrellian cultures, including the adoption of Tradeband as its official language, and while its residents are often stereotyped as arrogant, \
+	wealthy, and snobbish, the truth is that the average Sagitarrian is a miner or farmer whose living conditions differ little from those anywhere in Solar space."
+	capital = "New Seoul"
+	ruling_body = "Five Arrows"
+	economic_modifier = 1.1
+
+//
+// The Bowl
+//
