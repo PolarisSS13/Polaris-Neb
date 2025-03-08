@@ -137,10 +137,7 @@
 	uid = "location_binma"
 	description = "The first extrasolar garden world and a significant center of culture and finance, Binma in the Tau \
 	Ceti system is known for its insular dome-cities and massive public works projects dotting a biosphere mostly \
-	undisturbed since colonization. Binma's system-wide government, the UBC, represents more individual citizens \
-	than any other SolGov member state, giving it an outsided influence in the legislature tempered by the system's \
-	traditional isolationalism and the recent loss of public confidence in their massive stock exchange after an \
-	emergent drone attack in 2559."
+	undisturbed since colonization."
 	capital = "Pelamance"
 	local_government = "United Binmasian Conglomerate"
 	ruling_body = "Sol Confederate Government"
@@ -153,14 +150,12 @@
 	description = "Home to the Solar Confederate Government's primary maximum security correctional facility for \
 	confederation-level criminals, and very little else. Residents of the system are invariably associated with \
 	the operation of the notorious \"Altair Stack\",  whether directly employed by the prison or in support of its \
-	employees and their families, all housed within the stations' outer security perimeter. \
-	Life in Altair is one lived under constant police scrutiny, and those who do not mesh with \
-	the highly authoritarian environment tend not to stick around long by choice. \
-	The inmates of the Stack tend not to be from the system's own cultural background, with rare exception."
+	employees and their families, all housed within the stations' outer security perimeter."
 	capital = "Becquerel Station"
 	local_government = "Corporate Municipal Governance under the Altair Correctional Agency" //feels very clumsy, but just 'corporate governance' is a little too nondescriptive?
 	distance = "16.73 ly"
 
+//these should be moved to cultures i think
 /decl/background_detail/location/coreworlds
 	name = "Core Worlds"
 	uid = "location_coreworlds"
@@ -226,10 +221,8 @@
 	uid = "location_sdcu"
 	description = "The habitats of the Saint Columbia system have three times seceded from SolGov; \
 	twice in the 23rd century and once just over a decade ago. \
-	The fiercely independent Saint Columbia Democratic Union has been under combined civilian-military control \
-	since the end of the Almach war ten years ago, and made to serve as SolGov's main border checkpoint \
-	for the Almach Protectorate. Opinions within the colony are now split between supporters of the \
-	charismatic leader of the new government, and pro-tech anti-war socialists loyal to the failed revolutions."
+	The fiercely independent Saint Columbia Democratic Union now serves as SolGov's main border checkpoint \
+	for the Almach Protectorate.
 	local_government = "Saint Columbia Democratic Union"
 	ruling_body = "Golden Crescent Regional Government"
 	economic_power = 0.8
@@ -240,11 +233,8 @@
 	name = "Iserlohn Republic, Saint Columbia"
 	uid = "location_iserlohnrepublic"
 	description = "During the seccesion of the Saint Columbia during the Almach War, \
-	the civilian population of the enormous Saint Columbia Fleet Base broke away from \
-	the system's government and declared themselves the independent Iserlohn Republic loyal to SolGov. \
-	Iserlohn's population is large for a fleet base but tiny for a state, \
-	and is composed primarily of the families of service personnel and those immediately involved in military industries. \
-	Iserlohners tend to be conservative, patriotic, and are predictably staunch supporters of the armed forces.
+	the civilian population of the enormous Saint Columbia Fleet Base broke away from the\
+	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov. 
 	local_government = "Iserlohn Republic"
 	ruling_body = "Golden Crescent Regional Government"
 	economic_power = 0.9
