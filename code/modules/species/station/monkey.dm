@@ -1,5 +1,6 @@
 /decl/species/monkey
-	name = SPECIES_MONKEY
+	uid = "species_monkey"
+	name = "Monkey"
 	name_plural = "Monkeys"
 	description = "Ook."
 	codex_description = "Monkeys and other similar creatures tend to be found on science stations and vessels as \
@@ -32,9 +33,11 @@
 	holder_type = /obj/item/holder
 
 	force_background_info = list(
-		/decl/background_category/heritage =   /decl/background_detail/heritage/hidden/monkey,
-		/decl/background_category/homeworld = /decl/background_detail/location/stateless,
-		/decl/background_category/faction =   /decl/background_detail/faction/other
+		/decl/background_category/heritage    = /decl/background_detail/heritage/hidden/monkey,
+		/decl/background_category/homeworld   = /decl/background_detail/location/stateless,
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
+		/decl/background_category/faction     = /decl/background_detail/faction/other,
+		/decl/background_category/religion    = /decl/background_detail/religion/other
 	)
 
 	ai = /datum/mob_controller/monkey

@@ -342,10 +342,7 @@
 	else
 		. = jointext(list() + material_strings + name, " ")
 		if(apply_article)
-			if(gender == PLURAL)
-				. = "some [.]"
-			else
-				. = ADD_ARTICLE(.)
+			. = ADD_ARTICLE_GENDER(., gender)
 
 /decl/stack_recipe/proc/req_mat_to_type(decl/material/mat, mat_req)
 	if(mat_req != MATERIAL_FORBIDDEN)

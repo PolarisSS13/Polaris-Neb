@@ -157,14 +157,14 @@
 	var/destruction_finish_message = "hacking at"
 	var/gravemarker_type           = /obj/item/gravemarker
 
-/obj/structure/gravemarker/examine(mob/user, distance)
+/obj/structure/gravemarker/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance < 2)
 		var/processed_message = user.handle_reading_literacy(user, message)
 		if(processed_message)
-			to_chat(user, "It says: '[processed_message]'")
+			. += "It says: '[processed_message]'"
 	else if(message)
-		to_chat(user, "You can't read the inscription from here.")
+		. += "You can't read the inscription from here."
 
 /obj/structure/gravemarker/attackby(obj/item/used_item, mob/user)
 	// we can dig it up with a shovel if the destruction tool is not a shovel, or if we're not on harm intent
@@ -234,14 +234,14 @@
 	material = /decl/material/solid/stone/granite
 	gravemarker_type = /obj/structure/gravemarker/gravestone
 
-/obj/item/gravemarker/examine(mob/user, distance)
+/obj/item/gravemarker/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance < 2)
 		var/processed_message = user.handle_reading_literacy(user, message)
 		if(processed_message)
-			to_chat(user, "It says: '[processed_message]'")
+			. += "It says: '[processed_message]'"
 	else if(message)
-		to_chat(user, "You can't read the inscription from here.")
+		. += "You can't read the inscription from here."
 
 /obj/item/gravemarker/attack_self(mob/user)
 	if(!user.check_intent(I_FLAG_HARM))

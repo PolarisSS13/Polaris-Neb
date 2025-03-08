@@ -99,7 +99,7 @@
 		holder.update_icon()
 
 /obj/item/assembly/prox_sensor/Move()
-	..()
+	. = ..()
 	sense()
 
 /obj/item/assembly/prox_sensor/interact(mob/user)//TODO: Change this to the wires thingy

@@ -1,6 +1,6 @@
 /obj/machinery/mech_recharger
 	name = "exosuit dock"
-	desc = "A exosuit recharger, built into the floor."
+	desc = "An exosuit recharger, built into the floor."
 	icon = 'icons/mecha/mech_bay.dmi'
 	icon_state = "recharge_floor"
 	density = FALSE
@@ -11,7 +11,6 @@
 	base_type = /obj/machinery/mech_recharger
 	construct_state = /decl/machine_construction/default/panel_closed
 	uncreated_component_parts = null
-	stat_immune = 0
 
 	var/mob/living/exosuit/charging
 	var/base_charge_rate = 60 KILOWATTS

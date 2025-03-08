@@ -305,9 +305,9 @@
 						log_and_message_admins("used [src] to throw [locked] at [target].", user, owner.loc)
 						locked = null
 
-						var/obj/item/cell/C = owner.get_cell()
-						if(istype(C))
-							C.use(active_power_use * CELLRATE)
+						var/obj/item/cell/cell = owner.get_cell()
+						if(istype(cell))
+							cell.use(active_power_use * CELLRATE)
 
 					else
 						locked = null
@@ -326,9 +326,9 @@
 
 
 				log_and_message_admins("used [src]'s area throw on [target].", user, owner.loc)
-				var/obj/item/cell/C = owner.get_cell()
-				if(istype(C))
-					C.use(active_power_use * CELLRATE * 2) //bit more expensive to throw all
+				var/obj/item/cell/cell = owner.get_cell()
+				if(istype(cell))
+					cell.use(active_power_use * CELLRATE * 2) //bit more expensive to throw all
 
 
 
@@ -355,9 +355,9 @@
 		if (10 to 50) . = "is very worn"
 		else . = "looks close to breaking"
 
-/obj/item/drill_head/examine(mob/user, distance)
+/obj/item/drill_head/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It [get_visible_durability()].")
+	. += "It [get_visible_durability()]."
 
 /obj/item/drill_head/steel
 	material = /decl/material/solid/metal/steel
@@ -404,14 +404,14 @@
 		return "Integrity: [drill_head.get_percent_durability()]%"
 	return
 
-/obj/item/mech_equipment/drill/examine(mob/user, distance)
+/obj/item/mech_equipment/drill/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (drill_head)
-		to_chat(user, "It has a[distance > 3 ? "" : " [drill_head.material.name]"] drill head installed.")
+		. += "It has a[distance > 3 ? "" : " [drill_head.material.name]"] drill head installed."
 		if (distance < 4)
-			to_chat(user, "The drill head [drill_head.get_visible_durability()].")
+			. += "The drill head [drill_head.get_visible_durability()]."
 	else
-		to_chat(user, "It does not have a drill head installed.")
+		. += "It does not have a drill head installed."
 
 /obj/item/mech_equipment/drill/proc/attach_head(obj/item/drill_head/DH, mob/user)
 	if (user && !user.try_unequip(DH))
@@ -423,9 +423,9 @@
 	DH.forceMove(src)
 	drill_head = DH
 
-/obj/item/mech_equipment/drill/attackby(obj/item/I, mob/user)
-	if (istype(I, /obj/item/drill_head))
-		attach_head(I, user)
+/obj/item/mech_equipment/drill/attackby(obj/item/used_item, mob/user)
+	if (istype(used_item, /obj/item/drill_head))
+		attach_head(used_item, user)
 		return TRUE
 	. = ..()
 
@@ -572,7 +572,7 @@
 /obj/item/gun/energy/plasmacutter/mounted/mech/auto
 	charge_cost = 13
 	name = "rotatory plasma cutter"
-	desc = "A state of the art rotating, variable intensity, sequential-cascade plasma cutter. Resist the urge to aim this at your coworkers."
+	desc = "A state-of-the-art rotating, variable intensity, sequential-cascade plasma cutter. Resist the urge to aim this at your coworkers."
 	max_shots = 15
 	firemodes = list(
 		list(mode_name="single shot", autofire_enabled=0, burst=1, fire_delay=6, dispersion = list(0.0)),
@@ -604,17 +604,14 @@
 	QDEL_NULL(ion_trail)
 	return ..()
 
-/obj/item/mech_equipment/ionjets/proc/allowSpaceMove()
-	if (!active)
+/obj/item/mech_equipment/ionjets/proc/provides_thrust()
+	if(!active)
 		return FALSE
-
-	var/obj/item/cell/C = owner.get_cell()
-	if (istype(C))
-		if (C.checked_use(movement_power * CELLRATE))
+	var/obj/item/cell/cell = owner?.get_cell()
+	if(istype(cell))
+		if(cell.checked_use(movement_power * CELLRATE))
 			return TRUE
-		else
-			deactivate()
-
+		deactivate()
 	return FALSE
 
 /obj/item/mech_equipment/ionjets/attack_self(mob/user)
@@ -745,10 +742,10 @@
 	var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
 	D.display_name = "unregistered exocamera"
 
-/obj/item/mech_equipment/camera/examine(mob/user)
+/obj/item/mech_equipment/camera/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
-	to_chat(user, "Channel: [english_list(D.channels)]; Feed is currently: [active ? "Online" : "Offline"].")
+	. += "Channel: [english_list(D.channels)]; Feed is currently: [active ? "Online" : "Offline"]."
 
 /obj/item/mech_equipment/camera/proc/activate()
 	passive_power_use = 0.2 KILOWATTS
@@ -758,10 +755,10 @@
 	passive_power_use = 0
 	. = ..()
 
-/obj/item/mech_equipment/camera/attackby(obj/item/W, mob/user)
+/obj/item/mech_equipment/camera/attackby(obj/item/used_item, mob/user)
 	. = ..()
 
-	if(IS_SCREWDRIVER(W))
+	if(IS_SCREWDRIVER(used_item))
 		var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
 		D.ui_interact(user)
 

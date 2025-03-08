@@ -410,7 +410,7 @@ var/global/list/bodytypes_by_category = list()
 		for(var/ltag in override_limb_types)
 			has_limbs[ltag] = list("path" = override_limb_types[ltag])
 
-	//Build organ descriptors
+	//Build organ descriptors and children lists
 	for(var/organ_tag in has_limbs)
 		var/list/organ_data = has_limbs[organ_tag]
 		var/obj/item/organ/organ = organ_data["path"]
@@ -421,6 +421,9 @@ var/global/list/bodytypes_by_category = list()
 			LAZYADD(_organs_by_category[organ_cat], organ)
 			LAZYINITLIST(_organ_tags_by_category)
 			LAZYADD(_organ_tags_by_category[organ_cat], organ_tag)
+		var/list/parent_organ_data = has_limbs[organ::parent_organ]
+		if(parent_organ_data)
+			parent_organ_data["has_children"]++
 
 	for(var/organ_tag in has_organ)
 		var/obj/item/organ/organ = has_organ[organ_tag]
@@ -664,9 +667,6 @@ var/global/list/bodytypes_by_category = list()
 		var/list/organ_data = has_limbs[limb_type]
 		var/limb_path = organ_data["path"]
 		var/obj/item/organ/external/E = new limb_path(H, null, supplied_data) //explicitly specify the dna and bodytype
-		if(E.parent_organ)
-			var/list/parent_organ_data = has_limbs[E.parent_organ]
-			parent_organ_data["has_children"]++
 		H.add_organ(E, GET_EXTERNAL_ORGAN(H, E.parent_organ), FALSE, FALSE, skip_health_update = TRUE)
 
 	//Create missing internal organs
@@ -825,8 +825,7 @@ var/global/list/bodytypes_by_category = list()
 				to_chat(victim, SPAN_DANGER(pick(heat_discomfort_strings)))
 
 /decl/bodytype/proc/get_user_species_for_validation()
-	for(var/species_name in get_all_species())
-		var/decl/species/species = get_species_by_key(species_name)
+	for(var/decl/species/species as anything in decls_repository.get_decls_of_subtype_unassociated(/decl/species))
 		if(src in species.available_bodytypes)
 			return species
 

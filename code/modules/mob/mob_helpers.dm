@@ -8,22 +8,6 @@
 /proc/mob_size_difference(var/mob_size_A, var/mob_size_B)
 	return round(log(2, mob_size_A/mob_size_B), 1)
 
-/mob/proc/isSynthetic()
-	return 0
-
-/mob/living/human/isSynthetic()
-	if(isnull(full_prosthetic))
-		robolimb_count = 0
-		var/list/limbs = get_external_organs()
-		for(var/obj/item/organ/external/E in limbs)
-			if(BP_IS_PROSTHETIC(E))
-				robolimb_count++
-		full_prosthetic = robolimb_count > 0 && (robolimb_count == LAZYLEN(limbs)) //If no organs, no way to tell
-	return full_prosthetic
-
-/mob/living/silicon/isSynthetic()
-	return 1
-
 /mob/proc/isMonkey()
 	return 0
 
@@ -368,7 +352,7 @@ var/global/list/global/organ_rel_size = list(
 		if(istype(belt, /obj/item/gun) || istype(belt, /obj/item/energy_blade) || istype(belt, /obj/item/baton))
 			threatcount += 2
 
-		if(get_species_name() != global.using_map.default_species)
+		if(get_species()?.uid != global.using_map.default_species)
 			threatcount += 2
 
 	if(check_records || check_arrest)

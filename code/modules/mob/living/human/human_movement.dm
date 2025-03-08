@@ -25,7 +25,7 @@
 	if(can_feel_pain() && get_shock() >= 10)
 		tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
 
-	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
+	if(istype(buckled, /obj/structure/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
 			var/obj/item/organ/external/E = GET_EXTERNAL_ORGAN(src, organ_name)
 			tally += E ? E.get_movement_delay(4) : 4
@@ -65,41 +65,19 @@
 	. = ..()
 	. += species.strength
 
-/mob/living/human/space_do_move(var/allow_move, var/direction)
-	if(allow_move == 1)
+/mob/living/human/try_space_move(space_move_result, direction)
+	if(space_move_result == SPACE_MOVE_PERMITTED)
 		var/obj/item/tank/jetpack/thrust = get_jetpack()
 		if(thrust && thrust.on && prob(skill_fail_chance(SKILL_EVA, 10, SKILL_ADEPT)))
-			to_chat(src, "<span class='warning'>You fumble with [thrust] controls!</span>")
+			to_chat(src, SPAN_WARNING("You fumble with the controls of \the [thrust]!"))
 			if(prob(50))
 				thrust.toggle()
 			if(prob(50))
 				thrust.stabilization_on = 0
 			SetMoveCooldown(15)	//2 seconds of random rando panic drifting
 			step(src, pick(global.alldirs))
-			return 0
-
-	. = ..()
-
-/mob/living/human/slip_chance(var/prob_slip = 5)
-	if(!..())
-		return 0
-	//Check hands and mod slip
-	for(var/hand_slot in get_held_item_slots())
-		var/datum/inventory_slot/inv_slot = get_inventory_slot_datum(hand_slot)
-		var/obj/item/held = inv_slot?.get_equipped_item()
-		if(!held)
-			prob_slip -= 2
-		else if(held.w_class <= ITEM_SIZE_SMALL)
-			prob_slip -= 1
-	return prob_slip
-
-/mob/living/human/Check_Shoegrip()
-	if(species.check_no_slip(src))
-		return 1
-	var/obj/item/shoes = get_equipped_item(slot_shoes_str)
-	if(shoes && (shoes.item_flags & ITEM_FLAG_NOSLIP) && istype(shoes, /obj/item/clothing/shoes/magboots))  //magboots + dense_object = no floating
-		return 1
-	return 0
+			return FALSE
+	return ..()
 
 /mob/living/human/Move()
 	. = ..()
@@ -117,8 +95,6 @@
 
 		handle_leg_damage()
 		species.handle_post_move(src)
-		if(client)
-			up_hint.update_icon()
 
 /mob/living/human/proc/handle_leg_damage()
 	if(!can_feel_pain())

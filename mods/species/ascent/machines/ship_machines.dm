@@ -164,7 +164,7 @@ MANTIDIFY(/obj/item/chems/chem_disp_cartridge, "canister", "chemical storage")
 		return ..()
 	if(ishuman(user))
 		var/mob/living/human/H = user
-		if(!(H.species.name in ALL_ASCENT_SPECIES))
+		if(!istype(H.get_species(), /decl/species/mantid))
 			to_chat(H, SPAN_WARNING("You have no idea how to use \the [src]."))
 			return TRUE
 	else if(!isascentdrone(user))

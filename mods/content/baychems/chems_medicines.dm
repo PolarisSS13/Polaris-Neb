@@ -82,7 +82,7 @@
 /decl/material/liquid/paroxetine/affect_blood(var/mob/living/M, var/alien, var/removed, var/datum/reagents/holder)
 	. = ..()
 	var/volume = REAGENT_VOLUME(holder, type)
-	if(volume <= 0.1 && LAZYACCESS(M.chem_doses, type) >= 0.5 && world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
+	if(volume <= 0.1 && CHEM_DOSE(M, type) >= 0.5 && world.time > REAGENT_DATA(holder, type) + 5 MINUTES)
 		LAZYSET(holder.reagent_data, type, world.time)
 		to_chat(M, SPAN_WARNING("Your mind feels much less stable..."))
 	else

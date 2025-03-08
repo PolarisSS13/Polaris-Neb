@@ -43,10 +43,10 @@
 		drying.update_icon()
 	update_icon()
 
-/obj/structure/drying_rack/examine(mob/user, distance, infix, suffix)
+/obj/structure/drying_rack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(drying)
-		to_chat(user, "\The [drying] is [drying.get_dryness_text()].")
+		. += "\The [drying] is [drying.get_dryness_text()]."
 
 /obj/structure/drying_rack/on_update_icon()
 	..()
@@ -54,12 +54,12 @@
 	if(drying_state)
 		add_overlay(drying_state)
 
-/obj/structure/drying_rack/attackby(var/obj/item/W, var/mob/user)
+/obj/structure/drying_rack/attackby(var/obj/item/used_item, var/mob/user)
 
-	if(!drying && W.is_dryable())
-		if(user.try_unequip(W))
-			W.forceMove(src)
-			drying = W
+	if(!drying && used_item.is_dryable())
+		if(user.try_unequip(used_item))
+			used_item.forceMove(src)
+			drying = used_item
 			if(!is_processing)
 				START_PROCESSING(SSobj, src)
 			update_icon()

@@ -35,7 +35,7 @@
 		AltClickOn(A)
 		return
 	if(modifiers["shift"])
-		examinate(A)
+		examine_verb(A)
 		return
 	A.attack_ghost(src)
 
@@ -44,7 +44,7 @@
 	if(!istype(user))
 		return
 	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+		user.examine_verb(src)
 		return
 	if(user.client?.holder || user.antagHUD)
 		storage?.show_to(user)

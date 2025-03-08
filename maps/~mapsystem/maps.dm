@@ -2,8 +2,8 @@ var/global/datum/map/using_map  = new USING_MAP_DATUM
 var/global/list/all_maps        = list()
 var/global/list/votable_maps    = list()
 
-var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
-var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
+var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, toggleable
+var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 
 /proc/initialise_map_list()
 	for(var/map_type in subtypesof(/datum/map))
@@ -136,23 +136,25 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 
 	var/list/station_departments = list()//Gets filled automatically depending on jobs allowed
 
-	var/default_species = SPECIES_HUMAN
+	var/default_species = /decl/species/human::uid
 
 	// Can this map be voted for by players?
 	var/votable = TRUE
 
 	var/list/available_background_info = list(
-		/decl/background_category/homeworld = list(/decl/background_detail/location/other),
-		/decl/background_category/faction =   list(/decl/background_detail/faction/other),
-		/decl/background_category/heritage =   list(/decl/background_detail/heritage/other),
-		/decl/background_category/religion =  list(/decl/background_detail/religion/other)
+		/decl/background_category/citizenship = list(/decl/background_detail/citizenship/other),
+		/decl/background_category/homeworld   = list(/decl/background_detail/location/other),
+		/decl/background_category/faction     = list(/decl/background_detail/faction/other),
+		/decl/background_category/heritage    = list(/decl/background_detail/heritage/other),
+		/decl/background_category/religion    = list(/decl/background_detail/religion/other)
 	)
 
 	var/list/default_background_info = list(
-		/decl/background_category/homeworld = /decl/background_detail/location/other,
-		/decl/background_category/faction =   /decl/background_detail/faction/other,
-		/decl/background_category/heritage =   /decl/background_detail/heritage/other,
-		/decl/background_category/religion =  /decl/background_detail/religion/other
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
+		/decl/background_category/homeworld   = /decl/background_detail/location/other,
+		/decl/background_category/faction     = /decl/background_detail/faction/other,
+		/decl/background_category/heritage    = /decl/background_detail/heritage/other,
+		/decl/background_category/religion    = /decl/background_detail/religion/other
 	)
 
 	var/access_modify_region = list(
@@ -194,9 +196,10 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 		"reinforced"
 	)
 	var/background_categories_generated = FALSE
+	// Hard defining this to avoid pulling in unimplemented citizenship decls for the time being.
 	var/list/_background_categories = list(
 		/decl/background_category/heritage,
-		/decl/background_category/homeworld,
+		/decl/background_category/citizenship,
 		/decl/background_category/faction,
 		/decl/background_category/religion
 	)
@@ -212,6 +215,7 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 	if(!background_categories_generated)
 		if(isnull(_background_categories))
 			_background_categories = decls_repository.get_decls_of_type(/decl/background_category)
+			_background_categories = _background_categories?.Copy() || list() // Avoid mutating the cache.
 		else
 			for(var/cat_type in _background_categories)
 				_background_categories[cat_type] = GET_DECL(cat_type)
@@ -570,6 +574,13 @@ var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
 	if(!length(SSmapping.contact_levels))
 		log_error("[name] has no contact levels!")
 		. = FALSE
+	var/decl/species/default_species_decl = decls_repository.get_decl_by_id(default_species)
+	if(default_species_decl.species_flags & SPECIES_IS_RESTRICTED)
+		log_error("[name]'s default species [default_species_decl.type] is set to restricted!")
+	if(default_species_decl.species_flags & SPECIES_IS_WHITELISTED)
+		log_error("[name]'s default species [default_species_decl.type] is set to whitelisted!")
+	if(default_species_decl.species_flags & SPECIES_CAN_JOIN)
+		log_error("[name]'s default species [default_species_decl.type] is not allowed to join the game!")
 
 /datum/map/proc/get_available_submap_archetypes()
 	return decls_repository.get_decls_of_subtype_unassociated(/decl/submap_archetype)

@@ -1,11 +1,11 @@
 /mob/living/human/proc/monkeyize()
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in get_contained_external_atoms())
-		drop_from_inventory(W)
+	for(var/obj/item/thing in get_contained_external_atoms())
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
-	set_status(STAT_STUN, 1)
+	set_status_condition(STAT_STUN, 1)
 	icon = null
 	set_invisibility(INVISIBILITY_ABSTRACT)
 	for(var/t in get_external_organs())
@@ -18,7 +18,7 @@
 	//animation = null
 
 	DEL_TRANSFORMATION_MOVEMENT_HANDLER(src)
-	set_status(STAT_STUN, 0)
+	set_status_condition(STAT_STUN, 0)
 	update_posture()
 	set_invisibility(initial(invisibility))
 
@@ -26,8 +26,8 @@
 		gib()
 		return
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	change_species(species.primitive_form)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
@@ -53,8 +53,8 @@
 		return
 	for(var/t in get_external_organs())
 		qdel(t)
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
 	set_invisibility(INVISIBILITY_ABSTRACT)
@@ -75,21 +75,21 @@
 
 	if(move)
 		var/obj/loc_landmark
-		for(var/obj/abstract/landmark/start/sloc in global.landmarks_list)
+		for(var/obj/abstract/landmark/start/sloc in global.all_landmarks)
 			if (sloc.name != "AI")
 				continue
 			if (locate(/mob/living) in sloc.loc)
 				continue
 			loc_landmark = sloc
 		if (!loc_landmark)
-			for(var/obj/abstract/landmark/tripai in global.landmarks_list)
+			for(var/obj/abstract/landmark/tripai in global.all_landmarks)
 				if (tripai.name == "tripai")
 					if((locate(/mob/living) in tripai.loc) || (locate(/obj/structure/aicore) in tripai.loc))
 						continue
 					loc_landmark = tripai
 		if (!loc_landmark)
 			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
-			for(var/obj/abstract/landmark/start/sloc in global.landmarks_list)
+			for(var/obj/abstract/landmark/start/sloc in global.all_landmarks)
 				if (sloc.name == "AI")
 					loc_landmark = sloc
 		O.forceMove(loc_landmark ? loc_landmark.loc : get_turf(src))
@@ -106,8 +106,8 @@
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
 	QDEL_NULL_LIST(worn_underwear)
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
@@ -141,8 +141,8 @@
 /mob/living/human/proc/corgize()
 	if (HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)
 	icon = null
@@ -169,8 +169,8 @@
 
 	if(HAS_TRANSFORMATION_MOVEMENT_HANDLER(src))
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	for(var/obj/item/thing in src)
+		drop_from_inventory(thing)
 
 	try_refresh_visible_overlays()
 	ADD_TRANSFORMATION_MOVEMENT_HANDLER(src)

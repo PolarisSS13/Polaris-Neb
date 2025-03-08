@@ -1,14 +1,14 @@
 
 /turf/floor/path
-	name           = "path"
-	gender         = NEUTER
-	desc           = "A cobbled path made of loose stones."
-	color          = COLOR_GRAY
-	icon           = 'icons/turf/flooring/path.dmi'
-	icon_state     = "cobble"
-	_flooring      = /decl/flooring/path/cobblestone
-	floor_material = /decl/material/solid/stone/sandstone
-	_base_flooring = /decl/flooring/dirt
+	name            = "path"
+	gender          = NEUTER
+	desc            = "A cobbled path made of loose stones."
+	color           = COLOR_GRAY
+	icon            = 'icons/turf/flooring/path.dmi'
+	icon_state      = "cobble"
+	_flooring       = /decl/flooring/path/cobblestone
+	floor_material  = /decl/material/solid/stone/sandstone
+	_base_flooring  = /decl/flooring/dirt
 
 /turf/floor/path/Initialize(mapload, no_update_icon)
 	. = ..()
@@ -28,12 +28,12 @@
 		LAZYADD(decals, moss)
 
 /turf/floor/path/running_bond
-	icon_state = "runningbond"
-	_flooring = /decl/flooring/path/running_bond
+	icon_state      = "runningbond"
+	_flooring       = /decl/flooring/path/running_bond
 
 /turf/floor/path/herringbone
-	icon_state = "herringbone"
-	_flooring = /decl/flooring/path/herringbone
+	icon_state      = "herringbone"
+	_flooring       = /decl/flooring/path/herringbone
 
 // Material subtypes.
 #define PATH_MATERIAL_SUBTYPES(material_name) \

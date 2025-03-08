@@ -12,7 +12,8 @@
 	)
 
 /decl/species/hnoll
-	name                = SPECIES_HNOLL
+	uid                 = "species_hnoll"
+	name                = "Hnoll"
 	name_plural         = "Hnoll"
 	description         = "The hnoll are thickly-furred, powerfully built bipeds with a notable resemblance to the steppe \
 	hyenas that often decorate their coinage and art. The oldest hnoll cultures make their home on the Grass Ocean and the \
@@ -31,6 +32,9 @@
 	base_external_prosthetics_model = null
 
 	available_background_info = list(
+		/decl/background_category/citizenship = list(
+			/decl/background_detail/citizenship/other
+		),
 		/decl/background_category/homeworld = list(
 			/decl/background_detail/location/fantasy,
 			/decl/background_detail/location/fantasy/mountains,

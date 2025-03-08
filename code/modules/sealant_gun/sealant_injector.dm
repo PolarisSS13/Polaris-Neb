@@ -35,23 +35,23 @@
 		new /obj/item/chems/chem_disp_cartridge/polyacid(src) = 1
 	)
 
-/obj/structure/sealant_injector/attackby(obj/item/O, mob/user)
+/obj/structure/sealant_injector/attackby(obj/item/used_item, mob/user)
 
-	if(istype(O, /obj/item/sealant_tank))
+	if(istype(used_item, /obj/item/sealant_tank))
 		if(loaded_tank)
 			to_chat(user, SPAN_WARNING("\The [src] already has a sealant tank inserted."))
 			return TRUE
-		if(user.try_unequip(O, src))
-			loaded_tank = O
+		if(user.try_unequip(used_item, src))
+			loaded_tank = used_item
 			update_icon()
 			return TRUE
 
-	if(istype(O, /obj/item/chems/chem_disp_cartridge))
+	if(istype(used_item, /obj/item/chems/chem_disp_cartridge))
 		if(length(cartridges) >= max_cartridges)
 			to_chat(user, SPAN_WARNING("\The [src] is loaded to capacity with cartridges."))
 			return TRUE
-		if(user.try_unequip(O, src))
-			LAZYSET(cartridges, O, 1)
+		if(user.try_unequip(used_item, src))
+			LAZYSET(cartridges, used_item, 1)
 			update_icon()
 			return TRUE
 

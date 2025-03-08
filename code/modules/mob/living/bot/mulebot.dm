@@ -115,7 +115,7 @@
 			if("safety")
 				safety = !safety
 
-/mob/living/bot/mulebot/attackby(var/obj/item/O, var/mob/user)
+/mob/living/bot/mulebot/attackby(var/obj/item/used_item, var/mob/user)
 	. = ..()
 	update_icon()
 

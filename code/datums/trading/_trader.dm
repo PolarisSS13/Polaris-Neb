@@ -199,7 +199,7 @@
 	if(ishuman(user))
 		var/mob/living/human/H = user
 		if(H.species)
-			specific = H.species.name
+			specific = H.species.uid
 	else if(issilicon(user))
 		specific = TRADER_HAIL_SILICON_END
 	if(!speech["[TRADER_HAIL_START][specific]"])

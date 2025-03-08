@@ -40,7 +40,6 @@
 #include "mobs\nymph\nymph_inventory.dm"
 #include "mobs\nymph\nymph_life.dm"
 #include "mobs\nymph\nymph_ui.dm"
-#include "structures\furniture.dm"
 #include "structures\ship_furniture.dm"
 #include "turfs\ship.dm"
 // END_INCLUDE

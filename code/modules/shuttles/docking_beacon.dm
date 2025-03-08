@@ -45,8 +45,8 @@
 	SSshuttle.docking_beacons -= src
 	permitted_shuttles.Cut()
 
-/obj/machinery/docking_beacon/attackby(obj/item/I, mob/user)
-	if(IS_WRENCH(I))
+/obj/machinery/docking_beacon/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		if(!allowed(user))
 			to_chat(user, SPAN_WARNING("The bolts on \the [src] are locked!"))
 			return TRUE

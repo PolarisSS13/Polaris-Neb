@@ -2,7 +2,7 @@
 	name           = "chicken nugget"
 	icon           = 'icons/obj/food/nuggets/nugget.dmi'
 	icon_state     = ICON_STATE_WORLD
-	nutriment_desc = "mild battered chicken"
+	nutriment_desc = list("mild battered chicken")
 	nutriment_amt  = 6
 	nutriment_type = /decl/material/solid/organic/meat/chicken
 	material       = /decl/material/solid/organic/meat/chicken

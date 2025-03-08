@@ -42,8 +42,8 @@
 	var/list/success_message = list("with great effort", "straining hard", "without any trouble", "with ease")
 	var/list/fail_message = list(", lifting them part of the way and then letting them drop", ", unable to even budge them")
 
-/obj/structure/fitness/weightlifter/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/structure/fitness/weightlifter/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 75, 1)
 		weight = (weight % max_weight) + 1
 		to_chat(user, "You set the machine's weight level to [weight].")

@@ -27,8 +27,8 @@
 	attackpylon(user, damage)
 	return TRUE
 
-/obj/structure/cult/pylon/attackby(obj/item/W, mob/user)
-	attackpylon(user, W.expend_attack_force(user))
+/obj/structure/cult/pylon/attackby(obj/item/used_item, mob/user)
+	attackpylon(user, used_item.expend_attack_force(user))
 	return TRUE
 
 /obj/structure/cult/pylon/proc/attackpylon(mob/user, var/damage)
@@ -112,7 +112,7 @@
 
 /obj/structure/grille/cult
 	name = "cult grille"
-	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
+	desc = "A matrix built out of an unknown material, with some sort of force field blocking air around it."
 	material = /decl/material/solid/stone/cult
 
 /obj/structure/grille/cult/CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)

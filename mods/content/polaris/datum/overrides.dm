@@ -1,7 +1,10 @@
 //Species
-
 /decl/species
+	// Homeworld is defined so as to pass CI, not actually in use generally.
 	available_background_info = list(
+		/decl/background_category/homeworld = list(
+			/decl/background_detail/location/other
+		),
 		/decl/background_category/citizenship = list(
 			/decl/background_detail/citizenship/scg,
 			/decl/background_detail/citizenship/fivearrows,
@@ -9,26 +12,28 @@
 			/decl/background_detail/citizenship/earthnation,
 			/decl/background_detail/citizenship/stateless
 		),
-		/decl/background_category/faction =   list(
+		/decl/background_category/faction = list(
 			/decl/background_detail/faction/nanotrasen,
 			/decl/background_detail/faction/other
 		),
-		/decl/background_category/heritage =   list(
+		/decl/background_category/heritage = list(
 			/decl/background_detail/heritage/sif,
 			/decl/background_detail/heritage/kara,
 			/decl/background_detail/heritage/earth,
 			/decl/background_detail/heritage/other
 		),
-		/decl/background_category/religion =  list(/decl/background_detail/religion/other)
+		/decl/background_category/religion = list(
+			/decl/background_detail/religion/other
+		)
 	)
 
 	default_background_info = list(
+		/decl/background_category/homeworld   = /decl/background_detail/location/other,
 		/decl/background_category/citizenship = /decl/background_detail/citizenship/scg,
-		/decl/background_category/faction   = /decl/background_detail/faction/nanotrasen,
-		/decl/background_category/heritage   = /decl/background_detail/heritage/sif,
-		/decl/background_category/religion  = /decl/background_detail/religion/other
+		/decl/background_category/faction     = /decl/background_detail/faction/nanotrasen,
+		/decl/background_category/heritage    = /decl/background_detail/heritage/sif,
+		/decl/background_category/religion    = /decl/background_detail/religion/other
 	)
-
 
 /datum/appearance_descriptor/age/polaris_human
 	name = "age"
@@ -57,9 +62,7 @@
 /decl/bodytype
 	age_descriptor = /datum/appearance_descriptor/age/polaris_human
 
-
 //Loadout
-
 /decl/loadout_option/uniform/dress_selection
 	name = "dress selection (short)"
 	description = "A selection of dresses above knee length."

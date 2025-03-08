@@ -17,9 +17,9 @@
 	unregister_on_eject()
 	. = ..()
 
-/obj/item/stock_parts/item_holder/attackby(obj/item/W, mob/user)
-	if(is_accepted_type(W))
-		insert_item(W, user)
+/obj/item/stock_parts/item_holder/attackby(obj/item/used_item, mob/user)
+	if(is_accepted_type(used_item))
+		insert_item(used_item, user)
 		return TRUE
 	. = ..()
 
@@ -43,8 +43,9 @@
 	return
 
 /obj/item/stock_parts/item_holder/on_machine_examined(mob/user)
+	. = ..()
 	if(is_item_inserted())
-		to_chat(user, SPAN_INFO("It has \a [get_inserted()] in \the [src]."))
+		LAZYADD(., SPAN_INFO("It has \a [get_inserted()] in \the [src]."))
 
 ///Handle putting the object in the component's contents. Doesn't trigger any callbacks, or messages.
 /obj/item/stock_parts/item_holder/proc/set_inserted(var/obj/O)

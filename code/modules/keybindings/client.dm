@@ -1,4 +1,5 @@
 /datum/keybinding/client
+	abstract_type = /datum/keybinding/client
 	category = CATEGORY_CLIENT
 
 /datum/keybinding/client/hotkey_mode

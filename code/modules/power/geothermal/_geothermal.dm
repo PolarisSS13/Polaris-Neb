@@ -160,11 +160,11 @@ var/global/const/MAX_GEOTHERMAL_PRESSURE =               12000
 		if(G?.anchored)
 			G.refresh_neighbors()
 
-/obj/machinery/geothermal/examine(mob/user, distance)
+/obj/machinery/geothermal/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance < 2)
-		to_chat(user, SPAN_INFO("Pressure: [current_pressure]kPa"))
-		to_chat(user, SPAN_INFO("Output:   [last_generated]W"))
+		. += SPAN_INFO("Pressure: [current_pressure]kPa")
+		. += SPAN_INFO("Output:   [last_generated]W")
 
 ///Attempts to connect to any existing geothermal vents in our turf.
 /obj/machinery/geothermal/proc/setup_vent()

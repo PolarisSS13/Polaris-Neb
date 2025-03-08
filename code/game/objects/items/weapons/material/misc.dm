@@ -37,7 +37,7 @@
 /obj/item/harpoon/bomb/proc/handle_afterbomb()
 	spent = TRUE
 	SetName("broken harpoon")
-	desc = "A short spear with just a barb - if it once had a spearhead, it doesn't any more."
+	desc = "A short spear with just a barb; if it once had a spearhead, it doesn't anymore."
 	icon_state = "harpoon_bomb_spent"
 	sharp = FALSE
 	edge = FALSE

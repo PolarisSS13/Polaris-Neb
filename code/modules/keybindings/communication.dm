@@ -1,4 +1,5 @@
 /datum/keybinding/client/communication
+	abstract_type = /datum/keybinding/client/communication
 	category = CATEGORY_COMMUNICATION
 
 /datum/keybinding/client/communication/ooc

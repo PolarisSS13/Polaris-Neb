@@ -2,7 +2,7 @@
 #define ANYMPH_SCREEN_LOC_HAT    "RIGHT-7:16,BOTTOM:5"
 #define ANYMPH_SCREEN_LOC_MOLT   "RIGHT-6:16,BOTTOM:5"
 #define ANYMPH_SCREEN_LOC_INTENT "RIGHT-2,BOTTOM:5"
-#define ANYMPH_SCREEN_LOC_HEALTH ui_alien_health
+#define ANYMPH_SCREEN_LOC_HEALTH "RIGHT-1:28,CENTER-1:13"
 
 #define ANYMPH_MAX_CRYSTALS      20000
 #define ANYMPH_CRYSTAL_MOLT      2000  // How much it takes to molt.
@@ -27,7 +27,7 @@
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	holder_type = /obj/item/holder/ascent_nymph
-	possession_candidate = 1
+	possession_candidate = TRUE
 	atom_flags = ATOM_FLAG_NO_CHEM_CHANGE
 	hud_used = /datum/hud/ascent_nymph
 
@@ -51,15 +51,3 @@
 
 /mob/living/simple_animal/alien/kharmaan/get_dexterity(var/silent)
 	return (DEXTERITY_EQUIP_ITEM)
-
-/*
-/mob/living/simple_animal/alien/kharmaan/get_default_intent()
-	return GET_DECL(/decl/intent/help/binary/ascent)
-
-/mob/living/simple_animal/alien/kharmaan/get_available_intents()
-	var/static/list/available_intents = list(
-		GET_DECL(/decl/intent/harm/binary/ascent),
-		GET_DECL(/decl/intent/help/binary/ascent)
-	)
-	return available_intents
-*/

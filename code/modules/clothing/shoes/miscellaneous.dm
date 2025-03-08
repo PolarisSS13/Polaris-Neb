@@ -153,7 +153,7 @@
 
 /obj/item/clothing/shoes/athletic
 	name = "athletic shoes"
-	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
+	desc = "A pair of sleek athletic shoes. Made by and for the sporty types."
 	icon = 'icons/clothing/feet/sports.dmi'
 
 /obj/item/clothing/shoes/dress/sneakies

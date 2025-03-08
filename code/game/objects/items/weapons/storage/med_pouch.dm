@@ -38,9 +38,9 @@ Single Use Emergency Pouches
 	add_overlay(cross_overlay)
 	icon_state = "pack[!!(storage?.opened)]"
 
-/obj/item/med_pouch/examine(mob/user)
+/obj/item/med_pouch/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "<A href='byond://?src=\ref[src];show_info=1'>Please read instructions before use.</A>")
+	. += "<A href='byond://?src=\ref[src];show_info=1'>Please read instructions before use.</A>"
 
 /obj/item/med_pouch/CanUseTopic()
 	return STATUS_INTERACTIVE

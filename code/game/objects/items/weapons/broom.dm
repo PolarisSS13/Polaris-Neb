@@ -5,11 +5,11 @@
 	matter = list(/decl/material/solid/organic/cloth = MATTER_AMOUNT_SECONDARY)
 	var/bristle_material = /decl/material/solid/organic/plantmatter/grass/dry
 
-/obj/item/staff/broom/examine(mob/user, distance, infix, suffix)
+/obj/item/staff/broom/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(bristle_material)
 		var/decl/material/bristle_mat = GET_DECL(bristle_material)
-		to_chat(user, "\The [src]'s bristles are made from [bristle_mat.name].")
+		. += "\The [src]'s bristles are made from [bristle_mat.name]."
 
 /obj/item/staff/broom/Initialize(ml, material_key, bristles_key)
 	if(!isnull(bristles_key))

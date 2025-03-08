@@ -32,8 +32,8 @@
 	ui_interact(user)
 	return TRUE
 
-/obj/machinery/kinetic_harvester/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_MULTITOOL(thing))
+/obj/machinery/kinetic_harvester/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/datum/extension/local_network_member/lanm = get_extension(src, /datum/extension/local_network_member)
 		if(lanm.get_new_tag(user))
 			find_core()

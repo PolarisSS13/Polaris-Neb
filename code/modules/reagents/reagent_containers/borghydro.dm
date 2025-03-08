@@ -32,11 +32,9 @@
 
 /obj/item/chems/borghypo/Initialize()
 	. = ..()
-
-	for(var/T in reagent_ids)
-		reagent_volumes[T] = volume
-		var/decl/material/R = T
-		reagent_names += initial(R.name)
+	for(var/decl/material/reagent in decls_repository.get_decls_unassociated(reagent_ids))
+		reagent_volumes[reagent.type] = volume
+		reagent_names += reagent.use_name // TODO: should we even bother precaching this? all of this code sucks anyway
 	START_PROCESSING(SSobj, src)
 
 /obj/item/chems/borghypo/Destroy()
@@ -49,12 +47,12 @@
 	charge_tick = 0
 
 	if(isrobot(loc))
-		var/mob/living/silicon/robot/R = loc
-		if(R && R.cell)
-			for(var/T in reagent_ids)
-				if(reagent_volumes[T] < volume)
-					R.cell.use(charge_cost)
-					reagent_volumes[T] = min(reagent_volumes[T] + 5, volume)
+		var/mob/living/silicon/robot/robot = loc
+		if(robot && robot.cell)
+			for(var/reagent in reagent_ids)
+				if(reagent_volumes[reagent] < volume)
+					robot.cell.use(charge_cost)
+					reagent_volumes[reagent] = min(reagent_volumes[reagent] + 5, volume)
 	return 1
 
 /obj/item/chems/borghypo/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
@@ -103,21 +101,20 @@
 		if(index > 0 && index <= reagent_ids.len)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = index
-			var/decl/material/R = reagent_ids[mode]
-			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(R.name)]'.</span>")
+			var/decl/material/reagent = GET_DECL(reagent_ids[mode])
+			to_chat(user, SPAN_NOTICE("Synthesizer is now producing '[reagent.use_name]'."))
 		return TOPIC_REFRESH
 
-/obj/item/chems/borghypo/examine(mob/user, distance)
+/obj/item/chems/borghypo/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 2)
 		return
-
-	var/decl/material/R = reagent_ids[mode]
-	to_chat(user, "<span class='notice'>It is currently producing [initial(R.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>")
+	var/decl/material/reagent = GET_DECL(reagent_ids[mode])
+	. += SPAN_NOTICE("It is currently producing [reagent.use_name] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
 
 /obj/item/chems/borghypo/service
 	name = "cyborg drink synthesizer"
-	desc = "A portable drink dispencer."
+	desc = "A portable drink dispenser."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "shaker"
 	charge_cost = 5

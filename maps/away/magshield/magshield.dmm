@@ -641,7 +641,7 @@
 /turf/floor/plating/airless,
 /area/magshield/smes_storage)
 "bY" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -711,7 +711,7 @@
 /turf/floor/plating,
 /area/magshield/smes_storage)
 "ci" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -1318,7 +1318,7 @@
 /turf/floor/plating/airless,
 /area/magshield/north)
 "dP" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/plating/airless,
@@ -2079,7 +2079,7 @@
 /turf/floor/tiled,
 /area/magshield/west)
 "fZ" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -2492,7 +2492,7 @@
 /turf/floor/tiled/white,
 /area/magshield/west)
 "hp" = (
-/obj/structure/bed/chair/comfy/captain,
+/obj/structure/chair/comfy/captain,
 /turf/floor/tiled/white,
 /area/magshield/west)
 "hq" = (
@@ -2655,7 +2655,7 @@
 /turf/floor/carpet/blue,
 /area/magshield/west)
 "hS" = (
-/obj/structure/bed/chair/comfy/red,
+/obj/structure/chair/comfy/red,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3057,7 +3057,7 @@
 /turf/floor/tiled,
 /area/magshield/south)
 "je" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/magshield/south)
 "jf" = (
@@ -3148,7 +3148,7 @@
 /turf/floor/tiled,
 /area/magshield/south)
 "js" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -3160,7 +3160,7 @@
 /turf/floor/tiled,
 /area/magshield/south)
 "ju" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -3177,7 +3177,7 @@
 /turf/floor/tiled,
 /area/magshield/south)
 "jw" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -3424,7 +3424,7 @@
 /turf/floor/tiled,
 /area/magshield/south)
 "kh" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,

@@ -100,40 +100,37 @@
 	onclose(user, "computer")
 	return
 
-/obj/machinery/computer/holodeck_control/Topic(href, href_list)
-	if(..())
-		return 1
-	if((usr.contents.Find(src) || (in_range(src, usr) && isturf(src.loc))) || (issilicon(usr)))
-		usr.set_machine(src)
+/obj/machinery/computer/holodeck_control/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
+	if(href_list["program"])
+		var/prog = href_list["program"]
+		if(prog in global.using_map.holodeck_programs)
+			loadProgram(global.using_map.holodeck_programs[prog])
+			. = TOPIC_REFRESH
 
-		if(href_list["program"])
-			var/prog = href_list["program"]
-			if(prog in global.using_map.holodeck_programs)
-				loadProgram(global.using_map.holodeck_programs[prog])
+	else if(href_list["AIoverride"])
+		if(!issilicon(usr))
+			return TOPIC_HANDLED
 
-		else if(href_list["AIoverride"])
-			if(!issilicon(usr))
-				return
+		if(safety_disabled && emagged)
+			return TOPIC_HANDLED //if a traitor has gone through the trouble to emag the thing, let them keep it.
 
-			if(safety_disabled && emagged)
-				return //if a traitor has gone through the trouble to emag the thing, let them keep it.
+		safety_disabled = !safety_disabled
+		update_projections()
+		if(safety_disabled)
+			log_and_message_admins("overrode the holodeck's safeties")
+		else
+			log_and_message_admins("restored the holodeck's safeties")
+		. = TOPIC_REFRESH
 
-			safety_disabled = !safety_disabled
-			update_projections()
-			if(safety_disabled)
-				log_and_message_admins("overrode the holodeck's safeties")
-			else
-				log_and_message_admins("restored the holodeck's safeties")
+	else if(href_list["gravity"])
+		toggleGravity(linkedholodeck)
+		. = TOPIC_REFRESH
 
-		else if(href_list["gravity"])
-			toggleGravity(linkedholodeck)
-
-		else if(href_list["togglehololock"])
-			togglelock(usr)
-
-		src.add_fingerprint(usr)
-	src.updateUsrDialog()
-	return
+	else if(href_list["togglehololock"])
+		togglelock(usr)
+		. = TOPIC_REFRESH
 
 /obj/machinery/computer/holodeck_control/emag_act(var/remaining_charges, var/mob/user)
 	playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)

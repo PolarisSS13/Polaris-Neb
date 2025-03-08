@@ -163,9 +163,9 @@
 	name = "Escape Pod"
 	locked = TRUE
 
-/obj/machinery/door/airlock/external/escapepod/attackby(obj/item/C, mob/user)
+/obj/machinery/door/airlock/external/escapepod/attackby(obj/item/used_item, mob/user)
 	if(panel_open && !arePowerSystemsOn())
-		if(IS_WRENCH(C))
+		if(IS_WRENCH(used_item))
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 			user.visible_message(SPAN_WARNING("[user.name] starts frantically pumping the bolt override mechanism!"), SPAN_WARNING("You start frantically pumping the bolt override mechanism!"))
 			if(do_after(user, 160) && locked)

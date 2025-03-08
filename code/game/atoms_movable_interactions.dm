@@ -17,7 +17,7 @@
 	examine_desc = "examine $TARGET_THEM$"
 
 /decl/interaction_handler/look/invoked(atom/target, mob/user, obj/item/prop)
-	target.examine(user, get_dist(user, target))
+	target.examined_by(user, get_dist(user, target))
 
 /decl/interaction_handler/grab
 	name = "Grab"

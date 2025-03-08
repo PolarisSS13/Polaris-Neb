@@ -394,46 +394,30 @@
 		switch(href_list["silicon"])
 
 			if("unemag")
-				var/mob/living/silicon/robot/R = current
-				if (istype(R))
-					R.emagged = 0
-					if (R.activated(R.module.emag))
-						R.module_active = null
-					if(R.module_state_1 == R.module.emag)
-						R.module_state_1 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_2 == R.module.emag)
-						R.module_state_2 = null
-						R.module.emag.forceMove(null)
-					else if(R.module_state_3 == R.module.emag)
-						R.module_state_3 = null
-						R.module.emag.forceMove(null)
-					log_admin("[key_name_admin(usr)] has unemag'ed [R].")
+				var/mob/living/silicon/robot/robot = current
+				if (istype(robot))
+					if(robot.module?.emag)
+						robot.drop_from_inventory(robot.module.emag)
+						robot.module.emag.forceMove(null)
+					robot.emagged = FALSE
+					log_admin("[key_name_admin(usr)] has unemag'ed [robot].")
 
 			if("unemagcyborgs")
 				if (isAI(current))
 					var/mob/living/silicon/ai/ai = current
-					for (var/mob/living/silicon/robot/R in ai.connected_robots)
-						R.emagged = 0
-						if (R.module)
-							if (R.activated(R.module.emag))
-								R.module_active = null
-							if(R.module_state_1 == R.module.emag)
-								R.module_state_1 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_2 == R.module.emag)
-								R.module_state_2 = null
-								R.module.emag.forceMove(null)
-							else if(R.module_state_3 == R.module.emag)
-								R.module_state_3 = null
-								R.module.emag.forceMove(null)
+					for (var/mob/living/silicon/robot/robot in ai.connected_robots)
+						robot.emagged = FALSE
+						if(robot.module?.emag)
+							robot.drop_from_inventory(robot.module.emag)
+							robot.module.emag.forceMove(null)
+
 					log_admin("[key_name_admin(usr)] has unemag'ed [ai]'s Cyborgs.")
 
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
-				for(var/obj/item/W in current)
-					current.drop_from_inventory(W)
+				for(var/obj/item/undressing in current)
+					current.drop_from_inventory(undressing)
 			if("takeuplink")
 				take_uplink()
 			if("crystals")

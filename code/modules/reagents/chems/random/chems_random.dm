@@ -70,7 +70,7 @@ var/global/list/random_chem_interaction_blacklist = list(
 /decl/material/liquid/random/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
 	FOR_ALL_EFFECTS
-		var/data = REAGENT_DATA(holder, type)
+		var/data = REAGENT_DATA(holder, src)
 		effect.affect_blood(M, removed, LAZYACCESS(data, effect.type))
 
 /decl/material/liquid/random/proc/on_chemicals_analyze(mob/user)

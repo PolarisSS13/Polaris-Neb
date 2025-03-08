@@ -198,15 +198,15 @@
 
 	// Magical chemical filtration system, do not question it.
 	var/total_transferred = 0
-	for(var/rtype in input_item.reagents.reagent_volumes)
+	for(var/decl/material/reagent as anything in input_item.reagents.reagent_volumes)
 		for(var/chargetype in charges)
 			var/datum/rig_charge/charge = charges[chargetype]
-			if(charge.product_type == rtype)
-				var/chems_to_transfer = REAGENT_VOLUME(input_item.reagents, rtype)
+			if(charge.product_type == reagent.type)
+				var/chems_to_transfer = REAGENT_VOLUME(input_item.reagents, reagent)
 				if((charge.charges + chems_to_transfer) > max_reagent_volume)
 					chems_to_transfer = max_reagent_volume - charge.charges
 				charge.charges += chems_to_transfer
-				input_item.remove_from_reagents(rtype, chems_to_transfer)
+				input_item.remove_from_reagents(reagent, chems_to_transfer)
 				total_transferred += chems_to_transfer
 				break
 
@@ -379,21 +379,21 @@
 	)
 	var/obj/item/tank/jetpack/rig/jets
 
-/obj/item/rig_module/maneuvering_jets/attackby(obj/item/W, mob/user)
-	if(W.do_tool_interaction(TOOL_WRENCH, user, src, 1, "removing the propellant tank", "removing the propellant tank"))
+/obj/item/rig_module/maneuvering_jets/attackby(obj/item/used_item, mob/user)
+	if(used_item.do_tool_interaction(TOOL_WRENCH, user, src, 1, "removing the propellant tank", "removing the propellant tank"))
 		jets.forceMove(get_turf(user))
 		user.put_in_hands(jets)
 		jets = null
 		return TRUE
 
-	if(istype(W, /obj/item/tank/jetpack/rig))
+	if(istype(used_item, /obj/item/tank/jetpack/rig))
 		if(jets)
 			to_chat(user, SPAN_WARNING("There's already a propellant tank inside of \the [src]!"))
 			return TRUE
-		if(user.try_unequip(W))
-			to_chat(user, SPAN_NOTICE("You insert \the [W] into [src]."))
-			W.forceMove(src)
-			jets = W
+		if(user.try_unequip(used_item))
+			to_chat(user, SPAN_NOTICE("You insert \the [used_item] into [src]."))
+			used_item.forceMove(src)
+			jets = used_item
 			return TRUE
 	. = ..()
 

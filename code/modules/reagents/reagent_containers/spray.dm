@@ -86,9 +86,9 @@
 		return TRUE
 	else
 		//If no safety, we just toggle the nozzle
-		var/decl/interaction_handler/IH = GET_DECL(/decl/interaction_handler/next_spray_amount)
-		if(IH.is_possible(src, user))
-			IH.invoked(src, user, user.get_active_held_item())
+		var/decl/interaction_handler/handler = GET_DECL(/decl/interaction_handler/next_spray_amount)
+		if(handler.is_possible(src, user))
+			handler.invoked(src, user, user.get_active_held_item())
 			return TRUE
 
 ///Whether the spray has a safety toggle
@@ -99,12 +99,12 @@
 	safety = !safety
 	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
-/obj/item/chems/spray/examine(mob/user, distance)
+/obj/item/chems/spray/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user)
-		to_chat(user, "[round(reagents.total_volume)] unit\s left.")
+		. += "[round(reagents.total_volume)] unit\s left."
 	if(has_safety() && distance <= 1)
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+		. += "The safety is [safety ? "on" : "off"]."
 
 /obj/item/chems/spray/get_alt_interactions(mob/user)
 	. = ..()

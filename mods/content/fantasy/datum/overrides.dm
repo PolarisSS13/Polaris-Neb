@@ -1,5 +1,18 @@
+// Override so the compiler stops complaining about definition order.
+/datum/map/New()
+	..()
+	_background_categories = list(
+		/decl/background_category/heritage,
+		/decl/background_category/homeworld,
+		/decl/background_category/faction,
+		/decl/background_category/religion
+	)
+
 /decl/species
 	available_background_info = list(
+		/decl/background_category/citizenship = list(
+			/decl/background_detail/citizenship/other
+		),
 		/decl/background_category/homeworld = list(
 			/decl/background_detail/location/fantasy,
 			/decl/background_detail/location/fantasy/mountains,
@@ -25,10 +38,11 @@
 		)
 	)
 	default_background_info = list(
-		/decl/background_category/homeworld = /decl/background_detail/location/fantasy,
-		/decl/background_category/faction   = /decl/background_detail/faction/fantasy,
-		/decl/background_category/heritage   = /decl/background_detail/heritage/fantasy,
-		/decl/background_category/religion  = /decl/background_detail/religion/other
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/other,
+		/decl/background_category/homeworld   = /decl/background_detail/location/fantasy,
+		/decl/background_category/faction     = /decl/background_detail/faction/fantasy,
+		/decl/background_category/heritage    = /decl/background_detail/heritage/fantasy,
+		/decl/background_category/religion    = /decl/background_detail/religion/other
 	)
 
 // Rename wooden prostheses

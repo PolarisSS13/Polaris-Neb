@@ -1,6 +1,6 @@
 /obj/item/gun/launcher/sealant
 	name             = "sealant gun"
-	desc             = "A heavy, unwieldly device used to spray metal foam sealant onto hull breaches or damaged flooring."
+	desc             = "A heavy, unwieldy device used to spray metal foam sealant onto hull breaches or damaged flooring."
 	icon             = 'icons/obj/guns/sealant_gun.dmi'
 	icon_state       = ICON_STATE_WORLD
 	autofire_enabled = TRUE
@@ -54,17 +54,17 @@
 	unload_tank(user)
 	return TRUE
 
-/obj/item/gun/launcher/sealant/examine(mob/user, distance)
+/obj/item/gun/launcher/sealant/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user)
 		if(loaded_tank)
-			to_chat(user, SPAN_NOTICE("The loaded tank has about [loaded_tank.foam_charges] liter\s of sealant left."))
+			. += SPAN_NOTICE("The loaded tank has about [loaded_tank.foam_charges] liter\s of sealant left.")
 		else
-			to_chat(user, SPAN_WARNING("\The [src] has no sealant loaded."))
+			. += SPAN_WARNING("\The [src] has no sealant loaded.")
 
-/obj/item/gun/launcher/sealant/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/sealant_tank) && user.try_unequip(W, src))
-		loaded_tank = W
+/obj/item/gun/launcher/sealant/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/sealant_tank) && user.try_unequip(used_item, src))
+		loaded_tank = used_item
 		to_chat(user, SPAN_NOTICE("You slot \the [loaded_tank] into \the [src]."))
 		update_icon()
 		return TRUE

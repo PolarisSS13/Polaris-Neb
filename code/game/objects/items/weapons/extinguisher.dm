@@ -60,7 +60,7 @@
 		return
 	if(user.buckled && isobj(user.buckled))
 		addtimer(CALLBACK(src, PROC_REF(propel_object), user.buckled, user, get_dir(A, user)), 0)
-	else if(!user.check_space_footing())
+	else if(user.can_slip(magboots_only = TRUE))
 		var/old_dir = user.dir
 		step(user, get_dir(A, user))
 		user.set_dir(old_dir)
@@ -69,7 +69,7 @@
 	if(O.anchored || !(O.movable_flags & MOVABLE_FLAG_WHEELED))
 		return
 
-	var/obj/structure/bed/chair/C = istype(O, /obj/structure/bed/chair)? O : null
+	var/obj/structure/chair/C = istype(O, /obj/structure/chair)? O : null
 	//#TODO: That could definitely be improved. Would suggest to use process_momentum but its only for thrownthing
 	var/list/move_speed = list(1, 1, 1, 2, 2, 3)
 	for(var/i in 1 to 6)
