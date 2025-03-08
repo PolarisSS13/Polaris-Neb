@@ -10,7 +10,7 @@
 	with vast restored nature preserves, parks and forestry plantations maintained across the world."
 	capital = "Various"
 	local_government = "Various"
-	ruling_body = "Sol Confederate Government" //ruling_body = territory
+	ruling_body = "Solar Confederate Government" //ruling_body = territory
 	economic_power = 1.2
 	subversive_potential = 0.8
 
@@ -24,7 +24,7 @@
 	but many others reflecting ethnocultures formed over four centuries of life on the red planet."
 	capital = "Various"
 	local_government = "Various"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 
 /decl/background_detail/location/luna
 	name = "Luna, Sol"
@@ -35,8 +35,8 @@
 	Most work in industries supporting these bureaucracies, with the local entertainment and tourism industries being especially well-known, \
 	banking on the sentimental image of Luna as the birthplace of the SCG and first small step of humanity's giant leap into extra-terrestial existence."
 	capital = "Tycho"
-	local_government = "Sol Confederate Government"
-	ruling_body = "Sol Confederate Government"
+	local_government = "Solar Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 1.1
 	subversive_potential = 0.9
 
@@ -49,7 +49,7 @@
 	whole edifice up and running, and much of the rest of the world's population caters to their needs."
 	capital = "Persephone"
 	local_government = "Persephonic League"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 1.1
 	subversive_potential = 0.8
 
@@ -62,7 +62,7 @@
 	and the local government is usually beholden to corporate interests."
 	//capital = "None"
 	local_government = "Various"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 0.9
 
 // Core World - Callisto
@@ -78,7 +78,7 @@
 	within the Plutonian Union of Workers that unofficially controls much of the planetoid."
 	capital = "Nyborg"
 	local_government = "Plutonian Government"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 0.8
 	subversive_potential = 1.1
 
@@ -94,7 +94,7 @@
 	known for being a powerhouse of arts, entertainment, tourism, and the social sciences."
 	capital = "Various"
 	local_government = "Various"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 1.1
 	distance = "4.37 ly"
 
@@ -111,7 +111,7 @@
 	feature sizable positronic and Tajaran minorities."
 	capital = "Araboth"
 	local_government = "Citizen's Republic of Heaven"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	distance = "4.37 ly"
 
 
@@ -129,7 +129,7 @@
 	some large and persistent enough to pose a danger to buildings - Nisp boasts an unusually large ground-based military."
 	capital = "Govoran"
 	local_government = "Nisp Planetary Council"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	distance = "19.42 ly"
 
 /decl/background_detail/location/binma
@@ -140,7 +140,7 @@
 	undisturbed since colonization."
 	capital = "Pelamance"
 	local_government = "United Binmasian Conglomerate"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 1.1
 	distance = "11.91 ly"
 
@@ -163,7 +163,7 @@
 	other Solar member states to fuel their economy. The culture of the Core heavily influences the rest of Solar \
 	society by way of media, painting the Core as glamorous, cosmopolitan... and largely biological human."
 	capital = "Luna"
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	economic_power = 1.1
 	distance = null //not one location
 
@@ -267,7 +267,7 @@
 	and Franklin is a common stop for passengers who want to spend a bit of time on a garden world while they can. \
 	Franklin's cities are a cosmopolitan mix, with significant skrell and teshari populations, \
 	while its vast oceans are home to a number of sailors and mariners, recreational and professional."
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	distance = null //unknown
 	subversive_potential = 0.9
 
@@ -282,7 +282,7 @@
 	middle-management for what corporate concerns remain and personnel from the New Ohio Fleet Base. \
 	Many have left Wright in recent years looking for better fortunes, expecting them just about anywhere else in the galaxy."
 	
-	ruling_body = "Sol Confederate Government"
+	ruling_body = "Solar Confederate Government"
 	distance = null //unknown
 	economic_power = 0.7 //super space detroit. maybe it should be 0.8 or 0.75? I am overthinking it.
 	
@@ -300,6 +300,7 @@
 	ruling_body = "Five Arrows"
 	economic_power = 0.7
 	subversive_potential = 1.1
+	distance = "27.3 ly"
 
 /decl/background_detail/location/mahimahi
 	uid = "location_mahimahi"
@@ -313,9 +314,11 @@
 	they contend with regularly.
 	local_government = "Mahi-Mahi Planetary Government"
 	ruling_body = "Five Arrows"
+	distance = "21.6 ly"
 
 
 //New Seoul goes here
+//22
 
 //Parvati goes here
 
@@ -329,6 +332,8 @@
 	preferred marshy biosphere when First Contact was made, but after Human-Skrell relations warmed, \
 	it became a model to which many human geo-engineering projects were later carried out."
 	ruling_body = "Five Arrows"
+	distance_heading = "Distance from Qerr'valis"
+	distance = "401 ly"
 
 
 /decl/background_detail/location/sagitheights
@@ -346,3 +351,80 @@
 //
 // The Bowl
 //
+
+/decl/background_detail/location/love
+	uid = "location_love"
+	name = "Love, The Bowl" //sure thing
+	description = "The Love system has long been a haven for SolGov's organized crime groups, \
+	and an eager supporter of its ongoing piracy crisis. Much of Love's population works directly for one or more crime syndicates, \
+	or supports their efforts through work in arms and drug manufacturing, money laundering, and chop-shop work. \
+	Love's notionally independent government is in practice an extension of these organizations, \
+	who fund extensive social welfare programs for its citizenry as a form of hush-money."
+	ruling_body = "Solar Confederate Government"
+	subversive_potential = 1.2
+
+//
+// Almach Rim
+//
+
+/decl/background_detail/location/relan
+	uid = "location_relan"
+	name = "Relan"
+	description = "The system of Relan, currently governed by the Second Free Relan Federation, \
+	consists of a number of large \'hub\' stations and spaceport-cities that house workers and \
+	a large number of smaller mining and manufacturing stations. \
+	Relan is largely economically dependent on its mining industry and exports."
+	local_government = "Second Free Relan Federation"
+	ruling_body = "Almach Protectorate"
+	economic_power = 0.8
+	subversive_potential = 1.1 // they're considered the Least Bad almachi now
+	distance = "132.9 ly"
+
+/decl/background_detail/location/taron
+	uid = "location_taron"
+	name = "Taron, Relan"
+	description = "Despite being a settled planet, living on Taron feels more like living on an uninhabitable moon. \
+	The planet is no garden world. Its atmosphere is unbreathable, and temperatures are slightly too high for habitation. \
+	The population lives in domes and underground installations, although some agricultural activity can take place outside with heavily modified crops."
+	local_government = "Republic of Taron"
+	ruling_body = "Almach Protectorate"
+	economic_power = 0.7
+	subversive_potential = 1.1
+	distance = "132.9 ly"
+
+/decl/background_detail/location/angessaspearl
+	uid = "location_angessaspearl"
+	name = "Angessa's Pearl, Exalt's Light"
+	description = "One of the Almach Protectorate's major population centers and the sole inhabited world in the Exalt's Light system, \
+	Angessa's Pearl is a barren planet colonized by a pseudo-religious movement led by Angessa Martei, and was one of the first states to join the Almach Association. \
+	The Pearl hosts a diverse population of humans (both natural and vat-born), positronics, skrell and tajara."
+	ruling_body = "Almach Protectorate"
+	economic_power = 0.7
+	subversive_potential = 1.3 //the Most Bad almachi now
+	distance = "123 ly"
+
+/decl/background_detail/location/vounna
+	uid = "location_vounna"
+	name = "Vounna"
+	description = "Vounna is the host star to the marshy planet Aetolus and the mobile mining station Agrafa. \
+	Aetolus' noisome atmosphere and widespread humid environment meant that the early, abandoned attempts to settle it in 2515 set the stage for a troubled inhabitance. \
+	Kick-started again after it was found to be host to useful flora and fauna, Aetolus largely came to be home to miners, scientists, \
+	and doctors, as well as their families under soft-cover domes, while the gas giants beyond hosted largely travellers, miners, and the occasional illicit freighter."
+	ruling_body = "Almach Protectorate"
+	economic_power = 0.6 // It's difficult to be prosperous when your previous government committed warcrimes, and also spent most of their time scrambling to back their word.
+	subversive_potential = 1.2
+	distance = "131 ly"
+
+/decl/background_detail/location/shelf
+	uid = "location_shelf"
+	name = "Shelf, Deep Space" //it's not on the rim anymore and this is information about how places are
+	description = "Shelf is the ever-moving birthplace and headquarters of Morpheus Cyberkinetics. \
+	Originally only a handful of positronics in a single out-of-date transport shuttle, the ITC \"One Leaky Bitch\", \
+	Shelf had grown over the years into the single largest flotilla in human space, composed of upwards of seventeen hundred ships. \
+	At the conclusion of the Almach War, Shelf vanished from its position in the Almach Rim, reappearing hundreds of light-years down the Almach Stream from any known colony. \
+	It suffered tremendously under the Skathari Incursion and now maintains a connection with Sol only through bluespace communications."
+	ruling_body = null
+	economic_power = 0.8 //never forget that shelf's broke
+	subversive_potential = 1.2
+	distance = "131 ly"
+
