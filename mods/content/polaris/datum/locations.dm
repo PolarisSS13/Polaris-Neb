@@ -126,7 +126,7 @@
 	the largest core system Skrellian populations, and was an early adopter of the Tradeband language, \
 	which remains the primary vernacular language in a large number of settlements. \
 	In order to defend colonies from notoriously aggressive wildlife - \
-	some large and persistent enough to pose a danger to buildings - Nisp boasts an unusually large ground-based military.
+	some large and persistent enough to pose a danger to buildings - Nisp boasts an unusually large ground-based military."
 	capital = "Govoran"
 	local_government = "Nisp Planetary Council"
 	ruling_body = "Sol Confederate Government"
@@ -146,6 +146,20 @@
 	ruling_body = "Sol Confederate Government"
 	economic_power = 1.1
 	distance = "11.91 ly"
+
+/decl/background_detail/location/binma
+	name = "Core World - Altair"
+	uid = "location_binma"
+	description = "Home to the Solar Confederate Government's primary maximum security correctional facility for \
+	confederation-level criminals, and very little else. Residents of the system are invariably associated with \
+	the operation of the notorious \"Altair Stack\",  whether directly employed by the prison or in support of its \
+	employees and their families, all housed within the stations' outer security perimeter. \
+	Life in Altair is one lived under constant police scrutiny, and those who do not mesh with \
+	the highly authoritarian environment tend not to stick around long by choice. \
+	The inmates of the Stack tend not to be from the system's own cultural background, with rare exception."
+	capital = "Becquerel Station"
+	local_government = "Corporate Municipal Governance under the Altair Correctional Agency" //feels very clumsy, but just 'corporate governance' is a little too nondescriptive?
+	distance = null //It's on the map, 2d-distancewise further than AC but closer than Kess-Gendar. lore people please advise.
 
 /decl/background_detail/location/other
 	name = "Core World - Other"
