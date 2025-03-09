@@ -1,5 +1,5 @@
 /decl/bodytype/tajaran
-	name                 = "felinoid"
+	name                 = "feminine"
 	bodytype_category    = BODYTYPE_TAJARAN
 	limb_blend           = ICON_MULTIPLY
 	icon_template        = 'mods/species/tajaran/icons/template.dmi'
@@ -77,6 +77,14 @@
 		)
 	)
 	. = ..()
+
+/decl/bodytype/tajaran/masculine
+	name                  = "masculine"
+	icon_base             = 'mods/species/tajaran/icons/body_male.dmi'
+	icon_deformed         = 'mods/species/tajaran/icons/deformed_body_male.dmi'
+	associated_gender     = MALE
+	onmob_state_modifiers = null
+	uid                   = "bodytype_tajaran_masc"
 
 /decl/bodytype/tajaran/get_default_grooming_results(obj/item/organ/external/limb, obj/item/grooming/tool)
 	if(tool?.grooming_flags & GROOMABLE_BRUSH)
