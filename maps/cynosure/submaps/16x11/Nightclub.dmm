@@ -122,7 +122,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "qb" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -149,7 +149,7 @@
 /turf/floor/tiled/dark,
 /area/template_noop)
 "su" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/floor/tiled/dark,
@@ -385,7 +385,7 @@
 /turf/wall/concrete,
 /area/template_noop)
 "Rm" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/floor/tiled/dark,

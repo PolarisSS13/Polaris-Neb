@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aab" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -46,7 +46,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/shuttle/darkred,
@@ -68,7 +68,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "adQ" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -446,7 +446,7 @@
 /turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "ayf" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -586,7 +586,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/shuttle/darkred,
@@ -734,7 +734,7 @@
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "aVy" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -768,7 +768,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "aXr" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/shuttle/darkred,
@@ -982,7 +982,7 @@
 	},
 /area/wizard_station)
 "bnk" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /turf/floor/holofloor/carpet,
@@ -1121,7 +1121,7 @@
 /turf/unsimulated/floor/techfloor/grid,
 /area/centcom/terminal)
 "bxe" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1165,7 +1165,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "bAY" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/abstract/landmark{
@@ -1327,7 +1327,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "bJO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/shuttle/blue,
@@ -1470,7 +1470,7 @@
 	},
 /area/skipjack_station)
 "bXb" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/machinery/light/no_nightshift{
 	dir = 8
 	},
@@ -1627,7 +1627,7 @@
 /area/centcom/main_hall)
 "chh" = (
 /obj/effect/floor_decal/milspec/color/red,
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/black/half{
@@ -1658,7 +1658,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "ciY" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/blue,
@@ -2236,7 +2236,7 @@
 	},
 /area/skipjack_station)
 "ddI" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/unsimulated/floor/dark,
 /area/centcom/security)
 "dex" = (
@@ -2274,7 +2274,7 @@
 	},
 /area/centcom/specops)
 "dgX" = (
-/obj/structure/bed/chair/wood/wings,
+/obj/structure/chair/wood/wings,
 /turf/unsimulated/floor{
 	icon_state = "wood"
 	},
@@ -2637,7 +2637,7 @@
 	},
 /area/ninja_dojo/dojo)
 "dEV" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/abstract/landmark{
@@ -2678,7 +2678,7 @@
 /turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "dGs" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
@@ -2920,7 +2920,7 @@
 	icon_state = "door_locked";
 	locked = 1
 	},
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	invisibility = 60;
 	name = "Blocker"
@@ -3081,7 +3081,7 @@
 	pixel_x = 4;
 	pixel_y = 32
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -3143,7 +3143,7 @@
 	pixel_x = 4;
 	pixel_y = 32
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/milspec/color/red,
 /turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
@@ -3153,7 +3153,7 @@
 /turf/floor/shuttle,
 /area/centcom/evac)
 "eoa" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -3174,7 +3174,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "eoG" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -3405,7 +3405,7 @@
 /turf/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "eDt" = (
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	invisibility = 60;
 	name = "Blocker"
@@ -3636,7 +3636,7 @@
 /turf/wall/titanium,
 /area/shuttle/escape/centcom)
 "eVU" = (
-/obj/structure/bed/chair/holochair,
+/obj/structure/chair/holochair,
 /turf/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
 "eWj" = (
@@ -3745,7 +3745,7 @@
 /turf/unsimulated/floor/dark,
 /area/syndicate_station)
 "fbf" = (
-/obj/structure/bed/chair/comfy/teal,
+/obj/structure/chair/comfy/teal,
 /obj/effect/floor_decal/carpet{
 	dir = 1
 	},
@@ -4110,7 +4110,7 @@
 /turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "fwt" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/unsimulated/floor/dark,
@@ -4212,7 +4212,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/command)
 "fDX" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /obj/abstract/landmark{
@@ -4393,7 +4393,7 @@
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "fRL" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
@@ -4406,7 +4406,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/syndicate_elite/mothership)
 "fSe" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -4778,7 +4778,7 @@
 /turf/floor/shuttle/voidcraft/dark,
 /area/syndicate_station/start)
 "goz" = (
-/obj/structure/bed/chair/holochair,
+/obj/structure/chair/holochair,
 /obj/structure/window/reinforced/holowindow,
 /obj/structure/window/reinforced/holowindow{
 	dir = 4
@@ -5015,7 +5015,7 @@
 /area/holodeck/source_theatre)
 "gGh" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	invisibility = 60;
 	name = "Blocker"
@@ -5047,7 +5047,7 @@
 /turf/floor/shuttle/airless/carry,
 /area/shuttle/response_ship/start)
 "gHW" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -5401,7 +5401,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "hht" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/milspec/color/red,
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/syndicate_elite/mothership)
@@ -5421,7 +5421,7 @@
 /turf/unsimulated/floor/dark,
 /area/wizard_station)
 "hix" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/shuttle/blue,
@@ -5653,7 +5653,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 5
 	},
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 4
 	},
 /turf/floor/holofloor/carpet,
@@ -6085,7 +6085,7 @@
 /turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "hYQ" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/milspec/color/blue,
 /obj/effect/floor_decal/milspec/stripe{
 	dir = 4
@@ -6182,7 +6182,7 @@
 /turf/unsimulated/floor/white,
 /area/centcom/medical)
 "igu" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 8
 	},
 /turf/unsimulated/floor/wood,
@@ -6316,7 +6316,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "irx" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/machinery/light/no_nightshift{
 	dir = 4
 	},
@@ -6395,7 +6395,7 @@
 /turf/floor/shuttle/black,
 /area/centcom/evac)
 "ivO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/shuttle/voidcraft,
@@ -6420,7 +6420,7 @@
 	},
 /area/wizard_station)
 "ixP" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -6714,7 +6714,7 @@
 /area/shuttle/administration/centcom)
 "iOl" = (
 /obj/effect/floor_decal/milspec/color/red,
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/black/half{
@@ -6891,7 +6891,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "iVh" = (
-/obj/structure/bed/chair/holochair,
+/obj/structure/chair/holochair,
 /obj/structure/window/reinforced/holowindow,
 /turf/floor/holofloor/wood,
 /area/holodeck/source_courtroom)
@@ -7051,7 +7051,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/creed)
 "jdF" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -7114,7 +7114,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 4
 	},
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 4
 	},
 /turf/floor/holofloor/carpet,
@@ -7136,7 +7136,7 @@
 	},
 /area/skipjack_station)
 "jnM" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -7165,7 +7165,7 @@
 /turf/floor/shuttle,
 /area/skipjack_station/start)
 "jrv" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/unsimulated/floor/dark,
@@ -7286,7 +7286,7 @@
 	},
 /area/syndicate_station)
 "jyL" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -7295,7 +7295,7 @@
 /turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "jzs" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -7446,7 +7446,7 @@
 /turf/floor/shuttle/red,
 /area/shuttle/administration/centcom)
 "jHW" = (
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},
@@ -7690,7 +7690,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "kcd" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -8260,7 +8260,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/security)
 "kDB" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "kDD" = (
@@ -8319,7 +8319,7 @@
 /turf/floor/shuttle,
 /area/skipjack_station/start)
 "kFb" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/carpet,
 /area/shuttle/merchant/home)
 "kFw" = (
@@ -8484,7 +8484,7 @@
 /turf/floor/plating,
 /area/shuttle/administration/centcom)
 "kPq" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "kPP" = (
@@ -8599,7 +8599,7 @@
 /turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "kUC" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -8607,7 +8607,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/transport1/centcom)
 "kUD" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -8654,7 +8654,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/security)
 "kYU" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/shuttle/voidcraft/dark,
 /area/ninja_dojo/start)
 "kZc" = (
@@ -8889,7 +8889,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/arrival)
 "lpK" = (
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},
@@ -9099,7 +9099,7 @@
 /turf/floor/tiled/milspec/raised,
 /area/shuttle/transport1/centcom)
 "lIc" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/shuttle/darkred,
@@ -9230,7 +9230,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "lNf" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/carpet,
@@ -9470,7 +9470,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "mfc" = (
-/obj/structure/bed/chair/wood/wings,
+/obj/structure/chair/wood/wings,
 /obj/machinery/newscaster{
 	pixel_y = 30
 	},
@@ -9997,7 +9997,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "mNX" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -10217,7 +10217,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "ncd" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -10302,7 +10302,7 @@
 	},
 /area/centcom/command)
 "neE" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/carpet,
 /area/shuttle/merchant/home)
 "neN" = (
@@ -10318,7 +10318,7 @@
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/escape/centcom)
 "nfO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -10338,7 +10338,7 @@
 /obj/effect/floor_decal/carpet{
 	dir = 6
 	},
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 4
 	},
 /turf/floor/holofloor/carpet,
@@ -10519,7 +10519,7 @@
 /turf/floor/shuttle/airless/carry,
 /area/shuttle/escape/centcom)
 "nsD" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/unsimulated/floor/dark,
@@ -10588,7 +10588,7 @@
 	},
 /area/centcom/bar)
 "nAG" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/unsimulated/floor/dark,
 /area/ninja_dojo/dojo)
 "nBw" = (
@@ -10779,7 +10779,7 @@
 /turf/wall/shuttle/dark/no_join,
 /area/shuttle/supply)
 "nQt" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite,
@@ -10890,7 +10890,7 @@
 	},
 /area/centcom/command)
 "nYF" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -10956,7 +10956,7 @@
 /turf/floor/shuttle/airless,
 /area/shuttle/transport1/centcom)
 "obq" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/abstract/landmark{
@@ -11058,7 +11058,7 @@
 	},
 /area/centcom/bar)
 "oja" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -11072,7 +11072,7 @@
 /turf/unsimulated/floor/monotile,
 /area/centcom/terminal)
 "oku" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet{
@@ -11405,7 +11405,7 @@
 /turf/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "oGt" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/milspec/color/red,
 /turf/floor/shuttle/red,
 /area/shuttle/response_ship/start)
@@ -11429,7 +11429,7 @@
 	},
 /area/shuttle/trade)
 "oJA" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -11701,13 +11701,13 @@
 /turf/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "oYh" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 1
 	},
 /turf/unsimulated/floor/wood,
 /area/wizard_station)
 "oYm" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -11824,7 +11824,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/main_hall)
 "pjV" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /turf/unsimulated/floor/wood,
@@ -11883,7 +11883,7 @@
 /turf/unsimulated/floor/white,
 /area/centcom/medical)
 "pmh" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -11990,7 +11990,7 @@
 /turf/floor/shuttle,
 /area/skipjack_station/start)
 "ptZ" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
@@ -12142,7 +12142,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "pCM" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 4
 	},
 /obj/effect/floor_decal/carpet{
@@ -12537,7 +12537,7 @@
 /turf/unsimulated/floor/plating,
 /area/centcom/evac)
 "qcX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -12771,7 +12771,7 @@
 /turf/floor/shuttle/blue,
 /area/centcom/evac)
 "qqE" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /turf/unsimulated/floor/white,
@@ -12862,7 +12862,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -13264,7 +13264,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/terminal)
 "qVg" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 1
 	},
 /turf/floor/shuttle/voidcraft/light,
@@ -13284,7 +13284,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "qXg" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec/color/white,
 /obj/effect/floor_decal/milspec/color/silver/half,
 /turf/floor/tiled/milspec/sterile,
@@ -13551,7 +13551,7 @@
 /turf/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "rjT" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -13832,7 +13832,7 @@
 /turf/floor/shuttle,
 /area/syndicate_station/start)
 "rzt" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/abstract/landmark{
 	name = "endgame_exit"
 	},
@@ -13874,7 +13874,7 @@
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "rzJ" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/floor/shuttle/black,
@@ -13897,7 +13897,7 @@
 	},
 /area/wizard_station)
 "rBk" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/structure/emergency_dispenser{
@@ -13994,7 +13994,7 @@
 /turf/floor/shuttle,
 /area/skipjack_station/start)
 "rJp" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -14313,7 +14313,7 @@
 /turf/floor/shuttle/red,
 /area/skipjack_station/start)
 "saR" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
@@ -14349,13 +14349,13 @@
 /turf/floor/shuttle/black,
 /area/shuttle/merchant/home)
 "sdc" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/shuttle/darkred,
 /area/skipjack_station/start)
 "sdg" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -14424,7 +14424,7 @@
 /turf/floor/shuttle/black,
 /area/centcom/evac)
 "shh" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/unsimulated/floor/dark,
@@ -14519,7 +14519,7 @@
 	},
 /area/skipjack_station)
 "sml" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/abstract/landmark{
 	name = "endgame_exit"
 	},
@@ -14530,7 +14530,7 @@
 /turf/unsimulated/floor/sand,
 /area/beach)
 "smw" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -14667,7 +14667,7 @@
 /turf/floor/shuttle,
 /area/shuttle/supply)
 "sxL" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /turf/unsimulated/floor/dark,
 /area/centcom/main_hall)
 "syd" = (
@@ -14692,11 +14692,11 @@
 /area/syndicate_station/start)
 "szv" = (
 /obj/structure/table/reinforced,
-/obj/item/roller/adv,
-/obj/item/roller/adv{
+/obj/item/roller/advanced,
+/obj/item/roller/advanced{
 	pixel_y = 3
 	},
-/obj/item/roller/adv{
+/obj/item/roller/advanced{
 	pixel_y = 6
 	},
 /turf/unsimulated/floor/dark,
@@ -15221,7 +15221,7 @@
 /turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "tes" = (
-/obj/structure/bed/chair/comfy/red,
+/obj/structure/chair/comfy/red,
 /turf/floor/shuttle/voidcraft/light,
 /area/syndicate_station/start)
 "teN" = (
@@ -15315,7 +15315,7 @@
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "tiB" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"
@@ -15379,7 +15379,7 @@
 /turf/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "tqp" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -15409,7 +15409,7 @@
 /area/syndicate_station/start)
 "trI" = (
 /obj/effect/floor_decal/milspec/color/white,
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/abstract/landmark{
@@ -15433,7 +15433,7 @@
 	},
 /area/centcom/command)
 "ttw" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -15532,13 +15532,13 @@
 /turf/floor/shuttle,
 /area/shuttle/merchant/home)
 "twM" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec/color/blue,
 /obj/effect/floor_decal/milspec/color/white/half,
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "txz" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/red,
@@ -15625,14 +15625,14 @@
 /turf/floor/shuttle/black,
 /area/centcom/evac)
 "tDS" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/escape/centcom)
 "tEA" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/shuttle/black,
@@ -15682,7 +15682,7 @@
 /turf/floor/shuttle/airless/carry,
 /area/skipjack_station/start)
 "tIH" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/machinery/button/alternate{
@@ -16006,7 +16006,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "tYq" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -16036,14 +16036,14 @@
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/escape/centcom)
 "uav" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet,
 /turf/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "uaD" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -16059,7 +16059,7 @@
 /turf/floor/shuttle/voidcraft,
 /area/syndicate_station/start)
 "ubf" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/milspec/color/blue,
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/transport1/centcom)
@@ -16409,7 +16409,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "uAI" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /obj/structure/emergency_dispenser{
@@ -16520,7 +16520,7 @@
 /turf/floor/shuttle,
 /area/skipjack_station/start)
 "uGT" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/abstract/landmark{
@@ -16534,7 +16534,7 @@
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/arrival)
 "uHS" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -16549,7 +16549,7 @@
 /turf/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "uIW" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -16759,7 +16759,7 @@
 /turf/floor/tiled/milspec,
 /area/shuttle/escape/centcom)
 "uTz" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 4
 	},
 /turf/floor/shuttle/voidcraft,
@@ -16781,7 +16781,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "uUH" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 8
 	},
 /turf/floor/shuttle/voidcraft,
@@ -16914,7 +16914,7 @@
 	},
 /area/skipjack_station)
 "viE" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/shuttle/black,
 /area/centcom/evac)
 "viV" = (
@@ -16969,7 +16969,7 @@
 /turf/unsimulated/wall,
 /area/centcom/command)
 "vmi" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 4
 	},
 /turf/floor/shuttle/voidcraft/light,
@@ -17227,7 +17227,7 @@
 /turf/unsimulated/floor/dark,
 /area/wizard_station)
 "vFe" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 8
 	},
 /obj/effect/floor_decal/carpet{
@@ -17522,7 +17522,7 @@
 /turf/wall/shuttle/dark/no_join,
 /area/centcom/evac)
 "vWd" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -17741,7 +17741,7 @@
 /turf/floor/holofloor/wmarble,
 /area/holodeck/source_chess)
 "wiN" = (
-/obj/structure/bed/chair/holochair{
+/obj/structure/chair/holochair{
 	dir = 1
 	},
 /obj/effect/floor_decal/carpet{
@@ -18341,7 +18341,7 @@
 "wTo" = (
 /obj/effect/floor_decal/milspec/color/white,
 /obj/effect/floor_decal/milspec/color/silver/half,
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/escape/centcom)
 "wTz" = (
@@ -18444,7 +18444,7 @@
 /turf/unsimulated/floor/dark,
 /area/syndicate_station)
 "wZT" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec/color/blue,
@@ -18712,7 +18712,7 @@
 /turf/unsimulated/floor/techfloor/gray,
 /area/centcom/specops)
 "xnO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/shuttle/darkred,
@@ -18835,7 +18835,7 @@
 	icon_state = "door_locked";
 	locked = 1
 	},
-/obj/effect/forcefield{
+/obj/effect/force_wall{
 	desc = "You can't get in. Heh.";
 	name = "Blocker"
 	},
@@ -18953,7 +18953,7 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/escape/centcom)
 "xDI" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/milspec/raised,
@@ -19219,13 +19219,13 @@
 /turf/floor/tiled/milspec/dark,
 /area/shuttle/transport1/centcom)
 "xUk" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/security)
 "xUL" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/yellow{
@@ -19272,7 +19272,7 @@
 	},
 /area/wizard_station)
 "xWO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -19323,7 +19323,7 @@
 /turf/floor/shuttle/voidcraft/light,
 /area/ninja_dojo/start)
 "ybs" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/computer/modular/telescreen/preset/entertainment{
@@ -19432,7 +19432,7 @@
 /turf/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "yhy" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/shuttle/darkred,

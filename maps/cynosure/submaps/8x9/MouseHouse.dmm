@@ -50,7 +50,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /mob/living/simple_animal/passive/mouse,
 /turf/floor/carpet/blue,
 /area/template_noop)
@@ -130,7 +130,7 @@
 /turf/floor/carpet/blue,
 /area/template_noop)
 "K" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/wood,

@@ -1,7 +1,7 @@
 /obj/structure/drying_rack/sifwood
 	material = /decl/material/solid/organic/wood/sivian
 
-/obj/structure/bed/chair/wood/wings/sifwood
+/obj/structure/chair/wood/wings/sifwood
 	material = /decl/material/solid/organic/wood/sivian
 
 /obj/structure/door/sifwood

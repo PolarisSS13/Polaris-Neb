@@ -4,13 +4,13 @@
 /area/template_noop)
 "b" = (
 /obj/random/contraband,
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/wood,
 /area/template_noop)
 "c" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /obj/random/carp_plushie,
@@ -27,7 +27,7 @@
 /turf/floor/wood,
 /area/template_noop)
 "j" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /obj/random/plushie,
@@ -48,7 +48,7 @@
 /turf/floor/wood,
 /area/template_noop)
 "l" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /obj/random/plushielarge,
 /turf/floor/wood,
 /area/template_noop)
@@ -147,18 +147,18 @@
 /area/template_noop)
 "I" = (
 /obj/random/plushie,
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/wood,
 /area/template_noop)
 "J" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /obj/random/plushie,
 /turf/floor/wood,
 /area/template_noop)
 "L" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/plating,
 /area/template_noop)
 "M" = (
@@ -171,7 +171,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "R" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/floor/wood,
@@ -202,7 +202,7 @@
 /turf/floor/wood,
 /area/template_noop)
 "Y" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/random/plushie,

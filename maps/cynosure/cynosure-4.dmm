@@ -2099,7 +2099,7 @@
 /turf/floor/tiled/dark/cryo,
 /area/tcommsat/cynosure/chamber)
 "zR" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/machinery/vending/wallmed1{
 	name = "Emergency NanoMed";
 	pixel_x = -28
@@ -2380,7 +2380,7 @@
 /obj/effect/floor_decal/corner/blue/border{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -2576,7 +2576,7 @@
 /turf/floor/tiled/techfloor/cryo,
 /area/tcommsat/cynosure/chamber)
 "Gq" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/structure/emergency_dispenser{
 	pixel_x = 28;
 	dir = 8
@@ -2652,7 +2652,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/monotile,
@@ -2669,7 +2669,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/item/box/lights/mixed{
@@ -3471,7 +3471,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust/mono_rusted3,
@@ -3934,7 +3934,7 @@
 /turf/wall/r_wall,
 /area/tcommsat/cynosure/teleporter)
 "Ul" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/machinery/status_display{
 	pixel_x = -32;
 	dir = 8
@@ -4465,7 +4465,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/monotile,
 /area/tcommsat/cynosure/computer)
 "ZS" = (

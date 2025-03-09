@@ -5149,7 +5149,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -6630,7 +6630,7 @@
 /turf/wall/concrete,
 /area/surface/station/construction/bmt/construction6)
 "pe" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -17871,7 +17871,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/structure/bed/chair/wheelchair,
+/obj/structure/chair/wheelchair,
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
@@ -19228,7 +19228,7 @@
 /turf/floor/plating,
 /area/surface/outpost/research/xenoarcheology/smes)
 "Rs" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -19603,7 +19603,7 @@
 	dir = 8
 	},
 /obj/structure/table/glass,
-/obj/item/chems/glass/beaker/sulphuric{
+/obj/item/chems/glass/beaker/sulfuric{
 	pixel_x = 2;
 	pixel_y = 6
 	},
@@ -20517,7 +20517,7 @@
 /turf/floor/tiled,
 /area/surface/station/mining_main/locker)
 "Uz" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{

@@ -112,7 +112,7 @@
 /turf/floor/tiled,
 /area/template_noop)
 "o" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/tiled/monotile,

@@ -11,7 +11,7 @@
 /obj/item/chems/syringe{
 	icon_state = "broken"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/plating,
@@ -61,7 +61,7 @@
 /turf/floor/plating,
 /area/template_noop)
 "K" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /turf/floor/plating,
 /area/template_noop)
 "L" = (

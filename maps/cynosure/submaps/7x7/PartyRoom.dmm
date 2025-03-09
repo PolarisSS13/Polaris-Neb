@@ -87,7 +87,7 @@
 /turf/floor/carpet/purple,
 /area/template_noop)
 "I" = (
-/obj/structure/bed/chair/comfy/lime{
+/obj/structure/chair/comfy/lime{
 	dir = 4
 	},
 /turf/floor/carpet/purple,
@@ -100,13 +100,13 @@
 /turf/wall/concrete/reinforced,
 /area/template_noop)
 "M" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 4
 	},
 /turf/floor/carpet/purple,
 /area/template_noop)
 "N" = (
-/obj/structure/bed/chair/comfy/orange{
+/obj/structure/chair/comfy/orange{
 	dir = 8
 	},
 /turf/floor/carpet/purple,
@@ -118,13 +118,13 @@
 /turf/floor/carpet/purple,
 /area/template_noop)
 "R" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 1
 	},
 /turf/floor/carpet/purple,
 /area/template_noop)
 "S" = (
-/obj/structure/bed/chair/comfy/green{
+/obj/structure/chair/comfy/green{
 	dir = 8
 	},
 /obj/structure/sign/poster/custom{
@@ -135,14 +135,14 @@
 /turf/floor/carpet/purple,
 /area/template_noop)
 "V" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 8
 	},
 /obj/item/plate,
 /turf/floor/carpet/purple,
 /area/template_noop)
 "X" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 4
 	},
 /obj/item/plate{

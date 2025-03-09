@@ -180,7 +180,7 @@
 /turf/floor/mud/water/deep,
 /area/surface/outside/river/gautelfr)
 "zY" = (
-/obj/structure/bed/chair/wood/wings/sifwood{
+/obj/structure/chair/wood/wings/sifwood{
 	dir = 4
 	},
 /turf/floor/wood/sif,

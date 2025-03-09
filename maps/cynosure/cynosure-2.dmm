@@ -863,7 +863,7 @@
 /turf/floor/tiled/monotile,
 /area/surface/station/quartermaster/storage)
 "ayP" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -2271,7 +2271,7 @@
 /turf/floor/tiled/eris/cafe,
 /area/surface/station/crew_quarters/kitchen)
 "bdm" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/lino,
 /area/surface/station/chapel/office)
 "bdy" = (
@@ -3255,7 +3255,7 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled,
 /area/surface/station/engineering/engineering_monitoring)
 "bAe" = (
@@ -3266,7 +3266,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/engineering/atmos)
 "bAi" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -3378,7 +3378,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/south)
 "bDr" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -4481,7 +4481,7 @@
 /turf/floor/tiled/old_tile/white,
 /area/surface/station/rnd/research_restroom)
 "chE" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/window/reinforced,
@@ -4649,7 +4649,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "cnR" = (
@@ -5387,7 +5387,7 @@
 /turf/floor/tiled/eris/cafe,
 /area/surface/station/crew_quarters/kitchen)
 "cJL" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
@@ -5819,7 +5819,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -6788,7 +6788,7 @@
 /turf/floor/wood,
 /area/surface/station/crew_quarters/cafeteria)
 "dnQ" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7359,7 +7359,7 @@
 /obj/structure/emergency_dispenser{
 	pixel_y = 32
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -8611,7 +8611,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/primary/groundfloor/south)
 "ejl" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/floor/wood/sif{
@@ -9141,7 +9141,7 @@
 /turf/floor/tiled/techfloor,
 /area/surface/station/ai/upload)
 "euR" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 4
 	},
 /obj/effect/floor_decal/milspec/color/blue,
@@ -9243,7 +9243,7 @@
 /turf/wall/concrete/reinforced,
 /area/surface/station/maintenance/substation/engineering/gnd)
 "ewz" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
@@ -10185,7 +10185,7 @@
 /turf/floor/tiled,
 /area/surface/station/arrivals/cynosure)
 "eRF" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -10546,7 +10546,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 1
 	},
 /turf/floor/tiled/hydro,
@@ -10915,7 +10915,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/hallway/gnd)
 "fir" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_pump/on,
 /turf/floor/tiled/white,
 /area/surface/station/medical/reception)
@@ -11716,7 +11716,7 @@
 /turf/wall,
 /area/surface/station/maintenance/kitchen)
 "fCP" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -12938,7 +12938,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/east)
 "ghX" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/surface/station/security/processing)
 "git" = (
@@ -13322,7 +13322,7 @@
 /turf/floor/tiled/eris/cafe,
 /area/surface/station/crew_quarters/cafeteria)
 "gsu" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -14261,7 +14261,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_waste)
 "gNl" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -15779,7 +15779,7 @@
 /turf/floor/tiled/hydro,
 /area/surface/station/rnd/xenobiology/xenoflora)
 "hCJ" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -16386,7 +16386,7 @@
 /turf/wall,
 /area/surface/station/maintenance/substation/engineering/gnd)
 "hSf" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled,
 /area/surface/station/security/briefing_room)
 "hSr" = (
@@ -16886,7 +16886,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/solars/west)
 "igt" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/window/reinforced/polarized{
@@ -16919,7 +16919,7 @@
 /turf/floor/tiled/freezer,
 /area/surface/station/crew_quarters/pool)
 "ihA" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Head of Personnel"
 	},
@@ -17580,7 +17580,7 @@
 /turf/floor/wood/sif,
 /area/surface/station/chapel/main)
 "iBe" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -18732,7 +18732,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lime/border,
 /obj/machinery/light,
-/obj/machinery/honey_extractor,
+/obj/machinery/centrifuge,
 /turf/floor/tiled/hydro,
 /area/surface/station/hydroponics)
 "jhl" = (
@@ -19083,7 +19083,7 @@
 /area/surface/station/ai/upload)
 "jrW" = (
 /obj/structure/window/reinforced,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -19465,11 +19465,11 @@
 /obj/structure/closet/crate/hydroponics,
 /obj/item/beehive_assembly,
 /obj/item/bee_smoker,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
 /obj/item/bee_pack,
 /obj/item/crowbar,
 /obj/machinery/atmospherics/tvalve/bypass,
@@ -19902,7 +19902,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/rnd/xenobiology)
 "jNe" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/floor/wood/broken/sif{
@@ -20321,7 +20321,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/medical/emt_bay)
 "jSC" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21606,7 +21606,7 @@
 /turf/floor/tiled/old_tile/white,
 /area/surface/station/rnd/research_restroom)
 "kwA" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/purple/border{
@@ -21699,7 +21699,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/engineering/hallway)
 "kyJ" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -22426,7 +22426,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/chemistry)
 "kQu" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -22474,7 +22474,7 @@
 /turf/floor/lino,
 /area/surface/station/crew_quarters/bar)
 "kRJ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -23913,7 +23913,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/rnd/xenobiology/xenoflora_isolation)
 "lDr" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/computer/modular/telescreen/preset/security{
@@ -24654,7 +24654,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/foyer)
 "lUz" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -24975,7 +24975,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/security/interrogation)
 "lZX" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /turf/floor/wood/sif{
@@ -24987,7 +24987,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -25118,7 +25118,7 @@
 /turf/floor/bluegrid,
 /area/surface/station/ai/cyborg_station)
 "mcO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -25517,7 +25517,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/north)
 "mny" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -25696,7 +25696,7 @@
 /turf/floor/tiled/neutral,
 /area/surface/station/crew_quarters/caferestroom)
 "mqd" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
@@ -26996,7 +26996,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/storage/primarytool)
 "mSX" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -28175,7 +28175,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/workshop)
 "nzw" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec_sterile/green/half,
@@ -29130,7 +29130,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
 "nTZ" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/structure/cable/cyan{
@@ -30225,7 +30225,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/bed/chair/wood,
+/obj/structure/chair/wood,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "oso" = (
@@ -31643,7 +31643,7 @@
 /turf/floor/snow,
 /area/surface/outside/plains/station)
 "oYh" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /turf/floor/tiled/old_cargo/gray,
@@ -32107,7 +32107,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/engineering/gnd)
 "pik" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
@@ -32767,7 +32767,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
 "pww" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/structure/cable/cyan{
@@ -33028,7 +33028,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/misc_lab)
 "pBE" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
@@ -33262,7 +33262,7 @@
 /turf/floor/tiled/monotile,
 /area/surface/station/arrivals/cynosure)
 "pHY" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/carpet,
@@ -33481,7 +33481,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 1
 	},
 /turf/floor/tiled/hydro,
@@ -33713,7 +33713,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/lockerroom)
 "pWe" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -34183,7 +34183,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/briefing_room)
 "qhW" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor/corner{
@@ -34198,7 +34198,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -34534,7 +34534,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/south)
 "qoF" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/dark,
@@ -34705,11 +34705,11 @@
 	},
 /obj/item/beehive_assembly,
 /obj/item/bee_smoker,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
+/obj/item/hive_frame/crafted,
 /obj/item/bee_pack,
 /obj/item/crowbar,
 /turf/floor/tiled/hydro,
@@ -34913,7 +34913,7 @@
 /turf/floor/tiled,
 /area/surface/station/quartermaster/storage)
 "qvN" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -34995,7 +34995,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/ward)
 "qwH" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -35905,7 +35905,7 @@
 /turf/wall/r_wall,
 /area/surface/station/maintenance/solars/northeast)
 "qTC" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/white,
 /area/surface/station/medical/chemistry)
 "qTK" = (
@@ -36374,7 +36374,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/atmos)
 "rcJ" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -36625,7 +36625,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /turf/floor/wood,
@@ -36644,7 +36644,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 28
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -37203,7 +37203,7 @@
 /area/surface/station/arrivals/cynosure/nopower)
 "rza" = (
 /obj/structure/window/reinforced,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -37240,7 +37240,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/south)
 "rzu" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 1
 	},
 /turf/floor/tiled/hydro,
@@ -38017,7 +38017,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/security/equiptment_storage/ses)
 "rTa" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -38440,13 +38440,13 @@
 /turf/floor/wood,
 /area/surface/station/crew_quarters/cafeteria)
 "sgm" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/tiled/old_tile/gray,
 /area/shuttle/exploration/cockpit)
 "sgo" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /turf/floor/tiled/white,
 /area/surface/station/rnd/xenobiology)
 "shd" = (
@@ -39135,7 +39135,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -39381,7 +39381,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/arrivals/cynosure)
 "sFf" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/window/reinforced/polarized{
@@ -42215,7 +42215,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec_sterile/green/half,
@@ -42380,7 +42380,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/engineering/hallway)
 "ucF" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled,
 /area/surface/station/engineering/engineering_monitoring)
 "udo" = (
@@ -43512,7 +43512,7 @@
 	},
 /area/surface/station/engineering/atmos)
 "uLq" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /turf/floor/tiled/old_tile/gray,
 /area/shuttle/exploration/general)
 "uLv" = (
@@ -43985,7 +43985,7 @@
 /turf/wall/r_wall,
 /area/surface/station/medical/surgery2)
 "uUq" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -44651,7 +44651,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/reactor_room)
 "vjM" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -44961,7 +44961,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/security/detectives_office/lab)
 "vrU" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -45348,7 +45348,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/medical/emt_bay)
 "vzO" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/structure/emergency_dispenser{
@@ -45845,7 +45845,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/kitchen)
 "vLB" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/item/radio/intercom{
 	pixel_y = 20
 	},
@@ -47684,7 +47684,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/bed/chair/wood,
+/obj/structure/chair/wood,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "wMM" = (
@@ -48344,7 +48344,7 @@
 "wXB" = (
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/machinery/hologram/holopad,
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/monofloor{
 	dir = 1
 	},
@@ -48429,7 +48429,7 @@
 /turf/floor/plating,
 /area/surface/outside/station/solar/westsolar)
 "wZR" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/dark,
@@ -48611,7 +48611,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/primary/groundfloor/east)
 "xgj" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/border{
@@ -49568,7 +49568,7 @@
 /obj/item/flame/fuelled/lighter/zippo{
 	pixel_x = 6
 	},
-/obj/item/chems/glass/rag{
+/obj/item/chems/rag{
 	pixel_x = 5
 	},
 /obj/item/bell,
@@ -50020,7 +50020,7 @@
 /turf/floor/plating,
 /area/surface/station/quartermaster/storage)
 "xQV" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -50113,7 +50113,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/medical/emt_bay)
 "xSu" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -50753,7 +50753,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/hallway/gnd)
 "ydK" = (
-/obj/structure/bed/chair/wood,
+/obj/structure/chair/wood,
 /turf/floor/tiled/hydro,
 /area/surface/station/park)
 "yeD" = (
@@ -50838,7 +50838,7 @@
 /turf/floor/tiled/hydro,
 /area/surface/station/rnd/xenobiology/xenoflora_isolation)
 "ygg" = (
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 4
 	},
 /turf/floor/wood,

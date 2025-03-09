@@ -124,7 +124,7 @@
 /turf/floor/wood,
 /area/template_noop)
 "N" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/wood,

@@ -187,7 +187,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -521,7 +521,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 20
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -808,7 +808,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/rnd/robotics)
 "aCF" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/techmaint,
@@ -1048,7 +1048,7 @@
 /turf/floor/tiled/old_tile/white,
 /area/surface/station/medical/restroom)
 "aMp" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -1166,7 +1166,7 @@
 /obj/structure/emergency_dispenser{
 	pixel_y = 32
 	},
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -1364,7 +1364,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -1415,7 +1415,7 @@
 /obj/effect/floor_decal/corner/green/border{
 	dir = 1
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/item/radio/intercom{
 	pixel_y = 20
 	},
@@ -2317,7 +2317,7 @@
 /obj/machinery/fabricator/imprinter,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/green/border,
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /obj/structure/sign/poster/custom{
 	pixel_y = -32
 	},
@@ -2534,13 +2534,13 @@
 /turf/wall,
 /area/surface/station/command/teleporter)
 "bOZ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/techmaint,
 /area/surface/station/hallway/secondary/secondfloor/civilian)
 "bPV" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -3279,7 +3279,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/ai_monitored/storage/eva)
 "cjU" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/carpet/blue,
@@ -3753,7 +3753,7 @@
 /turf/floor/plating,
 /area/surface/station/engineering/hallway/snd)
 "cDW" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -6072,7 +6072,7 @@
 /turf/floor/wood/broken/sif,
 /area/surface/outside/plains/station/snd)
 "epb" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -6502,7 +6502,7 @@
 /turf/floor/tiled/techmaint,
 /area/surface/station/medical/patient_wing)
 "eDj" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -8273,7 +8273,7 @@
 /turf/wall/r_wall,
 /area/surface/station/maintenance/substation/medbay/snd)
 "fNz" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 8
 	},
 /turf/floor/carpet/blue,
@@ -8827,7 +8827,7 @@
 /turf/open,
 /area/surface/station/engineering/reactor_room)
 "gdX" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
@@ -9376,7 +9376,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/medbay/snd)
 "gxI" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/white,
@@ -10317,7 +10317,7 @@
 /turf/floor/tiled,
 /area/surface/station/storage/art)
 "gYa" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -10651,7 +10651,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/pink/border{
@@ -10980,7 +10980,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/wood,
@@ -11020,7 +11020,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/locker_room)
 "hyC" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -11564,7 +11564,7 @@
 	},
 /area/surface/station/crew_quarters/heads/chief)
 "hRN" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -11594,7 +11594,7 @@
 /turf/floor/tiled,
 /area/surface/outside/station/roof)
 "hSs" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/engineering/atmos)
 "hTe" = (
@@ -11803,7 +11803,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -28
 	},
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec_sterile/green/half,
@@ -11841,7 +11841,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/surface/station/ai_monitored/storage/eva)
 "hZc" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -12137,7 +12137,7 @@
 /turf/floor/tiled,
 /area/surface/station/engineering/hallway/sndaccess)
 "ijM" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -13070,7 +13070,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 22
@@ -13996,7 +13996,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/techmaint,
@@ -14102,7 +14102,7 @@
 /area/surface/station/engineering/reactor_airlock/snd)
 "jnl" = (
 /obj/machinery/fabricator/imprinter,
-/obj/item/chems/glass/beaker/sulphuric,
+/obj/item/chems/glass/beaker/sulfuric,
 /obj/machinery/network/requests_console{
 	department = "Robotics";
 	name = "Robotics RC";
@@ -14302,7 +14302,7 @@
 /turf/floor/tiled/monotile,
 /area/surface/station/quartermaster/office)
 "jtQ" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -14386,7 +14386,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
@@ -14898,7 +14898,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/machinery/button/alternate/door{
@@ -15203,7 +15203,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/flasher{
 	id_tag = "IAflash";
 	pixel_x = 26
@@ -15602,7 +15602,7 @@
 	dir = 6
 	},
 /obj/machinery/hologram/holopad,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/techmaint,
@@ -16152,7 +16152,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals_central5{
 	dir = 8
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled,
 /area/surface/station/engineering/atmos/monitoring)
 "kGh" = (
@@ -16645,7 +16645,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 8
 	},
 /turf/floor/carpet/blue3,
@@ -18345,7 +18345,7 @@
 /area/surface/station/maintenance/substation/cargo/snd)
 "mAe" = (
 /obj/machinery/atmospherics/unary/vent_pump/on,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/monotile,
@@ -18362,7 +18362,7 @@
 /turf/floor/plating,
 /area/surface/station/rnd/workshop)
 "mCl" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -18801,7 +18801,7 @@
 /turf/floor/carpet,
 /area/surface/station/crew_quarters/captain)
 "mMX" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/machinery/newscaster{
@@ -18880,7 +18880,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/medical/office)
 "mPp" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -19067,7 +19067,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/secondfloor/dormhallway)
 "mXm" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/techmaint,
@@ -19389,7 +19389,7 @@
 /turf/floor/tiled,
 /area/surface/station/command/operations)
 "nnh" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloorwhite/corner{
@@ -20353,7 +20353,7 @@
 /turf/floor/tiled/freezer,
 /area/surface/station/engineering/engi_restroom)
 "nXr" = (
-/obj/structure/bed/chair/shuttle,
+/obj/structure/chair/shuttle,
 /obj/effect/floor_decal/milspec_sterile/green/half{
 	dir = 1
 	},
@@ -20601,7 +20601,7 @@
 /turf/wall/r_wall,
 /area/surface/station/engineering/hallway/sndaccess)
 "olt" = (
-/obj/structure/bed/chair/wood/pine{
+/obj/structure/chair/wood/pine{
 	color = "#3a6ecf";
 	desc = "Damn, that's uncomfortable...";
 	name = "undersized chair"
@@ -21485,7 +21485,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/button/flasher{
@@ -22387,7 +22387,7 @@
 /turf/floor/plating,
 /area/surface/station/holodeck_control)
 "pzI" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -23605,7 +23605,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/hallway/primary/secondfloor/west/elevator)
 "qlH" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 1
 	},
 /obj/effect/floor_decal/milspec_sterile/green/half,
@@ -24554,7 +24554,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -25234,7 +25234,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/engineering/hallway/sndaccess)
 "rCD" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -25477,7 +25477,7 @@
 /turf/floor/tiled/white,
 /area/surface/station/crew_quarters/heads/rdoffice)
 "rKk" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -26435,7 +26435,7 @@
 /turf/floor/plating,
 /area/surface/station/security/hallway/snd)
 "suE" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /obj/effect/floor_decal/milspec/color/blue,
@@ -27037,7 +27037,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/secondfloor/westskybridge)
 "sMI" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/item/radio/intercom{
@@ -27650,7 +27650,7 @@
 /turf/floor/plating,
 /area/surface/station/command/meeting_room)
 "thx" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 4
 	},
 /turf/floor/wood/sif,
@@ -28181,7 +28181,7 @@
 /turf/floor/plating,
 /area/surface/station/maintenance/substation/research/snd)
 "tvW" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 1
 	},
 /turf/floor/carpet/blue,
@@ -28833,7 +28833,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/equiptment_storage)
 "tUG" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/abstract/landmark/start{
 	name = "Research Director"
 	},
@@ -29173,7 +29173,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/prison)
 "ues" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /turf/floor/tiled/white,
@@ -30403,7 +30403,7 @@
 /turf/floor/plating,
 /area/surface/station/crew_quarters/heads/cmo)
 "uYt" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 4
 	},
 /turf/floor/carpet/blue,
@@ -30591,7 +30591,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 10
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -30767,7 +30767,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/wood,
 /area/unionoffice)
 "vne" = (
@@ -31410,7 +31410,7 @@
 /turf/floor/tiled/steel_grid,
 /area/surface/station/ai_monitored/storage/eva)
 "vLi" = (
-/obj/structure/bed/chair/comfy/blue{
+/obj/structure/chair/comfy/blue{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -32014,7 +32014,7 @@
 /turf/floor/plating,
 /area/surface/station/medical/virology)
 "wnL" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -32400,7 +32400,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -33166,7 +33166,7 @@
 /turf/floor/plating,
 /area/surface/station/security/hallway/stairwell)
 "wXM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -33579,7 +33579,7 @@
 /turf/floor/carpet/blue,
 /area/surface/station/command/meeting_room)
 "xjO" = (
-/obj/structure/bed/chair/comfy/blue,
+/obj/structure/chair/comfy/blue,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/floor/carpet/blue,
@@ -33710,7 +33710,7 @@
 /turf/floor/tiled/milspec/sterile,
 /area/shuttle/large_escape_pod2/station)
 "xmF" = (
-/obj/structure/bed/chair/comfy/purple{
+/obj/structure/chair/comfy/purple{
 	dir = 8
 	},
 /turf/floor/wood/sif,
@@ -33730,7 +33730,7 @@
 /turf/floor/tiled,
 /area/surface/station/security/prison)
 "xmO" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
@@ -33891,7 +33891,7 @@
 /turf/floor/tiled,
 /area/surface/station/hallway/secondary/secondfloor/eva_hallway)
 "xqr" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -33929,7 +33929,7 @@
 /turf/floor/tiled/dark,
 /area/surface/station/security/hallway/stairwell)
 "xsx" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -34379,11 +34379,11 @@
 /turf/floor/plating,
 /area/surface/station/security/equiptment_storage)
 "xHL" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/surface/station/command/operations)
 "xHQ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -34537,7 +34537,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -34998,7 +34998,7 @@
 /turf/floor/tiled/techfloor,
 /area/surface/station/hallway/secondary/secondfloor/command)
 "yaG" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/firealarm{

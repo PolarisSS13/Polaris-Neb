@@ -133,7 +133,7 @@
 */
 
 /datum/job/survivalist/get_outfit(var/mob/living/human/H, var/alt_title)
-	if(H.species?.name == SPECIES_VOX)
+	if(H.species?.uid == /decl/species/vox::uid)
 		return GET_DECL(/decl/outfit/vox/survivor)
 	return ..()
 

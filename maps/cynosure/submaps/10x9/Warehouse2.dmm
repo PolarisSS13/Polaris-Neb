@@ -290,7 +290,7 @@
 /obj/item/clothing/gloves/thick,
 /obj/item/clothing/head/soft/purple,
 /obj/item/bag/trash,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/floor/tiled,

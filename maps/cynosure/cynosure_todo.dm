@@ -347,7 +347,7 @@ event2 system and event overrides from Polaris Cyno
 /obj/machinery/door/airlock/voidcraft/vertical
 
 /obj/structure/curtain/open/shower/medical
-/obj/structure/bed/chair/wood/pine
+/obj/structure/chair/wood/pine
 /obj/structure/hull_corner/long_vert
 
 /obj/structure/rack/shelf

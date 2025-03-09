@@ -61,7 +61,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/template_noop)
 "y" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},

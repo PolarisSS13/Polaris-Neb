@@ -7,7 +7,6 @@
 	#include "../../mods/gamemodes/revolution/_revolution.dme"
 	#include "../../mods/gamemodes/traitor/_traitor.dme"
 	#include "../../mods/gamemodes/spyvspy/_spyvspy.dme"
-	#include "../../mods/gamemodes/mixed/_mixed.dme"
 
 	#include "../../mods/content/dungeon_loot/_dungeon_loot.dme"
 	#include "../../mods/content/mundane.dm"
@@ -32,7 +31,6 @@
 	#include "../../mods/content/pheromones/_pheromones.dme"
 	#include "../../mods/species/serpentid/_serpentid.dme"
 	#include "../../mods/species/utility_frames/_utility_frames.dme"
-	#include "../../mods/species/bayliens/_bayliens.dme"
 	#include "../../mods/species/vox/_vox.dme"
 
 	#include "../random_ruins/exoplanet_ruins/playablecolony/playablecolony.dm"
@@ -40,6 +38,11 @@
 	#include "../../mods/content/polaris/_polaris.dme"
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"
+
+	#include "../../mods/species/skrell/_skrell.dme"
+	#include "../../mods/species/tajaran/_tajaran.dme"
+	#include "../../mods/species/unathi/_unathi.dme"
+	#include "../../mods/species/teshari/_teshari.dme"
 
 	#include "../away/liberia/liberia.dm"
 	#include "../away/bearcat/bearcat.dm"
