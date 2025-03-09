@@ -35,15 +35,6 @@
 	if(has_paper_overlay && length(contents))
 		add_overlay("folder_paper")
 
-// TODO: implement
-/obj/item/folder/blue_captain
-/obj/item/folder/blue_hop
-/obj/item/folder/red_hos
-/obj/item/folder/white
-/obj/item/folder/white_cmo
-/obj/item/folder/white_rd
-/obj/item/folder/yellow_ce
-
 /obj/item/folder/attackby(obj/item/used_item, mob/user)
 	if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo) || istype(used_item, /obj/item/paper_bundle))
 		if(!user.try_unequip(used_item, src))

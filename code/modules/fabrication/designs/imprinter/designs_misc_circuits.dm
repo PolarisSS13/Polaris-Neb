@@ -490,6 +490,3 @@
 
 /datum/fabricator_recipe/imprinter/circuit/central_atmos
 	path = /obj/item/stock_parts/circuitboard/central_atmos
-
-/datum/fabricator_recipe/imprinter/circuit/cash_register
-	path = /obj/item/stock_parts/circuitboard/cash_register

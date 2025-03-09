@@ -325,9 +325,6 @@
 /obj/structure/reagent_dispensers/acid/populate_reagents()
 	add_to_reagents(/decl/material/liquid/acid, reagents.maximum_volume)
 
-// TODO implement
-/obj/structure/reagent_dispensers/he3
-
 //Interactions
 /obj/structure/reagent_dispensers/get_alt_interactions(var/mob/user)
 	. = ..()

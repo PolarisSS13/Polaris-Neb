@@ -2,14 +2,14 @@
 #define MODPACK_POLARIS
 // BEGIN_INCLUDE
 #include "code\background.dm"
+#include "datum\loadout.dm"
+#include "datum\materials.dm"
 #include "datum\backgrounds\citizenship.dm"
 #include "datum\backgrounds\cultures.dm"
 #include "datum\backgrounds\factions.dm"
 #include "datum\backgrounds\locations.dm"
 #include "datum\languages\human.dm"
 #include "datum\species\overrides.dm"
-#include "datum\loadout.dm"
-#include "datum\materials.dm"
 #include "items\head.dm"
 #include "items\headsets.dm"
 #include "items\overrides.dm"

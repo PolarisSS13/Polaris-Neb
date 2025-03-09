@@ -183,6 +183,3 @@
 			I.appearance_flags |= RESET_COLOR
 			overlay.overlays += I
 	. = ..()
-
-// TODO: implement
-/obj/item/flashlight/red

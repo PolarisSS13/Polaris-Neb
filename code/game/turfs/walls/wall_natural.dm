@@ -189,5 +189,5 @@
 	//Otherwise, just use level strata
 	return ..()
 
-// TODO
+// Stub type for checking in mapgen.
 /turf/wall/natural/ignore_mapgen
