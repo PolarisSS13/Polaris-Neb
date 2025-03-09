@@ -1,7 +1,7 @@
 //Hairstyles
 /decl/sprite_accessory/hair/taj
 	name = "Tajaran Rattail"
-	icon_state = "hair_rattail"
+	icon_state = "hair_rattail_s_noear"
 	species_allowed = list(/decl/species/tajaran::uid)
 	icon = 'mods/species/tajaran/icons/hair.dmi'
 	color_blend = ICON_MULTIPLY
@@ -305,7 +305,7 @@
 /decl/sprite_accessory/marking/tajaran/tuxedo/left_arm
 	name = "Tuxedo (Left Arm)"
 	body_parts = list(BP_L_ARM, BP_L_HAND)
-	uid = "acc_marking_taj_pawsocks_leftarm"
+	uid = "acc_marking_taj_tuxedo_leftarm"
 
 /decl/sprite_accessory/marking/tajaran/belly
 	name = "Belly Full (Body)"
