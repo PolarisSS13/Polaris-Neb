@@ -178,23 +178,25 @@
 	color_blend = ICON_MULTIPLY
 	uid = "acc_marking_taj_nose"
 
-/decl/sprite_accessory/marking/tajaran/ears
+/decl/sprite_accessory/ears/tajaran
 	name = "Tajaran Ears"
 	icon_state = "ears_plain"
+	icon = 'mods/species/tajaran/icons/ears.dmi'
 	mask_to_bodypart = FALSE
 	uid = "acc_marking_taj_wideears"
+	species_allowed = list(/decl/species/tajaran::uid)
 
-/decl/sprite_accessory/marking/tajaran/ears/inner
+/decl/sprite_accessory/ears/tajaran/inner
 	name = "Tajaran Ears Interior"
 	icon_state = "earsin"
 	uid = "acc_marking_taj_wideears_inner"
 
-/decl/sprite_accessory/marking/tajaran/ears/outer
+/decl/sprite_accessory/ears/tajaran/outer
 	name = "Tajaran Ears Exterior"
 	icon_state = "earsout"
 	uid = "acc_marking_taj_wideears_outer"
 
-/decl/sprite_accessory/marking/tajaran/ears/wide_tuft
+/decl/sprite_accessory/ears/tajaran/wide_tuft
 	name = "Tajaran Ear Tufts"
 	icon_state = "earsout_tuft"
 	uid = "acc_marking_taj_wideears_tuft"
