@@ -35,8 +35,8 @@
 	)
 
 	default_sprite_accessories = list(
-		SAC_HAIR     = list(/decl/sprite_accessory/hair/taj/lynx        = list(SAM_COLOR = "#46321c")),
-		SAC_MARKINGS = list(/decl/sprite_accessory/marking/tajaran/ears = list(SAM_COLOR = "#ae7d32"))
+		SAC_HAIR = list(/decl/sprite_accessory/hair/taj/lynx = list(SAM_COLOR = "#46321c")),
+		SAC_EARS = list(/decl/sprite_accessory/ears/tajaran  = list(SAM_COLOR = "#ae7d32"))
 	)
 
 	cold_level_1 = 200
