@@ -4,7 +4,7 @@
 	has_nonslip_feet  = TRUE
 	has_magnetic_feet = TRUE
 	camera_channels   = list(
-		CAMERA_CAMERA_CHANNEL_ENGINEERING
+		CAMERA_CHANNEL_ENGINEERING
 	)
 	languages = list(
 		/decl/language/human/common = FALSE

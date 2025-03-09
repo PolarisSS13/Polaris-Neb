@@ -53,6 +53,11 @@ Twice...
 	#include "../../mods/species/tritonian/_tritonian.dme"
 	#include "../../mods/species/neoavians/_neoavians.dme"
 	#include "../../mods/species/serpentid/_serpentid.dme"
+	#include "../../mods/content/mundane.dm"
+	#include "../../mods/content/government/_government.dme"
+	#include "../../mods/content/modern_earth/_modern_earth.dme"
+	#include "../../mods/content/mouse_highlights/_mouse_highlight.dme"
+	#include "../../mods/content/scaling_descriptors.dm"
 
 	#include "ministation_antagonists.dm"
 	#include "ministation_areas.dm"

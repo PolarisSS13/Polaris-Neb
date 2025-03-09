@@ -23,6 +23,10 @@
 	desc = "A tank of oxygen. This one is yellow."
 	icon = 'icons/obj/items/tanks/tank_yellow.dmi'
 
+/obj/item/tank/oxygen/red
+	desc = "A tank of oxygen. This one is red."
+	icon = 'icons/obj/items/tanks/tank_red.dmi'
+
 /obj/item/tank/oxygen/empty
 	starting_pressure = list()
 
@@ -115,4 +119,15 @@
 	icon = 'icons/obj/items/tanks/tank_red.dmi'
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	starting_pressure = list(/decl/material/gas/nitrogen = 10 ATM)
+	volume = 180
+
+/*
+ * Sleeping gas (nitrous oxide)
+ */
+/obj/item/tank/anesthetic
+	name = "anesthetic tank"
+	desc = "A tank of breathable anaesthetic gas. Count backwards from ten..."
+	icon = 'icons/obj/items/tanks/tank_stirling.dmi' // placeholder! needs red stripe added and outline fixed
+	distribute_pressure = ONE_ATMOSPHERE
+	starting_pressure = list(/decl/material/gas/nitrous_oxide = 3 ATM * N2STANDARD, /decl/material/gas/oxygen = 3 ATM * O2STANDARD)
 	volume = 180

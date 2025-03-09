@@ -17,6 +17,7 @@
 	var/mask_type = /obj/item/clothing/mask/breath/emergency
 	var/icon_state_open = "emerg_open"
 	var/icon_state_closed = "emerg"
+	var/icon_state_active // TODO implement
 
 	power_channel = ENVIRON
 	idle_power_usage = 10
@@ -233,3 +234,65 @@
 			tank.distribute_pressure += cp
 		tank.distribute_pressure = min(max(round(tank.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
 		. = TOPIC_REFRESH // Refreshing is handled in machinery/Topic
+
+/obj/machinery/oxygen_pump/anesthetic
+	name = "anesthetic pump"
+	desc = "A wall-mounted anesthetic pump with a retractable mask that someone can pull over your face to knock you out."
+	spawn_type = /obj/item/tank/anesthetic
+	icon_state = "anesthetic_tank"
+	icon_state_closed = "anesthetic_tank"
+	icon_state_open = "anesthetic_tank_open"
+	mask_type = /obj/item/clothing/mask/breath/medical
+
+/obj/machinery/oxygen_pump/mobile
+	name = "portable oxygen pump"
+	icon = 'icons/obj/machines/medpump.dmi'
+	desc = "A portable oxygen pump with a retractable mask that you can pull over your face in case of emergencies."
+	icon_state = "medpump"
+	icon_state_open = "medpump_open"
+	icon_state_closed = "medpump"
+	icon_state_active = "medpump_active"
+
+	anchored = FALSE
+	density = TRUE
+
+/obj/machinery/oxygen_pump/mobile/anesthetic
+	name = "portable anesthetic pump"
+	desc = "A portable anesthetic pump with a retractable mask that someone can pull over your face to knock you out."
+	spawn_type = /obj/item/tank/anesthetic
+	icon_state = "medpump_n2o"
+	icon_state_closed = "medpump_n2o"
+	icon_state_open = "medpump_n2o_open"
+	icon_state_active = "medpump_n2o_active"
+	mask_type = /obj/item/clothing/mask/breath // /obj/item/clothing/mask/breath/anesthetic // TODO implement
+
+/obj/machinery/oxygen_pump/mobile/stabilizer
+	name = "portable patient stabilizer"
+	desc = "A portable oxygen pump with a retractable mask used for stabilizing patients in the field."
+	icon_state = "patient_stabilizer"
+	icon_state_closed = "patient_stabilizer"
+	icon_state_open = "patient_stabilizer_open"
+	icon_state_active = "patient_stabilizer_active"
+
+/obj/machinery/oxygen_pump/mobile/stabilizer/Process()
+	. = ..()
+	if(!breather)	// Safety.
+		return
+	if(breather.isSynthetic())
+		return
+
+/* TODO: port modifiers or something similar
+	breather.add_modifier(breather.stat == DEAD ? /datum/modifier/bloodpump/corpse : /datum/modifier/bloodpump, 6 SECONDS)
+*/
+
+	var/obj/item/organ/internal/lungs/lungs = breather.get_organ(BP_LUNGS, /obj/item/organ/internal/lungs)
+	if(!lungs)
+		return
+	if(lungs.status & ORGAN_DEAD)
+		breather.adjustOxyLoss(-(rand(1,8)))
+	else
+		breather.adjustOxyLoss(-(rand(10,15)))
+		if(lungs.is_bruised() && prob(30))
+			lungs.heal_damage(1)
+		else
+			breather.ticks_since_last_successful_breath = max(breather.ticks_since_last_successful_breath - rand(1,5), 0)
