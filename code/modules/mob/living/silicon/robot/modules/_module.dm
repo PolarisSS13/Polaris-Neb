@@ -58,9 +58,16 @@
 	var/list/skills = list() // Skills that this module grants. Other skills will remain at minimum levels.
 	var/list/software = list() // Apps to preinstall on robot's inbiult computer
 
+// Override because storage is created very early.
+/obj/item/robot_module/New(loc, material_key, reference_only = FALSE)
+	if(reference_only)
+		storage = null
+	..(loc, material_key)
+
 /obj/item/robot_module/Initialize(ml, material_key, reference_only = FALSE)
 
 	. = ..()
+
 	if(reference_only)
 		return
 
@@ -154,10 +161,15 @@
 					.[state] = cicon.ids_to_icons[state]
 
 /obj/item/robot_module/Destroy()
-	QDEL_NULL_LIST(equipment)
+	for(var/datum/thing in (equipment|synths))
+		qdel(thing)
+	equipment = null
+	synths = null
 	QDEL_NULL_LIST(synths)
-	QDEL_NULL(emag)
-	QDEL_NULL(jetpack)
+	if(istype(emag))
+		QDEL_NULL(emag)
+	if(istype(jetpack))
+		QDEL_NULL(jetpack)
 	. = ..()
 	var/mob/living/silicon/robot/robot = loc
 	if(istype(robot) && robot.module == src)
