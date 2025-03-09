@@ -8,26 +8,25 @@
 /mob/living/human/grafadreka/Initialize(mapload, species_uid, datum/mob_snapshot/supplied_appearance)
 	species_uid = /decl/species/grafadreka::uid
 	. = ..()
+
 // TODO rewrite for Nebula drakes
-/obj/item/book/manual/drake_handling
+/obj/item/book/drake_handling
 	name = "Care And Handling Of The Sivian Snow Drake v0.1.12b"
 	author = "Xenoscience Team"
 	title = "Care And Handling Of The Sivian Snow Drake v0.1.12b"
-
-/obj/item/book/manual/drake_handling/Initialize()
-	. = ..()
-	dat = {"<html>
-				<head>
+	dat = {"
+	<html>
+			<head>
 				<style>
-				h1 {font-size: 18px; margin: 15px 0px 5px;}
-				h2 {font-size: 15px; margin: 15px 0px 5px;}
-				li {margin: 2px 0px 2px 15px;}
-				ul {margin: 5px; padding: 0px;}
-				ol {margin: 5px; padding: 0px 15px;}
-				body {font-size: 13px; font-family: Verdana;}
+					h1 {font-size: 18px; margin: 15px 0px 5px;}
+					h2 {font-size: 15px; margin: 15px 0px 5px;}
+					li {margin: 2px 0px 2px 15px;}
+					ul {margin: 5px; padding: 0px;}
+					ol {margin: 5px; padding: 0px 15px;}
+					body {font-size: 13px; font-family: Verdana;}
 				</style>
-				</head>
-				<body>
+			</head>
+			<body>
 				<p><i>This seems to be a notebook full of handwritten notes, loosely organized by topic. There's a crude index scribbled on the inside of the cover, but it's not very useful.</i></p>
 				<h2>General behavior</h2>
 				<p>Grafadreka (drakes) are actually pretty timid and easily spooked despite their size and appearance. In the wild, they hunt in groups and will hit and run using their stunning spit, avoiding direct engagement unless given no other option. They seem to have an inherent social structure, with a dominant packmember taking the lead but the pack as a whole working as a team. May be useful for training?</p>
@@ -41,13 +40,14 @@
 				<p>Can understand buttons/levers, door panels, access cards and automatic doors.</p>
 				<h2>Medical care</h2>
 				<ul>
-				<li>DO NOT TAKE OFFPLANET. Listlessness, faded glow, shedding of skin and lining of innards, death in ~3 days. LEAVE THEM ON SIF.</li>
-				<li>Per above, Security and Customs are very mad about import/export of controlled species. Don't take them on the shuttle.</li>
-				<li>Their saliva has a lot of bacteria and Sivian organic chemicals in it. Good for encouraging healing in Sivian wildlife, poisonous to humans (but does stop bleeding).</li>
-				<li>For minor injuries, they'll probably sort themselves out.</li>
-				<li>Standard human-compatible bandages, biogels and ointments seem to work fine for them.</li>
-				<li>Good reactions to bicaridine - use to reduce scarring & promote recovery from serious wounds.</li>
-				<li>Don't try to feed them a pill, they're worse than cats.</li>
+					<li>DO NOT TAKE OFFPLANET. Listlessness, faded glow, shedding of skin and lining of innards, death in ~3 days. LEAVE THEM ON SIF.</li>
+					<li>Per above, Security and Customs are very mad about import/export of controlled species. Don't take them on the shuttle.</li>
+					<li>Their saliva has a lot of bacteria and Sivian organic chemicals in it. Good for encouraging healing in Sivian wildlife, poisonous to humans (but does stop bleeding).</li>
+					<li>For minor injuries, they'll probably sort themselves out.</li>
+					<li>Standard human-compatible bandages, biogels and ointments seem to work fine for them.</li>
+					<li>Good reactions to bicaridine - use to reduce scarring & promote recovery from serious wounds.</li>
+					<li>Don't try to feed them a pill, they're worse than cats.</li>
 				</ul>
-				</body>
-			</html>"}
+			</body>
+		</html>
+	"}

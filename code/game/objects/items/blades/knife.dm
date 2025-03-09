@@ -8,8 +8,3 @@
 
 /obj/item/bladed/knife/iron
 	material = /decl/material/solid/metal/iron
-
-// TODO
-/obj/item/bladed/knife/tactical
-
-/obj/item/bladed/knife/survival

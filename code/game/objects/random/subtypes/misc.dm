@@ -399,13 +399,6 @@
 	)
 	return spawnable_choices
 
-// TODO IMPLEMENT
-/obj/random/vendor/drink
-	name = "random drink vendor"
-
-/obj/random/vendor/food
-	name = "random food vendor"
-
 /obj/random/lipstick
 	name = "random lipstick"
 	desc = "This is a tube of lipstick."

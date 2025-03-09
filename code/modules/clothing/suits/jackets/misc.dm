@@ -14,7 +14,6 @@
 /obj/item/clothing/suit/jacket/bomber/pilot
 	name = "pilot jacket"
 	desc = "A thick, blue bomber jacket."
-	icon_state = "pilot_bomber"
 	icon = 'icons/clothing/suits/jackets/pilot.dmi'
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 

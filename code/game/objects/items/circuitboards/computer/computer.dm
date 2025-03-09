@@ -121,8 +121,3 @@
 /obj/item/stock_parts/circuitboard/guestpass
 	name = "circuitboard (guest pass terminal)"
 	build_path = /obj/machinery/computer/guestpass
-
-/obj/item/stock_parts/circuitboard/cash_register
-	board_type = "machine"
-	build_path = /obj/machinery/cash_register
-	origin_tech = "{'programming':1}"

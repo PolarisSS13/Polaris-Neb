@@ -84,15 +84,3 @@
 /obj/item/radio/intercom/locked/entertainment
 	broadcasting = TRUE
 	locked_frequency = 1461
-
-// TODO implement
-/obj/item/radio/phone/medbay
-
-/obj/item/radio/intercom/custom
-/obj/item/radio/intercom/private
-/obj/item/radio/intercom/locked/ai_private
-/obj/item/radio/intercom/department
-/obj/item/radio/intercom/department/security
-/obj/item/radio/intercom/department/medbay
-/obj/item/radio/intercom/specops
-
