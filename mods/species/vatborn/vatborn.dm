@@ -1,5 +1,3 @@
-#define SPECIES_VATBORN   "Vatborn"
-
 /decl/modpack/vatborn
 	name = "Vatborn"
 

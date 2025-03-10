@@ -17,8 +17,9 @@
 
 
 /decl/species/human/vatborn
-	name = SPECIES_VATBORN
-	name_plural = SPECIES_VATBORN
+	uid = "species_vatborn"
+	name = "Vatborn"
+	name_plural = "Vatborns"
 
 	available_bodytypes = list(
 		/decl/bodytype/human/vatborn,
