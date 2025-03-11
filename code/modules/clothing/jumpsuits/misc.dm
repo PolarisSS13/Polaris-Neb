@@ -3,16 +3,6 @@
 	desc = "<i>'Special delivery!'</i>"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_mailman.dmi'
 
-/obj/item/clothing/jumpsuit/vice
-	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
-	icon = 'icons/clothing/uniform_vice.dmi'
-
-/obj/item/clothing/jumpsuit/johnny
-	name = "brown jumpsuit"
-	desc = "A label on the inside of the collar reads, 'johnny~~~'."
-	icon = 'icons/clothing/jumpsuits/jumpsuit_johnny.dmi'
-
 /obj/item/clothing/jumpsuit/rainbow
 	name = "rainbow"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_rainbow.dmi'
@@ -21,6 +11,9 @@
 	name = "psychedelic jumpsuit"
 	desc = "Groovy!"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_psychadelic.dmi'
+
+/obj/item/clothing/jumpsuit/psyche/get_assumed_clothing_state_modifiers()
+	return null
 
 /obj/item/clothing/jumpsuit/wetsuit
 	name = "tactical wetsuit"
