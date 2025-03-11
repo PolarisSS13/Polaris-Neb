@@ -130,9 +130,6 @@
 	_base_attack_force = 0
 	material = /decl/material/solid/organic/paper
 
-	///The description for the item/medium without any reference to the design.
-	//var/base_desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
-
 	///Type path to the /decl for the design on this poster. At runtime is changed for a reference to the decl
 	var/decl/poster_design/poster_design
 
