@@ -2,6 +2,8 @@
 	name = "damage zone"
 	icon_state = "zone_sel_tail"
 	screen_loc = ui_zonesel
+	use_supplied_ui_color = TRUE
+	use_supplied_ui_alpha = TRUE
 
 /obj/screen/zone_selector/handle_click(mob/user, params)
 	var/list/PL = params2list(params)
