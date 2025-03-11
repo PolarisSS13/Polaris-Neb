@@ -1,0 +1,5 @@
+author: Cerebulon
+changes:
+  - {imageadd: Changed modpack Tajara to use old-style humanoid sprites instead of
+      a unique feline body shape which has since been used by Hnolls.}
+delete-after: true
