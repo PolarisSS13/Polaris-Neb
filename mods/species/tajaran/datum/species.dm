@@ -19,7 +19,10 @@
 
 	description = "A small mammalian carnivore. If you are reading this, you are probably a Tajaran."
 	hidden_from_codex = FALSE
-	available_bodytypes = list(/decl/bodytype/tajaran)
+	available_bodytypes = list(
+		/decl/bodytype/tajaran,
+		/decl/bodytype/tajaran/masculine
+	)
 
 	traits = list(/decl/trait/malus/intolerance/caffeine = TRAIT_LEVEL_MAJOR)
 
