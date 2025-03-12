@@ -9,6 +9,7 @@
 #include "datum\locations.dm"
 #include "datum\overrides.dm"
 #include "datum\languages\human.dm"
+#include "items\gloves.dm"
 #include "items\head.dm"
 #include "items\overrides.dm"
 #include "items\suit.dm"
