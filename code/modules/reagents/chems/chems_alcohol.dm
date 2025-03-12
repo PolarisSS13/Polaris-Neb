@@ -325,7 +325,7 @@
 /decl/material/liquid/alcohol/vodka
 	name = "vodka"
 	codex_name = "plain vodka"
-	lore_text = "Number one drink AND fueling choice for Independents around the galaxy."
+	lore_text = "High-proof grain alcohol, useful for cocktails... and as bootleg rocket fuel, for those prone to amateur rocketry or trade sanctions."
 	taste_description = "grain alcohol"
 	color = "#0064c8" // rgb: 0, 100, 200
 	strength = 15
@@ -339,7 +339,7 @@
 /decl/material/liquid/alcohol/vodka/premium
 	name = "premium vodka"
 	codex_name = null
-	lore_text = "Premium distilled vodka imported directly from the Gilgamesh Colonial Confederation."
+	lore_text = "Premium distilled vodka made from real, planet-grown potatoes."
 	taste_description = "clear kvass"
 	color = "#aaddff" // rgb: 170, 221, 255 - very light blue.
 	strength = 10

@@ -130,7 +130,7 @@
 //cigarellos
 /obj/item/box/fancy/cigarettes/cigarello
 	name = "pack of Trident Original cigars"
-	desc = "The Trident brand's wood tipped little cigar, favored by the Sol corps diplomatique for their pleasant aroma. Machine made on Mars for over 100 years."
+	desc = "The Trident brand's wood tipped little cigar, favored by some for their pleasant aroma. Machine made on Mars for over 100 years."
 	icon = 'icons/obj/items/storage/cigpack/cigarillo.dmi'
 	icon_state = "CRpacket"
 	item_state = "Dpacket"
@@ -142,7 +142,7 @@
 
 /obj/item/box/fancy/cigarettes/cigarello/variety
 	name = "pack of Trident Fruit cigars"
-	desc = "The Trident brand's wood tipped little cigar, favored by the Sol corps diplomatique for their pleasant aroma. Machine made on Mars for over 100 years. This is a fruit variety pack."
+	desc = "The Trident brand's wood tipped little cigar, favored by some for their pleasant aroma. Machine made on Mars for over 100 years. This is a fruit variety pack."
 	icon = 'icons/obj/items/storage/cigpack/cigarillo_fruity.dmi'
 	icon_state = "CRFpacket"
 
@@ -157,7 +157,7 @@
 
 /obj/item/box/fancy/cigarettes/cigarello/mint
 	name = "pack of Trident Menthol cigars"
-	desc = "The Trident brand's wood tipped little cigar, favored by the Sol corps diplomatique for their pleasant aroma. Machine made on Mars for over 100 years. These are the menthol variety."
+	desc = "The Trident brand's wood tipped little cigar, favored by some for their pleasant aroma. Machine made on Mars for over 100 years. These are the menthol variety."
 	icon = 'icons/obj/items/storage/cigpack/cigarillo_menthol.dmi'
 	icon_state = "CRMpacket"
 
