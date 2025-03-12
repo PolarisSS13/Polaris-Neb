@@ -1811,6 +1811,8 @@
 #include "code\modules\awaymissions\trigger.dm"
 #include "code\modules\backgrounds\_background.dm"
 #include "code\modules\backgrounds\background_categories.dm"
+#include "code\modules\backgrounds\citizenship\_citizenship.dm"
+#include "code\modules\backgrounds\citizenship\citizenship_other.dm"
 #include "code\modules\backgrounds\faction\_faction.dm"
 #include "code\modules\backgrounds\faction\factions_human.dm"
 #include "code\modules\backgrounds\heritage\_heritage.dm"

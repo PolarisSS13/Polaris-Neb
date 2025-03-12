@@ -545,7 +545,7 @@
 //Syncs background categories/values to the currently set species, and may trigger a language update
 /mob/living/human/proc/apply_species_background_info()
 	var/update_lang
-	for(var/cat_type in global.using_map.get_background_categories())
+	for(var/cat_type in decls_repository.get_decls_of_subtype(/decl/background_category))
 		if(species.force_background_info && species.force_background_info[cat_type])
 			update_lang = TRUE
 			set_background_value(cat_type, species.force_background_info[cat_type], defer_language_update = TRUE)
