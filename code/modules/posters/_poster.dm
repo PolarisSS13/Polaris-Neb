@@ -135,10 +135,9 @@
 
 /obj/item/poster/Initialize(ml, material_key, var/given_poster_type = null)
 	//Init design
-	base_name ||= name
-	base_desc ||= desc
+	. = ..(ml, material_key)
 	set_design(given_poster_type || poster_design || pick(decls_repository.get_decl_paths_of_subtype(/decl/poster_design)))
-	return ..(ml, material_key)
+	return .
 
 /obj/item/poster/proc/set_design(var/decl/poster_design/_design_path)
 	if(ispath(_design_path, /decl))
