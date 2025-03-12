@@ -64,15 +64,8 @@
 	if (abs(ambient_r + ambient_g + ambient_b) == 0)
 		return
 
-	// Unlit turfs will have corners if they have a lit neighbor -- don't generate corners for them, but do update them if they're there.
-	if (!corners)
-		var/force_build_corners = FALSE
-		for (var/turf/T as anything in RANGE_TURFS(src, 1))
-			if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-				force_build_corners = TRUE
-				break
-
-		if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
+	if (!corners || !lighting_corners_initialised)
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 			generate_missing_corners()
 		else
 			return
