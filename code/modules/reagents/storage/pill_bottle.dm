@@ -78,17 +78,22 @@
 		name = "[base_name] ([labeled_name])"
 	desc = "[base_desc] It is labeled \"[labeled_name]\"."
 
-/obj/item/pill_bottle/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/pen) || istype(W, /obj/item/flashlight/pen))
+/obj/item/pill_bottle/attackby(obj/item/used_item, mob/user)
+	if(IS_PEN(used_item))
+		var/decl/tool_archetype/pen/parch = GET_DECL(TOOL_PEN)
+
 		var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", labeled_name), MAX_NAME_LEN)
-		if(length(tmp_label) > 50)
+		tmp_label = user.handle_writing_literacy(user, tmp_label)
+		var/label_length = length(tmp_label)
+		if(label_length > 50)
 			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
-		else if(length(tmp_label) > 10)
-			to_chat(user, "<span class='notice'>You set the label.</span>")
-			labeled_name = tmp_label
-			update_name_label()
-		else
-			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+		else 
+			if(label_length > 10)
+				to_chat(user, "<span class='notice'>You set the label.</span>")
+			else
+				to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+			if(parch.decrement_uses(user, used_item, max(round(label_length / 25, 1), 1)) <= 0)
+				parch.warn_out_of_ink(user, used_item)
 			labeled_name = tmp_label
 			update_name_label()
 		return TRUE
