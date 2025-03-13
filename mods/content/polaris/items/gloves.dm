@@ -9,6 +9,7 @@
 	heat_protection = SLOT_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
+
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
 	desc = "A pair of gloves that don't actually cover the fingers."
