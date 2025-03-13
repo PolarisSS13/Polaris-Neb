@@ -4,7 +4,11 @@
 	name = "mittens"
 	desc = "A pair of cozy mittens."
 	icon = 'mods/content/polaris/icons/clothing/gloves/gloves_mittens.dmi'
-
+	permeability_coefficient = 0.50
+	cold_protection = SLOT_HANDS
+	heat_protection = SLOT_HANDS
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROTECTION_TEMPERATURE
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROTECTION_TEMPERATURE
 /obj/item/clothing/gloves/fingerless
 	name = "fingerless gloves"
 	desc = "A pair of gloves that don't actually cover the fingers."
