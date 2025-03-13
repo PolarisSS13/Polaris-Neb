@@ -137,7 +137,6 @@
 	//Init design
 	. = ..(ml, material_key)
 	set_design(given_poster_type || poster_design || pick(decls_repository.get_decl_paths_of_subtype(/decl/poster_design)))
-	return .
 
 /obj/item/poster/proc/set_design(var/decl/poster_design/_design_path)
 	if(ispath(_design_path, /decl))
