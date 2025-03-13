@@ -408,7 +408,7 @@ var/global/list/card_decks = list()
 		set_dir(initial(dir))
 	update_icon()
 
-/obj/item/hand/on_picked_up(mob/user)
+/obj/item/hand/on_picked_up(mob/user, atom/old_loc)
 	..()
 	is_on_table = FALSE
 	set_dir(initial(dir))
