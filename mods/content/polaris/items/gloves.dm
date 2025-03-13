@@ -12,10 +12,6 @@
 	permeability_coefficient = 1
 	body_parts_covered = 0
 
-/obj/item/clothing/gloves/forensic
-	name = "forensic gloves"
-	desc = "Specially made gloves for forensic technicians. The luminescent threads woven into the material stand out under scrutiny."
-	icon = 'mods/content/polaris/icons/clothing/gloves/gloves_forensic.dmi'
 
 /obj/item/clothing/gloves/knuckle_dusters //Not currently functional while worn; have to take them off and hit people with them.
 	name = "knuckle dusters"
