@@ -348,7 +348,7 @@
 		panel_open = FALSE
 		if(istype(construct_state, /decl/machine_construction/default/panel_open))
 			var/decl/machine_construction/default/panel_open/open = construct_state
-			construct_state = open.up_state
+			construct_state = GET_DECL(open.up_state)
 			construct_state.validate_state(src)
 		visible_message("The maintenance hatch of \the [src] closes.")
 		update_icon()
