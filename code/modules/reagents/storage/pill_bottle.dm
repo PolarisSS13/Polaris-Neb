@@ -66,24 +66,11 @@
 	if(wrapper_color)
 		add_overlay(overlay_image(icon, "pillbottle_wrap", wrapper_color, RESET_COLOR))
 
-/obj/item/pill_bottle/proc/update_name_label()
-	if(!labeled_name)
-		name = base_name
-		desc = base_desc
-		return
-	else if(length(labeled_name) > 10)
-		var/short_label_name = copytext(labeled_name, 1, 11)
-		name = "[base_name] ([short_label_name]...)"
-	else
-		name = "[base_name] ([labeled_name])"
-	desc = "[base_desc] It is labeled \"[labeled_name]\"."
-
 /obj/item/pill_bottle/attackby(obj/item/used_item, mob/user)
 	if(IS_PEN(used_item))
-		var/decl/tool_archetype/pen/parch = GET_DECL(TOOL_PEN)
-
 		var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", labeled_name), MAX_NAME_LEN)
 		tmp_label = user.handle_writing_literacy(user, tmp_label)
+
 		var/label_length = length(tmp_label)
 		if(label_length > 50)
 			to_chat(user, "<span class='notice'>The label can be at most 50 characters long.</span>")
@@ -92,9 +79,13 @@
 				to_chat(user, "<span class='notice'>You set the label.</span>")
 			else
 				to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
+
+			var/decl/tool_archetype/pen/parch = GET_DECL(TOOL_PEN)
 			if(parch.decrement_uses(user, used_item, max(round(label_length / 25, 1), 1)) <= 0)
 				parch.warn_out_of_ink(user, used_item)
-			labeled_name = tmp_label
-			update_name_label()
+
+			var/datum/extension/labels/lext = get_or_create_extension(src, /datum/extension/labels)
+			lext.RemoveAllLabels()
+			attach_label(null, null, tmp_label)
 		return TRUE
 	return ..()
