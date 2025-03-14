@@ -30,7 +30,7 @@
 			return TRUE
 		do_insert_ai(user, used_item)
 		return TRUE
-	if(IS_SCREWDRIVER(used_item))
+	if(stored_card && IS_SCREWDRIVER(used_item))
 		to_chat(user, "You manually remove \the [stored_card] from \the [src].")
 		do_eject_ai(user)
 		return TRUE
@@ -64,8 +64,9 @@
 	device.do_eject_ai(user)
 
 /obj/item/stock_parts/computer/ai_slot/proc/do_eject_ai(mob/user)
-	stored_card.dropInto(loc)
-	stored_card = null
+	if(stored_card)
+		stored_card.dropInto(loc)
+		stored_card = null
 
 	loc.verbs -= /obj/item/stock_parts/computer/ai_slot/verb/eject_ai
 
