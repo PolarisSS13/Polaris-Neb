@@ -56,7 +56,7 @@
 		//Gutter? Tradeband?
 	)
 	size_value = "3"
-	capital = "Carter Interstellar Spaceport, Relan (defacto)"
+	capital = "Carter Interstellar Spaceport, Relan (<i>de facto</i>)" //do italics even work? let's test
 	founded = "2564"
 
 /decl/background_detail/citizenship/earthnation
