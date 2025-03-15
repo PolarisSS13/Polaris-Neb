@@ -889,7 +889,7 @@ About the new airlock wires panel:
 		panel_open = TRUE
 		if(istype(construct_state, /decl/machine_construction/default/panel_closed))
 			var/decl/machine_construction/default/panel_closed/closed = construct_state
-			construct_state = closed.down_state
+			construct_state = GET_DECL(closed.down_state)
 			construct_state.validate_state(src)
 		if (secured_wires)
 			lock()

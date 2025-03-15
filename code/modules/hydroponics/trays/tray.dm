@@ -497,7 +497,7 @@
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 		return TRUE
 
-	if(seed)
+	if(user.check_intent(I_FLAG_HARM) && seed)
 		var/force = used_item.expend_attack_force(user)
 		if(force)
 			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
