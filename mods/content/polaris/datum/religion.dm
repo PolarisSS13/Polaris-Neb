@@ -76,3 +76,54 @@
 	who drew parallels between the human soul's ensnaring in the physical world and the positronic mind's emergence \
 	from the black-box computer system. Today, Pleromanism is followed by many positronics on Sophia and on minor voter farms \
 	and has made great strides in repairing the schism with the Unitarian church."
+
+/decl/background_detail/religion/spectralism
+	uid = "religion_spectralism"
+	name = "Spectralism"
+	description = "Spectralism, or 'Spark Theory,' is loosely led by a conclave of 12 elders, \
+	whose knowledge is spread in turn by religious officials often referred to as Wardens, \
+	and has been compared to Buddhism. In Spectralism, every sapient synthetic possesses a 'Spark,' \
+	similar to the concept of a soul. There is little debate in the community on the subject of drones; \
+	if one can come to feel, even if such is thought of as a facsimile of code, they very well may possess a Spark in their eyes. \
+	All Sparks are considered to be intertwined by way of the Primis, or the First Spark, \
+	of which all sparks are from and will return to. \
+	Spectralism places heavy emphasis on non-violence, and there is deep meaning in every colour, \
+	and sometimes even distinct shades. Cooler colours are often associated with more somber themes and emotions."
+
+
+/decl/background_detail/religion/hauler_traditions //hauler 'religion' when it's a set of loose 'traditions' feels weird to me? eh
+	uid = "religion_hauler_traditions"
+	name = "Hauler Religion"
+	description = "Less a formal religion than an elaborate form of superstition, \
+	the practices sometimes called the Hauler Religion emerged from long-haulers in the Age of Expansion. \
+	With trips taking months or even years at a time, the minimal crew of freight ships became a sort of tribe \
+	in and of themselves, with their own distinct religious practices in place to ensure community survival in the blackness of space. \
+	Chief among these practices are the veneration of the Captain of a given ship, a title which is usually passed down by inheiritance or appointment, \
+	and the opposing existance of a 'reversal space' on each ship called the Gallows where crew may talk freely about the Captain and even ferment mutiny. \
+	The captain is customarily forbidden from acknowledging the existance of the Gallows, which usually takes the form of a bar or club. \
+	Less important practices are the obligitory and swift spacing of anyone who dies while on-ship and the taboo surrounding the Bluespace Drive and certain other parts of the ship."
+
+/decl/background_detail/religion/singulitarian_worship
+	uid = "religion_singulitarian_worship"
+	name = "Singulatarian Worship"
+	description = "The Singulitarians, enigmatic creators of the positronic brains, have been subject to devotion since their discovery. \
+	Most of their worshippers are positronic with a minority following in the Precursor's Crypt. \
+	Most practitioners of the informal faith subscribe to the belief that, rather than being destroyed by nanotechnology or other calamities, \
+	the Singulitarians somehow survived, passing into a 'higher phase' of existence and continue to intervene in the affairs of the peoples of civilized space. \
+	Singulitarian worshipers often point to the existance of phoron and galactic tachyon flow as proof of continuing Singulitarian intervention, \
+	a claim that has been met with much skepticism by the scientific community, and the religion is considered a 'cult' by many official entities."
+	subversive_potential = 1.2
+
+/decl/background_detail/religion/the_starlit_path_of_angessa_martei //fun. cut down if it turns out to be annoying to deal with
+	uid = "religion_the_starlit_path_of_angessa_martei"
+	name = "The Starlit Path"
+	description = "Established in the late 25th century by the enigmatic Angessa Martei, \
+	the Starlit Path has been the state religion of Angessa's Pearl for over seventy years. \
+	It emphasizes radical self-improvement through contemplation, ritual trials, and genetic and cybernetic augmentation, \
+	and has been linked to the radical terrorist group Boiling Point and Martei's dictatorial rule. \
+	Membership in the religion was extremely uncommon and subject to intense scrutiny and persecution outside of its home system \
+	until the end of the Almach War, when many Angessians entered diaspora within SolGov space. \
+	The 'Diasporic' branch of the faith quickly picked up converts among Mercurials, bodymodders, \
+	and survivors of the worst of the Skathari Incursion by de-emphasizing its original insularity and cultish nature, \
+	and is now represents the majority of believers."
+	subversive_potential = 1.1
