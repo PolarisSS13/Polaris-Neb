@@ -2,7 +2,7 @@
 	var/uses = LAZYACCESS(parameters, IE_PAR_USES)
 	if(uses <= 0)
 		return base_damage
-	. = (1 + ((uses / max(1, LAZYACCESS(parameters, IE_PAR_MAX_USES))) * LAZYACCESS(parameters, IE_PAR_SHARP_DAM_MULT)))
+	. = base_damage * (1 + ((uses / max(1, LAZYACCESS(parameters, IE_PAR_MAX_USES))) * LAZYACCESS(parameters, IE_PAR_SHARP_DAM_MULT)))
 
 /decl/item_effect/sharpened/expend_attack_use(obj/item/used_item, mob/user, list/parameters)
 	var/uses = LAZYACCESS(parameters, IE_PAR_USES)
