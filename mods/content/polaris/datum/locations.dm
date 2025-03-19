@@ -100,7 +100,7 @@
 
 // Core World - Anshar
 
-/decl/background_detail/location/kishar
+/decl/background_detail/location/heaven
 	name = "Heaven, Alpha Centauri"
 	uid = "location_heaven"
 	description = "Heaven is the oldest human extrasolar colony, a 400-year-old orbital complex located in Alpha\
@@ -144,9 +144,9 @@
 	economic_power = 1.1
 	distance = "11.91 ly"
 
-/decl/background_detail/location/binma
+/decl/background_detail/location/altair
 	name = "Altair"
-	uid = "location_binma"
+	uid = "location_altair"
 	description = "Home to the Solar Confederate Government's primary maximum security correctional facility for \
 	confederation-level criminals, and very little else. Residents of the system are invariably associated with \
 	the operation of the notorious \"Altair Stack\",  whether directly employed by the prison or in support of its \
@@ -154,18 +154,6 @@
 	capital = "Becquerel Station"
 	local_government = "Corporate Municipal Governance under the Altair Correctional Agency" //feels very clumsy, but just 'corporate governance' is a little too nondescriptive?
 	distance = "16.73 ly"
-
-//these should be moved to cultures i think
-/decl/background_detail/location/coreworlds
-	name = "Core Worlds"
-	uid = "location_coreworlds"
-	description = "The Core Worlds are densely populated and heavily developed, most relying on imports from \
-	other Solar member states to fuel their economy. The culture of the Core heavily influences the rest of Solar \
-	society by way of media, painting the Core as glamorous, cosmopolitan... and largely biological human."
-	capital = "Luna"
-	ruling_body = "Solar Confederate Government"
-	economic_power = 1.1
-	distance = null //not one location
 
 
 //
@@ -234,7 +222,7 @@
 	uid = "location_iserlohnrepublic"
 	description = "During the seccesion of the Saint Columbia during the Almach War, \
 	the civilian population of the enormous Saint Columbia Fleet Base broke away from the\
-	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov. 
+	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov.
 	local_government = "Iserlohn Republic"
 	ruling_body = "Golden Crescent Regional Government"
 	economic_power = 0.9
@@ -281,11 +269,11 @@
 	Wright is also dominated by a Ward-Takahashi voter farm, and its human population mainly consists of \
 	middle-management for what corporate concerns remain and personnel from the New Ohio Fleet Base. \
 	Many have left Wright in recent years looking for better fortunes, expecting them just about anywhere else in the galaxy."
-	
+
 	ruling_body = "Solar Confederate Government"
 	distance = null //unknown
 	economic_power = 0.7 //super space detroit. maybe it should be 0.8 or 0.75? I am overthinking it.
-	
+
 
 //
 // Five Arrows
