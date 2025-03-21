@@ -140,3 +140,17 @@
 	.[/datum/gear_tweak/path/specified_types_list] |= list(
 		/obj/item/clothing/head/lobster
 	)
+
+//HAND
+
+/decl/loadout_option/gloves/fingerless
+	name = "gloves, fingerless"
+	loadout_flags = GEAR_HAS_COLOR_SELECTION
+	path = /obj/item/clothing/gloves/fingerless
+	uid = "gear_fingerless_gloves_color"
+
+/decl/loadout_option/gloves/mittens
+	name = "gloves, mittens"
+	loadout_flags = GEAR_HAS_COLOR_SELECTION
+	path = /obj/item/clothing/gloves/mittens
+	uid = "gear_mittens_color"
