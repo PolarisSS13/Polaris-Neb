@@ -55,7 +55,7 @@
 
 	for(var/storage_type in typesof(/obj))
 		var/obj/thing = storage_type
-		if(TYPE_IS_ABSTRACT(thing) || !ispath(initial(thing.storage), /datum/storage))
+		if(!TYPE_IS_SPAWNABLE(thing) || !ispath(initial(thing.storage), /datum/storage))
 			continue
 		thing = new thing //should be fine to put it in nullspace...
 		var/bad_msg = "[ascii_red]--------------- [thing.name] \[[thing.type] | [thing.storage]\]"
