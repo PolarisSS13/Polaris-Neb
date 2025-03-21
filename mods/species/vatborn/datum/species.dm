@@ -38,13 +38,3 @@
 
 	toxins_mod = 1.1
 	metabolism_mod = 1.15
-
-
-
-/decl/species/vatborn/Initialize()
-	default_bodytype = /decl/bodytype/human/vatborn //runtime prevention
-	. = ..()
-	LAZYINITLIST(available_background_info)
-
-/decl/species/vatborn/check_background()
-	return TRUE
