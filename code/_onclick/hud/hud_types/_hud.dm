@@ -25,7 +25,6 @@
 		hud_used = new hud_used(src)
 	if(istype(hud_used))
 		hud_used.refresh_hud_icons()
-	refresh_lighting_master()
 
 /datum/hud
 	/// A reference to our owning mob.

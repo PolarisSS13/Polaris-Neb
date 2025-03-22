@@ -28,10 +28,8 @@
 	if (color == ambient_light && multiplier == ambient_light_multiplier)
 		return
 
-	ambient_light = color || ambient_light
-	ambient_light_multiplier = multiplier || ambient_light_multiplier
-	if (!ambient_light_multiplier)
-		ambient_light_multiplier = initial(ambient_light_multiplier)
+	ambient_light = isnull(color) ? ambient_light : color
+	ambient_light_multiplier = isnull(multiplier) ? ambient_light_multiplier : multiplier
 
 	update_ambient_light()
 
@@ -48,7 +46,7 @@
 	var/ambient_g = 0
 	var/ambient_b = 0
 
-	if (ambient_light)
+	if (ambient_light && ambient_light_multiplier) // If either of these are false-y we can use the simplier path and avoid calculations
 		ambient_r = round(((HEX_RED(ambient_light)   / 255) * ambient_light_multiplier)/4 - ambient_light_old_r, LIGHTING_ROUND_VALUE)
 		ambient_g = round(((HEX_GREEN(ambient_light) / 255) * ambient_light_multiplier)/4 - ambient_light_old_g, LIGHTING_ROUND_VALUE)
 		ambient_b = round(((HEX_BLUE(ambient_light)  / 255) * ambient_light_multiplier)/4 - ambient_light_old_b, LIGHTING_ROUND_VALUE)
@@ -64,15 +62,8 @@
 	if (abs(ambient_r + ambient_g + ambient_b) == 0)
 		return
 
-	// Unlit turfs will have corners if they have a lit neighbor -- don't generate corners for them, but do update them if they're there.
-	if (!corners)
-		var/force_build_corners = FALSE
-		for (var/turf/T as anything in RANGE_TURFS(src, 1))
-			if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
-				force_build_corners = TRUE
-				break
-
-		if (force_build_corners || TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
+	if (!corners || !lighting_corners_initialised)
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 			generate_missing_corners()
 		else
 			return

@@ -210,7 +210,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/towel/on_picked_up(mob/user)
+/obj/item/towel/on_picked_up(mob/user, atom/old_loc)
 	..()
 	if(laid_out)
 		laid_out = FALSE

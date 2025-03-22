@@ -1,5 +1,5 @@
 /decl/bodytype/tajaran
-	name                 = "felinoid"
+	name                 = "feminine"
 	bodytype_category    = BODYTYPE_TAJARA
 	limb_blend           = ICON_MULTIPLY
 	icon_template        = 'mods/species/tajaran/icons/template.dmi'
@@ -35,8 +35,8 @@
 	)
 
 	default_sprite_accessories = list(
-		SAC_HAIR     = list(/decl/sprite_accessory/hair/taj/lynx        = list(SAM_COLOR = "#46321c")),
-		SAC_MARKINGS = list(/decl/sprite_accessory/marking/tajaran/ears = list(SAM_COLOR = "#ae7d32"))
+		SAC_HAIR = list(/decl/sprite_accessory/hair/taj/lynx = list(SAM_COLOR = "#46321c")),
+		SAC_EARS = list(/decl/sprite_accessory/ears/tajaran  = list(SAM_COLOR = "#ae7d32"))
 	)
 
 	cold_level_1 = 200
@@ -55,28 +55,13 @@
 		"Your overheated skin itches."
 	)
 
-/decl/bodytype/tajaran/Initialize()
-	_equip_adjust = list(
-		(slot_glasses_str) = list(
-			"[NORTH]" = list(0, 2),
-			"[EAST]"  = list(0, 2),
-			"[SOUTH]" = list( 0, 2),
-			"[WEST]"  = list(0, 2)
-		),
-		(slot_wear_mask_str) = list(
-			"[NORTH]" = list(0, 2),
-			"[EAST]"  = list(0, 2),
-			"[SOUTH]" = list( 0, 2),
-			"[WEST]"  = list(0, 2)
-		),
-		(slot_head_str) = list(
-			"[NORTH]" = list(0, 2),
-			"[EAST]"  = list(0, 2),
-			"[SOUTH]" = list( 0, 2),
-			"[WEST]"  = list(0, 2)
-		)
-	)
-	. = ..()
+/decl/bodytype/tajaran/masculine
+	name                  = "masculine"
+	icon_base             = 'mods/species/tajaran/icons/body_male.dmi'
+	icon_deformed         = 'mods/species/tajaran/icons/deformed_body_male.dmi'
+	associated_gender     = MALE
+	onmob_state_modifiers = null
+	uid                   = "bodytype_tajaran_masc"
 
 /decl/bodytype/tajaran/get_default_grooming_results(obj/item/organ/external/limb, obj/item/grooming/tool)
 	if(tool?.grooming_flags & GROOMABLE_BRUSH)
