@@ -81,6 +81,9 @@
 
 /obj/machinery/biogenerator/attackby(var/obj/item/used_item, var/mob/user)
 
+	if(panel_open || IS_SCREWDRIVER(used_item))
+		return ..()
+
 	if(processing)
 		if((. = component_attackby(used_item, user)))
 			return

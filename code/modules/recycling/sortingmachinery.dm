@@ -6,6 +6,8 @@
 	icon_state = "chute"
 	base_type = /obj/machinery/disposal/deliveryChute/buildable
 	frame_type = /obj/structure/disposalconstruct/machine/chute
+	// TODO: Convert attackby() override and c_mode vars to use construct states
+	construct_state = null
 
 	var/c_mode = 0
 

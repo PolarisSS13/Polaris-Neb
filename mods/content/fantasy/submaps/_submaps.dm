@@ -43,7 +43,7 @@
 		'sound/effects/wind/wind_4_2.ogg',
 		'sound/effects/wind/wind_5_1.ogg'
 	)
-	interior_ambient_light_modifier = -0.3
+	interior_ambient_light_modifier = -0.4
 	area_flags = AREA_FLAG_EXTERNAL | AREA_FLAG_IS_BACKGROUND
 
 /area/fantasy/outside/point_of_interest

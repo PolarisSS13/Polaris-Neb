@@ -2,6 +2,8 @@
 	icon = 'icons/mob/screen/styles/midnight/fire_intent.dmi'
 	dir = SOUTH
 	abstract_type = /obj/screen/gun
+	use_supplied_ui_color = TRUE
+	use_supplied_ui_alpha = TRUE
 	var/base_icon_state
 	var/toggle_flag
 

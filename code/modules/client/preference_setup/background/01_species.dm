@@ -19,7 +19,7 @@
 	writer.write("species", pref.species)
 
 /datum/category_item/player_setup_item/background/species/preload_character(datum/pref_record_reader/R)
-	var/decl/species/loaded_species = decls_repository.get_decl_by_id_or_var(R.read("species"), /decl/spawnpoint)
+	var/decl/species/loaded_species = decls_repository.get_decl_by_id_or_var(R.read("species"), /decl/species)
 	pref.species = loaded_species?.uid || decls_repository.get_decl_by_id(global.using_map.default_species)
 
 /datum/category_item/player_setup_item/background/species/sanitize_character()

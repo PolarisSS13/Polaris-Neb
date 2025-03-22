@@ -9,7 +9,6 @@
 	abstract_type = /obj/item/chems
 	watertight = TRUE
 
-	var/base_desc
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = @"[5,10,15,25,30]"
 	var/volume = 30

@@ -86,7 +86,12 @@
 		if(ELECTROCUTE)
 			cause = "sparks"
 	visible_message(SPAN_WARNING("Something [cause] inside \the [machine]."), range = 2)
-	SetName("broken [name]")
+	update_name()
+
+/obj/item/stock_parts/update_name()
+	. = ..()
+	if(!is_functional())
+		SetName("broken [name]") // prepend 'broken' to the results
 
 /obj/item/stock_parts/proc/is_functional()
 	return (!can_take_damage()) || (current_health > 0)

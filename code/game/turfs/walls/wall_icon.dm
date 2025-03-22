@@ -30,11 +30,11 @@
 				wall.other_connections = null
 				iterate_turfs += wall
 		for(var/turf/wall/wall as anything in iterate_turfs)
-			wall.update_icon()
+			wall.lazy_update_icon()
 	else
 		wall_connections = null
 		other_connections = null
-	update_icon()
+	lazy_update_icon()
 
 /turf/wall/proc/paint_wall(var/new_paint_color)
 	paint_color = new_paint_color

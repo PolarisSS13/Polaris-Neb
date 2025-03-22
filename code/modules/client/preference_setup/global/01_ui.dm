@@ -134,7 +134,7 @@ var/global/list/valid_icon_sizes = list(32, 48, 64, 96, 128)
 		var/UI_style_highlight_color_new = input(user, "Choose UI highlight color, dark colors are not recommended!", "Global Preference", pref.UI_style_highlight_color) as color|null
 		if(isnull(UI_style_highlight_color_new) || !CanUseTopic(user)) return TOPIC_NOACTION
 		pref.UI_style_highlight_color = UI_style_highlight_color_new
-		return TOPIC_REFRESH
+		. = TOPIC_REFRESH
 
 	else if(href_list["select_alpha"])
 		var/UI_style_alpha_new = input(user, "Select UI alpha (transparency) level, between 50 and 255.", "Global Preference", pref.UI_style_alpha) as num|null

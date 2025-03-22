@@ -30,7 +30,10 @@
 	traits = list(/decl/trait/malus/intolerance/caffeine = TRAIT_LEVEL_MAJOR)
 
 	hidden_from_codex = FALSE
-	available_bodytypes = list(/decl/bodytype/tajaran)
+	available_bodytypes = list(
+		/decl/bodytype/tajaran,
+		/decl/bodytype/tajaran/masculine
+	)
 
 	preview_outfit = /decl/outfit/job/generic/engineer
 

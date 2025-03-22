@@ -1,3 +1,4 @@
+#include "../../../mods/content/modern_earth/_modern_earth.dme" // for the British flag cups, which could honestly just be removed
 #include "bearcat_areas.dm"
 #include "bearcat_jobs.dm"
 #include "bearcat_access.dm"

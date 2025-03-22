@@ -11,12 +11,6 @@
 	var/can_fit_under_gloves = TRUE
 	var/can_inscribe         = TRUE
 	var/inscription
-	var/base_desc
-
-/obj/item/clothing/gloves/ring/Initialize()
-	if(desc)
-		base_desc = desc
-	. = ..()
 
 /obj/item/clothing/gloves/ring/get_decoration_icon(default_icon, obj/item/thing, on_mob = FALSE)
 	if(!on_mob && istype(thing, /obj/item/gemstone))

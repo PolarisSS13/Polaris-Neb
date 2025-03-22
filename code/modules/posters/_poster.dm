@@ -129,16 +129,14 @@
 	icon_state = "rolled_poster"
 	_base_attack_force = 0
 	material = /decl/material/solid/organic/paper
-	///The description for the item/medium without any reference to the design.
-	var/base_desc = "The poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface."
+
 	///Type path to the /decl for the design on this poster. At runtime is changed for a reference to the decl
 	var/decl/poster_design/poster_design
 
 /obj/item/poster/Initialize(ml, material_key, var/given_poster_type = null)
 	//Init design
-	base_name ||= name
+	. = ..(ml, material_key)
 	set_design(given_poster_type || poster_design || pick(decls_repository.get_decl_paths_of_subtype(/decl/poster_design)))
-	return ..(ml, material_key)
 
 /obj/item/poster/proc/set_design(var/decl/poster_design/_design_path)
 	if(ispath(_design_path, /decl))

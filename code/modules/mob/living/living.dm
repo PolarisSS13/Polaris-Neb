@@ -1571,21 +1571,21 @@ default behaviour is:
 	if(!use_move_trail)
 		return
 
-	var/decl/material/contaminant_type = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
-	if(!T.can_show_coating_footprints(contaminant_type))
+	var/decl/material/contaminant = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
+	if(!T.can_show_coating_footprints(contaminant))
 		return
 	/// An associative list of DNA unique enzymes -> blood type. Used by forensics, mostly.
 	var/list/bloodDNA = list()
 	var/track_color
-	var/list/source_data = REAGENT_DATA(source.coating, contaminant_type)
+	var/list/source_data = REAGENT_DATA(source.coating, contaminant)
 	if(source_data && source_data[DATA_BLOOD_DNA] && source_data[DATA_BLOOD_TYPE])
 		bloodDNA = list(source_data[DATA_BLOOD_DNA] = source_data[DATA_BLOOD_TYPE])
 	track_color = source.coating.get_color()
-	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant_type) // Coming
+	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant.type) // Coming
 	if(isturf(old_loc))
 		var/turf/old_turf = old_loc
-		if(old_turf.can_show_coating_footprints(contaminant_type))
-			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant_type) // Going
+		if(old_turf.can_show_coating_footprints(contaminant))
+			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant.type) // Going
 	source.remove_coating(1)
 	update_equipment_overlay(slot_shoes_str)
 

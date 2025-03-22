@@ -42,7 +42,7 @@
 	update_icon()
 	return ..()
 
-/obj/item/stack/tape_roll/barricade_tape/on_picked_up(mob/user)
+/obj/item/stack/tape_roll/barricade_tape/on_picked_up(mob/user, atom/old_loc)
 	stop_unrolling()
 	update_icon()
 	return ..()

@@ -105,3 +105,25 @@
 	name = "rogue's uniform"
 	desc = "For the man who doesn't care because he's still free."
 	icon = 'icons/clothing/rogue_captain.dmi'
+
+/obj/item/clothing/costume/mailman
+	name = "mailman's jumpsuit"
+	desc = "<i>'Special delivery!'</i>"
+	icon = 'icons/clothing/jumpsuits/jumpsuit_mailman.dmi'
+
+/obj/item/clothing/costume/psyche
+	name = "psychedelic jumpsuit"
+	desc = "Groovy!"
+	icon = 'icons/clothing/jumpsuits/jumpsuit_psychadelic.dmi'
+
+/obj/item/clothing/costume/wetsuit
+	name = "tactical wetsuit"
+	desc = "For when you want to scuba dive your way into an enemy base but still want to show off a little skin."
+	icon = 'icons/clothing/jumpsuits/wetsuit.dmi'
+	body_parts_covered = SLOT_UPPER_BODY|SLOT_LOWER_BODY
+
+/obj/item/clothing/costume/psysuit
+	name = "dark undersuit"
+	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
+	icon = 'icons/clothing/jumpsuits/jumpsuit_psionic.dmi'
+	body_parts_covered = SLOT_UPPER_BODY|SLOT_LOWER_BODY|SLOT_LEGS|SLOT_FEET|SLOT_ARMS|SLOT_HANDS

@@ -13,7 +13,7 @@
 
 /decl/species/utility_frame
 	uid =                   "species_frame"
-	name =                  "Utility Frame"
+	name =                  "Drone"
 	name_plural =           "Drones"
 	description =           "AI-driven synthetics of varying complexity are widely used for many tasks in human space."
 	cyborg_noun = null

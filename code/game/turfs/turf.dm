@@ -864,7 +864,7 @@
 	if(IS_HOE(held) && can_dig_farm(held.material?.hardness))
 		LAZYADD(., /decl/interaction_handler/dig/farm)
 
-/// Contaminant may be the chemical type of the footprint being provided,
+/// Contaminant may be the chemical decl of the footprint being provided,
 /// or null if we just want to know if we support footprints, at all, ever.
 /turf/proc/can_show_coating_footprints(decl/material/contaminant)
 	return simulated

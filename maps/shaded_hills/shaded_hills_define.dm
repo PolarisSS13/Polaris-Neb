@@ -43,6 +43,7 @@
 		"rock"  = /turf/floor/rock/basalt::color,
 		"brick" = /turf/wall/brick/sandstone::color
 	)
+	default_ui_style = /decl/ui_style/underworld
 
 /decl/backpack_outfit/sack
 	is_default = TRUE

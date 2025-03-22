@@ -36,5 +36,5 @@
 	)
 	description = "Birds and insects call from the grasses, and a cool wind gusts from across the river."
 	area_blurb_category = /area/shaded_hills/outside
-	interior_ambient_light_modifier = -0.3
+	interior_ambient_light_modifier = -0.4
 	area_flags = AREA_FLAG_EXTERNAL | AREA_FLAG_IS_BACKGROUND
