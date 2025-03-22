@@ -24,6 +24,15 @@
 	. = ..()
 	. += "narrow"
 
+/obj/item/stack/material/rods/ten
+	amount = 10
+
+/obj/item/stack/material/rods/twentyfive
+	amount = 25
+
+/obj/item/stack/material/rods/fifty
+	amount = 50
+
 /obj/item/stack/material/rods/cyborg
 	name                 = "metal rod synthesizer"
 	desc                 = "A device that makes metal rods."

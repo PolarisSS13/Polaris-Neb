@@ -97,7 +97,7 @@
 /decl/ability/cult/construct/forcewall/lesser
 	name                    = "Force Shield"
 	desc                    = "Allows you to pull up a shield to protect yourself and allies from incoming threats"
-	summon_type             = /obj/effect/cult_force_wall
+	summon_type             = /obj/effect/force_wall/cult
 	ability_cooldown_time   = 30 SECONDS
 	ability_use_channel     = 20 SECONDS
 	ability_icon_state      = "const_juggwall"
@@ -108,22 +108,19 @@
 	fail_cast_1p_str        = "The screaming fabric of spacetime escapes your grip, and the wall of force vanishes."
 
 //Code for the Juggernaut construct's forcefield, that seemed like a good place to put it.
-/obj/effect/cult_force_wall
+/obj/effect/force_wall/cult
 	desc                    = "This eerie-looking obstacle seems to have been pulled from another dimension through sheer force."
 	name                    = "wall of force"
 	icon                    = 'mods/gamemodes/cult/icons/effects.dmi'
 	icon_state              = "m_shield_cult"
 	light_color             = "#b40000"
 	light_range             = 2
-	anchored                = TRUE
-	opacity                 = FALSE
-	density                 = TRUE
 
-/obj/effect/cult_force_wall/Initialize(mapload)
+/obj/effect/force_wall/cult/Initialize(mapload)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(vanish)), 30 SECONDS)
 
-/obj/effect/cult_force_wall/proc/vanish()
+/obj/effect/force_wall/cult/proc/vanish()
 	density    = FALSE
 	icon_state = "m_shield_cult_vanish"
 	sleep(12)
