@@ -10,16 +10,16 @@
 * film *
 *******/
 /obj/item/camera_film
-	name             = "film cartridge"
-	icon             = 'icons/obj/photography.dmi'
-	desc             = "A camera film cartridge. Insert it into a camera to reload it."
-	icon_state       = "film"
-	item_state       = "electropack"
-	w_class          = ITEM_SIZE_SMALL
-	throw_range      = 10
-	material         = /decl/material/solid/organic/plastic
-	var/tmp/max_uses = 10
-	var/uses_left    = 10
+	name               = "film cartridge"
+	icon               = 'icons/obj/photography.dmi'
+	desc               = "A camera film cartridge. Insert it into a camera to reload it."
+	icon_state         = "film"
+	item_state         = "electropack"
+	w_class            = ITEM_SIZE_SMALL
+	throw_range        = 10
+	material           = /decl/material/solid/organic/plastic
+	var/const/max_uses = 10
+	var/uses_left      = max_uses
 
 /obj/item/camera_film/Initialize(ml, material_key)
 	set_extension(src, /datum/extension/base_icon_state, icon_state)
