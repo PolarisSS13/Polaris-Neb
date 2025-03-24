@@ -571,9 +571,6 @@
 	else
 		to_chat(wearer, SPAN_DANGER("Dropping \the [item] on the ground!"))
 
-/decl/loadout_option/proc/can_replace_existing(obj/item/candidate)
-	return istype(candidate, path)
-
 /decl/loadout_option/proc/spawn_and_validate_item(mob/living/human/H, metadata)
 	PRIVATE_PROC(TRUE)
 

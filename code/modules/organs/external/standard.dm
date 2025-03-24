@@ -20,9 +20,6 @@
 	cavity_name = "thoracic cavity"
 	limb_flags = ORGAN_FLAG_HEALS_OVERKILL | ORGAN_FLAG_CAN_BREAK
 
-/obj/item/organ/external/chest/proc/get_current_skin()
-	return
-
 /obj/item/organ/external/chest/die()
 	//Special handling for synthetics
 	if(BP_IS_PROSTHETIC(src) || BP_IS_CRYSTAL(src))

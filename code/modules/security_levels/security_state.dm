@@ -127,10 +127,3 @@
 
 	log_and_message_admins("has changed the security level from [previous_security_level.name] to [new_security_level.name].")
 	return TRUE
-
-// This proc decreases the current security level, if possible
-/decl/security_state/proc/decrease_security_level(var/force_change = FALSE)
-	var/current_index = all_security_levels.Find(current_security_level)
-	if(current_index == 1)
-		return FALSE
-	return set_security_level(all_security_levels[current_index - 1], force_change)
