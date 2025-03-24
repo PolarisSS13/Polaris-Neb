@@ -38,18 +38,6 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	long_range   = TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////
-// Fax Machine Quick-Dial file
-////////////////////////////////////////////////////////////////////////////////////////
-/datum/computer_file/data/fax_quick_dial
-	filetype = "FQD"
-
-/datum/computer_file/data/fax_quick_dial/proc/save_quick_dial(var/list/quick_dial_list)
-	stored_data = json_encode(quick_dial_list)
-
-/datum/computer_file/data/fax_quick_dial/proc/load_quick_dial()
-	return json_decode(stored_data)
-
-////////////////////////////////////////////////////////////////////////////////////////
 // Fax Machine
 ////////////////////////////////////////////////////////////////////////////////////////
 /obj/machinery/faxmachine
@@ -184,8 +172,6 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 	LAZYSET(., "has_disk_drive",   !isnull(disk_reader))
 	LAZYSET(., "disk",             D)
 	LAZYSET(., "disk_name",        D?.name)
-	LAZYSET(., "disk_has_qd",      D?.contains_file_type("FQD")) //If the disk has a quick dial file
-	LAZYSET(., "disk_has_file",    (D?.free_blocks < D?.block_capacity))
 
 /obj/machinery/faxmachine/ui_interact(mob/user, ui_key, datum/nanoui/ui, force_open, datum/nanoui/master_ui, datum/topic_state/state)
 	var/list/data = ui_data(user, ui_key)
@@ -555,30 +541,6 @@ var/global/list/adminfaxes     = list()	//cache for faxes that have been sent to
 /obj/machinery/faxmachine/proc/update_ui()
 	SSnano.update_uis(src)
 	update_icon()
-
-/**Check if the card we inserted has enough credentials to print on the target fax machine on the network. */
-/obj/machinery/faxmachine/proc/can_send_fax_to(var/network_tag, var/network_id, var/list/provided_access)
-	var/datum/extension/network_device/fax/sender = get_extension(src, /datum/extension/network_device)
-	var/datum/computer_network/sender_net         = sender?.get_network()
-	if(!sender_net)
-		return FALSE
-	if((network_id != sender_net.network_id) && !sender.has_internet_connection(network_id))
-		return FALSE
-
-	//Handle fake admin network addresses
-	var/target_uri = uppertext("[network_tag].[network_id]")
-	if(target_uri in global.using_map.map_admin_faxes)
-		var/list/admin_faxes    = LAZYACCESS(global.using_map.map_admin_faxes, target_uri)
-		var/list/required_access = LAZYACCESS(admin_faxes, "access")
-		return has_access(required_access, provided_access) //With access we can send faxes to the selected admin address
-
-	var/datum/computer_network/target_net
-	if(network_id != sender_net.network_id)
-		target_net = sender_net?.get_internet_connection(network_id)
-	else
-		target_net = sender_net
-	var/datum/extension/network_device/fax/target = target_net?.get_device_by_tag(network_tag)
-	return istype(target) && target.has_access(provided_access)
 
 /**Plays print animation async. */
 /obj/machinery/faxmachine/proc/on_printed_page()
