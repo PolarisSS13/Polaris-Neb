@@ -1,7 +1,3 @@
-var/global/const/SCENT_DESC_ODOR      = "odour"
-var/global/const/SCENT_DESC_SMELL     = "smell"
-var/global/const/SCENT_DESC_FRAGRANCE = "fragrance"
-
 /*****
 Scent intensity
 *****/

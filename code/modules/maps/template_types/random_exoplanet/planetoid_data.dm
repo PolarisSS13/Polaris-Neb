@@ -30,10 +30,6 @@
 	var/habitability_class = HABITABILITY_DEAD
 	///The cached planet's atmosphere that sub-levels of this planet should use. Can be a type path at definition, and an instance at runtime.
 	var/datum/gas_mixture/atmosphere
-	///The minimum temperature that can be reached on the planet.(For instance via meteo or sunlight/shade or whatever)
-	var/temperature_min = 0 CELSIUS
-	///The maximum temperature that can be reached on the planet.(For instance via meteo or sunlight/shade or whatever)
-	var/temperature_max = 25 CELSIUS
 	///What weather state to use for this planet initially. If null, will not initialize any weather system. Must be a typepath rather than an instance.
 	var/decl/state/weather/initial_weather_state = /decl/state/weather/calm
 

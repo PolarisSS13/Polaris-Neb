@@ -19,7 +19,6 @@
 
 	//Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
-	var/heat_capacity = 1
 
 	//Properties for both
 	/// Does this turf contain air/let air through?
