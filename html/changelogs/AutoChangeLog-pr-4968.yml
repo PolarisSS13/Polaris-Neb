@@ -1,8 +1,0 @@
-author: Penelope Haze
-changes:
-  - {balance: 'Adjusts how suffocation works, meaning characters who were drowning
-      or in asystole start breathing as soon as the issue is resolved, rather than
-      counting down a timer instead. This might make brief bouts of drowning/cardiac
-      arrest more survivable. Please report any weirdness with breathing/suffocation
-      on the issue tracker.'}
-delete-after: true
