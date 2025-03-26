@@ -252,9 +252,7 @@
 	description = "The jewel of New Ohio and the gateway to the Sagittarius Heights, \
 	Franklin is known for three things: tourism, aquaculture, and hosting the Sagittarian branch offices of many a trans-stellar corporation. \
 	Even after the secession of the Five Arrows, the majority of traffic between the Heights and the core systems passes through New Ohio, \
-	and Franklin is a common stop for passengers who want to spend a bit of time on a garden world while they can. \
-	Franklin's cities are a cosmopolitan mix, with significant skrell and teshari populations, \
-	while its vast oceans are home to a number of sailors and mariners, recreational and professional."
+	and Franklin is a common stop for passengers who want to spend a bit of time on a garden world while they can."
 	ruling_body = "Solar Confederate Government"
 	distance = null //unknown
 	subversive_potential = 0.9
@@ -265,11 +263,7 @@
 	uid = "location_wright"
 	description = "Formerly the industrial hub of New Ohio and a major exporter to the whole of the Sagittarius Heights, \
 	Wright has fallen on hard times in the post-Incursion world. With no money, far fewer trade partners, \
-	and many of its smaller stations still abandoned or in ruins, Wright is a shell of its former self. \
-	Wright is also dominated by a Ward-Takahashi voter farm, and its human population mainly consists of \
-	middle-management for what corporate concerns remain and personnel from the New Ohio Fleet Base. \
-	Many have left Wright in recent years looking for better fortunes, expecting them just about anywhere else in the galaxy."
-
+	and many of its smaller stations still abandoned or in ruins, Wright is a shell of its former self."
 	ruling_body = "Solar Confederate Government"
 	distance = null //unknown
 	economic_power = 0.7 //super space detroit. maybe it should be 0.8 or 0.75? I am overthinking it.
@@ -294,12 +288,7 @@
 	uid = "location_mahimahi"
 	name = "Mahi-Mahi, Mahi Mahi"  //dash space
 	description = "A planet split into two distinct spheres of power, Mahi-Mahi hosts an ongoing struggle between \
-	the dichotomous interests of its metropolitan centres and their surrounding rural populations. \
-	The cities, using their economic and political power from their bygone colonial era, curry favour with corporate and foreign interests, \
-	seeking investment for their research and cultural programmes. The rural townships and greenhouse compounds that dot the \
-	surrounding continents have continuously chafed under the control of their capitals, believing that the technology and \
-	cashflow that trickles out of the cities to be insufficient recompense for the dangerous environment and animal life that \
-	they contend with regularly.
+	the dichotomous interests of its metropolitan centres and their surrounding rural populations."
 	local_government = "Mahi-Mahi Planetary Government"
 	ruling_body = "Five Arrows"
 	distance = "21.6 ly"
@@ -415,4 +404,13 @@
 	economic_power = 0.8 //never forget that shelf's broke
 	subversive_potential = 1.2
 	distance = "131 ly"
+
+/decl/background_detail/location/neonlight
+	uid = "location_neonlight"
+	name = "Neon Light, Almach Rim"
+	description = "The Neon Light is a massive arkship, built before second-generation bluespace drives \
+	enabled the golden age of colonization in the 22nd and 23rd centuries. Its newfound position as SolGov's \
+	unofficial gateway to the Almach Rim has lead to new opportunities, but also new scrutiny."
+	economic_power = 0.8
+	subversive_potential = 1.3
 

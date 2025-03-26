@@ -235,22 +235,35 @@
 
 
 /decl/background_detail/heritage/sdcu
-	name = "Saint Columbia Democratic Union, Saint Columbia"
+	name = "Golden Crescent - Saint-Columbian Culture"
 	uid = "heritage_sdcu"
-
+	description = "The habitats of the Saint Columbia system have three times seceded from SolGov; \
+	twice in the 23rd century and once just over a decade ago. Now under combined civilian-military control since \
+	the end of the Almach war ten years ago, opinions within the colony are now split between \
+	supporters of the charismatic leader of the new government, \
+	and pro-tech anti-war socialists loyal to the failed revolutions."
 	economic_power = 0.8
 	subversive_potential = 1.2
 
 
 /decl/background_detail/heritage/iserlohnrepublic
-	name = "Iserlohn Republic, Saint Columbia"
+	name = "Golden Crescent - Iserlohner Culture"
 	uid = "heritage_iserlohnrepublic"
-
+	description = "During the seccesion of the Saint Columbia during the Almach War, \
+	the civilian population of the enormous Saint Columbia Fleet Base broke away from the \
+	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov. \
+	Iserlohn's population is large for a fleet base but tiny for a state, \
+	and is composed primarily of the families of service personnel and those immediately involved in military industries. \
+	Iserlohners tend to be conservative, patriotic, and are predictably staunch supporters of the armed forces."
 	economic_power = 0.9
 	subversive_potential = 0.9
 
 /decl/background_detail/heritage/goldencrescent
-	name = "Golden Crescent"
+	name = "Golden Crescent - Other Culture"
+	description = "The Golden Crescent is a cultural region containing Vir and many of its neighbors. \
+	Crescenti people are rugged and self-reliant, and the region has an eclectic and cosmopolitan culture from \
+	centuries of welcoming alien and positronic migrants and refugees. Many of the systems within the Golden Crescent \
+	seceded during the 23rd century before being absorbed back into SolGov, and they maintain a strong independent streak."
 	uid = "heritage_goldencrescent"
 
 
@@ -261,14 +274,22 @@
 //
 // New Ohio
 /decl/background_detail/heritage/franklin
-	name = "Franklin, New Ohio"
+	name = "Sagittarius Heights - Frankliner Culture"
 	uid = "heritage_franklin"
-
+	description = "The jewel of New Ohio and the gateway to the Sagittarius Heights, Franklin is known for three things: \
+	Tourism, aquaculture, and hosting the Sagittarius branch office of many a trans-stellar corporation. \
+	Franklin's cities are a cosmopolitan mix, with significant skrell and teshari populations, \
+	while its vast oceans are home to a number of sailors and mariners, recreational and professional."
 	subversive_potential = 0.9
 
 
 /decl/background_detail/heritage/wright
-	name = "Wright, New Ohio"
+	name = "Sagittarius Heights - Wright Culture"
+	description = "Formerly the industrial hub of New Ohio and a major exporter to the whole of the Sagittarius Heights, \
+	Wright is now a shell of its former self. Wright is dominated by a Ward-Takahashi voter farm, \
+	and its human population mainly consists of middle-management for what corporate concerns remain \
+	and personnel from the New Ohio Fleet Base. Many have left Wright in recent years looking for better fortunes, \
+	expecting them just about anywhere else in the galaxy."
 	uid = "heritage_wright"
 	economic_power = 0.7 //super space detroit. maybe it should be 0.8 or 0.75? I am overthinking it.
 
@@ -277,16 +298,24 @@
 // Five Arrows
 /decl/background_detail/heritage/sidhe
 	uid = "heritage_sidhe"
-	name = "Sidhe"
-
-	economic_power = 0.7
+	name = "Five Arrows - Sidhian Culture"
+	description = "Sidhe hosts an eclectic mix of humans, skrell, and positronics, \
+	co-existing in uneasy harmony for hundreds of years. The system saw a popular revolution and seceeded from SolGov alongside the rest of the Five Arrows. \
+	Today, Sidhe is seen as one of the Five Arrows' most militant supporters and as a case study in human-skrellian cultural integration. "
+	economic_power = 0.7 //Huh?
 	subversive_potential = 1.1
 
 
 /decl/background_detail/heritage/mahimahi
 	uid = "heritage_mahimahi"
-	name = "Mahi-Mahi, Mahi Mahi"  //dash space
-
+	name = "Five Arrows - Mahi Mahi Culture"  //dash space
+	description = "A planet split into two distinct spheres of power, Mahi-Mahi hosts an ongoing struggle between \
+	the dichotomous interests of its metropolitan centres and their surrounding rural populations. \
+	The cities, using their economic and political power from their bygone colonial era, curry favour with corporate and foreign interests, \
+	seeking investment for their research and cultural programmes. The rural townships and greenhouse compounds that dot the \
+	surrounding continents have continuously chafed under the control of their capitals, believing that the technology and \
+	cashflow that trickles out of the cities to be insufficient recompense for the dangerous environment and animal life that \
+	they contend with regularly."
 
 
 //New Seoul goes here
@@ -296,25 +325,48 @@
 
 /decl/background_detail/heritage/kauqxum
 	uid = "heritage_kauqxum"
-	name = "Sagittarius Heights - Kauq'xum"
-
+	name = "Sagittarius Heights - Kauq'xum Culture"
+	description = "Sandwiched between the prosperity of the Skrellian Interior and the human Sagittarius Heights, \
+	the border systems have enjoyed heavy commerce as goods and people come and go across the border. \
+	These systems have the highest human and positronic populations in Skrellian territory, \
+	and their political structures aren't quite as steadfastly Monarchic, \
+	with elected parliaments of Qerr-Koal -the advisors to the ruling Qerr-Katish- uncommon, but not unheard of."
 
 
 /decl/background_detail/heritage/sagitheights
 	uid = "heritage_sagitheights"
-	name = "Sagittarius Heights"
-
+	name = "Sagittarius Heights - Other Culture"
+	description = "The Sagittarius Heights have long benefitted from extensive trade and cultural exchange with Skrellian business interests, \
+	and their position as some of the most wealthy and economically independent states in the human cultural sphere came to head when \
+	much of the region split from SolGov to form the Five Arrows. Sagittarian culture is perhaps most typified by its blending of Solar and \
+	Skrellian cultures, including the adoption of Tradeband as its official language, and while its residents are often stereotyped as arrogant, \
+	wealthy, and snobbish, the truth is that the average Sagitarrian is a miner or farmer whose living conditions differ little from those anywhere in Solar space."
 	economic_modifier = 1.1
-
 //
 // The Bowl
 //
 
 /decl/background_detail/heritage/love
 	uid = "heritage_love"
-	name = "Love, The Bowl" //sure thing
-
+	name = "The Bowl - Love Culture" //sure thing
+	description = "Love is the wealthiest system in the Bowl, with a marginally habitable world and \
+	generous social welfare programs that prevent Love from sucumbing to the same economic degeneration that plagues the rest of the Bowl. \
+	However, the colony maintains extremely opaque finances and is believed to be controlled by the Golden Tiger Syndicate, as a manufactory of powerful narcotics, \
+	weaponry, and other illegal or controlled substances. With that in mind, Love's social welfare program is essentially a legalized system of hush money payouts, \
+	and potential whistleblowers and finks can expect to find themselves driven from government-controlled housing and healthcare in a perfectly legal manner. \
+	Love's ties to organized crime only improved its position after the Incursion, which it weathered with relative ease, leaving it a major regional power."
 	subversive_potential = 1.2
+
+
+/decl/background_detail/heritage/bowl
+	uid = "heritage_bowl"
+	name = "The Bowl - Other Culture"
+	description = "The Bowl is the poorest and least developed region of Solar space, \
+	plagued by organized crime and resource scarcity, and this is reflected in the culture of the people who call the region home, \
+	whether they originated from Sol or the tajaran frontier. \
+	Bowlers tend to be distrustful of outsiders and value keeping their noses down and themselves out of trouble. \
+	People from other regions often associate 'Bowler' with either \'hick\' or \'criminal\', and prejudge Bowlers accordingly."
+	economic_power = 0.8
 
 //
 // Almach Rim
@@ -322,39 +374,70 @@
 
 /decl/background_detail/heritage/relan
 	uid = "heritage_relan"
-	name = "Relan"
-
+	name = "Almach Rim - Relani Culture"
+	description = "The Second Free Relan Federation consists of the entire Relan system except for the planet of Taron, \
+	its moon Parker, and their immediate orbits. Despite a war with Sol and a brief Skrellian occupation, Relan has maintained its sovereignty, \
+	at least offically, and is currently a voluntary member of the Almach Protectorate. \
+	Due to investments from Morpheus and its place in Almach's regional governments, \
+	Relan has a significant positronic minority and even a number of drones who are legally considered persons, \
+	although the latter cannot travel into Solar space. Relan is a nation of spacers, dependent on its stations, \
+	and the Relani engineer more protective of their station or ship than the life forms aboard it is a common, if inaccurate, stereotype."
 	economic_power = 0.8
 	subversive_potential = 1.1 // they're considered the Least Bad almachi now
 
 /decl/background_detail/heritage/taron
 	uid = "heritage_taron"
-	name = "Taron, Relan"
-
+	name = "Almach Rim - Taronian Culture"
+	description = "Despite being a settled planet, living on Taron feels more like living on an uninhabitable moon. \
+	Taron once ruled the Relan system, but following its loss it faced economic and social collapse, \
+	marked by closing habitats, overcrowding, and political chaos. During this time, many left the planet, \
+	often to Solar space. Despite a brief recovery and maintaining neutrality during the Almach War, \
+	Taron faced more chaotic years after the Incursion, and has only recently began to truly stabilize."
 	economic_power = 0.7
 	subversive_potential = 1.1
 
 /decl/background_detail/heritage/angessaspearl
 	uid = "heritage_angessaspearl"
-	name = "Angessa's Pearl, Exalt's Light"
-
+	name = "Almach Rim - Angessian Culture"
+	description = "One of the Almach Protectorate's major population centers, \
+	Angessa's Pearl is a barren planet colonized by a pseudo-religious movement led by Angessa Martei, \
+	and was one of the first states to join the Almach Association. A significant portion of the Pearl's population are vatborn known as 'community children' \
+	who were raised collectively within the theocracy. The Pearl is split between the skrellian collaborators of the Republic of Exalt's Light \
+	and the recidivists of the Angessian Technocracy. Both mandate adherence to competing branches of the Starlit Path, \
+	a philosophy that demands radical self-improvement and bestows cyberneting augmentations on those who prove their worth."
 	economic_power = 0.7
 	subversive_potential = 1.3 //the Most Bad almachi now
 
 /decl/background_detail/heritage/vounna
 	uid = "heritage_vounna"
-	name = "Vounna"
-
+	name = "Almach Rim - Vounnan Culture"
+	description = "Vounna is the host star to the marshy planet Aetolus, \
+	and the mobile mining station Agrafa, now under the banner of the Almach Protectorate. \
+	After the coup of the NRS Prometheus in orbit, the capture of the Deliah, and the formation of the Almach Association, \
+	the civilian population expanded rapidly due to the unrestricted creation of Prometheans on 'their' world."
 	economic_power = 0.6 // It's difficult to be prosperous when your previous government committed warcrimes, and also spent most of their time scrambling to back their word.
 	subversive_potential = 1.2
 
 /decl/background_detail/heritage/shelf
 	uid = "heritage_shelf"
-	name = "Shelf, Deep Space" //it's not on the rim anymore and this is information about how places are
-
+	name = "Almach Rim - Shelfican Culture" //if you're from here it's because you were from here when it was in the rim
+	description = "Shelf was the ever-moving birthplace and headquarters of Morpheus Cyberkinetics. \
+	Shelf was an important cultural center for positronics and the Mercurial Movement until it \
+	vanished from its place in the Almach Rim at the conclusion of the Almach War. \
+	Since then, it has been located hundreds of years down the Almach Stream from any known colony, \
+	maintaining a connection with Sol only through bluespace communications and suffering tremendously under the Skathari Incursion."
 	economic_power = 0.8 //never forget that shelf's broke
 	subversive_potential = 1.2
 
+/decl/background_detail/heritage/neonlight
+	uid = "heritage_neonlight"
+	name = "Almach Rim - Neon Light Culture"
+	description = "The Neon Light is a massive arkship, built before second-generation bluespace drives enabled \
+	the golden age of colonization in the 22nd and 23rd centuries. Obsoleted as soon as it was completed, \
+	the Neon Light became home to a culture of squatters and black marketeers; notionally a SolGov protectorate but in practice outside of its laws, \
+	ruled by squabbling matriarchal crime families."
+	economic_power = 0.8
+	subversive_potential = 1.3
 
 
 /decl/background_detail/heritage/deep_space
