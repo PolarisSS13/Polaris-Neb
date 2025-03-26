@@ -86,6 +86,7 @@
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
 	icon = 'icons/obj/machines/flash_portable.dmi'
+	directional_offset = @'{"NORTH":{"y":0}, "SOUTH":{"y":0}, "EAST":{"x":0}, "WEST":{"x":0}}'
 	strength = 8
 	anchored = FALSE
 	base_state = "pflash"
