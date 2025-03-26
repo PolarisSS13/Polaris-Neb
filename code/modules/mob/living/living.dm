@@ -869,6 +869,14 @@ default behaviour is:
 			return I.get_flash_mod()
 	return get_bodytype()?.eye_flash_mod
 
+/mob/living/proc/get_flash_burn()
+	var/vision_organ_tag = get_vision_organ_tag()
+	if(vision_organ_tag)
+		var/obj/item/organ/internal/eyes/I = get_organ(vision_organ_tag, /obj/item/organ/internal/eyes)
+		if(I)
+			return I.get_flash_burn()
+	return get_bodytype()?.eye_flash_burn
+
 /mob/living/proc/eyecheck()
 	var/total_protection = flash_protection
 	if(should_have_organ(BP_EYES))
@@ -1692,6 +1700,7 @@ default behaviour is:
 /mob/living/handle_flashed(var/flash_strength)
 
 	var/safety = eyecheck()
+	var/flash_burn = get_flash_burn()
 	if(safety >= FLASH_PROTECTION_MODERATE || flash_strength <= 0) // May be modified by human proc.
 		return FALSE
 
@@ -1699,6 +1708,9 @@ default behaviour is:
 	SET_STATUS_MAX(src, STAT_STUN, (flash_strength / 2))
 	SET_STATUS_MAX(src, STAT_BLURRY, flash_strength)
 	SET_STATUS_MAX(src, STAT_CONFUSE, (flash_strength + 2))
+
+	if(flash_burn > 0)
+		apply_damage(flash_strength * flash_burn/5, BURN, BP_HEAD, used_weapon = "Photon burns")
 	if(flash_strength > 3)
 		drop_held_items()
 	if(flash_strength > 5)

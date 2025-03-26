@@ -317,23 +317,7 @@
 
 	for (var/mob/living/O in oviewers(flash_range, owner))
 		if(istype(O))
-			var/protection = O.eyecheck()
-			if(protection >= FLASH_PROTECTION_MODERATE)
-				return
-
-			if(protection >= FLASH_PROTECTION_MINOR)
-				flash_time /= 2
-
-			if(ishuman(O))
-				var/mob/living/human/H = O
-				flash_time = round(H.get_flash_mod() * flash_time)
-				if(flash_time <= 0)
-					return
-
-			if(!O.is_blind())
-				O.flash_eyes(FLASH_PROTECTION_MODERATE - protection)
-				SET_STATUS_MAX(O, STAT_BLURRY, flash_time)
-				SET_STATUS_MAX(O, STAT_CONFUSE, (flash_time + 2))
+			O.handle_flashed(flash_time)
 
 /obj/item/mech_equipment/flash/attack_self(mob/user)
 	. = ..()
