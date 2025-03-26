@@ -317,7 +317,7 @@
 
 	for (var/mob/living/O in oviewers(flash_range, owner))
 		if(istype(O))
-			O.handle_flashed(flash_time)
+			O.handle_flashed(flash_time, do_stun = FALSE)
 
 /obj/item/mech_equipment/flash/attack_self(mob/user)
 	. = ..()

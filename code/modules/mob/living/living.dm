@@ -1697,15 +1697,18 @@ default behaviour is:
 		return range * range - 0.333
 	return range
 
-/mob/living/handle_flashed(var/flash_strength)
+/mob/living/handle_flashed(var/flash_strength, do_stun = TRUE)
 
 	var/safety = eyecheck()
 	var/flash_burn = get_flash_burn()
-	if(safety >= FLASH_PROTECTION_MODERATE || flash_strength <= 0) // May be modified by human proc.
+	var/flash_mod = get_flash_mod()
+
+	if(safety >= FLASH_PROTECTION_MODERATE || flash_strength <= 0 || flash_mod <= 0) // May be modified by human proc.
 		return FALSE
 
 	flash_eyes(FLASH_PROTECTION_MODERATE - safety)
-	SET_STATUS_MAX(src, STAT_STUN, (flash_strength / 2))
+	if(do_stun)
+		SET_STATUS_MAX(src, STAT_STUN, (flash_strength / 2))
 	SET_STATUS_MAX(src, STAT_BLURRY, flash_strength)
 	SET_STATUS_MAX(src, STAT_CONFUSE, (flash_strength + 2))
 
@@ -1715,6 +1718,7 @@ default behaviour is:
 		drop_held_items()
 	if(flash_strength > 5)
 		SET_STATUS_MAX(src, STAT_WEAK, 2)
+	return TRUE
 
 /mob/living/verb/showoff()
 	set name = "Show Held Item"
