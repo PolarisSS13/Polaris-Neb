@@ -2,6 +2,7 @@
 	name                = "pendant"
 	desc                = "A simple pendant."
 	icon                = 'icons/clothing/accessories/jewelry/pendants/square.dmi'
+	icon_state          = ICON_STATE_WORLD
 	abstract_type       = /obj/item/pendant
 	material            = /decl/material/solid/metal/silver
 	material_alteration = MAT_FLAG_ALTERATION_COLOR // We do manual name/desc handling for the gem.

@@ -12,6 +12,7 @@ var/global/list/_available_gemstone_cuts
 	name                      = "uncut gemstone"
 	desc                      = "A hunk of uncut gemstone."
 	icon                      = 'icons/obj/items/gemstones/uncut.dmi'
+	icon_state                = ICON_STATE_WORLD
 	w_class                   = ITEM_SIZE_TINY
 	material                  = /decl/material/solid/gemstone/diamond
 	material_alteration       = MAT_FLAG_ALTERATION_COLOR // Name and desc are handled manually.
