@@ -14,8 +14,14 @@
 		return TRUE
 	. = ..()
 
-/obj/item/proc/hot_enough_to_forge(melting_point_percent = 0.25)
+/// Whether or not this item is considered forgable (e.g. there is a temperature at which it can be forged)
+/obj/item/proc/is_forgable()
 	if(!istype(material) || isnull(material.melting_point) || !material.forgable)
+		return FALSE
+	return TRUE
+
+/obj/item/proc/hot_enough_to_forge(melting_point_percent = 0.25)
+	if(!is_forgable())
 		return FALSE
 	// Defaults to >25% of the way to melting to be considered 'forgable'
 	return temperature >= ((material.melting_point - T20C) * melting_point_percent) + T20C

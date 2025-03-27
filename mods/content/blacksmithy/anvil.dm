@@ -83,7 +83,7 @@
 			// Flow through into procs below.
 
 	// Put the bar onto the anvil (need to do this to avoid repairs in ..())
-	if(istype(used_item, /obj/item/stack/material/bar))
+	if(istype(used_item, /obj/item/stack/material/bar) && used_item.is_forgable())
 		var/obj/item/stack/material/bar/bar = used_item
 		if(used_item.material != material || current_health >= get_max_health())
 			if(bar.get_amount() > 1)
