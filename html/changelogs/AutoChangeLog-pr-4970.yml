@@ -1,4 +1,0 @@
-author: Martin Rivard
-changes:
-  - {tweak: removed calculate_affecting_pressure() hardcoding}
-delete-after: true
