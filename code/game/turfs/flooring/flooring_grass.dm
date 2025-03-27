@@ -6,7 +6,7 @@
 	has_base_range     = 3
 	footstep_type      = /decl/footsteps/grass
 	icon_edge_layer    = FLOOR_EDGE_GRASS
-	color              = "#5e7a3b"
+	color              = null // color from material
 	turf_flags         = TURF_FLAG_BACKGROUND | TURF_IS_HOLOMAP_PATH | TURF_FLAG_ABSORB_LIQUID
 	can_engrave        = FALSE
 	damage_temperature = T0C+80
@@ -50,5 +50,6 @@
 	desc            = "Do they smoke grass out in space, Bowie? Or do they smoke AstroTurf?"
 	icon            = 'icons/turf/flooring/fakegrass.dmi'
 	has_base_range  = 3
+	color           = "#5e7a3b"
 	build_type      = /obj/item/stack/tile/grass
 	force_material  = /decl/material/solid/organic/plastic
