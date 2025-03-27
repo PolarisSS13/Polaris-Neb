@@ -44,6 +44,7 @@
 	icon                = 'icons/obj/structures/haystack.dmi'
 	icon_state          = ICON_STATE_WORLD
 	material            = /decl/material/solid/organic/plantmatter/grass/dry
+	color               = /decl/material/solid/organic/plantmatter/grass/dry::color
 	storage             = /datum/storage/haystack
 	material_alteration = MAT_FLAG_ALTERATION_COLOR
 	atom_flags          = ATOM_FLAG_CLIMBABLE
