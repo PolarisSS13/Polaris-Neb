@@ -10,7 +10,7 @@
 	default_pixel_x       = -6
 	base_animal_type      = /mob/living/simple_animal/passive/horse
 	faction               = null
-	buckle_pixel_shift    = @"{'x':0,'y':0,'z':16}"
+	buckle_pixel_shift    = @'{"x":0,"y":0,"z":16}'
 	can_have_rider        = TRUE
 	max_rider_size        = MOB_SIZE_MEDIUM
 	ai                    = /datum/mob_controller/passive/horse
