@@ -1829,6 +1829,7 @@
 #include "code\modules\banners\banner_frame_definitions.dm"
 #include "code\modules\banners\sign.dm"
 #include "code\modules\banners\sign_post.dm"
+#include "code\modules\banners\signs_premade.dm"
 #include "code\modules\barricade_tape\barricade_tape.dm"
 #include "code\modules\barricade_tape\barricade_tape_roll.dm"
 #include "code\modules\barricade_tape\barricade_tape_subtypes.dm"
