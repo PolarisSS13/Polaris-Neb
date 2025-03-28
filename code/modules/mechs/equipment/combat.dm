@@ -317,23 +317,7 @@
 
 	for (var/mob/living/O in oviewers(flash_range, owner))
 		if(istype(O))
-			var/protection = O.eyecheck()
-			if(protection >= FLASH_PROTECTION_MODERATE)
-				return
-
-			if(protection >= FLASH_PROTECTION_MINOR)
-				flash_time /= 2
-
-			if(ishuman(O))
-				var/mob/living/human/H = O
-				flash_time = round(H.get_flash_mod() * flash_time)
-				if(flash_time <= 0)
-					return
-
-			if(!O.is_blind())
-				O.flash_eyes(FLASH_PROTECTION_MODERATE - protection)
-				SET_STATUS_MAX(O, STAT_BLURRY, flash_time)
-				SET_STATUS_MAX(O, STAT_CONFUSE, (flash_time + 2))
+			O.handle_flashed(flash_time, do_stun = FALSE)
 
 /obj/item/mech_equipment/flash/attack_self(mob/user)
 	. = ..()
@@ -363,30 +347,4 @@
 			var/obj/item/cell/cell = owner.get_cell()
 			cell.use(active_power_use * CELLRATE)
 
-			var/protection = O.eyecheck()
-			if(protection >= FLASH_PROTECTION_MAJOR)
-				return
-
-			if(protection >= FLASH_PROTECTION_MODERATE)
-				flash_time /= 2
-
-			if(ishuman(O))
-				var/mob/living/human/H = O
-				flash_time = round(H.get_flash_mod() * flash_time)
-				if(flash_time <= 0)
-					return
-
-			if(!O.is_blind())
-				O.flash_eyes(FLASH_PROTECTION_MAJOR - protection)
-				SET_STATUS_MAX(O, STAT_BLURRY, flash_time)
-				SET_STATUS_MAX(O, STAT_CONFUSE, (flash_time + 2))
-
-				if(isanimal(O)) //Hit animals a bit harder
-					SET_STATUS_MAX(O, STAT_STUN, flash_time)
-				else
-					SET_STATUS_MAX(O, STAT_STUN, (flash_time / 2))
-
-				if(flash_time > 3)
-					O.drop_held_items()
-				if(flash_time > 5)
-					SET_STATUS_MAX(O, STAT_WEAK, 2)
+			O.handle_flashed(flash_time)

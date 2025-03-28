@@ -1156,7 +1156,7 @@
 
 	return FALSE
 
-/mob/proc/handle_flashed(var/flash_strength)
+/mob/proc/handle_flashed(var/flash_strength, do_stun = FALSE)
 	return FALSE
 
 /mob/proc/do_flash_animation()
