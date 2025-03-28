@@ -14,10 +14,8 @@
 	can_have_rider        = TRUE
 	max_rider_size        = MOB_SIZE_MEDIUM
 	ai                    = /datum/mob_controller/passive/horse
-	color                 = "#ccc496" // preview color
-	draw_visible_overlays = list(
-		"base"            = "#ccc496"
-	)
+	color                 = "#806146" // preview color
+	draw_visible_overlays = null // e.g. list("base" = "#806146")
 
 /datum/mob_controller/passive/horse
 	emote_speech = list("Neigh!","NEIGH!","Neigh?")
