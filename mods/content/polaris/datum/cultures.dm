@@ -439,6 +439,67 @@
 	economic_power = 0.8
 	subversive_potential = 1.3
 
+//crypt
+
+//Precursor's Crypt
+/decl/background_detail/heritage/el
+	uid = "heritage_el"
+	name = "Precursors' Crypt - Sophian Heritage"
+	description = "El is a dull red star with one dusty, lifeless plant to its name. \
+	However, the centuries-old discovery of early positronic brains in a local asteroid called Sophia makes \
+	El the de facto home system of the positronics and the focal point of their diaspora. \
+	Modern El is a wealthy cosmopolitan mid-system with the densest positronic population in SolGov, \
+	with Sophia as its unofficial capital and hegemon."
+	economic_power = 1.1
+
+
+/decl/background_detail/heritage/raphael
+	uid = "heritage_raphael"
+	name = "Precursors' Crypt - Raphael Culture"
+	description = "Raphael is the oldest 'voter farm', where positronics are produced and \
+	educated en masse as a combination labor force and captive pro-corporate demographic. \
+	Each of its three major habitats is an independent nation under heavy corporate control, \
+	and the system saw no shortage of infighting prior to the Hegemony invasion. \
+	Heavy losses to the Skathari Incursion have seen corporate influence grow even stronger and sparked a massive refugee crisis. \
+	Raphael also hosts the first permenant vox settlement in the local cluster, with the remains of the arkship Bolt seeking refugee status at Raphael's docks."
+	economic_power = 0.7
+	subversive_potential = 0.8 //nanotrasen may well have Literally Made You
+
+/decl/background_detail/heritage/terminus
+	uid = "heritage_terminus"
+	name = "Precusors' Crypt - Terminus Heritage"
+	description = "One of the oldest deep-space stations in existence, Terminus Station orbited the Stream Terminus, \
+	a bizarre spatial anomaly at the downstream end of the Almach Stream. Research into the Terminus, \
+	where the tachyons making up the Almach Stream appear to simply vanish, \
+	provided crucial data to the advancement of exonet communication and galactic tachyography, \
+	though the ultimate nature of natural tachyon field generation remains unknown to this day. \
+	Once a hotbed for research and cultural experimentation, Terminus was briefly the port of last call for \
+	the convoys leaving for the Nyxian Corridor before being almost completely decimated by a massive Skathari Incursion in 2566. \
+	Part of the deep-space convoy infrastructure in the area remains intact, but the main body of Terminus Station is now a quarantine zone."
+	economic_power = 1.1 //it didn't USED to be apocalypse hell
+
+
+/decl/background_detail/heritage/nyx
+	uid = "heritage_nyx"
+	name = "Precursors' Crypt - Nyxian Heritage"
+	description = "Nyx is on the edge of colonized human space; a frontier system. It holds the dubious distinction of \
+	containing the only known and recently identified phoron giant, Erebus, making it a hotbed of both \
+	Trans-Stellar Corporate interest and, due to its distance from the better-policed parts of human space, criminal activity. \
+	Although Brinkburn and Roanoke play host to significant and stable colonies backed by SolGov support, \
+	the Federation presence in the system has been only nominal for years; what justice there is, you bring with you. \
+	The universally accepted currency in Nyx is the SolGov-backed Thaler (þ), although simple barter is often an acceptable alternative. \
+	With the advances of technology the overall standard of living and education is high even out in the frontier - if you can afford it." // extremely very rewrite
+	economic_power = 0.7 // who the fuck is even from nyx
+	//i have a miner from emerald station :)
+
+/decl/background_detail/heritage/crypt
+	uid = "heritage_crypt"
+	name = "Precursors' Crypt - Other Culture"
+	description = "Crypters come from the stations of the Precursor's Crypt, the region of Solar space where positronics were first discovered. \
+	The culture that grew in this region is technophilic, neophilic, tightly interconnected, and constantly racing to outdo itself. \
+	Crypt systems are usually sparsely inhabited, but most of their population is well-off, with intellectual services the backbone of the Crypt's economy. \
+	Crypter culture is also influenced by the officers and servicepeople of the region's heavy Fleet presence, \
+	and by the legacy of the Hegemony invasion during the First Contact War." // sure ok
 
 /decl/background_detail/heritage/deep_space
 	name = "Deep Space"

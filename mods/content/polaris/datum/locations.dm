@@ -413,4 +413,63 @@
 	unofficial gateway to the Almach Rim has lead to new opportunities, but also new scrutiny."
 	economic_power = 0.8
 	subversive_potential = 1.3
+	distance = "124 ly"
 
+
+//Precursor's Crypt
+/decl/background_detail/location/el
+	uid = "location_el"
+	name = "El, Precursors' Crypt "
+	description = "El is encircled by a wide, dense belt of asteroids with an unusually large proprotion of heavy metals, \
+	with one dusty and mineral poor planet, Barbelo, orbitting close enough to make habitation a challenge even for positronics. \
+	Various stations dot promising xenoarchaeological or mining sites, often crewed by one hundred or fewer individuals. \
+	A few stations have, over time, been expanded into full-scale habitats. \
+	The centuries-old discovery of early positronic brainsin a local asteroid called Sophia makes El the de facto home system of the positronics \
+	and the focal point of their diaspora. Modern El is a wealthy cosmopolitan mid-system with the densest positronic population in SolGov, \
+	with Sophia as its unofficial capital and hegemon."
+	economic_power = 1.1
+	ruling_body = "Precursors' Crypt Regional Government"
+	local_government = "Sophian Assembly"
+	capital = "Sophia"
+	distance = "45.6 ly"
+
+/decl/background_detail/location/raphael
+	uid = "location_raphael"
+	name = "Raphael, Precursors' Crypt"
+	description = "Named after one of the scientists behind the Jans-Fhride Positronic Adulthood Index, \
+	Raphael was the first \"voter farm\" established after universal positronic personhood and \
+	has more member states than any other system in the Crypt. Each of its three massive habitation complexes (Yod, He, and Waw) is \
+	sponsored by a separate Transstellar (Nanotrasen, Xion Manufacturing and Wulf Aeronautics, respectively) and \
+	are capable of housing vast numbers of positronics in relative safety and comfort."
+	economic_power = 0.7
+	subversive_potential = 0.8 //nanotrasen may well have Literally Made You
+	ruling_body = "Precursors' Crypt Regional Government"
+	local_government = "Various Trans-Stellar Corporations"
+	distance = "35 ly"
+
+/decl/background_detail/location/terminus
+	uid = "location_terminus"
+	name = "Terminus, Precusors' Crypt"
+	description = "Terminus Station was founded to investigate the endpoint of the Almach Stream of tachyons, \
+	which has one endpoint in the Precursors' Crypt. From there, it grew to a massive general-purpose \
+	research institution with a famously experimental population. The Skathari Incursion destroyed Terminus Station itself \
+	and many surrounding constructions almost instantly, with the survivors found almost exclusively in the \
+	deep-space caravan port used to service the colonization of Nyx, constructed a safe distance away from the station proper only a few decades prior."
+	economic_power = 1.1 //it didn't USED to be apocalypse hell
+	ruling_body = "Precursors' Crypt Regional Government"
+	distance = "74 ly"
+
+
+/decl/background_detail/location/nyx
+	uid = "location_nyx"
+	name = "Nyx, Precursors' Crypt"
+	description = "Nyx is a red dwarf star on the very edge of colonized human space; \
+	a frontier system that has since become something of a ghost town. It holds the dubious distinction of \
+	containing the only known phoron-based gas giant, Erebus. This, and Yulcite, \
+	a now-barren planet with evidence that it once housed an entire pre-spacefaring civilization, \
+	have allowed the system to maintain a small but consistent population of dedicated scientists. "
+	distance = "202.4 ly"
+	ruling_body = "Precursors' Crypt Regional Government"
+
+
+//secessionists
