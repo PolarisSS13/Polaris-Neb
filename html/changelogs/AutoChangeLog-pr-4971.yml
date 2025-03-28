@@ -1,0 +1,4 @@
+author: Martin Rivard
+changes:
+  - {bugfix: fixed portable flasher sprite offset}
+delete-after: true
