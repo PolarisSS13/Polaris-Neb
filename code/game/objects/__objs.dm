@@ -15,11 +15,13 @@
 	var/list/matter //Used to store information about the contents of the object.
 	var/w_class // Size of the object.
 
-	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
-	var/holographic = 0 //if the obj is a holographic object spawned by the holodeck
-	var/list/directional_offset ///JSON list of directions to x,y offsets to be applied to the object depending on its direction EX: @'{"NORTH":{"x":12,"y":5}, "EAST":{"x":10,"y":50}}'
+	/// if the obj is a holographic object spawned by the holodeck
+	var/holographic = FALSE
+	///JSON list of directions to x,y offsets to be applied to the object depending on its direction EX: @'{"NORTH":{"x":12,"y":5}, "EAST":{"x":10,"y":50}}'
+	var/directional_offset
 
 /obj/Initialize(mapload)
 	//Health should be set to max_health only if it's null.
@@ -30,6 +32,10 @@
 		update_directional_offset()
 	if(isnull(current_health))
 		current_health = get_max_health()
+
+/obj/object_shaken()
+	shake_animation()
+	return ..()
 
 /obj/hitby(atom/movable/AM, var/datum/thrownthing/TT)
 	. = ..()
@@ -132,6 +138,9 @@
 			wrench_floor_bolts(user, null, used_item)
 			update_icon()
 			return TRUE
+	var/datum/extension/padding/padding_extension = get_extension(src, __IMPLIED_TYPE__)
+	if(padding_extension && padding_extension.handle_use_item(used_item, user))
+		return TRUE
 	return ..()
 
 /obj/proc/wrench_floor_bolts(mob/user, delay = 2 SECONDS, obj/item/tool)
@@ -161,12 +170,12 @@
 /obj/proc/can_embed()
 	return FALSE
 
-/obj/examine(mob/user, distance, infix, suffix)
+/obj/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if((obj_flags & OBJ_FLAG_ROTATABLE))
-		to_chat(user, SPAN_SUBTLE("\The [src] can be rotated with alt-click."))
+		. += SPAN_SUBTLE("\The [src] can be rotated with alt-click.")
 	if((obj_flags & OBJ_FLAG_ANCHORABLE))
-		to_chat(user, SPAN_SUBTLE("\The [src] can be anchored or unanchored with a wrench."))
+		. += SPAN_SUBTLE("\The [src] can be anchored or unanchored with a wrench.")
 
 /obj/proc/rotate(mob/user)
 	if(!CanPhysicallyInteract(user))
@@ -415,3 +424,58 @@
 	if(dumped_reagents && last_loc && !QDELETED(last_loc) && last_loc.reagents?.total_volume)
 		last_loc.reagents.handle_update()
 		HANDLE_REACTIONS(last_loc.reagents)
+
+// Used by HE pipes and forging bars/billets. Defaults are for HE pipes.
+/obj/proc/animate_heat_glow(icon_temperature, scale_sub = 500, scale_div = 1500, scale_max = 2000, skip_filter = FALSE, anim_time = 2 SECONDS)
+
+	var/scale = max((icon_temperature - scale_sub) / scale_div, 0)
+	var/h_r = heat2color_r(icon_temperature)
+	var/h_g = heat2color_g(icon_temperature)
+	var/h_b = heat2color_b(icon_temperature)
+
+	var/base_color = get_color()
+	var/b_r = HEX_RED(base_color)
+	var/b_g = HEX_GREEN(base_color)
+	var/b_b = HEX_BLUE(base_color)
+
+	if(icon_temperature < scale_max)
+		h_r = b_r + (h_r - b_r)*scale
+		h_g = b_g + (h_g - b_g)*scale
+		h_b = b_b + (h_b - b_b)*scale
+
+	var/scale_color = rgb(h_r, h_g, h_b)
+	var/list/animate_targets = get_above_oo() + src
+	for (var/thing in animate_targets)
+		var/atom/movable/AM = thing
+		if(anim_time > 0)
+			animate(AM, color = scale_color, time = anim_time, easing = SINE_EASING)
+		else
+			color = scale_color
+	if(!skip_filter)
+		animate_filter("glow", list(color = scale_color, time = anim_time, easing = LINEAR_EASING))
+
+	set_light(min(3, scale*2.5), min(3, scale*2.5), scale_color)
+
+/obj/proc/update_heat_glow(anim_time)
+
+	// We have no real way to find temperature bounds without a material that has a melting point.
+	var/decl/material/my_material = get_material()
+	if(!istype(my_material) || !my_material.glows_with_heat || isnull(my_material.melting_point) || QDELETED(src))
+		set_light(0, 0)
+		if(isatom(loc))
+			loc.update_icon()
+		return
+
+	var/temperature_percentage
+	if(temperature >= my_material.melting_point) // We should have melted...
+		temperature_percentage = 1
+	else if(temperature <= T20C) // Arbitrary point for the sake of not trying to find a proportional temperature delta with ice
+		temperature_percentage = 0
+	else
+		temperature_percentage = (my_material.melting_point - T20C) / (temperature - T20C)
+	if(temperature_percentage < 0.25)
+		set_light(0, 0)
+	else
+		animate_heat_glow(temperature, scale_sub = round((my_material.melting_point - T20C) * 0.25) + T20C, scale_div = round(my_material.melting_point * 0.75), scale_max = my_material.melting_point, skip_filter = TRUE, anim_time = anim_time)
+	if(isatom(loc))
+		loc.update_icon()

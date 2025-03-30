@@ -17,6 +17,7 @@
 	affect_blood_on_ingest = 0
 	affect_blood_on_inhale = 0
 	slipperiness           = 8
+	coated_adjective       = "oily"
 
 /decl/material/liquid/oil/plant
 	name                   = "plant oil"

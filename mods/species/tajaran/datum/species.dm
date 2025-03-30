@@ -12,7 +12,8 @@
 	)
 
 /decl/species/tajaran
-	name = SPECIES_TAJARA
+	uid = "species_tajaran"
+	name = "Tajara"
 	name_plural = "Tajaran"
 	base_external_prosthetics_model = null
 
@@ -26,22 +27,24 @@
 	They prefer colder, tundra-like climates, much like their home world, \
 	and speak a variety of languages, most notably Siik and Akhani."
 
+	traits = list(/decl/trait/malus/intolerance/caffeine = TRAIT_LEVEL_MAJOR)
+
 	hidden_from_codex = FALSE
-	available_bodytypes = list(/decl/bodytype/feline)
+	available_bodytypes = list(/decl/bodytype/tajaran)
 
 	preview_outfit = /decl/outfit/job/generic/engineer
 
 	spawn_flags = SPECIES_CAN_JOIN
 
 	blood_types = list(
-		/decl/blood_type/feline/mplus,
-		/decl/blood_type/feline/mminus,
-		/decl/blood_type/feline/rplus,
-		/decl/blood_type/feline/rminus,
-		/decl/blood_type/feline/mrplus,
-		/decl/blood_type/feline/mrminus,
-		/decl/blood_type/feline/oplus,
-		/decl/blood_type/feline/ominus
+		/decl/blood_type/tajaran/mplus,
+		/decl/blood_type/tajaran/mminus,
+		/decl/blood_type/tajaran/rplus,
+		/decl/blood_type/tajaran/rminus,
+		/decl/blood_type/tajaran/mrplus,
+		/decl/blood_type/tajaran/mrminus,
+		/decl/blood_type/tajaran/oplus,
+		/decl/blood_type/tajaran/ominus
 	)
 
 	flesh_color = "#ae7d32"

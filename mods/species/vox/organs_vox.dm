@@ -98,9 +98,8 @@
 
 		// Handle some post-metabolism reagent processing for generally inedible foods.
 		if(ingested.total_volume > 0)
-			for(var/rtype in ingested.reagent_volumes)
-				var/decl/material/R = GET_DECL(rtype)
-				var/inedible_nutriment_amount = gains_nutriment_from_inedible_reagents[R]
+			for(var/decl/material/reagent as anything in ingested.reagent_volumes)
+				var/inedible_nutriment_amount = gains_nutriment_from_inedible_reagents[reagent.type]
 				if(inedible_nutriment_amount > 0)
 					owner.adjust_nutrition(inedible_nutriment_amount)
 
@@ -183,18 +182,17 @@
 	. = ..(mapload, material_key, supplied_appearance, dna_species?.base_internal_prosthetics_model)
 	do_backup()
 
-/obj/item/organ/internal/voxstack/examine(mob/user)
+/obj/item/organ/internal/voxstack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
-	var/user_vox = user.get_species_name() == SPECIES_VOX // TODO use bodytype flags instead so subspecies are included
+	var/user_vox = istype(user.get_species(), /decl/species/vox)
 	if (istype(backup))
 		var/owner_viable = find_dead_player(stored_ckey, TRUE)
 		if (user_vox)
-			to_chat(user, SPAN_NOTICE("The integrity light on [src] blinks [owner_viable ? "rapidly. It can be implanted." : "slowly. It is dormant."]"))
+			. += SPAN_NOTICE("The integrity light on [src] blinks [owner_viable ? "rapidly. It can be implanted." : "slowly. It is dormant."]")
 		else
-			to_chat(user, SPAN_NOTICE("A light on [src] blinks [owner_viable ? "rapidly" : "slowly"]."))
+			. += SPAN_NOTICE("A light on [src] blinks [owner_viable ? "rapidly" : "slowly"].")
 	else if (user_vox)
-		to_chat(user, SPAN_NOTICE("The integrity light on [src] is off. It is empty and lifeless."))
+		. += SPAN_NOTICE("The integrity light on [src] is off. It is empty and lifeless.")
 
 /obj/item/organ/internal/voxstack/emp_act()
 	return
@@ -236,9 +234,9 @@
 /obj/item/organ/internal/voxstack/on_remove_effects(mob/living/last_owner)
 	var/obj/item/organ/external/head = GET_EXTERNAL_ORGAN(last_owner, parent_organ)
 	last_owner.visible_message(SPAN_DANGER("\The [src] rips gaping holes in \the [last_owner]'s [head.name] as it is torn loose!"))
-	head.take_external_damage(rand(15,20))
+	head.take_damage(rand(15,20))
 	for(var/obj/item/organ/internal/O in head.contents)
-		O.take_internal_damage(rand(30,70))
+		O.take_damage(rand(30,70))
 	do_backup()
 	..()
 

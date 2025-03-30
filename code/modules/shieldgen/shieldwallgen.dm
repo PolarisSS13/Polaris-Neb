@@ -203,8 +203,8 @@
 		CF.set_dir(field_dir)
 
 
-/obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user)
-	if(IS_WRENCH(W))
+/obj/machinery/shieldwallgen/attackby(obj/item/used_item, mob/user)
+	if(IS_WRENCH(used_item))
 		if(active)
 			to_chat(user, "Turn off the field generator first.")
 			return TRUE
@@ -218,7 +218,7 @@
 		src.anchored = FALSE
 		return TRUE
 
-	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer))
+	if(istype(used_item, /obj/item/card/id)||istype(used_item, /obj/item/modular_computer))
 		if (src.allowed(user))
 			src.locked = !src.locked
 			to_chat(user, "Controls are now [src.locked ? "locked." : "unlocked."]")
@@ -263,83 +263,78 @@
 	anchored = TRUE
 	density = TRUE
 	light_range = 3
-	var/needs_power = 0
+	frame_type = null
+	construct_state = /decl/machine_construction/noninteractive
+	var/needs_power = FALSE
 	var/obj/machinery/shieldwallgen/gen_primary
 	var/obj/machinery/shieldwallgen/gen_secondary
 	var/power_usage = 800	//how much power it takes to sustain the shield
 	var/generate_power_usage = 5000	//how much power it takes to start up the shield
+
+/obj/machinery/shieldwall/proc/use_generator_power(amount)
+	if(!needs_power)
+		return
+	var/obj/machinery/shieldwallgen/G = pick(gen_primary, gen_secondary) // if we use power and still exist, we assume we have both generators
+	G.storedpower -= amount
+
+/obj/machinery/shieldwall/take_damage(amount, damtype, silent)
+	if(amount <= 0)
+		return
+	if(damtype != BRUTE && damtype != BURN && damtype != ELECTROCUTE)
+		return
+	. = ..() // mostly just plays sound effects on damage
+	use_generator_power(500 * amount)
+
+// This should never be deleted via anything but the generator running out of power.
+/obj/machinery/shieldwall/dismantle()
+	return FALSE // nope!
 
 /obj/machinery/shieldwall/Initialize(mapload, obj/machinery/shieldwallgen/A, obj/machinery/shieldwallgen/B)
 	. = ..(mapload)
 	update_nearby_tiles()
 	gen_primary = A
 	gen_secondary = B
-	if(A && B && A.active && B.active)
-		needs_power = 1
-		if(prob(50))
-			A.storedpower -= generate_power_usage
-		else
-			B.storedpower -= generate_power_usage
+	if(gen_primary?.active && gen_secondary?.active)
+		needs_power = TRUE
+		use_generator_power(generate_power_usage)
 	else
 		return INITIALIZE_HINT_QDEL
 
 /obj/machinery/shieldwall/Destroy()
+	gen_primary = null
+	gen_secondary = null
 	update_nearby_tiles()
 	. = ..()
 
-/obj/machinery/shieldwall/attackby(var/obj/item/I, var/mob/user)
-	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-	G.storedpower -= I.expend_attack_force(user)*2500
-	user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	user.do_attack_animation(src)
-	playsound(loc, 'sound/weapons/smash.ogg', 75, 1)
-	return TRUE
-
 /obj/machinery/shieldwall/Process()
-	if(needs_power)
-		if(!gen_primary?.active || !gen_secondary?.active)
-			qdel(src)
-			return
-
-		var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-		G.storedpower -= power_usage
-
-
-/obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
-	if(needs_power)
-		var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-		G.storedpower -= 400 * Proj.get_structure_damage()
-	..()
-	return
+	if(!needs_power)
+		return
+	if(QDELETED(gen_primary) || QDELETED(gen_secondary))
+		qdel(src)
+		return
+	if(!gen_primary.active || !gen_secondary.active)
+		qdel(src)
+		return
+	use_generator_power(power_usage)
 
 /obj/machinery/shieldwall/explosion_act(severity)
 	SHOULD_CALL_PARENT(FALSE)
 	if(!needs_power)
 		return
-	var/obj/machinery/shieldwallgen/G = prob(50) ? gen_primary : gen_secondary
-	switch(severity)
-		if(1)
-			G.storedpower -= rand(30000, min(G.storedpower, 60000))
-		if(2)
-			G.storedpower -= rand(15000, min(G.storedpower, 30000))
-		if(3)
-			G.storedpower -= rand(5000, min(G.storedpower, 15000))
+	take_damage(100/severity, BRUTE, TRUE) // will drain power according to damage
 
 /obj/machinery/shieldwall/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
-	if(air_group || (height==0)) return 1
-
+	if(!height || air_group || !density)
+		return TRUE
 	if(istype(mover) && mover.checkpass(PASS_FLAG_GLASS))
 		return prob(20)
-	else
-		if (istype(mover, /obj/item/projectile))
-			return prob(10)
-		else
-			return !src.density
+	if (istype(mover, /obj/item/projectile))
+		return prob(10)
+	return FALSE
 
 /obj/machinery/shieldwallgen/online
 	anchored = TRUE
-	active = 1
+	active = TRUE
 
 /obj/machinery/shieldwallgen/online/Initialize()
 	storedpower = max_stored_power

@@ -28,40 +28,40 @@
 	LAZYCLEARLIST(pages) //Get rid of refs
 	return ..()
 
-/obj/item/paper_bundle/attackby(obj/item/W, mob/user)
+/obj/item/paper_bundle/attackby(obj/item/used_item, mob/user)
 
 	// adding sheets
-	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
-		var/obj/item/paper/paper = W
+	if(istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo))
+		var/obj/item/paper/paper = used_item
 		if(istype(paper) && !paper.can_bundle())
 			return TRUE //non-paper or bundlable paper only
-		merge(W, user, cur_page)
+		merge(used_item, user, cur_page)
 		return TRUE
 
 	// merging bundles
-	else if(istype(W, /obj/item/paper_bundle) && merge(W, user, cur_page))
-		to_chat(user, SPAN_NOTICE("You add \the [W] to \the [name]."))
+	else if(istype(used_item, /obj/item/paper_bundle) && merge(used_item, user, cur_page))
+		to_chat(user, SPAN_NOTICE("You add \the [used_item] to \the [name]."))
 		return TRUE
 
 	// burning
-	else if(W.isflamesource())
-		burnpaper(W, user)
+	else if(used_item.isflamesource())
+		burnpaper(used_item, user)
 		return TRUE
 
-	else if(istype(W, /obj/item/stack/tape_roll/duct_tape))
+	else if(istype(used_item, /obj/item/stack/tape_roll/duct_tape))
 		var/obj/P = LAZYACCESS(pages, cur_page)
 		if(P)
-			. = P.attackby(W, user)
+			. = P.attackby(used_item, user)
 			update_icon()
 			updateUsrDialog()
 			return
 		// How did we not have a page? Dunno, fall through to parent call anyway, I guess
 
-	else if(IS_PEN(W) || istype(W, /obj/item/stamp))
+	else if(IS_PEN(used_item) || istype(used_item, /obj/item/stamp))
 		close_browser(user, "window=[name]")
 		var/obj/P = LAZYACCESS(pages, cur_page)
 		if(P)
-			. = P.attackby(W, user)
+			. = P.attackby(used_item, user)
 			update_icon()
 			updateUsrDialog()
 			return
@@ -187,7 +187,7 @@
 		"<span class='[span_class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 	addtimer(CALLBACK(src, PROC_REF(burn_callback), P, user, span_class), 2 SECONDS)
 
-/obj/item/paper_bundle/examine(mob/user, distance)
+/obj/item/paper_bundle/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		interact(user)

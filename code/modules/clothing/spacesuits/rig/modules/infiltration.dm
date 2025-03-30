@@ -46,7 +46,7 @@
 
 	var/mob/living/human/H = holder.wearer
 
-	if(H.add_cloaking_source(src))
+	if(H.add_mob_modifier(/decl/mob_modifier/cloaked, source = src))
 		anim(H, 'icons/effects/effects.dmi', "electricity",null,20,null)
 
 /obj/item/rig_module/stealth_field/deactivate()
@@ -56,7 +56,7 @@
 
 	var/mob/living/human/H = holder.wearer
 
-	if(H.remove_cloaking_source(src))
+	if(H.remove_mob_modifier(/decl/mob_modifier/cloaked, source = src))
 		anim(H,'icons/mob/mob.dmi',,"uncloak",,H.dir)
 		anim(H, 'icons/effects/effects.dmi', "electricity",null,20,null)
 

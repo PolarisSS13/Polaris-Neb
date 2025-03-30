@@ -28,14 +28,14 @@
 	update_icon()
 			//spawn(5) program.process() //no, program.process sends some signals and machines respond and we here again and we lag -rastaf0
 
-/obj/machinery/embedded_controller/Topic(href, href_list)
-	if(..())
-		update_icon()
+/obj/machinery/embedded_controller/OnTopic(mob/user, href_list)
+	if((. = ..()))
 		return
-	if(usr)
-		usr.set_machine(src)
+	if(user)
+		user.set_machine(src)
 	if(program)
 		return program.receive_user_command(href_list["command"]) // Any further sanitization should be done in here.
+	return TOPIC_NOACTION
 
 /obj/machinery/embedded_controller/Process()
 	if(program)

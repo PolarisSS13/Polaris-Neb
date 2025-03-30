@@ -3,6 +3,7 @@
 //--------------------------------------------
 /obj/machinery/atmospherics/omni/mixer
 	name = "omni gas mixer"
+	desc = "A device that combines two or more gases to produce a mix with a specific ratio."
 	icon_state = "map_mixer"
 	core_icon = "mixer"
 
@@ -185,16 +186,19 @@
 
 	return data
 
-/obj/machinery/atmospherics/omni/mixer/Topic(href, href_list)
-	if(..()) return 1
+/obj/machinery/atmospherics/omni/mixer/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 
 	switch(href_list["command"])
 		if("power")
+			. = TOPIC_REFRESH
 			if(!configuring)
 				update_use_power(!use_power)
 			else
 				update_use_power(POWER_USE_OFF)
 		if("configure")
+			. = TOPIC_REFRESH
 			configuring = !configuring
 			if(configuring)
 				update_use_power(POWER_USE_OFF)
@@ -203,18 +207,18 @@
 	if(configuring && !use_power)
 		switch(href_list["command"])
 			if("set_flow_rate")
-				var/new_flow_rate = input(usr,"Enter new flow rate limit (0-[max_flow_rate]L/s)","Flow Rate Control",set_flow_rate) as num
+				var/new_flow_rate = input(user, "Enter new flow rate limit (0-[max_flow_rate]L/s)", "Flow Rate Control", set_flow_rate) as num
 				set_flow_rate = clamp(0, new_flow_rate, max_flow_rate)
+				. = TOPIC_REFRESH
 			if("switch_mode")
 				switch_mode(dir_flag(href_list["dir"]), href_list["mode"])
+				. = TOPIC_REFRESH
 			if("switch_con")
 				change_concentration(dir_flag(href_list["dir"]))
+				. = TOPIC_REFRESH
 			if("switch_conlock")
 				con_lock(dir_flag(href_list["dir"]))
-
-	update_icon()
-	SSnano.update_uis(src)
-	return
+				. = TOPIC_REFRESH
 
 /obj/machinery/atmospherics/omni/mixer/proc/switch_mode(var/port = NORTH, var/mode = ATM_NONE)
 	if(mode != ATM_INPUT && mode != ATM_OUTPUT)

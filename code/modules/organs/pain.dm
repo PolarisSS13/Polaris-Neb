@@ -1,3 +1,14 @@
+/mob
+	var/obj/screen/fullscreen/pain/pain
+
+/mob/Initialize()
+	pain = new(null, src)
+	. = ..()
+
+/mob/Destroy()
+	QDEL_NULL(pain)
+	. = ..()
+
 /mob/proc/flash_pain(var/target)
 	if(pain)
 		var/matrix/M
@@ -82,16 +93,16 @@
 				msg = "OH GOD! Your [damaged_organ.name] is [burning ? "on fire" : "hurting terribly"]!"
 		custom_pain(msg, maxdam, prob(10), damaged_organ, TRUE)
 	// Damage to internal organs hurts a lot.
-	for(var/obj/item/organ/internal/I in get_internal_organs())
-		if(prob(1) && !((I.status & ORGAN_DEAD) || BP_IS_PROSTHETIC(I)) && I.damage > 5)
-			var/obj/item/organ/external/parent = GET_EXTERNAL_ORGAN(src, I.parent_organ)
+	for(var/obj/item/organ/internal/organ in get_internal_organs())
+		if(prob(1) && !((organ.status & ORGAN_DEAD) || BP_IS_PROSTHETIC(organ)) && organ.get_organ_damage() > 5)
+			var/obj/item/organ/external/parent = GET_EXTERNAL_ORGAN(src, organ.parent_organ)
 			if(parent)
 				var/pain = 10
 				var/message = "You feel a dull pain in your [parent.name]"
-				if(I.is_bruised())
+				if(organ.is_bruised())
 					pain = 25
 					message = "You feel a pain in your [parent.name]"
-				if(I.is_broken())
+				if(organ.is_broken())
 					pain = 50
 					message = "You feel a sharp pain in your [parent.name]"
 				src.custom_pain(message, pain, affecting = parent)

@@ -8,7 +8,7 @@
 	damage_temperature = T0C+1400
 	flooring_flags     = TURF_REMOVE_CROWBAR
 	build_type         = /obj/item/stack/tile/floor
-	can_paint          = 1
+	can_paint          = TRUE
 	footstep_type      = /decl/footsteps/tiles
 	force_material     = /decl/material/solid/metal/steel
 	wall_smooth        = SMOOTH_ALL

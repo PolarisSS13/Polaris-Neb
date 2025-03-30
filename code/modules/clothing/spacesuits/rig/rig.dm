@@ -113,22 +113,20 @@
 /obj/item/rig/get_cell()
 	return cell
 
-/obj/item/rig/examine(mob/user)
+/obj/item/rig/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))
 			if(!piece || piece.loc != wearer)
 				continue
-			to_chat(user, "[html_icon(piece)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
-
+			. += "[html_icon(piece)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed."
 	if(src.loc == user)
-		to_chat(user, "The access panel is [locked? "locked" : "unlocked"].")
-		to_chat(user, "The maintenance panel is [open ? "open" : "closed"].")
-		to_chat(user, "The wire panel is [p_open ? "open" : "closed"].")
-		to_chat(user, "Hardsuit systems are [offline ? SPAN_BAD("offline") : SPAN_GOOD("online")].")
-
+		. += "The access panel is [locked? "locked" : "unlocked"]."
+		. += "The maintenance panel is [open ? "open" : "closed"]."
+		. += "The wire panel is [p_open ? "open" : "closed"]."
+		. += "Hardsuit systems are [offline ? SPAN_BAD("offline") : SPAN_GOOD("online")]."
 		if(open)
-			to_chat(user, "It's equipped with [english_list(installed_modules)].")
+			. += "It's equipped with [english_list(installed_modules)]."
 
 /obj/item/rig/Initialize()
 	. = ..()
@@ -183,7 +181,7 @@
 			set_extension(piece, armor_type, armor, armor_degradation_speed)
 
 	set_slowdown_and_vision(!offline)
-	update_icon(1)
+	update_icon()
 
 /obj/item/rig/Destroy()
 	QDEL_NULL(gloves)
@@ -232,7 +230,7 @@
 			piece.max_pressure_protection = initial(piece.max_pressure_protection)
 			piece.min_pressure_protection = initial(piece.min_pressure_protection)
 			piece.item_flags &= ~ITEM_FLAG_AIRTIGHT
-	update_icon(1)
+	update_icon()
 
 /obj/item/rig/proc/toggle_seals(var/mob/initiator,var/instant)
 
@@ -346,7 +344,7 @@
 		canremove = !seal_target
 		if(airtight)
 			update_component_sealed()
-		update_icon(1)
+		update_icon()
 		return 0
 
 	// Success!
@@ -363,7 +361,7 @@
 			module.deactivate()
 	if(airtight)
 		update_component_sealed()
-	update_icon(1)
+	update_icon()
 
 
 /obj/item/rig/proc/update_component_sealed()
@@ -386,7 +384,7 @@
 			helmet.flags_inv &= ~(HIDEMASK)
 		else
 			helmet.flags_inv |= HIDEMASK
-	update_icon(1)
+	update_icon()
 
 /obj/item/rig/Process()
 
@@ -444,7 +442,7 @@
 		return 1
 	return 0
 
-/obj/item/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconcious, var/obj/item/rig_module/mod, var/user_is_ai)
+/obj/item/rig/proc/check_power_cost(var/mob/living/user, var/cost, var/use_unconscious, var/obj/item/rig_module/mod, var/user_is_ai)
 
 	if(!istype(user))
 		return 0
@@ -457,7 +455,7 @@
 			fail_msg = "<span class='warning'>You must be wearing \the [src] to do this.</span>"
 	if(sealing)
 		fail_msg = "<span class='warning'>The hardsuit is in the process of adjusting seals and cannot be activated.</span>"
-	else if(!fail_msg && ((use_unconcious && user.stat > 1) || (!use_unconcious && user.stat)))
+	else if(!fail_msg && ((use_unconscious && user.stat > 1) || (!use_unconscious && user.stat)))
 		fail_msg = "<span class='warning'>You are in no fit state to do that.</span>"
 	else if(!cell)
 		fail_msg = "<span class='warning'>There is no cell installed in the suit.</span>"
@@ -567,7 +565,7 @@
 	for(var/obj/item/thing in list(chest, boots, gloves, helmet))
 		thing.update_icon()
 
-	if(equipment_overlay_icon && LAZYLEN(installed_modules))
+	if(equipment_overlay_icon && LAZYLEN(installed_modules) && istype(chest, /obj/item))
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
 				chest.add_overlay(image("icon" = equipment_overlay_icon, "icon_state" = "[module.suit_overlay]", "dir" = SOUTH))

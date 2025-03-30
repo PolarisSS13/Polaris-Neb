@@ -354,7 +354,7 @@ var/global/list/supermatter_delam_accent_sounds = list(
 		explosion(TS, explosion_power/2, explosion_power, explosion_power * 2, explosion_power * 4, 1)
 		qdel(src)
 
-/obj/machinery/power/supermatter/examine(mob/user)
+/obj/machinery/power/supermatter/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user.skill_check(SKILL_ENGINES, SKILL_EXPERT))
 		var/integrity_message
@@ -365,12 +365,12 @@ var/global/list/supermatter_delam_accent_sounds = list(
 				integrity_message = "It appears to be losing cohesion!"
 			else
 				integrity_message = "At a glance, it seems to be in sound shape."
-		to_chat(user, integrity_message)
+		. += integrity_message
 		if(user.skill_check(SKILL_ENGINES, SKILL_PROF))
 			var/display_power = power
 			display_power *= (0.85 + 0.3 * rand())
 			display_power = round(display_power, 20)
-			to_chat(user, "Eyeballing it, you place the relative EER at around [display_power] MeV/cm3.")
+			. += "Eyeballing it, you place the relative EER at around [display_power] MeV/cm3."
 
 //Changes color and luminosity of the light to these values if they were not already set
 /obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)
@@ -624,27 +624,27 @@ var/global/list/supermatter_delam_accent_sounds = list(
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/power/supermatter/attackby(obj/item/W, mob/user)
+/obj/machinery/power/supermatter/attackby(obj/item/used_item, mob/user)
 
-	if(istype(W, /obj/item/stack/tape_roll/duct_tape))
-		var/obj/item/stack/tape_roll/duct_tape/T = W
+	if(istype(used_item, /obj/item/stack/tape_roll/duct_tape))
+		var/obj/item/stack/tape_roll/duct_tape/T = used_item
 		if(!T.can_use(20))
 			to_chat(user, SPAN_WARNING("You need at least 20 [T.plural_name] to repair \the [src]."))
 			return TRUE
 		T.use(20)
 		playsound(src, 'sound/effects/tape.ogg', 100, TRUE)
-		to_chat(user, SPAN_NOTICE("You begin to repair some of the damage to \the [src] with \the [W]."))
+		to_chat(user, SPAN_NOTICE("You begin to repair some of the damage to \the [src] with \the [used_item]."))
 		damage = max(damage -10, 0)
 		return TRUE // be nice, the extra duct tape if you have 21 or more doesn't turn to ash and irradiate you.
 
-	if(!QDELETED(W))
-		user.visible_message(SPAN_WARNING("\The [user] touches \the [src] with \a [W] as silence fills the room..."),\
-			SPAN_DANGER("You touch \the [W] to \the [src] when everything suddenly goes quiet."),\
+	if(!QDELETED(used_item))
+		user.visible_message(SPAN_WARNING("\The [user] touches \the [src] with \a [used_item] as silence fills the room..."),\
+			SPAN_DANGER("You touch \the [used_item] to \the [src] when everything suddenly goes quiet."),\
 			SPAN_WARNING("Everything suddenly goes silent."))
 
-		to_chat(user, SPAN_NOTICE("\The [W] flashes into dust as you flinch away from \the [src]."))
-		user.drop_from_inventory(W)
-		Consume(user, W, TRUE)
+		to_chat(user, SPAN_NOTICE("\The [used_item] flashes into dust as you flinch away from \the [src]."))
+		user.drop_from_inventory(used_item)
+		Consume(user, used_item, TRUE)
 	user.apply_damage(150, IRRADIATE, damage_flags = DAM_DISPERSED)
 	return TRUE
 

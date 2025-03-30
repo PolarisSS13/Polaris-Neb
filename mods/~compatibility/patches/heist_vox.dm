@@ -1,6 +1,6 @@
 /decl/special_role/raider/Initialize()
 	. = ..()
-	LAZYSET(outfits_per_species, SPECIES_VOX, /decl/outfit/vox_raider)
+	LAZYSET(outfits_per_species, /decl/species/vox::uid, /decl/outfit/vox_raider)
 
 // The following mirror is ~special~.
 /obj/structure/mirror/raider
@@ -15,7 +15,7 @@
 
 	var/decl/species/my_species = user?.get_species()
 	var/decl/special_role/raider/raiders = GET_DECL(/decl/special_role/raider)
-	if(!istype(user) || !user.mind || !raiders.is_antagonist(user.mind) || !my_species || my_species.name == SPECIES_VOX || !is_alien_whitelisted(user, SPECIES_VOX))
+	if(!istype(user) || !user.mind || !raiders.is_antagonist(user.mind) || !my_species || my_species.uid == /decl/species/vox::uid || !is_alien_whitelisted(user, /decl/species/vox::uid))
 		return ..()
 
 	var/choice = input("Do you wish to become a vox of the Shoal? This is not reversible.") as null|anything in list("No","Yes")
@@ -23,7 +23,7 @@
 		return TRUE
 
 	var/decl/outfit/outfit = GET_DECL(/decl/outfit/vox_raider)
-	var/mob/living/human/vox/vox = new(get_turf(src), SPECIES_VOX)
+	var/mob/living/human/vox/vox = new(get_turf(src), /decl/species/vox::uid)
 	outfit.equip_outfit(vox)
 	if(user.mind)
 		user.mind.transfer_to(vox)

@@ -103,12 +103,12 @@ var/global/list/surgery_tool_exception_cache = list()
 		if(allowed_species)
 			. = FALSE
 			if(species)
-				for(var/species_name in allowed_species)
-					if(species.get_root_species_name(target) == species_name)
+				for(var/species_uid in allowed_species)
+					if(species.uid == species_uid)
 						return TRUE
 		if(species && disallowed_species)
-			for(var/species_name in disallowed_species)
-				if(species.get_root_species_name(target) == species_name)
+			for(var/species_uid in disallowed_species)
+				if(species.uid == species_uid)
 					return FALSE
 
 /decl/surgery_step/proc/get_skill_reqs(mob/living/user, mob/living/target, obj/item/tool, target_zone)

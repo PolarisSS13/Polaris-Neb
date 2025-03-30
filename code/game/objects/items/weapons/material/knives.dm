@@ -101,7 +101,7 @@
 
 //random stuff
 /obj/item/knife/hook
-	name = "meat hook"
+	name = "hook"
 	desc = "A sharp, metal hook what sticks into things."
 	icon = 'icons/obj/items/weapon/knives/hook.dmi'
 	sharp = FALSE
@@ -119,7 +119,7 @@
 //Utility knives
 /obj/item/knife/utility
 	name = "utility knife"
-	desc = "An utility knife with a polymer handle, commonly used through human space."
+	desc = "A utility knife with a polymer handle, commonly used through human space."
 	icon = 'icons/obj/items/weapon/knives/utility.dmi'
 	w_class = ITEM_SIZE_SMALL
 	draw_handle = TRUE

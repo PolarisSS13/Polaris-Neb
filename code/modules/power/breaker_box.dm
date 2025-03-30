@@ -8,7 +8,7 @@
 	name = "breaker box"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "bbox_off"
-	desc = "A large machine with heavy duty switching circuits used for advanced grid control."
+	desc = "A large machine with heavy-duty switching circuits used for advanced grid control."
 	//directwired = 0
 	var/icon_state_on = "bbox_on"
 	var/icon_state_off = "bbox_off"
@@ -37,12 +37,12 @@
 	set_state(1)
 	. = ..()
 
-/obj/machinery/power/breakerbox/examine(mob/user)
+/obj/machinery/power/breakerbox/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(on)
-		to_chat(user, "<span class='good'>It seems to be online.</span>")
+		. += "<span class='good'>It seems to be online.</span>"
 	else
-		to_chat(user, "<span class='warning'>It seems to be offline.</span>")
+		. += "<span class='warning'>It seems to be offline.</span>"
 
 /obj/machinery/power/breakerbox/attack_ai(mob/living/silicon/ai/user)
 	if(update_locked)
@@ -85,8 +85,8 @@
 	busy = 0
 	return TRUE
 
-/obj/machinery/power/breakerbox/attackby(var/obj/item/W, var/mob/user)
-	if(IS_MULTITOOL(W))
+/obj/machinery/power/breakerbox/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_MULTITOOL(used_item))
 		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
 		if(!CanPhysicallyInteract(user))
 			return TRUE

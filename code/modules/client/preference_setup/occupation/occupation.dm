@@ -34,17 +34,17 @@
 	pref.hiding_maps =       R.read("hiding_maps")
 	load_skills()
 
-/datum/category_item/player_setup_item/occupation/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/occupation/save_character(datum/pref_record_writer/writer)
 	save_skills()
-	W.write("alternate_option",  pref.alternate_option)
-	W.write("job_high",          pref.job_high)
-	W.write("job_medium",        pref.job_medium)
-	W.write("job_low",           pref.job_low)
-	W.write("player_alt_titles", pref.player_alt_titles)
-	W.write("skills_saved",      pref.skills_saved)
-	W.write("branches",          pref.branches)
-	W.write("ranks",             pref.ranks)
-	W.write("hiding_maps",       pref.hiding_maps)
+	writer.write("alternate_option",  pref.alternate_option)
+	writer.write("job_high",          pref.job_high)
+	writer.write("job_medium",        pref.job_medium)
+	writer.write("job_low",           pref.job_low)
+	writer.write("player_alt_titles", pref.player_alt_titles)
+	writer.write("skills_saved",      pref.skills_saved)
+	writer.write("branches",          pref.branches)
+	writer.write("ranks",             pref.ranks)
+	writer.write("hiding_maps",       pref.hiding_maps)
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	if(!istype(pref.job_medium))		pref.job_medium = list()
@@ -150,7 +150,7 @@
 				var/help_link = "</td><td width = '10%' align = 'center'><a href='byond://?src=\ref[src];job_info=[title]'>?</a></td>"
 				lastJob = job
 
-				var/species_name = S.get_root_species_name()
+				var/species_uid = S.uid
 				var/bad_message = ""
 				if(job.total_positions == 0 && job.spawn_positions == 0)
 					bad_message = "<b>\[UNAVAILABLE]</b>"
@@ -159,8 +159,8 @@
 				else if(!job.player_old_enough(user.client))
 					var/available_in_days = job.available_in_days(user.client)
 					bad_message = "\[IN [(available_in_days)] DAYS]"
-				else if(LAZYACCESS(job.minimum_character_age, species_name) && user.client && (user.client.prefs.get_character_age() < job.minimum_character_age[species_name]))
-					bad_message = "\[MIN CHAR AGE: [job.minimum_character_age[species_name]]]"
+				else if(LAZYACCESS(job.minimum_character_age, species_uid) && user.client && (user.client.prefs.get_character_age() < job.minimum_character_age[species_uid]))
+					bad_message = "\[MIN CHAR AGE: [job.minimum_character_age[species_uid]]]"
 				else if(!job.is_species_allowed(S))
 					bad_message = "<b>\[SPECIES RESTRICTED]</b>"
 				else if(!S.check_background(job, user.client.prefs))

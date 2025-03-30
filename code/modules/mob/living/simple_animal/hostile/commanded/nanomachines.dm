@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/commanded/nanomachine
 	name = "swarm"
-	desc = "a cloud of tiny, tiny robots."
+	desc = "A cloud of tiny, tiny robots."
 	icon = 'icons/mob/simple_animal/nanomachines.dmi'
 	natural_weapon = /obj/item/natural_weapon/nanomachine
 	max_health = 10

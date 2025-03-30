@@ -45,9 +45,9 @@
 	var/datum/reagents/ingested = M.get_ingested_reagents()
 	if(ingested && LAZYLEN(ingested.reagent_volumes) > 1)
 		var/effect = 1 / (LAZYLEN(ingested.reagent_volumes) - 1)
-		for(var/R in ingested.reagent_volumes)
-			if(R != type)
-				ingested.remove_reagent(R, removed * effect)
+		for(var/decl/material/reagent as anything in ingested.reagent_volumes)
+			if(reagent.type != type)
+				ingested.remove_reagent(reagent, removed * effect)
 
 /decl/material/solid/carbon/ashes
 	name = "ashes"
@@ -109,7 +109,7 @@
 
 /decl/material/solid/potassium/affect_blood(var/mob/living/M, var/removed, var/datum/reagents/holder)
 	. = ..()
-	var/volume = REAGENT_VOLUME(holder, type)
+	var/volume = REAGENT_VOLUME(holder, src)
 	if(volume > 3)
 		M.add_chemical_effect(CE_PULSE, 1)
 	if(volume > 10)

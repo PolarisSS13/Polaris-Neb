@@ -121,11 +121,11 @@ var/global/list/_cooking_recipe_cache = list()
 	return TRUE
 
 /decl/recipe/proc/check_reagents(datum/reagents/avail_reagents)
-	SHOULD_BE_PURE(TRUE)
+	// SHOULD_BE_PURE(TRUE) Due to use of GET_DECL() in REAGENT_VOLUME, this cannot be pure.
 	if(length(avail_reagents?.reagent_volumes) < length(reagents))
 		return FALSE
-	for(var/rtype in reagents)
-		if(REAGENT_VOLUME(avail_reagents, rtype) < reagents[rtype])
+	for(var/reagent in reagents)
+		if(REAGENT_VOLUME(avail_reagents, reagent) < reagents[reagent])
 			return FALSE
 	return TRUE
 
@@ -351,27 +351,27 @@ var/global/list/_cooking_recipe_cache = list()
 		if(REAGENT_MAX)
 			//We want the highest of each.
 			//Iterate through everything in buffer. If the target has less than the buffer, then top it up
-			for (var/reagent_type in buffer.reagent_volumes)
-				var/rvol = REAGENT_VOLUME(holder, reagent_type)
-				var/bvol = REAGENT_VOLUME(buffer, reagent_type)
+			for (var/decl/material/reagent as anything in buffer.reagent_volumes)
+				var/rvol = REAGENT_VOLUME(holder, reagent)
+				var/bvol = REAGENT_VOLUME(buffer, reagent)
 				if (rvol < bvol)
 					//Transfer the difference
-					buffer.trans_type_to_holder(holder, reagent_type, bvol-rvol)
+					buffer.trans_type_to_holder(holder, reagent, bvol-rvol)
 
 		if(REAGENT_MIN)
 			//Min is slightly more complex. We want the result to have the lowest from each side
 			//But zero will not count. Where a side has zero its ignored and the side with a nonzero value is used
-			for (var/reagent_type in buffer.reagent_volumes)
-				var/rvol = REAGENT_VOLUME(holder, reagent_type)
-				var/bvol = REAGENT_VOLUME(buffer, reagent_type)
+			for (var/decl/material/reagent as anything in buffer.reagent_volumes)
+				var/rvol = REAGENT_VOLUME(holder, reagent)
+				var/bvol = REAGENT_VOLUME(buffer, reagent)
 				if (rvol == 0) //If the target has zero of this reagent
-					buffer.trans_type_to_holder(holder, reagent_type, bvol)
+					buffer.trans_type_to_holder(holder, reagent, bvol)
 					//Then transfer all of ours
 
 				else if (rvol > bvol)
 					//if the target has more than ours
 					//Remove the difference
-					holder.remove_reagent(reagent_type, rvol-bvol)
+					holder.remove_reagent(reagent, rvol-bvol)
 
 	if(length(.) > 1)
 		// If we're here, then holder is a buffer containing the total reagents

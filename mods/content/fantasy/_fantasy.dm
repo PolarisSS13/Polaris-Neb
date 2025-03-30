@@ -1,7 +1,3 @@
-#define SPECIES_KOBALOI "Kobaloi"
-#define SPECIES_HNOLL   "Hnoll"
-#define SPECIES_DVERGR  "Dvergr"
-
 #define BODYTYPE_KOBALOI "reptomammalian body"
 #define BODYTYPE_HNOLL   "hyenoid body"
 #define BODYTYPE_DVERGR  "small humanoid body"

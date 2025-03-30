@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "d" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 1
 	},
 /turf/floor/wood/walnut,
@@ -33,7 +33,7 @@
 /turf/floor/wood/walnut,
 /area/template_noop)
 "r" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/wood/walnut,
@@ -43,14 +43,14 @@
 /area/template_noop)
 "t" = (
 /obj/structure/table/wood/ebony,
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/path/basalt,
 /area/template_noop)
 "v" = (
 /turf/wall/log/walnut/shutter,
 /area/template_noop)
 "w" = (
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /turf/floor/wood/walnut,
 /area/template_noop)
 "x" = (
@@ -96,7 +96,7 @@
 /turf/floor/path/basalt,
 /area/template_noop)
 "P" = (
-/obj/structure/bed/chair/bench/ebony,
+/obj/structure/chair/bench/ebony,
 /turf/floor/wood/walnut,
 /area/template_noop)
 "Q" = (

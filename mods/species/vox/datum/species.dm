@@ -20,8 +20,9 @@
 	transfusion_fail_reagent = /decl/material/gas/ammonia
 
 /decl/species/vox
-	name = SPECIES_VOX
-	name_plural = SPECIES_VOX
+	uid = "species_vox"
+	name = "Vox"
+	name_plural = "Vox"
 	base_external_prosthetics_model = /decl/bodytype/prosthetic/vox/crap
 
 	default_emotes = list(
@@ -90,6 +91,9 @@
 	)
 
 	available_background_info = list(
+		/decl/background_category/citizenship = list(
+			/decl/background_detail/citizenship/other
+		),
 		/decl/background_category/heritage =   list(
 			/decl/background_detail/heritage/vox,
 			/decl/background_detail/heritage/vox/salvager,

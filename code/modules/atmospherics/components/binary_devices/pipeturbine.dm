@@ -75,7 +75,7 @@
 
 /obj/machinery/turbinemotor
 	name = "motor"
-	desc = "Electrogenerator. Converts rotation into power."
+	desc = "A turbine motor. Converts rotation into power."
 	icon = 'icons/obj/pipeturbine.dmi'
 	icon_state = "motor"
 	anchored = FALSE

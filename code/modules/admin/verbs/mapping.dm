@@ -108,8 +108,8 @@ var/global/list/mapping_debugging_markers = list()
 		if(!T || !isturf(T) || !T.density )
 			if(!(locate(/obj/structure/grille,T)))
 				var/window_check = 0
-				for(var/obj/structure/window/W in T)
-					if (W.dir == turn(C1.dir,180) || (W.dir in list(NORTHEAST,SOUTHEAST,SOUTHWEST,NORTHWEST)) )
+				for(var/obj/structure/window/window in T)
+					if (window.dir == turn(C1.dir,180) || (window.dir in list(NORTHEAST,SOUTHEAST,SOUTHWEST,NORTHWEST)) )
 						window_check = 1
 						break
 				if(!window_check)

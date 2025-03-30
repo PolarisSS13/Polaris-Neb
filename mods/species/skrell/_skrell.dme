@@ -1,7 +1,7 @@
-#ifndef MODPACK_SKRELL
-#define MODPACK_SKRELL
+#ifndef MODPACK_SPECIES_SKRELL
+#define MODPACK_SPECIES_SKRELL
 // BEGIN_INCLUDE
-#include "skrell.dm"
+#include "_skrell.dm"
 #include "datum\accessory.dm"
 #include "datum\blood.dm"
 #include "datum\citizenship.dm"
@@ -10,6 +10,7 @@
 #include "datum\emotes.dm"
 #include "datum\faction.dm"
 #include "datum\language.dm"
+#include "datum\location.dm"
 #include "datum\pronouns_skrell.dm"
 #include "datum\religion.dm"
 #include "datum\skrell_meat.dm"
@@ -27,4 +28,4 @@
 #include "gear\gear_under.dm"
 #include "turfs\flooring.dm"
 // END_INCLUDE
-#endif // MODPACK_SKRELL
+#endif

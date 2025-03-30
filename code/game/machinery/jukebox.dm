@@ -126,7 +126,7 @@
 			var/mob/living/human/H = M
 			if(H.get_sound_volume_multiplier() < 0.2)
 				continue
-		M.set_status(STAT_ASLEEP,    0)
+		M.set_status_condition(STAT_ASLEEP,    0)
 		ADJ_STATUS(M, STAT_STUTTER,  20)
 		SET_STATUS_MAX(M, STAT_DEAF, 30)
 		SET_STATUS_MAX(M, STAT_WEAK,  3)
@@ -134,7 +134,7 @@
 			SET_STATUS_MAX(M, STAT_STUN, 10)
 			SET_STATUS_MAX(M, STAT_PARA,  4)
 		else
-			M.set_status(STAT_JITTER, 400)
+			M.set_status_condition(STAT_JITTER, 400)
 	spawn(15)
 		explode()
 
@@ -152,10 +152,10 @@
 	new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	qdel(src)
 
-/obj/machinery/media/jukebox/attackby(obj/item/W, mob/user)
-	if((IS_WRENCH(W) || IS_HAMMER(W)) && !panel_open)
+/obj/machinery/media/jukebox/attackby(obj/item/used_item, mob/user)
+	if((IS_WRENCH(used_item) || IS_HAMMER(used_item)) && !panel_open)
 		add_fingerprint(user)
-		wrench_floor_bolts(user, 0, W)
+		wrench_floor_bolts(user, 0, used_item)
 		power_change()
 		return TRUE
 	return ..()

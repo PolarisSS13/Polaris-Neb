@@ -16,7 +16,7 @@
 	candidate.savefile_load(preference_mob())
 	update_pai_preview()
 
-/datum/category_item/player_setup_item/player_global/pai/save_preferences(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/player_global/pai/save_preferences(datum/pref_record_writer/writer)
 	if(!candidate)
 		return
 

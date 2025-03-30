@@ -19,7 +19,8 @@
 	bone_type         = null
 
 /decl/species/serpentid
-	name = SPECIES_SERPENTID
+	uid = "species_serpentid"
+	name = "Serpentid"
 	name_plural = "Serpentids"
 	spawn_flags = SPECIES_IS_RESTRICTED
 
@@ -101,7 +102,7 @@
 
 /decl/species/serpentid/handle_movement_delay_special(var/mob/living/human/victim)
 	var/tally = 0
-	victim.remove_cloaking_source(src)
+	victim.remove_mob_modifier(/decl/mob_modifier/cloaked, source = src)
 	var/obj/item/organ/internal/brain/insectoid/serpentid/bugbrain = victim.get_organ(BP_BRAIN, /obj/item/organ/internal/brain/insectoid/serpentid)
 	if(bugbrain)
 		tally += bugbrain.lowblood_tally * 2

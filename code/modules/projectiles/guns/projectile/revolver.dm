@@ -57,8 +57,8 @@
 	if(cap)
 		add_overlay("[icon_state]-toy")
 
-/obj/item/gun/projectile/revolver/capgun/attackby(obj/item/wirecutters/W, mob/user)
-	if(!istype(W) || !cap)
+/obj/item/gun/projectile/revolver/capgun/attackby(obj/item/used_item, mob/user)
+	if(!IS_WIRECUTTER(used_item) || !cap)
 		return ..()
 	to_chat(user, "<span class='notice'>You snip off the toy markings off \the [src].</span>")
 	name = "revolver"

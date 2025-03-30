@@ -30,10 +30,10 @@
 	var/static/list/tool_qualities = list(TOOL_PICK = TOOL_QUALITY_DEFAULT)
 	return tool_qualities
 
-/obj/item/tool/xeno/examine(mob/user)
+/obj/item/tool/xeno/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(IS_PICK(src))
-		to_chat(user, "This tool has a [get_tool_property(TOOL_PICK, TOOL_PROP_EXCAVATION_DEPTH) || 0] centimetre excavation depth.")
+		. += "This tool has a [get_tool_property(TOOL_PICK, TOOL_PROP_EXCAVATION_DEPTH) || 0] centimetre excavation depth."
 
 /obj/item/tool/xeno/brush
 	name               = "wire brush"

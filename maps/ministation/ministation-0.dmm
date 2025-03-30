@@ -436,7 +436,7 @@
 /turf/floor/tiled,
 /area/ministation/cargo)
 "cg" = (
-/obj/structure/bed/chair/comfy,
+/obj/structure/chair/comfy,
 /turf/floor/carpet/blue2,
 /area/ministation/hall/s1)
 "cj" = (
@@ -1655,7 +1655,7 @@
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
 	},
-/obj/structure/bed/chair/office,
+/obj/structure/chair/office,
 /turf/floor/tiled,
 /area/ministation/cargo)
 "gt" = (
@@ -2599,7 +2599,7 @@
 	dir = 1;
 	pixel_y = -23
 	},
-/obj/structure/bed/chair/janicart{
+/obj/structure/janicart{
 	dir = 4
 	},
 /turf/floor/tiled,
@@ -2811,7 +2811,7 @@
 /turf/floor/plating,
 /area/ministation/smcontrol)
 "lA" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/floor/laminate/walnut,
@@ -3386,7 +3386,7 @@
 /turf/floor/pool,
 /area/ministation/dorms)
 "od" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -4579,7 +4579,7 @@
 /turf/floor/tiled,
 /area/ministation/hall/s1)
 "uj" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/beige{
@@ -4678,7 +4678,7 @@
 /area/ministation/smcontrol)
 "uH" = (
 /obj/machinery/light,
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -4927,7 +4927,7 @@
 "vK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/decal/cleanable/dirt/visible,
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
@@ -4964,7 +4964,7 @@
 /area/ministation/hall/s1)
 "vY" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,
@@ -5021,7 +5021,7 @@
 /turf/floor/tiled/monotile,
 /area/ministation/atmospherics)
 "wk" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -6115,7 +6115,7 @@
 /area/ministation/mining)
 "Bq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/bed/chair/wood{
+/obj/structure/chair/wood{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -10572,7 +10572,7 @@
 /obj/abstract/landmark/start{
 	name = "Head Engineer"
 	},
-/obj/structure/bed/chair/office{
+/obj/structure/chair/office{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12176,7 +12176,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/office,
+/obj/structure/chair/office,
 /turf/floor/tiled,
 /area/ministation/smcontrol)
 "SO" = (

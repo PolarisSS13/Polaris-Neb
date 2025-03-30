@@ -8,7 +8,7 @@
 /turf/floor/grass,
 /area/shaded_hills/outside)
 "cy" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/abstract/landmark/start/shaded_hills/miner,
@@ -92,7 +92,7 @@
 /turf/floor/mud,
 /area/shaded_hills/caves)
 "mG" = (
-/obj/structure/bed/chair/bench/ebony,
+/obj/structure/chair/bench/ebony,
 /obj/item/bladed/folding,
 /obj/abstract/landmark/start/shaded_hills/miner,
 /turf/floor/barren,
@@ -364,7 +364,7 @@
 /turf/wall/natural/basalt/shaded_hills,
 /area/shaded_hills/caves/river)
 "YB" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/abstract/landmark/start/shaded_hills/miner,

@@ -204,15 +204,15 @@ EMPTY_CANISTER(phoron, /obj/machinery/portable_atmospherics/canister/phoron)
 		healthcheck()
 	return ..()
 
-/obj/machinery/portable_atmospherics/canister/bash(var/obj/item/W, var/mob/user)
+/obj/machinery/portable_atmospherics/canister/bash(var/obj/item/used_item, var/mob/user)
 	. = ..()
 	if(.)
-		current_health -= W.expend_attack_force(user)
+		current_health -= used_item.expend_attack_force(user)
 		healthcheck()
 
-/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/W, var/mob/user)
-	if(isrobot(user) && istype(W, /obj/item/tank/jetpack))
-		var/obj/item/tank/jetpack/pack = W
+/obj/machinery/portable_atmospherics/canister/attackby(var/obj/item/used_item, var/mob/user)
+	if(isrobot(user) && istype(used_item, /obj/item/tank/jetpack))
+		var/obj/item/tank/jetpack/pack = used_item
 		var/datum/gas_mixture/thejetpack = pack.air_contents
 		if(thejetpack)
 			var/env_pressure = thejetpack.return_pressure()

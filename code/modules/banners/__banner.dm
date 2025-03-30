@@ -66,11 +66,11 @@ var/global/list/banner_type_to_symbols = list()
 
 	. = ..()
 
-/obj/item/banner/examine(mob/user, distance, infix, suffix)
+/obj/item/banner/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/decorations = get_decal_string()
 	if(decorations)
-		to_chat(user, "\The [src] is decorated with [decorations].")
+		. += "\The [src] is decorated with [decorations]."
 
 /obj/item/banner/proc/get_decal_string()
 	for(var/decl/banner_symbol/decal in decals)

@@ -214,4 +214,4 @@ var/global/log_end= world.system_type == UNIX ? ascii2text(13) : ""
 
 /proc/report_progress(var/progress_message)
 	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
-	to_world_log(progress_message)
+	log_world(progress_message)

@@ -26,12 +26,18 @@
 	var/requires_ui_style = TRUE
 	/// Whether or not we look for/draw an additional detail overlay.
 	var/apply_screen_overlay = TRUE
-	/// Reference to our last set ui_style
+
+	// Do we take supplied color in Initialize()?
+	var/use_supplied_ui_color = FALSE
+	// Do we take supplied alpha in Initialize()?
+	var/use_supplied_ui_alpha = FALSE
+	// Do we take supplied icon in Initialize()?
+	var/use_supplied_ui_icon  = TRUE
 
 /obj/screen/Initialize(mapload, mob/_owner, decl/ui_style/ui_style, ui_color, ui_alpha, ui_cat)
 
 	if(requires_ui_style)
-		if(!istext(ui_cat) && !istext(ui_style_category))
+		if(!ispath(ui_cat, /decl/hud_element) && !ispath(ui_style_category, /decl/hud_element))
 			PRINT_STACK_TRACE("Screen object [type] initializing with invalid UI style category: [ui_cat || "NULL"], [ui_style_category || "NULL"].")
 			return INITIALIZE_HINT_QDEL
 		if(!istype(ui_style))
@@ -51,9 +57,9 @@
 		return INITIALIZE_HINT_QDEL
 
 	set_ui_style(ui_style, ui_cat)
-	if(!isnull(ui_color))
+	if(!isnull(ui_color) && use_supplied_ui_color)
 		color = ui_color
-	if(!isnull(ui_alpha))
+	if(!isnull(ui_alpha) && use_supplied_ui_alpha)
 		alpha = ui_alpha
 
 	return ..()
@@ -72,9 +78,9 @@
 	return FALSE
 
 /obj/screen/proc/set_ui_style(decl/ui_style/ui_style, ui_cat)
-	if(istext(ui_cat))
+	if(!isnull(ui_cat))
 		ui_style_category = ui_cat
-	if(istype(ui_style) && ui_style_category)
+	if(istype(ui_style) && ui_style_category && use_supplied_ui_icon)
 		icon = ui_style.get_icon(ui_style_category)
 	update_icon()
 
@@ -90,7 +96,7 @@
 /obj/screen/Click(location, control, params)
 	var/list/paramlist = params2list(params)
 	if(paramlist["shift"])
-		return examine(usr, 0)
+		return examined_by(usr, 0)
 	if(ismob(usr) && usr.client && usr.canClick() && (!user_incapacitation_flags || !usr.incapacitated(user_incapacitation_flags)))
 		return handle_click(usr, params)
 	return FALSE

@@ -146,7 +146,7 @@
 
 /obj/item/clothing/mask/rubber/barros
 	name = "Amaya Barros mask"
-	desc = "Current Secretary-General of Sol Cental Government. Not that the real thing would visit this pigsty."
+	desc = "Current Secretary-General of Sol Central Government. Not that the real thing would visit this pigsty."
 	icon = 'icons/clothing/mask/barros.dmi'
 	visible_name = "Amaya Barros"
 
@@ -166,12 +166,12 @@
 	name = "human mask"
 	desc = "A rubber human mask."
 	icon = 'icons/clothing/mask/human.dmi'
-	var/species = SPECIES_HUMAN
+	var/species = /decl/species/human::uid
 
 /obj/item/clothing/mask/rubber/species/Initialize()
 	. = ..()
 	visible_name = species
-	var/decl/species/S = get_species_by_key(species)
+	var/decl/species/S = decls_repository.get_decl_by_id(species)
 	if(istype(S))
 		var/decl/background_detail/C = GET_DECL(S.default_background_info[/decl/background_category/heritage])
 		if(istype(C))

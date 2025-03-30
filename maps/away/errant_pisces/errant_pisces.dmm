@@ -578,7 +578,7 @@
 /turf/floor/plating,
 /area/errant_pisces/enginering)
 "bM" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/plating,
@@ -947,7 +947,7 @@
 /turf/floor/plating,
 /area/errant_pisces/enginering)
 "cT" = (
-/obj/structure/bed/chair/janicart,
+/obj/structure/janicart,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -2542,7 +2542,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gt" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/laminate,
@@ -2556,7 +2556,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gv" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/laminate,
@@ -2659,7 +2659,7 @@
 /turf/floor/plating/airless,
 /area/space)
 "gL" = (
-/obj/structure/bed/chair/comfy/green,
+/obj/structure/chair/comfy/green,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1"
@@ -2677,7 +2677,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gO" = (
-/obj/structure/bed/chair/comfy/teal,
+/obj/structure/chair/comfy/teal,
 /obj/machinery/light{
 	dir = 8;
 	icon_state = "tube1"
@@ -2694,7 +2694,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/rooms)
 "gR" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2892,7 +2892,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/rooms)
 "ht" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -2931,7 +2931,7 @@
 	pixel_y = -25;
 	req_access = newlist()
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/laminate,
@@ -3071,7 +3071,7 @@
 /turf/floor/tiled,
 /area/errant_pisces/infirmary)
 "hY" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled,
 /area/errant_pisces/infirmary)
 "hZ" = (
@@ -3792,7 +3792,7 @@
 /turf/floor/tiled,
 /area/errant_pisces/science_wing)
 "kg" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -3984,7 +3984,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -5658,7 +5658,7 @@
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "oT" = (
-/obj/structure/bed/chair/comfy/captain,
+/obj/structure/chair/comfy/captain,
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "oU" = (
@@ -5778,7 +5778,7 @@
 /turf/floor/laminate,
 /area/errant_pisces/bridge)
 "pm" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/floor/laminate,
@@ -5919,7 +5919,7 @@
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "pL" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "pM" = (
@@ -6051,7 +6051,7 @@
 /turf/floor/tiled,
 /area/errant_pisces/bridge)
 "qb" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -6279,7 +6279,7 @@
 /turf/wall/r_wall,
 /area/space)
 "qN" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qO" = (
@@ -6356,7 +6356,7 @@
 /turf/space,
 /area/space)
 "qU" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/plating,
@@ -6373,7 +6373,7 @@
 /turf/floor/plating,
 /area/errant_pisces/fishing_wing)
 "qX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/item/flame/match,

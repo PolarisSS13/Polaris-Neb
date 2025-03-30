@@ -10,13 +10,6 @@
 	difficulty             = MAT_VALUE_VERY_HARD_DIY
 	category               = "weapons"
 
-/decl/stack_recipe/planks/beehive_assembly
-	result_type            = /obj/item/beehive_assembly
-	category               = "furniture"
-
-/decl/stack_recipe/planks/beehive_frame
-	result_type            = /obj/item/honey_frame
-
 /decl/stack_recipe/planks/zipgunframe
 	result_type            = /obj/item/zipgunframe
 	difficulty             = MAT_VALUE_VERY_HARD_DIY
@@ -111,7 +104,7 @@
 	abstract_type          = /decl/stack_recipe/planks/prosthetic
 	difficulty             = MAT_VALUE_EASY_DIY
 	category               = "prosthetics"
-	var/prosthetic_species = SPECIES_HUMAN
+	var/prosthetic_species = /decl/species/human::uid
 	var/prosthetic_model   = /decl/bodytype/prosthetic/wooden
 
 /decl/stack_recipe/planks/prosthetic/spawn_result(mob/user, location, amount, decl/material/mat, decl/material/reinf_mat, paint_color, spent_type, spent_amount = 1)
@@ -187,11 +180,11 @@
 	result_type            = /obj/structure/bookcase/cart
 
 /decl/stack_recipe/planks/furniture/chair
-	result_type            = /obj/structure/bed/chair/wood
+	result_type            = /obj/structure/chair/wood
 	category               = "seating"
 
 /decl/stack_recipe/planks/furniture/chair/fancy
-	result_type            = /obj/structure/bed/chair/wood/wings
+	result_type            = /obj/structure/chair/wood/wings
 
 /decl/stack_recipe/planks/furniture/chest
 	result_type            = /obj/structure/closet/crate/chest

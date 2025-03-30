@@ -3,6 +3,7 @@
 	#include "../../mods/content/mundane.dm"
 
 	#include "../../mods/content/baychems/_baychems.dme"
+	#include "../../mods/content/beekeeping/_beekeeping.dme"
 
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/government/_government.dme"
@@ -37,8 +38,10 @@
 	#include "../../mods/species/tajaran/_tajaran.dme"
 	#include "../../mods/species/unathi/_unathi.dme"
 	#include "../../mods/species/teshari/_teshari.dme"
+	#include "../../mods/species/vatborn/_vatborn.dme"
 
 	#include "../random_ruins/exoplanet_ruins/playablecolony/playablecolony.dm"
+	#include "../random_ruins/exoplanet_ruins/crashed_pod/crashed_pod.dm"
 
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"

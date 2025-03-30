@@ -343,7 +343,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/grinder
 	name = "reagent grinder"
-	desc = "This is a reagent grinder. It accepts a ref to something, and refines it into reagents. It cannot grind materials. It can store up to 100u."
+	desc = "This is a reagent grinder. It accepts a ref to something and refines it into reagents. It cannot grind materials and can store up to 100u."
 	icon_state = "blender"
 	extended_desc = ""
 	inputs = list(
@@ -417,9 +417,8 @@
 	switch(ord)
 		if(1)
 			var/cont[0]
-			for(var/rtype in reagents.reagent_volumes)
-				var/decl/material/RE = GET_DECL(rtype)
-				cont += RE.name
+			for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+				cont += reagent.name
 			set_pin_data(IC_OUTPUT, 3, cont)
 			push_data()
 		if(2)
@@ -484,14 +483,13 @@
 	if(target.reagents.maximum_volume - target.reagents.total_volume <= 0)
 		return
 
-	for(var/rtype in source.reagents.reagent_volumes)
-		var/decl/material/mat = GET_DECL(rtype)
+	for(var/decl/material/reagent as anything in source.reagents.reagent_volumes)
 		if(!direction_mode)
-			if(mat.name in demand)
-				source.reagents.trans_type_to(target, rtype, transfer_amount)
+			if(reagent.name in demand)
+				source.reagents.trans_type_to(target, reagent, transfer_amount)
 		else
-			if(!(mat.name in demand))
-				source.reagents.trans_type_to(target, rtype, transfer_amount)
+			if(!(reagent.name in demand))
+				source.reagents.trans_type_to(target, reagent, transfer_amount)
 	activate_pin(2)
 	push_data()
 

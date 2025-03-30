@@ -33,7 +33,8 @@
 
 	user.visible_message(
 		SPAN_DANGER("\The [user] shakes \the [src]!"),
-		SPAN_DANGER("You shake \the [src]!"))
+		SPAN_DANGER("You shake \the [src]!")
+	)
 
 	object_shaken()
 	return TRUE
@@ -81,7 +82,7 @@
 		SPAN_DANGER("You chew on your [O.name]!")
 	)
 	admin_attacker_log(src, "chewed on their [O.name]!")
-	O.take_external_damage(3,0, DAM_SHARP|DAM_EDGE ,"teeth marks")
+	O.take_damage(3, damage_flags = (DAM_SHARP|DAM_EDGE), inflicter = "teeth marks")
 	next_restraint_chew = world.time + (2.5 SECONDS)
 	return TRUE
 

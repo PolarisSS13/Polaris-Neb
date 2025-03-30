@@ -2,7 +2,7 @@
 /obj/machinery/bodyscanner
 	var/mob/living/human/occupant
 	var/locked
-	name = "Body Scanner"
+	name = "body scanner"
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "body_scanner_0"
 	density = TRUE
@@ -11,7 +11,6 @@
 	active_power_usage = 10000	//10 kW. It's a big all-body scanner.
 	construct_state = /decl/machine_construction/default/panel_closed
 	uncreated_component_parts = null
-	stat_immune = 0
 	var/open_sound = 'sound/machines/podopen.ogg'
 	var/close_sound = 'sound/machines/podclose.ogg'
 
@@ -20,10 +19,10 @@
 	for(var/obj/O in get_contained_external_atoms())
 		O.dropInto(loc)
 
-/obj/machinery/bodyscanner/examine(mob/user)
+/obj/machinery/bodyscanner/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (occupant && user.Adjacent(src))
-		occupant.examine(arglist(args))
+		occupant.get_examine_strings(user, distance, infix, suffix)
 
 /obj/machinery/bodyscanner/relaymove(mob/user)
 	..()

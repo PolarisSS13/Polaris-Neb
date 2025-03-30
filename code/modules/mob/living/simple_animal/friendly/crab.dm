@@ -6,7 +6,7 @@
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("clicks")
 	response_harm = "stamps on"
-	possession_candidate = 1
+	possession_candidate = TRUE
 	pass_flags = PASS_FLAG_TABLE
 	natural_armor = list(
 		ARMOR_MELEE = ARMOR_MELEE_KNIVES

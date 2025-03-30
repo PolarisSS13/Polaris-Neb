@@ -200,7 +200,7 @@
 /obj/item/rig_module/mounted
 
 	name = "mounted gun"
-	desc = "Somesort of mounted gun."
+	desc = "Some sort of mounted gun."
 	selectable = 1
 	usable = 1
 	module_cooldown = 0

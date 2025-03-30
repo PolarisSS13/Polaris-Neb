@@ -47,7 +47,7 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 	else
 		add_overlay(overlay_image(icon, "[icon_state]-hinges", null, RESET_COLOR))
 
-/obj/structure/reagent_dispensers/compost_bin/examine(mob/user, distance)
+/obj/structure/reagent_dispensers/compost_bin/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 
@@ -57,15 +57,15 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 
 		switch(worms)
 			if(0)
-				to_chat(user, SPAN_WARNING("There are no worms in \the [src]."))
+				. += SPAN_WARNING("There are no worms in \the [src].")
 			if(1)
-				to_chat(user, SPAN_NOTICE("A lonely worm wiggles around in \the [src]."))
+				. += SPAN_NOTICE("A lonely worm wiggles around in \the [src].")
 			if(2 to 3)
-				to_chat(user, SPAN_NOTICE("A few worms wiggle around in \the [src]."))
+				. += SPAN_NOTICE("A few worms wiggle around in \the [src].")
 			if(4 to 6)
-				to_chat(user, SPAN_NOTICE("A healthy number of worms wiggle around in \the [src]."))
+				. += SPAN_NOTICE("A healthy number of worms wiggle around in \the [src].")
 			else
-				to_chat(user, SPAN_NOTICE("A thriving worm colony wiggles around in \the [src]."))
+				. += SPAN_NOTICE("A thriving worm colony wiggles around in \the [src].")
 
 		var/list/composting = list()
 		for(var/thing in get_stored_inventory())
@@ -73,9 +73,9 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 				composting += thing
 
 		if(length(composting))
-			to_chat(user, SPAN_NOTICE("[capitalize(english_list(composting, summarize = TRUE))] [length(composting) == 1 ? "is" : "are"] composting inside \the [src]."))
+			. += SPAN_NOTICE("[capitalize(english_list(composting, summarize = TRUE))] [length(composting) == 1 ? "is" : "are"] composting inside \the [src].")
 		else
-			to_chat(user, SPAN_NOTICE("Nothing is composting within \the [src]."))
+			. += SPAN_NOTICE("Nothing is composting within \the [src].")
 
 /obj/structure/reagent_dispensers/compost_bin/Entered(var/atom/movable/AM, atom/old_loc)
 	. = ..()
@@ -88,28 +88,28 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 		reagents.trans_to(loc, reagents.total_volume)
 	return ..()
 
-/obj/structure/reagent_dispensers/compost_bin/attackby(obj/item/W, mob/user)
+/obj/structure/reagent_dispensers/compost_bin/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
 
-	if(W.storage)
+	if(used_item.storage)
 
 		var/emptied = FALSE
-		for(var/obj/item/O in W.get_stored_inventory())
+		for(var/obj/item/O in used_item.get_stored_inventory())
 			if(storage.can_be_inserted(O))
-				W.storage.remove_from_storage(null, O, loc, skip_update = TRUE)
+				used_item.storage.remove_from_storage(null, O, loc, skip_update = TRUE)
 				storage.handle_item_insertion(null, O, skip_update = TRUE)
 				emptied = TRUE
 
 		if(emptied)
-			W.storage.finish_bulk_removal()
+			used_item.storage.finish_bulk_removal()
 			storage.update_ui_after_item_insertion()
-			if(length(W.get_stored_inventory()))
-				to_chat(user, SPAN_NOTICE("You partially empty \the [W] into \the [src]'s hopper."))
+			if(length(used_item.get_stored_inventory()))
+				to_chat(user, SPAN_NOTICE("You partially empty \the [used_item] into \the [src]'s hopper."))
 			else
-				to_chat(user, SPAN_NOTICE("You empty \the [W] into \the [src]'s hopper."))
-			W.update_icon()
+				to_chat(user, SPAN_NOTICE("You empty \the [used_item] into \the [src]'s hopper."))
+			used_item.update_icon()
 			return TRUE
 
 	return ..()
@@ -174,15 +174,14 @@ var/global/const/COMPOST_WORM_HUNGER_FACTOR = MINIMUM_CHEMICAL_VOLUME
 				remains.update_primary_material()
 
 	// Digest reagents.
-	for(var/mat in reagents.reagent_volumes)
-		if(ispath(mat, /decl/material/liquid/fertilizer))
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(istype(reagent, /decl/material/liquid/fertilizer))
 			continue
-		var/decl/material/material_data = GET_DECL(mat)
-		if(!material_data.compost_value)
+		if(!reagent.compost_value)
 			continue
-		var/clamped_worm_drink_amount = min(round(worm_eat_amount * REAGENT_UNITS_PER_MATERIAL_UNIT), reagents.reagent_volumes[mat])
-		reagents.add_reagent(/decl/material/liquid/fertilizer/compost, max(1, round(clamped_worm_drink_amount * material_data.compost_value)))
-		reagents.remove_reagent(mat, clamped_worm_drink_amount)
+		var/clamped_worm_drink_amount = min(round(worm_eat_amount * REAGENT_UNITS_PER_MATERIAL_UNIT), reagents.reagent_volumes[reagent])
+		reagents.add_reagent(/decl/material/liquid/fertilizer/compost, max(1, round(clamped_worm_drink_amount * reagent.compost_value)))
+		reagents.remove_reagent(reagent, clamped_worm_drink_amount)
 		break
 
 	// Grow more worms.

@@ -18,17 +18,19 @@
 		base_state = "flamp"
 	. = ..()
 
-/obj/machinery/light/flamp/attackby(obj/item/held_item, mob/user)
+/obj/machinery/light/flamp/attackby(obj/item/used_item, mob/user)
 	if(!lampshade)
-		if(istype(held_item, /obj/item/lampshade))
-			lampshade = held_item
-			user.drop_from_inventory(held_item, src)
-			update_icon(0)
+		if(istype(used_item, /obj/item/lampshade))
+			lampshade = used_item
+			user.drop_from_inventory(used_item, src)
+			update_light_status(FALSE)
+			update_icon()
 			return TRUE
-	else if(held_item.do_tool_interaction(TOOL_SCREWDRIVER, user, src, 1 SECOND, "unscrewing", "unscrewing"))
+	else if(used_item.do_tool_interaction(TOOL_SCREWDRIVER, user, src, 1 SECOND, "unscrewing", "unscrewing"))
 		lampshade.dropInto(loc)
 		lampshade = null
-		update_icon(0)
+		update_light_status(FALSE)
+		update_icon()
 		return TRUE
 	return ..()
 
