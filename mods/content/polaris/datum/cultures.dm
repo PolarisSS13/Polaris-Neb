@@ -536,7 +536,7 @@
 	economic_power = 0.5 //its LOW babey
 	subversive_potential= 1.4 //Hive of scum and villainy. Or, was.
 
-/* Commented out until species restrictions exist.
+
 /decl/background_detail/heritage/newkyoto
 	uid = "heritage_newkyoto"
 	name = "Seccessionist - Kyoto-jin Culture"
@@ -546,8 +546,9 @@
 	New Kyoto instills in its populace a strong sense of national loyalty, self-sufficiency and of course, militarism."
 	economic_power = 0.9
 	subversive_potential= 1.1 //(independents? prolly up to SOMETHING)
-	//restricted_to_species = list(SPECIES_HUMAN)
 
+
+/* we need text for this...
 /decl/background_detail/heritage/vystholm
 	uid = "heritage_vystholm"
 
@@ -573,12 +574,29 @@
 	while failed colonies dissolve as, bit by bit, colonists trickle back to the core worlds." //or die
 	economic_power = 0.4 //do they even HAVE money from where you come from
 
+/decl/background_detail/heritage/vatcult
+	uid = "heritage_vatcult"
+	name = "Other Culture - Vat Cult"
+	description = "Many so-called \"vat cults\" exist in the local cluster, remnants of the corporate exploitation of \
+	the lives of those created in the vats. Xenophobia, even against naturally-born humans, is common, especially so \
+	in groups further from the core. Vat cults often idealize the improvement of the vats and collective, \
+	in opposition to the creeping influence of corporations and other outside organizations."
+	economic_power = 0.7
+	subversive_potential = 0.9
+
+/decl/background_detail/heritage/freetrader
+	uid = "heritage_freetrader"
+	name = "Other Culture - Free Trader"
+	description = "You belong to the Free Traders, nomadic traders that service the fringe of colonized space in aging freighters \
+	often passed down family lines for upwards of a century. Free Traders see themselves as members of no true stationary culture \
+	even if they're first-generation hires. The decline in Sol's rate of colonization and the current skathari and pirate crises \
+	have lead to hard times for Free Traders, some of which have been forced to sell or scrap ancestral ships and make their way into sedentary society."
+	economic_power = 0.7
 
 /decl/background_detail/heritage/deep_space
-	name = "Deep Space"
 	uid = "heritage_space"
-	description = "You came from the void between the stars."
-	language =         null
-	secondary_langs =  null
-	additional_langs = null
-	economic_power =   null
+	name = "Other Culture - Spacer"
+	description = "Recent census records indicate that as much as 4% of SolGov's population were born and raised in some manner of spaceship, \
+	with no true home system. This population includes millitary brats raised on Fleet support vessels, \
+	Free Traders born to hereditary positions on trade freighters, certain subpopulations of nomadic peoples, economic migrants, \
+	and members of certain illicit criminal organizations."
