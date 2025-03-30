@@ -77,7 +77,7 @@ var/global/list/time_prefs_fixed = list()
 	gender = pick(MALE, FEMALE)
 	real_name = get_random_name()
 
-	var/decl/species/species = get_species_by_key(global.using_map.default_species)
+	var/decl/species/species = decls_repository.get_decl_by_id(global.using_map.default_species)
 	blood_type = pickweight(species.blood_types)
 
 	if(client)
@@ -358,7 +358,8 @@ var/global/list/time_prefs_fixed = list()
 	character.traits = null
 
 	var/decl/bodytype/new_bodytype = get_bodytype_decl()
-	if(species == character.get_species_name())
+	var/decl/species/character_species = character.get_species()
+	if(species == character_species.uid)
 		character.set_bodytype(new_bodytype)
 	else
 		character.change_species(species, new_bodytype)
@@ -511,6 +512,7 @@ var/global/list/time_prefs_fixed = list()
 	mob_species.handle_post_species_pref_set(src)
 	var/decl/bodytype/mob_bodytype = get_bodytype_decl()
 	set_bodytype(mob_bodytype)
+
 
 /datum/preferences/proc/set_bodytype(new_bodytype)
 	bodytype = new_bodytype

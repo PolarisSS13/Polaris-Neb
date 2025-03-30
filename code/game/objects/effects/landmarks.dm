@@ -1,3 +1,4 @@
+var/global/list/obj/abstract/landmark/all_landmarks = list()
 /obj/abstract/landmark
 	name = "landmark"
 	var/delete_me = 0
@@ -7,13 +8,13 @@
 	tag = "landmark*[name]"
 	if(delete_me)
 		return INITIALIZE_HINT_QDEL
-	global.landmarks_list += src
+	global.all_landmarks += src
 
 /obj/abstract/landmark/proc/delete()
 	delete_me = TRUE
 
 /obj/abstract/landmark/Destroy()
-	global.landmarks_list -= src
+	global.all_landmarks -= src
 	return ..()
 
 /obj/abstract/landmark/start
@@ -37,8 +38,8 @@
 
 /obj/abstract/landmark/costume/proc/make_costumes()
 	var/list/options = typesof(/obj/abstract/landmark/costume)
-	var/PICK= options[rand(1,options.len)]
-	new PICK(loc)
+	var/costume = pick(options)
+	new costume(loc)
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
 /obj/abstract/landmark/costume/chameleon/make_costumes()

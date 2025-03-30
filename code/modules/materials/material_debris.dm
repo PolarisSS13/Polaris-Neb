@@ -71,9 +71,9 @@
 
 	return ..()
 
-/obj/item/debris/scraps/attackby(obj/item/W, mob/user)
-	if(istype(W, type) && user.try_unequip(W))
-		var/obj/item/debris/scraps/other = W
+/obj/item/debris/scraps/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, type) && user.try_unequip(used_item))
+		var/obj/item/debris/scraps/other = used_item
 		var/space_remaining = MAX_SCRAP_MATTER - get_total_matter()
 		var/other_total_matter = other.get_total_matter()
 		LAZYINITLIST(matter)

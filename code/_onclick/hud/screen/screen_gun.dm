@@ -39,7 +39,7 @@
 	name = "Disallow Radio Use"
 	icon_state = "no_radio1"
 	base_icon_state = "no_radio"
-	screen_loc = ui_gun4
+	screen_loc = ui_gun3
 	toggle_flag = TARGET_CAN_RADIO
 
 /obj/screen/gun/mode

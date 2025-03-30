@@ -19,8 +19,8 @@
 	. = ..()
 	if(proximity && A && is_held_twohanded())
 		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
-			W.shatter()
+			var/obj/structure/window/window = A
+			window.shatter()
 		else if(istype(A,/obj/structure/grille))
 			qdel(A)
 		else if(istype(A,/obj/effect/vine))

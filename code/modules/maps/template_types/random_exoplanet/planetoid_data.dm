@@ -132,7 +132,7 @@
 	//Always keep the overmap marker in sync if we have one set already
 	try_update_overmap_marker()
 
-// ** Bunch of overridables below **
+// ** Bunch of overrideables below **
 
 ///Sets the name of the planetoid, and causes updates to happen to anything linked to us.
 /datum/planetoid_data/proc/SetName(var/newname)
@@ -155,8 +155,8 @@
 	atmosphere = A.Clone()
 
 ///Resets the given weather state to our planet replacing the old one, and trigger updates. Can be a type path or instance.
-/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/W)
-	initial_weather_state = W
+/datum/planetoid_data/proc/reset_weather(var/decl/state/weather/weather)
+	initial_weather_state = weather
 	if(!(topmost_level_id in SSmapping.levels_by_id))
 		return //It's entire possible the levels weren't initialized yet, so don't bother.
 	//Tells all our levels exposed to the sky to force change the weather.
@@ -489,7 +489,7 @@
 
 	//Adjust for species habitability
 	if(habitability_class == HABITABILITY_OKAY || habitability_class == HABITABILITY_IDEAL)
-		var/decl/species/S = global.get_species_by_key(global.using_map.default_species)
+		var/decl/species/S = decls_repository.get_decl_by_id(global.using_map.default_species)
 		if(habitability_class == HABITABILITY_IDEAL)
 			. = clamp(., S.default_bodytype.cold_discomfort_level + rand(1,5), S.default_bodytype.heat_discomfort_level - rand(1,5)) //Clamp between comfortable levels since we're ideal
 		else
@@ -501,7 +501,7 @@
 
 	//Adjust for species habitability
 	if(habitability_class == HABITABILITY_OKAY || habitability_class == HABITABILITY_IDEAL)
-		var/decl/species/S           = global.get_species_by_key(global.using_map.default_species)
+		var/decl/species/S           = decls_repository.get_decl_by_id(global.using_map.default_species)
 		var/breathed_min_pressure    = S.breath_pressure
 		var/safe_max_pressure        = S.get_hazard_high_pressure()
 		var/safe_min_pressure        = S.get_hazard_low_pressure()
@@ -550,7 +550,7 @@
 		blacklisted_flags |= XGM_GAS_CONTAMINANT
 
 		//Make sure temperature can't damage people on casual planets (Only when not forcing an atmosphere)
-		var/decl/species/S = global.get_species_by_key(global.using_map.default_species)
+		var/decl/species/S = decls_repository.get_decl_by_id(global.using_map.default_species)
 		var/lower_temp            = max(S.default_bodytype.cold_level_1, atmosphere_gen_temperature_min)
 		var/higher_temp           = min(S.default_bodytype.heat_level_1, atmosphere_gen_temperature_max)
 		var/breathed_gas          = S.breath_type

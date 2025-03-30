@@ -42,7 +42,7 @@
 /area/yacht/bridge)
 "ak" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair/comfy/captain,
+/obj/structure/chair/comfy/captain,
 /obj/effect/decal/cleanable/dirt/visible,
 /obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/laminate/walnut,
@@ -192,7 +192,7 @@
 /turf/floor/laminate/yew,
 /area/yacht/living)
 "aF" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt/visible,
@@ -249,7 +249,7 @@
 "aM" = (
 /obj/structure/table/marble,
 /obj/item/pizzabox/vegetable,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/laminate/yew,
 /area/yacht/living)
@@ -465,7 +465,7 @@
 /turf/floor/carpet/purple,
 /area/yacht/living)
 "bw" = (
-/obj/structure/bed/chair/comfy/red{
+/obj/structure/chair/comfy/red{
 	dir = 4
 	},
 /turf/floor/carpet/purple,

@@ -3,15 +3,9 @@
 	abstract_type = /obj/screen/pai
 	requires_ui_style = FALSE
 	user_incapacitation_flags = INCAPACITATION_KNOCKOUT
-
-/obj/screen/pai/shell
-	name = "Toggle Chassis"
-
-/obj/screen/pai/rest
-	name = "Rest"
-
-/obj/screen/pai/light
-	name = "Toggle Light"
+	use_supplied_ui_alpha = FALSE
+	use_supplied_ui_color = FALSE
+	use_supplied_ui_icon  = FALSE
 
 /obj/screen/pai/software
 	name = "Software Interface"
@@ -74,3 +68,24 @@
 		var/stat_silicon_subsystem/SSS = pai.silicon_subsystems_by_name[ss_name]
 		if(istype(SSS))
 			SSS.Click()
+
+/decl/hud_element/pai
+	abstract_type = /decl/hud_element/pai
+
+/decl/hud_element/pai/shell
+	elem_type = /obj/screen/pai/shell
+
+/decl/hud_element/pai/rest
+	elem_type = /obj/screen/pai/rest
+
+/decl/hud_element/pai/light
+	elem_type = /obj/screen/pai/light
+
+/decl/hud_element/pai/software
+	elem_type = /obj/screen/pai/software
+
+/decl/hud_element/pai/chassis
+	elem_type = /obj/screen/pai/chassis
+
+/decl/hud_element/pai/subsystems
+	elem_type = /obj/screen/pai/subsystems

@@ -104,7 +104,7 @@
 
 /datum/uplink_item/item/tools/flashdark
 	name = "Flashdark"
-	desc = "A device similar to a flash light that absorbs the surrounding light, casting a shadowy, black mass."
+	desc = "A device similar to a flashlight that absorbs the surrounding light, casting a shadowy, black mass."
 	item_cost = 32
 	path = /obj/item/flashlight/flashdark
 

@@ -262,7 +262,7 @@
 	icon            = 'mods/species/drakes/icons/markings.dmi'
 	icon_state      = "spines"
 	uid             = "acc_marking_drake_spines"
-	species_allowed = list(SPECIES_GRAFADREKA)
+	species_allowed = list(/decl/species/grafadreka::uid)
 	color_blend     = ICON_MULTIPLY
 	body_parts      = list(
 		BP_CHEST,
@@ -317,7 +317,7 @@
 	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
 	return unarmed_attack
 
-/obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+/obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
 	set_extension(src, /datum/extension/tool, list(
@@ -337,7 +337,7 @@
 	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
 	return unarmed_attack
 
-/obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
+/obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
 	set_extension(src, /datum/extension/tool, list(

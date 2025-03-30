@@ -35,6 +35,10 @@
 	var/icon = 'icons/screen/intents.dmi'
 	/// State used to update intent selector.
 	var/icon_state
+	/// Whether or not this intent is available if you have an item in your hand.
+	var/requires_empty_hand = FALSE
+	/// Intents to be removed from the available list if this intent is present.
+	var/list/blocks_other_intents
 
 /decl/intent/validate()
 	. = ..()
@@ -83,20 +87,10 @@
 	icon_state       = "intent_disarm"
 	sort_order       = 2 // Corresponding to hotkey order.
 
-// Used by nymphs.
-/decl/intent/harm/binary
-	icon             = 'icons/screen/intents_wide.dmi'
-	uid              = "intent_harm_simple"
-	intent_flags     = (I_FLAG_HARM|I_FLAG_DISARM)
-
-/decl/intent/help/binary
-	icon             = 'icons/screen/intents_wide.dmi'
-	uid              = "intent_help_simple"
-	intent_flags     = (I_FLAG_HARM|I_FLAG_GRAB)
-
 /mob
 	/// Decl for current 'intent' of mob; hurt, harm, etc. Initialized by get_intent().
-	var/decl/intent/_a_intent
+	VAR_PRIVATE/decl/intent/_a_intent
+	VAR_PRIVATE/list/_available_intents
 
 /mob/proc/check_intent(checking_intent)
 	var/decl/intent/intent = get_intent() // Ensures intent has been initalised.
@@ -112,21 +106,30 @@
 	if(!isnum(new_intent))
 		new_intent = resolve_intent(new_intent)
 	else // Retrieve intent decl based on flag.
-		for(var/decl/intent/intent as anything in get_available_intents())
+		for(var/decl/intent/intent as anything in get_available_intents(skip_update = TRUE))
 			if(intent.intent_flags & new_intent)
 				new_intent = intent
 				break
 
 	if(istype(new_intent) && get_intent() != new_intent)
 		_a_intent = new_intent
-		if(istype(hud_used) && hud_used.action_intent)
-			hud_used.action_intent.update_icon()
+		if(istype(hud_used))
+			hud_used.refresh_element(HUD_INTENT)
 		return TRUE
 
 	return FALSE
 
 /mob/proc/get_intent()
 	RETURN_TYPE(/decl/intent)
+	var/list/available_intents = get_available_intents()
+	if(length(available_intents) && (!_a_intent || !(_a_intent in available_intents)))
+		var/new_intent
+		if(_a_intent)
+			for(var/decl/intent/intent in available_intents)
+				if(_a_intent.intent_flags & intent.intent_flags)
+					new_intent = intent
+					break
+		_a_intent = new_intent || available_intents[1]
 	if(!_a_intent)
 		_a_intent = get_default_intent()
 	return _a_intent
@@ -134,25 +137,59 @@
 /mob/proc/get_default_intent()
 	return GET_DECL(/decl/intent/help)
 
-/mob/proc/get_available_intents()
-	var/static/list/available_intents
-	if(!available_intents)
-		available_intents = list(
+/mob/proc/get_default_intents()
+	var/static/list/default_intents
+	if(!default_intents)
+		default_intents = list(
 			GET_DECL(/decl/intent/help),
 			GET_DECL(/decl/intent/disarm),
 			GET_DECL(/decl/intent/grab),
 			GET_DECL(/decl/intent/harm)
 		)
-		available_intents = sortTim(available_intents, /proc/cmp_decl_sort_value_asc)
-	return available_intents
+	return default_intents
+
+/mob/proc/clear_available_intents(skip_update, skip_sleep)
+	set waitfor = FALSE
+	if(!skip_sleep)
+		sleep(0)
+		if(QDELETED(src))
+			return
+	_available_intents = null
+	if(!skip_update)
+		refresh_hud_element(HUD_INTENT)
+
+/mob/proc/get_available_intents(skip_update, force)
+	var/obj/item/held = get_active_held_item()
+	if(!held)
+		_available_intents = get_default_intents()
+	else if(force || !_available_intents)
+		// Grab all relevant intents.
+		_available_intents = list()
+		for(var/decl/intent/intent as anything in get_default_intents())
+			if(intent.requires_empty_hand)
+				continue
+			_available_intents += intent
+		// Add inhand intents.
+		var/list/held_intents = held.get_provided_intents(src)
+		if(length(held_intents))
+			_available_intents |= held_intents
+		// Trim blocked intents.
+		for(var/decl/intent/intent as anything in _available_intents)
+			_available_intents -= intent.blocks_other_intents
+		// Sort by hotkey order.
+		_available_intents = sortTim(_available_intents, /proc/cmp_decl_sort_value_asc)
+		// Update our HUD immediately.
+		if(!skip_update)
+			refresh_hud_element(HUD_INTENT)
+	return _available_intents
 
 /mob/proc/cycle_intent(input)
 	set name = "a-intent"
 	set hidden = TRUE
 	switch(input)
 		if(INTENT_HOTKEY_RIGHT)
-			return set_intent(next_in_list(get_intent(), get_available_intents()))
+			return set_intent(next_in_list(get_intent(), get_available_intents(skip_update = TRUE)))
 		if(INTENT_HOTKEY_LEFT)
-			return set_intent(previous_in_list(get_intent(), get_available_intents()))
+			return set_intent(previous_in_list(get_intent(), get_available_intents(skip_update = TRUE)))
 		else // Fallback, should just use set_intent() directly
 			return set_intent(input)

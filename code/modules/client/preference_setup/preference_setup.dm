@@ -1,5 +1,8 @@
 var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 
+/datum/category_group/player_setup_category
+	abstract_type = /datum/category_group/player_setup_category
+
 /datum/category_group/player_setup_category/background_preferences
 	name = "Background"
 	sort_order = 1 // must go first because species
@@ -79,17 +82,17 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_character(R)
 
-/datum/category_collection/player_setup_collection/proc/save_character(datum/pref_record_writer/W)
+/datum/category_collection/player_setup_collection/proc/save_character(datum/pref_record_writer/writer)
 	for(var/datum/category_group/player_setup_category/PS in categories)
-		PS.save_character(W)
+		PS.save_character(writer)
 
 /datum/category_collection/player_setup_collection/proc/load_preferences(datum/pref_record_reader/R)
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.load_preferences(R)
 
-/datum/category_collection/player_setup_collection/proc/save_preferences(datum/pref_record_writer/W)
+/datum/category_collection/player_setup_collection/proc/save_preferences(datum/pref_record_writer/writer)
 	for(var/datum/category_group/player_setup_category/PS in categories)
-		PS.save_preferences(W)
+		PS.save_preferences(writer)
 
 /datum/category_collection/player_setup_collection/proc/header()
 	var/dat = ""
@@ -143,24 +146,24 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.finalize_character()
 
-/datum/category_group/player_setup_category/proc/save_character(datum/pref_record_writer/W)
+/datum/category_group/player_setup_category/proc/save_character(datum/pref_record_writer/writer)
 	// Sanitize all data, then save it
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_character()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.finalize_character()
 	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.save_character(W)
+		PI.save_character(writer)
 
 /datum/category_group/player_setup_category/proc/load_preferences(datum/pref_record_reader/R)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.load_preferences(R)
 
-/datum/category_group/player_setup_category/proc/save_preferences(datum/pref_record_writer/W)
+/datum/category_group/player_setup_category/proc/save_preferences(datum/pref_record_writer/writer)
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.sanitize_preferences()
 	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.save_preferences(W)
+		PI.save_preferences(writer)
 
 /datum/category_group/player_setup_category/proc/content(var/mob/user)
 	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
@@ -181,6 +184,7 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 * Category Item Setup *
 **********************/
 /datum/category_item/player_setup_item
+	abstract_type = /datum/category_item/player_setup_item
 	var/sort_order = 0
 	var/datum/preferences/pref
 
@@ -211,7 +215,7 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 /*
 * Called when the item is asked to save per character settings
 */
-/datum/category_item/player_setup_item/proc/save_character(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/proc/save_character(datum/pref_record_writer/writer)
 	return
 
 /*
@@ -223,7 +227,7 @@ var/global/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 /*
 * Called when the item is asked to save user/global settings
 */
-/datum/category_item/player_setup_item/proc/save_preferences(datum/pref_record_writer/W)
+/datum/category_item/player_setup_item/proc/save_preferences(datum/pref_record_writer/writer)
 	return
 
 /datum/category_item/player_setup_item/proc/content()

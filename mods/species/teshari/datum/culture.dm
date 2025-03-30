@@ -7,9 +7,9 @@
 	with little concept of privacy and a high tendency towards sharing and mutual aid. \
 	Many packs remain mostly on Sirisai, with those venturing into human space \
 	doing so via Skrellian sponsorship programmes, though others exist wholly outside of the homeworld."
-	language = /decl/language/neoavian
+	language = /decl/language/teshari
 	secondary_langs = list(
-		/decl/language/neoavian,
+		/decl/language/teshari,
 		/decl/language/sign
 	)
 

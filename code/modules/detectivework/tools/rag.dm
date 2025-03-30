@@ -1,4 +1,4 @@
-/obj/item/chems/glass/rag
+/obj/item/chems/rag
 	name = "rag"
 	desc = "For cleaning up messes, you suppose."
 	w_class = ITEM_SIZE_TINY
@@ -15,20 +15,14 @@
 	VAR_PRIVATE/_on_fire = 0
 	VAR_PRIVATE/burn_time = 20 //if the rag burns for too long it turns to ashes
 
-/obj/item/chems/glass/rag/get_edible_material_amount(mob/eater)
+/obj/item/chems/rag/get_edible_material_amount(mob/eater)
 	return 0
 
-/obj/item/chems/glass/rag/get_utensil_food_type()
-	return null
-
-/obj/item/chems/glass/rag/get_atoms_can_be_placed_into()
-	return null
-
-/obj/item/chems/glass/rag/Initialize()
+/obj/item/chems/rag/Initialize()
 	. = ..()
 	update_name()
 
-/obj/item/chems/glass/rag/Destroy()
+/obj/item/chems/rag/Destroy()
 	var/obj/item/chems/drinks/bottle/bottle = loc
 	if(istype(bottle) && bottle.rag == src)
 		bottle.rag = null
@@ -36,10 +30,10 @@
 	STOP_PROCESSING(SSobj, src) //so we don't continue turning to ash while gc'd
 	. = ..()
 
-/obj/item/chems/glass/rag/is_on_fire()
+/obj/item/chems/rag/is_on_fire()
 	return _on_fire
 
-/obj/item/chems/glass/rag/attack_self(mob/user)
+/obj/item/chems/rag/attack_self(mob/user)
 	if(is_on_fire() && user.try_unequip(src))
 		user.visible_message(SPAN_NOTICE("\The [user] stamps out [src]."), SPAN_NOTICE("You stamp out [src]."))
 		extinguish_fire()
@@ -51,21 +45,21 @@
 
 	return ..()
 
-/obj/item/chems/glass/rag/attackby(obj/item/W, mob/user)
-	if(W.isflamesource())
+/obj/item/chems/rag/attackby(obj/item/used_item, mob/user)
+	if(used_item.isflamesource())
 		if(is_on_fire())
 			to_chat(user, SPAN_WARNING("\The [src] is already blazing merrily!"))
 			return TRUE
 		ignite_fire()
 		if(is_on_fire())
-			visible_message(SPAN_DANGER("\The [user] lights \the [src] with \the [W]."))
+			visible_message(SPAN_DANGER("\The [user] lights \the [src] with \the [used_item]."))
 		else
-			to_chat(user, SPAN_WARNING("You attempt to light \the [src] with \the [W], but it doesn't seem to be flammable."))
+			to_chat(user, SPAN_WARNING("You attempt to light \the [src] with \the [used_item], but it doesn't seem to be flammable."))
 		update_name()
 		return TRUE
 	return ..()
 
-/obj/item/chems/glass/rag/update_name()
+/obj/item/chems/rag/update_name()
 	if(is_on_fire())
 		name_prefix = "burning"
 	else if(reagents && reagents.total_volume)
@@ -74,14 +68,14 @@
 		name_prefix = "dry"
 	. = ..()
 
-/obj/item/chems/glass/rag/on_update_icon()
+/obj/item/chems/rag/on_update_icon()
 	. = ..()
 	icon_state = "rag[is_on_fire()? "lit" : ""]"
 	var/obj/item/chems/drinks/bottle/B = loc
 	if(istype(B))
 		B.update_icon()
 
-/obj/item/chems/glass/rag/proc/remove_contents(mob/user, atom/trans_dest = null)
+/obj/item/chems/rag/proc/remove_contents(mob/user, atom/trans_dest = null)
 	if(!trans_dest && !user.loc)
 		return
 	if(reagents?.total_volume <= 0)
@@ -103,7 +97,7 @@
 	)
 	update_name()
 
-/obj/item/chems/glass/rag/proc/wipe_down(atom/target, mob/user)
+/obj/item/chems/rag/proc/wipe_down(atom/target, mob/user)
 
 	if(!reagents?.total_volume)
 		to_chat(user, SPAN_WARNING("The [initial(name)] is dry."))
@@ -114,7 +108,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] finishes wiping off \the [target]."))
 		reagents.touch_atom(target)
 
-/obj/item/chems/glass/rag/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
+/obj/item/chems/rag/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
 
 	if(is_on_fire())
 		user.visible_message(
@@ -159,28 +153,23 @@
 
 	return ..()
 
-/obj/item/chems/glass/rag/afterattack(atom/A, mob/user, proximity)
-	if(!proximity)
-		return
+/obj/item/chems/rag/afterattack(atom/target, mob/user, proximity)
+	if(!proximity || !istype(target))
+		return FALSE
 
-	if(istype(A, /obj/structure/reagent_dispensers))
-		if(!REAGENTS_FREE_SPACE(reagents))
-			to_chat(user, "<span class='warning'>\The [src] is already soaked.</span>")
-			return
+	if(standard_dispenser_refill(user, target)) //Are they clicking a water tank/some dispenser?
+		update_name()
+		return TRUE
 
-		if(A.reagents && A.reagents.trans_to_obj(src, reagents.maximum_volume))
-			user.visible_message("<span class='notice'>\The [user] soaks [src] using [A].</span>", "<span class='notice'>You soak [src] using [A].</span>")
-			update_name()
-		return
+	if(!is_on_fire() && (src in user))
+		if(ATOM_IS_OPEN_CONTAINER(target) && !isturf(target) && !(target in user))
+			remove_contents(user, target)
+		else if(!ismob(target)) //mobs are handled in use_on_mob() - this prevents us from wiping down people while smothering them.
+			wipe_down(target, user) // todo: test if this check is necessary, smothering returns TRUE which should prevent afterattack
+		return TRUE
+	return FALSE
 
-	if(!is_on_fire() && istype(A) && (src in user))
-		if(ATOM_IS_OPEN_CONTAINER(A) && !isturf(A) && !(A in user))
-			remove_contents(user, A)
-		else if(!ismob(A)) //mobs are handled in use_on_mob() - this prevents us from wiping down people while smothering them.
-			wipe_down(A, user)
-		return
-
-/obj/item/chems/glass/rag/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
+/obj/item/chems/rag/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature >= 50 + T0C)
 		ignite_fire()
 	if(exposed_temperature >= 900 + T0C)
@@ -191,17 +180,16 @@
 
 //rag must have a minimum of 2 units welder fuel and at least 80% of the reagents must be welder fuel.
 //maybe generalize flammable reagents someday
-/obj/item/chems/glass/rag/can_ignite()
+/obj/item/chems/rag/can_ignite()
 	var/total_fuel = 0
 	var/total_volume = 0
 	if(reagents)
 		total_volume += reagents.total_volume
-		for(var/rtype in reagents.reagent_volumes)
-			var/decl/material/R = GET_DECL(rtype)
-			total_fuel += REAGENT_VOLUME(reagents, rtype) * R.accelerant_value
+		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+			total_fuel += REAGENT_VOLUME(reagents, reagent) * reagent.accelerant_value
 	. = (total_fuel >= 2 && total_fuel >= total_volume*0.5)
 
-/obj/item/chems/glass/rag/ignite_fire()
+/obj/item/chems/rag/ignite_fire()
 	if(is_on_fire())
 		return
 	if(!can_ignite())
@@ -220,7 +208,7 @@
 	update_name()
 	update_icon()
 
-/obj/item/chems/glass/rag/extinguish_fire(mob/user, no_message = FALSE)
+/obj/item/chems/rag/extinguish_fire(mob/user, no_message = FALSE)
 	STOP_PROCESSING(SSobj, src)
 	set_light(0)
 	_on_fire = FALSE
@@ -231,10 +219,11 @@
 		visible_message("<span class='warning'>\The [src] falls apart!</span>")
 		new /obj/effect/decal/cleanable/ash(get_turf(src))
 		qdel(src)
+		return
 	update_name()
 	update_icon()
 
-/obj/item/chems/glass/rag/Process()
+/obj/item/chems/rag/Process()
 	if(!can_ignite())
 		visible_message("<span class='warning'>\The [src] burns out.</span>")
 		extinguish_fire()

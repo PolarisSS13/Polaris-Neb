@@ -91,7 +91,7 @@
 			to_chat(user, SPAN_NOTICE("You bless \the [A].")) // I wish it was this easy in nethack
 			LAZYSET(A.reagents.reagent_data, /decl/material/liquid/water, list("holy" = TRUE))
 
-/obj/item/bible/attackby(obj/item/W, mob/user)
+/obj/item/bible/attackby(obj/item/used_item, mob/user)
 	if(storage?.use_sound)
 		playsound(loc, storage.use_sound, 50, 1, -5)
 	return ..()

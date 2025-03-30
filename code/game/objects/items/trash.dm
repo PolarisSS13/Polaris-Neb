@@ -166,7 +166,7 @@
 
 /obj/item/trash/stick
 	name = "stick"
-	desc = "a stick from some snack food item or a lollipop, not even useful as crafting material."
+	desc = "A stick from some snack food item or a lollipop, not even useful as crafting material."
 	icon_state = "stick"
 
 /obj/item/trash/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)

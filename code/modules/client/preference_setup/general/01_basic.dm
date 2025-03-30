@@ -5,15 +5,14 @@
 	var/real_name						//our character's name
 	var/be_random_name = 0				//whether we are a random name every round
 
-// These two should always return a decl, NEVER null.
-/datum/preferences/proc/get_species_decl()
-	RETURN_TYPE(/decl/species)
-	return get_species_by_key(species || global.using_map.default_species)
-
+// This must always return a decl, NEVER null.
 /datum/preferences/proc/get_bodytype_decl()
 	RETURN_TYPE(/decl/bodytype)
 	var/decl/species/species_decl = get_species_decl()
 	return species_decl.get_bodytype_by_name(bodytype) || species_decl.default_bodytype
+
+/datum/category_item/player_setup_item/physical
+	abstract_type = /datum/category_item/player_setup_item/physical
 
 /datum/category_item/player_setup_item/physical/basic
 	name = "Basic"
@@ -32,14 +31,14 @@
 	else
 		pref.spawnpoint = global.using_map.default_spawn
 
-/datum/category_item/player_setup_item/physical/basic/save_character(datum/pref_record_writer/W)
-	W.write("gender",                pref.gender)
-	W.write("bodytype",              pref.bodytype)
-	W.write("real_name",             pref.real_name)
-	W.write("name_is_always_random", pref.be_random_name)
+/datum/category_item/player_setup_item/physical/basic/save_character(datum/pref_record_writer/writer)
+	writer.write("gender",                pref.gender)
+	writer.write("bodytype",              pref.bodytype)
+	writer.write("real_name",             pref.real_name)
+	writer.write("name_is_always_random", pref.be_random_name)
 	var/decl/spawnpoint/spawnpoint = GET_DECL(pref.spawnpoint)
 	if(spawnpoint)
-		W.write("spawnpoint", spawnpoint.uid)
+		writer.write("spawnpoint", spawnpoint.uid)
 
 /datum/category_item/player_setup_item/physical/basic/sanitize_character()
 
@@ -51,7 +50,7 @@
 	if(!valid_spawn)
 		pref.spawnpoint = global.using_map.default_spawn
 
-	var/decl/species/S = get_species_by_key(pref.species) || get_species_by_key(global.using_map.default_species)
+	var/decl/species/S = pref.get_species_decl()
 	pref.be_random_name = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
 
 	var/decl/pronouns/pronouns
@@ -78,7 +77,7 @@
 	. += "<hr>"
 
 	. += "<b>Bodytype:</b> "
-	var/decl/species/S = get_species_by_key(pref.species)
+	var/decl/species/S = pref.get_species_decl()
 	for(var/decl/bodytype/B in S.available_bodytypes)
 		if(B.name == pref.bodytype)
 			. += "<span class='linkOn'>[capitalize(B.pref_name)]</span>"
@@ -102,7 +101,7 @@
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/physical/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
-	var/decl/species/S = get_species_by_key(pref.species)
+	var/decl/species/S = pref.get_species_decl()
 
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null

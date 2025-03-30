@@ -7,7 +7,7 @@
 	max_health = 150
 	var/embedded_flag	  //To check if we've need to roll for damage on movement while an item is imbedded in us.
 
-/mob/living/human/Initialize(mapload, species_name, datum/mob_snapshot/supplied_appearance)
+/mob/living/human/Initialize(mapload, species_uid, datum/mob_snapshot/supplied_appearance)
 
 	current_health = max_health
 	reset_hud_overlays()
@@ -37,7 +37,6 @@
 
 	LAZYCLEARLIST(smell_cooldown)
 
-	QDEL_NULL(attack_selector)
 	QDEL_NULL(vessel)
 	QDEL_NULL(touching)
 
@@ -130,13 +129,13 @@
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(I)
-			src.examinate(I)
+			src.examine_verb(I)
 			return TOPIC_HANDLED
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
 		if(M)
-			src.examinate(M)
+			src.examine_verb(M)
 			return TOPIC_HANDLED
 
 	return ..()
@@ -454,7 +453,7 @@
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."),       \
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."))
 		custom_pain(msg,40,affecting = organ)
-	organ.take_external_damage(rand(1,3) + O.w_class, DAM_EDGE, 0)
+	organ.take_damage(rand(1,3) + O.w_class, damage_flags = DAM_EDGE)
 
 /mob/proc/set_bodytype(var/decl/bodytype/new_bodytype)
 	return
@@ -480,24 +479,23 @@
 	update_eyes()
 	return TRUE
 
-/mob/proc/set_species(var/new_species_name, var/new_bodytype = null)
+/mob/proc/set_species(var/new_species_uid, var/new_bodytype = null)
 	return
 
 //set_species should not handle the entirety of initing the mob, and should not trigger deep updates
 //It focuses on setting up species-related data, without force applying them uppon organs and the mob's appearance.
 // For transforming an existing mob, look at change_species()
-/mob/living/human/set_species(var/new_species_name, var/new_bodytype = null)
-	if(!new_species_name)
-		CRASH("set_species on mob '[src]' was passed a null species name '[new_species_name]'!")
-	var/new_species = get_species_by_key(new_species_name)
-	if(species?.name == new_species_name)
+/mob/living/human/set_species(var/new_species_uid, var/new_bodytype = null)
+	if(!new_species_uid)
+		CRASH("set_species on mob '[src]' was passed a null species uid!")
+	var/decl/species/new_species = decls_repository.get_decl_by_id(new_species_uid)
+	if(species?.uid == new_species_uid)
 		return
 	if(!new_species)
-		CRASH("set_species on mob '[src]' was passed a bad species name '[new_species_name]'!")
+		CRASH("set_species on mob '[src]' was passed a bad species uid '[new_species_uid]'!")
 
 	//Handle old species transition
 	if(species)
-		species.remove_base_auras(src)
 		species.remove_inherent_verbs(src)
 
 	//Update our species
@@ -547,7 +545,7 @@
 //Syncs background categories/values to the currently set species, and may trigger a language update
 /mob/living/human/proc/apply_species_background_info()
 	var/update_lang
-	for(var/cat_type in global.using_map.get_background_categories())
+	for(var/cat_type in decls_repository.get_decls_of_subtype(/decl/background_category))
 		if(species.force_background_info && species.force_background_info[cat_type])
 			update_lang = TRUE
 			set_background_value(cat_type, species.force_background_info[cat_type], defer_language_update = TRUE)
@@ -588,7 +586,7 @@
 // Triggers deep update of limbs and hud
 /mob/living/human/proc/apply_species_appearance()
 	if(!species)
-		icon_state = lowertext(SPECIES_HUMAN)
+		icon_state = null // this used to set it to "human" but that's not even an icon state that exists, so
 	else
 		species.apply_appearance(src)
 
@@ -915,7 +913,7 @@
 	..()
 	if(should_have_organ(BP_STOMACH))
 		var/obj/item/organ/internal/stomach = GET_INTERNAL_ORGAN(src, BP_STOMACH)
-		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.damage)))
+		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.get_organ_damage())))
 			if(should_have_organ(BP_HEART))
 				vessel.trans_to_obj(vomit, 5)
 			else
@@ -975,14 +973,15 @@
 		mind.name = newname
 
 //Human mob specific init code. Meant to be used only on init.
-/mob/living/human/proc/setup_human(species_name, datum/mob_snapshot/supplied_appearance)
+/mob/living/human/proc/setup_human(species_uid, datum/mob_snapshot/supplied_appearance)
 	if(supplied_appearance)
-		species_name = supplied_appearance.root_species
-	else if(!species_name)
-		species_name = global.using_map.default_species //Humans cannot exist without a species!
+		species_uid = supplied_appearance.root_species.uid
+	else if(!species_uid)
+		species_uid = global.using_map.default_species //Humans cannot exist without a species!
 
-	set_species(species_name, supplied_appearance?.root_bodytype)
+	set_species(species_uid, supplied_appearance?.root_bodytype)
 	var/decl/bodytype/root_bodytype = get_bodytype() // root bodytype is set in set_species
+	ASSERT((!supplied_appearance?.root_bodytype) || (root_bodytype == supplied_appearance.root_bodytype))
 	if(!get_skin_colour())
 		set_skin_colour(root_bodytype.base_color, skip_update = TRUE)
 	if(!get_eye_colour())
@@ -1017,7 +1016,7 @@
 		SetName(initial(name))
 
 //Runs last after setup and after the parent init has been executed.
-/mob/living/human/proc/post_setup(species_name, datum/mob_snapshot/supplied_appearance)
+/mob/living/human/proc/post_setup(species_uid, datum/mob_snapshot/supplied_appearance)
 	try_refresh_visible_overlays() //Do this exactly once per setup
 
 /mob/living/human/handle_flashed(var/flash_strength)
@@ -1132,3 +1131,13 @@
 
 /mob/living/human/get_attack_telegraph_delay()
 	return client ? 0 : DEFAULT_ATTACK_COOLDOWN
+
+/mob/living/human/isSynthetic()
+	if(isnull(full_prosthetic))
+		robolimb_count = 0
+		var/list/limbs = get_external_organs()
+		for(var/obj/item/organ/external/E in limbs)
+			if(BP_IS_PROSTHETIC(E))
+				robolimb_count++
+		full_prosthetic = robolimb_count > 0 && (robolimb_count == LAZYLEN(limbs)) //If no organs, no way to tell
+	return full_prosthetic

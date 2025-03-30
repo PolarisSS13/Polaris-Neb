@@ -24,11 +24,11 @@
 		MA.plane = FLOAT_PLANE
 		underlays += MA
 
-/obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/chems/syringe))
-		if(!user.try_unequip(I, src))
+/obj/item/syringe_cartridge/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/chems/syringe))
+		if(!user.try_unequip(used_item, src))
 			return TRUE
-		syringe = I
+		syringe = used_item
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
 		set_sharp(TRUE)
 		name = "syringe dart"
@@ -71,7 +71,7 @@
 
 /obj/item/gun/launcher/syringe
 	name = "syringe gun"
-	desc = "A spring loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
+	desc = "A spring-loaded rifle designed to fit syringes, designed to incapacitate unruly patients from a distance."
 	icon = 'icons/obj/guns/launcher/syringe.dmi'
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_LARGE
@@ -128,9 +128,9 @@
 	)
 	return TRUE
 
-/obj/item/gun/launcher/syringe/attackby(var/obj/item/A, mob/user)
-	if(istype(A, /obj/item/syringe_cartridge))
-		var/obj/item/syringe_cartridge/C = A
+/obj/item/gun/launcher/syringe/attackby(var/obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/syringe_cartridge))
+		var/obj/item/syringe_cartridge/C = used_item
 		if(darts.len >= max_darts)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return TRUE
@@ -152,7 +152,7 @@
 
 /obj/item/gun/launcher/syringe/disguised
 	name = "deluxe electronic cigarette"
-	desc = "A premium model eGavana MK3 electronic cigarette, shaped like a cigar."
+	desc = "A premium model eHavana MK3 electronic cigarette, shaped like a cigar."
 	icon = 'icons/clothing/mask/smokables/cigarette_electronic_deluxe.dmi'
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_SMALL
@@ -164,7 +164,7 @@
 	. = ..()
 	add_overlay("[icon_state]-loaded")
 
-/obj/item/gun/launcher/syringe/disguised/examine(mob/user, distance)
+/obj/item/gun/launcher/syringe/disguised/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "The button is a little stiff.")
+		. += "The button is a little stiff."

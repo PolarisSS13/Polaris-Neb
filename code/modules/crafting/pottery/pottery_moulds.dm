@@ -57,7 +57,7 @@
 	else
 		QDEL_NULL(reagents)
 
-/obj/item/chems/mould/attackby(obj/item/W, mob/user)
+/obj/item/chems/mould/attackby(obj/item/used_item, mob/user)
 
 	if(user.check_intent(I_FLAG_HARM))
 		return ..()
@@ -65,20 +65,20 @@
 	// This is kind of gross but getting /chems/attackby()
 	// standard_pour_into() to cooperate is a bit beyond me
 	// at the moment.
-	if(istype(W, /obj/item/chems/crucible))
+	if(istype(used_item, /obj/item/chems/crucible))
 
 		if(material?.hardness <= MAT_VALUE_MALLEABLE)
 			to_chat(user, SPAN_WARNING("\The [src] is currently too soft to be used as a mould."))
 			return TRUE
 
-		var/obj/item/chems/vessel = W
+		var/obj/item/chems/vessel = used_item
 		if(vessel.standard_pour_into(user, src))
 			return TRUE
 
-	if(try_crack_mold(user, W))
+	if(try_crack_mold(user, used_item))
 		return TRUE
 
-	if(try_take_impression(user, W))
+	if(try_take_impression(user, used_item))
 		return TRUE
 
 	return ..()
@@ -96,8 +96,7 @@
 		to_chat(user, SPAN_WARNING("\The [src] is not full yet!"))
 		return TRUE
 
-	for(var/reagent_type in reagents.reagent_volumes)
-		var/decl/material/reagent = GET_DECL(reagent_type)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 		if(reagent.melting_point && temperature >= reagent.melting_point)
 			to_chat(user, SPAN_WARNING("The contents of \the [src] are still molten! Wait for it to cool down."))
 			return TRUE
@@ -116,11 +115,11 @@
 	product.dropInto(loc)
 
 	reagents.remove_reagent(product_mat.type, REAGENT_VOLUME(reagents, product_mat.type))
-	for(var/reagent_type in reagents.reagent_volumes)
-		if(reagent_type == product_mat.type)
+	for(var/decl/material/reagent as anything in reagents.reagent_volumes)
+		if(reagent.type == product_mat.type)
 			continue
 		LAZYINITLIST(product.matter)
-		product.matter[reagent_type] += max(1, round(reagents.reagent_volumes[reagent_type] / REAGENT_UNITS_PER_MATERIAL_UNIT))
+		product.matter[reagent.type] += max(1, round(reagents.reagent_volumes[reagent] / REAGENT_UNITS_PER_MATERIAL_UNIT))
 	reagents.clear_reagents()
 	if(length(product_metadata))
 		product.take_mould_metadata(product_metadata)

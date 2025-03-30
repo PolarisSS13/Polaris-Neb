@@ -112,7 +112,7 @@
 /turf/unsimulated/floor/plating,
 /area/map_template/syndicate_mothership/raider_base)
 "aA" = (
-/obj/structure/aliumizer,
+/obj/abstract/modpack_compat/aliumizer,
 /turf/unsimulated/floor/asteroid,
 /area/map_template/syndicate_mothership/raider_base)
 "aB" = (
@@ -604,7 +604,7 @@
 /area/map_template/syndicate_mothership/raider_base)
 "cc" = (
 /obj/structure/table/laminate,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/random/loot,
 /turf/unsimulated/floor/laminate,
 /area/map_template/syndicate_mothership/raider_base)
@@ -737,7 +737,7 @@
 /obj/machinery/door/blast/regular/open{
 	id_tag = "SkipjackShuttersNorth";
 	name = "Blast Doors";
-
+	
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/brown,
@@ -830,7 +830,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "cL" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /turf/floor/shuttle/red,
@@ -856,7 +856,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "cN" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/floor/shuttle/red,
@@ -903,7 +903,7 @@
 /area/map_template/skipjack_station/start)
 "cT" = (
 /obj/structure/rack,
-/obj/random/hardsuit,
+/obj/random/hardsuit/heist,
 /obj/item/clothing/glasses/thermal/plain/monocle,
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
@@ -920,7 +920,7 @@
 /area/map_template/skipjack_station/start)
 "cX" = (
 /obj/structure/rack,
-/obj/random/hardsuit,
+/obj/random/hardsuit/heist,
 /obj/item/clothing/head/pirate,
 /obj/item/gun/launcher/money,
 /turf/floor/shuttle/red,
@@ -1104,7 +1104,7 @@
 	dir = 4;
 	id_tag = "SkipjackShuttersWest";
 	name = "Skipjack Shutters";
-
+	
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/brown,
@@ -1131,7 +1131,7 @@
 	dir = 8;
 	id_tag = "SkipjackShuttersEast";
 	name = "Skipjack Shutters";
-
+	
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /obj/effect/paint/brown,
@@ -1203,7 +1203,7 @@
 	dir = 4;
 	id_tag = "SkipjackShuttersWest";
 	name = "Skipjack Shutters";
-
+	
 	},
 /obj/effect/wallframe_spawn/reinforced/titanium,
 /turf/floor/plating,
@@ -1229,7 +1229,7 @@
 /turf/floor/plating,
 /area/map_template/skipjack_station/start)
 "dM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -1243,7 +1243,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "dO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -1298,7 +1298,7 @@
 /turf/floor/plating,
 /area/map_template/skipjack_station/start)
 "dX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/shuttle/red,
@@ -1310,7 +1310,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "dZ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/shuttle/red,

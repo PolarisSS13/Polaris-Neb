@@ -58,12 +58,12 @@
 		queue_hand_rebuild()
 
 /mob/living/select_held_item_slot(var/slot)
+	. = ..()
 	var/last_slot = get_active_held_item_slot()
 	if(slot != last_slot && (slot in get_held_item_slots()))
 		_held_item_slot_selected = slot
 		if(istype(hud_used))
-			for(var/atom/hand as anything in hud_used.hand_hud_objects)
-				hand.update_icon()
+			hud_used.update_hand_elements()
 		var/obj/item/I = get_active_held_item()
 		if(istype(I))
 			I.on_active_hand()
@@ -195,12 +195,12 @@
 	if(!equip_to_appropriate_slot(I))
 		to_chat(src, SPAN_WARNING("You are unable to equip that."))
 
-/mob/living/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)
+/mob/living/proc/equip_in_one_of_slots(obj/item/prop, list/slots, del_on_fail = 1)
 	for (var/slot in slots)
-		if (equip_to_slot_if_possible(W, slots[slot], del_on_fail = 0))
+		if (equip_to_slot_if_possible(prop, slots[slot], del_on_fail = 0))
 			return slot
 	if (del_on_fail)
-		qdel(W)
+		qdel(prop)
 	return null
 
 //Same as get_covering_equipped_items, but using target zone instead of bodyparts flags

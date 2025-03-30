@@ -57,7 +57,10 @@ SUBSYSTEM_DEF(lighting)
 		var/datum/level_data/level = SSmapping.levels_by_z[zlevel]
 		for (var/turf/tile as anything in block(1, 1, zlevel, level.level_max_width, level.level_max_height)) // include TRANSITIONEDGE turfs
 			if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(tile))
-				tile.lighting_build_overlay()
+				if(!isnull(tile.lighting_overlay))
+					log_warning("Attempted to create lighting_overlay on [tile.get_log_info_line()] when it already had one.")
+					continue
+				new /atom/movable/lighting_overlay(tile)
 				overlaycount++
 			CHECK_TICK
 

@@ -19,8 +19,8 @@
 	if(condiment?.condiment_type)
 		add_to_reagents(condiment.condiment_type, reagents.maximum_volume)
 
-/obj/item/chems/condiment/attackby(var/obj/item/W, var/mob/user)
-	if(IS_PEN(W))
+/obj/item/chems/condiment/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_PEN(used_item))
 		var/tmp_label = sanitize_safe(input(user, "Enter a label for [name]", "Label", label_text), MAX_NAME_LEN)
 		if(tmp_label == label_text)
 			return TRUE

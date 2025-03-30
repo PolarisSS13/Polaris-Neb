@@ -15,6 +15,7 @@
 	var/light_strength = 3
 	var/busy = 0
 
+	// Dummy object used to hold bot access strings. TODO: just put it on the mob.
 	var/obj/access_scanner = null
 	var/list/req_access = list()
 
@@ -56,9 +57,9 @@
 /mob/living/bot/handle_regular_status_updates()
 	. = ..()
 	if(.)
-		set_status(STAT_WEAK, 0)
-		set_status(STAT_STUN, 0)
-		set_status(STAT_PARA, 0)
+		set_status_condition(STAT_WEAK, 0)
+		set_status_condition(STAT_STUN, 0)
+		set_status_condition(STAT_PARA, 0)
 
 /mob/living/bot/get_life_damage_types()
 	var/static/list/life_damage_types = list(
@@ -90,8 +91,8 @@
 /mob/living/bot/try_awaken(mob/user)
 	return FALSE
 
-/mob/living/bot/attackby(var/obj/item/O, var/mob/user)
-	if(O.GetIdCard())
+/mob/living/bot/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.GetIdCard())
 		if(access_scanner.allowed(user) && !open)
 			locked = !locked
 			to_chat(user, "<span class='notice'>Controls are now [locked ? "locked." : "unlocked."]</span>")
@@ -101,7 +102,7 @@
 		else
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 		return TRUE
-	else if(IS_SCREWDRIVER(O))
+	else if(IS_SCREWDRIVER(used_item))
 		if(!locked)
 			open = !open
 			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
@@ -109,7 +110,7 @@
 		else
 			to_chat(user, "<span class='notice'>You need to unlock the controls first.</span>")
 		return TRUE
-	else if(IS_WELDER(O))
+	else if(IS_WELDER(used_item))
 		if(current_health < get_max_health())
 			if(open)
 				heal_overall_damage(10)
@@ -374,3 +375,17 @@
 	. = ..()
 	if(istype(botcard) && !is_type_in_list(botcard, exceptions))
 		LAZYDISTINCTADD(., botcard)
+
+// We don't want to drop these on gib().
+/mob/living/bot/physically_destroyed(skip_qdel)
+	QDEL_NULL(botcard)
+	QDEL_NULL(access_scanner)
+	return ..()
+
+/mob/living/bot/Destroy()
+	QDEL_NULL(botcard)
+	QDEL_NULL(access_scanner)
+	return ..()
+
+/mob/living/bot/isSynthetic()
+	return TRUE

@@ -36,12 +36,12 @@
 	desc = "A cheap Lucky 1337 electronic cigarette, styled like a traditional cigarette."
 	icon = 'icons/clothing/mask/smokables/cigarette_electronic_cheap.dmi'
 
-/obj/item/clothing/mask/smokable/ecig/simple/examine(mob/user)
+/obj/item/clothing/mask/smokable/ecig/simple/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(ec_cartridge)
-		to_chat(user,SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining."))
+		. += SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining.")
 	else
-		to_chat(user,SPAN_NOTICE("There's no cartridge connected."))
+		. += SPAN_NOTICE("There's no cartridge connected.")
 
 /obj/item/clothing/mask/smokable/ecig/util
 	name = "electronic cigarette"
@@ -55,28 +55,28 @@
 	. = ..()
 	set_color(pick(ecig_colors))
 
-/obj/item/clothing/mask/smokable/ecig/util/examine(mob/user)
+/obj/item/clothing/mask/smokable/ecig/util/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(ec_cartridge)
-		to_chat(user,SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining."))
+		. += SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining.")
 	else
-		to_chat(user,SPAN_NOTICE("There's no cartridge connected."))
+		. += SPAN_NOTICE("There's no cartridge connected.")
 
 /obj/item/clothing/mask/smokable/ecig/deluxe
 	name = "deluxe electronic cigarette"
-	desc = "A premium model eGavana MK3 electronic cigarette, shaped like a cigar."
+	desc = "A premium model eHavana MK3 electronic cigarette, shaped like a cigar."
 	icon = 'icons/clothing/mask/smokables/cigarette_electronic_deluxe.dmi'
 
 /obj/item/clothing/mask/smokable/ecig/deluxe/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 	loaded_cell_type = loaded_cell_type || /obj/item/cell/device/high
 	return ..(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value) //enough for four cartridges
 
-/obj/item/clothing/mask/smokable/ecig/deluxe/examine(mob/user)
+/obj/item/clothing/mask/smokable/ecig/deluxe/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(ec_cartridge)
-		to_chat(user,SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining."))
+		. += SPAN_NOTICE("There are [round(ec_cartridge.reagents.total_volume, 1)] units of liquid remaining.")
 	else
-		to_chat(user,SPAN_NOTICE("There's no cartridge connected."))
+		. += SPAN_NOTICE("There's no cartridge connected.")
 
 /obj/item/clothing/mask/smokable/ecig/proc/Deactivate()
 	lit = FALSE
@@ -131,14 +131,14 @@
 		M.update_equipment_overlay(slot_wear_mask_str, redraw_mob = FALSE)
 		M.update_inhand_overlays()
 
-/obj/item/clothing/mask/smokable/ecig/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I, /obj/item/chems/ecig_cartridge))
+/obj/item/clothing/mask/smokable/ecig/attackby(var/obj/item/used_item, var/mob/user)
+	if(istype(used_item, /obj/item/chems/ecig_cartridge))
 		if (ec_cartridge)//can't add second one
 			to_chat(user, SPAN_NOTICE("A cartridge has already been installed."))
-		else if(user.try_unequip(I, src))//fits in new one
-			ec_cartridge = I
+		else if(user.try_unequip(used_item, src))//fits in new one
+			ec_cartridge = used_item
 			update_icon()
-			to_chat(user, SPAN_NOTICE("You insert \the [I] into \the [src]."))
+			to_chat(user, SPAN_NOTICE("You insert \the [used_item] into \the [src]."))
 		return TRUE
 	return ..()
 
@@ -187,9 +187,9 @@
 	volume = 20
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 
-/obj/item/chems/ecig_cartridge/examine(mob/user)//to see how much left
+/obj/item/chems/ecig_cartridge/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "The cartridge has [reagents.total_volume] units of liquid remaining.")
+	. += "The cartridge has [reagents.total_volume] units of liquid remaining."
 
 //flavours
 /obj/item/chems/ecig_cartridge/blank

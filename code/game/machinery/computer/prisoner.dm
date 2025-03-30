@@ -50,8 +50,8 @@
 	show_browser(user, dat, "window=computer;size=400x500")
 	onclose(user, "computer")
 
-/obj/machinery/computer/prisoner/Topic(href, href_list)
-	if(..())
+/obj/machinery/computer/prisoner/OnTopic(mob/user, href_list)
+	if((. = ..()))
 		return
 	. = TOPIC_REFRESH
 
@@ -68,15 +68,15 @@
 		if(I)	I.activate(10)
 
 	else if(href_list["lock"])
-		if(src.allowed(usr))
+		if(allowed(user))
 			screen = !screen
 		else
-			to_chat(usr, "Unauthorized Access.")
+			to_chat(user, "Unauthorized Access.")
 
 	else if(href_list["warn"])
-		var/warning = sanitize(input(usr,"Message:","Enter your message here!",""))
-		if(!warning) return
+		var/warning = sanitize(input(user,"Message:","Enter your message here!",""))
+		if(!warning) return TOPIC_HANDLED
 		var/obj/item/implant/I = locate(href_list["warn"])
-		if((I)&&(I.imp_in))
-			var/mob/living/R = I.imp_in
-			to_chat(R, "<span class='notice'>You hear a voice in your head saying: '[warning]'</span>")
+		if(I?.imp_in)
+			var/mob/living/victim = I.imp_in
+			to_chat(victim, "<span class='notice'>You hear a voice in your head saying: '[warning]'</span>")

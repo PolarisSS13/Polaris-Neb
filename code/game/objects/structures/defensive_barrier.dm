@@ -7,7 +7,7 @@
 	throwpass =  TRUE
 	anchored =   TRUE
 	atom_flags = ATOM_FLAG_CLIMBABLE | ATOM_FLAG_CHECKS_BORDER
-	can_buckle = TRUE
+	can_buckle = TRUE // TODO: Is it actually... intended that you can buckle stuff to this?
 	material =   /decl/material/solid/metal/steel
 	material_alteration = MAT_FLAG_ALTERATION_DESC | MAT_FLAG_ALTERATION_NAME
 	max_health = 200
@@ -127,9 +127,9 @@
 	update_icon()
 	return TRUE
 
-/obj/structure/defensive_barrier/attackby(obj/item/W, mob/user)
+/obj/structure/defensive_barrier/attackby(obj/item/used_item, mob/user)
 
-	if(IS_SCREWDRIVER(W) && density)
+	if(IS_SCREWDRIVER(used_item) && density)
 		user.visible_message(SPAN_NOTICE("\The [user] begins to [secured ? "secure" : "unsecure"] \the [src]..."))
 		playsound(src, 'sound/items/Screwdriver.ogg', 100, 1)
 		if(!do_after(user, 30, src))
@@ -199,9 +199,9 @@
 		user.drop_from_inventory(src)
 	qdel(src)
 
-/obj/item/defensive_barrier/attackby(obj/item/W, mob/user)
-	if(stored_health < stored_max_health && IS_WELDER(W))
-		if(W.do_tool_interaction(TOOL_WELDER, user, src,        \
+/obj/item/defensive_barrier/attackby(obj/item/used_item, mob/user)
+	if(stored_health < stored_max_health && IS_WELDER(used_item))
+		if(used_item.do_tool_interaction(TOOL_WELDER, user, src,        \
 		  max(5, round((stored_max_health-stored_health) / 5)), \
 		  "repairing the damage to", "repairing the damage to", \
 		  "You fail to patch the damage to \the [src].",        \

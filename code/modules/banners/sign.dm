@@ -21,5 +21,5 @@
 	. = ..()
 
 /obj/item/banner/sign/random/Initialize(ml, material_key)
-	material = pick(typesof(/decl/material/solid/organic/wood))
+	material = pick(decls_repository.get_decls_of_subtype(/decl/material/solid/organic/wood))
 	. = ..()

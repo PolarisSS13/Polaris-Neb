@@ -28,11 +28,11 @@ MANTIDIFY(/obj/item/tank/jetpack/carbondioxide, "maneuvering pack",          "pr
 /obj/item/chems/glass/bucket/ascent
 	name = "portable liquid cleaning agent carrier"
 	desc = "An alien container of some sort."
-	icon = 'mods/species/ascent/icons/ascent_doodads.dmi'
+	icon = 'mods/species/ascent/icons/ascent_bucket.dmi'
 
 /obj/item/knife/kitchen/cleaver/ascent
 	name = "xenobiological flenser"
-	desc = "A mindboggingly alien tool for flensing flesh."
+	desc = "A mind-boggingly alien tool for flensing flesh."
 	icon = 'mods/species/ascent/icons/ascent_doodads.dmi'
 	icon_state = "xenobutch"
 
@@ -44,7 +44,7 @@ MANTIDIFY(/obj/item/tank/jetpack/carbondioxide, "maneuvering pack",          "pr
 
 /obj/item/food/hydration
 	name = "hydration ration"
-	desc = "Approximately ten units of liquid hydration in a edible membrane. Unflavored."
+	desc = "Approximately ten units of liquid hydration in an edible membrane. Unflavored."
 	icon = 'mods/species/ascent/icons/ascent_doodads.dmi'
 	icon_state = "h2o_ration"
 	bitesize = 10

@@ -1,4 +1,5 @@
 /datum/keybinding/movement
+	abstract_type = /datum/keybinding/movement
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/movement/north

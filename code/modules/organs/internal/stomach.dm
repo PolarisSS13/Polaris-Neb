@@ -12,7 +12,7 @@
 	QDEL_NULL(ingested)
 	. = ..()
 
-/obj/item/organ/internal/stomach/set_species(species_name)
+/obj/item/organ/internal/stomach/set_species(species_uid)
 	if(species?.gluttonous)
 		verbs -= /obj/item/organ/internal/stomach/proc/throw_up
 	. = ..()
@@ -94,7 +94,7 @@
 
 	if(owner)
 		var/functioning = is_usable()
-		if(damage >= min_bruised_damage && prob((damage / max_damage) * 100))
+		if(_organ_damage >= min_bruised_damage && prob((_organ_damage / max_damage) * 100))
 			functioning = FALSE
 
 		if(functioning)

@@ -15,15 +15,15 @@
 	if(populate && reagents.primary_reagent)
 		setLabel(reagents.get_primary_reagent_name())
 
-/obj/item/chems/chem_disp_cartridge/examine(mob/user)
+/obj/item/chems/chem_disp_cartridge/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It has a capacity of [volume] units.")
+	. += "It has a capacity of [volume] units."
 	if(reagents.total_volume <= 0)
-		to_chat(user, "It is empty.")
+		. += "It is empty."
 	else
-		to_chat(user, "It contains [reagents.total_volume] units of reagents.")
+		. += "It contains [reagents.total_volume] units of reagents."
 	if(!ATOM_IS_OPEN_CONTAINER(src))
-		to_chat(user, "The cap is sealed.")
+		. += "The cap is sealed."
 
 /obj/item/chems/chem_disp_cartridge/verb/verb_set_label(L as text)
 	set name = "Set Cartridge Label"

@@ -71,6 +71,8 @@
 	var/old_affecting_heat_sources = affecting_heat_sources
 	var/old_height =           get_physical_height()
 	var/old_alpha_mask_state = get_movable_alpha_mask_state(null)
+	var/old_event_listeners =  event_listeners
+	var/old_listening_to =     _listening_to
 
 	var/old_ambience =         ambient_light
 	var/old_ambience_mult =    ambient_light_multiplier
@@ -95,34 +97,37 @@
 	qdel(src)
 	. = new N(src)
 
-	var/turf/W = .
-	W.above =            old_above     // Multiz ref tracking.
-	W.prev_type =        old_prev_type // Shuttle transition turf tracking.
+	var/turf/changed_turf = .
+	changed_turf.above =            old_above     // Multiz ref tracking.
+	changed_turf.prev_type =        old_prev_type // Shuttle transition turf tracking.
+	// Set our observation bookkeeping lists back.
+	changed_turf.event_listeners =  old_event_listeners
+	changed_turf._listening_to =    old_listening_to
 
-	W.affecting_heat_sources = old_affecting_heat_sources
+	changed_turf.affecting_heat_sources = old_affecting_heat_sources
 
 	if (permit_ao)
 		regenerate_ao()
 
 	// Update ZAS, atmos and fire.
-	if(keep_air && W.can_inherit_air)
-		W.air = old_air
+	if(keep_air && changed_turf.can_inherit_air)
+		changed_turf.air = old_air
 	if(old_fire)
-		if(W.simulated)
-			W.fire = old_fire
+		if(changed_turf.simulated)
+			changed_turf.fire = old_fire
 		else if(old_fire)
 			qdel(old_fire)
 
-	if(old_flooded != W.flooded)
+	if(old_flooded != changed_turf.flooded)
 		set_flooded(old_flooded)
 
 	// Raise appropriate events.
-	W.post_change()
+	changed_turf.post_change()
 	if(tell_universe)
-		global.universe.OnTurfChange(W)
+		global.universe.OnTurfChange(changed_turf)
 
-	if(W.density != old_density)
-		RAISE_EVENT(/decl/observ/density_set, W, old_density, W.density)
+	if(changed_turf.density != old_density && changed_turf.event_listeners?[/decl/observ/density_set])
+		changed_turf.raise_event_non_global(/decl/observ/density_set, old_density, changed_turf.density)
 
 	// lighting stuff
 
@@ -153,12 +158,12 @@
 	// end of lighting stuff
 
 	// we check the var rather than the proc, because area outside values usually shouldn't be set on turfs
-	W.last_outside_check = OUTSIDE_UNCERTAIN
-	if(W.is_outside != old_outside)
+	changed_turf.last_outside_check = OUTSIDE_UNCERTAIN
+	if(changed_turf.is_outside != old_outside)
 		// This will check the exterior atmos participation of this turf and all turfs connected by open space below.
-		W.set_outside(old_outside, skip_weather_update = TRUE)
+		changed_turf.set_outside(old_outside, skip_weather_update = TRUE)
 	else // We didn't already update our external atmos participation in set_outside.
-		if(HasBelow(z) && (W.is_open() != old_is_open)) // Otherwise, we do it here if the open status of the turf has changed.
+		if(HasBelow(z) && (changed_turf.is_open() != old_is_open)) // Otherwise, we do it here if the open status of the turf has changed.
 			var/turf/checking = src
 			while(HasBelow(checking.z))
 				checking = GetBelow(checking)
@@ -168,19 +173,19 @@
 				if(!checking.is_open())
 					break
 		// In case the turf isn't marked for update in Initialize (e.g. space), we call this to create any unsimulated edges necessary.
-		if(W.zone_membership_candidate != old_zone_membership_candidate)
+		if(changed_turf.zone_membership_candidate != old_zone_membership_candidate)
 			update_external_atmos_participation()
 
-	W.update_weather(force_update_below = W.is_open() != old_is_open)
+	changed_turf.update_weather(force_update_below = changed_turf.is_open() != old_is_open)
 
 	if(keep_height)
-		W.set_physical_height(old_height)
+		changed_turf.set_physical_height(old_height)
 
 	if(update_open_turfs_above)
 		update_open_above(old_open_turf_type)
 
 	if(old_alpha_mask_state != get_movable_alpha_mask_state(null))
-		for(var/atom/movable/AM as anything in W)
+		for(var/atom/movable/AM as anything in changed_turf)
 			AM.update_turf_alpha_mask()
 
 /turf/proc/transport_properties_from(turf/other, transport_air)
@@ -207,6 +212,8 @@
 
 	// Unlint this to copy the actual raw vars.
 	UNLINT(_flooring = other._flooring)
+	if(islist(_flooring))
+		_flooring = _flooring.Copy()
 	UNLINT(_base_flooring = other._base_flooring)
 	set_floor_broken(other._floor_broken, TRUE)
 	set_floor_burned(other._floor_burned)

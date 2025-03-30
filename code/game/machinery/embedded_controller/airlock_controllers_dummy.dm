@@ -1,7 +1,7 @@
 ///Provides remote access to a controller (since they must be unique).
 /obj/machinery/dummy_airlock_controller
 	name               = "remote airlock control terminal"
-	desc               = "A secondary airlock control terminal meant to be subordinated to a master airlock control terminal to allow remotely controlling the later from the former."
+	desc               = "A secondary airlock control terminal meant to be subordinated to a master airlock control terminal to allow remotely controlling the latter from the former."
 	icon               = 'icons/obj/airlock_machines.dmi'
 	icon_state         = "airlock_control_off"
 	layer              = ABOVE_OBJ_LAYER

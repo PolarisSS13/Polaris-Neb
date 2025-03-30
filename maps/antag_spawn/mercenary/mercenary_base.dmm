@@ -149,7 +149,7 @@
 /turf/floor/shuttle/darkred,
 /area/map_template/merc_shuttle)
 "aq" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -269,7 +269,7 @@
 /turf/floor/reinforced,
 /area/map_template/merc_shuttle)
 "aC" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 1
 	},
 /turf/floor/shuttle/darkred,
@@ -383,7 +383,7 @@
 	pixel_x = -21;
 	req_access = list("ACCESS_MERCENARY")
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 4
 	},
 /turf/floor/shuttle/darkred,
@@ -421,7 +421,7 @@
 /turf/floor/shuttle/darkred,
 /area/map_template/merc_shuttle)
 "aP" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -487,7 +487,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 4
 	},
 /turf/floor/shuttle/darkred,
@@ -1639,11 +1639,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/structure/bed/chair/office,
+/obj/structure/chair/office,
 /turf/floor/tiled,
 /area/map_template/merc_spawn)
 "ec" = (
-/obj/structure/bed/chair/office{
+/obj/structure/chair/office{
 	dir = 8
 	},
 /turf/floor/tiled,
@@ -1849,7 +1849,7 @@
 /turf/floor/plating,
 /area/map_template/merc_spawn)
 "jE" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
@@ -1907,7 +1907,7 @@
 	dir = 8;
 	icon_state = "warningcorner"
 	},
-/obj/structure/bed/chair/office{
+/obj/structure/chair/office{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -2632,7 +2632,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	icon_state = "warning"
 	},
-/obj/structure/bed/chair/office{
+/obj/structure/chair/office{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -2695,7 +2695,7 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/structure/bed/chair/office,
+/obj/structure/chair/office,
 /turf/floor/tiled,
 /area/map_template/merc_spawn)
 "Vw" = (

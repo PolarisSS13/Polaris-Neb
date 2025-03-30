@@ -28,15 +28,15 @@
 	slot_flags = SLOT_ID
 	var/signed_by
 
-/obj/item/card/union/examine(mob/user)
+/obj/item/card/union/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(signed_by)
-		to_chat(user, "It has been signed by [signed_by].")
+		. += "It has been signed by [signed_by]."
 	else
-		to_chat(user, "It has a blank space for a signature.")
+		. += "It has a blank space for a signature."
 
-/obj/item/card/union/attackby(var/obj/item/thing, var/mob/user)
-	if(IS_PEN(thing))
+/obj/item/card/union/attackby(var/obj/item/used_item, var/mob/user)
+	if(IS_PEN(used_item))
 		if(signed_by)
 			to_chat(user, SPAN_WARNING("\The [src] has already been signed."))
 		else
@@ -63,9 +63,9 @@
 	. = ..()
 	add_overlay(overlay_image(icon, "[icon_state]-color", detail_color))
 
-/obj/item/card/data/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/integrated_electronics/detailer))
-		var/obj/item/integrated_electronics/detailer/D = I
+/obj/item/card/data/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/integrated_electronics/detailer))
+		var/obj/item/integrated_electronics/detailer/D = used_item
 		detail_color = D.detail_color
 		update_icon()
 	return ..()
@@ -75,7 +75,7 @@
 	icon_state = "data_2"
 
 /obj/item/card/data/disk
-	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one inexplicibly looks like a floppy disk."
+	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one inexplicably looks like a floppy disk."
 	icon_state = "data_3"
 
 /obj/item/card/data/get_assembly_detail_color()
@@ -144,10 +144,10 @@ var/global/const/NO_EMAG_ACT = -50
 
 		disguise(card_choices[picked], usr)
 
-/obj/item/card/emag/examine(mob/user)
+/obj/item/card/emag/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user.skill_check(SKILL_DEVICES,SKILL_ADEPT))
-		to_chat(user, SPAN_WARNING("This ID card has some form of non-standard modifications."))
+		. += SPAN_WARNING("This ID card has some form of non-standard modifications.")
 
 /obj/item/card/id
 	name = "identification card"
@@ -203,13 +203,16 @@ var/global/const/NO_EMAG_ACT = -50
 	if(href_list["look_at_id"] && istype(user))
 		var/turf/T = get_turf(src)
 		if(T.CanUseTopic(user, global.view_topic_state) != STATUS_CLOSE)
-			user.examinate(src)
+			user.examine_verb(src)
 			return TOPIC_HANDLED
 	. = ..()
 
-/obj/item/card/id/examine(mob/user, distance)
+/obj/item/card/id/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It says '[get_display_name()]'.")
+	. += "It says '[get_display_name()]'."
+
+/obj/item/card/id/examined_by(mob/user, distance, infix, suffix)
+	. = ..()
 	if(distance <= 1)
 		show(user)
 

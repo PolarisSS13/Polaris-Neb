@@ -47,22 +47,20 @@
 	name = "'[pick(get_secret_project_codenames())]' project data disk"
 	subject = "[pick(get_secret_project_types())] [pick(get_secret_project_nouns())] [pick(get_secret_project_descriptors())]"
 
-/obj/item/disk/secret_project/examine(mob/user)
+/obj/item/disk/secret_project/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	if(!locked)
-		to_chat(user, "With the disk's classified contents unlocked, \
-		you peer into its preview screen and see <span class='notice'>[subject]</span>.")
+	if(locked)
+		. += "The disk is locked, you cannot see its contents."
 	else
-		to_chat(user, "The disk is locked, you cannot see its contents.")
+		. += "With the disk's classified contents unlocked, you peer into its preview screen and see <span class='notice'>[subject]</span>."
 
 /obj/item/disk/secret_project/emag_act(var/remaining_charges, var/mob/user)
-	to_chat(user, "<span class='warning'>The cryptographic lock on this disk is far too complex. \
-	Your sequencer can't break the code.</span>")
+	to_chat(user, "<span class='warning'>The cryptographic lock on this disk is far too complex. Your sequencer can't break the code.</span>")
 	return 0
 
-/obj/item/disk/secret_project/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/card/id))
-		var/obj/item/card/id/ID = W
+/obj/item/disk/secret_project/attackby(obj/item/used_item, mob/user)
+	if(istype(used_item,/obj/item/card/id))
+		var/obj/item/card/id/ID = used_item
 		if(check_access(ID))
 			locked = !locked
 			to_chat(user, "<span class='notice'>You swipe your card and [locked ? "lock":"unlock"] the disk.</span>")

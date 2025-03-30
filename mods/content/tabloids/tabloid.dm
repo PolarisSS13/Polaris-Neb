@@ -18,10 +18,10 @@
 	if(length(tabloid_headlines) && tabloid_headlines[headline])
 		article_body = tabloid_headlines[headline]
 
-/obj/item/tabloid/examine(mob/user, distance, infix, suffix)
+/obj/item/tabloid/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(headline)
-		to_chat(user, "The headline screams, \"[headline]\"")
+		. += "The headline screams, \"[headline]\""
 
 /obj/item/tabloid/attack_self(mob/user)
 	. = ..()

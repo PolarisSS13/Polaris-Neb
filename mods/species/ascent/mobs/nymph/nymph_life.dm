@@ -1,26 +1,3 @@
-
-/mob/living/simple_animal/alien/kharmaan/handle_regular_hud_updates()
-	. = ..()
-	if(!.)
-		return
-	var/datum/hud/ascent_nymph/nymph_hud = hud_used
-	if(!istype(nymph_hud))
-		return
-	if(nymph_hud.food)
-		switch(nutrition)
-			if(450 to INFINITY)				nymph_hud.food.icon_state = "nutrition0"
-			if(350 to 450)					nymph_hud.food.icon_state = "nutrition1"
-			if(250 to 350)					nymph_hud.food.icon_state = "nutrition2"
-			if(150 to 250)					nymph_hud.food.icon_state = "nutrition3"
-			else							nymph_hud.food.icon_state = "nutrition4"
-	if(nymph_hud.drink)
-		switch(hydration)
-			if(450 to INFINITY)				nymph_hud.drink.icon_state = "hydration0"
-			if(350 to 450)					nymph_hud.drink.icon_state = "hydration1"
-			if(250 to 350)					nymph_hud.drink.icon_state = "hydration2"
-			if(150 to 250)					nymph_hud.drink.icon_state = "hydration3"
-			else							nymph_hud.drink.icon_state = "hydration4"
-
 /mob/living/simple_animal/alien/kharmaan/handle_nutrition_and_hydration()
 	. = ..()
 	// Generate some crystals over time.
@@ -64,7 +41,7 @@
 	visible_message("\icon[src] [src] begins to shimmy and shake out of its old skin.")
 	if(molt == 5)
 		if(do_after(src, 10 SECONDS, src, FALSE))
-			var/mob/living/human/H = new(get_turf(src), SPECIES_MANTID_ALATE)
+			var/mob/living/human/H = new(get_turf(src), /decl/species/mantid::uid)
 			H.set_gyne_lineage(get_gyne_lineage())
 			H.real_name = "[random_id(/decl/species/mantid, 10000, 99999)] [H.get_gyne_name()]"
 			H.nutrition = nutrition * 0.25 // Homgry after molt.

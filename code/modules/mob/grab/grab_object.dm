@@ -55,8 +55,9 @@
 	update_icon()
 
 	events_repository.register(/decl/observ/moved, affecting, src, PROC_REF(on_affecting_move))
-	if(assailant.zone_sel)
-		events_repository.register(/decl/observ/zone_selected, assailant.zone_sel, src, PROC_REF(on_target_change))
+	var/obj/screen/zone_selector/zone_selector = assailant.get_hud_element(HUD_ZONE_SELECT)
+	if(zone_selector)
+		events_repository.register(/decl/observ/zone_selected, zone_selector, src, PROC_REF(on_target_change))
 
 	var/obj/item/organ/O = get_targeted_organ()
 	var/decl/pronouns/pronouns = assailant.get_pronouns()
@@ -81,14 +82,14 @@
 		return TRUE
 	return FALSE
 
-/obj/item/grab/examine(mob/user)
+/obj/item/grab/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/mob/M = get_affecting_mob()
 	var/obj/item/O = get_targeted_organ()
 	if(M && O)
-		to_chat(user, "A grip on \the [M]'s [O.name].")
+		. += "A grip on \the [M]'s [O.name]."
 	else
-		to_chat(user, "A grip on \the [affecting].")
+		. += "A grip on \the [affecting]."
 
 /obj/item/grab/Process()
 	current_grab.process(src)
@@ -128,6 +129,7 @@
 /obj/item/grab/can_be_dropped_by_client(mob/M)
 	if(M == assailant)
 		return TRUE
+	return FALSE
 
 /obj/item/grab/Destroy()
 	var/atom/old_affecting = affecting
@@ -138,8 +140,9 @@
 		affecting.reset_plane_and_layer()
 		affecting = null
 	if(assailant)
-		if(assailant.zone_sel)
-			events_repository.unregister(/decl/observ/zone_selected, assailant.zone_sel, src)
+		var/obj/screen/zone_selector/zone_selector = assailant.get_hud_element(HUD_ZONE_SELECT)
+		if(zone_selector)
+			events_repository.unregister(/decl/observ/zone_selected, zone_selector, src)
 		assailant = null
 	. = ..()
 	if(old_affecting)
@@ -201,7 +204,7 @@
 /obj/item/grab/proc/action_used()
 	if(ishuman(assailant))
 		var/mob/living/human/H = assailant
-		H.remove_cloaking_source(H.species)
+		H.remove_mob_modifier(/decl/mob_modifier/cloaked, source = H.species)
 	last_action = world.time
 	leave_forensic_traces()
 
@@ -276,9 +279,9 @@
 /obj/item/grab/proc/stop_move()
 	return current_grab.stop_move
 
-/obj/item/grab/attackby(obj/W, mob/user)
+/obj/item/grab/attackby(obj/item/used_item, mob/user)
 	if(user == assailant)
-		return current_grab.item_attack(src, W)
+		return current_grab.item_attack(src, used_item)
 	return FALSE
 
 /obj/item/grab/proc/assailant_reverse_facing()

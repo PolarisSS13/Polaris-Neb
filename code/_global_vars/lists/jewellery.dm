@@ -5,7 +5,7 @@ var/global/list/random_jewellery_material_types = list(
 	/decl/material/solid/metal/platinum,
 	/decl/material/solid/metal/steel,
 	/decl/material/solid/organic/bone,
-	/decl/material/solid/organic/wood
+	/decl/material/solid/organic/wood/oak
 )
 var/global/list/random_jewellery_gem_types = list(
 	/obj/item/gemstone/baguette/topaz,

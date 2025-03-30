@@ -21,10 +21,12 @@
 	)
 	use_reinf_state = null
 	table_icon_base = "wood"
-	bench_icon = 'icons/obj/structures/wood_benches.dmi'
-	pew_icon = 'icons/obj/structures/wood_pews.dmi'
+	bench_icon = 'icons/obj/structures/furniture/bench_wood.dmi'
+	pew_icon = 'icons/obj/structures/furniture/pew_wood.dmi'
+	slatted_seat_icon = 'icons/obj/structures/furniture/chair_slatted_wood.dmi'
+	backed_chair_icon = 'icons/obj/structures/furniture/chair_backed_wood.dmi'
 	explosion_resistance = 2
-	shard_type = SHARD_SPLINTER
+	shard_name = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
 	hardness = MAT_VALUE_FLEXIBLE + 10
 	brute_armor = 1
@@ -153,8 +155,10 @@
 	adjective_name     = "oak laminate"
 	uid                = "solid_wood_chipboard_oak"
 	lore_text          = "Also known as particle board, this material is made from various kinds of oak wood chips and resin, with a plastic laminate."
-	bench_icon         = 'icons/obj/structures/benches.dmi'
-	pew_icon           = 'icons/obj/structures/pews.dmi'
+	bench_icon         = 'icons/obj/structures/furniture/bench.dmi'
+	pew_icon           = 'icons/obj/structures/furniture/pew.dmi'
+	slatted_seat_icon  = 'icons/obj/structures/furniture/chair_slatted.dmi'
+	backed_chair_icon  = 'icons/obj/structures/furniture/chair_backed.dmi'
 	door_icon_base     = "metal"
 	table_icon_base    = "metal"
 	color              = WOOD_COLOR_GENERIC

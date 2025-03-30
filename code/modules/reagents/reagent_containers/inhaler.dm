@@ -101,18 +101,18 @@
 		to_chat(user, SPAN_NOTICE("The reagents inside \the [src] are already secured."))
 	return TRUE
 
-/obj/item/chems/inhaler/attackby(obj/item/tool, mob/user)
-	if(IS_SCREWDRIVER(tool) && !ATOM_IS_OPEN_CONTAINER(src))
-		to_chat(user, SPAN_NOTICE("Using \the [tool], you unsecure the inhaler's lid.")) // it locks shut after being secured
+/obj/item/chems/inhaler/attackby(obj/item/used_item, mob/user)
+	if(IS_SCREWDRIVER(used_item) && !ATOM_IS_OPEN_CONTAINER(src))
+		to_chat(user, SPAN_NOTICE("Using \the [used_item], you unsecure the inhaler's lid.")) // it locks shut after being secured
 		atom_flags |= ATOM_FLAG_OPEN_CONTAINER
 		update_icon()
 		return TRUE
 	. = ..()
 
-/obj/item/chems/inhaler/examine(mob/user, distance)
+/obj/item/chems/inhaler/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	if(distance <= 1)
 		if(reagents.total_volume > 0)
-			to_chat(user, SPAN_NOTICE("It is currently loaded."))
+			. += SPAN_NOTICE("It is currently loaded.")
 		else
-			to_chat(user, SPAN_WARNING("It is spent."))
+			. += SPAN_WARNING("It is spent.")

@@ -1,6 +1,7 @@
 /decl/species/grafadreka
-	name = SPECIES_GRAFADREKA
-	name_plural = SPECIES_GRAFADREKA
+	uid = "species_grafadreka"
+	name = "Grafadreka"
+	name_plural = "Grafadreka"
 	description = "The reclusive grafadreka (Icelandic, lit. 'digging dragon'), also known as the snow drake, is a large reptillian pack predator similar in size and morphology to old Earth hyenas. \
 	They commonly dig shallow dens in dirt, snow or foliage, sometimes using them for concealment prior to an ambush. \
 	Biological cousins to the elusive kururak, they have heavy, low-slung bodies and powerful jaws suited to hunting land prey rather than fishing. \
@@ -20,12 +21,29 @@
 		/decl/pronouns/male,
 		/decl/pronouns/female
 	)
-
+	available_background_info = list(
+		/decl/background_category/citizenship = list(
+			/decl/background_detail/citizenship/grafadreka
+		),
+		/decl/background_category/heritage = list(
+			/decl/background_detail/heritage/grafadreka
+		),
+		/decl/background_category/homeworld = list(
+			/decl/background_detail/location/grafadreka
+		),
+		/decl/background_category/faction = list(
+			/decl/background_detail/faction/grafadreka
+		),
+		/decl/background_category/religion = list(
+			/decl/background_detail/religion/grafadreka
+		)
+	)
 	force_background_info = list(
-		/decl/background_category/heritage   = /decl/background_detail/heritage/grafadreka,
-		/decl/background_category/homeworld = /decl/background_detail/location/grafadreka,
-		/decl/background_category/faction   = /decl/background_detail/faction/grafadreka,
-		/decl/background_category/religion  = /decl/background_detail/religion/grafadreka
+		/decl/background_category/citizenship = /decl/background_detail/citizenship/grafadreka,
+		/decl/background_category/heritage    = /decl/background_detail/heritage/grafadreka,
+		/decl/background_category/homeworld   = /decl/background_detail/location/grafadreka,
+		/decl/background_category/faction     = /decl/background_detail/faction/grafadreka,
+		/decl/background_category/religion    = /decl/background_detail/religion/grafadreka
 	)
 	species_hud = /datum/hud_data/grafadreka
 	inherent_verbs = list(

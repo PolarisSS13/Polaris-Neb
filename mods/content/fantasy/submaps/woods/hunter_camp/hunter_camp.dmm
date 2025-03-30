@@ -85,7 +85,7 @@
 /turf/floor/barren,
 /area/fantasy/outside/point_of_interest/hunter_camp)
 "Z" = (
-/obj/item/bladed/knife,
+/obj/item/bladed/knife/iron,
 /turf/floor/barren,
 /area/fantasy/outside/point_of_interest/hunter_camp)
 

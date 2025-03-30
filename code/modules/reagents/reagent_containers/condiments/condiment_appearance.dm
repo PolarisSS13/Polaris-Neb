@@ -124,3 +124,9 @@
 	condiment_desc = "A small bottle of the essential oil of some kind of mint plant."
 	condiment_icon = 'icons/obj/food/condiments/coldsauce.dmi'
 	condiment_key  = "small"
+
+/decl/condiment_appearance/cinnamon
+	condiment_type = /decl/material/solid/cinnamon
+	condiment_name = "cinnamon"
+	condiment_desc = "A small bottle of ground cinnamon."
+	condiment_icon = 'icons/obj/food/condiments/generic.dmi'

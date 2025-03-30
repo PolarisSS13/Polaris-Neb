@@ -129,6 +129,9 @@
 /obj/machinery/papershredder/proc/create_shredded()
 	for(var/key in shredder_bin)
 		var/decl/material/M = GET_DECL(key)
+		var/shard_type = M.shard_type
+		if(!shard_type)
+			continue
 		var/amt_per_shard = atom_info_repository.get_matter_for(M.shard_type, key, 1)
 		if(shredder_bin[key] > amt_per_shard)
 			LAZYADD(., M.place_cuttings(src, shredder_bin[key]))
@@ -224,9 +227,9 @@
 	if(material)
 		SetName("[initial(name)] [material.solid_name]")
 
-/obj/item/shreddedp/attackby(var/obj/item/W, var/mob/user)
-	if(W.isflamesource())
-		burnpaper(W, user)
+/obj/item/shreddedp/attackby(var/obj/item/used_item, var/mob/user)
+	if(used_item.isflamesource())
+		burnpaper(used_item, user)
 		return TRUE
 	return ..()
 

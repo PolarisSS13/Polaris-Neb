@@ -80,8 +80,8 @@
 	QDEL_NULL(lightning_overlay)
 	. = ..()
 
-// Called by /turf/examine() to show current weather status.
-/obj/abstract/weather_system/examine(mob/user, distance)
+// Called by /turf/examined_by() to show current weather status.
+/obj/abstract/weather_system/examined_by(mob/user, distance)
 	SHOULD_CALL_PARENT(FALSE)
 	var/decl/state/weather/weather_state = weather_system.current_state
 	if(istype(weather_state))

@@ -4,11 +4,11 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/unbranded/muscleplast.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_unbranded_muscleplast"
-	has_limbs = list(
-		BP_L_ARM =  list("path" = /obj/item/organ/external/arm),
-		BP_R_ARM =  list("path" = /obj/item/organ/external/arm/right),
-		BP_L_HAND = list("path" = /obj/item/organ/external/hand),
-		BP_R_HAND = list("path" = /obj/item/organ/external/hand/right),
+	applies_to_part = list(
+		BP_L_ARM,
+		BP_R_ARM,
+		BP_L_HAND,
+		BP_R_HAND,
 	)
 
 /decl/bodytype/prosthetic/bishop
@@ -44,9 +44,8 @@
 		/decl/material/solid/metal/stainlesssteel = MATTER_AMOUNT_SECONDARY
 	)
 	uid = "bodytype_prosthetic_bishop_glyph"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
+
 /decl/bodytype/prosthetic/cybersolutions
 	name = "Cyber Solutions"
 	desc = "This limb is grey and utilitarian, with little in the way of aesthetic flourish."
@@ -78,9 +77,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/cybersolutions/cybersolutions_array.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_cybersolutions_array"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/einstein
 	name = "Einstein Engines"
@@ -106,9 +103,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/grayson/grayson_reinforced.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_grayson_reinforced"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/hephaestus
 	name = "Hephaestus Industries"
@@ -132,14 +127,11 @@
 	has_eyes = FALSE
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_hephaestus_frontier"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 	organ_material = /decl/material/solid/metal/aluminium
 	matter = list(
 		/decl/material/solid/organic/plastic = MATTER_AMOUNT_SECONDARY
 	)
-
 
 /decl/bodytype/prosthetic/wardtakahashi
 	name = "Ward-Takahashi"
@@ -175,9 +167,7 @@
 	desc = "This limb features sleek black and white polymers. A visor wraps around an otherwise featureless head."
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/wardtakahashi/wardtakahashi_shroud.dmi'
 	uid = "bodytype_prosthetic_wardtakahashi_shroud"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/morpheus
 	name = "Morpheus"
@@ -193,9 +183,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/morpheus/morpheus_zenith.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_morpheus_zenith"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/morpheus/skeletoncrew
 	name = "Morpheus - Skeleton Crew"
@@ -203,9 +191,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/morpheus/morpheus_skeletoncrew.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_morpheus_skeletoncrew"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/morpheus/mantis
 	name = "Unbranded - Mantis Prosis"
@@ -265,9 +251,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/xion/xion_breach.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_xion_breach"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/xion/whiteout
 	name = "Xion - Whiteout"
@@ -282,9 +266,7 @@
 	icon_base = 'mods/content/corporate/icons/cyberlimbs/xion/xion_whiteout_breach.dmi'
 	bodytype_category = BODYTYPE_HUMANOID
 	uid = "bodytype_prosthetic_xion_whiteout_breach"
-	has_limbs = list(
-		BP_HEAD =   list("path" = /obj/item/organ/external/head),
-	)
+	applies_to_part = list(BP_HEAD)
 
 /decl/bodytype/prosthetic/nanotrasen
 	name = "NanoTrasen"
