@@ -52,9 +52,9 @@
 			/decl/background_detail/heritage/franklin,
 			/decl/background_detail/heritage/wright,
 			/decl/background_detail/heritage/sidhe,
-			/decl/background_detail/heritage/mahimahi
+			/decl/background_detail/heritage/mahimahi,
 			/decl/background_detail/heritage/kauqxum,
-			/decl/background_detail/heritage/sagitheights
+			/decl/background_detail/heritage/sagitheights,
 			/decl/background_detail/heritage/love,
 			/decl/background_detail/heritage/bowl,
 			/decl/background_detail/heritage/relan,

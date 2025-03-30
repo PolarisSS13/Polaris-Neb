@@ -138,7 +138,7 @@
 //
 // Alpha Centauri heritages
 /decl/background_detail/heritage/kishar
-	name = "Core Worlds - Kisharian Culture"
+	name = "Core Worlds - Kishari Culture"
 	uid = "heritage_kishar"
 	description = "Kishar is the oldest extrasolar human planetary colony, located in Alpha Centauri, \
 	Kishar prides itself on self-sufficiency and is split into many different countries. \
@@ -217,7 +217,7 @@
 
 
 /decl/background_detail/heritage/coreworlds
-	name = "Core Worlds - Other Culture"
+	name = "Core Worlds - Core Worlder Culture"
 	uid = "heritage_coreworlds"
 	description = "The Core Worlds are densely populated and heavily developed, most relying on imports from \
 	other Solar member states to fuel their economy. The culture of the Core heavily influences the rest of Solar \
@@ -259,7 +259,7 @@
 	subversive_potential = 0.9
 
 /decl/background_detail/heritage/goldencrescent
-	name = "Golden Crescent - Other Culture"
+	name = "Golden Crescent - Crescenti Culture"
 	description = "The Golden Crescent is a cultural region containing Vir and many of its neighbors. \
 	Crescenti people are rugged and self-reliant, and the region has an eclectic and cosmopolitan culture from \
 	centuries of welcoming alien and positronic migrants and refugees. Many of the systems within the Golden Crescent \
@@ -298,7 +298,7 @@
 // Five Arrows
 /decl/background_detail/heritage/sidhe
 	uid = "heritage_sidhe"
-	name = "Five Arrows - Sidhian Culture"
+	name = "Five Arrows - Sidhehan Culture"
 	description = "Sidhe hosts an eclectic mix of humans, skrell, and positronics, \
 	co-existing in uneasy harmony for hundreds of years. The system saw a popular revolution and seceeded from SolGov alongside the rest of the Five Arrows. \
 	Today, Sidhe is seen as one of the Five Arrows' most militant supporters and as a case study in human-skrellian cultural integration. "
@@ -308,7 +308,7 @@
 
 /decl/background_detail/heritage/mahimahi
 	uid = "heritage_mahimahi"
-	name = "Five Arrows - Mahi Mahi Culture"  //dash space
+	name = "Five Arrows - Mahi-Mahian Culture"  //dash space
 	description = "A planet split into two distinct spheres of power, Mahi-Mahi hosts an ongoing struggle between \
 	the dichotomous interests of its metropolitan centres and their surrounding rural populations. \
 	The cities, using their economic and political power from their bygone colonial era, curry favour with corporate and foreign interests, \
@@ -360,7 +360,7 @@
 
 /decl/background_detail/heritage/bowl
 	uid = "heritage_bowl"
-	name = "The Bowl - Other Culture"
+	name = "The Bowl - Bowler Culture"
 	description = "The Bowl is the poorest and least developed region of Solar space, \
 	plagued by organized crime and resource scarcity, and this is reflected in the culture of the people who call the region home, \
 	whether they originated from Sol or the tajaran frontier. \
@@ -387,7 +387,7 @@
 
 /decl/background_detail/heritage/taron
 	uid = "heritage_taron"
-	name = "Almach Rim - Taronian Culture"
+	name = "Almach Rim - Taron Culture"
 	description = "Despite being a settled planet, living on Taron feels more like living on an uninhabitable moon. \
 	Taron once ruled the Relan system, but following its loss it faced economic and social collapse, \
 	marked by closing habitats, overcrowding, and political chaos. During this time, many left the planet, \
@@ -398,7 +398,7 @@
 
 /decl/background_detail/heritage/angessaspearl
 	uid = "heritage_angessaspearl"
-	name = "Almach Rim - Angessian Culture"
+	name = "Almach Rim - Angessan Culture"
 	description = "One of the Almach Protectorate's major population centers, \
 	Angessa's Pearl is a barren planet colonized by a pseudo-religious movement led by Angessa Martei, \
 	and was one of the first states to join the Almach Association. A significant portion of the Pearl's population are vatborn known as 'community children' \
@@ -410,7 +410,7 @@
 
 /decl/background_detail/heritage/vounna
 	uid = "heritage_vounna"
-	name = "Almach Rim - Vounnan Culture"
+	name = "Almach Rim - Vun Culture"
 	description = "Vounna is the host star to the marshy planet Aetolus, \
 	and the mobile mining station Agrafa, now under the banner of the Almach Protectorate. \
 	After the coup of the NRS Prometheus in orbit, the capture of the Deliah, and the formation of the Almach Association, \
@@ -494,7 +494,7 @@
 
 /decl/background_detail/heritage/crypt
 	uid = "heritage_crypt"
-	name = "Precursors' Crypt - Other Culture"
+	name = "Precursors' Crypt - Crypter Culture"
 	description = "Crypters come from the stations of the Precursor's Crypt, the region of Solar space where positronics were first discovered. \
 	The culture that grew in this region is technophilic, neophilic, tightly interconnected, and constantly racing to outdo itself. \
 	Crypt systems are usually sparsely inhabited, but most of their population is well-off, with intellectual services the backbone of the Crypt's economy. \
@@ -539,7 +539,7 @@
 /* Commented out until species restrictions exist.
 /decl/background_detail/heritage/newkyoto
 	uid = "heritage_newkyoto"
-	name = "Seccessionist - New Kyoto Culture"
+	name = "Seccessionist - Kyoto-jin Culture"
 	description = "Modelled closely on an idealized version of Edo period Japan, the independent human colony of New Kyoto is \
 	fiercly traditionalist and openly hostile to outside influence. A highly regimented society with outside trade heavily restricted, \
 	and the influence of trans-stellar corporations and their products kept to a minimum, \
