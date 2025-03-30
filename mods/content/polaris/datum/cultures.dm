@@ -481,7 +481,7 @@
 
 /decl/background_detail/heritage/nyx
 	uid = "heritage_nyx"
-	name = "Precursors' Crypt - Nyxian Heritage"
+	name = "Precursors' Crypt - Nyxian Culture"
 	description = "Nyx is on the edge of colonized human space; a frontier system. It holds the dubious distinction of \
 	containing the only known and recently identified phoron giant, Erebus, making it a hotbed of both \
 	Trans-Stellar Corporate interest and, due to its distance from the better-policed parts of human space, criminal activity. \
@@ -500,6 +500,79 @@
 	Crypt systems are usually sparsely inhabited, but most of their population is well-off, with intellectual services the backbone of the Crypt's economy. \
 	Crypter culture is also influenced by the officers and servicepeople of the region's heavy Fleet presence, \
 	and by the legacy of the Hegemony invasion during the First Contact War." // sure ok
+
+
+/decl/background_detail/heritage/eutopia
+	uid = "heritage_eutopia"
+	name = "Seccessionist - Eutopian Culture"
+	description = "Created as an 'objectivist paradise', Eutopia typifies the cut-throat ideology of anarcho-capitalism. \
+	Less than 10 percent of the population own all property in the system, with the remainder rent-paying tenants, \
+	or indentured servants - though the latter rarely have the opportunity to leave. \
+	Most of Eutopia's economy exists to serve the unregulated banking and entertainment needs of Trans-stellar Corporation and \
+	Skrell moguls from across the galaxy. To be Eutopian is to become ultra-rich, or die trying, \
+	an attitude that has lead an increasing number of Eutopians to become semi-legitimate 'mercenary' pirates, \
+	and to their leadership courting the favor of the fascists of Vystholm."
+	economic_power = 1.1
+	subversive_potential= 1.3
+
+/decl/background_detail/heritage/casini
+	uid = "heritage_casini"
+	name = "Seccessionist - Casinian Culture"
+	description = "The communes of Casini's Reach vary in size and prosperity, united only by a defensive pact and a shared sense of mutual aid. \
+	Most consist of small, tight-knit communities focused around the extraction or production of a particular resource, \
+	supplied to other colonies in exchange for their own necessities. Though minerals are abundant, life is tough and there is always work to be done, \
+	but most Casinians know they can always rely on their neighbors in times of need."
+	economic_power = 0.7
+	subversive_potential= 1.1
+
+/decl/background_detail/heritage/natuna
+	uid = "heritage_natuna"
+	name = "Seccessionist - Natuna Culture"
+	description = "Until very recently, Natuna Bhumi Bariśāl existed as a collection of autonomous colonies on the border of Human and Skrell space, \
+	notable for being the first system to accept the two species living alongside one another. Heavily embargoed by all major governments, \
+	the system became notorious as a haven for society's dregs from both sides of the border - casteless skrell, refugees, deserters, and gangsters alike. \
+	The system is known as a hub for pirates in the region, with a botched Moghes Hegemony occupation in 2563 \
+	devastating its infrastructure and pushing it further into alignment with increasingly bold Ue-Katish pirates." //where did the bhumi come from. its not on the wiki. help
+	economic_power = 0.5 //its LOW babey
+	subversive_potential= 1.4 //Hive of scum and villainy. Or, was.
+
+/* Commented out until species restrictions exist.
+/decl/background_detail/heritage/newkyoto
+	uid = "heritage_newkyoto"
+	name = "Seccessionist - New Kyoto Culture"
+	description = "Modelled closely on an idealized version of Edo period Japan, the independent human colony of New Kyoto is \
+	fiercly traditionalist and openly hostile to outside influence. A highly regimented society with outside trade heavily restricted, \
+	and the influence of trans-stellar corporations and their products kept to a minimum, \
+	New Kyoto instills in its populace a strong sense of national loyalty, self-sufficiency and of course, militarism."
+	economic_power = 0.9
+	subversive_potential= 1.1 //(independents? prolly up to SOMETHING)
+	//restricted_to_species = list(SPECIES_HUMAN)
+
+/decl/background_detail/heritage/vystholm
+	uid = "heritage_vystholm"
+
+*/
+/decl/background_detail/heritage/seccesionist
+	uid = "heritage_seccesionist"
+	name = "Seccesionist - Other Culture"
+	description = "The \"seccesionist systems\" split from SolGov during the so-called Age of Seccesion in 25th century, \
+	marking a final end to SolGov's formal control of all human-colonized systems. Their cultures tend towards the idiosyncratic and \
+	isolationist, and all have suffered periods of poor relations with the largest government in local space. \
+	Recent changes to SolGov's foreign policy have improved matters, especially in light of more recent, larger seccession movements in the \
+	Almach Rim and Sagittarius Heights, but expatriates from the seccesionist systems are still seen as potentially dangerous iconoclasts."
+	economic_power = 0.8
+	subversive_potential = 1.1
+
+/decl/background_detail/heritage/frontier
+	uid = "heritage_frontier"
+	name = "Other Culture - Unincorporated Rim"
+	description = "The unincorporated rim represents the small, local cultures on the frontier of human colonization, outside of any major interstellar cultural spheres. \
+	Life on the frontier is usually cold, hard, and lonely, with the only sporadic contact with the rest of civilization coming from occasional visits from \
+	tax collectors and Free Traders and perhaps a low-quality Exonet connection. \
+	Successful frontier colonies band together tightly, sometimes becoming almost insular, \
+	while failed colonies dissolve as, bit by bit, colonists trickle back to the core worlds." //or die
+	economic_power = 0.4 //do they even HAVE money from where you come from
+
 
 /decl/background_detail/heritage/deep_space
 	name = "Deep Space"

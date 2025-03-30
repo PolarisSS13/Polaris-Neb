@@ -472,4 +472,47 @@
 	ruling_body = "Precursors' Crypt Regional Government"
 
 
-//secessionists
+//secessionists.
+/decl/background_detail/location/eutopia
+	uid = "location_eutopia"
+	name = "Eutopia, Smith"
+	description = "Eutopia is a secessionist state-like organization founded on anarcho-capitalist free market principles that controls the system of Smith.\
+	Eutopia proper is a oversized pair of toruses that rotate for centrifugal gravity, although the station also includes various nearby constructions, often smaller torii. \
+	Nearly 700,000 people live in the greater Smith system, with the majority of these being found on Eutopia proper. Of these, less than a tenth are landowners, \
+	almost 20% are indentured servants, and the remainder are tenants. The station is overwhelmingly human, \
+	with representation by a few Qerr-Katish business interests and an unfortunately large number of positronic and tajaran indentured servants, \
+	often the victims of sapient trafficking operations based out of Vystholm. Eutopia also hosts sizable numbers of Tajaran pirates and Vystholm raiders, \
+	who have been known to come into violent conflict outside of the confines of Eutopia."
+	distance = "126.1 ly"
+	local_government = "Eutopian Foreign Relations Board"
+	economic_power = 1.1
+	subversive_potential= 1.3
+
+
+/decl/background_detail/location/casini
+	uid = "location_casini"
+	name = "Casini's Reach"
+	description = "Casini's Reach is an independent anarcho-communist colony on the edge of human space. While often considered a singular colony by \
+	outsiders for the purposes of astropolitics, the system is in reality occupied by a large number of \
+	individual communes united by a mutual defense pact in the name of security. \
+	The majority of settlements in the system consist of former mining colonies built deep into the extensive artificial cave networks \
+	formed by decades of excavation on the moons of Pontes, the lone planet in the system. \
+	The hard rock allows the caverns to be sealed and pressurised, and extensive construction to take place within. \
+	Some asteroid-based habitats also exist in the Diego Belt, though these usually only support a small number of individuals, \
+	and the majority are holdovers from the system's ruthless industrial past."
+	economic_power = 0.7
+	subversive_potential= 1.1
+	distance = "Unknown"
+
+/decl/background_detail/location/natuna
+	uid = "location_natuna"
+	name = "Natuna Bariśāl"
+	description = "Natuna Bariśāl, commonly known simply as "Natuna" is an independent colony on the border of Human and Skrell space. \
+	The colony seceded in the early 25th century in protest of restrictions on Human-Skrell migration, and became the first to \
+	allow humans and Skrell to live alongside one another outside of in official roles. \
+	It became instrumental in the lifting of immigration restrictions between the two governments. \
+	In March 2563, Natuna was occupied by Moghes Hegemony forces, and remains under military control. \
+	The occupation put an end to the system's role as a hub of piracy in the region, as well as many of its resident's civil freedoms.
+	economic_power = 0.5 //its LOW babey
+	subversive_potential= 1.4 //Hive of scum and villainy. Or, was.
+	distance = "Unknown"

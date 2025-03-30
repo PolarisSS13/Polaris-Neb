@@ -23,7 +23,7 @@
 	key = "0"
 	flags = LANG_FLAG_WHITELISTED
 	shorthand = "C"
-	partial_understanding = list()
+	partial_understanding = list("Solar Common" = 70, "Tradeband" = 40, "Terminus" = 30, "Gutter" = 20, "Sivian Creole" = 30)
 	syllables = list(
 	"vol", "zum", "coo","zoo","bi","do","ooz","ite","og","re","si","ite","ish","ar","at","on","ee","east","ma","da", "rim")
 
@@ -41,7 +41,7 @@
 	key = "1"
 	flags = LANG_FLAG_WHITELISTED
 	shorthand = "Sol"
-	partial_understanding = list()
+	partial_understanding = list("Galactic Common" = 70, "Tradeband" = 20, "Terminus" = 20, "Gutter" = 20, "Sivian Creole" = 40)
 	// Duplicates are from different root languages, net effect is symbols that are more common across langs are more common in the generated text
 	syllables = list(
 		"a", "ad", "ad", "ad", "ah", "ah", "ah", "ai", "ai", "ai", "ai","al", "al", "al", "al", "al", "al", "al", "al", "al",
@@ -112,10 +112,107 @@
 		"wa", "wa", "wa", "wa", "wa", "wa", "wa", "wai", "wan", "wang", "wei", "wen", "weng", "wo", "wu",
 		"xi", "xia", "xian", "xiang", "xiao", "xie", "xin", "xing", "xiong", "xiu", "xu", "xuan", "xue", "xun",
 		"ya", "yan", "yang", "yao", "ye", "yeg", "yeg", "yeg", "yey", "yey", "yey", "yi", "yin", "ying", "yong", "you", "yu", "yuan", "yue", "yun",
-		"za", "zai", "zan", "zang", "zao", "ze", "zei", "zen", "zeng", "zi", "zong", "zou", "zu", "zuan", "zui", "zun", "zuo", 
+		"za", "zai", "zan", "zang", "zao", "ze", "zei", "zen", "zeng", "zi", "zong", "zou", "zu", "zuan", "zui", "zun", "zuo",
 		"zha", "zhai", "zhan", "zhang", "zhao", "zhe", "zhei", "zhen", "zheng", "zhi",
 		"zhong", "zhou", "zhu", "zhua", "zhuai", "zhuan", "zhuang", "zhui", "zhun", "zhuo"
 	)
+
+/datum/language/human/tradeband
+	name = "Tradeband"
+	desc = "Spoken by the humans of the upper-class Sagittarius Heights, Tradeband was designed to be pleasing to both humans and their Skrellian trading partners."
+	speech_verb = "enunciates"
+	colour = ""
+	key = "2"
+	partial_understanding = list("Galactic Common" = 40, "Solar Common" = 20, "Terminus" = 40, "Gutter" = 10, "Sivian Creole" = 10)
+	//, LANGUAGE_SKRELLIAN = 40, LANGUAGE_SKRELLIANFAR = 15
+	syllables = list(
+		"fea","vea","vei","veh","vee","feh","fa","soa","su","sua","sou","se","seh","twa","twe","twi",
+		"ahm","lea","lee","nae","nah","pa","pau","fae","fai","soh","mou","ahe","ll","ea","ai","thi",
+		"hie","zei","zie","ize","ehy","uy","oya","dor","di","ja","ej","er","um","in","qu","is","re",
+		"nt","ti","us","it","en","at","tu","te","ri","es","et","ra","ta","an","ni","li","on","or","se",
+		"am","ae","ia","di","ue","em","ar","ui","st","si","de","ci","iu","ne","pe","co","os","ur","ru"
+	)
+
+
+// Criminal language.
+/datum/language/human/gutter
+	name = "Gutter"
+	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of the Bowl."
+	speech_verb = "growls"
+	colour = ""
+	key = "3"
+	space_chance = 45
+	partial_understanding = list("Galactic Common" = 20, "Solar Common" = 20, "Tradeband" = 10, "Terminus" = 20, "Sivian Creole" = 15)
+	//LANGUAGE_SKRELLIAN = 15, LANGUAGE_SIIK = 10) also
+	syllables = list (
+		"gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra",
+		"a", "ai", "an", "ang", "ao", "ba", "bai", "ban", "bang", "bao", "bei", "ben", "beng", "bi", "bian", "biao",
+		"bie", "bin", "bing", "bo", "bu", "ca", "cai", "can", "cang", "cao", "ce", "cei", "cen", "ceng", "cha", "chai",
+		"chan", "chang", "chao", "che", "chen", "cheng", "chi", "chong", "chou", "chu", "chua", "chuai", "chuan", "chuang", "chui", "chun",
+		"chuo", "ci", "cong", "cou", "cu", "cuan", "cui", "cun", "cuo", "da", "dai", "dan", "dang", "dao", "de", "dei",
+		"den", "deng", "di", "dian", "diao", "die", "ding", "diu", "dong", "dou", "du", "duan", "dui", "dun", "duo", "e",
+		"ei", "en", "er", "fa", "fan", "fang", "fei", "fen", "feng", "fo", "fou", "fu", "ga", "gai", "gan", "gang",
+		"gao", "ge", "gei", "gen", "geng", "gong", "gou", "gu", "gua", "guai", "guan", "guang", "gui", "gun", "guo", "ha",
+		"hai", "han", "hang", "hao", "he", "hei", "hen", "heng", "hm", "hng", "hong", "hou", "hu", "hua", "huai", "huan",
+		"huang", "hui", "hun", "huo", "ji", "jia", "jian", "jiang", "jiao", "jie", "jin", "jing", "jiong", "jiu", "ju", "juan",
+		"jue", "jun", "ka", "kai", "kan", "kang", "kao", "ke", "kei", "ken", "keng", "kong", "kou", "ku", "kua", "kuai",
+		"kuan", "kuang", "kui", "kun", "kuo", "la", "lai", "lan", "lang", "lao", "le", "lei", "leng", "li", "lia", "lian",
+		"liang", "liao", "lie", "lin", "ling", "liu", "long", "lou", "lu", "luan", "lun", "luo", "ma", "mai", "man", "mang",
+		"mao", "me", "mei", "men", "meng", "mi", "mian", "miao", "mie", "min", "ming", "miu", "mo", "mou", "mu", "na",
+		"nai", "nan", "nang", "nao", "ne", "nei", "nen", "neng", "ng", "ni", "nian", "niang", "niao", "nie", "nin", "ning",
+		"niu", "nong", "nou", "nu", "nuan", "nuo", "o", "ou", "pa", "pai", "pan", "pang", "pao", "pei", "pen", "peng",
+		"pi", "pian", "piao", "pie", "pin", "ping", "po", "pou", "pu", "qi", "qia", "qian", "qiang", "qiao", "qie", "qin",
+		"qing", "qiong", "qiu", "qu", "quan", "que", "qun", "ran", "rang", "rao", "re", "ren", "reng", "ri", "rong", "rou",
+		"ru", "rua", "ruan", "rui", "run", "ruo", "sa", "sai", "san", "sang", "sao", "se", "sei", "sen", "seng", "sha",
+		"shai", "shan", "shang", "shao", "she", "shei", "shen", "sheng", "shi", "shou", "shu", "shua", "shuai", "shuan", "shuang", "shui",
+		"shun", "shuo", "si", "song", "sou", "su", "suan", "sui", "sun", "suo", "ta", "tai", "tan", "tang", "tao", "te",
+		"teng", "ti", "tian", "tiao", "tie", "ting", "tong", "tou", "tu", "tuan", "tui", "tun", "tuo", "wa", "wai", "wan",
+		"wang", "wei", "wen", "weng", "wo", "wu", "xi", "xia", "xian", "xiang", "xiao", "xie", "xin", "xing", "xiong", "xiu",
+		"xu", "xuan", "xue", "xun", "ya", "yan", "yang", "yao", "ye", "yi", "yin", "ying", "yong", "you", "yu", "yuan",
+		"yue", "yun", "za", "zai", "zan", "zang", "zao", "ze", "zei", "zen", "zeng", "zha", "zhai", "zhan", "zhang", "zhao",
+		"zhe", "zhei", "zhen", "zheng", "zhi", "zhong", "zhou", "zhu", "zhua", "zhuai", "zhuan", "zhuang", "zhui", "zhun", "zhuo", "zi",
+		"zong", "zou", "zuan", "zui", "zun", "zuo", "zu", "al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi",
+		"al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi",
+		"al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi",
+		"al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi",
+		"al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi",
+		"al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it",
+		"le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to",
+		"ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin",
+		"his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi"
+	)
+
+
+/datum/language/human/terminus
+	name = "Terminus"
+	desc = "A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region."
+	speech_verb = "mentions"
+	exclaim_verb = "insinuates"
+	colour = "terminus"
+	key = "4"
+	flags = LANG_FLAG_WHITELISTED
+	partial_understanding = list("Galactic Common" = 30, "Solar Common" = 20, "Tradeband" = 40, "Gutter" = 20, "Sivian Creole" = 15)
+	syllables = list (
+		".a", "spa", "pan", "blaif", "stra", "!u", "!ei", "!am", "by", ".y", "gry", "zbly", "!y", "fl",
+		"sm", "rn", "cpi", "ku", "koi", "pr", "glau", "stu", "ved", "ki", "tsa", "xau", "jbu", "sny", "stro", "nu",
+		"uan", "ju", "!i", "ge", "luk", "an", "ar", "at", "es", "et", "bel", "ki", "jaa", "ch", "ki", "gh", "ll", "uu", "wat"
+	)
+
 
 /decl/language/human/sivian
 	name = "Sivian Creole"
@@ -128,7 +225,7 @@
 	flags = LANG_FLAG_WHITELISTED
 	shorthand = "Sif"
 	space_chance = 45
-	partial_understanding = list()
+	partial_understanding = list("Galactic Common" = 30, "Solar Common" = 40, "Tradeband" = 10, "Gutter" = 15, "Terminus" = 15)
 	syllables = list (
 	"all", "are", "det", "enn", "ere", "hen", "kan", "lig", "men", "ren", "som", "ver", "vir", "var", "vis", "ikk", "ter", "ork",
 	"den", "ing", "jeg", "jag", "han", "hir", "hil", "ans", "kan", "kir", "bor", "bir", "um", "om", "ve", "ur", "ha", "he", "hyu",
@@ -138,3 +235,5 @@
 	"xie", "zu", "miao", "po", "nu", // Chinese (galcom)
 	"our", "oul", "tou", "eve", "ome", "ion", "ais", // Romance (galcom)
 	"zaoo", "zix", "vol") //Skrell (galcom)
+
+
