@@ -7,6 +7,7 @@
 #include "datum\loadout.dm"
 #include "datum\locations.dm"
 #include "datum\overrides.dm"
+#include "datum\religion.dm"
 #include "datum\languages\human.dm"
 #include "items\head.dm"
 #include "items\overrides.dm"

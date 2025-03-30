@@ -7,7 +7,7 @@
 	Nanotrasen also offers one of the most comprehensive medical plans in SolGov space, \
 	up to and including cloning, prosthetics and therapy. \
 	Some have accused the company of using its employees as 'guinea pigs' for new technologies."
-	economic_modifier = 1.2
+	economic_power = 1.2
 	subversive_potential = 0.8
 
 
@@ -18,7 +18,7 @@
 	Some are drawn from small corporations not considered a threat to NanoTrasen operations, \
 	while others are drawn from other TSCs with sufficiently distinct portfolios that corporate espionage is viewed as unlikely. \
 	Regardless, contractors are underpaid, scrutinized, and often kept from the benefits of full NanoTrasen employment."
-	economic_modifier = 0.9
+	economic_power = 0.9
 	subversive_potential = 1.1
 
 
@@ -30,7 +30,7 @@
 	steal the secrets of the Sif Anomalous Region from under NanoTrasen's nose, and conduct campaigns of corporate epsionage to that end. \
 	NanoTrasen only hires those with known or suspected ties to major rivals under circumstances where they hope to gain more than they might lose, \
 	and regard such employees as major security risks."
-	economic_modifier = 0.9
+	economic_power = 0.9
 	subversive_potential = 1.3
 
 
@@ -91,7 +91,7 @@
 	SolGov has many regulatory agencies (most famously Emergent Intelligence Oversight) \
 	and a large military which operate with universal jurisdiction and are \
 	occasionally posted to NanoTrasen facilities (where they are still subject to NanoTrasen's chain of command.)"
-	economic_modifier = 1.1
+	economic_power = 1.1
 	subversive_potential = 1.1
 
 /decl/background_detail/faction/virgov
@@ -113,7 +113,7 @@
 	Skathari Incursion, leaving the Protectorate a loose trade and defense league held together by backroom deals. \
 	Spies, saboteurs, and agitators associated with Almachi governments and corporations are not uncommon in SolGov space, \
 	as SolGov is still viewed as a major economic, military, and ideological threat to the struggling Mercurial state."
-	economic_modifier = 0.8 // almach does not exactly have lots of spy money to throw around
+	economic_power = 0.8 // almach does not exactly have lots of spy money to throw around
 	subversive_potential= 1.2 //Used to be the baddies, man!!
 
 /decl/background_detail/faction/fivearrows
@@ -124,7 +124,7 @@
 	economic progress to rebuild after the ravages of the Skathari Incursion and openly courts influence from \
 	wealthy corporations to that end. Relations with SolGov are strained, and industrial spies \
 	connected to Five Arrows' corporate backers are a threat to many Solar corporations."
-	economic_modifier = 1.3 //the five arrows do exactly have lots of spy money to throw around
+	economic_power = 1.3 //the five arrows do exactly have lots of spy money to throw around
 	subversive_potential = 1.2
 
 /decl/background_detail/faction/nosamis
@@ -172,7 +172,7 @@
 	questionable reputation. Due to the group's extensive political influence, \
 	prosecution of its members has proven difficult, as cases built against them \
 	often find key evidence goes missing, or witnesses uniquely uncooperative."
-	economic_modifier = 1.2
+	economic_power = 1.2
 	subversive_potential= 0.8 // ;)
 
 /decl/background_detail/faction/goldentiger
@@ -189,7 +189,7 @@
 
 /decl/background_detail/faction/jaguar
 	uid = "faction_jaguar"
-	ame = "Criminal - Jaguar Gang"
+	name = "Criminal - Jaguar Gang"
 	description = "The largest human-based pirate group in the rim systems, \
 	operating most heavily between Solar and Tajaran space. \
 	The “Gang” is truthfully a loose alliance of many pirate crews and \

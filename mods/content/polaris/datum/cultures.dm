@@ -126,7 +126,7 @@
 	description = "Pluto's population is predominantly poor and Jewish, \
 	holding fast to their beliefs despite the rise of Unitarianism elsewhere. \
 	Corruption and ties to the Russian Mafia are common, both within Pluto's official government and within the \
-	Plutonian Union of Workers that unofficially controls much of the planetoid.""
+	Plutonian Union of Workers that unofficially controls much of the planetoid."
 	economic_power = 0.8
 	subversive_potential = 1.1
 	language = /decl/language/human/common
@@ -341,7 +341,7 @@
 	much of the region split from SolGov to form the Five Arrows. Sagittarian culture is perhaps most typified by its blending of Solar and \
 	Skrellian cultures, including the adoption of Tradeband as its official language, and while its residents are often stereotyped as arrogant, \
 	wealthy, and snobbish, the truth is that the average Sagitarrian is a miner or farmer whose living conditions differ little from those anywhere in Solar space."
-	economic_modifier = 1.1
+	economic_power = 1.1
 //
 // The Bowl
 //

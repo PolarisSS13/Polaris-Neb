@@ -117,8 +117,9 @@
 		"zhong", "zhou", "zhu", "zhua", "zhuai", "zhuan", "zhuang", "zhui", "zhun", "zhuo"
 	)
 
-/datum/language/human/tradeband
+/decl/language/human/tradeband
 	name = "Tradeband"
+	uid = "language_tradeband"
 	desc = "Spoken by the humans of the upper-class Sagittarius Heights, Tradeband was designed to be pleasing to both humans and their Skrellian trading partners."
 	speech_verb = "enunciates"
 	colour = ""
@@ -135,8 +136,9 @@
 
 
 // Criminal language.
-/datum/language/human/gutter
+/decl/language/human/gutter
 	name = "Gutter"
+	uid = "language_gutter"
 	desc = "Gutter originated as a Thieves' Cant of sorts during the early colonization era. The language eventually spread from the cartels and triads to the disenfranchised people of the Bowl."
 	speech_verb = "growls"
 	colour = ""
@@ -198,8 +200,9 @@
 	)
 
 
-/datum/language/human/terminus
+/decl/language/human/terminus
 	name = "Terminus"
+	uid = "language_terminus"
 	desc = "A soft language spoken by the people of the sparsely populated, socially-conscious Precursors' Crypt region."
 	speech_verb = "mentions"
 	exclaim_verb = "insinuates"

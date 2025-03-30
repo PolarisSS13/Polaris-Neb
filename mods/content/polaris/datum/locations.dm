@@ -210,7 +210,7 @@
 	description = "The habitats of the Saint Columbia system have three times seceded from SolGov; \
 	twice in the 23rd century and once just over a decade ago. \
 	The fiercely independent Saint Columbia Democratic Union now serves as SolGov's main border checkpoint \
-	for the Almach Protectorate.
+	for the Almach Protectorate."
 	local_government = "Saint Columbia Democratic Union"
 	ruling_body = "Golden Crescent Regional Government"
 	economic_power = 0.8
@@ -222,7 +222,7 @@
 	uid = "location_iserlohnrepublic"
 	description = "During the seccesion of the Saint Columbia during the Almach War, \
 	the civilian population of the enormous Saint Columbia Fleet Base broke away from the\
-	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov.
+	system's government and declared themselves the independent Iserlohn Republic loyal to SolGov."
 	local_government = "Iserlohn Republic"
 	ruling_body = "Golden Crescent Regional Government"
 	economic_power = 0.9
@@ -323,7 +323,7 @@
 	wealthy, and snobbish, the truth is that the average Sagitarrian is a miner or farmer whose living conditions differ little from those anywhere in Solar space."
 	capital = "New Seoul"
 	ruling_body = "Five Arrows"
-	economic_modifier = 1.1
+	economic_power = 1.1
 
 //
 // The Bowl
@@ -506,13 +506,11 @@
 
 /decl/background_detail/location/natuna
 	uid = "location_natuna"
-	name = "Natuna Bariśāl"
-	description = "Natuna Bariśāl, commonly known simply as "Natuna" is an independent colony on the border of Human and Skrell space. \
+	name = "Natuna Barisal"
+	description = "Natuna Barisal, commonly known simply as \"Natuna\" is an independent colony on the border of Human and Skrell space. \
 	The colony seceded in the early 25th century in protest of restrictions on Human-Skrell migration, and became the first to \
 	allow humans and Skrell to live alongside one another outside of in official roles. \
 	It became instrumental in the lifting of immigration restrictions between the two governments. \
-	In March 2563, Natuna was occupied by Moghes Hegemony forces, and remains under military control. \
-	The occupation put an end to the system's role as a hub of piracy in the region, as well as many of its resident's civil freedoms.
-	economic_power = 0.5 //its LOW babey
+	In March 2563, Natuna was occupied by Moghes Hegemony forces, and remains under military control."
 	subversive_potential= 1.4 //Hive of scum and villainy. Or, was.
 	distance = "Unknown"
