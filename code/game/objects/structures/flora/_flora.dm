@@ -74,3 +74,4 @@
 	icon            = 'icons/effects/decals/plant_remains.dmi'
 	icon_state      = "leafy_bits"
 	cleanable_scent = "freshly cut plants"
+	sweepable       = TRUE

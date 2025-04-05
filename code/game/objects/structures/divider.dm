@@ -20,6 +20,11 @@
 	material            = /decl/material/solid/organic/wood/oak
 	color               = /decl/material/solid/organic/wood/oak::color
 
+
+/obj/structure/divider/extended/wood/ebony
+	material            = /decl/material/solid/organic/wood/ebony
+	color               = /decl/material/solid/organic/wood/ebony::color
+
 /obj/structure/divider/attack_hand(mob/user)
 	if(user.check_intent(I_FLAG_HELP) && user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, silent = TRUE))
 		extended = !extended

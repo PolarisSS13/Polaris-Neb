@@ -6,3 +6,9 @@
 	icon                = 'icons/obj/items/horseshoe.dmi'
 	material            = /decl/material/solid/metal/iron
 	material_alteration = MAT_FLAG_ALTERATION_ALL
+
+/// A horseshoe hung above a door.
+/obj/item/horseshoe/hung
+	anchored = TRUE
+	randpixel = 0
+	layer = ABOVE_HUMAN_LAYER
