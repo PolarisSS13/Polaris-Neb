@@ -1,9 +1,0 @@
-author: Elizabeth
-changes:
-  - {tweak: tweaked the Forester's Hut on Shaded Hills to be more compact and have
-      timber-framed walls}
-  - {tweak: tweaked the inn backroom on Shaded Hills}
-  - {tweak: 'many of the buildings in Shaded Hills now use timber-framed, plastered,
-      and/or wattle-and-daub walls instead of just log walls'}
-  - {soundadd: 'added a new lobby track to Shaded Hills: Adventure by Alexander Nakarada.'}
-delete-after: true
