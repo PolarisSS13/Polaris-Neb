@@ -1,0 +1,4 @@
+author: Cerebulon
+changes:
+  - {bugfix: Fixed tajaran sprite sheet overrides.}
+delete-after: true
