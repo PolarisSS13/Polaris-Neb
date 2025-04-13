@@ -1,0 +1,4 @@
+author: Zandario
+changes:
+  - {admin: Added a "Toggle Browser Inspect" debug verb for debugging UIs}
+delete-after: true
