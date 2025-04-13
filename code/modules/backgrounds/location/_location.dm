@@ -4,6 +4,7 @@
 	var/distance_heading = "Distance from Sol"
 	var/distance = 0
 	var/ruling_body = "Other Faction"
+	var/local_government //e.g "Persephonic League"
 	var/capital
 
 	// Used by the random news generator. Populate with subtypes of /decl/location_event.
@@ -14,6 +15,8 @@
 	. = list()
 	if(!isnull(capital))
 		. += "<b>Capital:</b> [capital]."
+	if(!isnull(local_government))
+		. += "<b>Local Government:</b> [local_government]."
 	if(!isnull(ruling_body))
 		. += "<b>Territory:</b> [ruling_body]."
 	if(!isnull(distance) && !isnull(distance_heading))

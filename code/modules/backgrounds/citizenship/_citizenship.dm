@@ -3,7 +3,7 @@
 	category = /decl/background_category/citizenship
 	var/ruling_body = "Other Faction"
 	var/capital
-	var/size_heading = "Systems"
+	var/size_heading = "systems"
 	var/size_value
 	var/founded
 
