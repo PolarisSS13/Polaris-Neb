@@ -25,7 +25,7 @@
 /decl/background_detail/faction/rival_corporation
 	uid = "faction_rival_corporation"
 	name = "Corporate - Rival"
-	description = "NanoTrasen's rival corporations are many, though Ward-Takahashi GMB, Vey Medical, Zeng-Hu Pharmaceuticals, \
+	description = "NanoTrasen's rival corporations are many, though Ward-Takahashi GMB, Vey-Medical, Zeng-Hu Pharmaceuticals, \
 	and Kaleidoscope Cosmetics warrant special mention. Many of these corporations would love nothing more than to \
 	steal the secrets of the Sif Anomalous Region from under NanoTrasen's nose, and conduct campaigns of corporate epsionage to that end. \
 	NanoTrasen only hires those with known or suspected ties to major rivals under circumstances where they hope to gain more than they might lose, \

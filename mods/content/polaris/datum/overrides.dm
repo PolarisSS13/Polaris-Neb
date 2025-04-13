@@ -34,7 +34,7 @@
 			/decl/background_detail/faction/other
 		),
 
-		/decl/background_category/heritage =   list(
+		/decl/background_category/heritage = list(
 			/decl/background_detail/heritage/earth,
 			/decl/background_detail/heritage/mars,
 			/decl/background_detail/heritage/luna,
@@ -80,7 +80,7 @@
 			/decl/background_detail/heritage/freetrader,
 			/decl/background_detail/heritage/deep_space
 		),
-		/decl/background_category/religion =  list(
+		/decl/background_category/religion = list(
 			/decl/background_detail/religion/no_religion,
 			/decl/background_detail/religion/neopagan,
 			/decl/background_detail/religion/unitarian,
@@ -108,16 +108,16 @@
 	name = "age"
 	chargen_max_index = 9
 	standalone_value_descriptors = list(
-		"an infant" =      1,
-		"a toddler" =      3,
-		"a child" =        7,
-		"a teenager" =    12,
+		"an infant" =   1,
+		"a toddler" =   3,
+		"a child" =     7,
+		"a teenager" = 12,
 		"a young adult" = 17,
-		"an adult" =      28,
-		"middle-aged" =   45,
-		"aging" =         65,
-		"elderly" =       90,
-		"ancient" =      110
+		"an adult" =   28,
+		"middle-aged" = 45,
+		"aging" =      65,
+		"elderly" =    90,
+		"ancient" =   110
 	)
 
 /decl/bodytype
@@ -139,7 +139,7 @@
 			/decl/background_detail/citizenship/earthnation,
 			/decl/background_detail/citizenship/stateless
 		),
-		/decl/background_category/faction =   list(
+		/decl/background_category/faction = list(
 			/decl/background_detail/faction/nanotrasen,
 			/decl/background_detail/faction/contractor,
 			/decl/background_detail/faction/shadow_coalition,
@@ -160,7 +160,7 @@
 			/decl/background_detail/faction/revsol_peoples_party,
 			/decl/background_detail/faction/other
 		),
-		/decl/background_category/heritage =   list(
+		/decl/background_category/heritage = list(
 			/decl/background_detail/heritage/earth,
 			/decl/background_detail/heritage/mars,
 			/decl/background_detail/heritage/luna,
@@ -207,7 +207,7 @@
 			/decl/background_detail/heritage/freetrader,
 			/decl/background_detail/heritage/deep_space
 		),
-		/decl/background_category/religion =  list(
+		/decl/background_category/religion = list(
 			/decl/background_detail/religion/no_religion,
 			/decl/background_detail/religion/neopagan,
 			/decl/background_detail/religion/unitarian,
@@ -225,9 +225,9 @@
 
 	default_background_info = list(
 		/decl/background_category/citizenship = /decl/background_detail/citizenship/scg,
-		/decl/background_category/faction   = /decl/background_detail/faction/nanotrasen,
-		/decl/background_category/heritage   = /decl/background_detail/heritage/sif,
-		/decl/background_category/religion  = /decl/background_detail/religion/other
+		/decl/background_category/faction = /decl/background_detail/faction/nanotrasen,
+		/decl/background_category/heritage = /decl/background_detail/heritage/sif,
+		/decl/background_category/religion = /decl/background_detail/religion/other
 	)
 
 //Loadout
@@ -284,7 +284,7 @@
 			/decl/background_detail/citizenship/earthnation,
 			/decl/background_detail/citizenship/stateless
 		),
-		/decl/background_category/faction =   list(
+		/decl/background_category/faction = list(
 			/decl/background_detail/faction/nanotrasen,
 			/decl/background_detail/faction/contractor,
 			/decl/background_detail/faction/shadow_coalition,
@@ -305,7 +305,7 @@
 			/decl/background_detail/faction/revsol_peoples_party,
 			/decl/background_detail/faction/other
 		),
-		/decl/background_category/heritage =   list(
+		/decl/background_category/heritage = list(
 			/decl/background_detail/heritage/earth,
 			/decl/background_detail/heritage/mars,
 			/decl/background_detail/heritage/luna,
@@ -352,7 +352,7 @@
 			/decl/background_detail/heritage/freetrader,
 			/decl/background_detail/heritage/deep_space
 		),
-		/decl/background_category/religion =  list(
+		/decl/background_category/religion = list(
 			/decl/background_detail/religion/no_religion,
 			/decl/background_detail/religion/neopagan,
 			/decl/background_detail/religion/unitarian,

@@ -461,7 +461,7 @@
 	Each of its three major habitats is an independent nation under heavy corporate control, \
 	and the system saw no shortage of infighting prior to the Hegemony invasion. \
 	Heavy losses to the Skathari Incursion have seen corporate influence grow even stronger and sparked a massive refugee crisis. \
-	Raphael also hosts the first permenant vox settlement in the local cluster, with the remains of the arkship Bolt seeking refugee status at Raphael's docks."
+	Raphael also hosts the first permanent vox settlement in the local cluster, with the remains of the arkship Bolt seeking refugee status at Raphael's docks."
 	economic_power = 0.7
 	subversive_potential = 0.8 //nanotrasen may well have Literally Made You
 
@@ -482,13 +482,11 @@
 /decl/background_detail/heritage/nyx
 	uid = "heritage_nyx"
 	name = "Precursors' Crypt - Nyxian Culture"
-	description = "Nyx is on the edge of colonized human space; a frontier system. It holds the dubious distinction of \
-	containing the only known and recently identified phoron giant, Erebus, making it a hotbed of both \
-	Trans-Stellar Corporate interest and, due to its distance from the better-policed parts of human space, criminal activity. \
-	Although Brinkburn and Roanoke play host to significant and stable colonies backed by SolGov support, \
-	the Federation presence in the system has been only nominal for years; what justice there is, you bring with you. \
-	The universally accepted currency in Nyx is the SolGov-backed Thaler (þ), although simple barter is often an acceptable alternative. \
-	With the advances of technology the overall standard of living and education is high even out in the frontier - if you can afford it." // extremely very rewrite
+	description = "Nyx is a red dwarf star on the very edge of colonized human space; a once-thriving frontier system that has since become something of a ghost town. \
+	It holds the dubious distinction of containing the only known phoron-based gas giant, Erebus. Prior to the Skathari Incursion this made it an attractive destination for \
+	Trans-Stellar expansion and cutting-edge research, and a convenient hideaway for criminal elements, both benefitting from distance from the prying eyes of the Solar government. \
+	Today, most of its population are those who survived the Incursion and lack any means to leave. NanoTrasen continues to operate a handful of facilities at partial strength, \
+	and an ever-rotating array of xenoarchaeologists and anomalists remain, investigating the aftermath of the Incursion." // extremely very rewrite 2
 	economic_power = 0.7 // who the fuck is even from nyx
 	//i have a miner from emerald station :)
 

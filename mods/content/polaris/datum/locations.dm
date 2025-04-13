@@ -186,7 +186,7 @@
 	but still retain a significant degree of autonomy."
 	capital = "New Reykjavik, Sif"
 	local_government = "Vir Governmental Authority"
-	ruling_body = "Golden Crescent Regional Government"
+	ruling_body = "Golden Crescent Alliance Bloc"
 	distance = "67.4 ly"
 
 //
@@ -201,7 +201,7 @@
 	Oasis is a core member of the Golden Crescent Alliance Bloc."
 	capital = null //none
 	local_government = "Oasis Resort Management Association"
-	ruling_body = "Golden Crescent Regional Government"
+	ruling_body = "Golden Crescent Alliance Bloc"
 	distance = "44 ly"
 
 /decl/background_detail/location/sdcu
@@ -212,7 +212,7 @@
 	The fiercely independent Saint Columbia Democratic Union now serves as SolGov's main border checkpoint \
 	for the Almach Protectorate."
 	local_government = "Saint Columbia Democratic Union"
-	ruling_body = "Golden Crescent Regional Government"
+	ruling_body = "Golden Crescent Alliance Bloc"
 	economic_power = 0.8
 	subversive_potential = 1.2
 	distance = "49 ly"
