@@ -6,6 +6,7 @@
 	w_class = ITEM_SIZE_SMALL
 	origin_tech = @'{"materials":1,"engineering":1}'
 	material = /decl/material/solid/metal/steel
+	color = /decl/material/solid/metal/steel::color
 	center_of_mass = @'{"x":18,"y":10}'
 	attack_verb = list("sheared", "cut")
 	sharp = TRUE

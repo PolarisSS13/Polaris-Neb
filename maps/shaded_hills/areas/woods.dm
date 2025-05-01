@@ -33,5 +33,6 @@
 
 /area/shaded_hills/forester_hut
 	name = "\improper Foresters' Hut"
+	sound_env = STANDARD_STATION
 	fishing_failure_prob = 100
 	fishing_results = list()

@@ -14,9 +14,8 @@
 	can_have_rider        = TRUE
 	max_rider_size        = MOB_SIZE_MEDIUM
 	ai                    = /datum/mob_controller/passive/horse
-	draw_visible_overlays = list(
-		"base"            = "#ccc496"
-	)
+	color                 = "#806146" // preview color
+	draw_visible_overlays = null // e.g. list("base" = "#806146")
 
 /datum/mob_controller/passive/horse
 	emote_speech = list("Neigh!","NEIGH!","Neigh?")
@@ -30,6 +29,7 @@
 
 /mob/living/simple_animal/passive/horse/Initialize()
 	. = ..()
+	color = null // clear preview color
 	add_inventory_slot(new /datum/inventory_slot/back/horse)
 	equip_to_slot_or_del(new /obj/item/saddle(src), slot_back_str)
 	if(!LAZYACCESS(draw_visible_overlays, "base"))

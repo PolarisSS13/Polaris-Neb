@@ -10,6 +10,8 @@
 		'icons/turf/walls/stone.dmi' = TRUE,
 		'icons/turf/walls/brick.dmi' = TRUE,
 		'icons/turf/walls/log.dmi' = TRUE,
+		'icons/turf/walls/wattle.dmi' = TRUE,
+		'icons/turf/walls/wattledaub.dmi' = TRUE,
 		'icons/turf/walls/metal.dmi' = TRUE
 	)
 	icon_reinf = list(

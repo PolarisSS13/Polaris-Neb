@@ -136,6 +136,8 @@
 /obj/machinery/inertial_damper/proc/SetBounds()
 	bound_width = width * world.icon_size
 	bound_height = height * world.icon_size
+	if(bound_height != world.icon_size || bound_width != world.icon_size)
+		appearance_flags = /obj/machinery::appearance_flags & ~TILE_BOUND
 
 /obj/machinery/inertial_damper/interface_interact(var/mob/user)
 	ui_interact(user)

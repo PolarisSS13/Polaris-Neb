@@ -76,8 +76,10 @@
 	else if(paint_color)
 		if(reinf_material)
 			SetName("[reinf_material.solid_name]-framed plastered wall")
+			desc = "A plastered wall framed with [reinf_material.solid_name]."
 		else
 			SetName("plastered wall")
+			desc = "A plastered wall."
 	else
 		if(reinf_material)
 			SetName("[reinf_material.solid_name]-framed [material.adjective_name] wattle and daub wall")
