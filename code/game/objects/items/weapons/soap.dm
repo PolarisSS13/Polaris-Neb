@@ -54,7 +54,7 @@
 	update_icon()
 
 /obj/item/soap/proc/wet()
-	add_to_reagents(/decl/material/liquid/cleaner/soap, SOAP_CLEANER_ON_WET)
+	add_to_reagents(/decl/material/liquid/cleaner/soap, SOAP_CLEANER_ON_WET, phase = MAT_PHASE_LIQUID)
 
 /obj/item/soap/Crossed(atom/movable/AM)
 	var/mob/living/victim = AM

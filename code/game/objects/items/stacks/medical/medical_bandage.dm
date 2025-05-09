@@ -75,7 +75,7 @@
 /obj/item/stack/medical/bandage/proc/bandage_wound(mob/user, mob/target, obj/item/organ/external/affecting, datum/wound/wound)
 	user.visible_message(
 		SPAN_NOTICE("\The [user] bandages \a [wound.desc] on \the [target]'s [affecting.name]."),
-	    SPAN_NOTICE("You bandage \a [wound.desc] on \the [target]'s [affecting.name].")
+		SPAN_NOTICE("You bandage \a [wound.desc] on \the [target]'s [affecting.name].")
 	)
 	wound.bandage()
 
