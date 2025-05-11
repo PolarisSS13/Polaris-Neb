@@ -8,8 +8,8 @@
 	difficulty                  = MAT_VALUE_EASY_DIY
 	recipe_skill                = SKILL_BOTANY
 
-/decl/stack_recipe/fodder/get_required_stack_amount(obj/item/stack/stack)
-	return 30 // Arbitrary amount to make 20 food items.
+/decl/stack_recipe/fodder/get_required_stack_amount(obj/item/stack/stack, product_amount = 1)
+	return 30 * product_amount // Arbitrary amount to make 20 food items.
 
 /decl/stack_recipe/fodder/bale
 	result_type                 = /obj/structure/haystack/bale
