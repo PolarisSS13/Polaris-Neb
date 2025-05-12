@@ -121,7 +121,7 @@
 
 /decl/flooring/laminate/walnut
 	build_type         = /obj/item/stack/tile/wood/laminate/walnut
-	force_material     = /decl/material/solid/organic/wood/chipboard/yew
+	force_material     = /decl/material/solid/organic/wood/chipboard/walnut
 
 /decl/flooring/laminate/yew
 	build_type         = /obj/item/stack/tile/wood/laminate/yew
