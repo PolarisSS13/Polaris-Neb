@@ -61,7 +61,12 @@
 		if(relation.holder == holder && relation.other && relation.other.holder == target && (relation.finalized || !finalized_only))
 			. += relation
 
-/decl/human_examination/matchmaking/do_examine(var/mob/living/user, var/distance, var/mob/living/source) //These can either return text, or should return nothing at all if you're doing to_chat()
+/decl/human_examination/matchmaking
+	// Show up after pose.
+	priority = /decl/human_examination/pose::priority + 1
+
+// These should return null, text, or a list of text strings.
+/decl/human_examination/matchmaking/do_examine(var/mob/living/user, var/distance, var/mob/living/human/source, hideflags, decl/pronouns/pronouns)
 	if(!istype(source) || !istype(user))
 		return
 	if(!source.mind || !user.mind || source.name != source.real_name)

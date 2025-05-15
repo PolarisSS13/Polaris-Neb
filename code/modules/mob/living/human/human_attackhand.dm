@@ -382,6 +382,7 @@
 		user.visible_message( \
 			SPAN_NOTICE("\The [user] starts applying pressure to \the [src]'s [organ.name]!"), \
 			SPAN_NOTICE("You start applying pressure to \the [src]'s [organ.name]!"))
+	// TODO: refactor applying pressure to use grabs instead? would probably require making grabs locked to the zone they were started on
 	spawn(0)
 		organ.applied_pressure = user
 
