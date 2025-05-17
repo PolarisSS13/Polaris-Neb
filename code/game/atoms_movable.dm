@@ -609,3 +609,6 @@
 
 /atom/movable/proc/get_cryogenic_power()
 	return 0
+
+/atom/movable/proc/is_valid_merchant_pad_target()
+	return simulated
