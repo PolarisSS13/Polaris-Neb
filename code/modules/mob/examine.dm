@@ -28,7 +28,7 @@
 			. += SPAN_WARNING("[pronouns.He] [pronouns.is] [html_icon(buckled)] buckled to [buckled]!")
 
 /mob/proc/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
-	return
+	return list()
 
 // We add a default parameter here for hidden inventory flags.
 /mob/get_examine_header(mob/user, distance, infix, suffix, hideflags)
