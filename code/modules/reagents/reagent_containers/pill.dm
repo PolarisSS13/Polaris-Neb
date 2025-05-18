@@ -184,10 +184,10 @@
 	autolabel = FALSE
 
 /obj/item/chems/pill/zoom/populate_reagents()
-	add_to_reagents(/decl/material/liquid/narcotics,       5)
-	add_to_reagents(/decl/material/liquid/antidepressants, 5)
-	add_to_reagents(/decl/material/liquid/stimulants,      5)
-	add_to_reagents(/decl/material/liquid/amphetamines,    5)
+	add_to_reagents(/decl/material/liquid/narcotics,                   5)
+	add_to_reagents(/decl/material/liquid/accumulated/antidepressants, 5)
+	add_to_reagents(/decl/material/liquid/accumulated/stimulants,      5)
+	add_to_reagents(/decl/material/liquid/amphetamines,                5)
 	. = ..()
 
 /obj/item/chems/pill/gleam
@@ -210,19 +210,19 @@
 
 //Psychiatry pills.
 /obj/item/chems/pill/stimulants
-	desc = "Improves the ability to concentrate."
+	desc = "Improves the ability to concentrate. Abrupt discontinuation may result in side-effects."
 	icon_state = "pill2"
 
 /obj/item/chems/pill/stimulants/populate_reagents()
-	add_to_reagents(/decl/material/liquid/stimulants, 15)
+	add_to_reagents(/decl/material/liquid/accumulated/stimulants, 15)
 	. = ..()
 
 /obj/item/chems/pill/antidepressants
-	desc = "Mild anti-depressant."
+	desc = "Mild anti-depressant. Abrupt discontinuation may result in side-effects."
 	icon_state = "pill4"
 
 /obj/item/chems/pill/antidepressants/populate_reagents()
-	add_to_reagents(/decl/material/liquid/antidepressants, 15)
+	add_to_reagents(/decl/material/liquid/accumulated/antidepressants, 15)
 	. = ..()
 
 /obj/item/chems/pill/antirads
