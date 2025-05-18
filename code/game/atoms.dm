@@ -435,13 +435,13 @@
  * Obj adds matter contents. Other overrides may add extra handling for things like material storage.
  * Most useful for calculating worth or deconstructing something along with its contents.
  */
-/atom/proc/get_contained_matter()
-	if(length(reagents?.reagent_volumes))
+/atom/proc/get_contained_matter(include_reagents = TRUE)
+	if(include_reagents && length(reagents?.reagent_volumes))
 		LAZYINITLIST(.)
 		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
 			.[reagent.type] += floor(REAGENT_VOLUME(reagents, reagent) / REAGENT_UNITS_PER_MATERIAL_UNIT)
 	for(var/atom/contained_obj as anything in get_contained_external_atoms()) // machines handle component parts separately
-		. = MERGE_ASSOCS_WITH_NUM_VALUES(., contained_obj.get_contained_matter())
+		. = MERGE_ASSOCS_WITH_NUM_VALUES(., contained_obj.get_contained_matter(include_reagents))
 
 /// Return a list of all simulated atoms inside this one.
 /atom/proc/get_contained_external_atoms()

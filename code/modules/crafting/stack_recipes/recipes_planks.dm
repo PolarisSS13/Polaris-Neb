@@ -1,6 +1,7 @@
 /decl/stack_recipe/planks
 	abstract_type          = /decl/stack_recipe/planks
 	craft_stack_types      = /obj/item/stack/material/plank
+	validation_material    = /decl/material/solid/organic/wood/oak
 
 /decl/stack_recipe/planks/sandals
 	result_type            = /obj/item/clothing/shoes/sandal

@@ -6,6 +6,7 @@
 	difficulty                 = null // Autoset from material difficulty
 	crafting_extra_cost_factor = 1.5 // measure twice, cut once; material is lost. todo: produce scraps?
 	abstract_type              = /decl/stack_recipe/textiles
+	validation_material        = /decl/material/solid/organic/cloth
 
 /decl/stack_recipe/textiles/rug
 	result_type                = /obj/structure/rug/crafted
@@ -62,6 +63,7 @@
 
 /decl/stack_recipe/textiles/leather
 	abstract_type         = /decl/stack_recipe/textiles/leather
+	validation_material   = /decl/material/solid/organic/leather
 	craft_stack_types     = /obj/item/stack/material/skin
 	category              = "clothing"
 
@@ -105,6 +107,7 @@
 
 /decl/stack_recipe/textiles/cloth
 	abstract_type         = /decl/stack_recipe/textiles/cloth
+	validation_material   = /decl/material/solid/organic/cloth
 	craft_stack_types     = /obj/item/stack/material/bolt
 	category              = "clothing"
 
@@ -141,6 +144,7 @@
 /decl/stack_recipe/textiles/fur
 	abstract_type         = /decl/stack_recipe/textiles/fur
 	craft_stack_types     = /obj/item/stack/material/skin/pelt
+	validation_material   = /decl/material/solid/organic/skin/fur
 
 /decl/stack_recipe/textiles/fur/bedding
 	difficulty                 = MAT_VALUE_EASY_DIY

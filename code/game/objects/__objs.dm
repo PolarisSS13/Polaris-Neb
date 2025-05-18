@@ -293,7 +293,7 @@
 /obj/proc/WillContain()
 	return
 
-/obj/get_contained_matter()
+/obj/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	if(length(matter))
 		. = MERGE_ASSOCS_WITH_NUM_VALUES(., matter.Copy())

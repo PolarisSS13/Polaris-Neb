@@ -176,7 +176,7 @@
 		stored_ammo += new ammo_type(src)
 	contents_initialized = TRUE
 
-/obj/item/ammo_magazine/get_contained_matter()
+/obj/item/ammo_magazine/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	if(!lazyload_contents || contents_initialized || !ammo_type || !initial_ammo)
 		return
