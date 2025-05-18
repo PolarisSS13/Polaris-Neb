@@ -62,17 +62,19 @@
 						else if(!istype(product, recipe.expected_product_type))
 							failed += "unexpected product type returned ([product.type])"
 						else if(isobj(product))
-							var/obj/product_obj = product
-							LAZYINITLIST(product_obj.matter) // For the purposes of the following tests not runtiming.
+							var/list/product_matter = list()
+							for(var/obj/product_obj in results)
+								product_matter = MERGE_ASSOCS_WITH_NUM_VALUES(product_matter, product_obj.get_contained_matter())
+							LAZYINITLIST(product_matter) // For the purposes of the following tests not runtiming.
 							if(!material && !reinforced)
-								if(length(product_obj.matter))
+								if(length(product_matter))
 									failed += "unsupplied material types"
-							else if(material && (product_obj.matter[material.type]) > recipe.req_amount)
-								failed += "excessive base material ([recipe.req_amount]/[ceil(product_obj.matter[material.type])])"
-							else if(reinforced && (product_obj.matter[reinforced.type]) > recipe.req_amount)
-								failed += "excessive reinf material ([recipe.req_amount]/[ceil(product_obj.matter[reinforced.type])])"
+							else if(material && (product_matter[material.type]) > recipe.req_amount)
+								failed += "excessive base material ([recipe.req_amount]/[ceil(product_matter[material.type])])"
+							else if(reinforced && (product_matter[reinforced.type]) > recipe.req_amount)
+								failed += "excessive reinf material ([recipe.req_amount]/[ceil(product_matter[reinforced.type])])"
 							else
-								for(var/mat in product_obj.matter)
+								for(var/mat in product_matter)
 									if(mat != material?.type && mat != reinforced?.type)
 										failed += "extra material type ([mat])"
 
