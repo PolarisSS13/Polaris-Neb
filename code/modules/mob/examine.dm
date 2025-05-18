@@ -4,6 +4,11 @@
 		return GET_DECL(/decl/pronouns)
 	return get_pronouns()
 
+/mob/proc/get_visible_pronouns_for_viewer(mob/viewer, hideflags)
+	if(viewer == src)
+		return GET_DECL(/decl/pronouns/self)
+	return get_visible_pronouns(hideflags)
+
 /mob/proc/get_equipment_visibility()
 	. = 0
 	for(var/obj/item/thing in get_equipped_items(include_carried = FALSE))
@@ -46,7 +51,7 @@
 		hideflags |= HIDEEARS
 
 	// Show our equipment, held items, desc, etc.
-	var/decl/pronouns/pronouns = get_visible_pronouns(hideflags)
+	var/decl/pronouns/pronouns = get_visible_pronouns_for_viewer(user, hideflags) // handles second-person if src == user
 	var/list/examine_items = get_examined_worn_held_items(user, distance, infix, suffix, hideflags, pronouns)
 	if(length(examine_items))
 		. += examine_items

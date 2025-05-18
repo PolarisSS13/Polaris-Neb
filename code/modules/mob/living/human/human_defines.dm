@@ -49,9 +49,6 @@
 	var/obj/machinery/machine_visual
 	var/shock_stage
 	var/rounded_shock_stage
-	/// vars for fountain of youth examine lines
-	var/became_older
-	var/became_younger
 	/// var for caching last pain calc to avoid looping through organs over and over and over again
 	var/last_pain
 	var/vital_organ_missing_time
