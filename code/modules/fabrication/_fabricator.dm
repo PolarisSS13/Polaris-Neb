@@ -230,6 +230,6 @@
 	return pipe_colors //override with null for hex color selections
 
 // Our stored_material is just the right format to be added to the matter list.
-/obj/machinery/fabricator/get_contained_matter()
+/obj/machinery/fabricator/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	. = MERGE_ASSOCS_WITH_NUM_VALUES(., stored_material)

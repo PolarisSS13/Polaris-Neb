@@ -3,7 +3,10 @@
 	craft_stack_types           = /obj/item/stack/material/bundle
 	category                    = "woven items"
 	forbidden_craft_stack_types = null
+	validation_material         = /decl/material/solid/organic/plantmatter/grass/dry
 
+// TODO: make this check a material property. tensile strength? dryness?
+// literally anything but a direct type equality check please
 /decl/stack_recipe/woven/can_be_made_from(stack_type, tool_type, decl/material/mat, decl/material/reinf_mat)
 	if((istype(mat) ? mat.type : mat) == /decl/material/solid/organic/plantmatter/grass)
 		return FALSE
