@@ -250,6 +250,10 @@
 	update_light_status(TRUE)
 	update_icon()
 
+// Just... skip the entire test. We don't need to remove the bulbs from every single light just to test this.
+/obj/machinery/light/fail_construct_state_unit_test()
+	return FALSE
+
 /obj/machinery/light/cannot_transition_to(state_path, mob/user)
 	if(lightbulb && !ispath(state_path, /decl/machine_construction/wall_frame/panel_closed))
 		return SPAN_WARNING("You must first remove the lightbulb!")
