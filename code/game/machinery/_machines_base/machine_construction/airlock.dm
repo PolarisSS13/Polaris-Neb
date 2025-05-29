@@ -19,7 +19,7 @@
 	if(machine.construct_state != src)
 		return "Machine [log_info_line(machine)] had a construct_state of type [machine.construct_state.type] after screwdriver interaction (expected [type])."
 	// Now test the down state
-	var/obj/item/wrench/wrench = new
+	var/static/obj/item/wrench/wrench = new
 	if(!machine.attackby(wrench, user))
 		return "Machine [log_info_line(machine)] did not respond to attackby with wrench."
 	if(machine.construct_state.type != down_state)

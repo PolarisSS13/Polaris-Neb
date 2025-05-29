@@ -21,6 +21,9 @@
 
 /decl/machine_construction/default/panel_closed/proc/fail_test_state_transfer(obj/machinery/machine, mob/user)
 	var/static/obj/item/screwdriver/screwdriver = new
+	// Prevent access locks on machines interfering with our interactions.
+	for(var/obj/item/stock_parts/access_lock/lock in machine.get_all_components_of_type(/obj/item/stock_parts/access_lock))
+		lock.locked = FALSE
 	if(!machine.attackby(screwdriver, user))
 		return "Machine [log_info_line(machine)] did not respond to attackby with screwdriver."
 	if(machine.construct_state.type != down_state)

@@ -120,13 +120,13 @@
 		icon_state = "[base_state]-p"
 
 /obj/machinery/sparker/attackby(obj/item/used_item, mob/user)
-	if(IS_SCREWDRIVER(used_item))
+	if(panel_open && IS_WIRECUTTER(used_item))
 		add_fingerprint(user)
 		disable = !disable
 		if(disable)
-			user.visible_message("<span class='warning'>[user] has disabled \the [src]!</span>", "<span class='warning'>You disable the connection to \the [src].</span>")
-		else if(!disable)
-			user.visible_message("<span class='warning'>[user] has reconnected \the [src]!</span>", "<span class='warning'>You fix the connection to \the [src].</span>")
+			user.visible_message(SPAN_WARNING("[user] has disabled \the [src]!"), SPAN_WARNING("You disable the connection to \the [src]."))
+		else
+			user.visible_message(SPAN_WARNING("[user] has reconnected \the [src]!"), SPAN_WARNING("You fix the connection to \the [src]."))
 		update_icon()
 		return TRUE
 	else
