@@ -53,6 +53,7 @@
 	name = "piece"
 	desc = "It tastes like you'd expect."
 	material = /decl/material/solid/organic/meat/chicken
+	color = /decl/material/solid/organic/meat/chicken::color
 	butchery_data = /decl/butchery_data/animal/small/fowl/chicken
 
 /obj/item/food/butchery/meat/chicken/game
@@ -66,7 +67,8 @@
 /obj/item/food/butchery/meat/xeno
 	desc = "A slab of green meat. Smells like acid."
 	icon_state = "xenomeat"
-	color = "#43de18"
+	color = "#43de18" // todo: add xenomeat material and use material alteration
+	material_alteration = MAT_FLAG_ALTERATION_NONE
 	center_of_mass = @'{"x":16,"y":10}'
 	bitesize = 6
 	butchery_data = /decl/butchery_data/xeno

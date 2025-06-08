@@ -1,7 +1,7 @@
 /obj/structure/bed/simple
 	desc = "A slatted wooden bed."
 	icon = 'icons/obj/structures/furniture/bed_simple.dmi'
-	icon_state = "bed_padded_preview" // For map editor preview purposes
+	icon_state = "world_padded_preview" // For map editor preview purposes
 	parts_type = /obj/item/stack/material/plank
 	material = /decl/material/solid/organic/wood/oak
 	initial_padding_material = /decl/material/solid/organic/plantmatter/grass/dry
@@ -48,7 +48,7 @@
 
 /obj/structure/bed/simple/crafted
 	initial_padding_material = null
-	icon_state = "bed"
+	icon_state = ICON_STATE_WORLD
 	color = /decl/material/solid/organic/wood/oak::color
 
 /obj/item/bedsheet/furs

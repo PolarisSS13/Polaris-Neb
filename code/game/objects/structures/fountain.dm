@@ -85,6 +85,22 @@
 	used = TRUE
 	desc = "The water flows beautifully from the spout, but the water in the pool does not ripple."
 
+/mob/living/human
+	/// Used by the Fountain of Youth point of interest for on-examine messages.
+	var/became_older
+	/// Used by the Fountain of Youth point of interest for on-examine messages.
+	var/became_younger
+
+/decl/human_examination/fountain
+	priority = /decl/human_examination/graffiti::priority + 0.5 // just squeeze it in there
+
+/decl/human_examination/fountain/do_examine(mob/user, distance, mob/living/human/source, hideflags, decl/pronouns/pronouns)
+	. = list()
+	if(source.became_younger)
+		. += "[pronouns.He] look[pronouns.s] a lot younger than you remember."
+	if(source.became_older)
+		. += "[pronouns.He] look[pronouns.s] a lot older than you remember."
+
 /obj/structure/fountain/mundane
 	name                   = "fountain"
 	desc                   = "A beautifully constructed fountain."

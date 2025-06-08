@@ -49,7 +49,7 @@
 // daubed walls have the color of their daubing
 /turf/wall/wattle/get_base_color()
 	if(daubing_material)
-		return "#ae9f70" // daubing_material.color // sorry, but using the daubing material color looks bad
+		return "#795946" // daubing_material.color // sorry, but using the daubing material color looks bad
 	return ..()
 
 // don't plaster over our damn reinforcements
@@ -76,8 +76,10 @@
 	else if(paint_color)
 		if(reinf_material)
 			SetName("[reinf_material.solid_name]-framed plastered wall")
+			desc = "A plastered wall framed with [reinf_material.solid_name]."
 		else
 			SetName("plastered wall")
+			desc = "A plastered wall."
 	else
 		if(reinf_material)
 			SetName("[reinf_material.solid_name]-framed [material.adjective_name] wattle and daub wall")
@@ -89,6 +91,7 @@
 /turf/wall/wattle/daubed
 	icon_state = "wattledaub"
 	daubing_material = /decl/material/solid/clay
+	color = "#795946" // temporary mapping preview colour taken from get_base_color()
 	// the daub is lost when destroyed/deconstructed, since it's dried anyway
 
 /turf/wall/wattle/daubed/plastered
@@ -116,7 +119,6 @@
 }; \
 /turf/wall/wattle/daubed/##material_name { \
 	material = /decl/material/solid/organic/wood/##material_name; \
-	color = /decl/material/solid/organic/wood/##material_name::color; \
 }; \
 /turf/wall/wattle/daubed/##material_name/shutter { \
 	shutter_state = FALSE; \

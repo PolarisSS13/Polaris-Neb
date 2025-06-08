@@ -10,6 +10,7 @@
 	difficulty                  = MAT_VALUE_HARD_DIY
 	available_to_map_tech_level = MAP_TECH_LEVEL_MEDIEVAL
 	category                    = "structures"
+	validation_material         = /decl/material/solid/metal/steel
 
 /decl/stack_recipe/rods/stick
 	result_type                 = /obj/item/stick

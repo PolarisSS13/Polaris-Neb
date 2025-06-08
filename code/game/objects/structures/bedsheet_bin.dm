@@ -12,7 +12,7 @@ LINEN BINS
 	item_state = "bedsheet"
 	randpixel = 0
 	slot_flags = SLOT_BACK
-	layer = BASE_ABOVE_OBJ_LAYER
+	layer = ABOVE_STRUCTURE_LAYER // layer below other objects but above beds
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEM_SIZE_SMALL
@@ -21,7 +21,7 @@ LINEN BINS
 /obj/item/bedsheet/attackby(obj/item/used_item, mob/user)
 	if(used_item.is_sharp() || used_item.has_edge())
 		user.visible_message("<span class='notice'>\The [user] begins cutting up \the [src] with \a [used_item].</span>", "<span class='notice'>You begin cutting up \the [src] with \the [used_item].</span>")
-		if(do_after(user, 50, src))
+		if(do_after(user, 5 SECONDS, src))
 			to_chat(user, "<span class='notice'>You cut \the [src] into pieces!</span>")
 			for(var/i in 1 to rand(2,5))
 				new /obj/item/chems/rag(get_turf(src))

@@ -10,7 +10,8 @@
 	var/buckle_layer_above = FALSE
 	var/buckle_dir = 0
 	var/buckle_lying = -1             // bed-like behavior, forces mob to lie or stand if buckle_lying != -1
-	var/buckle_pixel_shift            // ex. @'{"x":0,"y":0,"z":0}' //where the buckled mob should be pixel shifted to, or null for no pixel shift control
+	/// A list or JSON-encoded list of pixel offsets to use on a mob buckled to this atom. TRUE to use this atom's pixel shifts, null for no pixel shift control.
+	var/buckle_pixel_shift            // ex. @'{"x":0,"y":0,"z":0}'
 	var/buckle_require_restraints = 0 // require people to be cuffed before being able to buckle. eg: pipes
 	var/buckle_require_same_tile = FALSE
 	var/buckle_sound
@@ -608,3 +609,6 @@
 
 /atom/movable/proc/get_cryogenic_power()
 	return 0
+
+/atom/movable/proc/is_valid_merchant_pad_target()
+	return simulated

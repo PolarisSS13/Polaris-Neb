@@ -144,6 +144,20 @@ var/global/repository/decls/decls_repository = new
 		. = get_decls(subtypesof(decl_prototype))
 		fetched_decl_subtypes[decl_prototype] = .
 
+/// Gets the path of any concrete (non-abstract) decl of the provided type.
+/// If decl_prototype is not abstract it will return that type.
+/// Otherwise, it returns the first (in compile order) non-abstract child of this type,
+/// or null otherwise.
+/// This doesn't respect DECL_FLAG_ALLOW_ABSTRACT_INIT, but that flag should probably be deprecated someday
+/// and replaced with a better solution to avoid instantiating abstract decls.
+/// This is mostly used for recipe validation in unit tests and such.
+/repository/decls/proc/get_first_concrete_decl_path_of_type(decl_prototype)
+	RETURN_TYPE(/decl)
+	. = fetched_decl_paths_by_type[decl_prototype]
+	if(!.)
+		. = get_decl_paths_of_type(decl_prototype)
+	return LAZYACCESS(., 1) // gets the first key (type) if it exists, else null if index is out of range
+
 /decl
 	abstract_type = /decl
 	var/uid

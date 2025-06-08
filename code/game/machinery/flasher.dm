@@ -71,30 +71,7 @@
 			continue
 
 		var/flash_time = strength
-		if(isliving(viewer))
-			if(viewer.eyecheck() > FLASH_PROTECTION_NONE)
-				continue
-			if(ishuman(viewer))
-				var/mob/living/human/H = viewer
-				flash_time = round(H.get_flash_mod() * flash_time)
-				if(flash_time <= 0)
-					return
-				var/vision_organ_tag = H.get_vision_organ_tag()
-				if(vision_organ_tag)
-					var/obj/item/organ/internal/organ = GET_INTERNAL_ORGAN(H, vision_organ_tag)
-					if(organ && organ.is_bruised() && prob(organ.get_organ_damage() + 50))
-						H.flash_eyes()
-						organ.adjust_organ_damage(rand(1, 5))
-
-		if(!viewer.is_blind())
-			do_flash(viewer, flash_time)
-
-/obj/machinery/flasher/proc/do_flash(var/mob/living/victim, var/flash_time)
-	victim.flash_eyes()
-	ADJ_STATUS(victim, STAT_BLURRY, flash_time)
-	ADJ_STATUS(victim, STAT_CONFUSE, flash_time + 2)
-	SET_STATUS_MAX(victim, STAT_STUN, flash_time / 2)
-	SET_STATUS_MAX(victim, STAT_WEAK, 3)
+		viewer.handle_flashed(flash_time)
 
 /obj/machinery/flasher/emp_act(severity)
 	if(stat & (BROKEN|NOPOWER))
@@ -109,6 +86,7 @@
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
 	icon = 'icons/obj/machines/flash_portable.dmi'
+	directional_offset = @'{"NORTH":{"y":0}, "SOUTH":{"y":0}, "EAST":{"x":0}, "WEST":{"x":0}}'
 	strength = 8
 	anchored = FALSE
 	base_state = "pflash"

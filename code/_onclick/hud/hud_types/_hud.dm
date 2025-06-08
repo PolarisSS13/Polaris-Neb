@@ -403,6 +403,8 @@
 			if(mymob.client)
 				mymob.client.screen |= swap_elem
 
+	update_hand_elements()
+
 	return TRUE
 
 /datum/hud/proc/build_inventory_ui()

@@ -414,8 +414,8 @@
 	chems = list(
 		/decl/material/liquid/nutriment = list(1),
 		/decl/material/liquid/brute_meds = list(1,8),
-		/decl/material/liquid/antidepressants = list(1,8,1),
-		/decl/material/liquid/stimulants = list(1,8,1),
+		/decl/material/liquid/accumulated/antidepressants = list(1,8,1),
+		/decl/material/liquid/accumulated/stimulants = list(1,8,1),
 		/decl/material/liquid/amphetamines = list(1,10,1),
 		/decl/material/liquid/psychoactives = list(1,10)
 	)

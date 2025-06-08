@@ -96,11 +96,11 @@
 	LAZYREMOVE(., loaded_canisters)
 	LAZYREMOVE(., beaker)
 
-/obj/machinery/sleeper/get_contained_matter()
+/obj/machinery/sleeper/get_contained_matter(include_reagents = TRUE)
 	. = ..()
-	. = MERGE_ASSOCS_WITH_NUM_VALUES(., beaker.get_contained_matter())
+	. = MERGE_ASSOCS_WITH_NUM_VALUES(., beaker.get_contained_matter(include_reagents))
 	for(var/obj/canister in loaded_canisters)
-		. = MERGE_ASSOCS_WITH_NUM_VALUES(., canister.get_contained_matter())
+		. = MERGE_ASSOCS_WITH_NUM_VALUES(., canister.get_contained_matter(include_reagents))
 
 /obj/machinery/sleeper/Initialize(mapload, d = 0, populate_parts = TRUE)
 	. = ..()

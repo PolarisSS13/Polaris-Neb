@@ -51,6 +51,16 @@
 	to_chat(user, SPAN_WARNING("The card fails to do anything. It seems this device has an advanced encryption system."))
 	return NO_EMAG_ACT
 
+// I hate this but can't think of a better way aside from skipping the testing entirely for this type,
+// which is worse. Basically, we just need to ensure we pass the cannot_transition_to check.
+/obj/machinery/nuclear_cylinder_storage/fail_construct_state_unit_test()
+	locked = FALSE
+	open = TRUE
+	var/list/old_cylinders = cylinders // This is evil.
+	cylinders = list()
+	. = ..()
+	cylinders = old_cylinders
+
 /obj/machinery/nuclear_cylinder_storage/components_are_accessible(path)
 	return !locked && open && ..()
 

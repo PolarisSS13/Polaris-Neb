@@ -10,7 +10,7 @@ on:
 env:
   BYOND_MAJOR: "515"
   BYOND_MINOR: "1643"
-  SPACEMAN_DMM_VERSION: suite-1.8
+  SPACEMAN_DMM_VERSION: suite-1.9
 
 jobs:
   DreamChecker:
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Cache
         uses: actions/cache@v3
         with:
-          path: $HOME/spaceman_dmm/$SPACEMAN_DMM_VERSION
+          path: ~/spaceman_dmm/${{ env.SPACEMAN_DMM_VERSION }}
           key: ${{ runner.os }}-spacemandmm-${{ env.SPACEMAN_DMM_VERSION }}
       - name: Install Dreamchecker
         run:  scripts/install-spaceman-dmm.sh dreamchecker
@@ -28,6 +28,7 @@ jobs:
         run: |
           set -o pipefail
           ~/dreamchecker 2>&1 | tee ${GITHUB_WORKSPACE}/output-annotations.txt
+          ./test/lint-all-modpacks.sh nebula.dme
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2
         if: always()
@@ -68,7 +69,7 @@ jobs:
       - name: Setup Cache
         uses: actions/cache@v3
         with:
-          path: $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}
+          path: ~/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
           key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
       - name: Install Dependencies
         run: sudo apt-get install -y uchardet
@@ -97,7 +98,7 @@ jobs:
       - name: Setup Cache
         uses: actions/cache@v3
         with:
-          path: $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}
+          path: ~/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
           key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
       - name: Run Tests
         env:

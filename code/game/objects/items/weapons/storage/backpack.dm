@@ -13,6 +13,10 @@
 	storage = /datum/storage/backpack
 	material = /decl/material/solid/organic/leather/synth
 
+/obj/item/backpack/get_associated_equipment_slots()
+	. = ..()
+	LAZYDISTINCTADD(., slot_back_str)
+
 //Cannot be washed :(
 /obj/item/backpack/can_contaminate()
 	return FALSE

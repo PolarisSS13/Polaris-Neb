@@ -25,7 +25,8 @@
 	lobby_tracks = list(
 		/decl/music_track/dhaka,
 		/decl/music_track/teller,
-		/decl/music_track/suonatore
+		/decl/music_track/suonatore,
+		/decl/music_track/adventure,
 	)
 	credit_sound = list(
 		'sound/music/Miris-Magic-Dance.ogg'
