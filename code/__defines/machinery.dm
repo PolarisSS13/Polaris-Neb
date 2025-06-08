@@ -44,7 +44,7 @@ var/global/defer_powernet_rebuild = 0      // True if net rebuild will be called
 // Camera channels
 // Station channels
 #define CAMERA_CHANNEL_PUBLIC "Public"
-#define CAMERA_CAMERA_CHANNEL_ENGINEERING "Engineering"
+#define CAMERA_CHANNEL_ENGINEERING "Engineering"
 #define CAMERA_CHANNEL_MEDICAL "Medical"
 #define CAMERA_CHANNEL_RESEARCH "Research"
 #define CAMERA_CHANNEL_SECURITY "Security"
