@@ -26,7 +26,6 @@
 	uid                  = "bodytype_prosthetic_raptor"
 
 /decl/bodytype/avian
-	abstract_type        = /decl/bodytype/avian
 	name                 = "avian"
 	bodytype_category    = BODYTYPE_AVIAN
 	icon_base            = 'mods/species/neoavians/icons/body.dmi'
