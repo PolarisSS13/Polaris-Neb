@@ -943,3 +943,8 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 	else
 		audible_message("<span class='newscaster'><EM>[src.name]</EM> beeps, \"Attention! Wanted issue distributed!\"</span>")
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 75, 1)
+
+// security newscaster preset
+/obj/machinery/newscaster/security_unit
+	base_type = /obj/machinery/newscaster
+	securityCaster = TRUE

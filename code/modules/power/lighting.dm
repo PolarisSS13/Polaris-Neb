@@ -651,3 +651,18 @@
 	if(lightbulb)
 		remove_bulb()
 	return TRUE
+
+// Partially-constructed presets for mapping
+/obj/machinery/light/fixture
+	icon_state = "tube-construct-stage1"
+
+/obj/machinery/light/fixture/Initialize(mapload, d, populate_parts)
+	. = ..(mapload, d, populate_parts = FALSE)
+	construct_state.post_construct(src)
+
+/obj/machinery/light/small/fixture
+	icon_state = "bulb-construct-stage1"
+
+/obj/machinery/light/small/fixture/Initialize(mapload, d, populate_parts)
+	. = ..(mapload, d, populate_parts = FALSE)
+	construct_state.post_construct(src)
