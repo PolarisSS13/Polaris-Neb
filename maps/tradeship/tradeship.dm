@@ -15,7 +15,6 @@
 	#include "../../mods/content/baychems/_baychems.dme"
 
 	#include "../../mods/content/beekeeping/_beekeeping.dme"
-	#include "../../mods/content/bigpharma/_bigpharma.dme"
 	#include "../../mods/content/breath_holding/_breath_holding.dme"
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/dungeon_loot/_dungeon_loot.dme"
