@@ -295,4 +295,4 @@
 		if(lungs.is_bruised() && prob(30))
 			lungs.heal_damage(1)
 		else
-			breather.ticks_since_last_successful_breath = max(breather.ticks_since_last_successful_breath - rand(1,5), 0)
+			breather.suffocation_counter = max(breather.suffocation_counter - rand(1,5), 0)
