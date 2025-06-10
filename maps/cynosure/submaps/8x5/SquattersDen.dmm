@@ -1,0 +1,161 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/turf/wall/concrete,
+/area/template_noop)
+"e" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/item/box/donkpockets{
+	pixel_x = 3;
+	pixel_y = 13
+	},
+/turf/floor/plating,
+/area/template_noop)
+"f" = (
+/obj/structure/bed/padded,
+/obj/item/clothing/suit/ianshirt,
+/obj/item/bedsheet/ian,
+/obj/structure/sign/poster/custom{
+	dir = 8;
+	pixel_x = -32;
+	poster_decl = /decl/poster/vore_69
+	},
+/turf/floor/plating,
+/area/template_noop)
+"h" = (
+/turf/wall/concrete{
+	can_open = 1
+	},
+/area/template_noop)
+"l" = (
+/obj/structure/barricade,
+/turf/floor/plating,
+/area/template_noop)
+"m" = (
+/obj/machinery/light/small/fixture,
+/obj/item/chems/glass/bucket,
+/turf/floor/plating,
+/area/template_noop)
+"A" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/hooded/costume/ian,
+/obj/item/clothing/jumpsuit/grey,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/engineering,
+/obj/item/clothing/mask/gas/half,
+/obj/random/maintenance/clean,
+/turf/floor/plating,
+/area/template_noop)
+"D" = (
+/obj/item/trash/ramen,
+/obj/structure/mirror{
+	pixel_y = 25
+	},
+/turf/floor/plating,
+/area/template_noop)
+"G" = (
+/turf/floor/plating,
+/area/template_noop)
+"K" = (
+/obj/structure/plushie/ian,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/floor/plating,
+/area/template_noop)
+"L" = (
+/obj/structure/table,
+/obj/item/chems/drinks/cans/waterbottle{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/toy/plushie/girly_corgi,
+/turf/floor/plating,
+/area/template_noop)
+"Q" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/turf/floor/plating,
+/area/template_noop)
+"V" = (
+/turf/wall/concrete/reinforced,
+/area/template_noop)
+"W" = (
+/obj/structure/rack,
+/obj/random/toy,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/tank,
+/obj/random/toolbox,
+/obj/random/maintenance/engineering,
+/turf/floor/plating,
+/area/template_noop)
+"Y" = (
+/obj/structure/table,
+/obj/random/snack,
+/obj/item/chems/drinks/dry_ramen{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/random/drinkbottle,
+/turf/floor/plating,
+/area/template_noop)
+
+(1,1,1) = {"
+c
+c
+c
+l
+c
+"}
+(2,1,1) = {"
+c
+f
+L
+G
+c
+"}
+(3,1,1) = {"
+c
+D
+G
+G
+c
+"}
+(4,1,1) = {"
+c
+A
+G
+G
+c
+"}
+(5,1,1) = {"
+c
+W
+G
+m
+c
+"}
+(6,1,1) = {"
+h
+G
+G
+Y
+c
+"}
+(7,1,1) = {"
+c
+K
+Q
+e
+c
+"}
+(8,1,1) = {"
+V
+V
+V
+V
+V
+"}

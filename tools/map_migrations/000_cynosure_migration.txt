@@ -361,6 +361,7 @@
 /obj/item/gun/launcher/crossbow : /obj/item/gun/launcher/bow/crossbow/powered
 
 /obj/structure/girder/reinforced : /obj/structure/girder{@OLD}
+/obj/structure/railing : /obj/structure/railing/mapped{@OLD}
 
 # SHUTTLE AREAS
 /area/shuttle/arrival/pre_game : /area/shuttle/arrival

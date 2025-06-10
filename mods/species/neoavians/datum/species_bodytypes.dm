@@ -26,6 +26,7 @@
 	uid                  = "bodytype_prosthetic_raptor"
 
 /decl/bodytype/avian
+	abstract_type        = /decl/bodytype/avian
 	name                 = "avian"
 	bodytype_category    = BODYTYPE_AVIAN
 	icon_base            = 'mods/species/neoavians/icons/body.dmi'
@@ -84,6 +85,7 @@
 	uid                  = "bodytype_avian_raptor"
 
 /decl/bodytype/avian/additive
+	abstract_type        = /decl/bodytype/avian/additive
 	name                 = "avian, additive"
 	icon_base            = 'mods/species/neoavians/icons/body_add.dmi'
 	health_hud_intensity = 3
