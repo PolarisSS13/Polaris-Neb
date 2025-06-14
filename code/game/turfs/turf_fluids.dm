@@ -218,7 +218,7 @@
 		var/list/matter_list = list()
 		for(var/decl/material/reagent as anything in solids.solid_volumes)
 			var/reagent_amount = solids.solid_volumes[reagent]
-			matter_list[reagent] = round(reagent_amount/REAGENT_UNITS_PER_MATERIAL_UNIT)
+			matter_list[reagent.type] = round(reagent_amount/REAGENT_UNITS_PER_MATERIAL_UNIT)
 			solids.remove_reagent(reagent, reagent_amount, defer_update = TRUE, removed_phases = MAT_PHASE_SOLID)
 
 		var/obj/item/debris/scraps/chemical/scraps = locate() in contents

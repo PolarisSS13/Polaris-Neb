@@ -5,6 +5,7 @@
 	icon_state = ICON_STATE_WORLD
 	volume = 40
 	material = /decl/material/solid/stone/basalt
+	color = /decl/material/solid/stone/basalt::color
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	storage = /datum/storage/hopper/mortar
 	var/grinding = FALSE

@@ -56,12 +56,7 @@
 	if(get_turf(target) == src.loc)
 		UnarmedAttack(target, TRUE)
 
-/mob/living/bot/cleanbot/UnarmedAttack(var/obj/effect/decal/cleanable/decal, var/proximity)
-
-	. = ..()
-	if(.)
-		return
-
+/mob/living/bot/cleanbot/ResolveUnarmedAttack(var/obj/effect/decal/cleanable/decal)
 	if(!istype(decal))
 		return TRUE
 

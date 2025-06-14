@@ -5,6 +5,7 @@
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_NORMAL
 	material = /decl/material/solid/organic/wood/oak
+	color = /decl/material/solid/organic/wood/oak::color
 	attack_verb = list("poked", "jabbed")
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	lock_picking_level = 3
@@ -74,3 +75,7 @@
 		user.do_attack_animation(target)
 		return TRUE
 	return ..()
+
+/obj/item/stick/walnut
+	material = /decl/material/solid/organic/wood/walnut
+	color = /decl/material/solid/organic/wood/walnut::color

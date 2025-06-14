@@ -129,6 +129,7 @@
 	var/unwieldsound = 'sound/foley/tooldrop1.ogg'
 
 	var/base_name
+	var/base_desc
 
 	/// Can this object leak into water sources?
 	var/watertight = FALSE
@@ -196,6 +197,7 @@
 /obj/item/Initialize(var/ml, var/material_key)
 
 	base_name ||= name
+	base_desc ||= desc
 
 	if(isnull(current_health))
 		current_health = max_health //Make sure to propagate max_health to health var before material setup, for consistency
@@ -575,7 +577,7 @@
 		if (isturf(old_loc))
 			var/obj/effect/temporary/item_pickup_ghost/ghost = new(old_loc, src)
 			ghost.animate_towards(user)
-		on_picked_up(user)
+		on_picked_up(user, old_loc)
 		return TRUE
 
 	return FALSE
@@ -650,7 +652,10 @@
 	RAISE_EVENT(/decl/observ/item_unequipped, src, user)
 
 // called just after an item is picked up, after it has been equipped to the mob.
-/obj/item/proc/on_picked_up(mob/user)
+/obj/item/proc/on_picked_up(mob/user, atom/old_loc)
+	if(old_loc == loc || old_loc == user)
+		// not being picked up, just transferring between slots, don't adjust the offset
+		return
 	if(randpixel)
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel/2, randpixel/2)
@@ -1118,7 +1123,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	for(var/equipped_slot in get_associated_equipment_slots())
 		wearer.update_equipment_overlay(equipped_slot, FALSE)
 	if(do_update_icon)
-		wearer.update_icon()
+		wearer.lazy_update_icon()
 	return TRUE
 
 /obj/item/proc/reconsider_client_screen_presence(var/client/client, var/slot)

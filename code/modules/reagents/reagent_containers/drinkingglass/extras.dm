@@ -46,6 +46,7 @@
 	return TRUE
 
 /obj/item/glass_extra
+	abstract_type = /obj/item/glass_extra
 	name = "generic glass addition"
 	desc = "This goes on a glass."
 	var/glass_addition

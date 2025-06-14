@@ -2,6 +2,7 @@
 	abstract_type               = /decl/stack_recipe/logs
 	craft_stack_types           = /obj/item/stack/material/log
 	forbidden_craft_stack_types = /obj/item/stack/material/ore
+	validation_material         = /decl/material/solid/organic/wood/oak
 
 /decl/stack_recipe/logs/travois
 	result_type                 = /obj/structure/travois
@@ -12,6 +13,7 @@
 	result_type                 = /turf/wall/log
 	craft_stack_types           = /obj/item/stack/material/log
 	forbidden_craft_stack_types = /obj/item/stack/material/ore
+	validation_material         = /decl/material/solid/organic/wood/oak
 	difficulty                  = MAT_VALUE_HARD_DIY
 
 /decl/stack_recipe/turfs/wall/logs/shutter

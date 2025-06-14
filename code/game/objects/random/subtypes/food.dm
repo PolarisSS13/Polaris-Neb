@@ -210,9 +210,7 @@
 		/obj/item/chems/drinks/glass2/coffeecup/one,
 		/obj/item/chems/drinks/glass2/coffeecup/rainbow,
 		/obj/item/chems/drinks/glass2/coffeecup/metal,
-		/obj/item/chems/drinks/glass2/coffeecup/STC,
 		/obj/item/chems/drinks/glass2/coffeecup/pawn,
-		/obj/item/chems/drinks/glass2/coffeecup/britcup,
 		/obj/item/chems/drinks/glass2/coffeecup/tall,
 		/obj/item/chems/drinks/glass2/coffeecup/teacup
 	)

@@ -4,6 +4,7 @@
 	icon        = 'mods/content/blacksmithy/icons/tongs.dmi'
 	icon_state  = ICON_STATE_WORLD
 	material    = /decl/material/solid/metal/iron
+	color       = /decl/material/solid/metal/iron::color
 	obj_flags   = OBJ_FLAG_INSULATED_HANDLE
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	var/obj/item/holding_bar

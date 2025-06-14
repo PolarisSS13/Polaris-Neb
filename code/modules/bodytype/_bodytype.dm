@@ -239,6 +239,8 @@ var/global/list/bodytypes_by_category = list()
 	var/eye_blend                   = ICON_ADD
 	/// Stun from blindness modifier.
 	var/eye_flash_mod               = 1
+	//how much damage to take from being flashed (if any)
+	var/eye_flash_burn              = 0
 
 	// Bodytype temperature damage thresholds.
 	/// Cold damage level 1 below this point. -30 Celsium degrees

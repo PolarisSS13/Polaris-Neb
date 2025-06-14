@@ -711,7 +711,7 @@ var/global/list/allCasters = list() //Global list that will contain reference to
 	else if(href_list["pick_censor_channel"])
 		var/datum/feed_channel/FC = locate(href_list["pick_censor_channel"])
 		viewing_channel = FC
-		screen = SCREEN_PICK_CENSOR_CHANNEL
+		screen = SCREEN_PICK_CENSOR_STORY
 		. = TOPIC_REFRESH
 
 	else if(href_list["refresh"])

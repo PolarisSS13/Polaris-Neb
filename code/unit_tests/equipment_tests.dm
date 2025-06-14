@@ -58,7 +58,7 @@
 		if(!TYPE_IS_SPAWNABLE(thing) || !ispath(initial(thing.storage), /datum/storage))
 			continue
 		thing = new thing //should be fine to put it in nullspace...
-		var/bad_msg = "[ascii_red]--------------- [thing.name] \[[thing.type] | [thing.storage]\]"
+		var/bad_msg = "[ascii_red]--------------- [thing.name] \[[thing.type] | [thing.storage || "NULL"]\]"
 		bad_tests += test_storage_capacity(thing.storage, bad_msg)
 
 	if(bad_tests)

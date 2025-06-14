@@ -411,8 +411,8 @@
 	var/hue = get_pin_data(IC_INPUT, 1)
 	var/saturation = get_pin_data(IC_INPUT, 2)
 	var/value = get_pin_data(IC_INPUT, 3)
-	if(isnum(hue)&&isnum(saturation)&&isnum(value))
-		result = HSVtoRGB(hsv(AngleToHue(hue),saturation,value))
+	if(isnum(hue) && isnum(saturation) && isnum(value))
+		result = hsv(hue, saturation, value)
 
 	set_pin_data(IC_OUTPUT, 1, result)
 	push_data()

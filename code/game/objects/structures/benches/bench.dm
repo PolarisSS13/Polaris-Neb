@@ -3,7 +3,7 @@
 	name = "bench"
 	desc = "A simple slatted bench."
 	icon = 'icons/obj/structures/furniture/bench.dmi'
-	icon_state = ICON_STATE_WORLD + "_standing"
+	icon_state = ICON_STATE_WORLD + "_preview"
 	color = WOOD_COLOR_GENERIC
 	initial_padding_material = null
 	material = /decl/material/solid/organic/wood/oak

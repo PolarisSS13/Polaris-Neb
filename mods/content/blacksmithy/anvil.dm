@@ -36,6 +36,7 @@
 	atom_flags          = ATOM_FLAG_CLIMBABLE
 	w_class             = ITEM_SIZE_STRUCTURE //_LARGE
 	material            = /decl/material/solid/metal/iron
+	color               = /decl/material/solid/metal/iron::color
 	max_health          = 1000
 	structure_flags     = STRUCTURE_FLAG_SURFACE
 	material_alteration = MAT_FLAG_ALTERATION_ALL
@@ -82,7 +83,7 @@
 			// Flow through into procs below.
 
 	// Put the bar onto the anvil (need to do this to avoid repairs in ..())
-	if(istype(used_item, /obj/item/stack/material/bar))
+	if(istype(used_item, /obj/item/stack/material/bar) && used_item.is_forgable())
 		var/obj/item/stack/material/bar/bar = used_item
 		if(used_item.material != material || current_health >= get_max_health())
 			if(bar.get_amount() > 1)

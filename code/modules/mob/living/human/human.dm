@@ -389,7 +389,7 @@
 				brain.mind.transfer_to(src)
 				qdel(brain.loc)
 				break
-	ticks_since_last_successful_breath = 0
+	suffocation_counter = 0
 	..()
 
 /mob/living/add_blood(mob/living/M, amount = 2, list/blood_data)
@@ -1019,7 +1019,7 @@
 /mob/living/human/proc/post_setup(species_uid, datum/mob_snapshot/supplied_appearance)
 	try_refresh_visible_overlays() //Do this exactly once per setup
 
-/mob/living/human/handle_flashed(var/flash_strength)
+/mob/living/human/handle_flashed(var/flash_strength, do_stun = FALSE)
 	var/safety = eyecheck()
 	if(safety < FLASH_PROTECTION_MODERATE)
 		flash_strength = round(get_flash_mod() * flash_strength)
