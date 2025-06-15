@@ -1,9 +1,3 @@
-//These are meant for spawning on maps, namely Away Missions.
-
-//If someone can do this in a neater way, be my guest-Kor
-
-//To do: Allow corpses to appear mangled, bloody, etc. Allow customizing the bodies appearance (they're all bald and white right now).
-
 #define CORPSE_SPAWNER_RANDOM_NAME         BITFLAG(0)
 #define CORPSE_SPAWNER_CUT_SURVIVAL        BITFLAG(1)
 #define CORPSE_SPAWNER_CUT_ID_PDA          BITFLAG(2)
