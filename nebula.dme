@@ -2056,6 +2056,7 @@
 #include "code\modules\clothing\pants\scrubs.dm"
 #include "code\modules\clothing\pants\shorts.dm"
 #include "code\modules\clothing\pants\slacks.dm"
+#include "code\modules\clothing\permits\_permit.dm"
 #include "code\modules\clothing\sensors\_sensor.dm"
 #include "code\modules\clothing\sensors\buddytag.dm"
 #include "code\modules\clothing\sensors\vitals_sensor.dm"

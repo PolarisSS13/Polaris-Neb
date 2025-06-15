@@ -362,7 +362,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 		else if(!LAZYLEN(available_background_info[cat_type]))
 			var/list/map_systems = global.using_map.available_background_info[cat_type]
-			available_background_info[cat_type] = map_systems.Copy()
+			available_background_info[cat_type] = islist(map_systems) ? map_systems.Copy() : list()
 
 		if(LAZYLEN(available_background_info[cat_type]) && !default_background_info[cat_type])
 			var/list/avail_systems = available_background_info[cat_type]

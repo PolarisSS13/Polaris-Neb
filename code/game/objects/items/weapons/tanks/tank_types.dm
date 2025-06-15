@@ -22,6 +22,10 @@
 	desc = "A tank of oxygen. This one is yellow."
 	icon = 'icons/obj/items/tanks/tank_yellow.dmi'
 
+/obj/item/tank/oxygen/red
+	desc = "A tank of oxygen. This one is red."
+	icon = 'icons/obj/items/tanks/tank_red.dmi'
+
 /obj/item/tank/oxygen/empty
 	starting_pressure = list()
 
