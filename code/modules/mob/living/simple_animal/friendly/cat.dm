@@ -59,9 +59,6 @@
 	butchery_data = /decl/butchery_data/animal/cat
 	base_animal_type = /mob/living/simple_animal/passive/cat
 	ai = /datum/mob_controller/passive/hunter/cat
-	var/turns_since_scan = 0
-	var/mob/living/simple_animal/passive/mouse/movement_target
-	var/mob/flee_target
 
 /mob/living/simple_animal/passive/cat/get_bodytype()
 	return GET_DECL(/decl/bodytype/quadruped/animal/cat)

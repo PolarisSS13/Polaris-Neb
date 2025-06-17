@@ -164,7 +164,6 @@ var/global/list/internet_uplinks = list()
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/initial_id_tag = "plexus"
-	var/current_uplink = 1
 
 /obj/machinery/computer/internet_uplink/Initialize()
 	. = ..()

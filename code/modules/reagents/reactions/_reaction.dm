@@ -49,9 +49,6 @@
 	for(var/reagent in required_reagents)
 		. += reagent
 
-/decl/chemical_reaction/proc/get_alternate_reaction_indicator(var/datum/reagents/holder)
-	return 0
-
 /decl/chemical_reaction/proc/process(var/datum/reagents/holder, var/limit)
 	var/data = send_data(holder)
 

@@ -1,8 +1,5 @@
 // prometheus_metrics holds a list of metric_family datums and uses them to
 // create a json protobuf.
-/decl/prometheus_metrics
-	var/list/metric_families
-
 /decl/prometheus_metrics/proc/collect()
 	var/list/out = list()
 

@@ -17,7 +17,6 @@
 	var/shunt_x = 1
 	var/shunt_y = 1
 	var/chargepercent = 0
-	var/last_percent_tick = 0
 	var/obj/machinery/computer/ship/ftl/ftl_computer
 	var/required_fuel_joules
 	var/required_charge //This is a function of the required fuel joules.
