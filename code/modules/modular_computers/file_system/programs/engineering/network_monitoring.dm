@@ -57,9 +57,10 @@
 			mainframes.Add(list(rdata))
 		data["mainframes"] = mainframes
 
-		if(length(network.get_mainframes_by_role(MF_ROLE_LOG_SERVER, user.GetAccess())))
+		var/list/eligible_log_servers = network.get_mainframes_by_role(MF_ROLE_LOG_SERVER, user.GetAccess())
+		if(length(eligible_log_servers))
 			var/list/logs[0]
-			for(var/datum/extension/network_device/mainframe/M in network.get_mainframes_by_role(MF_ROLE_LOG_SERVER, user))
+			for(var/datum/extension/network_device/mainframe/M in eligible_log_servers)
 				var/list/logdata[0]
 				var/datum/computer_file/data/logfile/F = M.get_file("network_log", OS_LOGS_DIR, TRUE)
 				if(F)
@@ -143,9 +144,9 @@
 	if(href_list["toggle_function"])
 		var/feature = text2num(href_list["toggle_function"])
 		if(network.network_features_enabled & feature)
-			network.network_features_enabled &= ~feature
+			network.disable_network_feature(feature)
 		else
-			network.network_features_enabled |= feature
+			network.enable_network_feature(feature)
 		return TOPIC_REFRESH
 
 	if(href_list["ban_nid"])
