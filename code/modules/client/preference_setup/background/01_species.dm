@@ -19,7 +19,7 @@
 	writer.write("species", pref.species)
 
 /datum/category_item/player_setup_item/background/species/preload_character(datum/pref_record_reader/R)
-	var/decl/species/loaded_species = decls_repository.get_decl_by_id_or_var(R.read("species"), /decl/spawnpoint)
+	var/decl/species/loaded_species = decls_repository.get_decl_by_id_or_var(R.read("species"), /decl/species)
 	pref.species = loaded_species?.uid || decls_repository.get_decl_by_id(global.using_map.default_species)
 
 /datum/category_item/player_setup_item/background/species/sanitize_character()
@@ -81,10 +81,12 @@
 	if(current_species.roleplay_summary)
 		desc = "[desc]<h3>Roleplaying Summary</h3><p>[current_species.roleplay_summary]</p>"
 
-	if(hide_species && length(desc) > 200)
+	var/was_hidden = hide_species && length(desc) > 200
+	if(was_hidden)
 		desc = "[copytext(desc, 1, 194)] <small>\[...\]</small>"
 	. += "<td width>[desc]</td>"
-	. += "<td width = '50px'><a href='byond://?src=\ref[src];toggle_species_verbose=1'>[hide_species ? "Expand" : "Collapse"]</a></td>"
+	if(was_hidden)
+		. += "<td width = '50px'><a href='byond://?src=\ref[src];toggle_species_verbose=1'>[hide_species ? "Expand" : "Collapse"]</a></td>"
 
 	. += "</tr>"
 

@@ -68,8 +68,6 @@ var/global/list/diversion_junctions = list()
 	return FALSE
 
 /obj/machinery/disposal/cannot_transition_to(state_path, mob/user)
-	if(mode > 0)
-		return SPAN_NOTICE("Turn off the pump first.")
 	if(contents.len > LAZYLEN(component_parts))
 		return SPAN_NOTICE("Eject the items first!")
 	return ..()
@@ -263,7 +261,7 @@ var/global/list/diversion_junctions = list()
 	if(isAI(user) && (href_list["handle"] || href_list["eject"]))
 		return min(STATUS_UPDATE, ..())
 	if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1
-		to_chat(user, "<span class='warning'>The disposal units power is disabled.</span>")
+		to_chat(user, "<span class='warning'>The disposal unit's power is disabled.</span>")
 		return min(STATUS_UPDATE, ..())
 	if(flushing)
 		return min(STATUS_UPDATE, ..())

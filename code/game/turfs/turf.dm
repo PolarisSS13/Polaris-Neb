@@ -421,15 +421,18 @@
 				L.Add(t)
 	return L
 
-/turf/proc/contains_dense_objects(list/exceptions)
-	if(density)
-		return TRUE
+/turf/proc/get_first_dense_object(list/exceptions)
 	for(var/atom/A in src)
 		if(exceptions && (exceptions == A || (islist(exceptions) && (A in exceptions))))
 			continue
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER))
-			return TRUE
-	return FALSE
+			return A
+	return null
+
+/turf/proc/contains_dense_objects(list/exceptions)
+	if(density)
+		return TRUE
+	return !!get_first_dense_object(exceptions)
 
 /turf/proc/remove_cleanables()
 	for(var/obj/effect/decal/cleanable/cleanable in src)
@@ -864,7 +867,7 @@
 	if(IS_HOE(held) && can_dig_farm(held.material?.hardness))
 		LAZYADD(., /decl/interaction_handler/dig/farm)
 
-/// Contaminant may be the chemical type of the footprint being provided,
+/// Contaminant may be the chemical decl of the footprint being provided,
 /// or null if we just want to know if we support footprints, at all, ever.
 /turf/proc/can_show_coating_footprints(decl/material/contaminant)
 	return simulated

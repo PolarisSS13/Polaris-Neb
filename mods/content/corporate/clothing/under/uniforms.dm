@@ -3,10 +3,20 @@
 	desc = "A sleek recreational flight suit. It proudly sports three different patches with corporate logos on them, as well as several unnecessary looking flaps and pockets for effect."
 	icon = 'mods/content/corporate/icons/clothing/under/pilot.dmi'
 
-/obj/item/clothing/jumpsuit/pilot/nanotrasen
+/obj/item/clothing/costume/nanotrasen_pilot
 	name = "red flight suit"
 	desc = "A sleek red recreational flight suit. It proudly sports three different patches with corporate logos on them, as well as several unnecessary looking flaps and pockets for effect."
 	icon = 'mods/content/corporate/icons/clothing/under/pilot_nt.dmi'
+
+/obj/item/clothing/costume/nanotrasen_pilot/blue
+	name = "\improper NanoTrasen flight suit"
+	desc = "A blue and grey NanoTrasen flight suit. Warm and practical, it feels cozy."
+	icon = 'mods/content/corporate/icons/clothing/under/pilot_nt_blue.dmi'
+
+/obj/item/clothing/costume/nanotrasen_pilot/dark_blue
+	name = "\improper NanoTrasen flight suit"
+	desc = "A dark blue NanoTrasen flight suit. Warm and practical, seveal patches are scattered across it."
+	icon = 'mods/content/corporate/icons/clothing/under/pilot_nt_dark_blue.dmi'
 
 /obj/item/clothing/jumpsuit/pilot/cyan
 	name = "cyan flight suit"

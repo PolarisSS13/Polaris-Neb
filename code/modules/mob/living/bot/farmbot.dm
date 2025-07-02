@@ -123,11 +123,7 @@
 				target = source
 				return
 
-/mob/living/bot/farmbot/UnarmedAttack(var/atom/A, var/proximity)
-	. = ..()
-	if(.)
-		return
-
+/mob/living/bot/farmbot/ResolveUnarmedAttack(var/atom/A, var/proximity)
 	if(busy)
 		return TRUE
 

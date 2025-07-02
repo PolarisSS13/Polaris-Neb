@@ -210,7 +210,7 @@
 	update_icon()
 	return TRUE
 
-/obj/item/towel/on_picked_up(mob/user)
+/obj/item/towel/on_picked_up(mob/user, atom/old_loc)
 	..()
 	if(laid_out)
 		laid_out = FALSE
@@ -242,3 +242,7 @@
 /obj/item/towel/doormat/flat
 	laid_out = TRUE
 	icon_state = ICON_STATE_WORLD + "-flat"
+
+/obj/item/towel/doormat/flat/Initialize()
+	. = ..()
+	reset_offsets() // we don't want to overwrite randpixel but we don't want it to have a random offset either

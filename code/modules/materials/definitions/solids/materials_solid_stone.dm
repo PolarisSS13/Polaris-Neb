@@ -15,6 +15,8 @@
 		'icons/turf/walls/wood.dmi' = TRUE,
 		'icons/turf/walls/brick.dmi' = TRUE,
 		'icons/turf/walls/log.dmi' = TRUE,
+		'icons/turf/walls/wattle.dmi' = TRUE,
+		'icons/turf/walls/wattledaub.dmi' = TRUE,
 		'icons/turf/walls/metal.dmi' = TRUE
 	)
 	dissolves_into = list(
@@ -31,6 +33,15 @@
 	value = 1.5
 	melting_point = T0C + 600
 	hardness = MAT_VALUE_RIGID + 5
+
+/decl/material/solid/stone/limestone
+	name          = "limestone"
+	uid           = "solid_limestone"
+	lore_text     = "A pale sedimentary rock, often containing fossils. The cost of boosting it to orbit is almost universally much higher than the actual value of the material."
+	color         = COLOR_OFF_WHITE
+	value         = 1.5
+	melting_point = T0C + 600
+	hardness      = MAT_VALUE_RIGID + 5
 
 /decl/material/solid/stone/flint
 	name      = "flint"

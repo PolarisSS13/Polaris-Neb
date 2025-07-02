@@ -293,7 +293,7 @@
 /obj/proc/WillContain()
 	return
 
-/obj/get_contained_matter()
+/obj/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	if(length(matter))
 		. = MERGE_ASSOCS_WITH_NUM_VALUES(., matter.Copy())
@@ -479,3 +479,9 @@
 		animate_heat_glow(temperature, scale_sub = round((my_material.melting_point - T20C) * 0.25) + T20C, scale_div = round(my_material.melting_point * 0.75), scale_max = my_material.melting_point, skip_filter = TRUE, anim_time = anim_time)
 	if(isatom(loc))
 		loc.update_icon()
+
+/obj/is_valid_merchant_pad_target()
+	if(anchored)
+		return FALSE
+	return ..()
+

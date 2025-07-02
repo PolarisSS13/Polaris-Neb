@@ -175,26 +175,12 @@
 	icon_state = "coffeecup_metal"
 	material = /decl/material/solid/metal/stainlesssteel
 
-/obj/item/chems/drinks/glass2/coffeecup/STC
-	name = "\improper ICCG coffee cup"
-	desc = "A coffee cup adorned with the flag of the Gilgamesh Colonial Confederation, for when you need some espionage charges to go with your morning coffee."
-	base_icon = "coffeecup_STC"
-	icon_state = "coffeecup_STC"
-	base_name = "\improper ICCG cup"
-
 /obj/item/chems/drinks/glass2/coffeecup/pawn
 	name = "pawn coffee cup"
 	desc = "A black coffee cup adorned with the image of a red chess pawn."
 	base_icon = "coffeecup_pawn"
 	icon_state = "coffeecup_pawn"
 	base_name = "pawn cup"
-
-/obj/item/chems/drinks/glass2/coffeecup/britcup
-	name = "british coffee cup"
-	desc = "A coffee cup with the British flag emblazoned on it."
-	base_icon = "coffeecup_brit"
-	icon_state = "coffeecup_brit"
-	base_name = "british cup"
 
 /obj/item/chems/drinks/glass2/coffeecup/tall
 	name = "tall coffee cup"

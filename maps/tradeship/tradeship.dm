@@ -11,11 +11,11 @@
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"
 
-	#include "../../mods/content/beekeeping/_beekeeping.dme"
 	#include "../../mods/content/mundane.dm"
 	#include "../../mods/content/baychems/_baychems.dme"
 
-	#include "../../mods/content/bigpharma/_bigpharma.dme"
+	#include "../../mods/content/beekeeping/_beekeeping.dme"
+	#include "../../mods/content/breath_holding/_breath_holding.dme"
 	#include "../../mods/content/corporate/_corporate.dme"
 	#include "../../mods/content/dungeon_loot/_dungeon_loot.dme"
 	#include "../../mods/content/government/_government.dme"

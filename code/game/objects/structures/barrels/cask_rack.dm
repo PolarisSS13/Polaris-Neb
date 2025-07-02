@@ -143,15 +143,11 @@
 
 // A larger stack, used to arrange up to three casks.
 /obj/structure/cask_rack/large
+	name_prefix = "large"
 	desc      = "A flat rack used to stop casks from rolling around."
 	max_stack = 3
 	w_class   = ITEM_SIZE_LARGE_STRUCTURE
 	icon      = 'icons/obj/structures/barrels/cask_rack_large.dmi'
-
-// We want 'large wooden cask rack' not 'wooden large cask rack'
-/obj/structure/cask_rack/large/update_material_name(override_name)
-	. = ..()
-	SetName("large [name]")
 
 /obj/structure/cask_rack/large/adjust_barrel_offsets(atom/movable/barrel, barrel_position)
 	..()

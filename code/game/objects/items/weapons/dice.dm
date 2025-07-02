@@ -77,7 +77,7 @@
 /obj/item/dice/d100
 	name = "d100"
 	desc = "A die with ten sides. This one is for the tens digit."
-	icon_state = "d10010"
+	icon_state = "d1001"
 	sides = 10
 
 /obj/item/dice/d100/roll_die()

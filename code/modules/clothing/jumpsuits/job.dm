@@ -14,15 +14,9 @@
 	icon = 'icons/clothing/jumpsuits/jumpsuit_cargo_alt.dmi'
 
 /obj/item/clothing/jumpsuit/miner
-	desc = "A branded high-vis jumpsuit for toiling in the mines. Somehow it's dirty already."
-	name = "shaft miner's jumpsuit"
-	icon = 'icons/clothing/jumpsuits/jumpsuit_miner.dmi'
-
-/obj/item/clothing/jumpsuit/miner/overalls
-	desc = "It's a snappy purple shirt with a sturdy set of overalls. Very retro."
 	name = "shaft miner's overalls"
-	icon = 'icons/clothing/jumpsuits/jumpsuit_miner_overalls.dmi'
-
+	desc = "It's a snappy purple shirt with a sturdy set of overalls. Very retro."
+	icon = 'icons/clothing/jumpsuits/jumpsuit_miner.dmi'
 
 /obj/item/clothing/jumpsuit/cargoshort
 	name = "cargo technician's jumpsuit"
@@ -108,14 +102,6 @@
 	desc = "It's a jumpsuit worn by those with the know-how to achieve the position of \"Chief Science Officer\". Its fabric provides minor protection from biological contaminants."
 	name = "chief science officer's jumpsuit"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_rd.dmi'
-	armor = list(
-		ARMOR_BIO = ARMOR_BIO_MINOR
-	)
-
-/obj/item/clothing/jumpsuit/research_director/rdalt
-	desc = "A dress suit and slacks stained with hard work and dedication to science. Perhaps other things as well, but mostly hard work and dedication."
-	name = "head researcher uniform"
-	icon = 'icons/clothing/uniform_rd_alt.dmi'
 	armor = list(
 		ARMOR_BIO = ARMOR_BIO_MINOR
 	)
@@ -248,7 +234,6 @@
 /obj/item/clothing/jumpsuit/security/corporate
 	icon = 'icons/clothing/jumpsuits/jumpsuit_sec_corp.dmi'
 
-
 /*
  * Command
 */
@@ -257,8 +242,3 @@
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
 	name = "captain's jumpsuit"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_captain.dmi'
-
-/obj/item/clothing/jumpsuit/captainformal
-	name = "captain's formal uniform"
-	desc = "A captain's formal-wear, for special occasions."
-	icon = 'icons/clothing/uniform_captain_formal.dmi'

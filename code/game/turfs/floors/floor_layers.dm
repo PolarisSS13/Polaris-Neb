@@ -5,16 +5,13 @@
 
 /turf/floor/proc/get_all_flooring()
 	. = list()
-	if(istype(_flooring))
-		. += _flooring
-	else if(ispath(_flooring))
-		. += GET_DECL(_flooring)
-	else if(islist(_flooring))
-		for(var/floor in _flooring)
-			if(ispath(floor))
-				_flooring += GET_DECL(floor)
-			else if(istype(floor, /decl/flooring))
-				_flooring += floor
+	if(_flooring)
+		if(islist(_flooring))
+			for(var/floor in _flooring)
+				. += RESOLVE_TO_DECL(floor)
+			_flooring = . // ensure the list elements are resolved
+		else
+			. += RESOLVE_TO_DECL(_flooring)
 	if(_base_flooring)
 		. += get_base_flooring()
 
@@ -22,15 +19,11 @@
 	return !isnull(_flooring)
 
 /turf/floor/proc/set_base_flooring(new_base_flooring, skip_update)
-	if(ispath(new_base_flooring, /decl/flooring))
-		new_base_flooring = GET_DECL(new_base_flooring)
-	else if(!istype(new_base_flooring, /decl/flooring))
-		new_base_flooring = null
+	// We can never have a null base flooring.
+	new_base_flooring = RESOLVE_TO_DECL(new_base_flooring || initial(_base_flooring) || /decl/flooring/plating)
 	if(_base_flooring == new_base_flooring)
 		return
 	_base_flooring = new_base_flooring
-	if(!_base_flooring) // We can never have a null base flooring.
-		_base_flooring = GET_DECL(initial(_base_flooring)) || GET_DECL(/decl/flooring/plating)
 	update_from_flooring(skip_update)
 
 /turf/floor/proc/get_base_flooring()
@@ -43,15 +36,14 @@
 	RETURN_TYPE(/decl/flooring)
 
 	if(isnull(_topmost_flooring))
-		var/flooring_length = length(_flooring)
-		if(flooring_length) // no need to check islist, length is only nonzero for lists and strings, and strings are invalid here
-			_topmost_flooring = _flooring[flooring_length]
-		else if(istype(_flooring, /decl/flooring))
-			_topmost_flooring = _flooring
-		else if(ispath(_flooring, /decl/flooring))
-			_topmost_flooring = GET_DECL(_flooring)
-		else
+		if(isnull(_flooring))
 			_topmost_flooring = FALSE
+		else
+			var/flooring_length = length(_flooring)
+			if(flooring_length) // no need to check islist, length is only nonzero for lists and strings, and strings are invalid here
+				_topmost_flooring = RESOLVE_TO_DECL(_flooring[flooring_length])
+			else
+				_topmost_flooring = RESOLVE_TO_DECL(_flooring)
 	return _topmost_flooring || get_base_flooring()
 
 /turf/floor/proc/clear_flooring(skip_update = FALSE, place_product)
@@ -81,8 +73,7 @@
 		return
 
 	// Validate our input.
-	if(ispath(flooring))
-		flooring = GET_DECL(flooring)
+	flooring = RESOLVE_TO_DECL(flooring)
 	if(!istype(flooring))
 		return
 
@@ -145,14 +136,9 @@
 		if(islist(newflooring))
 			_flooring = list()
 			for(var/floor in UNLINT(newflooring))
-				if(ispath(floor))
-					floor = GET_DECL(floor)
-				if(istype(floor, /decl/flooring))
-					_flooring += floor
-		else if(ispath(newflooring))
-			_flooring = GET_DECL(newflooring)
-		else if(istype(newflooring))
-			_flooring = newflooring
+				_flooring += RESOLVE_TO_DECL(floor)
+		else if(newflooring)
+			_flooring = RESOLVE_TO_DECL(newflooring)
 		else
 			return FALSE
 
@@ -184,9 +170,8 @@
 		return
 
 	// We only want to work with references.
-	if(ispath(newflooring, /decl/flooring))
-		newflooring = GET_DECL(newflooring)
-	else if(!istype(newflooring, /decl/flooring))
+	newflooring = RESOLVE_TO_DECL(newflooring)
+	if(!newflooring)
 		return FALSE
 
 	// Check if the layer is already present.
@@ -250,8 +235,8 @@
 		qdel(print)
 
 	if(!skip_update)
-		update_icon()
+		lazy_update_icon()
 		for(var/dir in global.alldirs)
 			var/turf/neighbor = get_step_resolving_mimic(src, dir)
 			if(istype(neighbor))
-				neighbor.update_icon()
+				neighbor.lazy_update_icon()

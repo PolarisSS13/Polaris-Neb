@@ -86,6 +86,7 @@
 
 /obj/item/tool/hammer/forge/iron
 	material        = /decl/material/solid/metal/iron
+	color           = /decl/material/solid/metal/iron::color
 	handle_material = /decl/material/solid/organic/wood/mahogany
 
 // Forging hammers are not great at general hammer tasks (too heavy I guess),

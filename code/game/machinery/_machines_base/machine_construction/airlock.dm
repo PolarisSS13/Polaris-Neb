@@ -3,6 +3,28 @@
 	down_state = /decl/machine_construction/default/panel_open/door
 	var/hacking_state = /decl/machine_construction/default/panel_closed/door/hacking
 
+/decl/machine_construction/default/panel_closed/door/fail_test_state_transfer(obj/machinery/machine, mob/user)
+	var/static/obj/item/screwdriver/screwdriver = new
+	// Prevent access locks on doors from interfering with our interactions.
+	for(var/obj/item/stock_parts/access_lock/lock in machine.get_all_components_of_type(/obj/item/stock_parts/access_lock))
+		lock.locked = FALSE
+	// Test hacking state
+	if(!machine.attackby(screwdriver, user))
+		return "Machine [log_info_line(machine)] did not respond to attackby with screwdriver."
+	if(machine.construct_state.type != hacking_state)
+		return "Machine [log_info_line(machine)] had a construct_state of type [machine.construct_state.type] after screwdriver interaction (expected [hacking_state])."
+	// Do it again to reverse that state change.
+	if(!machine.attackby(screwdriver, user))
+		return "Machine [log_info_line(machine)] did not respond to attackby with screwdriver on a second try."
+	if(machine.construct_state != src)
+		return "Machine [log_info_line(machine)] had a construct_state of type [machine.construct_state.type] after screwdriver interaction (expected [type])."
+	// Now test the down state
+	var/static/obj/item/wrench/wrench = new
+	if(!machine.attackby(wrench, user))
+		return "Machine [log_info_line(machine)] did not respond to attackby with wrench."
+	if(machine.construct_state.type != down_state)
+		return "Machine [log_info_line(machine)] had a construct_state of type [machine.construct_state.type] after screwdriver interaction (expected [down_state])."
+
 /decl/machine_construction/default/panel_closed/door/attackby(obj/item/used_item, mob/user, obj/machinery/machine)
 	if(IS_SCREWDRIVER(used_item))
 		TRANSFER_STATE(hacking_state)

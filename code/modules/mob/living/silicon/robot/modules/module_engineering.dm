@@ -5,7 +5,7 @@
 		"Engineering" = 1
 	)
 	camera_channels = list(
-		CAMERA_CAMERA_CHANNEL_ENGINEERING
+		CAMERA_CHANNEL_ENGINEERING
 	)
 	software = list(
 		/datum/computer_file/program/power_monitor

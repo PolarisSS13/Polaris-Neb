@@ -428,12 +428,12 @@ About the new airlock wires panel:
 			set_airlock_overlays(AIRLOCK_OPENING)
 			flick("opening", src)//[stat ? "_stat":]
 			animating_state = AIRLOCK_OPEN
-			update_icon()
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), AIRLOCK_OPEN), 1 SECOND) // wait to update icon so the light doesn't go out too soon
 		if("closing")
 			set_airlock_overlays(AIRLOCK_CLOSING)
 			flick("closing", src)
 			animating_state = AIRLOCK_CLOSED
-			update_icon()
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), AIRLOCK_CLOSED), 1 SECOND) // wait to update icon so the light doesn't go out too soon
 		if("deny")
 			set_airlock_overlays(AIRLOCK_DENY)
 			if(density && arePowerSystemsOn())
@@ -441,7 +441,7 @@ About the new airlock wires panel:
 				if(speaker)
 					playsound(loc, open_failure_access_denied, 50, 0)
 			animating_state = AIRLOCK_CLOSED
-			update_icon()
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon), AIRLOCK_CLOSED), 1 SECOND) // wait to update icon so the light doesn't go out too soon
 		if("emag")
 			set_airlock_overlays(AIRLOCK_EMAG)
 			if(density && arePowerSystemsOn())
@@ -889,7 +889,7 @@ About the new airlock wires panel:
 		panel_open = TRUE
 		if(istype(construct_state, /decl/machine_construction/default/panel_closed))
 			var/decl/machine_construction/default/panel_closed/closed = construct_state
-			construct_state = closed.down_state
+			construct_state = GET_DECL(closed.down_state)
 			construct_state.validate_state(src)
 		if (secured_wires)
 			lock()
@@ -987,7 +987,8 @@ About the new airlock wires panel:
 
 	if (lock_cut_state == BOLTS_CUT) return FALSE //what bolts?
 
-	src.locked = TRUE
+	locked = TRUE
+	locking = FALSE
 	playsound(src, bolts_dropping, 30, 0, -6)
 	audible_message("You hear a click from the bottom of the door.", hearing_distance = 1)
 	update_icon()
@@ -995,20 +996,21 @@ About the new airlock wires panel:
 	return TRUE
 
 /obj/machinery/door/airlock/proc/unlock(var/forced=0)
-	if(!src.locked)
+	if(!locked)
 		return FALSE
 
 	if (!forced)
-		if(!src.arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
 			return FALSE
 		if(operating)
 			locking = FALSE
 			unlocking = TRUE
 			return FALSE
-		if(operating || !src.arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
+		if(!arePowerSystemsOn() || isWireCut(AIRLOCK_WIRE_DOOR_BOLTS))
 			return FALSE
 
-	src.locked = FALSE
+	locked = FALSE
+	unlocking = FALSE
 	playsound(src, bolts_rising, 30, 0, -6)
 	audible_message("You hear a click from the bottom of the door.", hearing_distance = 1)
 	update_icon()

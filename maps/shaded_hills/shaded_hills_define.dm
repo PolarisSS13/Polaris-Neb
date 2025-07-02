@@ -25,7 +25,8 @@
 	lobby_tracks = list(
 		/decl/music_track/dhaka,
 		/decl/music_track/teller,
-		/decl/music_track/suonatore
+		/decl/music_track/suonatore,
+		/decl/music_track/adventure,
 	)
 	credit_sound = list(
 		'sound/music/Miris-Magic-Dance.ogg'
@@ -43,6 +44,7 @@
 		"rock"  = /turf/floor/rock/basalt::color,
 		"brick" = /turf/wall/brick/sandstone::color
 	)
+	default_ui_style = /decl/ui_style/underworld
 
 /decl/backpack_outfit/sack
 	is_default = TRUE

@@ -128,12 +128,7 @@
 
 	return emagged || (amount && (my_turf.is_floor_damaged() || (improvefloors && !my_turf.has_flooring())))
 
-/mob/living/bot/floorbot/UnarmedAttack(var/atom/A, var/proximity)
-
-	. = ..()
-	if(.)
-		return
-
+/mob/living/bot/floorbot/ResolveUnarmedAttack(var/atom/A)
 	if(busy)
 		return TRUE
 

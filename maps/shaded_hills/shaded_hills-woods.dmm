@@ -8,7 +8,13 @@
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/outside/woods)
 "cN" = (
-/obj/item/bladed/knife/iron,
+/obj/structure/table/desk/dresser/ebony,
+/obj/structure/wall_sconce/lantern{
+	start_lit = 1
+	},
+/obj/item/candelabra/filled{
+	pixel_y = 9
+	},
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "dp" = (
@@ -33,6 +39,10 @@
 "ix" = (
 /turf/unsimulated/dark_filler,
 /area/shaded_hills/caves/woods)
+"jk" = (
+/obj/structure/meat_hook,
+/turf/floor/dirt,
+/area/shaded_hills/outside/river/woods)
 "kx" = (
 /turf/floor/dirt,
 /area/shaded_hills/outside/river/woods)
@@ -41,7 +51,7 @@
 /turf/wall/natural/basalt/shaded_hills,
 /area/shaded_hills/caves/river/woods)
 "lb" = (
-/turf/floor/wood/rough/walnut,
+/turf/wall/brick/basalt,
 /area/shaded_hills/forester_hut)
 "lC" = (
 /turf/unsimulated/dark_filler,
@@ -75,10 +85,8 @@
 /turf/unsimulated/dark_filler,
 /area/shaded_hills/outside/river/woods)
 "wD" = (
-/obj/item/fishing_rod,
-/obj/structure/table/end/alt/ebony,
 /turf/floor/wood/rough/walnut,
-/area/shaded_hills/forester_hut)
+/area/shaded_hills/outside/river/woods)
 "xn" = (
 /turf/unsimulated/mask,
 /area/shaded_hills/outside/woods/poi)
@@ -122,9 +130,15 @@
 /turf/wall/natural/basalt/shaded_hills,
 /area/shaded_hills/caves/woods)
 "Fz" = (
-/obj/structure/fire_source/stove,
-/obj/item/stack/material/log/mapped/walnut/ten,
+/obj/structure/chair/rustic{
+	dir = 1;
+	pixel_y = 20;
+	pixel_x = -4
+	},
 /turf/floor/wood/rough/walnut,
+/area/shaded_hills/forester_hut)
+"Gp" = (
+/turf/wall/wattle/daubed/plastered/framed/walnut/shutter/open,
 /area/shaded_hills/forester_hut)
 "GB" = (
 /turf/floor/carpet/rustic,
@@ -132,6 +146,11 @@
 "HA" = (
 /turf/floor/grass,
 /area/shaded_hills/outside/woods)
+"IA" = (
+/obj/structure/fire_source/stove,
+/obj/item/stack/material/log/mapped/walnut/ten,
+/turf/floor/path/herringbone/basalt,
+/area/shaded_hills/forester_hut)
 "Jd" = (
 /turf/floor/path/basalt,
 /area/shaded_hills/outside/woods)
@@ -148,30 +167,31 @@
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/outside/river/woods)
 "JJ" = (
-/obj/structure/meat_hook,
+/obj/structure/table/end/alt/ebony,
+/obj/item/stack/material/bundle/grass/dry{
+	amount = 5
+	},
+/obj/item/fishing_rod,
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "LJ" = (
 /turf/floor/path/running_bond/basalt,
 /area/shaded_hills/outside/woods)
 "Md" = (
-/obj/structure/table/desk/ebony,
-/obj/item/stack/material/bundle/grass/dry{
-	amount = 5
-	},
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "My" = (
 /turf/floor/grass,
 /area/shaded_hills/outside/river/lake)
 "MR" = (
-/obj/structure/wall_sconce/lantern{
-	start_lit = 1
-	},
+/obj/structure/coatrack/ebony,
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "MU" = (
-/turf/wall/log/walnut/shutter/open,
+/obj/structure/table/desk/ebony,
+/obj/item/whetstone,
+/obj/item/bladed/knife/iron,
+/turf/floor/carpet/rustic,
 /area/shaded_hills/forester_hut)
 "Oi" = (
 /obj/structure/closet/crate/chest/ebony,
@@ -181,11 +201,27 @@
 /obj/abstract/force_fluid_flow/north,
 /turf/floor/mud/water/deep,
 /area/shaded_hills/outside/river/lake)
+"SD" = (
+/obj/structure/travois/walnut,
+/turf/floor/dirt,
+/area/shaded_hills/outside/river/woods)
 "SI" = (
-/turf/wall/log/walnut,
+/turf/wall/wattle/daubed/plastered/framed/walnut,
 /area/shaded_hills/forester_hut)
+"TC" = (
+/obj/item/horseshoe/hung{
+	pixel_y = 42
+	},
+/obj/item/towel/doormat/flat{
+	dir = 1
+	},
+/turf/floor/path/basalt,
+/area/shaded_hills/outside/river/woods)
 "TP" = (
 /obj/structure/table/desk/dresser/ebony,
+/obj/item/candelabra/filled{
+	pixel_y = 9
+	},
 /turf/floor/wood/rough/walnut,
 /area/shaded_hills/forester_hut)
 "Uz" = (
@@ -196,6 +232,10 @@
 /obj/abstract/landmark/start/shaded_hills/traveller,
 /turf/floor/path/basalt,
 /area/shaded_hills/outside/woods)
+"Wa" = (
+/obj/structure/divider/extended/wood/ebony,
+/turf/floor/wood/rough/walnut,
+/area/shaded_hills/forester_hut)
 "Wb" = (
 /obj/abstract/landmark/start/shaded_hills/traveller,
 /turf/floor/barren,
@@ -222,7 +262,7 @@
 	dir = 1;
 	pixel_y = 10
 	},
-/turf/floor/path/basalt,
+/turf/floor/dirt,
 /area/shaded_hills/outside/river/woods)
 "ZO" = (
 /obj/abstract/landmark/start/shaded_hills/traveller,
@@ -19330,8 +19370,8 @@ zp
 zp
 zp
 zp
-JI
-AN
+wD
+wD
 En
 En
 En
@@ -19467,11 +19507,11 @@ YO
 YO
 ES
 SI
+TP
 Jz
-lb
-Oi
-lb
-Fz
+Wa
+Jz
+cN
 SI
 Zs
 zq
@@ -19479,11 +19519,11 @@ zq
 zq
 zp
 zp
+zp
+zq
+zq
 zq
 zp
-zp
-JI
-AN
 zp
 En
 En
@@ -19618,24 +19658,24 @@ YO
 YO
 YO
 ES
-MU
-TP
+Gp
+JJ
 GB
 GB
 GB
-lb
+Md
 mo
+TC
 zq
-kx
 eJ
 zq
 zq
 zq
-kx
+zq
+zq
+zq
 zp
 zp
-JI
-AN
 zp
 zp
 zp
@@ -19771,24 +19811,24 @@ YO
 YO
 ES
 SI
-Jz
+Oi
 GB
-GB
+MU
 GB
 MR
-SI
-DB
-kx
-kx
-kx
+Gp
+SD
 kx
 kx
 ES
+zq
+zq
 ES
-dp
-JI
-AN
-dp
+ES
+zp
+zp
+zp
+zp
 zp
 zp
 zp
@@ -19923,13 +19963,13 @@ YO
 ES
 ES
 SI
+SI
 Md
-GB
-GB
-GB
-JJ
-MU
-kx
+Md
+Fz
+IA
+lb
+DB
 kx
 ES
 ES
@@ -20074,14 +20114,14 @@ YO
 YO
 ES
 ES
+kx
 SI
-cN
-lb
-wD
-lb
-JJ
 SI
-DB
+Gp
+SI
+lb
+lb
+jk
 kx
 ES
 ES
@@ -20226,13 +20266,13 @@ YO
 ES
 ES
 ES
-SI
-SI
-MU
-SI
-SI
-SI
-SI
+ES
+ES
+kx
+kx
+kx
+kx
+kx
 kx
 ES
 ES
@@ -20378,13 +20418,13 @@ YO
 YO
 ES
 ES
-kx
+ES
+ES
+ES
 ES
 kx
 kx
-kx
-kx
-kx
+ES
 kx
 ES
 ES
@@ -20534,8 +20574,8 @@ ES
 ES
 ES
 ES
-kx
-kx
+ES
+ES
 ES
 ES
 ES

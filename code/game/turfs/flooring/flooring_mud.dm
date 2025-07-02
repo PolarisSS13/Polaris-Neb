@@ -28,7 +28,7 @@
 	walker.add_walking_contaminant(force_material.type, rand(2,3))
 
 /decl/flooring/mud/can_show_coating_footprints(turf/target, decl/material/contaminant)
-	if(force_material.type == contaminant) // So we don't end up covered in a million footsteps that we provided.
+	if(force_material == contaminant) // So we don't end up covered in a million footsteps that we provided.
 		return FALSE
 	return ..()
 

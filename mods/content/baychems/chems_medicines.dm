@@ -59,11 +59,11 @@
 /decl/material/liquid/antiseptic
 	name = "sterilizine"
 
-/decl/material/liquid/stimulants
+/decl/material/liquid/accumulated/stimulants
 	name = "methylphenidate"
 	lore_text = "Improves the ability to concentrate."
 
-/decl/material/liquid/antidepressants
+/decl/material/liquid/accumulated/antidepressants
 	name = "citalopram"
 	lore_text = "Stabilizes the mind a little."
 

@@ -224,7 +224,7 @@
 		return
 	var/area/A = change_area ? get_base_area_instance() : null
 	// We don't have to worry about the edge turfs because those are handled in build_border().
-	for(var/turf/T as anything in block(level_inner_min_x, level_inner_min_y, level_z, level_inner_max_x, level_inner_max_y, level_z))
+	for(var/turf/T as anything in Z_ALL_TURFS(level_z))
 		if(change_turf)
 			T = T.ChangeTurf(picked_turf)
 		if(change_area)
@@ -681,6 +681,8 @@
 
 ///Returns the instance of the base area for this level
 /datum/level_data/proc/get_base_area_instance()
+	if(!base_area)
+		return null
 	var/area/found = locate(base_area)
 	if(found)
 		return found

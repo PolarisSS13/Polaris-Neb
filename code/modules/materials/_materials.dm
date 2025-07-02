@@ -182,7 +182,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	/// General-use HP value for products.
 	var/integrity = 150
 	/// Is the material transparent? 0.5< makes transparent walls/doors.
-	var/opacity = TRUE
+	var/opacity = 1.0
 	/// Only used by walls currently.
 	var/explosion_resistance = 5
 	/// Objects with this var add CONDUCTS to flags on spawn.
@@ -270,6 +270,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/overdose = 0
 	var/scannable = 0 // Shows up on health analyzers.
 	var/color = COLOR_BEIGE
+	// How much variance in color do objects of this material have, in fraction of maximum brightness/hue.
+	var/color_variance = 0.04
 	var/color_weight = 1
 	var/cocktail_ingredient
 	var/defoliant
@@ -1087,7 +1089,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	// Blend our extra_colour...
 	var/new_extra_color = newdata?[DATA_EXTRA_COLOR]
 	if(new_extra_color)
-		.[DATA_EXTRA_COLOR] = BlendRGBasHSV(new_extra_color, .[DATA_EXTRA_COLOR], new_fraction)
+		.[DATA_EXTRA_COLOR] = BlendHSV(new_extra_color, .[DATA_EXTRA_COLOR], new_fraction)
 
 /decl/material/proc/explosion_act(obj/item/chems/holder, severity)
 	SHOULD_CALL_PARENT(TRUE)

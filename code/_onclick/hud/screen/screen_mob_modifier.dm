@@ -102,6 +102,9 @@
 	maptext_x         = -8
 	maptext_y         = -3
 	icon_state        = "modifier_base"
+	// these must be enabled
+	use_supplied_ui_alpha = TRUE
+	use_supplied_ui_color = TRUE
 	var/decl/mob_modifier/archetype
 	var/obj/screen/mob_modifiers/holder
 

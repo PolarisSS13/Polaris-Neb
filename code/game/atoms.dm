@@ -102,7 +102,7 @@
 	return null
 
 /**
-	Merge an exhaled air volume into air contents..
+	Merge an exhaled air volume into air contents.
 */
 /atom/proc/merge_exhaled_volume(datum/gas_mixture/exhaled)
 	var/datum/gas_mixture/environment = return_air()
@@ -412,6 +412,16 @@
 		raise_event_non_global(/decl/observ/updated_icon)
 
 /**
+ * Update this atom's icon.
+ * If prior to SSicon_update's first flush, queues.
+ * Otherwise, updates instantly.
+ */
+/atom/proc/lazy_update_icon()
+	if(SSicon_update.init_state != SS_INITSTATE_NONE)
+		return update_icon()
+	queue_icon_update()
+
+/**
 	Update this atom's icon.
 
 	Usually queue_icon_update() or update_icon() should be used instead.
@@ -425,13 +435,13 @@
  * Obj adds matter contents. Other overrides may add extra handling for things like material storage.
  * Most useful for calculating worth or deconstructing something along with its contents.
  */
-/atom/proc/get_contained_matter()
-	if(length(reagents?.reagent_volumes))
+/atom/proc/get_contained_matter(include_reagents = TRUE)
+	if(include_reagents && length(reagents?.reagent_volumes))
 		LAZYINITLIST(.)
 		for(var/decl/material/reagent as anything in reagents.reagent_volumes)
-			.[reagent] += floor(REAGENT_VOLUME(reagents, reagent) / REAGENT_UNITS_PER_MATERIAL_UNIT)
+			.[reagent.type] += floor(REAGENT_VOLUME(reagents, reagent) / REAGENT_UNITS_PER_MATERIAL_UNIT)
 	for(var/atom/contained_obj as anything in get_contained_external_atoms()) // machines handle component parts separately
-		. = MERGE_ASSOCS_WITH_NUM_VALUES(., contained_obj.get_contained_matter())
+		. = MERGE_ASSOCS_WITH_NUM_VALUES(., contained_obj.get_contained_matter(include_reagents))
 
 /// Return a list of all simulated atoms inside this one.
 /atom/proc/get_contained_external_atoms()

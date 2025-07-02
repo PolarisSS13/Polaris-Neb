@@ -869,6 +869,14 @@ default behaviour is:
 			return I.get_flash_mod()
 	return get_bodytype()?.eye_flash_mod
 
+/mob/living/proc/get_flash_burn()
+	var/vision_organ_tag = get_vision_organ_tag()
+	if(vision_organ_tag)
+		var/obj/item/organ/internal/eyes/I = get_organ(vision_organ_tag, /obj/item/organ/internal/eyes)
+		if(I)
+			return I.get_flash_burn()
+	return get_bodytype()?.eye_flash_burn
+
 /mob/living/proc/eyecheck()
 	var/total_protection = flash_protection
 	if(should_have_organ(BP_EYES))
@@ -1571,21 +1579,21 @@ default behaviour is:
 	if(!use_move_trail)
 		return
 
-	var/decl/material/contaminant_type = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
-	if(!T.can_show_coating_footprints(contaminant_type))
+	var/decl/material/contaminant = source.coating.reagent_volumes[1] // take [1] instead of primary reagent to match what remove_any will probably remove
+	if(!T.can_show_coating_footprints(contaminant))
 		return
 	/// An associative list of DNA unique enzymes -> blood type. Used by forensics, mostly.
 	var/list/bloodDNA = list()
 	var/track_color
-	var/list/source_data = REAGENT_DATA(source.coating, contaminant_type)
+	var/list/source_data = REAGENT_DATA(source.coating, contaminant)
 	if(source_data && source_data[DATA_BLOOD_DNA] && source_data[DATA_BLOOD_TYPE])
 		bloodDNA = list(source_data[DATA_BLOOD_DNA] = source_data[DATA_BLOOD_TYPE])
 	track_color = source.coating.get_color()
-	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant_type) // Coming
+	T.AddTracks(use_move_trail, bloodDNA, dir, 0, track_color, contaminant.type) // Coming
 	if(isturf(old_loc))
 		var/turf/old_turf = old_loc
-		if(old_turf.can_show_coating_footprints(contaminant_type))
-			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant_type) // Going
+		if(old_turf.can_show_coating_footprints(contaminant))
+			old_turf.AddTracks(use_move_trail, bloodDNA, 0, dir, track_color, contaminant.type) // Going
 	source.remove_coating(1)
 	update_equipment_overlay(slot_shoes_str)
 
@@ -1689,20 +1697,28 @@ default behaviour is:
 		return range * range - 0.333
 	return range
 
-/mob/living/handle_flashed(var/flash_strength)
+/mob/living/handle_flashed(var/flash_strength, do_stun = TRUE)
 
 	var/safety = eyecheck()
-	if(safety >= FLASH_PROTECTION_MODERATE || flash_strength <= 0) // May be modified by human proc.
+	var/flash_burn = get_flash_burn()
+	var/flash_mod = get_flash_mod()
+
+	if(safety >= FLASH_PROTECTION_MODERATE || flash_strength <= 0 || flash_mod <= 0) // May be modified by human proc.
 		return FALSE
 
 	flash_eyes(FLASH_PROTECTION_MODERATE - safety)
-	SET_STATUS_MAX(src, STAT_STUN, (flash_strength / 2))
+	if(do_stun)
+		SET_STATUS_MAX(src, STAT_STUN, (flash_strength / 2))
 	SET_STATUS_MAX(src, STAT_BLURRY, flash_strength)
 	SET_STATUS_MAX(src, STAT_CONFUSE, (flash_strength + 2))
+
+	if(flash_burn > 0)
+		apply_damage(flash_strength * flash_burn/5, BURN, BP_HEAD, used_weapon = "Photon burns")
 	if(flash_strength > 3)
 		drop_held_items()
 	if(flash_strength > 5)
 		SET_STATUS_MAX(src, STAT_WEAK, 2)
+	return TRUE
 
 /mob/living/verb/showoff()
 	set name = "Show Held Item"

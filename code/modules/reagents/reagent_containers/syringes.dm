@@ -42,7 +42,7 @@
 	if((. = ..()))
 		update_icon()
 
-/obj/item/chems/syringe/on_picked_up(mob/user)
+/obj/item/chems/syringe/on_picked_up(mob/user, atom/old_loc)
 	. = ..()
 	update_icon()
 
@@ -381,6 +381,14 @@
 	var/vol_third = round(reagents.maximum_volume/3)
 	add_to_reagents(/decl/material/liquid/adrenaline,   vol_third)
 	add_to_reagents(/decl/material/liquid/amphetamines, 2 * vol_third)
+	return ..()
+
+/obj/item/chems/syringe/brute_meds
+	desc = "Contains drugs for treating brute trauma."
+	mode = SYRINGE_INJECT
+
+/obj/item/chems/syringe/brute_meds/populate_reagents()
+	add_to_reagents(/decl/material/liquid/brute_meds, reagents.maximum_volume)
 	return ..()
 
 // TG ports
