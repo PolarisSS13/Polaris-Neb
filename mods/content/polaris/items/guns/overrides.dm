@@ -2,6 +2,7 @@
 /obj/item/gun/energy/gun/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 	if(!istype(src,/obj/item/gun/energy/gun/nuclear))
 		return ..(/obj/item/cell/gun, /obj/item/cell/gun, /datum/extension/loaded_cell, charge_value)
+	else return ..()
 
 /obj/item/gun/energy/laser/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 	return ..(/obj/item/cell/gun, /obj/item/cell/gun, /datum/extension/loaded_cell, charge_value)
