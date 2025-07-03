@@ -244,13 +244,13 @@ var/global/list/_test_storage_items = list()
 
 /datum/storage/proc/update_ui_after_item_insertion(obj/item/inserted, click_params)
 	prepare_ui()
-	storage_ui?.on_insertion()
+	storage_ui?.on_insertion(inserted)
 
 /datum/storage/proc/update_ui_after_item_removal(obj/item/removed)
 	if(QDELETED(holder))
 		return
 	prepare_ui()
-	storage_ui?.on_post_remove()
+	storage_ui?.on_post_remove(removed)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /datum/storage/proc/remove_from_storage(mob/user, obj/item/removing, atom/new_location, skip_update)
@@ -258,13 +258,12 @@ var/global/list/_test_storage_items = list()
 		return FALSE
 	new_location = new_location || get_turf(holder)
 	storage_ui?.on_pre_remove(removing)
-	if(ismob(holder?.loc))
-		removing.dropped(user)
-	if(ismob(new_location))
-		removing.hud_layerise()
-	else
-		removing.reset_plane_and_layer()
+	// This doesn't call dropped anymore because it's not leaving a mob slot directly.
+	// If something needs to duplicate dropped() functionality on removal from a storage object,
+	// it should be done in on_exit_storage instead.
 	removing.forceMove(new_location)
+	if(!ismob(new_location)) // inventory slot equipped() already handles hud_layerise
+		removing.reset_plane_and_layer() // this should be done post-move to avoid wasting an icon update
 	if(!skip_update)
 		update_ui_after_item_removal(removing)
 	if(removing.maptext)
