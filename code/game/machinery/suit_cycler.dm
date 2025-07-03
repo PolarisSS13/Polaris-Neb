@@ -523,8 +523,5 @@
 		boots.refit_for_bodytype(target_bodytype)
 	finished_job()
 
-// Update icon on rotate so that overlays rotate as well
-/obj/machinery/suit_cycler/shuttle_rotate(angle)
-	. = ..()
-	if(.)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, queue_icon_update)), 1)
+/obj/machinery/suit_cycler/shuttle_rotate(angle) // DO NOT CHANGE DIR. Change this when someone adds directional sprites for suit cyclers.
+	return

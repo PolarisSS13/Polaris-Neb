@@ -358,7 +358,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/compost_value = 0
 
 	/// Nutrition values!
-	var/nutriment_animal     = FALSE
 	var/nutriment_factor     = 0 // Per removed amount each tick
 	var/hydration_factor     = 0 // Per removed amount each tick
 	var/injectable_nutrition = FALSE
@@ -955,7 +954,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	var/malus_level = 0
 	for(var/decl/trait/intolerance as anything in intolerances)
-		malus_level = max(malus_level, subject.GetTraitLevel(intolerance.type))
+		malus_level = max(malus_level, subject.get_trait_level(intolerance.type))
 	if(!malus_level)
 		return 1
 
