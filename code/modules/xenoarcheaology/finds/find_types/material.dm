@@ -8,14 +8,18 @@
 		/decl/material/solid/phoron,
 		/decl/material/solid/metal/titanium,
 		/decl/material/solid/glass
-		)
+	)
 
 /decl/archaeological_find/material/spawn_item(atom/loc)
 	return SSmaterials.create_object(pick(possible_materials), loc, rand(5,45))?[1]
 
 /decl/archaeological_find/material/exotic
 	item_type = "rare material lump"
-	possible_materials = list(/decl/material/solid/metal/aliumium, /decl/material/solid/metallic_hydrogen, /decl/material/solid/glass/borosilicate)
+	possible_materials = list(
+		/decl/material/solid/metal/aliumium,
+		/decl/material/solid/metallic_hydrogen,
+		/decl/material/solid/glass/borosilicate
+	)
 
 //Machinery parts
 /decl/archaeological_find/parts

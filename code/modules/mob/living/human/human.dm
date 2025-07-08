@@ -389,7 +389,7 @@
 				brain.mind.transfer_to(src)
 				qdel(brain.loc)
 				break
-	ticks_since_last_successful_breath = 0
+	suffocation_counter = 0
 	..()
 
 /mob/living/add_blood(mob/living/M, amount = 2, list/blood_data)
@@ -559,7 +559,8 @@
 //Drop anything that cannot be worn by the current species of the mob
 /mob/living/human/proc/apply_species_inventory_restrictions()
 
-	if(!(get_bodytype().appearance_flags & HAS_UNDERWEAR))
+	var/decl/bodytype/check_bodytype = get_bodytype()
+	if(!istype(check_bodytype) || !(check_bodytype.appearance_flags & HAS_UNDERWEAR))
 		QDEL_NULL_LIST(worn_underwear)
 
 	var/list/new_slots
@@ -1019,7 +1020,7 @@
 /mob/living/human/proc/post_setup(species_uid, datum/mob_snapshot/supplied_appearance)
 	try_refresh_visible_overlays() //Do this exactly once per setup
 
-/mob/living/human/handle_flashed(var/flash_strength)
+/mob/living/human/handle_flashed(var/flash_strength, do_stun = FALSE)
 	var/safety = eyecheck()
 	if(safety < FLASH_PROTECTION_MODERATE)
 		flash_strength = round(get_flash_mod() * flash_strength)
@@ -1079,8 +1080,10 @@
 		return //no feet no footsteps
 	return TRUE
 
-/mob/living/human/get_skin_tone(value)
-	return skin_tone
+/mob/living/human/get_skin_tone()
+	if(get_bodytype()?.appearance_flags & HAS_A_SKIN_TONE)
+		return skin_tone
+	return null
 
 /mob/living/human/set_skin_tone(value)
 	skin_tone = value

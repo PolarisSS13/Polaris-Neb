@@ -20,13 +20,14 @@
 /obj/structure/fire_source/forge/proc/get_forgable_contents()
 	. = list()
 	for(var/obj/item/thing in get_stored_inventory())
-		if(thing.material?.forgable && (istype(thing, /obj/item/billet) || istype(thing, /obj/item/stack/material/bar)))
+		if(thing.is_forgable() && (istype(thing, /obj/item/billet) || istype(thing, /obj/item/stack/material/bar)))
 			. += thing
 
 /obj/structure/fire_source/forge/attackby(obj/item/used_item, mob/user)
 
+	var/item_is_forgable = used_item.is_forgable()
 	// Raw materials.
-	if(istype(used_item, /obj/item/stack/material/bar))
+	if(istype(used_item, /obj/item/stack/material/bar) && item_is_forgable)
 		var/obj/item/stack/material/bar/bar = used_item
 		if(used_item.material != material || current_health >= get_max_health())
 			if(bar.get_amount() > 1)
@@ -41,7 +42,7 @@
 			// Flows through to below.
 
 	// Partially worked billets.
-	if(istype(used_item, /obj/item/billet))
+	if(istype(used_item, /obj/item/billet) && item_is_forgable)
 		if(used_item.loc == user)
 			user.try_unequip(used_item, loc)
 		else

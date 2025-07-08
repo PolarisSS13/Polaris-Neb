@@ -194,12 +194,7 @@
 		return BP_CHEST
 	return ..()
 
-/mob/living/bot/secbot/UnarmedAttack(var/mob/M, var/proximity)
-
-	. = ..()
-	if(.)
-		return
-
+/mob/living/bot/secbot/ResolveUnarmedAttack(var/mob/M)
 	if(!istype(M))
 		return FALSE
 

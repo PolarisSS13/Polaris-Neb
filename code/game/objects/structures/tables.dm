@@ -904,6 +904,7 @@
 	reinf_material = /decl/material/solid/organic/wood/walnut
 	storage = /datum/storage/structure/desk
 	bound_width = 64
+	appearance_flags = /obj/structure/table::appearance_flags & ~TILE_BOUND
 	material_alteration = MAT_FLAG_ALTERATION_ALL
 	can_flip = FALSE
 	top_surface_noun = "desktop"
@@ -979,6 +980,7 @@
 	icon = 'icons/obj/structures/dresser.dmi'
 	icon_state = "dresser"
 	bound_width = 32
+	appearance_flags = /obj/structure/table::appearance_flags
 	top_surface_noun = "surface"
 	tabletop_height = 15
 	mob_offset = 18

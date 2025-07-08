@@ -1,5 +1,5 @@
-#ifndef MODPACK_SPECIES_TAJARA
-#define MODPACK_SPECIES_TAJARA
+#ifndef MODPACK_SPECIES_TAJARAN
+#define MODPACK_SPECIES_TAJARAN
 // BEGIN_INCLUDE
 #include "_tajaran.dm"
 #include "datum\accessory.dm"

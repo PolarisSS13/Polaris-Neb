@@ -22,7 +22,7 @@
 	var/list/item_effects = get_item_effects(IE_CAT_DAMAGE)
 	if(length(item_effects))
 		for(var/decl/item_effect/damage_effect as anything in item_effects)
-			. = damage_effect.expend_attack_use(src, user, item_effects[damage_effect])
+			damage_effect.expend_attack_use(src, user, item_effects[damage_effect])
 
 /obj/item/proc/get_attack_force(mob/living/user)
 	if(_base_attack_force <= 0 || (item_flags & ITEM_FLAG_NO_BLUDGEON))

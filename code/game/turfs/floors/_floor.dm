@@ -5,7 +5,6 @@
 	layer = PLATING_LAYER
 	permit_ao = TRUE
 	thermal_conductivity = 0.040
-	heat_capacity = 10000
 	explosion_resistance = 1
 	turf_flags = TURF_IS_HOLOMAP_PATH
 	initial_gas = GAS_STANDARD_AIRMIX
@@ -46,16 +45,9 @@
 	fill_to_zero_height() // try to refill turfs that act as fluid sources
 
 	if(floor_material || get_topmost_flooring())
-		update_from_flooring()
-		if(!ml)
-			for(var/direction in global.alldirs)
-				var/turf/target_turf = get_step_resolving_mimic(src, direction)
-				if(istype(target_turf))
-					if(TICK_CHECK) // not CHECK_TICK -- only queue if the server is overloaded
-						target_turf.queue_icon_update()
-					else
-						target_turf.update_icon()
-			update_icon()
+		update_from_flooring(skip_update = ml)
+		if(ml) // We skipped the update above to avoid updating our neighbors, but we need to update ourselves.
+			lazy_update_icon()
 
 
 /turf/floor/ChangeTurf(turf/N, tell_universe, force_lighting_update, keep_air, update_open_turfs_above, keep_height)
@@ -121,10 +113,10 @@
 	else
 		physically_destroyed()
 
-/turf/floor/get_footstep_sound(var/mob/caller)
+/turf/floor/get_footstep_sound(var/mob/caller_mob)
 	var/decl/flooring/use_flooring = get_topmost_flooring()
 	if(istype(use_flooring))
-		return get_footstep_for_mob(use_flooring.footstep_type, caller)
+		return get_footstep_for_mob(use_flooring.footstep_type, caller_mob)
 	return ..()
 
 /turf/floor/get_movable_alpha_mask_state(atom/movable/mover)

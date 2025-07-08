@@ -6,9 +6,9 @@
 		"an adolescent" =  13,
 		"a young adult" =  18,
 		"an adult" =       30,
-		"middle-aged" =    50,
-		"aging" =          65,
-		"elderly" =        80
+		"middle-aged" =    55,
+		"aging" =          80,
+		"elderly" =       140
 	)
 
 /decl/species/tajaran
@@ -16,6 +16,7 @@
 	name = "Tajara"
 	name_plural = "Tajaran"
 	base_external_prosthetics_model = null
+
 
 	description = "The Tajaran are a mammalian species roughly resembling felines, \
 	hailing from Meralar in the Rarkajar system. \
@@ -27,10 +28,13 @@
 	They prefer colder, tundra-like climates, much like their home world, \
 	and speak a variety of languages, most notably Siik and Akhani."
 
-	traits = list(/decl/trait/malus/intolerance/caffeine = TRAIT_LEVEL_MAJOR)
-
 	hidden_from_codex = FALSE
-	available_bodytypes = list(/decl/bodytype/tajaran)
+	available_bodytypes = list(
+		/decl/bodytype/tajaran,
+		/decl/bodytype/tajaran/masculine
+	)
+
+	traits = list(/decl/trait/malus/intolerance/caffeine = TRAIT_LEVEL_MAJOR)
 
 	preview_outfit = /decl/outfit/job/generic/engineer
 
@@ -57,6 +61,13 @@
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
 
+	available_background_info = list(
+		/decl/background_category/heritage = list(
+			/decl/background_detail/heritage/tajaran,
+			/decl/background_detail/heritage/other
+		)
+	)
+
 	default_emotes = list(
 		/decl/emote/visible/tail/swish,
 		/decl/emote/visible/tail/wag,
@@ -75,7 +86,10 @@
 		"р" = list("рр", "ррр", "рррр")//thats not "pi"
 	)
 
-	autohiss_exempt = list(LANGUAGE_TAJARA)
+	autohiss_exempt = list(LANGUAGE_TAJARAN)
+
+/decl/species/tajaran/handle_additional_hair_loss(var/mob/living/human/H, var/defer_body_update = TRUE)
+	. = H?.set_skin_colour(rgb(189, 171, 143))
 
 /decl/species/tajaran/Initialize()
 	. = ..()
@@ -86,5 +100,3 @@
 	LAZYDISTINCTADD(available_background_info[/decl/background_category/heritage], /decl/background_detail/heritage/tajaran/rhemazar)
 	LAZYDISTINCTADD(available_background_info[/decl/background_category/heritage], /decl/background_detail/heritage/tajaran/spacer)
 
-/decl/species/tajaran/handle_additional_hair_loss(var/mob/living/human/H, var/defer_body_update = TRUE)
-	. = H?.set_skin_colour(rgb(189, 171, 143))

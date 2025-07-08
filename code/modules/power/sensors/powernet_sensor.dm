@@ -88,55 +88,6 @@
 
 	return L
 
-
-// Proc: return_reading_text()
-// Parameters: None
-// Description: Generates string which contains HTML table with reading data.
-/obj/machinery/power/sensor/proc/return_reading_text()
-	// No powernet. Try to connect to one first.
-	if(!powernet)
-		connect_to_network()
-	var/out = ""
-	if(!powernet) // No powernet.
-		out = "# SYSTEM ERROR - NO POWERNET #"
-		return out
-
-
-	var/list/L = find_apcs()
-	var/total_apc_load = 0
-	if(L.len <= 0) 	// No APCs found.
-		out = "<b>No APCs located in connected powernet!</b>"
-	else			// APCs found. Create very ugly (but working!) HTML table.
-
-		out += "<table><tr><th>Name<th>EQUIP<th>LIGHT<th>ENVIRON<th>CELL<th>LOAD"
-
-		// These lists are used as replacement for number based APC settings
-		var/list/S = list("M-OFF","A-OFF","M-ON", "A-ON")
-		var/list/chg = list("N","C","F")
-
-		// Split to multiple lines to make it more readable
-		for(var/obj/machinery/power/apc/A in L)
-			out += "<tr><td>\The [A.area]" 															// Add area name
-			out += "<td>[S[A.equipment+1]]<td>[S[A.lighting+1]]<td>[S[A.environ+1]]" 				// Show status of channels
-			var/obj/item/cell/cell = A.get_cell()
-			if(cell)
-				out += "<td>[round(cell.percent())]% - [chg[A.charging+1]]"
-			else
-				out += "<td>NO CELL"
-			var/load = A.lastused_total // Load.
-			total_apc_load += load
-			load = reading_to_text(load)
-			out += "<td>[load]"
-
-	out += "<br><b>TOTAL AVAILABLE: [reading_to_text(powernet.avail)]</b>"
-	out += "<br><b>APC LOAD: [reading_to_text(total_apc_load)]</b>"
-	out += "<br><b>OTHER LOAD: [reading_to_text(max(powernet.load - total_apc_load, 0))]</b>"
-	out += "<br><b>TOTAL GRID LOAD: [reading_to_text(powernet.viewload)] ([round((powernet.load / powernet.avail) * 100)]%)</b>"
-
-	if(powernet.problem)
-		out += "<br><b>WARNING: Abnormal grid activity detected!</b>"
-	return out
-
 // Proc: return_reading_data()
 // Parameters: None
 // Description: Generates list containing all powernet data. Optimised for usage with NanoUI

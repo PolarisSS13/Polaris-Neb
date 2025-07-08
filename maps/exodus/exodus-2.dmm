@@ -7415,7 +7415,7 @@
 /area/shuttle/escape_pod_1)
 "apD" = (
 /turf/wall/prepainted,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "apE" = (
 /obj/machinery/light{
 	dir = 8
@@ -8601,7 +8601,7 @@
 	dir = 4
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "arT" = (
 /obj/structure/hygiene/sink/kitchen{
 	pixel_y = 21
@@ -8868,7 +8868,7 @@
 	dir = 8
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "asv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -12258,7 +12258,7 @@
 /obj/machinery/door/airlock/maintenance,
 /obj/machinery/door/firedoor,
 /turf/floor/tiled/techfloor/grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "azJ" = (
 /obj/machinery/camera/network/civilian_east{
 	c_tag = "Kitchen Cold Room"
@@ -12613,29 +12613,20 @@
 /turf/floor/tiled/dark,
 /area/exodus/hydroponics)
 "aAA" = (
-/obj/machinery/gateway{
-	dir = 9
-	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aAB" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aAC" = (
-/obj/machinery/gateway{
-	dir = 5
-	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aAD" = (
-/obj/machinery/gateway{
-	dir = 1
-	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aAE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -12653,7 +12644,7 @@
 	dir = 4
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aAH" = (
 /obj/structure/sign/warning/airlock{
 	pixel_x = 32;
@@ -13131,11 +13122,8 @@
 /turf/wall/r_wall/prepainted,
 /area/exodus/hallway/secondary/entry/port)
 "aBJ" = (
-/obj/machinery/gateway{
-	dir = 8
-	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aBK" = (
 /obj/machinery/door/airlock/external/bolted{
 	id_tag = "nuke_shuttle_dock_inner";
@@ -13151,17 +13139,13 @@
 /area/exodus/hallway/secondary/entry/port)
 "aBM" = (
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aBN" = (
-/obj/machinery/gateway{
-	dir = 4
-	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aBO" = (
-/obj/machinery/gateway/centerstation,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aBP" = (
 /obj/machinery/atmospherics/unary/tank/air{
 	dir = 8
@@ -13559,24 +13543,14 @@
 /turf/wall/prepainted,
 /area/exodus/storage/primary)
 "aCL" = (
-/obj/machinery/gateway{
-	dir = 10
-	},
-/obj/abstract/landmark/latejoin/gateway,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aCN" = (
-/obj/machinery/gateway{
-	dir = 6
-	},
-/obj/abstract/landmark/latejoin/gateway,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aCO" = (
-/obj/machinery/gateway,
-/obj/abstract/landmark/latejoin/gateway,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aCP" = (
 /obj/machinery/vending/coffee{
 	dir = 4
@@ -13596,7 +13570,7 @@
 	current_health = 1e+006
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aCQ" = (
 /obj/structure/sign/warning/biohazard{
 	pixel_x = 32
@@ -13610,7 +13584,7 @@
 	current_health = 1e+006
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aCS" = (
 /obj/structure/table/reinforced,
 /obj/item/assembly/signaler,
@@ -14182,7 +14156,7 @@
 	dir = 4
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aEc" = (
 /obj/machinery/power/apc{
 	dir = 8;
@@ -14217,7 +14191,7 @@
 	dir = 4
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aEg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -14226,7 +14200,7 @@
 	dir = 10
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aEh" = (
 /obj/structure/table/laminate,
 /obj/machinery/reagentgrinder,
@@ -14943,7 +14917,7 @@
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aFB" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 29;
@@ -14997,7 +14971,7 @@
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aFG" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/machinery/power/apc{
@@ -15373,7 +15347,7 @@
 	pixel_x = -22
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aGm" = (
 /obj/machinery/recharger{
 	pixel_y = 4
@@ -15568,7 +15542,7 @@
 "aGK" = (
 /obj/item/stool,
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aGL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15591,7 +15565,7 @@
 "aGN" = (
 /obj/machinery/hologram/holopad,
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aGO" = (
 /obj/effect/wallframe_spawn/reinforced,
 /obj/machinery/door/blast/shutters/open{
@@ -15626,7 +15600,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aGS" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -15634,7 +15608,7 @@
 	},
 /obj/structure/closet/wardrobe/black,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aGT" = (
 /obj/machinery/suit_cycler/medical/prepared,
 /turf/floor/tiled/dark,
@@ -16449,7 +16423,7 @@
 	icon_state = "4-8"
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aIq" = (
 /obj/structure/table,
 /obj/item/deck/cards,
@@ -16474,7 +16448,7 @@
 /area/exodus/maintenance/library)
 "aIs" = (
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aIt" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -16482,7 +16456,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aIu" = (
 /obj/machinery/button/access/exterior{
 	id_tag = "xeno_airlock_control";
@@ -16777,7 +16751,7 @@
 	dir = 8
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aJd" = (
 /obj/structure/flaps{
 	opacity = 1
@@ -17288,7 +17262,7 @@
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aKm" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -17308,7 +17282,7 @@
 	dir = 8
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aKo" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -17320,7 +17294,7 @@
 	dir = 8
 	},
 /turf/floor/tiled/steel_grid,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "aKp" = (
 /obj/machinery/vending/fashionvend,
 /turf/floor/tiled/monotile,
@@ -26250,7 +26224,7 @@
 	pixel_y = 2
 	},
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "bdM" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 1
@@ -47631,7 +47605,7 @@
 	},
 /obj/machinery/recharger,
 /turf/floor/tiled/dark/monotile,
-/area/exodus/gateway)
+/area/exodus/maintenance)
 "bUP" = (
 /obj/item/radio/intercom{
 	pixel_y = 20

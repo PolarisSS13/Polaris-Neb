@@ -63,7 +63,7 @@
 	result_type        = /obj/structure/closet
 
 /decl/stack_recipe/hardness/integrity/furniture/tank_dispenser
-	result_type        = /obj/structure/tank_rack
+	result_type        = /obj/structure/tank_rack/empty
 	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE
 
 /decl/stack_recipe/hardness/integrity/furniture/coffin

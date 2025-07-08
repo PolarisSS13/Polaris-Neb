@@ -355,7 +355,7 @@ var/global/list/time_prefs_fixed = list()
 	player_setup.sanitize_setup()
 	validate_comments_record() // Make sure a record has been generated for this character.
 	character.comments_record_id = comments_record_id
-	character.traits = null
+	character.clear_extrinsic_traits()
 
 	var/decl/bodytype/new_bodytype = get_bodytype_decl()
 	var/decl/species/character_species = character.get_species()
@@ -493,7 +493,7 @@ var/global/list/time_prefs_fixed = list()
 	if(!client)
 		return
 
-	if(client.get_preference_value(/datum/client_preference/fullscreen_mode) != PREF_OFF)
+	if(client.get_preference_value(/datum/client_preference/fullscreen_mode) != PREF_NO)
 		client.toggle_fullscreen(client.get_preference_value(/datum/client_preference/fullscreen_mode))
 
 /datum/preferences/proc/setup_preferences()

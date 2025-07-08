@@ -18,3 +18,11 @@
 #ifdef CONTENT_PACK_SUPERMATTER
 #include "patches/supermatter.dm"
 #endif
+
+#ifdef MODPACK_GOVERNMENT
+#include "patches/government.dm"
+#endif
+
+#ifdef MODPACK_CORPORATE
+#include "patches/corporate.dm"
+#endif

@@ -205,17 +205,6 @@
 					if (wound.infection_check())
 						wound.germ_level += 1
 
-/mob/living/human/proc/Check_Proppable_Object()
-	for(var/turf/T as anything in RANGE_TURFS(src, 1)) //we only care for non-space turfs
-		if(T.density && T.simulated)	//walls work
-			return 1
-
-	for(var/obj/O in orange(1, src))
-		if(O && O.density && O.anchored)
-			return 1
-
-	return 0
-
 /mob/living/human/on_lost_organ(var/obj/item/organ/O)
 	if(!(. = ..()))
 		return

@@ -112,6 +112,7 @@
 	abstract_type = /decl/stack_recipe/tile/panels
 	craft_stack_types = /obj/item/stack/material/panel
 	available_to_map_tech_level = MAP_TECH_LEVEL_SPACE
+	validation_material = /decl/material/solid/organic/plastic
 
 /decl/stack_recipe/tile/panels/floor
 	result_type       = /obj/item/stack/tile/floor_white

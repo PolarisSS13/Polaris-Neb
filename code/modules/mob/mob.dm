@@ -1156,7 +1156,7 @@
 
 	return FALSE
 
-/mob/proc/handle_flashed(var/flash_strength)
+/mob/proc/handle_flashed(var/flash_strength, do_stun = FALSE)
 	return FALSE
 
 /mob/proc/do_flash_animation()
@@ -1321,7 +1321,7 @@
 /mob/proc/set_skin_tone(value)
 	return
 
-/mob/proc/get_skin_tone(value)
+/mob/proc/get_skin_tone()
 	return
 
 /mob/proc/force_update_limbs()
@@ -1396,8 +1396,11 @@
 	for(var/turf/neighbor in RANGE_TURFS(my_turf, 1))
 		if(neighbor == my_turf)
 			continue
-		if(neighbor.contains_dense_objects(exceptions = src))
+		if(neighbor.is_wall() || neighbor.is_floor())
 			return neighbor
+		var/dense_object = neighbor.get_first_dense_object(exceptions = src)
+		if(dense_object)
+			return dense_object
 		platform = neighbor.get_supporting_platform() || (locate(/obj/structure/lattice) in neighbor)
 		if(platform)
 			return platform
@@ -1439,10 +1442,10 @@
 		return FALSE
 
 	// Check footwear.
-	if(!magboots_only && has_non_slip_footing())
-		return FALSE
+	if(magboots_only)
+		return !((has_gravity() || has_magnetised_footing()) && get_solid_footing())
 
-	if((has_gravity() || has_magnetised_footing()) && get_solid_footing())
+	if(has_non_slip_footing())
 		return FALSE
 
 	// Slip!

@@ -22,6 +22,9 @@
 /obj/item/organ/internal/eyes/proc/get_flash_mod()
 	return bodytype.eye_flash_mod
 
+/obj/item/organ/internal/eyes/proc/get_flash_burn()
+	return bodytype.eye_flash_burn
+
 /obj/item/organ/internal/eyes/proc/get_darksight_range()
 	return bodytype.eye_darksight_range
 

@@ -125,6 +125,11 @@
 			visible_message(SPAN_NOTICE("\The [user] inserts \the [used_item] into \the [src], and after a second or so of loud clicking, the fabricator beeps and spits it out again."))
 			return TRUE
 
+	// Attempt to bash on harm intent.
+	// I'd like for this to be a more general parent call but instead it's just a direct check-and-call.
+	else if(!(used_item.item_flags & ITEM_FLAG_NO_BLUDGEON) && (. = bash(used_item, user))) // Bash successful, no need to try intake.
+		return
+
 	// TEMP HACK FIX:
 	// Autolathes currently do not process atom contents. As a workaround, refuse all atoms with contents.
 	if(length(used_item.contents) && !ignore_input_contents_length)

@@ -1994,6 +1994,20 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/floor/tiled,
 /area/unishi/living)
+"Dj" = (
+/obj/structure/closet/emcloset,
+/obj/item/clothing/suit/space/void,
+/obj/item/clothing/head/helmet/space/void,
+/obj/item/tank/oxygen,
+/turf/floor/tiled,
+/area/unishi/living)
+"Ew" = (
+/obj/structure/closet/emcloset,
+/obj/item/clothing/head/helmet/space/void,
+/obj/item/clothing/suit/space/void,
+/obj/item/tank/oxygen,
+/turf/floor/tiled,
+/area/unishi/living)
 "RG" = (
 /obj/structure/closet/crate/bin,
 /obj/machinery/atmospherics/unary/vent_scrubber/on{

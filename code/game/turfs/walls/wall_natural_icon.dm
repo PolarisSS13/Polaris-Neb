@@ -39,7 +39,7 @@
 		shine = exterior_wall_shine_cache[shine_cache_key]
 		if(isnull(shine))
 			// patented formula based on color's value (in HSV)
-			shine = clamp((material.reflectiveness * 0.01) * 255, 10, (0.6 * ReadHSV(RGBtoHSV(material.color))[3]))
+			shine = clamp((material.reflectiveness * 0.01) * 255, 10, (0.6 * rgb2num(material.color, COLORSPACE_HSV)[3]))
 			exterior_wall_shine_cache[shine_cache_key] = shine
 
 	var/new_icon

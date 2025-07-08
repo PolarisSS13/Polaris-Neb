@@ -112,6 +112,9 @@
 		to_chat(user, SPAN_WARNING("\The [src] is currently running."))
 		return TRUE
 
+	if((. = ..()))
+		return
+
 	// If the detergent port is open and the item is an open container, assume we're trying to fill the detergent port.
 	if(!(state & WASHER_STATE_CLOSED) && !((atom_flags & used_item.atom_flags) & ATOM_FLAG_OPEN_CONTAINER))
 		var/list/wash_whitelist = get_wash_whitelist()
@@ -141,8 +144,6 @@
 		else
 			to_chat(user, SPAN_NOTICE("\The [src] is full."))
 			return TRUE
-
-	return ..()
 
 /obj/machinery/washing_machine/physical_attack_hand(mob/user)
 	if(state & WASHER_STATE_RUNNING)

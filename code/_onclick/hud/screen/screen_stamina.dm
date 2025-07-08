@@ -4,6 +4,9 @@
 	icon_state        = "prog_bar_100"
 	invisibility      = INVISIBILITY_MAXIMUM
 	screen_loc        = ui_stamina
+	use_supplied_ui_color = FALSE
+	use_supplied_ui_alpha = FALSE
+	use_supplied_ui_icon = FALSE
 	requires_ui_style = FALSE
 	layer = HUD_BASE_LAYER + 0.1 // needs to layer over the movement intent element
 

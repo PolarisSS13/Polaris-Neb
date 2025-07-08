@@ -194,12 +194,6 @@ var/global/list/flooring_cache = list()
 	if(target.icon_state != target.floor_icon_state_override)
 		target.icon_state = target.floor_icon_state_override
 
-	if(color)
-		target.color = color
-	else if(!can_paint || isnull(target.paint_color))
-		var/decl/material/use_material = target.get_material()
-		target.color = use_material?.color
-
 	if (icon_edge_layer != FLOOR_EDGE_NONE && (has_internal_edges || has_external_edges))
 		var/edge_layer = target.layer + icon_edge_layer
 		var/list/edge_overlays = list()

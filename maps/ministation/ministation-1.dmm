@@ -65,7 +65,7 @@
 	pixel_y = 24
 	},
 /obj/item/flashlight/lamp/green,
-/obj/item/box/fancy/cigarettes/tricord,
+/obj/item/box/fancy/cigarettes/covert/tricord,
 /turf/floor/carpet/blue,
 /area/ministation/medical)
 "at" = (

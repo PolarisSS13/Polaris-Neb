@@ -75,7 +75,7 @@
 				initial_tool_qualities[TOOL_HATCHET] = TOOL_QUALITY_MEDIOCRE
 		set_extension(src, /datum/extension/tool/variable/simple, initial_tool_qualities)
 
-	shine = istype(material) ? clamp((material.reflectiveness * 0.01) * 255, 10, (0.6 * ReadHSV(RGBtoHSV(material.color))[3])) : null
+	shine = istype(material) ? clamp((material.reflectiveness * 0.01) * 255, 10, (0.6 * rgb2num(material.color, COLORSPACE_HSV)[3])) : null
 	icon_state = ICON_STATE_WORLD
 	on_update_icon()
 

@@ -506,12 +506,12 @@ Class Procs:
 	LAZYREMOVE(., component_parts)
 
 // This only includes external atoms by default, so we need to add components back.
-/obj/machinery/get_contained_matter()
+/obj/machinery/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	var/list/component_types = types_of_component(/obj/item/stock_parts)
 	for(var/path in component_types)
 		for(var/obj/item/stock_parts/part in get_all_components_of_type(path))
-			var/list/part_costs = part.get_contained_matter()
+			var/list/part_costs = part.get_contained_matter(include_reagents)
 			for(var/key in part_costs)
 				.[key] += part_costs[key] * component_types[path]
 

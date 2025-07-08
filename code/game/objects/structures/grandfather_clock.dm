@@ -8,6 +8,7 @@
 	density             = TRUE
 	material            = /decl/material/solid/organic/wood/mahogany
 	material_alteration = MAT_FLAG_ALTERATION_ALL
+	color               = /decl/material/solid/organic/wood/mahogany::color
 	var/face_color      = "#f0edc7"
 	var/last_time
 	var/decl/material/clockwork_mat = /decl/material/solid/metal/brass

@@ -514,13 +514,14 @@ nanoui is used to open and update nano browser uis
 		set_show_map(text2num(href_list["showMap"]))
 		map_update = 1
 
-	if(href_list["mapZLevel"])
-		var/map_z = text2num(href_list["mapZLevel"])
+	if(href_list["switchMapZLevel"])
+		var/map_z = text2num(href_list["switchMapZLevel"])
 		if(isMapLevel(map_z))
 			set_map_z_level(map_z)
 			map_update = 1
 
-	if ((src_object && src_object.Topic(href, href_list, state)) || map_update)
+	// src_object.Topic() might null out src_object by deleting us.
+	if (src_object && (src_object.Topic(href, href_list, state) || (!QDELETED(src) && src_object && map_update)))
 		SSnano.update_uis(src_object) // update all UIs attached to src_object
 
  /**

@@ -38,12 +38,12 @@
 			return TRUE
 	. = ..()
 
-/obj/structure/vending_refill/get_contained_matter()
+/obj/structure/vending_refill/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	for(var/datum/stored_items/vending_products/record in product_records)
 		. = MERGE_ASSOCS_WITH_NUM_VALUES(., record.get_combined_matter(include_instances = FALSE))
 
-/obj/machinery/vending/get_contained_matter()
+/obj/machinery/vending/get_contained_matter(include_reagents = TRUE)
 	. = ..()
 	for(var/datum/stored_items/vending_products/record in product_records)
 		. = MERGE_ASSOCS_WITH_NUM_VALUES(., record.get_combined_matter(include_instances = FALSE))

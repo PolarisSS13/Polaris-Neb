@@ -22,7 +22,7 @@
 /decl/language/sign
 	name = "Sign Language"
 	desc = "In an age of commonplace extra-vehicular activity and habitation of airless worlds, \
-	sign language is often an essential communication tool for large portions of the population. "
+	sign language is often an essential communication tool for large portions of the population."
 	signlang_verb = list("gestures")
 	colour = "say_quote"
 	key = "s"

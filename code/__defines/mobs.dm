@@ -346,7 +346,10 @@ var/global/list/dexterity_levels = list(
 #define MOB_ICON_HAS_GIB_STATE       BITFLAG(5)
 #define MOB_ICON_HAS_DUST_STATE      BITFLAG(6)
 #define MOB_ICON_HAS_PARALYZED_STATE BITFLAG(7)
+
+// Additional pronoun sets.
 #define NEUTER_ANIMATE "animate singular neutral"
+#define SECOND_PERSON_SINGULAR "second person singular"
 
 // Equipment Overlays Indices //
 #define HO_CONDITION_LAYER  1

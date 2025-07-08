@@ -119,7 +119,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/shard_name = SHARD_SHRAPNEL as text // Path of debris object.
 	var/shard_icon                        // Related to above.
 	var/shard_can_repair = 1              // Can shards be turned into sheets with a welder?
-	var/list/recipes                      // Holder for all recipes usable with a sheet of this material.
 	var/destruction_desc = "breaks apart" // Fancy string for barricades/tables/objects exploding.
 	var/destruction_sound = "fracture"     // As above, but the sound that plays.
 
@@ -270,6 +269,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/overdose = 0
 	var/scannable = 0 // Shows up on health analyzers.
 	var/color = COLOR_BEIGE
+	// How much variance in color do objects of this material have, in fraction of maximum brightness/hue.
+	var/color_variance = 0.04
 	var/color_weight = 1
 	var/cocktail_ingredient
 	var/defoliant
@@ -357,7 +358,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/compost_value = 0
 
 	/// Nutrition values!
-	var/nutriment_animal     = FALSE
 	var/nutriment_factor     = 0 // Per removed amount each tick
 	var/hydration_factor     = 0 // Per removed amount each tick
 	var/injectable_nutrition = FALSE
@@ -954,7 +954,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	var/malus_level = 0
 	for(var/decl/trait/intolerance as anything in intolerances)
-		malus_level = max(malus_level, subject.GetTraitLevel(intolerance.type))
+		malus_level = max(malus_level, subject.get_trait_level(intolerance.type))
 	if(!malus_level)
 		return 1
 
@@ -1087,7 +1087,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	// Blend our extra_colour...
 	var/new_extra_color = newdata?[DATA_EXTRA_COLOR]
 	if(new_extra_color)
-		.[DATA_EXTRA_COLOR] = BlendRGBasHSV(new_extra_color, .[DATA_EXTRA_COLOR], new_fraction)
+		.[DATA_EXTRA_COLOR] = BlendHSV(new_extra_color, .[DATA_EXTRA_COLOR], new_fraction)
 
 /decl/material/proc/explosion_act(obj/item/chems/holder, severity)
 	SHOULD_CALL_PARENT(TRUE)

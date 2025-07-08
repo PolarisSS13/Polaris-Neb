@@ -1049,10 +1049,6 @@
 	icon_state = "teleporter"
 	req_access = list(access_teleporter)
 
-/area/exodus/gateway
-	name = "\improper Gateway"
-	icon_state = "teleporter"
-
 // Thunderdome
 
 /area/tdome
