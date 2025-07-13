@@ -43,6 +43,7 @@
 	hazard_low_pressure = HAZARD_LOW_PRESSURE * 2
 	warning_high_pressure = WARNING_HIGH_PRESSURE / 0.8125
 	hazard_high_pressure = HAZARD_HIGH_PRESSURE / 0.84615
+	water_soothe_amount = 5
 
 	body_temperature = null // cold-blooded, implemented the same way nabbers do it
 

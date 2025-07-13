@@ -11,3 +11,6 @@
 	base_icon = "coffeecup_STC"
 	icon_state = "coffeecup_STC"
 	base_name = "\improper ICCG cup"
+
+/obj/random/mug/spawn_choices()
+	return ..() | /obj/item/chems/drinks/glass2/coffeecup/STC

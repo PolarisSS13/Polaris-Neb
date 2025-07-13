@@ -140,3 +140,14 @@
 	.[/datum/gear_tweak/path/specified_types_list] |= list(
 		/obj/item/clothing/head/lobster
 	)
+
+/decl/loadout_option/uniform/utility
+	name = "utility jumpsuit selection"
+	path = /obj/item/clothing/jumpsuit/utility
+	loadout_flags = GEAR_HAS_TYPE_SELECTION
+	uid = "gear_under_util_jumpsuit"
+
+/decl/loadout_option/uniform/sleekoveralls
+	name = "overalls, sleek"
+	path = /obj/item/clothing/jumpsuit/sleekoveralls
+	uid = "gear_under_overalls"

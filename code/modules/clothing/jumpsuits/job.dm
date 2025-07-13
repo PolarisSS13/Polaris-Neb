@@ -14,15 +14,9 @@
 	icon = 'icons/clothing/jumpsuits/jumpsuit_cargo_alt.dmi'
 
 /obj/item/clothing/jumpsuit/miner
-	desc = "A branded high-vis jumpsuit for toiling in the mines. Somehow it's dirty already."
-	name = "shaft miner's jumpsuit"
-	icon = 'icons/clothing/jumpsuits/jumpsuit_miner.dmi'
-
-/obj/item/clothing/jumpsuit/miner/overalls
-	desc = "It's a snappy purple shirt with a sturdy set of overalls. Very retro."
 	name = "shaft miner's overalls"
-	icon = 'icons/clothing/jumpsuits/jumpsuit_miner_overalls.dmi'
-
+	desc = "It's a snappy purple shirt with a sturdy set of overalls. Very retro."
+	icon = 'icons/clothing/jumpsuits/jumpsuit_miner.dmi'
 
 /obj/item/clothing/jumpsuit/cargoshort
 	name = "cargo technician's jumpsuit"
@@ -248,8 +242,3 @@
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
 	name = "captain's jumpsuit"
 	icon = 'icons/clothing/jumpsuits/jumpsuit_captain.dmi'
-
-/obj/item/clothing/jumpsuit/captainformal
-	name = "captain's formal uniform"
-	desc = "A captain's formal-wear, for special occasions."
-	icon = 'icons/clothing/uniform_captain_formal.dmi'

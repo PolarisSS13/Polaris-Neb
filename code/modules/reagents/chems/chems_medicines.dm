@@ -168,7 +168,6 @@
 	victim.add_chemical_effect(CE_TOXIN, 1)
 	victim.adjust_immunity(-0.5)
 
-
 /decl/material/liquid/antibiotics
 	name = "antibiotics"
 	lore_text = "An all-purpose antibiotic agent."

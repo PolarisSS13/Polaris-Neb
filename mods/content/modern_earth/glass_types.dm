@@ -4,3 +4,6 @@
 	base_icon = "coffeecup_brit"
 	icon_state = "coffeecup_brit"
 	base_name = "british cup"
+
+/obj/random/mug/spawn_choices()
+	return ..() | /obj/item/chems/drinks/glass2/coffeecup/britcup

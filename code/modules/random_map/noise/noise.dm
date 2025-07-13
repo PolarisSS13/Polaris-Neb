@@ -144,7 +144,6 @@
 				map[TRANSLATE_COORD(x, y)] = round(total / 3)
 		// map = next_map
 		CHECK_TICK
-		CHECK_TICK
 
 	if(smooth_single_tiles)
 		for(var/x in 1 to limit_x - 1)

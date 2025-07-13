@@ -14,8 +14,6 @@
 
 	hud_used = /datum/hud/animal
 
-	hud_used = /datum/hud/animal
-
 	move_intents = list(
 		/decl/move_intent/walk/animal,
 		/decl/move_intent/run/animal

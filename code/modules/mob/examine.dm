@@ -41,8 +41,6 @@
 
 /mob/get_examine_strings(mob/user, distance, infix, suffix)
 
-/mob/get_examine_strings(mob/user, distance, infix, suffix)
-
 	SHOULD_CALL_PARENT(FALSE)
 	. = list()
 

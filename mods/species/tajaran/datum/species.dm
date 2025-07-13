@@ -6,9 +6,9 @@
 		"an adolescent" =  13,
 		"a young adult" =  18,
 		"an adult" =       30,
-		"middle-aged" =    55,
-		"aging" =          80,
-		"elderly" =       140
+		"middle-aged" =    50,
+		"aging" =          65,
+		"elderly" =        80
 	)
 
 /decl/species/tajaran
@@ -60,13 +60,6 @@
 	gluttonous = GLUT_TINY
 
 	move_trail = /obj/effect/decal/cleanable/blood/tracks/paw
-
-	available_background_info = list(
-		/decl/background_category/heritage = list(
-			/decl/background_detail/heritage/tajaran,
-			/decl/background_detail/heritage/other
-		)
-	)
 
 	default_emotes = list(
 		/decl/emote/visible/tail/swish,

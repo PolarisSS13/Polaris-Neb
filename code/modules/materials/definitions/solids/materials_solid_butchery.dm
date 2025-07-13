@@ -224,6 +224,7 @@
 	compost_value = 0.5
 	allergen_flags = ALLERGEN_MEAT
 	exoplanet_rarity_plant = MAT_RARITY_EXOTIC
+	exoplanet_rarity_plant = MAT_RARITY_EXOTIC
 
 // Stub to stop eggs melting while being boiled.
 /decl/material/solid/organic/bone/eggshell
