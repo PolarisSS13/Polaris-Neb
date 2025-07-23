@@ -119,7 +119,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/shard_name = SHARD_SHRAPNEL as text // Path of debris object.
 	var/shard_icon                        // Related to above.
 	var/shard_can_repair = 1              // Can shards be turned into sheets with a welder?
-	var/list/recipes                      // Holder for all recipes usable with a sheet of this material.
 	var/destruction_desc = "breaks apart" // Fancy string for barricades/tables/objects exploding.
 	var/destruction_sound = "fracture"     // As above, but the sound that plays.
 
@@ -359,7 +358,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/compost_value = 0
 
 	/// Nutrition values!
-	var/nutriment_animal     = FALSE
 	var/nutriment_factor     = 0 // Per removed amount each tick
 	var/hydration_factor     = 0 // Per removed amount each tick
 	var/injectable_nutrition = FALSE
@@ -956,7 +954,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 	var/malus_level = 0
 	for(var/decl/trait/intolerance as anything in intolerances)
-		malus_level = max(malus_level, subject.GetTraitLevel(intolerance.type))
+		malus_level = max(malus_level, subject.get_trait_level(intolerance.type))
 	if(!malus_level)
 		return 1
 

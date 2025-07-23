@@ -434,3 +434,17 @@
 	desc = "It's just like one of your Japanese animes! This costume's particularly popular among Plutonian cosplayers."
 	icon = 'mods/content/polaris/icons/clothing/costumes/magicalgirl/black.dmi'
 
+/obj/item/clothing/jumpsuit/utility
+	name = "blue utility uniform"
+	desc = "A comfortable blue utility jumpsuit."
+	icon = 'mods/content/polaris/icons/clothing/under/jumpsuit_utility_blue.dmi'
+
+/obj/item/clothing/jumpsuit/utility/grey
+	name = "grey utility uniform"
+	desc = "A comfortable grey utility jumpsuit."
+	icon = 'mods/content/polaris/icons/clothing/under/jumpsuit_utility_grey.dmi'
+
+/obj/item/clothing/jumpsuit/sleekoveralls
+	name = "sleek overalls"
+	desc = "A set of modern pleather reinforced overalls."
+	icon = 'mods/content/polaris/icons/clothing/under/jumpsuit_sleekoveralls.dmi'

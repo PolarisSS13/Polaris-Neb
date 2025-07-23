@@ -150,6 +150,7 @@
 	pixel_x = 32;
 	initial_network_id = "freightnet_0451";
 	dir = 4
+	
 	},
 /obj/structure/chair{
 	dir = 1

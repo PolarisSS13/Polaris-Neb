@@ -49,6 +49,12 @@
 	name_plural                 = "bars"
 	result_type                 = /obj/item/stack/material/bar
 
+/decl/stack_recipe/soft/bar
+	name                        = "bar"
+	name_plural                 = "bars"
+	result_type                 = /obj/item/stack/material/bar
+	validation_material         = /decl/material/solid/organic/wax
+
 /decl/stack_recipe/soft/stack/spawn_result(mob/user, location, amount, decl/material/mat, decl/material/reinf_mat, paint_color, spent_type, spent_amount = 1)
 	var/obj/item/stack/S = ..()
 	if(istype(S))

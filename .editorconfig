@@ -12,6 +12,9 @@ indent_size = 4
 [*.dmm]
 end_of_line = crlf
 
+[*.dme]
+end_of_line = crlf
+
 [*.py]
 indent_style = space
 indent_size = 4
@@ -20,3 +23,8 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
+[*.txt]
+end_of_line = crlf
+
+[*.md]
+end_of_line = crlf

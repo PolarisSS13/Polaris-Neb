@@ -1,6 +1,6 @@
 /decl/bodytype/tajaran
 	name                 = "feminine"
-	bodytype_category    = BODYTYPE_TAJARA
+	bodytype_category    = BODYTYPE_TAJARAN
 	limb_blend           = ICON_MULTIPLY
 	icon_template        = 'mods/species/tajaran/icons/template.dmi'
 	icon_base            = 'mods/species/tajaran/icons/body.dmi'

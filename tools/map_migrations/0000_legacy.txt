@@ -415,24 +415,6 @@
 
 /obj/item/banner/nt : /obj/item/banner/nanotrasen{@OLD}
 
-# Migrate/delete old mech parts
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster : @DELETE
-/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster : @DELETE
-/obj/item/mecha_parts/mecha_equipment/repair_droid : @DELETE
-/obj/item/mecha_parts/mecha_equipment/teleporter : @DELETE
-/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay : @DELETE
-/obj/item/mecha_parts/mecha_equipment/tool/cable_layer : @DELETE
-/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill : /obj/item/mech_equipment/drill/diamond{@OLD}
-/obj/item/mecha_parts/mecha_equipment/tool/extinguisher : /obj/item/mech_equipment/mounted_system/extinguisher{@OLD}
-/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp : /obj/item/mech_equipment/clamp{@OLD}
-/obj/item/mecha_parts/mecha_equipment/tool/passenger : @DELETE
-/obj/item/mecha_parts/mecha_equipment/tool/rcd : /obj/item/mech_equipment/mounted_system/rcd{@OLD}
-/obj/item/mecha_parts/mecha_equipment/tool/sleeper : /obj/item/mech_equipment/sleeper{@OLD}
-/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun : @DELETE
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion : /obj/item/mech_equipment/mounted_system/taser/ion{@OLD}
-/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser : /obj/item/mech_equipment/mounted_system/taser{@OLD}
-/obj/item/mecha_parts/mecha_tracking : @DELETE
-
 /obj/item/box/syndie_kit/clerical : /obj/item/backpack/satchel/syndie_kit/clerical{@OLD}
 
 /obj/item/clothing/under/costume/rainbow : /obj/item/clothing/jumpsuit/rainbow{@OLD}
@@ -450,6 +432,24 @@
 /obj/item/clothing/suit/costume/hgpirate : /obj/item/clothing/suit/hgpirate{@OLD}
 /obj/item/clothing/suit/storage/vest/heavy/merc : /obj/item/clothing/suit/armor/pcarrier/merc{@OLD}
 /obj/item/clothing/suit/storage/vest/@SUBTYPES : /obj/item/clothing/suit/armor/vest/@SUBTYPES{@OLD}
+
+# Migrate/delete old mech parts
+/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster : @DELETE
+/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster : @DELETE
+/obj/item/mecha_parts/mecha_equipment/repair_droid : @DELETE
+/obj/item/mecha_parts/mecha_equipment/teleporter : @DELETE
+/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay : @DELETE
+/obj/item/mecha_parts/mecha_equipment/tool/cable_layer : @DELETE
+/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill : /obj/item/mech_equipment/drill/diamond{@OLD}
+/obj/item/mecha_parts/mecha_equipment/tool/extinguisher : /obj/item/mech_equipment/mounted_system/extinguisher{@OLD}
+/obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp : /obj/item/mech_equipment/clamp{@OLD}
+/obj/item/mecha_parts/mecha_equipment/tool/passenger : @DELETE
+/obj/item/mecha_parts/mecha_equipment/tool/rcd : /obj/item/mech_equipment/mounted_system/rcd{@OLD}
+/obj/item/mecha_parts/mecha_equipment/tool/sleeper : /obj/item/mech_equipment/sleeper{@OLD}
+/obj/item/mecha_parts/mecha_equipment/tool/syringe_gun : @DELETE
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/ion : /obj/item/mech_equipment/mounted_system/taser/ion{@OLD}
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/taser : /obj/item/mech_equipment/mounted_system/taser{@OLD}
+/obj/item/mecha_parts/mecha_tracking : @DELETE
 
 ############
 # VAREDITS #

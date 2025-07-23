@@ -1,11 +1,11 @@
-#define LANGUAGE_TAJARA "Siik'maas"
-#define BODYTYPE_TAJARA "felinoid body"
-#define LANGUAGE_AKHANI "Akhani"
+#define LANGUAGE_TAJARAN       "Siik'maas"
+#define BODYTYPE_TAJARAN       "felinoid body"
+#define LANGUAGE_AKHANI        "Akhani"
 
 /decl/modpack/tajaran
 	name = "Tajaran Species"
 	tabloid_headlines = list(
-		"TAJARAS: CUTE AND CUDDLY, OR INFILTRATING THE GOVERNMENT? FIND OUT MORE INSIDE"
+		"TAJARANS: CUTE AND CUDDLY, OR INFILTRATING THE GOVERNMENT? FIND OUT MORE INSIDE"
 	)
 
 /decl/modpack/tajaran/pre_initialize()
@@ -21,4 +21,4 @@
 /obj/item/setup_sprite_sheets()
 	. = ..()
 	if(_tajaran_onmob_icon)
-		LAZYSET(sprite_sheets, BODYTYPE_TAJARA, _tajaran_onmob_icon)
+		LAZYSET(sprite_sheets, BODYTYPE_TAJARAN, _tajaran_onmob_icon)

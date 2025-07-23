@@ -1,5 +1,5 @@
 /decl/language/tajaran
-	name = LANGUAGE_TAJARA
+	name = LANGUAGE_TAJARAN
 	desc = "The most prevalant language of Meralar, composed of expressive yowls and chirps. Native to the Tajaran."
 	speech_verb = "mrowls"
 	ask_verb = "mrowls"

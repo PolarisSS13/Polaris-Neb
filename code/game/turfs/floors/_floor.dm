@@ -5,7 +5,6 @@
 	layer = PLATING_LAYER
 	permit_ao = TRUE
 	thermal_conductivity = 0.040
-	heat_capacity = 10000
 	explosion_resistance = 1
 	turf_flags = TURF_IS_HOLOMAP_PATH
 	initial_gas = GAS_STANDARD_AIRMIX
@@ -114,10 +113,10 @@
 	else
 		physically_destroyed()
 
-/turf/floor/get_footstep_sound(var/mob/caller)
+/turf/floor/get_footstep_sound(var/mob/caller_mob)
 	var/decl/flooring/use_flooring = get_topmost_flooring()
 	if(istype(use_flooring))
-		return get_footstep_for_mob(use_flooring.footstep_type, caller)
+		return get_footstep_for_mob(use_flooring.footstep_type, caller_mob)
 	return ..()
 
 /turf/floor/get_movable_alpha_mask_state(atom/movable/mover)

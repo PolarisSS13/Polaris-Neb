@@ -559,7 +559,8 @@
 //Drop anything that cannot be worn by the current species of the mob
 /mob/living/human/proc/apply_species_inventory_restrictions()
 
-	if(!(get_bodytype().appearance_flags & HAS_UNDERWEAR))
+	var/decl/bodytype/check_bodytype = get_bodytype()
+	if(!istype(check_bodytype) || !(check_bodytype.appearance_flags & HAS_UNDERWEAR))
 		QDEL_NULL_LIST(worn_underwear)
 
 	var/list/new_slots
@@ -1079,8 +1080,10 @@
 		return //no feet no footsteps
 	return TRUE
 
-/mob/living/human/get_skin_tone(value)
-	return skin_tone
+/mob/living/human/get_skin_tone()
+	if(get_bodytype()?.appearance_flags & HAS_A_SKIN_TONE)
+		return skin_tone
+	return null
 
 /mob/living/human/set_skin_tone(value)
 	skin_tone = value

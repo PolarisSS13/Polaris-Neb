@@ -7,9 +7,6 @@ var/global/list/status_marker_holders = list()
 	var/check_flags = 0
 	var/list/victim_data
 
-	var/hud_icon
-	var/hud_state
-
 	var/decl/mob_modifier/associated_mob_modifier
 
 	var/status_marker_icon = 'icons/effects/status.dmi'

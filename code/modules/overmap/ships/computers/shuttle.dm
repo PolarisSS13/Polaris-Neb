@@ -130,11 +130,6 @@
 			qdel(lz)
 	to_chat(user, SPAN_WARNING("Invalid landing zone!"))
 
-/obj/machinery/computer/shuttle_control/proc/end_landing()
-	var/datum/extension/eye/landing_eye = get_extension(src, /datum/extension/eye/)
-	if(landing_eye)
-		landing_eye.unlook()
-
 /obj/machinery/computer/shuttle_control/explore/power_change()
 	. = ..()
 	if(. && (stat & (NOPOWER|BROKEN)))

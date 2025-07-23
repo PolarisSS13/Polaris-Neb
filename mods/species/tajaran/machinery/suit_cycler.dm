@@ -1,5 +1,5 @@
 /obj/machinery/suit_cycler/Initialize()
-	LAZYDISTINCTADD(available_bodytypes, BODYTYPE_TAJARA)
+	LAZYDISTINCTADD(available_bodytypes, BODYTYPE_TAJARAN)
 	. = ..()
 
 /obj/item/clothing/suit/space/void/merc

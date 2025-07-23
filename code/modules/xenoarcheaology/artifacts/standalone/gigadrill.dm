@@ -3,11 +3,15 @@
 	desc = "A giant, alien drill mounted on long treads."
 	icon = 'icons/obj/machines/gigadrill.dmi'
 	icon_state = "gigadrill"
+	density = TRUE
+	layer = ABOVE_OBJ_LAYER		//to go over ores
+	matter = list(
+		/decl/material/solid/metal/plasteel/ocp = MATTER_AMOUNT_PRIMARY,
+		/decl/material/solid/gemstone/diamond = MATTER_AMOUNT_REINFORCEMENT
+	)
 	var/active = 0
 	var/drill_time = 10
 	var/turf/drilling_turf
-	density = TRUE
-	layer = ABOVE_OBJ_LAYER		//to go over ores
 	matter = list(
 		/decl/material/solid/metal/plasteel/ocp = MATTER_AMOUNT_PRIMARY,
 		/decl/material/solid/phoron = MATTER_AMOUNT_REINFORCEMENT,

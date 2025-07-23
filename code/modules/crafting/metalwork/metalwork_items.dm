@@ -17,7 +17,6 @@
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME
 	storage = /datum/storage/crucible
 	obj_flags = OBJ_FLAG_NO_STORAGE
-	var/max_held = 10
 
 /obj/item/chems/crucible/attackby(obj/item/used_item, mob/user)
 

@@ -186,10 +186,7 @@
 	if((user.check_intent(I_FLAG_HELP)) && attempt_to_stock(used_item, user))
 		return TRUE
 
-	if((obj_flags & OBJ_FLAG_ANCHORABLE) && (IS_WRENCH(used_item) || IS_HAMMER(used_item)))
-		wrench_floor_bolts(user, null, used_item)
-		power_change()
-		return
+	return ..() // handle anchoring and bashing
 
 /obj/machinery/vending/state_transition(decl/machine_construction/new_state)
 	. = ..()

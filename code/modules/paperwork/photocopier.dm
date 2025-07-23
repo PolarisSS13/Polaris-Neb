@@ -40,8 +40,6 @@
 	var/obj/item/scanner_item                  //what's in the scanner
 	var/obj/item/stock_parts/printer/printer   //What handles the printing queue
 	var/tmp/max_copies    = 10                 //how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
-	var/tmp/busy          = FALSE              //Whether we should allow people to mess with the settings and contents
-	var/accept_refill     = FALSE              //Whether we should handle attackby paper to be sent to the paper bin, or to the scanner slot
 	var/total_printing    = 0                  //The total number of pages we are printing in the current run
 
 /obj/machinery/photocopier/Initialize(mapload, d=0, populate_parts = TRUE)
@@ -79,7 +77,7 @@
 	//Warning lights
 	if(scanner_item)
 		add_overlay("photocopier_ready")
-	if(!printer?.has_enough_to_print())
+	if(!has_enough_to_print())
 		add_overlay("photocopier_bad")
 
 /obj/machinery/photocopier/proc/update_ui()
@@ -107,7 +105,7 @@
 	else
 		required_toner = TONER_USAGE_PAPER
 
-	if(!printer?.has_enough_to_print(required_toner, required_paper * copy_amount))
+	if(!has_enough_to_print(required_toner, required_paper * copy_amount))
 		buzz("Warning: Not enough paper or toner!")
 		return FALSE
 
@@ -197,10 +195,14 @@
 		queue_copies(sanitize_integer(text2num(href_list["copy_amount"]), 1, max_copies, 1))
 		return TOPIC_REFRESH
 
+	if(href_list["cancel_queue"])
+		stop_processing_queue()
+		return TOPIC_REFRESH
+
 	if(href_list["aipic"])
 		if(!issilicon(user))
 			return TOPIC_NOACTION
-		if(printer?.has_enough_to_print(TONER_USAGE_PHOTO))
+		if(has_enough_to_print(TONER_USAGE_PHOTO))
 			var/mob/living/silicon/tempAI = user
 			var/obj/item/camera/siliconcam/camera = tempAI.silicon_camera
 			if(!camera)
@@ -244,10 +246,13 @@
 	return TRUE
 
 /obj/machinery/photocopier/attackby(obj/item/used_item, mob/user)
+	if(printer.is_printing())
+		to_chat(user, SPAN_WARNING("\The [src] is busy!"))
+		return TRUE
 	if(istype(construct_state, /decl/machine_construction/default/panel_closed) && (istype(used_item, /obj/item/paper) || istype(used_item, /obj/item/photo) || istype(used_item, /obj/item/paper_bundle)))
 		insert_item(used_item, user)
 		return TRUE
-	return..() //Components attackby will handle refilling with paper and toner
+	return ..() //Components attackby will handle refilling with paper and toner
 
 /**Creates a clone of the specified item. Returns a list of cloned items. */
 /obj/machinery/photocopier/proc/scan_item(var/obj/item/I)

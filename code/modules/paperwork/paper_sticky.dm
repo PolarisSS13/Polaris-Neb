@@ -2,18 +2,18 @@
 // Sticky Note Pad
 ////////////////////////////////////////////////
 /obj/item/sticky_pad
-	name               = "sticky note pad"
-	desc               = "A pad of densely packed sticky notes."
-	color              = COLOR_YELLOW
-	icon               = 'icons/obj/stickynotes.dmi'
-	icon_state         = "pad_full"
-	item_state         = "paper"
-	w_class            = ITEM_SIZE_SMALL
-	material           = /decl/material/solid/organic/paper
-	var/papers         = 50
-	var/tmp/max_papers = 50
-	var/paper_type     = /obj/item/paper/sticky
-	var/obj/item/paper/top                        //The instantiated paper on the top of the pad, if there's one
+	name                 = "sticky note pad"
+	desc                 = "A pad of densely packed sticky notes."
+	color                = COLOR_YELLOW
+	icon                 = 'icons/obj/stickynotes.dmi'
+	icon_state           = "pad_full"
+	item_state           = "paper"
+	w_class              = ITEM_SIZE_SMALL
+	material             = /decl/material/solid/organic/paper
+	var/const/max_papers = 50
+	var/papers           = max_papers
+	var/paper_type       = /obj/item/paper/sticky
+	var/obj/item/paper/top //The instantiated paper on the top of the pad, if there's one
 
 /obj/item/sticky_pad/Initialize(ml, material_key)
 	. = ..()
@@ -35,7 +35,7 @@
 	. = ..()
 	if(papers <= 15)
 		icon_state = "pad_empty"
-	else if(papers <= 50)
+	else if(papers <= max_papers)
 		icon_state = "pad_used"
 	else
 		icon_state = "pad_full"

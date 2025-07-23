@@ -63,12 +63,6 @@
 	. = ..()
 	sync_breath_types()
 
-// This call needs to be split out to make sure that all the ingested things are metabolised
-// before the process call is made on any of the other organs
-/obj/item/organ/internal/lungs/proc/metabolize()
-	if(is_usable())
-		inhaled.metabolize()
-
 /**
  *  Set these lungs' breath types based on the lungs' species
  */

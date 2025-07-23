@@ -49,7 +49,6 @@
 	var/list/children                  // Sub-limbs.
 	var/list/internal_organs           // Internal organs of this body part
 	var/list/implants                  // Currently implanted objects.
-	var/base_miss_chance = 20          // Chance of missing.
 	var/genetic_degradation = 0        // Amount of current genetic damage.
 
 	//Forensics stuff
